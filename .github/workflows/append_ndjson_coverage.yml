@@ -1,0 +1,82 @@
+#/
+# @license Apache-2.0
+#
+# Copyright (c) 2023 The Stdlib Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#/
+
+# Workflow name:
+name: append_ndjson_coverage
+
+# Workflow triggers:
+on:
+  push:
+    branches:
+      - main
+
+# Workflow jobs:
+jobs:
+  
+  # Define a job for inserting new line-delimited JSON (NDJSON) coverage entries:
+  append:
+    
+    # Define a display name:
+    name: 'Append NDJSON Coverage'
+
+    # Define the type of virtual host machine:
+    runs-on: ubuntu-latest
+
+    # Define the sequence of job steps...
+    steps:
+
+      # Checkout the repository:
+      - name: 'Checkout repository'
+        uses: actions/checkout@v3
+        with:
+          # Specify whether to remove untracked files before checking out the repository:
+          clean: true
+
+          # Limit clone depth to the most recent 100 commits:
+          fetch-depth: 1
+
+          # Specify whether to download Git-LFS files:
+          lfs: false
+        timeout-minutes: 10
+        
+      # Update the repository:
+      - name: 'Update repository'
+        run: |
+          FILES=$(git diff --name-only HEAD^ HEAD | grep -E '^index\.html$')
+          for FILE in $FILES; do
+            coverage=$(echo -n '['; grep -oP "(?<=class='fraction'>)[0-9]+/[0-9]+" $FILE | awk -F/ '{ print $1 "," $2 "," ($1/$2)*100 }' | tr '\n' ',' | sed 's/,$//'; echo -n ']')
+            echo $coverage >> $(dirname $FILE)/coverage.ndjson
+          done
+          
+      # Configure Git:
+      - name: 'Configure Git'
+        run: |
+          git config --local user.email "noreply@stdlib.io"
+          git config --local user.name "stdlib-bot"
+        timeout-minutes: 5
+
+      # Commit and push changes:
+      - name: 'Commit and push changes'
+        env:
+          GITHUB_TOKEN: ${{ secrets.STDLIB_BOT_GITHUB_TOKEN }}
+          USER_NAME: stdlib-bot
+        run: |
+          git add .
+          git commit -m "Append coverage data"
+          git push "https://$USER_NAME:$GITHUB_TOKEN@github.com/stdlib-js/www-test-code-coverage.git" HEAD
+
