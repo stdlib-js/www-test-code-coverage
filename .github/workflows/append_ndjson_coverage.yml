@@ -64,7 +64,7 @@ jobs:
           else
             files=$(git diff --diff-filter=AM --name-only ${{ github.event.before }} ${{ github.event.after }})
           fi
-          files=$(echo "$files" | grep -E 'index\.html$')
+          files=$(echo "$files" | grep -E 'index\.html$' | tr '\n' ' ' | sed 's/ $//')
           echo "files=${files}" >> $GITHUB_OUTPUT
 
       # Update coverage data:
