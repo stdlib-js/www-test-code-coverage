@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for slice/base/seq2slice/lib/resolve_end.js</title>
+    <title>Code coverage report for slice/base/normalize-slice/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">slice/base/seq2slice/lib</a> resolve_end.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">slice/base/normalize-slice/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>197/197</span>
+                <span class='fraction'>199/199</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>33/33</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>197/197</span>
+                <span class='fraction'>199/199</span>
             </div>
         
             
@@ -260,7 +260,9 @@
 <a name='L195'></a><a href='#L195'>195</a>
 <a name='L196'></a><a href='#L196'>196</a>
 <a name='L197'></a><a href='#L197'>197</a>
-<a name='L198'></a><a href='#L198'>198</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -356,102 +358,104 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">726x</span>
-<span class="cline-any cline-yes">726x</span>
-<span class="cline-any cline-yes">726x</span>
-<span class="cline-any cline-yes">726x</span>
-<span class="cline-any cline-yes">726x</span>
-<span class="cline-any cline-yes">105x</span>
-<span class="cline-any cline-yes">105x</span>
-<span class="cline-any cline-yes">621x</span>
-<span class="cline-any cline-yes">621x</span>
-<span class="cline-any cline-yes">726x</span>
-<span class="cline-any cline-yes">280x</span>
-<span class="cline-any cline-yes">280x</span>
-<span class="cline-any cline-yes">280x</span>
-<span class="cline-any cline-yes">280x</span>
-<span class="cline-any cline-yes">83x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">276x</span>
-<span class="cline-any cline-yes">276x</span>
-<span class="cline-any cline-yes">341x</span>
-<span class="cline-any cline-yes">341x</span>
-<span class="cline-any cline-yes">726x</span>
-<span class="cline-any cline-yes">317x</span>
-<span class="cline-any cline-yes">317x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">309x</span>
-<span class="cline-any cline-yes">317x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">249x</span>
-<span class="cline-any cline-yes">249x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">726x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -479,181 +483,183 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var floor = require( '@stdlib/math/base/special/floor' );
-var RE_END_MINUS = require( './re_end_minus.js' );
-var RE_END_DIVIDE = require( './re_end_divide.js' );
+var Slice = require( '@stdlib/slice/ctor' );
+var eOutOfBounds = require( './error_out_of_bounds.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Resolves an "end" index.
+* Returns a normalized Slice object.
 *
-* ## Notes
-*
-* -   The function returns `-1` if provided an invalid character sequence.
-* -   The function returns `-2` if the resolved end index is out-of-bounds.
-*
-* @private
-* @param {string} v - character sequence containing the "end" keyword
-* @param {NonNegativeInteger} len - maximum number of elements allowed in the slice
-* @param {boolean} decrement - boolean indicating whether a subsequence has a negative decrement
+* @param {Slice} slice - input slice
+* @param {NonNegativeInteger} len - maximum number of elements allowed in a slice
 * @param {boolean} strict - boolean indicating whether to enforce strict bounds checking
-* @returns {NonNegativeInteger} end index (exclusive)
+* @returns {(Slice|ErrorObject)} slice object or an error object
 *
 * @example
-* var idx = resolveEnd( 'end', 10, false, false );
+* var Slice = require( '@stdlib/slice/ctor' );
+*
+* var s = normalizeSlice( new Slice(), 10, false );
+* // returns &lt;Slice&gt;
+*
+* var v = s.start;
+* // returns 0
+*
+* v = s.stop;
 * // returns 10
 *
-* idx = resolveEnd( 'end', 10, true, false );
-* // returns 10
-*
-* @example
-* var idx = resolveEnd( 'end-1', 10, false, false );
-* // returns 9
-*
-* idx = resolveEnd( 'end-1', 10, true, false );
-* // returns 9
-*
-* @example
-* var idx = resolveEnd( 'end-2', 10, false, false );
-* // returns 8
-*
-* idx = resolveEnd( 'end-2', 10, true, false );
-* // returns 8
-*
-* @example
-* var idx = resolveEnd( 'end/2', 10, false, false );
-* // returns 5
-*
-* idx = resolveEnd( 'end/2', 10, true, false );
-* // returns 4
-*
-* @example
-* var idx = resolveEnd( 'end/2', 11, false, false );
-* // returns 5
-*
-* idx = resolveEnd( 'end/2', 11, true, false );
-* // returns 5
-*
-* @example
-* var idx = resolveEnd( 'end/3', 10, false, false );
-* // returns 3
-*
-* idx = resolveEnd( 'end/3', 10, true, false );
-* // returns 3
-*
-* @example
-* var idx = resolveEnd( 'end/3', 11, false, false );
-* // returns 3
-*
-* idx = resolveEnd( 'end/3', 11, true, false );
-* // returns 3
-*
-* @example
-* var idx = resolveEnd( 'end/4', 10, false, false );
-* // returns 2
-*
-* idx = resolveEnd( 'end/4', 10, true, false );
-* // returns 2
-*
-* @example
-* var idx = resolveEnd( 'end/4', 11, false, false );
-* // returns 2
-*
-* idx = resolveEnd( 'end/4', 11, true, false );
-* // returns 2
-*
-* @example
-* var idx = resolveEnd( 'end/5', 10, false, false );
-* // returns 2
-*
-* idx = resolveEnd( 'end/5', 10, true, false );
+* v = s.step;
 * // returns 1
 *
 * @example
-* var idx = resolveEnd( 'end/5', 11, false, false );
-* // returns 2
+* var Slice = require( '@stdlib/slice/ctor' );
 *
-* idx = resolveEnd( 'end/5', 11, true, false );
-* // returns 2
+* var s = normalizeSlice( new Slice( null, 20, 2 ), 10, false );
+* // returns &lt;Slice&gt;
 *
-* @example
-* var idx = resolveEnd( 'end-20', 10, false, false );
+* var v = s.start;
 * // returns 0
 *
-* idx = resolveEnd( 'end-20', 10, true, false );
-* // returns 0
+* v = s.stop;
+* // returns 10
 *
-* idx = resolveEnd( 'end-20', 10, true, true );
-* // returns -2
-*
-* @example
-* var idx = resolveEnd( 'end*2', 10, false, false );
-* // returns -1
-*
-* idx = resolveEnd( 'end*2', 10, true, false );
-* // returns -1
+* v = s.step;
+* // returns 2
 *
 * @example
-* var idx = resolveEnd( 'end+1', 10, false, false );
-* // returns -1
+* var Slice = require( '@stdlib/slice/ctor' );
 *
-* idx = resolveEnd( 'end+1', 10, true, false );
-* // returns -1
+* var s = normalizeSlice( new Slice( -5, -1, 1 ), 10, false );
+* // returns &lt;Slice&gt;
+*
+* var v = s.start;
+* // returns 5
+*
+* v = s.stop;
+* // returns 9
+*
+* v = s.step;
+* // returns 1
 *
 * @example
-* var idx = resolveEnd( 'end/0.5', 10, false, false );
-* // returns -1
+* var Slice = require( '@stdlib/slice/ctor' );
 *
-* idx = resolveEnd( 'end/0.5', 10, true, false );
-* // returns -1
+* var s = normalizeSlice( new Slice( -5, null, -1 ), 10, false );
+* // returns &lt;Slice&gt;
 *
-* idx = resolveEnd( 'end/0.5', 10, true, true );
-* // returns -2
+* var v = s.start;
+* // returns 5
+*
+* v = s.stop;
+* // returns null
+*
+* v = s.step;
+* // returns -1
 */
-function resolveEnd( v, len, decrement, strict ) {
-	var tmp;
+function normalizeSlice( slice, len, strict ) {
+	var start;
+	var stop;
+	var step;
 &nbsp;
-	// Check for the simple case where "end" refers to the last index (exclusive)...
-	if ( v === 'end' ) {
-		return len;
+	start = slice.start;
+	stop = slice.stop;
+	step = slice.step;
+&nbsp;
+	// If necessary, set the default increment...
+	if ( step === null ) {
+		step = 1;
 	}
-	// Check for a subtraction operation (e.g., `end-2`)...
-	tmp = v.match( RE_END_MINUS );
-	if ( tmp ) {
-		v = len - parseInt( tmp[ 1 ], 10 );
 &nbsp;
-		// If the computed index exceeds the index bounds, clamp to the first index...
-		if ( v &lt; 0 ) {
+	// Case: start is not specified
+	if ( start === null ) {
+		// If the step is positive, we default to the first index...
+		if ( step &gt; 0 ) {
+			start = 0;
+		}
+		// If the step is negative, we default to the last index (inclusive)...
+		else {
+			start = len - 1;
+		}
+	}
+	// Case: start is negative and should be resolved relative to the last index
+	else if ( start &lt; 0 ) {
+		start = len + start;
+&nbsp;
+		// Check whether start still exceeds the index bounds...
+		if ( start &lt; 0 ) {
 			if ( strict ) {
-				return -2; // return out-of-bounds error code
+				return eOutOfBounds();
 			}
-			v = 0;
+			// Clamp to the first index (inclusive):
+			start = 0;
 		}
-		return v;
 	}
-	// Check for a division operation (e.g., `end/2`)...
-	tmp = v.match( RE_END_DIVIDE );
-	if ( tmp ) {
-		v = parseFloat( tmp[ 1 ] );
-		if ( v &lt; 1.0 ) {
-			return ( strict ) ? -2 : -1; // if `end/x &gt; end`, then need to return out-of-bounds error code
+	// Case: start exceeds index bounds
+	else if ( start &gt;= len ) {
+		if ( strict ) {
+			return eOutOfBounds();
 		}
-		// Handle division differently for increasing and decreasing increments in order to preserve the `:n + n: = :` identity and to satisfy user expectation that symmetry be maintained. The main issue being that, e.g., given a length 10 subsequence, `end/2` will yield `5`. Hence, `:end/2 + end/2: = :5 + :5 = :` (i.e., the first five elements (0,1,2,3,4) and the second five elements (5,6,7,8,9)); however, if increasing and decreasing are treated the same, `:end/2:-1 + end/2::-1 = :5:-1 + 5::-1 = :`, but the elements are not the same (i.e., the first elements (9,8,7,6) and the second elements (5,4,3,2,1)), due to the non-inclusive aspect of `j` in `i:j:k`. The slight adjustment (`len-1`) yields `:4:-1 + 4::-1 = :` and the slices (9,8,7,6,5) and (4,3,2,1,0), which better matches user expectation. For a length 11 subsequence, we get (0,1,2,3,4) and (5,6,7,8,9,10) for an increasing increment and (10,9,8,7,6) and (5,4,3,2,1,0), which seems fine given asymmetry in both cases.
-		if ( decrement &amp;&amp; len &gt; 0 &amp;&amp; v !== 1.0 ) { // note: avoid violating `end/1 = end` identity
-			return floor( (len-1) / v );
+		// If the increment is negative, clamp to the last index (inclusive)...
+		if ( step &lt; 0 ) {
+			start = len - 1;
 		}
-		return floor( len / v );
+		// If the increment is positive, clamp to the "index" following the last index...
+		else {
+			start = len;
+		}
 	}
-	// The use of "end" includes invalid/unsupported operations...
-	return -1;
+&nbsp;
+	// Case: stop is not specified
+	if ( stop === null ) {
+		// If the step is positive, we default to just beyond the last index, as the stopping index is exclusive...
+		if ( step &gt; 0 ) {
+			stop = len;
+		}
+		// If the step is negative, we default to a sentinel value indicating that one should iterate through the first index when decrementing...
+		else {
+			stop = null;
+		}
+	}
+	// Case: stop is negative and should be resolved relative to the last index
+	else if ( stop &lt; 0 ) {
+		stop = len + stop;
+&nbsp;
+		// Check whether stop still exceeds the index bounds...
+		if ( stop &lt; 0 ) {
+			// If the step is positive, we should clamp to the first index, as Slice(x,0,step) is an empty slice regardless of `x`...
+			if ( step &gt; 0 ) {
+				if ( strict ) {
+					return eOutOfBounds();
+				}
+				stop = 0;
+			}
+			// If the step is negative, we default to just beyond the first index (using a sentinel value), as the stopping index is exclusive, thus indicating to iterate through the first index when decrementing...
+			else {
+				if ( strict &amp;&amp; stop &lt; -1 ) {
+					return eOutOfBounds();
+				}
+				stop = null;
+			}
+		}
+	}
+	// Case: stop exceeds index bounds
+	else if ( stop &gt; len ) {
+		if ( strict ) {
+			return eOutOfBounds();
+		}
+		// Clamp to just beyond the last index, as the stopping index is exclusive:
+		stop = len;
+	}
+&nbsp;
+	// Return a normalized slice:
+	return new Slice( start, stop, step );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = resolveEnd;
+module.exports = normalizeSlice;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -661,7 +667,7 @@ module.exports = resolveEnd;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-17T08:03:42.695Z
+                at 2023-09-17T08:03:40.210Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
