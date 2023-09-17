@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for slice/base/lib/index.js</title>
+    <title>Code coverage report for slice/base/normalize-multi-slice/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">slice/base/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">slice/base/normalize-multi-slice/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>96/96</span>
+                <span class='fraction'>84/84</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>96/96</span>
+                <span class='fraction'>84/84</span>
             </div>
         
             
@@ -147,31 +147,7 @@
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -275,82 +251,70 @@
 &nbsp;
 'use strict';
 &nbsp;
-/*
-* When adding modules to the namespace, ensure that they are added in alphabetical order according to module name.
+/**
+* Normalize a MultiSlice object.
+*
+* @module @stdlib/slice/base/normalize-multi-slice
+*
+* @example
+* var Slice = require( '@stdlib/slice/ctor' );
+* var MultiSlice = require( '@stdlib/slice/multi' );
+* var normalizeMultiSlice = require( '@stdlib/slice/base/normalize-multi-slice' );
+*
+* var shape = [ 10, 10, 10 ];
+*
+* var s1 = new MultiSlice( new Slice( 2, null, 2 ), null, -4 );
+* var s2 = normalizeMultiSlice( s1, shape, false );
+* // returns &lt;MultiSlice&gt;
+*
+* var d = s2.data;
+* // returns [ &lt;Slice&gt;, &lt;Slice&gt;, &lt;Slice&gt; ]
+*
+* var v = d[ 0 ];
+* // returns &lt;Slice&gt;
+*
+* var start = v.start;
+* // returns 2
+*
+* var stop = v.stop;
+* // returns 10
+*
+* var step = v.step;
+* // returns 2
+*
+* v = d[ 1 ];
+* // returns &lt;Slice&gt;
+*
+* start = v.start;
+* // returns 0
+*
+* stop = v.stop;
+* // returns 10
+*
+* step = v.step;
+* // returns 1
+*
+* v = d[ 2 ];
+* // returns &lt;Slice&gt;
+*
+* start = v.start;
+* // returns 6
+*
+* stop = v.stop;
+* // returns 7
+*
+* step = v.step;
+* // returns 1
 */
 &nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
-/**
-* Top-level namespace.
-*
-* @namespace ns
-*/
-var ns = {};
-&nbsp;
-/**
-* @name normalizeMultiSlice
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/slice/base/normalize-multi-slice}
-*/
-setReadOnly( ns, 'normalizeMultiSlice', require( '@stdlib/slice/base/normalize-multi-slice' ) );
-&nbsp;
-/**
-* @name normalizeSlice
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/slice/base/normalize-slice}
-*/
-setReadOnly( ns, 'normalizeSlice', require( '@stdlib/slice/base/normalize-slice' ) );
-&nbsp;
-/**
-* @name seq2slice
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/slice/base/seq2slice}
-*/
-setReadOnly( ns, 'seq2slice', require( '@stdlib/slice/base/seq2slice' ) );
-&nbsp;
-/**
-* @name slice2seq
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/slice/base/slice2seq}
-*/
-setReadOnly( ns, 'slice2seq', require( '@stdlib/slice/base/slice2seq' ) );
-&nbsp;
-/**
-* @name str2multislice
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/slice/base/str2multislice}
-*/
-setReadOnly( ns, 'str2multislice', require( '@stdlib/slice/base/str2multislice' ) );
-&nbsp;
-/**
-* @name str2slice
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/slice/base/str2slice}
-*/
-setReadOnly( ns, 'str2slice', require( '@stdlib/slice/base/str2slice' ) );
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = ns;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -358,16 +322,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-17T20:14:29.520Z
+                at 2023-09-17T20:14:32.078Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
     </body>
 </html>
     
