@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.61% </span>
+                <span class="strong">46.21% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>55/118</span>
+                <span class='fraction'>55/119</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.61% </span>
+                <span class="strong">46.21% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>55/118</span>
+                <span class='fraction'>55/119</span>
             </div>
         
             
@@ -181,7 +181,8 @@
 <a name='L116'></a><a href='#L116'>116</a>
 <a name='L117'></a><a href='#L117'>117</a>
 <a name='L118'></a><a href='#L118'>118</a>
-<a name='L119'></a><a href='#L119'>119</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -231,6 +232,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -322,12 +324,12 @@
 // MODULES //
 &nbsp;
 var normalizeMultiSlice = require( '@stdlib/slice/base/normalize-multi-slice' );
+var nonreducedDimensions = require( '@stdlib/slice/base/nonreduced-dimensions' );
 var sliceShape = require( '@stdlib/slice/base/shape' );
 var take = require( '@stdlib/array/base/take' );
 var vind2bind = require( '@stdlib/ndarray/base/vind2bind' );
 var numel = require( '@stdlib/ndarray/base/numel' );
 var format = require( '@stdlib/string/format' );
-var nonreducedDimensions = require( './nonreduced_dimensions.js' );
 var sliceStart = require( './slice_start.js' );
 var sliceStrides = require( './slice_strides.js' );
 var options = require( './array_options.js' );
@@ -359,6 +361,7 @@ var empty = require( './empty.js' );
 <span class="cstat-no" title="statement not covered" >	var sdims;</span>
 <span class="cstat-no" title="statement not covered" >	var ctor;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
+<span class="cstat-no" title="statement not covered" >	var ns;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Verify that we were successfully able to create a multi-slice:</span>
 <span class="cstat-no" title="statement not covered" >	if ( slice === null ) {</span>
@@ -377,17 +380,17 @@ var empty = require( './empty.js' );
 <span class="cstat-no" title="statement not covered" >		throw new RangeError( format( 'invalid operation. Number of array dimensions does not match the number of slice dimensions. Array shape: (%s). Slice dimensions: %u.', shape.join( ',' ), slice.ndims ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Normalize the slice object based on the array shape:</span>
-<span class="cstat-no" title="statement not covered" >	slice = normalizeMultiSlice( slice, shape, true );</span>
+<span class="cstat-no" title="statement not covered" >	ns = normalizeMultiSlice( slice, shape, true );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// In strict mode, if the slice exceeds array bounds, raise an exception...</span>
-<span class="cstat-no" title="statement not covered" >	if ( slice.code &amp;&amp; strict ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( ns.code &amp;&amp; strict ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new RangeError( format( 'invalid operation. Slice exceeds array bounds. Array shape: (%s).', shape.join( ',' ) ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the output array constructor:</span>
 <span class="cstat-no" title="statement not covered" >	ctor = receiver.constructor;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Compute the slice shape:</span>
-<span class="cstat-no" title="statement not covered" >	sh = sliceShape( slice );</span>
+<span class="cstat-no" title="statement not covered" >	sh = sliceShape( ns );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the indices of the non-reduced dimensions:</span>
 <span class="cstat-no" title="statement not covered" >	sdims = nonreducedDimensions( slice );</span>
@@ -397,7 +400,7 @@ var empty = require( './empty.js' );
 <span class="cstat-no" title="statement not covered" >		return empty( ctor, dtype, take( sh, sdims ), order );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the index offset of the first element:</span>
-<span class="cstat-no" title="statement not covered" >	offset = vind2bind( shape, strides, offset, order, sliceStart( slice, shape, strides, 0 ), 'throw' );</span>
+<span class="cstat-no" title="statement not covered" >	offset = vind2bind( shape, strides, offset, order, sliceStart( ns, shape, strides, 0 ), 'throw' ); // TODO: @stdlib/ndarray/base/sind2bind</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Remove reduced dimensions from the slice shape:</span>
 <span class="cstat-no" title="statement not covered" >	sh = take( sh, sdims );</span>
@@ -407,7 +410,7 @@ var empty = require( './empty.js' );
 <span class="cstat-no" title="statement not covered" >		return new ctor( dtype, target.data, [], [ 0 ], offset, order, options() ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Update strides according to slice steps:</span>
-<span class="cstat-no" title="statement not covered" >	strides = sliceStrides( slice, strides, sdims );</span>
+<span class="cstat-no" title="statement not covered" >	strides = sliceStrides( ns, strides, sdims );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Return a slice view:</span>
 <span class="cstat-no" title="statement not covered" >	return new ctor( dtype, target.data, sh, strides, offset, order, options() ); // eslint-disable-line max-len</span>
@@ -424,7 +427,7 @@ module.exports = sliceView;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-19T20:14:58.357Z
+                at 2023-09-24T06:50:21.663Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
