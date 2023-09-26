@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.9% </span>
+                <span class="strong">39% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/132</span>
+                <span class='fraction'>55/141</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.9% </span>
+                <span class="strong">39% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/132</span>
+                <span class='fraction'>55/141</span>
             </div>
         
             
@@ -195,7 +195,16 @@
 <a name='L130'></a><a href='#L130'>130</a>
 <a name='L131'></a><a href='#L131'>131</a>
 <a name='L132'></a><a href='#L132'>132</a>
-<a name='L133'></a><a href='#L133'>133</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -244,6 +253,15 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -354,11 +372,12 @@ var trim = require( '@stdlib/string/base/trim' );
 var str2multislice = require( '@stdlib/slice/base/str2multislice' );
 var seq2multislice = require( '@stdlib/slice/base/seq2multislice' );
 var sargs2multislice = require( '@stdlib/slice/base/sargs2multislice' );
+var slice = require( '@stdlib/ndarray/base/slice' );
 var format = require( '@stdlib/string/format' );
+var errMessage = require( './error_message.js' );
+var errConstructor = require( './error_constructor.js' );
 var hasProperty = require( './has_property.js' );
 var RE_SUBSEQ = require( './re_subseq.js' );
-var sliceView = require( './view.nd.js' );
-var empty = require( './empty.js' );
 &nbsp;
 &nbsp;
 // FUNCTIONS //
@@ -376,12 +395,13 @@ var empty = require( './empty.js' );
 * @throws {Error} slice increment must be a non-zero integer
 * @returns {*} result
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function get( target, property, receiver ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function get( target, property, receiver ) { // eslint-disable-line stdlib/jsdoc-require-throws-tags</span></span>
 <span class="cstat-no" title="statement not covered" >	var strict;</span>
 <span class="cstat-no" title="statement not covered" >	var shape;</span>
 <span class="cstat-no" title="statement not covered" >	var value;</span>
 <span class="cstat-no" title="statement not covered" >	var prop;</span>
 <span class="cstat-no" title="statement not covered" >	var ch;</span>
+<span class="cstat-no" title="statement not covered" >	var E;</span>
 <span class="cstat-no" title="statement not covered" >	var s;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( hasProperty( property ) ) {</span>
@@ -401,22 +421,16 @@ var empty = require( './empty.js' );
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Case: multi-slice (e.g., 'MultiSlice(Slice(0,10,2),null,2,Slice(10,5,-1))')</span>
 <span class="cstat-no" title="statement not covered" >	if ( ch === 'M' ) {</span>
-<span class="cstat-no" title="statement not covered" >		// TODO: =&gt; @stdlib/ndarray/base/slice: return slice( receiver, str2multislice( prop ).data ); // TODO: handle `null`</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		return sliceView( target, property, receiver, str2multislice( prop ) );</span>
+<span class="cstat-no" title="statement not covered" >		s = str2multislice( prop );</span>
+<span class="cstat-no" title="statement not covered" >		if ( s === null ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new Error( format( 'invalid operation. Unsupported slice operation. Value: `%s`.', property ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Case: subsequence string (e.g., ':10,1,::-1,:,-5,2::3')</span>
-<span class="cstat-no" title="statement not covered" >	if ( RE_SUBSEQ.test( prop ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	// Case: subsequence string (e.g., '...' or ':10,1,::-1,:,-5,2::3')</span>
+<span class="cstat-no" title="statement not covered" >	else if ( RE_SUBSEQ.test( prop ) || prop === '...' ) {</span>
 <span class="cstat-no" title="statement not covered" >		shape = target.shape;</span>
 <span class="cstat-no" title="statement not covered" >		s = seq2multislice( prop, shape, true );</span>
 <span class="cstat-no" title="statement not covered" >		if ( s.code ) {</span>
-<span class="cstat-no" title="statement not covered" >			if ( s.code === 'ERR_SLICE_OUT_OF_BOUNDS' ) {</span>
-<span class="cstat-no" title="statement not covered" >				if ( strict ) {</span>
-<span class="cstat-no" title="statement not covered" >					throw new RangeError( format( 'invalid operation. Slice exceeds array bounds. Array shape: (%s).', shape.join( ',' ) ) );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				// Return an empty zero-dimensional array:</span>
-<span class="cstat-no" title="statement not covered" >				return empty( receiver.constructor, target.dtype, [], target.order );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			if ( s.code === 'ERR_SLICE_INVALID_INCREMENT' ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new Error( format( 'invalid operation. A subsequence increment must be a non-zero integer. Value: `%s`.', property ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
@@ -426,16 +440,29 @@ var empty = require( './empty.js' );
 <span class="cstat-no" title="statement not covered" >			if ( s.code === 'ERR_SLICE_INVALID_SUBSEQUENCE' ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new Error( format( 'invalid operation. Unsupported slice operation. Value: `%s`.', property ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			// NOTE: the following error check must come last due to fall-through when in non-strict mode...</span>
+<span class="cstat-no" title="statement not covered" >			if ( s.code === 'ERR_SLICE_OUT_OF_BOUNDS' ) {</span>
+<span class="cstat-no" title="statement not covered" >				if ( strict ) {</span>
+<span class="cstat-no" title="statement not covered" >					throw new RangeError( format( 'invalid operation. Slice exceeds array bounds. Array shape: (%s).', shape.join( ',' ) ) );</span>
+<span class="cstat-no" title="statement not covered" >				}</span>
+<span class="cstat-no" title="statement not covered" >				// Repeat parsing, this time allowing for out-of-bounds slices:</span>
+<span class="cstat-no" title="statement not covered" >				s = seq2multislice( prop, shape, false );</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		// TODO: =&gt; @stdlib/ndarray/base/slice: return slice( receiver, s.data );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		return sliceView( target, property, receiver, s );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Case: array syntax (e.g., [ Slice(0,10,1), null, Slice(4,null,-1) ])</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// TODO: =&gt; @stdlib/ndarray/base/slice: return slice( receiver, sargs2multislice( prop ).data ); // TODO: handle `null`</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	return sliceView( target, '['+property+']', receiver, sargs2multislice( prop ) );</span>
+<span class="cstat-no" title="statement not covered" >	// Case: array syntax (e.g., [ Slice(0,10,1), null, Slice(4,null,-1) ]) or Slice or integer or arbitrary string (where the latter three are not valid for &gt;2d arrays)</span>
+<span class="cstat-no" title="statement not covered" >	else {</span>
+<span class="cstat-no" title="statement not covered" >		s = sargs2multislice( prop );</span>
+<span class="cstat-no" title="statement not covered" >		if ( s === null ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new Error( format( 'invalid operation. Unsupported slice operation. Value: `%s`.', property ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	try {</span>
+<span class="cstat-no" title="statement not covered" >		return slice( receiver, s, strict );</span>
+<span class="cstat-no" title="statement not covered" >	} catch ( err ) {</span>
+<span class="cstat-no" title="statement not covered" >		E = errConstructor( err );</span>
+<span class="cstat-no" title="statement not covered" >		throw new E( errMessage( err.message ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
 <span class="cstat-no" title="statement not covered" >	* Method wrapper.</span>
@@ -466,7 +493,7 @@ module.exports = get;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-24T06:50:21.663Z
+                at 2023-09-26T21:09:56.703Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

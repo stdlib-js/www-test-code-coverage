@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/fancy/lib/re_subseq.js</title>
+    <title>Code coverage report for ndarray/fancy/lib/error_constructor.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">ndarray/fancy/lib</a> re_subseq.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">ndarray/fancy/lib</a> error_constructor.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">77.35% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>41/53</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">77.35% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>41/53</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,7 +110,13 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -146,12 +152,18 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -177,33 +189,39 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var isRangeError = require( '@stdlib/assert/is-range-error' );
+var isTypeError = require( '@stdlib/assert/is-type-error' );
+var isSyntaxError = require( '@stdlib/assert/is-syntax-error' );
+&nbsp;
+&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Regular expression for testing whether a string is a subsequence string.
+* Returns the error constructor for a provided error object.
 *
 * @private
-* @name RE_SUBSEQ
-* @type {RegExp}
-*
-* @example
-* var bool = RE_SUBSEQ.test( '0:10:2' );
-* // returns true
-*
-* @example
-* var bool = RE_SUBSEQ.test( '0' );
-* // returns false
-*
-* @example
-* var bool = RE_SUBSEQ.test( 'Slice(0,10,2)' );
-* // returns false
+* @param {Error} err - error object
+* @returns {Function} error constructor
 */
-var RE_SUBSEQ = /:/;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function errConstructor( err ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	if ( isRangeError( err ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		return RangeError;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	if ( isTypeError( err ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		return TypeError;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	if ( isSyntaxError( err ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		return SyntaxError;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	return Error;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = RE_SUBSEQ;
+module.exports = errConstructor;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
