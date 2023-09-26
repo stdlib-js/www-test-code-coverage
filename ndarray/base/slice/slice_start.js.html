@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.96% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>46/59</span>
+                <span class='fraction'>59/59</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
+                <span class='fraction'>3/3</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">77.96% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>46/59</span>
+                <span class='fraction'>59/59</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -163,19 +163,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -222,19 +222,19 @@ var sub2ind = require( '@stdlib/ndarray/base/sub2ind' );
 * @param {NonNegativeInteger} offset - index offset
 * @returns {NonNegativeInteger} linear index of the first element
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function sliceStart( slice, shape, strides, offset ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var data;</span>
-<span class="cstat-no" title="statement not covered" >	var args;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	data = slice.data;</span>
-<span class="cstat-no" title="statement not covered" >	args = [ shape, strides, offset ];</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; data.length; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		args.push( data[ i ].start );</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	args.push( 'throw' );</span>
-<span class="cstat-no" title="statement not covered" >	return sub2ind.apply( null, args );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+function sliceStart( slice, shape, strides, offset ) {
+	var data;
+	var args;
+	var i;
+&nbsp;
+	data = slice.data;
+	args = [ shape, strides, offset ];
+	for ( i = 0; i &lt; data.length; i++ ) {
+		args.push( data[ i ].start );
+	}
+	args.push( 'throw' );
+	return sub2ind.apply( null, args );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -247,7 +247,7 @@ module.exports = sliceStart;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-26T21:09:52.192Z
+                at 2023-09-26T23:15:31.945Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
