@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>48/48</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>48/48</span>
             </div>
         
             
@@ -111,18 +111,7 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -153,29 +142,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -201,39 +179,28 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var sub2ind = require( '@stdlib/ndarray/base/sub2ind' );
-&nbsp;
-&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Resolves the linear index of the first element indexed by a normalized multi-slice.
-*
-* ## Notes
-*
-* -   If `strides` contains negative strides, if an `offset` is greater than `0`, the function returns a linear index with respect to the underlying data buffer. If an `offset` is equal to `0`, the function returns a linear index with respect to the array view. For more information, see `@stdlib/ndarray/base/sub2ind`.
+* Resolves the index offset of the first element indexed by a normalized multi-slice.
 *
 * @private
 * @param {MultiSlice} slice - normalized multi-slice object
-* @param {NonNegativeIntegerArray} shape - array shape
 * @param {IntegerArray} strides - array strides
-* @param {NonNegativeInteger} offset - index offset
-* @returns {NonNegativeInteger} linear index of the first element
+* @param {NonNegativeInteger} offset - array index offset
+* @returns {NonNegativeInteger} index offset of the first element indexed by a normalized multi-slice object
 */
-function sliceStart( slice, shape, strides, offset ) {
+function sliceStart( slice, strides, offset ) {
 	var data;
-	var args;
+	var idx;
 	var i;
 &nbsp;
 	data = slice.data;
-	args = [ shape, strides, offset ];
+	idx = offset;
 	for ( i = 0; i &lt; data.length; i++ ) {
-		args.push( data[ i ].start );
+		idx += strides[ i ] * data[ i ].start;
 	}
-	args.push( 'throw' );
-	return sub2ind.apply( null, args );
+	return idx;
 }
 &nbsp;
 &nbsp;
@@ -247,7 +214,7 @@ module.exports = sliceStart;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-26T23:15:31.945Z
+                at 2023-09-27T02:24:43.547Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
