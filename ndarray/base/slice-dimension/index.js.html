@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/offset/lib/main.js</title>
+    <title>Code coverage report for ndarray/base/slice-dimension/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/offset/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/slice-dimension/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>66/66</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/8</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>66/66</span>
             </div>
         
             
@@ -126,7 +126,10 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -165,25 +168,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -209,49 +215,52 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var strides2offset = require( '@stdlib/ndarray/base/strides2offset' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
 /**
-* Return the index offset specifying the underlying buffer index of the first iterated ndarray element.
+* Return a view of an input ndarray when sliced along a specified dimension.
 *
-* @param {ndarrayLike} x - input ndarray
-* @returns {NonNegativeInteger} index offset
+* @module @stdlib/ndarray/base/slice-dimension
 *
 * @example
-* var zeros = require( '@stdlib/ndarray/zeros' );
+* var Slice = require( '@stdlib/slice/ctor' );
+* var ndarray = require( '@stdlib/ndarray/ctor' );
+* var ndarray2array = require( '@stdlib/ndarray/to-array' );
+* var sliceDimension = require( '@stdlib/ndarray/base/slice-dimension' );
 *
-* var n = offset( zeros( [ 3, 3, 3 ] ) );
-* // returns 0
+* var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
+* var shape = [ 3, 2 ];
+* var strides = [ 2, 1 ];
+* var offset = 0;
+*
+* var x = ndarray( 'generic', buffer, shape, strides, offset, 'row-major' );
+* // returns &lt;ndarray&gt;
+*
+* var sh = x.shape;
+* // returns [ 3, 2 ]
+*
+* var arr = ndarray2array( x );
+* // returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
+*
+* var s = new Slice( null, null, -1 );
+* // returns &lt;Slice&gt;
+*
+* var y = sliceDimension( x, 0, s, false, false );
+* // returns &lt;ndarray&gt;
+*
+* sh = y.shape;
+* // returns [ 3, 2 ]
+*
+* arr = ndarray2array( y );
+* // returns [ [ 5.0, 6.0 ], [ 3.0, 4.0 ], [ 1.0, 2.0 ] ]
 */
-function offset( x ) {
-	var st;
-	var sh;
-	var o;
 &nbsp;
-	o = x.offset;
-	if ( typeof o === 'number' ) {
-		return o;
-	}
-	sh = x.shape;
-	if ( sh.length === 0 ) {
-		return 0;
-	}
-	st = x.strides;
-	if ( typeof st !== 'object' || st === null ) {
-		return 0;
-	}
-	return strides2offset( sh, st );
-}
+// MODULES //
+&nbsp;
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = offset;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -259,7 +268,7 @@ module.exports = offset;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-08T07:36:02.114Z
+                at 2023-10-08T07:36:05.158Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
