@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>690/690</span>
+                <span class='fraction'>705/705</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>690/690</span>
+                <span class='fraction'>705/705</span>
             </div>
         
             
@@ -753,7 +753,37 @@
 <a name='L688'></a><a href='#L688'>688</a>
 <a name='L689'></a><a href='#L689'>689</a>
 <a name='L690'></a><a href='#L690'>690</a>
-<a name='L691'></a><a href='#L691'>691</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<a name='L691'></a><a href='#L691'>691</a>
+<a name='L692'></a><a href='#L692'>692</a>
+<a name='L693'></a><a href='#L693'>693</a>
+<a name='L694'></a><a href='#L694'>694</a>
+<a name='L695'></a><a href='#L695'>695</a>
+<a name='L696'></a><a href='#L696'>696</a>
+<a name='L697'></a><a href='#L697'>697</a>
+<a name='L698'></a><a href='#L698'>698</a>
+<a name='L699'></a><a href='#L699'>699</a>
+<a name='L700'></a><a href='#L700'>700</a>
+<a name='L701'></a><a href='#L701'>701</a>
+<a name='L702'></a><a href='#L702'>702</a>
+<a name='L703'></a><a href='#L703'>703</a>
+<a name='L704'></a><a href='#L704'>704</a>
+<a name='L705'></a><a href='#L705'>705</a>
+<a name='L706'></a><a href='#L706'>706</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -1611,6 +1641,33 @@ ns.push({
 });
 &nbsp;
 ns.push({
+	'alias': 'ndarrayOffset',
+	'path': '@stdlib/ndarray/offset',
+	'value': require( '@stdlib/ndarray/offset' ),
+	'type': 'Function',
+	'related': [
+		'@stdlib/ndarray/array',
+		'@stdlib/ndarray/ctor',
+		'@stdlib/ndarray/shape',
+		'@stdlib/ndarray/strides'
+	]
+});
+&nbsp;
+ns.push({
+	'alias': 'ndarrayOrder',
+	'path': '@stdlib/ndarray/order',
+	'value': require( '@stdlib/ndarray/order' ),
+	'type': 'Function',
+	'related': [
+		'@stdlib/ndarray/array',
+		'@stdlib/ndarray/ctor',
+		'@stdlib/ndarray/orders',
+		'@stdlib/ndarray/shape',
+		'@stdlib/ndarray/strides'
+	]
+});
+&nbsp;
+ns.push({
 	'alias': 'ndarrayOrders',
 	'path': '@stdlib/ndarray/orders',
 	'value': require( '@stdlib/ndarray/orders' ),
@@ -1654,6 +1711,33 @@ ns.push({
 		'@stdlib/ndarray/casting-modes',
 		'@stdlib/ndarray/dtypes',
 		'@stdlib/ndarray/safe-casts'
+	]
+});
+&nbsp;
+ns.push({
+	'alias': 'ndarrayShape',
+	'path': '@stdlib/ndarray/shape',
+	'value': require( '@stdlib/ndarray/shape' ),
+	'type': 'Function',
+	'related': [
+		'@stdlib/ndarray/array',
+		'@stdlib/ndarray/ctor',
+		'@stdlib/ndarray/offset',
+		'@stdlib/ndarray/strides'
+	]
+});
+&nbsp;
+ns.push({
+	'alias': 'ndarrayStrides',
+	'path': '@stdlib/ndarray/strides',
+	'value': require( '@stdlib/ndarray/strides' ),
+	'type': 'Function',
+	'related': [
+		'@stdlib/ndarray/array',
+		'@stdlib/ndarray/ctor',
+		'@stdlib/ndarray/offset',
+		'@stdlib/ndarray/order',
+		'@stdlib/ndarray/shape'
 	]
 });
 &nbsp;
@@ -1766,32 +1850,6 @@ ns.push({
 });
 &nbsp;
 ns.push({
-	'alias': 'ndoffset',
-	'path': '@stdlib/ndarray/offset',
-	'value': require( '@stdlib/ndarray/offset' ),
-	'type': 'Function',
-	'related': [
-		'@stdlib/ndarray/array',
-		'@stdlib/ndarray/ctor',
-		'@stdlib/ndarray/shape',
-		'@stdlib/ndarray/strides'
-	]
-});
-&nbsp;
-ns.push({
-	'alias': 'ndshape',
-	'path': '@stdlib/ndarray/shape',
-	'value': require( '@stdlib/ndarray/shape' ),
-	'type': 'Function',
-	'related': [
-		'@stdlib/ndarray/array',
-		'@stdlib/ndarray/ctor',
-		'@stdlib/ndarray/offset',
-		'@stdlib/ndarray/strides'
-	]
-});
-&nbsp;
-ns.push({
 	'alias': 'ndslice',
 	'path': '@stdlib/ndarray/slice',
 	'value': require( '@stdlib/ndarray/slice' ),
@@ -1812,19 +1870,6 @@ ns.push({
 		'@stdlib/ndarray/array',
 		'@stdlib/ndarray/ctor',
 		'@stdlib/ndarray/slice'
-	]
-});
-&nbsp;
-ns.push({
-	'alias': 'ndstrides',
-	'path': '@stdlib/ndarray/strides',
-	'value': require( '@stdlib/ndarray/strides' ),
-	'type': 'Function',
-	'related': [
-		'@stdlib/ndarray/array',
-		'@stdlib/ndarray/ctor',
-		'@stdlib/ndarray/offset',
-		'@stdlib/ndarray/shape'
 	]
 });
 &nbsp;
@@ -2140,7 +2185,7 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-08T08:27:09.022Z
+                at 2023-10-08T09:41:17.684Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
