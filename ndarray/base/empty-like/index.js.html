@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/broadcast-array/lib/index.js</title>
+    <title>Code coverage report for ndarray/base/empty-like/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/broadcast-array/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/empty-like/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>50/50</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>50/50</span>
             </div>
         
             
@@ -113,43 +113,7 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -202,7 +166,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2021 The Stdlib Authors.
+* Copyright (c) 2023 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -220,43 +184,25 @@
 'use strict';
 &nbsp;
 /**
-* Broadcast an ndarray to a specified shape.
+* Create an uninitialized ndarray having the same shape and data type as a provided ndarray.
 *
-* @module @stdlib/ndarray/base/broadcast-array
+* @module @stdlib/ndarray/base/empty-like
 *
 * @example
-* var array = require( '@stdlib/ndarray/array' );
-* var broadcastArray = require( '@stdlib/ndarray/base/broadcast-array' );
+* var zeros = require( '@stdlib/ndarray/base/zeros' );
+* var emptyLike = require( '@stdlib/ndarray/base/empty-like' );
 *
-* var x = array( [ [ 1, 2 ], [ 3, 4 ] ] );
+* var x = zeros( 'float32', [ 2, 2 ], 'row-major' );
 * // returns &lt;ndarray&gt;
 *
-* var shx = x.shape;
+* var y = emptyLike( x );
+* // returns &lt;ndarray&gt;
+*
+* var sh = y.shape;
 * // returns [ 2, 2 ]
 *
-* var y = broadcastArray( x, [ 3, 2, 2 ] );
-* // returns &lt;ndarray&gt;
-*
-* var shy = y.shape;
-* // returns [ 3, 2, 2 ]
-*
-* var v = y.get( 0, 0, 0 );
-* // returns 1
-*
-* v = y.get( 0, 0, 1 );
-* // returns 2
-*
-* v = y.get( 1, 0, 0 );
-* // returns 1
-*
-* v = y.get( 1, 1, 0 );
-* // returns 3
-*
-* v = y.get( 2, 0, 0 );
-* // returns 1
-*
-* v = y.get( 2, 1, 1 );
-* // returns 4
+* var dt = y.dtype;
+* // returns 'float32'
 */
 &nbsp;
 // MODULES //
@@ -274,7 +220,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-08T11:06:48.039Z
+                at 2023-10-08T11:06:51.135Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
