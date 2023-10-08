@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/slice/lib/empty.js</title>
+    <title>Code coverage report for ndarray/base/transpose/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/slice/lib</a> empty.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/transpose/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
@@ -119,9 +119,7 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,20 +158,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -182,7 +178,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* Copyright (c) 2022 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -199,44 +195,42 @@
 &nbsp;
 'use strict';
 &nbsp;
+/**
+* Transpose a matrix (or a stack of matrices).
+*
+* @module @stdlib/ndarray/base/transpose
+*
+* @example
+* var array = require( '@stdlib/ndarray/array' );
+* var transpose = require( '@stdlib/ndarray/base/transpose' );
+*
+* var x = array( [ [ 1, 2, 3 ], [ 4, 5, 6 ] ] );
+* // returns &lt;ndarray&gt;
+*
+* var sh = x.shape;
+* // returns [ 2, 3 ]
+*
+* var y = transpose( x );
+* // returns &lt;ndarray&gt;
+*
+* sh = y.shape;
+* // returns [ 3, 2 ]
+*
+* var bool = ( x.data === y.data );
+* // returns true
+*
+* bool = ( x.get( 0, 1 ) === y.get( 1, 0 ) );
+* // returns true
+*/
+&nbsp;
 // MODULES //
 &nbsp;
-var buffer = require( '@stdlib/ndarray/base/buffer' );
-var zeros = require( '@stdlib/array/base/zeros' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
-/**
-* Returns an empty n-dimensional ndarray.
-*
-* @private
-* @param {Function} ctor - ndarray constructor
-* @param {string} dtype - array data type
-* @param {NonNegativeIntegerArray} shape - array shape
-* @param {string} order - layout order
-* @param {boolean} readonly - boolean indicating whether a returned array should be read-only
-* @returns {ndarray} empty ndarray
-*/
-function empty( ctor, dtype, shape, order, readonly ) {
-	var strides;
-	var ndims;
-&nbsp;
-	ndims = shape.length;
-	if ( ndims === 0 ) {
-		strides = [ 0 ];
-	} else {
-		strides = zeros( ndims );
-	}
-	return new ctor( dtype, buffer( dtype, 0 ), shape, strides, 0, order, {
-		'readonly': readonly
-	});
-}
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = empty;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +238,7 @@ module.exports = empty;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-08T20:23:54.705Z
+                at 2023-10-08T20:23:58.470Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
