@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/iter/columns/lib/index.js</title>
+    <title>Code coverage report for slice/base/seq2multislice/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/iter/columns/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">slice/base/seq2multislice/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>64/64</span>
+                <span class='fraction'>85/85</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>64/64</span>
+                <span class='fraction'>85/85</span>
             </div>
         
             
@@ -127,7 +127,49 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -212,39 +254,60 @@
 'use strict';
 &nbsp;
 /**
-* Create an iterator which iterates over each column in a matrix (or stack of matrices).
+* Convert a multidimensional subsequence string to a MultiSlice object.
 *
-* @module @stdlib/ndarray/iter/columns
+* @module @stdlib/slice/base/seq2multislice
 *
 * @example
-* var array = require( '@stdlib/ndarray/array' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
-* var nditerColumns = require( '@stdlib/ndarray/iter/columns' );
+* var seq2multslice = require( '@stdlib/slice/base/seq2multislice' );
 *
-* var x = array( [ [ [ 1, 2 ], [ 3, 4 ] ], [ [ 5, 6 ], [ 7, 8 ] ] ] );
-* // returns &lt;ndarray&gt;
+* var s = seq2multislice( '0:10:2', [ 10 ], false );
+* // returns &lt;MultiSlice&gt;
 *
-* var iter = nditerColumns( x );
+* var data = s.data;
+* // returns [ &lt;Slice&gt; ]
 *
-* var v = iter.next().value;
-* // returns &lt;ndarray&gt;
+* var s0 = data[ 0 ];
+* // returns &lt;Slice&gt;
 *
-* var arr = ndarray2array( v );
-* // returns [ 1, 3 ]
+* var v = s0.start;
+* // returns 0
 *
-* v = iter.next().value;
-* // returns &lt;ndarray&gt;
+* v = s0.stop;
+* // returns 10
 *
-* arr = ndarray2array( v );
-* // returns [ 2, 4 ]
+* v = s0.step;
+* // returns 2
 *
-* v = iter.next().value;
-* // returns &lt;ndarray&gt;
+* @example
+* var seq2multslice = require( '@stdlib/slice/base/seq2multislice' );
 *
-* arr = ndarray2array( v );
-* // returns [ 5, 7 ]
+* var s = seq2multislice( '2,0:10:2,-4', [ 10, 10, 10 ], false );
+* // returns &lt;MultiSlice&gt;
 *
-* // ...
+* var data = s.data;
+* // returns [ 2, &lt;Slice&gt;, -4 ]
+*
+* @example
+* var seq2multslice = require( '@stdlib/slice/base/seq2multislice' );
+*
+* var s = seq2multislice( '::-2,...,:', [ 10, 10, 10, 10, 10 ], false );
+* // returns &lt;MultiSlice&gt;
+*
+* var data = s.data;
+* // returns [ &lt;Slice&gt;, &lt;Slice&gt;, &lt;Slice&gt;, &lt;Slice&gt;, &lt;Slice&gt; ]
+*
+* var s1 = data[ 1 ];
+* // returns &lt;Slice&gt;
+*
+* var v = s1.start;
+* // returns 0
+*
+* v = s1.stop;
+* // returns 10
+*
+* v = s1.step;
+* // returns 1
 */
 &nbsp;
 // MODULES //
@@ -262,7 +325,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-14T20:37:28.848Z
+                at 2023-10-14T20:37:46.271Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
