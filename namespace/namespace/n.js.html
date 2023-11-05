@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>803/803</span>
+                <span class='fraction'>831/831</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>803/803</span>
+                <span class='fraction'>831/831</span>
             </div>
         
             
@@ -866,7 +866,63 @@
 <a name='L801'></a><a href='#L801'>801</a>
 <a name='L802'></a><a href='#L802'>802</a>
 <a name='L803'></a><a href='#L803'>803</a>
-<a name='L804'></a><a href='#L804'>804</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<a name='L804'></a><a href='#L804'>804</a>
+<a name='L805'></a><a href='#L805'>805</a>
+<a name='L806'></a><a href='#L806'>806</a>
+<a name='L807'></a><a href='#L807'>807</a>
+<a name='L808'></a><a href='#L808'>808</a>
+<a name='L809'></a><a href='#L809'>809</a>
+<a name='L810'></a><a href='#L810'>810</a>
+<a name='L811'></a><a href='#L811'>811</a>
+<a name='L812'></a><a href='#L812'>812</a>
+<a name='L813'></a><a href='#L813'>813</a>
+<a name='L814'></a><a href='#L814'>814</a>
+<a name='L815'></a><a href='#L815'>815</a>
+<a name='L816'></a><a href='#L816'>816</a>
+<a name='L817'></a><a href='#L817'>817</a>
+<a name='L818'></a><a href='#L818'>818</a>
+<a name='L819'></a><a href='#L819'>819</a>
+<a name='L820'></a><a href='#L820'>820</a>
+<a name='L821'></a><a href='#L821'>821</a>
+<a name='L822'></a><a href='#L822'>822</a>
+<a name='L823'></a><a href='#L823'>823</a>
+<a name='L824'></a><a href='#L824'>824</a>
+<a name='L825'></a><a href='#L825'>825</a>
+<a name='L826'></a><a href='#L826'>826</a>
+<a name='L827'></a><a href='#L827'>827</a>
+<a name='L828'></a><a href='#L828'>828</a>
+<a name='L829'></a><a href='#L829'>829</a>
+<a name='L830'></a><a href='#L830'>830</a>
+<a name='L831'></a><a href='#L831'>831</a>
+<a name='L832'></a><a href='#L832'>832</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -2013,6 +2069,19 @@ ns.push({
 });
 &nbsp;
 ns.push({
+	'alias': 'nditerColumnEntries',
+	'path': '@stdlib/ndarray/iter/column-entries',
+	'value': require( '@stdlib/ndarray/iter/column-entries' ),
+	'type': 'Function',
+	'related': [
+		'@stdlib/ndarray/iter/columns',
+		'@stdlib/ndarray/iter/entries',
+		'@stdlib/ndarray/iter/row-entries',
+		'@stdlib/ndarray/slice'
+	]
+});
+&nbsp;
+ns.push({
 	'alias': 'nditerColumns',
 	'path': '@stdlib/ndarray/iter/columns',
 	'value': require( '@stdlib/ndarray/iter/columns' ),
@@ -2062,12 +2131,27 @@ ns.push({
 });
 &nbsp;
 ns.push({
+	'alias': 'nditerMatrixEntries',
+	'path': '@stdlib/ndarray/iter/matrix-entries',
+	'value': require( '@stdlib/ndarray/iter/matrix-entries' ),
+	'type': 'Function',
+	'related': [
+		'@stdlib/ndarray/iter/column-entries',
+		'@stdlib/ndarray/iter/entries',
+		'@stdlib/ndarray/iter/matrices',
+		'@stdlib/ndarray/iter/row-entries',
+		'@stdlib/ndarray/slice'
+	]
+});
+&nbsp;
+ns.push({
 	'alias': 'nditerRowEntries',
 	'path': '@stdlib/ndarray/iter/row-entries',
 	'value': require( '@stdlib/ndarray/iter/row-entries' ),
 	'type': 'Function',
 	'related': [
 		'@stdlib/ndarray/iter/column-entries',
+		'@stdlib/ndarray/iter/entries',
 		'@stdlib/ndarray/iter/rows',
 		'@stdlib/ndarray/slice'
 	]
@@ -2479,7 +2563,7 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-05T09:48:01.135Z
+                at 2023-11-05T22:18:47.465Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
