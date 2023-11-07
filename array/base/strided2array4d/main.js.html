@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/base/strided2array3d/lib/main.js</title>
+    <title>Code coverage report for array/base/strided2array4d/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">array/base/strided2array3d/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">array/base/strided2array4d/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>93/93</span>
+                <span class='fraction'>105/105</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>93/93</span>
+                <span class='fraction'>105/105</span>
             </div>
         
             
@@ -156,7 +156,19 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -229,19 +241,31 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">64x</span>
-<span class="cline-any cline-yes">64x</span>
-<span class="cline-any cline-yes">64x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">80x</span>
+<span class="cline-any cline-yes">80x</span>
+<span class="cline-any cline-yes">80x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -272,7 +296,7 @@
 // MAIN //
 &nbsp;
 /**
-* Converts a strided array to a three-dimensional nested array.
+* Converts a strided array to a four-dimensional nested array.
 *
 * ## Notes
 *
@@ -282,58 +306,70 @@
 * @param {NonNegativeIntegerArray} shape - array shape
 * @param {IntegerArray} strides - dimension strides
 * @param {NonNegativeInteger} offset - index of the first indexed value in the input array
-* @returns {Array&lt;Array&lt;Array&gt;&gt;} three-dimensional nested array
+* @returns {Array&lt;Array&lt;Array&lt;Array&gt;&gt;&gt;} four-dimensional nested array
 *
 * @example
 * var x = [ 1, 2, 3, 4, 5, 6 ];
 *
-* var arr = strided2array3d( x, [ 1, 3, 2 ], [ 6, 2, 1 ], 0 );
-* // returns [ [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ] ]
+* var arr = strided2array4d( x, [ 1, 1, 3, 2 ], [ 6, 6, 2, 1 ], 0 );
+* // returns [ [ [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ] ] ]
 *
 * @example
 * var x = [ 1, 2, 3, 4, 5, 6 ];
 *
-* var arr = strided2array3d( x, [ 1, 3, 2 ], [ 1, 1, 3 ], 0 );
-* // returns [ [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ] ]
+* var arr = strided2array4d( x, [ 1, 1, 3, 2 ], [ 1, 1, 1, 3 ], 0 );
+* // returns [ [ [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ] ] ]
 */
-function strided2array3d( x, shape, strides, offset ) {
+function strided2array4d( x, shape, strides, offset ) {
 	var out;
 	var dx0;
 	var dx1;
 	var dx2;
+	var dx3;
+	var ix2;
 	var ix1;
 	var ix0;
 	var S0;
 	var S1;
 	var S2;
+	var S3;
 	var i0;
 	var i1;
 	var i2;
+	var i3;
+	var t3;
 	var t2;
 	var t1;
 &nbsp;
-	S2 = shape[ 0 ];
-	S1 = shape[ 1 ];
-	S0 = shape[ 2 ];
+	S3 = shape[ 0 ];
+	S2 = shape[ 1 ];
+	S1 = shape[ 2 ];
+	S0 = shape[ 3 ];
 &nbsp;
-	dx2 = strides[ 0 ];
-	dx1 = strides[ 1 ];
-	dx0 = strides[ 2 ];
+	dx3 = strides[ 0 ];
+	dx2 = strides[ 1 ];
+	dx1 = strides[ 2 ];
+	dx0 = strides[ 3 ];
 &nbsp;
 	out = [];
-	for ( i2 = 0; i2 &lt; S2; i2++ ) {
-		t2 = [];
-		ix1 = offset + ( dx2*i2 );
-		for ( i1 = 0; i1 &lt; S1; i1++ ) {
-			t1 = [];
-			ix0 = ix1 + ( dx1*i1 );
-			for ( i0 = 0; i0 &lt; S0; i0++ ) {
-				t1.push( x[ ix0 ] );
-				ix0 += dx0;
+	for ( i3 = 0; i3 &lt; S3; i3++ ) {
+		t3 = [];
+		ix2 = offset + ( dx3*i3 );
+		for ( i2 = 0; i2 &lt; S2; i2++ ) {
+			t2 = [];
+			ix1 = ix2 + ( dx2*i2 );
+			for ( i1 = 0; i1 &lt; S1; i1++ ) {
+				t1 = [];
+				ix0 = ix1 + ( dx1*i1 );
+				for ( i0 = 0; i0 &lt; S0; i0++ ) {
+					t1.push( x[ ix0 ] );
+					ix0 += dx0;
+				}
+				t2.push( t1 );
 			}
-			t2.push( t1 );
+			t3.push( t2 );
 		}
-		out.push( t2 );
+		out.push( t3 );
 	}
 	return out;
 }
@@ -341,7 +377,7 @@ function strided2array3d( x, shape, strides, offset ) {
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = strided2array3d;
+module.exports = strided2array4d;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -349,7 +385,7 @@ module.exports = strided2array3d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-07T09:53:07.096Z
+                at 2023-11-07T09:53:10.543Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
