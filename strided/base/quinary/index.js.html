@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/base/broadcasted-quaternary2d/lib/index.js</title>
+    <title>Code coverage report for strided/base/quinary/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">array/base/broadcasted-quaternary2d/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/quinary/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>82/82</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>82/82</span>
             </div>
         
             
@@ -122,7 +122,53 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -184,7 +230,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* Copyright (c) 2020 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -202,39 +248,62 @@
 'use strict';
 &nbsp;
 /**
-* Apply a quaternary callback to elements in four broadcasted input arrays and assign results to elements in a two-dimensional nested output array.
+* Apply a quinary callback to strided input array elements and assign results to elements in a strided output array.
 *
-* @module @stdlib/array/base/broadcasted-quaternary2d
+* @module @stdlib/strided/base/quinary
 *
 * @example
-* var add = require( '@stdlib/math/base/ops/add4' );
-* var ones2d = require( '@stdlib/array/base/ones2d' );
-* var zeros2d = require( '@stdlib/array/base/zeros2d' );
-* var bquaternary2d = require( '@stdlib/array/base/broadcasted-quaternary2d' );
+* var add = require( '@stdlib/math/base/ops/add5' );
+* var Float64Array = require( '@stdlib/array/float64' );
+* var quinary = require( '@stdlib/strided/base/quinary' );
 *
-* var shapes = [
-*     [ 1, 2 ],
-*     [ 2, 1 ],
-*     [ 1, 1 ],
-*     [ 2, 2 ],
-*     [ 2, 2 ]
-* ];
+* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var y = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var z = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var w = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var u = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var v = new Float64Array( x.length );
 *
-* var x = ones2d( shapes[ 0 ] );
-* var y = ones2d( shapes[ 1 ] );
-* var z = ones2d( shapes[ 2 ] );
-* var w = ones2d( shapes[ 3 ] );
-* var out = zeros2d( shapes[ 4 ] );
+* var shape = [ x.length ];
+* var strides = [ 1, 1, 1, 1, 1, 1 ];
 *
-* bquaternary2d( [ x, y, z, w, out ], shapes, add );
+* quinary( [ x, y, z, w, u, v ], shape, strides, add );
 *
-* console.log( out );
-* // =&gt; [ [ 4.0, 4.0 ], [ 4.0, 4.0 ] ]
+* console.log( v );
+* // =&gt; &lt;Float64Array&gt;[ 5.0, 10.0, 15.0, 20.0, 25.0 ]
+*
+* @example
+* var add = require( '@stdlib/math/base/ops/add5' );
+* var Float64Array = require( '@stdlib/array/float64' );
+* var quinary = require( '@stdlib/strided/base/quinary' );
+*
+* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var y = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var z = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var w = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var u = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var v = new Float64Array( x.length );
+*
+* var shape = [ x.length ];
+* var strides = [ 1, 1, 1, 1, 1, 1 ];
+* var offsets = [ 0, 0, 0, 0, 0, 0 ];
+*
+* quinary.ndarray( [ x, y, z, w, u, v ], shape, strides, offsets, add );
+*
+* console.log( v );
+* // =&gt; &lt;Float64Array&gt;[ 5.0, 10.0, 15.0, 20.0, 25.0 ]
 */
 &nbsp;
 // MODULES //
 &nbsp;
+var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
 var main = require( './main.js' );
+var ndarray = require( './ndarray.js' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
+setReadOnly( main, 'ndarray', ndarray );
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -247,7 +316,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-21T09:04:47.890Z
+                at 2023-11-21T09:04:54.636Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
