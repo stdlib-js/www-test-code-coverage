@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/iter/to-array-each/lib/index.js</title>
+    <title>Code coverage report for string/base/first-grapheme-cluster/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/iter/to-array-each/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">string/base/first-grapheme-cluster/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
@@ -119,7 +119,26 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -170,6 +189,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -195,42 +233,61 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Create an iterator which converts each iterated ndarray to a generic array.
-*
-* @module @stdlib/ndarray/iter/to-array-each
-*
-* @example
-* var array = require( '@stdlib/ndarray/array' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
-* var nditerRows = require( '@stdlib/ndarray/iter/rows' );
-* var nditer2arrayEach = require( '@stdlib/ndarray/iter/to-array-each' );
-*
-* var x = array( [ [ [ 1, 2 ], [ 3, 4 ] ], [ [ 5, 6 ], [ 7, 8 ] ] ] );
-* // returns &lt;ndarray&gt;
-*
-* var iter = nditer2arrayEach( nditerRows( x ) );
-*
-* var v = iter.next().value;
-* // returns [ 1, 2 ]
-*
-* v = iter.next().value;
-* // returns [ 3, 4 ]
-*
-* v = iter.next().value;
-* // returns [ 5, 6 ]
-*
-* // ...
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var main = require( './main.js' );
+var nextGraphemeClusterBreak = require( '@stdlib/string/next-grapheme-cluster-break' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
+/**
+* Returns the first `n` grapheme clusters (i.e., user-perceived characters) of a string.
+*
+* @param {string} str - input string
+* @param {NonNegativeInteger} n - number of grapheme clusters to return
+* @returns {string} output string
+*
+* @example
+* var out = first( 'last man standing', 1 );
+* // returns 'l'
+*
+* @example
+* var out = first( 'presidential election', 1 );
+* // returns 'p'
+*
+* @example
+* var out = first( 'JavaScript', 1 );
+* // returns 'J'
+*
+* @example
+* var out = first( 'Hidden Treasures', 1 );
+* // returns 'H'
+*
+* @example
+* var out = first( '🐶🐮🐷🐰🐸', 2 );
+* // returns '🐶🐮'
+*
+* @example
+* var out = first( 'foo bar', 5 );
+* // returns 'foo b'
+*/
+function first( str, n ) {
+	var i = 0;
+	while ( n &gt; 0 ) {
+		i = nextGraphemeClusterBreak( str, i );
+		n -= 1;
+	}
+	// Value of `i` will be -1 if and only if `str` is an empty string or `str` has only 1 extended grapheme cluster...
+	if ( str === '' || i === -1 ) {
+		return str;
+	}
+	return str.substring( 0, i );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = first;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -238,7 +295,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-27T05:25:06.976Z
+                at 2023-11-27T05:26:35.663Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
