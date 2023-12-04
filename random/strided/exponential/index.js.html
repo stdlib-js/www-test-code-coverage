@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for utils/define-configurable-read-write-accessor/lib/index.js</title>
+    <title>Code coverage report for random/strided/exponential/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">utils/define-configurable-read-write-accessor/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/strided/exponential/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -121,7 +121,17 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -182,7 +192,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2019 The Stdlib Authors.
+* Copyright (c) 2023 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -200,43 +210,48 @@
 'use strict';
 &nbsp;
 /**
-* Define a configurable read-write accessor.
+* Fill a strided array with pseudorandom numbers drawn from an exponential distribution.
 *
-* @module @stdlib/utils/define-configurable-read-write-accessor
+* @module @stdlib/random/strided/exponential
 *
 * @example
-* var setConfigurableReadWriteAccessor = require( '@stdlib/utils/define-configurable-read-write-accessor' );
+* var Float64Array = require( '@stdlib/array/float64' );
+* var exponential = require( '@stdlib/random/strided/exponential' );
 *
-* var name = 'bar';
-* var obj = {};
+* // Create an array:
+* var out = new Float64Array( 10 );
 *
-* function getter() {
-*     return name + ' foo';
-* }
+* // Fill the array with pseudorandom numbers:
+* exponential( out.length, [ 2.0 ], 0, out, 1 );
 *
-* function setter( v ) {
-*     name = v;
-* }
+* @example
+* var Float64Array = require( '@stdlib/array/float64' );
+* var exponential = require( '@stdlib/random/strided/exponential' );
 *
-* setConfigurableReadWriteAccessor( obj, 'foo', getter, setter );
+* // Create an array:
+* var out = new Float64Array( 10 );
 *
-* var v = obj.foo;
-* // returns 'bar foo'
-*
-* obj.foo = 'beep';
-*
-* v = obj.foo;
-* // returns 'beep foo'
+* // Fill the array with pseudorandom numbers:
+* exponential.ndarray( out.length, [ 2.0 ], 0, 0, out, 1, 0 );
 */
 &nbsp;
 // MODULES //
 &nbsp;
+var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
 var main = require( './main.js' );
+var ndarray = require( './ndarray.js' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
+setReadOnly( main, 'ndarray', ndarray );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
 module.exports = main;
+&nbsp;
+// exports: { "ndarray": "main.ndarray" }
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,16 +259,16 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-04T03:43:31.246Z
+                at 2023-12-04T03:43:24.949Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
     </body>
 </html>
     
