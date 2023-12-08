@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for blas/ext/base/gfill/lib/index.js</title>
+    <title>Code coverage report for random/array/cosine/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">blas/ext/base/gfill/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/array/cosine/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -120,7 +120,9 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -180,7 +182,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2020 The Stdlib Authors.
+* Copyright (c) 2023 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -197,43 +199,44 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Fill a strided array with a specified scalar constant.
-*
-* @module @stdlib/blas/ext/base/gfill
-*
-* @example
-* var gfill = require( '@stdlib/blas/ext/base/gfill' );
-*
-* var x = [ -2.0, 1.0, 3.0, -5.0, 4.0, 0.0, -1.0, -3.0 ];
-*
-* gfill( x.length, 5.0, x, 1 );
-* // x =&gt; [ 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ]
-*
-* @example
-* var gfill = require( '@stdlib/blas/ext/base/gfill' );
-*
-* var x = [ -2.0, 1.0, 3.0, -5.0, 4.0, 0.0, -1.0, -3.0 ];
-*
-* gfill.ndarray( x.length, 5.0, x, 1, 0 );
-* // x =&gt; [ 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0 ]
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
-var main = require( './main.js' );
-var ndarray = require( './ndarray.js' );
+var factory = require( './factory.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-setReadOnly( main, 'ndarray', ndarray );
+/**
+* Returns an array containing pseudorandom numbers drawn from a raised cosine distribution with parameters `mu` (mean) and `s` (scale parameter).
+*
+* @name cosine
+* @type {Function}
+* @param {NonNegativeInteger} len - array length
+* @param {number} mu - mean
+* @param {PositiveNumber} s - scale parameter
+* @param {Options} [options] - options
+* @param {string} [options.dtype="float64"] - output array data type
+* @throws {TypeError} first argument must be a nonnegative integer
+* @throws {TypeError} options argument must be an object
+* @throws {TypeError} must provide valid options
+* @returns {(Array|TypedArray)} output array
+*
+* @example
+* var arr = cosine( 10, 2.0, 5.0 );
+* // returns &lt;Float64Array&gt;
+*
+* @example
+* var arr = cosine( 10, 2.0, 5.0, {
+*     'dtype': 'generic'
+* });
+* // returns [...]
+*/
+var cosine = factory();
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = cosine;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -241,16 +244,16 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-08T04:11:28.145Z
+                at 2023-12-08T04:11:54.902Z
             </div>
-        <script src="../../../../../prettify.js"></script>
+        <script src="../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../../sorter.js"></script>
-        <script src="../../../../../block-navigation.js"></script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
     </body>
 </html>
     
