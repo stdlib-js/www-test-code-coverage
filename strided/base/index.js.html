@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/ops/lib/index.js</title>
+    <title>Code coverage report for strided/base/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">math/base/ops/lib</a> index.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">strided/base/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>258/258</span>
+                <span class='fraction'>406/406</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>258/258</span>
+                <span class='fraction'>406/406</span>
             </div>
         
             
@@ -321,7 +321,303 @@
 <a name='L256'></a><a href='#L256'>256</a>
 <a name='L257'></a><a href='#L257'>257</a>
 <a name='L258'></a><a href='#L258'>258</a>
-<a name='L259'></a><a href='#L259'>259</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a>
+<a name='L304'></a><a href='#L304'>304</a>
+<a name='L305'></a><a href='#L305'>305</a>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a>
+<a name='L316'></a><a href='#L316'>316</a>
+<a name='L317'></a><a href='#L317'>317</a>
+<a name='L318'></a><a href='#L318'>318</a>
+<a name='L319'></a><a href='#L319'>319</a>
+<a name='L320'></a><a href='#L320'>320</a>
+<a name='L321'></a><a href='#L321'>321</a>
+<a name='L322'></a><a href='#L322'>322</a>
+<a name='L323'></a><a href='#L323'>323</a>
+<a name='L324'></a><a href='#L324'>324</a>
+<a name='L325'></a><a href='#L325'>325</a>
+<a name='L326'></a><a href='#L326'>326</a>
+<a name='L327'></a><a href='#L327'>327</a>
+<a name='L328'></a><a href='#L328'>328</a>
+<a name='L329'></a><a href='#L329'>329</a>
+<a name='L330'></a><a href='#L330'>330</a>
+<a name='L331'></a><a href='#L331'>331</a>
+<a name='L332'></a><a href='#L332'>332</a>
+<a name='L333'></a><a href='#L333'>333</a>
+<a name='L334'></a><a href='#L334'>334</a>
+<a name='L335'></a><a href='#L335'>335</a>
+<a name='L336'></a><a href='#L336'>336</a>
+<a name='L337'></a><a href='#L337'>337</a>
+<a name='L338'></a><a href='#L338'>338</a>
+<a name='L339'></a><a href='#L339'>339</a>
+<a name='L340'></a><a href='#L340'>340</a>
+<a name='L341'></a><a href='#L341'>341</a>
+<a name='L342'></a><a href='#L342'>342</a>
+<a name='L343'></a><a href='#L343'>343</a>
+<a name='L344'></a><a href='#L344'>344</a>
+<a name='L345'></a><a href='#L345'>345</a>
+<a name='L346'></a><a href='#L346'>346</a>
+<a name='L347'></a><a href='#L347'>347</a>
+<a name='L348'></a><a href='#L348'>348</a>
+<a name='L349'></a><a href='#L349'>349</a>
+<a name='L350'></a><a href='#L350'>350</a>
+<a name='L351'></a><a href='#L351'>351</a>
+<a name='L352'></a><a href='#L352'>352</a>
+<a name='L353'></a><a href='#L353'>353</a>
+<a name='L354'></a><a href='#L354'>354</a>
+<a name='L355'></a><a href='#L355'>355</a>
+<a name='L356'></a><a href='#L356'>356</a>
+<a name='L357'></a><a href='#L357'>357</a>
+<a name='L358'></a><a href='#L358'>358</a>
+<a name='L359'></a><a href='#L359'>359</a>
+<a name='L360'></a><a href='#L360'>360</a>
+<a name='L361'></a><a href='#L361'>361</a>
+<a name='L362'></a><a href='#L362'>362</a>
+<a name='L363'></a><a href='#L363'>363</a>
+<a name='L364'></a><a href='#L364'>364</a>
+<a name='L365'></a><a href='#L365'>365</a>
+<a name='L366'></a><a href='#L366'>366</a>
+<a name='L367'></a><a href='#L367'>367</a>
+<a name='L368'></a><a href='#L368'>368</a>
+<a name='L369'></a><a href='#L369'>369</a>
+<a name='L370'></a><a href='#L370'>370</a>
+<a name='L371'></a><a href='#L371'>371</a>
+<a name='L372'></a><a href='#L372'>372</a>
+<a name='L373'></a><a href='#L373'>373</a>
+<a name='L374'></a><a href='#L374'>374</a>
+<a name='L375'></a><a href='#L375'>375</a>
+<a name='L376'></a><a href='#L376'>376</a>
+<a name='L377'></a><a href='#L377'>377</a>
+<a name='L378'></a><a href='#L378'>378</a>
+<a name='L379'></a><a href='#L379'>379</a>
+<a name='L380'></a><a href='#L380'>380</a>
+<a name='L381'></a><a href='#L381'>381</a>
+<a name='L382'></a><a href='#L382'>382</a>
+<a name='L383'></a><a href='#L383'>383</a>
+<a name='L384'></a><a href='#L384'>384</a>
+<a name='L385'></a><a href='#L385'>385</a>
+<a name='L386'></a><a href='#L386'>386</a>
+<a name='L387'></a><a href='#L387'>387</a>
+<a name='L388'></a><a href='#L388'>388</a>
+<a name='L389'></a><a href='#L389'>389</a>
+<a name='L390'></a><a href='#L390'>390</a>
+<a name='L391'></a><a href='#L391'>391</a>
+<a name='L392'></a><a href='#L392'>392</a>
+<a name='L393'></a><a href='#L393'>393</a>
+<a name='L394'></a><a href='#L394'>394</a>
+<a name='L395'></a><a href='#L395'>395</a>
+<a name='L396'></a><a href='#L396'>396</a>
+<a name='L397'></a><a href='#L397'>397</a>
+<a name='L398'></a><a href='#L398'>398</a>
+<a name='L399'></a><a href='#L399'>399</a>
+<a name='L400'></a><a href='#L400'>400</a>
+<a name='L401'></a><a href='#L401'>401</a>
+<a name='L402'></a><a href='#L402'>402</a>
+<a name='L403'></a><a href='#L403'>403</a>
+<a name='L404'></a><a href='#L404'>404</a>
+<a name='L405'></a><a href='#L405'>405</a>
+<a name='L406'></a><a href='#L406'>406</a>
+<a name='L407'></a><a href='#L407'>407</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -582,7 +878,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2021 The Stdlib Authors.
+* Copyright (c) 2020 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -603,6 +899,10 @@
 * When adding modules to the namespace, ensure that they are added in alphabetical order according to module name.
 */
 &nbsp;
+/*
+* The following modules are intentionally not exported: function-object
+*/
+&nbsp;
 // MODULES //
 &nbsp;
 var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
@@ -618,220 +918,364 @@ var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
 var ns = {};
 &nbsp;
 /**
-* @name add
+* @name binary
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/add}
+* @see {@link module:@stdlib/strided/base/binary}
 */
-setReadOnly( ns, 'add', require( '@stdlib/math/base/ops/add' ) );
+setReadOnly( ns, 'binary', require( '@stdlib/strided/base/binary' ) );
 &nbsp;
 /**
-* @name add3
+* @name binaryAddonDispatch
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/add3}
+* @see {@link module:@stdlib/strided/base/binary-addon-dispatch}
 */
-setReadOnly( ns, 'add3', require( '@stdlib/math/base/ops/add3' ) );
+setReadOnly( ns, 'binaryAddonDispatch', require( '@stdlib/strided/base/binary-addon-dispatch' ) );
 &nbsp;
 /**
-* @name add4
+* @name binaryDtypeSignatures
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/add4}
+* @see {@link module:@stdlib/strided/base/binary-dtype-signatures}
 */
-setReadOnly( ns, 'add4', require( '@stdlib/math/base/ops/add4' ) );
+setReadOnly( ns, 'binaryDtypeSignatures', require( '@stdlib/strided/base/binary-dtype-signatures' ) );
 &nbsp;
 /**
-* @name add5
+* @name binarySignatureCallbacks
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/add5}
+* @see {@link module:@stdlib/strided/base/binary-signature-callbacks}
 */
-setReadOnly( ns, 'add5', require( '@stdlib/math/base/ops/add5' ) );
+setReadOnly( ns, 'binarySignatureCallbacks', require( '@stdlib/strided/base/binary-signature-callbacks' ) );
 &nbsp;
 /**
-* @name addf
+* @name cmap
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/addf}
+* @see {@link module:@stdlib/strided/base/cmap}
 */
-setReadOnly( ns, 'addf', require( '@stdlib/math/base/ops/addf' ) );
+setReadOnly( ns, 'cmap', require( '@stdlib/strided/base/cmap' ) );
 &nbsp;
 /**
-* @name cadd
+* @name dmap
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/cadd}
+* @see {@link module:@stdlib/strided/base/dmap}
 */
-setReadOnly( ns, 'cadd', require( '@stdlib/math/base/ops/cadd' ) );
+setReadOnly( ns, 'dmap', require( '@stdlib/strided/base/dmap' ) );
 &nbsp;
 /**
-* @name caddf
+* @name dmap2
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/caddf}
+* @see {@link module:@stdlib/strided/base/dmap2}
 */
-setReadOnly( ns, 'caddf', require( '@stdlib/math/base/ops/caddf' ) );
+setReadOnly( ns, 'dmap2', require( '@stdlib/strided/base/dmap2' ) );
 &nbsp;
 /**
-* @name cdiv
+* @name dmskmap
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/cdiv}
+* @see {@link module:@stdlib/strided/base/dmskmap}
 */
-setReadOnly( ns, 'cdiv', require( '@stdlib/math/base/ops/cdiv' ) );
+setReadOnly( ns, 'dmskmap', require( '@stdlib/strided/base/dmskmap' ) );
 &nbsp;
 /**
-* @name cmul
+* @name dmskmap2
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/cmul}
+* @see {@link module:@stdlib/strided/base/dmskmap2}
 */
-setReadOnly( ns, 'cmul', require( '@stdlib/math/base/ops/cmul' ) );
+setReadOnly( ns, 'dmskmap2', require( '@stdlib/strided/base/dmskmap2' ) );
 &nbsp;
 /**
-* @name cmulf
+* @name dtypeEnum2Str
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/cmulf}
+* @see {@link module:@stdlib/strided/base/dtype-enum2str}
 */
-setReadOnly( ns, 'cmulf', require( '@stdlib/math/base/ops/cmulf' ) );
+setReadOnly( ns, 'dtypeEnum2Str', require( '@stdlib/strided/base/dtype-enum2str' ) );
 &nbsp;
 /**
-* @name cneg
+* @name dtypeResolveEnum
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/cneg}
+* @see {@link module:@stdlib/strided/base/dtype-resolve-enum}
 */
-setReadOnly( ns, 'cneg', require( '@stdlib/math/base/ops/cneg' ) );
+setReadOnly( ns, 'dtypeResolveEnum', require( '@stdlib/strided/base/dtype-resolve-enum' ) );
 &nbsp;
 /**
-* @name cnegf
+* @name dtypeResolveStr
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/cnegf}
+* @see {@link module:@stdlib/strided/base/dtype-resolve-str}
 */
-setReadOnly( ns, 'cnegf', require( '@stdlib/math/base/ops/cnegf' ) );
+setReadOnly( ns, 'dtypeResolveStr', require( '@stdlib/strided/base/dtype-resolve-str' ) );
 &nbsp;
 /**
-* @name csub
+* @name dtypeStr2Enum
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/csub}
+* @see {@link module:@stdlib/strided/base/dtype-str2enum}
 */
-setReadOnly( ns, 'csub', require( '@stdlib/math/base/ops/csub' ) );
+setReadOnly( ns, 'dtypeStr2Enum', require( '@stdlib/strided/base/dtype-str2enum' ) );
 &nbsp;
 /**
-* @name csubf
+* @name mapBy
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/csubf}
+* @see {@link module:@stdlib/strided/base/map-by}
 */
-setReadOnly( ns, 'csubf', require( '@stdlib/math/base/ops/csubf' ) );
+setReadOnly( ns, 'mapBy', require( '@stdlib/strided/base/map-by' ) );
 &nbsp;
 /**
-* @name div
+* @name mapBy2
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/div}
+* @see {@link module:@stdlib/strided/base/map-by2}
 */
-setReadOnly( ns, 'div', require( '@stdlib/math/base/ops/div' ) );
+setReadOnly( ns, 'mapBy2', require( '@stdlib/strided/base/map-by2' ) );
 &nbsp;
 /**
-* @name divf
+* @name maxViewBufferIndex
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/divf}
+* @see {@link module:@stdlib/strided/base/max-view-buffer-index}
 */
-setReadOnly( ns, 'divf', require( '@stdlib/math/base/ops/divf' ) );
+setReadOnly( ns, 'maxViewBufferIndex', require( '@stdlib/strided/base/max-view-buffer-index' ) );
 &nbsp;
 /**
-* @name imul
+* @name metaDataProps
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/imul}
+* @see {@link module:@stdlib/strided/base/meta-data-props}
 */
-setReadOnly( ns, 'imul', require( '@stdlib/math/base/ops/imul' ) );
+setReadOnly( ns, 'metaDataProps', require( '@stdlib/strided/base/meta-data-props' ) );
 &nbsp;
 /**
-* @name imuldw
+* @name minViewBufferIndex
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/imuldw}
+* @see {@link module:@stdlib/strided/base/min-view-buffer-index}
 */
-setReadOnly( ns, 'imuldw', require( '@stdlib/math/base/ops/imuldw' ) );
+setReadOnly( ns, 'minViewBufferIndex', require( '@stdlib/strided/base/min-view-buffer-index' ) );
 &nbsp;
 /**
-* @name mul
+* @name mskunary
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/mul}
+* @see {@link module:@stdlib/strided/base/mskunary}
 */
-setReadOnly( ns, 'mul', require( '@stdlib/math/base/ops/mul' ) );
+setReadOnly( ns, 'mskunary', require( '@stdlib/strided/base/mskunary' ) );
 &nbsp;
 /**
-* @name mulf
+* @name mskunaryAddonDispatch
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/mulf}
+* @see {@link module:@stdlib/strided/base/mskunary-addon-dispatch}
 */
-setReadOnly( ns, 'mulf', require( '@stdlib/math/base/ops/mulf' ) );
+setReadOnly( ns, 'mskunaryAddonDispatch', require( '@stdlib/strided/base/mskunary-addon-dispatch' ) );
 &nbsp;
 /**
-* @name sub
+* @name mskunaryDtypeSignatures
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/sub}
+* @see {@link module:@stdlib/strided/base/mskunary-dtype-signatures}
 */
-setReadOnly( ns, 'sub', require( '@stdlib/math/base/ops/sub' ) );
+setReadOnly( ns, 'mskunaryDtypeSignatures', require( '@stdlib/strided/base/mskunary-dtype-signatures' ) );
 &nbsp;
 /**
-* @name subf
+* @name mskunarySignatureCallbacks
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/subf}
+* @see {@link module:@stdlib/strided/base/mskunary-signature-callbacks}
 */
-setReadOnly( ns, 'subf', require( '@stdlib/math/base/ops/subf' ) );
+setReadOnly( ns, 'mskunarySignatureCallbacks', require( '@stdlib/strided/base/mskunary-signature-callbacks' ) );
 &nbsp;
 /**
-* @name umul
+* @name nullary
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/umul}
+* @see {@link module:@stdlib/strided/base/nullary}
 */
-setReadOnly( ns, 'umul', require( '@stdlib/math/base/ops/umul' ) );
+setReadOnly( ns, 'nullary', require( '@stdlib/strided/base/nullary' ) );
 &nbsp;
 /**
-* @name umuldw
+* @name nullaryAddonDispatch
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/math/base/ops/umuldw}
+* @see {@link module:@stdlib/strided/base/nullary-addon-dispatch}
 */
-setReadOnly( ns, 'umuldw', require( '@stdlib/math/base/ops/umuldw' ) );
+setReadOnly( ns, 'nullaryAddonDispatch', require( '@stdlib/strided/base/nullary-addon-dispatch' ) );
+&nbsp;
+/**
+* @name offsetView
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/offset-view}
+*/
+setReadOnly( ns, 'offsetView', require( '@stdlib/strided/base/offset-view' ) );
+&nbsp;
+/**
+* @name quaternary
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/quaternary}
+*/
+setReadOnly( ns, 'quaternary', require( '@stdlib/strided/base/quaternary' ) );
+&nbsp;
+/**
+* @name quinary
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/quinary}
+*/
+setReadOnly( ns, 'quinary', require( '@stdlib/strided/base/quinary' ) );
+&nbsp;
+/**
+* @name reinterpretComplex64
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/reinterpret-complex64}
+*/
+setReadOnly( ns, 'reinterpretComplex64', require( '@stdlib/strided/base/reinterpret-complex64' ) );
+&nbsp;
+/**
+* @name reinterpretComplex128
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/reinterpret-complex128}
+*/
+setReadOnly( ns, 'reinterpretComplex128', require( '@stdlib/strided/base/reinterpret-complex128' ) );
+&nbsp;
+/**
+* @name smap
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/smap}
+*/
+setReadOnly( ns, 'smap', require( '@stdlib/strided/base/smap' ) );
+&nbsp;
+/**
+* @name smap2
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/smap2}
+*/
+setReadOnly( ns, 'smap2', require( '@stdlib/strided/base/smap2' ) );
+&nbsp;
+/**
+* @name smskmap
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/smskmap}
+*/
+setReadOnly( ns, 'smskmap', require( '@stdlib/strided/base/smskmap' ) );
+&nbsp;
+/**
+* @name smskmap2
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/smskmap2}
+*/
+setReadOnly( ns, 'smskmap2', require( '@stdlib/strided/base/smskmap2' ) );
+&nbsp;
+/**
+* @name ternary
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/ternary}
+*/
+setReadOnly( ns, 'ternary', require( '@stdlib/strided/base/ternary' ) );
+&nbsp;
+/**
+* @name unary
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/unary}
+*/
+setReadOnly( ns, 'unary', require( '@stdlib/strided/base/unary' ) );
+&nbsp;
+/**
+* @name unaryAddonDispatch
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/unary-addon-dispatch}
+*/
+setReadOnly( ns, 'unaryAddonDispatch', require( '@stdlib/strided/base/unary-addon-dispatch' ) );
+&nbsp;
+/**
+* @name unaryBy
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/unary-by}
+*/
+setReadOnly( ns, 'unaryBy', require( '@stdlib/strided/base/unary-by' ) );
+&nbsp;
+/**
+* @name unaryDtypeSignatures
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/unary-dtype-signatures}
+*/
+setReadOnly( ns, 'unaryDtypeSignatures', require( '@stdlib/strided/base/unary-dtype-signatures' ) );
+&nbsp;
+/**
+* @name unarySignatureCallbacks
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/unary-signature-callbacks}
+*/
+setReadOnly( ns, 'unarySignatureCallbacks', require( '@stdlib/strided/base/unary-signature-callbacks' ) );
+&nbsp;
+/**
+* @name zmap
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/strided/base/zmap}
+*/
+setReadOnly( ns, 'zmap', require( '@stdlib/strided/base/zmap' ) );
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -844,16 +1288,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-09T21:59:56.116Z
+                at 2023-12-09T22:00:04.526Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     
