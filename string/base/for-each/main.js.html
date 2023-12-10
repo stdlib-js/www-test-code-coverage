@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for blas/base/gnrm2/lib/index.js</title>
+    <title>Code coverage report for string/base/for-each/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/gnrm2/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">string/base/for-each/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>49/49</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>49/49</span>
             </div>
         
             
@@ -112,17 +112,7 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -159,23 +149,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -184,7 +164,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2020 The Stdlib Authors.
+* Copyright (c) 2023 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -201,45 +181,35 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute the L2-norm of a vector.
-*
-* @module @stdlib/blas/base/gnrm2
-*
-* @example
-* var gnrm2 = require( '@stdlib/blas/base/gnrm2' );
-*
-* var x = [ 1.0, -2.0, 2.0 ];
-*
-* var z = gnrm2( x.length, x, 1 );
-* // returns 3.0
-*
-* @example
-* var floor = require( '@stdlib/math/base/special/floor' );
-* var gnrm2 = require( '@stdlib/blas/base/gnrm2' );
-*
-* var x = [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ];
-* var N = floor( x.length / 2 );
-*
-* var z = gnrm2.ndarray( N, x, 2, 1 );
-* // returns 5.0
-*/
-&nbsp;
-// MODULES //
-&nbsp;
-var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
-var main = require( './main.js' );
-var ndarray = require( './ndarray.js' );
-&nbsp;
-&nbsp;
 // MAIN //
 &nbsp;
-setReadOnly( main, 'ndarray', ndarray );
+/**
+* Invokes a function for each UTF-16 code unit in a string.
+*
+* @param {string} str - input string
+* @param {Function} clbk - function to invoke
+* @param {*} [thisArg] - execution context
+* @returns {string} input string
+*
+* @example
+* function log( value, index ) {
+*     console.log( '%d: %s', index, value );
+* }
+*
+* forEach( 'Hello', log );
+*/
+function forEach( str, clbk, thisArg ) {
+	var i;
+	for ( i = 0; i &lt; str.length; i++ ) {
+		clbk.call( thisArg, str[ i ], i, str );
+	}
+	return str;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = forEach;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -247,7 +217,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-10T05:58:30.463Z
+                at 2023-12-10T05:59:05.430Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
