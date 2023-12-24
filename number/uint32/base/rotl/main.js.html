@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for assert/is-complex128vector-like/lib/index.js</title>
+    <title>Code coverage report for number/uint32/base/rotl/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">assert/is-complex128vector-like/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">number/uint32/base/rotl/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>48/48</span>
+                <span class='fraction'>67/67</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>48/48</span>
+                <span class='fraction'>67/67</span>
             </div>
         
             
@@ -111,7 +111,26 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -154,6 +173,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">337x</span>
+<span class="cline-any cline-yes">337x</span>
+<span class="cline-any cline-yes">337x</span>
+<span class="cline-any cline-yes">337x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -162,7 +200,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -179,34 +217,53 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Test if a value is a 1-dimensional ndarray-like object whose underlying data type is `complex128`.
-*
-* @module @stdlib/assert/is-complex128vector-like
-*
-* @example
-* var ndarray = require( '@stdlib/ndarray/ctor' );
-* var Complex128Array = require( '@stdlib/array/complex128' );
-* var isComplex128VectorLike = require( '@stdlib/assert/is-complex128vector-like' );
-*
-* var buffer = new Complex128Array( [ 0, 0, 0, 0, 0, 0, 0, 0 ] );
-* var arr = ndarray( 'complex128', buffer, [ 4 ], [ 1 ], 0, 'row-major' );
-*
-* var bool = isComplex128VectorLike( arr );
-* // returns true
-*
-* bool = isComplex128VectorLike( [] );
-* // returns false
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var main = require( './main.js' );
+var toUint32 = require( '@stdlib/number/int32/base/to-uint32' );
+&nbsp;
+&nbsp;
+// VARIABLES //
+&nbsp;
+// Shift mask: 00000000000000000000000000011111
+var MAX_SHIFT = toUint32( 31 );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
+/**
+* Performs a bitwise rotation to the left.
+*
+* ## References
+*
+* -   [Safe, Efficient, and Portable Rotate in C/C++](http://blog.regehr.org/archives/1063)
+* -   [Best practices for rotates in C/C++](https://stackoverflow.com/a/776523/224132)
+* -   [Near constant time rotate that does not violate the standards](https://stackoverflow.com/a/31488147/224132)
+*
+* @param {uinteger32} x - unsigned integer
+* @param {uinteger32} shift - number of bits to shift
+* @returns {uinteger32} shifted integer
+*
+* @example
+* var toBinaryStringUint32 = require( '@stdlib/number/uint32/base/to-binary-string' );
+*
+* var bstr = toBinaryStringUint32( 2147483649 );
+* // returns '10000000000000000000000000000001'
+*
+* var x = rotl32( 2147483649, 10 );
+* // returns 1536
+*
+* bstr = toBinaryStringUint32( x );
+* // returns '00000000000000000000011000000000'
+*/
+function rotl32( x, shift ) {
+	shift &amp;= MAX_SHIFT;
+	return toUint32( ( x &lt;&lt; shift ) | (x &gt;&gt;&gt; ((-shift) &amp; MAX_SHIFT)) );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = rotl32;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -214,16 +271,16 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-24T02:35:49.000Z
+                at 2023-12-24T02:35:55.523Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     
