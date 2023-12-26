@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/lib/index.js</title>
+    <title>Code coverage report for iter/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">ndarray/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">iter/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>447/447</span>
+                <span class='fraction'>528/528</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>447/447</span>
+                <span class='fraction'>528/528</span>
             </div>
         
             
@@ -510,7 +510,169 @@
 <a name='L445'></a><a href='#L445'>445</a>
 <a name='L446'></a><a href='#L446'>446</a>
 <a name='L447'></a><a href='#L447'>447</a>
-<a name='L448'></a><a href='#L448'>448</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L448'></a><a href='#L448'>448</a>
+<a name='L449'></a><a href='#L449'>449</a>
+<a name='L450'></a><a href='#L450'>450</a>
+<a name='L451'></a><a href='#L451'>451</a>
+<a name='L452'></a><a href='#L452'>452</a>
+<a name='L453'></a><a href='#L453'>453</a>
+<a name='L454'></a><a href='#L454'>454</a>
+<a name='L455'></a><a href='#L455'>455</a>
+<a name='L456'></a><a href='#L456'>456</a>
+<a name='L457'></a><a href='#L457'>457</a>
+<a name='L458'></a><a href='#L458'>458</a>
+<a name='L459'></a><a href='#L459'>459</a>
+<a name='L460'></a><a href='#L460'>460</a>
+<a name='L461'></a><a href='#L461'>461</a>
+<a name='L462'></a><a href='#L462'>462</a>
+<a name='L463'></a><a href='#L463'>463</a>
+<a name='L464'></a><a href='#L464'>464</a>
+<a name='L465'></a><a href='#L465'>465</a>
+<a name='L466'></a><a href='#L466'>466</a>
+<a name='L467'></a><a href='#L467'>467</a>
+<a name='L468'></a><a href='#L468'>468</a>
+<a name='L469'></a><a href='#L469'>469</a>
+<a name='L470'></a><a href='#L470'>470</a>
+<a name='L471'></a><a href='#L471'>471</a>
+<a name='L472'></a><a href='#L472'>472</a>
+<a name='L473'></a><a href='#L473'>473</a>
+<a name='L474'></a><a href='#L474'>474</a>
+<a name='L475'></a><a href='#L475'>475</a>
+<a name='L476'></a><a href='#L476'>476</a>
+<a name='L477'></a><a href='#L477'>477</a>
+<a name='L478'></a><a href='#L478'>478</a>
+<a name='L479'></a><a href='#L479'>479</a>
+<a name='L480'></a><a href='#L480'>480</a>
+<a name='L481'></a><a href='#L481'>481</a>
+<a name='L482'></a><a href='#L482'>482</a>
+<a name='L483'></a><a href='#L483'>483</a>
+<a name='L484'></a><a href='#L484'>484</a>
+<a name='L485'></a><a href='#L485'>485</a>
+<a name='L486'></a><a href='#L486'>486</a>
+<a name='L487'></a><a href='#L487'>487</a>
+<a name='L488'></a><a href='#L488'>488</a>
+<a name='L489'></a><a href='#L489'>489</a>
+<a name='L490'></a><a href='#L490'>490</a>
+<a name='L491'></a><a href='#L491'>491</a>
+<a name='L492'></a><a href='#L492'>492</a>
+<a name='L493'></a><a href='#L493'>493</a>
+<a name='L494'></a><a href='#L494'>494</a>
+<a name='L495'></a><a href='#L495'>495</a>
+<a name='L496'></a><a href='#L496'>496</a>
+<a name='L497'></a><a href='#L497'>497</a>
+<a name='L498'></a><a href='#L498'>498</a>
+<a name='L499'></a><a href='#L499'>499</a>
+<a name='L500'></a><a href='#L500'>500</a>
+<a name='L501'></a><a href='#L501'>501</a>
+<a name='L502'></a><a href='#L502'>502</a>
+<a name='L503'></a><a href='#L503'>503</a>
+<a name='L504'></a><a href='#L504'>504</a>
+<a name='L505'></a><a href='#L505'>505</a>
+<a name='L506'></a><a href='#L506'>506</a>
+<a name='L507'></a><a href='#L507'>507</a>
+<a name='L508'></a><a href='#L508'>508</a>
+<a name='L509'></a><a href='#L509'>509</a>
+<a name='L510'></a><a href='#L510'>510</a>
+<a name='L511'></a><a href='#L511'>511</a>
+<a name='L512'></a><a href='#L512'>512</a>
+<a name='L513'></a><a href='#L513'>513</a>
+<a name='L514'></a><a href='#L514'>514</a>
+<a name='L515'></a><a href='#L515'>515</a>
+<a name='L516'></a><a href='#L516'>516</a>
+<a name='L517'></a><a href='#L517'>517</a>
+<a name='L518'></a><a href='#L518'>518</a>
+<a name='L519'></a><a href='#L519'>519</a>
+<a name='L520'></a><a href='#L520'>520</a>
+<a name='L521'></a><a href='#L521'>521</a>
+<a name='L522'></a><a href='#L522'>522</a>
+<a name='L523'></a><a href='#L523'>523</a>
+<a name='L524'></a><a href='#L524'>524</a>
+<a name='L525'></a><a href='#L525'>525</a>
+<a name='L526'></a><a href='#L526'>526</a>
+<a name='L527'></a><a href='#L527'>527</a>
+<a name='L528'></a><a href='#L528'>528</a>
+<a name='L529'></a><a href='#L529'>529</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -996,409 +1158,490 @@ var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
 var ns = {};
 &nbsp;
 /**
-* @name array
+* @name iterAdvance
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/array}
+* @see {@link module:@stdlib/iter/advance}
 */
-setReadOnly( ns, 'array', require( '@stdlib/ndarray/array' ) );
+setReadOnly( ns, 'iterAdvance', require( '@stdlib/iter/advance' ) );
 &nbsp;
 /**
-* @name base
-* @memberof ns
-* @readonly
-* @type {Namespace}
-* @see {@link module:@stdlib/ndarray/base}
-*/
-setReadOnly( ns, 'base', require( '@stdlib/ndarray/base' ) );
-&nbsp;
-/**
-* @name broadcastArray
+* @name iterAny
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/broadcast-array}
+* @see {@link module:@stdlib/iter/any}
 */
-setReadOnly( ns, 'broadcastArray', require( '@stdlib/ndarray/broadcast-array' ) );
+setReadOnly( ns, 'iterAny', require( '@stdlib/iter/any' ) );
 &nbsp;
 /**
-* @name ndarrayCastingModes
+* @name iterAnyBy
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/casting-modes}
+* @see {@link module:@stdlib/iter/any-by}
 */
-setReadOnly( ns, 'ndarrayCastingModes', require( '@stdlib/ndarray/casting-modes' ) );
+setReadOnly( ns, 'iterAnyBy', require( '@stdlib/iter/any-by' ) );
 &nbsp;
 /**
-* @name ndarray
+* @name iterConcat
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/ctor}
+* @see {@link module:@stdlib/iter/concat}
 */
-setReadOnly( ns, 'ndarray', require( '@stdlib/ndarray/ctor' ) );
+setReadOnly( ns, 'iterConcat', require( '@stdlib/iter/concat' ) );
 &nbsp;
 /**
-* @name ndarrayDataBuffer
+* @name iterConstant
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/data-buffer}
+* @see {@link module:@stdlib/iter/constant}
 */
-setReadOnly( ns, 'ndarrayDataBuffer', require( '@stdlib/ndarray/data-buffer' ) );
+setReadOnly( ns, 'iterConstant', require( '@stdlib/iter/constant' ) );
 &nbsp;
 /**
-* @name defaults
+* @name iterCounter
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/defaults}
+* @see {@link module:@stdlib/iter/counter}
 */
-setReadOnly( ns, 'defaults', require( '@stdlib/ndarray/defaults' ) );
+setReadOnly( ns, 'iterCounter', require( '@stdlib/iter/counter' ) );
 &nbsp;
 /**
-* @name dispatch
+* @name iterDatespace
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/dispatch}
+* @see {@link module:@stdlib/iter/datespace}
 */
-setReadOnly( ns, 'dispatch', require( '@stdlib/ndarray/dispatch' ) );
+setReadOnly( ns, 'iterDatespace', require( '@stdlib/iter/datespace' ) );
 &nbsp;
 /**
-* @name dispatchBy
+* @name iterDedupe
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/dispatch-by}
+* @see {@link module:@stdlib/iter/dedupe}
 */
-setReadOnly( ns, 'dispatchBy', require( '@stdlib/ndarray/dispatch-by' ) );
+setReadOnly( ns, 'iterDedupe', require( '@stdlib/iter/dedupe' ) );
 &nbsp;
 /**
-* @name ndarrayDataType
+* @name iterDedupeBy
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/dtype}
+* @see {@link module:@stdlib/iter/dedupe-by}
 */
-setReadOnly( ns, 'ndarrayDataType', require( '@stdlib/ndarray/dtype' ) );
+setReadOnly( ns, 'iterDedupeBy', require( '@stdlib/iter/dedupe-by' ) );
 &nbsp;
 /**
-* @name ndarrayDataTypes
+* @name iterEmpty
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/dtypes}
+* @see {@link module:@stdlib/iter/empty}
 */
-setReadOnly( ns, 'ndarrayDataTypes', require( '@stdlib/ndarray/dtypes' ) );
+setReadOnly( ns, 'iterEmpty', require( '@stdlib/iter/empty' ) );
 &nbsp;
 /**
-* @name ndempty
+* @name iterEvery
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/empty}
+* @see {@link module:@stdlib/iter/every}
 */
-setReadOnly( ns, 'ndempty', require( '@stdlib/ndarray/empty' ) );
+setReadOnly( ns, 'iterEvery', require( '@stdlib/iter/every' ) );
 &nbsp;
 /**
-* @name ndemptyLike
+* @name iterEveryBy
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/empty-like}
+* @see {@link module:@stdlib/iter/every-by}
 */
-setReadOnly( ns, 'ndemptyLike', require( '@stdlib/ndarray/empty-like' ) );
+setReadOnly( ns, 'iterEveryBy', require( '@stdlib/iter/every-by' ) );
 &nbsp;
 /**
-* @name FancyArray
+* @name iterFill
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/fancy}
+* @see {@link module:@stdlib/iter/fill}
 */
-setReadOnly( ns, 'FancyArray', require( '@stdlib/ndarray/fancy' ) );
+setReadOnly( ns, 'iterFill', require( '@stdlib/iter/fill' ) );
 &nbsp;
 /**
-* @name scalar2ndarray
+* @name iterFilter
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/from-scalar}
+* @see {@link module:@stdlib/iter/filter}
 */
-setReadOnly( ns, 'scalar2ndarray', require( '@stdlib/ndarray/from-scalar' ) );
+setReadOnly( ns, 'iterFilter', require( '@stdlib/iter/filter' ) );
 &nbsp;
 /**
-* @name ind2sub
+* @name iterFilterMap
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/ind2sub}
+* @see {@link module:@stdlib/iter/filter-map}
 */
-setReadOnly( ns, 'ind2sub', require( '@stdlib/ndarray/ind2sub' ) );
+setReadOnly( ns, 'iterFilterMap', require( '@stdlib/iter/filter-map' ) );
 &nbsp;
 /**
-* @name ndarrayIndexModes
+* @name iterFirst
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/index-modes}
+* @see {@link module:@stdlib/iter/first}
 */
-setReadOnly( ns, 'ndarrayIndexModes', require( '@stdlib/ndarray/index-modes' ) );
+setReadOnly( ns, 'iterFirst', require( '@stdlib/iter/first' ) );
 &nbsp;
 /**
-* @name iter
-* @memberof ns
-* @readonly
-* @type {Namespace}
-* @see {@link module:@stdlib/ndarray/iter}
-*/
-setReadOnly( ns, 'iter', require( '@stdlib/ndarray/iter' ) );
-&nbsp;
-/**
-* @name maybeBroadcastArray
+* @name iterFlow
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/maybe-broadcast-array}
+* @see {@link module:@stdlib/iter/flow}
 */
-setReadOnly( ns, 'maybeBroadcastArray', require( '@stdlib/ndarray/maybe-broadcast-array' ) );
+setReadOnly( ns, 'iterFlow', require( '@stdlib/iter/flow' ) );
 &nbsp;
 /**
-* @name ndarrayMinDataType
+* @name iterForEach
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/min-dtype}
+* @see {@link module:@stdlib/iter/for-each}
 */
-setReadOnly( ns, 'ndarrayMinDataType', require( '@stdlib/ndarray/min-dtype' ) );
+setReadOnly( ns, 'iterForEach', require( '@stdlib/iter/for-each' ) );
 &nbsp;
 /**
-* @name ndarrayMostlySafeCasts
+* @name iterHead
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/mostly-safe-casts}
+* @see {@link module:@stdlib/iter/head}
 */
-setReadOnly( ns, 'ndarrayMostlySafeCasts', require( '@stdlib/ndarray/mostly-safe-casts' ) );
+setReadOnly( ns, 'iterHead', require( '@stdlib/iter/head' ) );
 &nbsp;
 /**
-* @name ndims
+* @name iterIncrspace
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/ndims}
+* @see {@link module:@stdlib/iter/incrspace}
 */
-setReadOnly( ns, 'ndims', require( '@stdlib/ndarray/ndims' ) );
+setReadOnly( ns, 'iterIncrspace', require( '@stdlib/iter/incrspace' ) );
 &nbsp;
 /**
-* @name ndarrayNextDataType
+* @name iterIntersection
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/next-dtype}
+* @see {@link module:@stdlib/iter/intersection}
 */
-setReadOnly( ns, 'ndarrayNextDataType', require( '@stdlib/ndarray/next-dtype' ) );
+setReadOnly( ns, 'iterIntersection', require( '@stdlib/iter/intersection' ) );
 &nbsp;
 /**
-* @name numel
+* @name iterIntersectionByHash
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/numel}
+* @see {@link module:@stdlib/iter/intersection-by-hash}
 */
-setReadOnly( ns, 'numel', require( '@stdlib/ndarray/numel' ) );
+setReadOnly( ns, 'iterIntersectionByHash', require( '@stdlib/iter/intersection-by-hash' ) );
 &nbsp;
 /**
-* @name ndarrayOffset
+* @name iterLast
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/offset}
+* @see {@link module:@stdlib/iter/last}
 */
-setReadOnly( ns, 'ndarrayOffset', require( '@stdlib/ndarray/offset' ) );
+setReadOnly( ns, 'iterLast', require( '@stdlib/iter/last' ) );
 &nbsp;
 /**
-* @name ndarrayOrder
+* @name iterLength
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/order}
+* @see {@link module:@stdlib/iter/length}
 */
-setReadOnly( ns, 'ndarrayOrder', require( '@stdlib/ndarray/order' ) );
+setReadOnly( ns, 'iterLength', require( '@stdlib/iter/length' ) );
 &nbsp;
 /**
-* @name ndarrayOrders
+* @name iterLinspace
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/orders}
+* @see {@link module:@stdlib/iter/linspace}
 */
-setReadOnly( ns, 'ndarrayOrders', require( '@stdlib/ndarray/orders' ) );
+setReadOnly( ns, 'iterLinspace', require( '@stdlib/iter/linspace' ) );
 &nbsp;
 /**
-* @name ndarrayOutputDataTypePolicies
+* @name iterLogspace
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/output-dtype-policies}
+* @see {@link module:@stdlib/iter/logspace}
 */
-setReadOnly( ns, 'ndarrayOutputDataTypePolicies', require( '@stdlib/ndarray/output-dtype-policies' ) );
+setReadOnly( ns, 'iterLogspace', require( '@stdlib/iter/logspace' ) );
 &nbsp;
 /**
-* @name ndarrayPromotionRules
+* @name iterMap
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/promotion-rules}
+* @see {@link module:@stdlib/iter/map}
 */
-setReadOnly( ns, 'ndarrayPromotionRules', require( '@stdlib/ndarray/promotion-rules' ) );
+setReadOnly( ns, 'iterMap', require( '@stdlib/iter/map' ) );
 &nbsp;
 /**
-* @name ndarraySafeCasts
+* @name iterMapN
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/safe-casts}
+* @see {@link module:@stdlib/iter/mapn}
 */
-setReadOnly( ns, 'ndarraySafeCasts', require( '@stdlib/ndarray/safe-casts' ) );
+setReadOnly( ns, 'iterMapN', require( '@stdlib/iter/mapn' ) );
 &nbsp;
 /**
-* @name ndarraySameKindCasts
+* @name iterNone
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/same-kind-casts}
+* @see {@link module:@stdlib/iter/none}
 */
-setReadOnly( ns, 'ndarraySameKindCasts', require( '@stdlib/ndarray/same-kind-casts' ) );
+setReadOnly( ns, 'iterNone', require( '@stdlib/iter/none' ) );
 &nbsp;
 /**
-* @name ndarrayShape
+* @name iterNoneBy
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/shape}
+* @see {@link module:@stdlib/iter/none-by}
 */
-setReadOnly( ns, 'ndarrayShape', require( '@stdlib/ndarray/shape' ) );
+setReadOnly( ns, 'iterNoneBy', require( '@stdlib/iter/none-by' ) );
 &nbsp;
 /**
-* @name ndslice
+* @name iterNth
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/slice}
+* @see {@link module:@stdlib/iter/nth}
 */
-setReadOnly( ns, 'ndslice', require( '@stdlib/ndarray/slice' ) );
+setReadOnly( ns, 'iterNth', require( '@stdlib/iter/nth' ) );
 &nbsp;
 /**
-* @name ndsliceAssign
+* @name iterPipeline
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/slice-assign}
+* @see {@link module:@stdlib/iter/pipeline}
 */
-setReadOnly( ns, 'ndsliceAssign', require( '@stdlib/ndarray/slice-assign' ) );
+setReadOnly( ns, 'iterPipeline', require( '@stdlib/iter/pipeline' ) );
 &nbsp;
 /**
-* @name ndsliceDimension
+* @name iterThunk
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/slice-dimension}
+* @see {@link module:@stdlib/iter/pipeline-thunk}
 */
-setReadOnly( ns, 'ndsliceDimension', require( '@stdlib/ndarray/slice-dimension' ) );
+setReadOnly( ns, 'iterThunk', require( '@stdlib/iter/pipeline-thunk' ) );
 &nbsp;
 /**
-* @name ndsliceDimensionFrom
+* @name iterPop
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/slice-dimension-from}
+* @see {@link module:@stdlib/iter/pop}
 */
-setReadOnly( ns, 'ndsliceDimensionFrom', require( '@stdlib/ndarray/slice-dimension-from' ) );
+setReadOnly( ns, 'iterPop', require( '@stdlib/iter/pop' ) );
 &nbsp;
 /**
-* @name ndsliceDimensionTo
+* @name iterPush
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/slice-dimension-to}
+* @see {@link module:@stdlib/iter/push}
 */
-setReadOnly( ns, 'ndsliceDimensionTo', require( '@stdlib/ndarray/slice-dimension-to' ) );
+setReadOnly( ns, 'iterPush', require( '@stdlib/iter/push' ) );
 &nbsp;
 /**
-* @name ndsliceFrom
+* @name iterReject
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/slice-from}
+* @see {@link module:@stdlib/iter/reject}
 */
-setReadOnly( ns, 'ndsliceFrom', require( '@stdlib/ndarray/slice-from' ) );
+setReadOnly( ns, 'iterReject', require( '@stdlib/iter/reject' ) );
 &nbsp;
 /**
-* @name ndsliceTo
+* @name iterReplicate
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/slice-to}
+* @see {@link module:@stdlib/iter/replicate}
 */
-setReadOnly( ns, 'ndsliceTo', require( '@stdlib/ndarray/slice-to' ) );
+setReadOnly( ns, 'iterReplicate', require( '@stdlib/iter/replicate' ) );
 &nbsp;
 /**
-* @name ndarrayStride
+* @name iterReplicateBy
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/stride}
+* @see {@link module:@stdlib/iter/replicate-by}
 */
-setReadOnly( ns, 'ndarrayStride', require( '@stdlib/ndarray/stride' ) );
+setReadOnly( ns, 'iterReplicateBy', require( '@stdlib/iter/replicate-by' ) );
 &nbsp;
 /**
-* @name ndarrayStrides
+* @name iterShift
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/strides}
+* @see {@link module:@stdlib/iter/shift}
 */
-setReadOnly( ns, 'ndarrayStrides', require( '@stdlib/ndarray/strides' ) );
+setReadOnly( ns, 'iterShift', require( '@stdlib/iter/shift' ) );
 &nbsp;
 /**
-* @name sub2ind
+* @name iterSlice
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/sub2ind}
+* @see {@link module:@stdlib/iter/slice}
 */
-setReadOnly( ns, 'sub2ind', require( '@stdlib/ndarray/sub2ind' ) );
+setReadOnly( ns, 'iterSlice', require( '@stdlib/iter/slice' ) );
 &nbsp;
 /**
-* @name ndarray2array
+* @name iterSome
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/to-array}
+* @see {@link module:@stdlib/iter/some}
 */
-setReadOnly( ns, 'ndarray2array', require( '@stdlib/ndarray/to-array' ) );
+setReadOnly( ns, 'iterSome', require( '@stdlib/iter/some' ) );
 &nbsp;
 /**
-* @name ndzeros
+* @name iterSomeBy
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/zeros}
+* @see {@link module:@stdlib/iter/some-by}
 */
-setReadOnly( ns, 'ndzeros', require( '@stdlib/ndarray/zeros' ) );
+setReadOnly( ns, 'iterSomeBy', require( '@stdlib/iter/some-by' ) );
 &nbsp;
 /**
-* @name ndzerosLike
+* @name iterStep
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/ndarray/zeros-like}
+* @see {@link module:@stdlib/iter/step}
 */
-setReadOnly( ns, 'ndzerosLike', require( '@stdlib/ndarray/zeros-like' ) );
+setReadOnly( ns, 'iterStep', require( '@stdlib/iter/step' ) );
+&nbsp;
+/**
+* @name iterStrided
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/strided}
+*/
+setReadOnly( ns, 'iterStrided', require( '@stdlib/iter/strided' ) );
+&nbsp;
+/**
+* @name iterStridedBy
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/strided-by}
+*/
+setReadOnly( ns, 'iterStridedBy', require( '@stdlib/iter/strided-by' ) );
+&nbsp;
+/**
+* @name iterator2arrayview
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/to-array-view}
+*/
+setReadOnly( ns, 'iterator2arrayview', require( '@stdlib/iter/to-array-view' ) );
+&nbsp;
+/**
+* @name iterator2arrayviewRight
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/to-array-view-right}
+*/
+setReadOnly( ns, 'iterator2arrayviewRight', require( '@stdlib/iter/to-array-view-right' ) );
+&nbsp;
+/**
+* @name iterUnion
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/union}
+*/
+setReadOnly( ns, 'iterUnion', require( '@stdlib/iter/union' ) );
+&nbsp;
+/**
+* @name iterUnique
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/unique}
+*/
+setReadOnly( ns, 'iterUnique', require( '@stdlib/iter/unique' ) );
+&nbsp;
+/**
+* @name iterUniqueBy
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/unique-by}
+*/
+setReadOnly( ns, 'iterUniqueBy', require( '@stdlib/iter/unique-by' ) );
+&nbsp;
+/**
+* @name iterUniqueByHash
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/unique-by-hash}
+*/
+setReadOnly( ns, 'iterUniqueByHash', require( '@stdlib/iter/unique-by-hash' ) );
+&nbsp;
+/**
+* @name iterUnitspace
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/unitspace}
+*/
+setReadOnly( ns, 'iterUnitspace', require( '@stdlib/iter/unitspace' ) );
+&nbsp;
+/**
+* @name iterUnshift
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/unshift}
+*/
+setReadOnly( ns, 'iterUnshift', require( '@stdlib/iter/unshift' ) );
+&nbsp;
+/**
+* @name whileEach
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/iter/while-each}
+*/
+setReadOnly( ns, 'whileEach', require( '@stdlib/iter/while-each' ) );
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -1411,7 +1654,7 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-26T00:38:10.532Z
+                at 2023-12-26T00:38:06.494Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
