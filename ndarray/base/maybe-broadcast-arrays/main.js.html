@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/broadcast-arrays/lib/main.js</title>
+    <title>Code coverage report for ndarray/base/maybe-broadcast-arrays/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/broadcast-arrays/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/maybe-broadcast-arrays/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>132/132</span>
+                <span class='fraction'>133/133</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>132/132</span>
+                <span class='fraction'>133/133</span>
             </div>
         
             
@@ -195,7 +195,8 @@
 <a name='L130'></a><a href='#L130'>130</a>
 <a name='L131'></a><a href='#L131'>131</a>
 <a name='L132'></a><a href='#L132'>132</a>
-<a name='L133'></a><a href='#L133'>133</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -296,32 +297,33 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">33x</span>
-<span class="cline-any cline-yes">33x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -350,18 +352,19 @@
 // MODULES //
 &nbsp;
 var broadcastShapes = require( '@stdlib/ndarray/base/broadcast-shapes' );
-var broadcastArray = require( '@stdlib/ndarray/base/broadcast-array' );
+var maybeBroadcastArray = require( '@stdlib/ndarray/base/maybe-broadcast-array' );
 var getShape = require( '@stdlib/ndarray/base/shape' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Broadcasts ndarrays to a common shape.
+* Broadcasts an ndarrays to a common shape.
 *
 * ## Notes
 *
-* -   The returned arrays are views on their respective underlying data buffers. The views are typically **not** contiguous. As more than one element of a returned view may refer to the same memory location, writing to a view may affect multiple elements. If you need to write to one of the returned arrays, copy the array before performing operations which may mutate elements.
+* -   If a provided ndarray has a shape matching the common shape, the function returns the provided ndarray.
+* -   If a provided ndarray has a different (broadcast compatible) shape than the common shape, the function returns a new (base) ndarray view of the provided ndarray's data. The view is typically **not** contiguous. As more than one element of a returned view may refer to the same memory location, writing to a view may affect multiple elements. If you need to write to a returned array, copy the array before performing operations which may mutate elements.
 *
 * @param {ArrayLikeObject&lt;ndarray&gt;} arrays - list of input arrays
 * @throws {Error} input arrays must be broadcast compatible
@@ -383,7 +386,7 @@ var getShape = require( '@stdlib/ndarray/base/shape' );
 * var shy = y1.shape;
 * // returns [ 3, 2, 2 ]
 *
-* var out = broadcastArrays( [ x1, y1 ] );
+* var out = maybeBroadcastArrays( [ x1, y1 ] );
 * // returns &lt;ndarray&gt;
 *
 * var x2 = out[ 0 ];
@@ -425,10 +428,10 @@ var getShape = require( '@stdlib/ndarray/base/shape' );
 * var y = zeros( [ 4, 2 ] );
 * // returns &lt;ndarray&gt;
 *
-* var out = broadcastArrays( [ x, y ] );
+* var out = maybeBroadcastArrays( [ x, y ] );
 * // throws &lt;Error&gt;
 */
-function broadcastArrays( arrays ) {
+function maybeBroadcastArrays( arrays ) {
 	var shapes;
 	var out;
 	var sh;
@@ -450,7 +453,7 @@ function broadcastArrays( arrays ) {
 	// Broadcast each array to the common shape...
 	out = [];
 	for ( i = 0; i &lt; N; i++ ) {
-		out.push( broadcastArray( arrays[ i ], sh ) );
+		out.push( maybeBroadcastArray( arrays[ i ], sh ) );
 	}
 	return out;
 }
@@ -458,7 +461,7 @@ function broadcastArrays( arrays ) {
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = broadcastArrays;
+module.exports = maybeBroadcastArrays;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -466,7 +469,7 @@ module.exports = broadcastArrays;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-28T09:33:11.202Z
+                at 2023-12-28T09:33:16.683Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
