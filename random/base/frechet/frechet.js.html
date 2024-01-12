@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/base/hypergeometric/lib/hin.js</title>
+    <title>Code coverage report for random/base/frechet/lib/frechet.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/hypergeometric/lib</a> hin.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/frechet/lib</a> frechet.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.28% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>66/70</span>
+                <span class='fraction'>46/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.28% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>66/70</span>
+                <span class='fraction'>46/46</span>
             </div>
         
             
@@ -109,37 +109,7 @@
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -178,24 +148,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">2600x</span>
-<span class="cline-any cline-yes">6707x</span>
-<span class="cline-any cline-yes">6707x</span>
-<span class="cline-any cline-yes">6707x</span>
-<span class="cline-any cline-yes">6707x</span>
 <span class="cline-any cline-yes">2600x</span>
 <span class="cline-any cline-yes">2600x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -225,54 +177,30 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var factorial = require( '@stdlib/math/base/special/factorial' );
+var pow = require( '@stdlib/math/base/special/pow' );
+var ln = require( '@stdlib/math/base/special/ln' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a pseudorandom number drawn from a hypergeometric distribution using the HIN algorithm, which is based on an inverse transformation method.
-*
-* ## References
-*
-* -   Fishman, George S. 1973. _Concepts and methods in discrete event digital simulation_. A Wiley-Interscience Publication. New York, NY, USA: Wiley.
-* -   Kachitvichyanukul, Voratas., and Burce Schmeiser. 1985. "Computer generation of hypergeometric random variates." _Journal of Statistical Computation and Simulation_ 22 (2): 127–45. doi:[10.1080/00949658508810839][@kachitvichyanukul:1985].
-*
-* [@kachitvichyanukul:1985]: http://dx.doi.org/10.1080/00949658508810839
+* Returns a pseudorandom number drawn from a Fréchet distribution with shape `alpha`, scale `s`, and location `m`.
 *
 * @private
 * @param {PRNG} rand - PRNG for uniformly distributed numbers
-* @param {NonNegativeInteger} n1 - number of successes in population
-* @param {NonNegativeInteger} n2 - number of failures in population
-* @param {NonNegativeInteger} k - number of draws
-* @returns {NonNegativeInteger} pseudorandom number
+* @param {PositiveNumber} alpha - shape parameter
+* @param {PositiveNumber} s - scale parameter
+* @param {number} m - location parameter
+* @returns {number} pseudorandom number
 */
-function hin( rand, n1, n2, k ) {
-	var p;
-	var u;
-	var x;
-	if ( k &lt; n2 ) {
-		p = ( factorial( n2 ) * factorial( n1 + n2 - k ) ) /
-			( factorial( n1 + n2 ) * factorial( n2 - k ) );
-		x = 0;
-	}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
-<span class="cstat-no" title="statement not covered" >		p = ( factorial( n1 ) * factorial( k ) ) /</span>
-<span class="cstat-no" title="statement not covered" >			( factorial( k - n2 ) * factorial( n1 + n2 ) );</span>
-<span class="cstat-no" title="statement not covered" >		x = k - n2;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-	u = rand();
-	while ( u &gt; p ) {
-		u -= p;
-		p *= ( n1 - x ) * ( k - x ) / ( ( x + 1 ) * ( n2 - k + 1 + x ) );
-		x += 1;
-	}
-	return x;
+function frechet( rand, alpha, s, m ) {
+	return m + ( s * ( pow( -ln( rand() ), -1.0/alpha ) ) );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = hin;
+module.exports = frechet;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -280,7 +208,7 @@ module.exports = hin;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-12T10:13:48.176Z
+                at 2024-01-12T10:13:44.072Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

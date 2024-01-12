@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/array/tools/unary/lib/main.js</title>
+    <title>Code coverage report for random/array/tools/ternary/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">random/array/tools/unary/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">random/array/tools/ternary/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.36% </span>
+                <span class="strong">68.04% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>128/190</span>
+                <span class='fraction'>132/194</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.36% </span>
+                <span class="strong">68.04% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>128/190</span>
+                <span class='fraction'>132/194</span>
             </div>
         
             
@@ -253,7 +253,11 @@
 <a name='L188'></a><a href='#L188'>188</a>
 <a name='L189'></a><a href='#L189'>189</a>
 <a name='L190'></a><a href='#L190'>190</a>
-<a name='L191'></a><a href='#L191'>191</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -363,6 +367,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -399,6 +405,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -446,7 +454,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* Copyright (c) 2024 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -474,7 +482,7 @@ var isStringArray = require( '@stdlib/assert/is-string-array' ).primitives;
 var isCollection = require( '@stdlib/assert/is-collection' );
 var contains = require( '@stdlib/array/base/assert/contains' );
 var filledBy = require( '@stdlib/array/base/filled-by' );
-var unary = require( '@stdlib/strided/base/unary' );
+var ternary = require( '@stdlib/strided/base/ternary' );
 var ctors = require( '@stdlib/array/ctors' );
 var format = require( '@stdlib/string/format' );
 var validate = require( './validate.js' );
@@ -483,10 +491,10 @@ var validate = require( './validate.js' );
 // MAIN //
 &nbsp;
 /**
-* Constructor for creating arrays filled with pseudorandom values drawn from a unary PRNG.
+* Constructor for creating arrays filled with pseudorandom values drawn from a ternary PRNG.
 *
 * @constructor
-* @param {Function} prng - unary pseudorandom value generator
+* @param {Function} prng - ternary pseudorandom value generator
 * @param {StringArray} dtypes - list of supported output data types
 * @param {string} dtype - default output data type
 * @throws {TypeError} first argument must be a function
@@ -495,14 +503,14 @@ var validate = require( './validate.js' );
 * @returns {Random} instance
 *
 * @example
-* var exponential = require( '@stdlib/random/base/exponential' );
+* var triangular = require( '@stdlib/random/base/triangular' );
 *
 * var dtypes = [ 'float64', 'float32', 'generic' ];
 * var defaultDType = 'float64';
 *
-* var rand = new Random( exponential, dtypes, defaultDType );
+* var rand = new Random( triangular, dtypes, defaultDType );
 *
-* var v = rand.generate( 10, 2.0 );
+* var v = rand.generate( 10, 2.0, 5.0, 3.33 );
 * // returns &lt;Float64Array&gt;
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function Random( prng, dtypes, dtype ) {</span></span>
@@ -527,13 +535,15 @@ var validate = require( './validate.js' );
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 /**
-* Returns an array filled with pseudorandom values drawn from a unary PRNG.
+* Returns an array filled with pseudorandom values drawn from a ternary PRNG.
 *
 * @name generate
 * @memberof Random.prototype
 * @type {Function}
 * @param {NonNegativeInteger} len - number of elements
-* @param {*} param1 - PRNG parameter
+* @param {*} param1 - first PRNG parameter
+* @param {*} param2 - second PRNG parameter
+* @param {*} param3 - third PRNG parameter
 * @param {Options} [options] - function options
 * @param {string} [options.dtype] - array data type
 * @throws {TypeError} first argument must be a nonnegative integer
@@ -542,17 +552,17 @@ var validate = require( './validate.js' );
 * @returns {Collection} output array
 *
 * @example
-* var exponential = require( '@stdlib/random/base/exponential' );
+* var triangular = require( '@stdlib/random/base/triangular' );
 *
 * var dtypes = [ 'float64', 'float32', 'generic' ];
 * var defaultDType = 'float64';
 *
-* var rand = new Random( exponential, dtypes, defaultDType );
+* var rand = new Random( triangular, dtypes, defaultDType );
 *
-* var v = rand.generate( 10, 2.0 );
+* var v = rand.generate( 10, 2.0, 5.0, 3.33 );
 * // returns &lt;Float64Array&gt;
 */
-setReadOnly( Random.prototype, 'generate', <span class="fstat-no" title="function not covered" >function generate( len, param1, options ) {</span>
+setReadOnly( Random.prototype, 'generate', <span class="fstat-no" title="function not covered" >function generate( len, param1, param2, param3, options ) {</span>
 <span class="cstat-no" title="statement not covered" >	var ctor;</span>
 <span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var prng;</span>
@@ -563,7 +573,7 @@ setReadOnly( Random.prototype, 'generate', <span class="fstat-no" title="functio
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a nonnegative integer. Value: `%s`.', len ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	opts = {};</span>
-<span class="cstat-no" title="statement not covered" >	if ( arguments.length &gt; 2 ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( arguments.length &gt; 4 ) {</span>
 <span class="cstat-no" title="statement not covered" >		err = validate( opts, this._dtypes, options );</span>
 <span class="cstat-no" title="statement not covered" >		if ( err ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw err;</span>
@@ -577,7 +587,7 @@ setReadOnly( Random.prototype, 'generate', <span class="fstat-no" title="functio
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	ctor = ctors( dt );</span>
 <span class="cstat-no" title="statement not covered" >	out = new ctor( len );</span>
-<span class="cstat-no" title="statement not covered" >	unary( [ [ param1 ], out ], [ len ], [ 0, 1 ], prng );</span>
+<span class="cstat-no" title="statement not covered" >	ternary( [ [ param1 ], [ param2 ], [ param3 ], out ], [ len ], [ 0, 0, 0, 1 ], prng ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	return out;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
@@ -587,45 +597,47 @@ setReadOnly( Random.prototype, 'generate', <span class="fstat-no" title="functio
 <span class="cstat-no" title="statement not covered" >	* @returns {*} pseudorandom value</span>
 <span class="cstat-no" title="statement not covered" >	*/</span>
 <span class="cstat-no" title="statement not covered" >	function wrapper() {</span>
-<span class="cstat-no" title="statement not covered" >		return prng( param1 );</span>
+<span class="cstat-no" title="statement not covered" >		return prng( param1, param2, param3 );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 });
 &nbsp;
 /**
-* Fills an array with pseudorandom values drawn from a unary PRNG.
+* Fills an array with pseudorandom values drawn from a ternary PRNG.
 *
 * @name assign
 * @memberof Random.prototype
 * @type {Function}
-* @param {*} param1 - PRNG parameter
+* @param {*} param1 - first PRNG parameter
+* @param {*} param2 - second PRNG parameter
+* @param {*} param3 - third PRNG parameter
 * @param {Collection} out - output array
-* @throws {TypeError} second argument must be a collection
+* @throws {TypeError} fourth argument must be a collection
 * @returns {Collection} output array
 *
 * @example
-* var exponential = require( '@stdlib/random/base/exponential' );
+* var triangular = require( '@stdlib/random/base/triangular' );
 * var zeros = require( '@stdlib/array/zeros' );
 *
 * var dtypes = [ 'float64', 'float32', 'generic' ];
 * var defaultDType = 'float64';
 *
-* var rand = new Random( exponential, dtypes, defaultDType );
+* var rand = new Random( triangular, dtypes, defaultDType );
 *
 * var out = zeros( 10, 'float64' );
 * // returns &lt;Float64Array&gt;
 *
-* var v = rand.assign( 2.0, out );
+* var v = rand.assign( 2.0, 5.0, 3.33, out );
 * // returns &lt;Float64Array&gt;
 *
 * var bool = ( v === out );
 * // returns true
 */
-setReadOnly( Random.prototype, 'assign', <span class="fstat-no" title="function not covered" >function assign( param1, out ) {</span>
+setReadOnly( Random.prototype, 'assign', <span class="fstat-no" title="function not covered" >function assign( param1, param2, param3, out ) {</span>
 <span class="cstat-no" title="statement not covered" >	if ( !isCollection( out ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an array-like object. Value: `%s`.', out ) );</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Third argument must be an array-like object. Value: `%s`.', out ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// NOTE: we could alternatively use the PRNG factory function to create a nullary PRNG function which applies parameters for each invocation; however, this would impose a one-time cost which is likely to be rather expensive when filling small arrays. The decision made here avoids this cost, despite a small cost due to repeatedly validating parameters for each generated pseudorandom value. Additionally, the current implementation has the added benefit that it mirrors the underlying PRNG where invalid parameters result in, e.g., a return value of `NaN` (however, realization of this benefit depends on the output array being a floating-point array).</span>
-<span class="cstat-no" title="statement not covered" >	unary( [ [ param1 ], out ], [ out.length ], [ 0, 1 ], this._prng );</span>
+<span class="cstat-no" title="statement not covered" >	ternary( [ [ param1 ], [ param2 ], [ param3 ], out ], [ out.length ], [ 0, 0, 0, 1 ], this._prng ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	return out;</span>
 });
 &nbsp;
@@ -640,7 +652,7 @@ module.exports = Random;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-12T10:13:40.326Z
+                at 2024-01-12T10:13:38.154Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
