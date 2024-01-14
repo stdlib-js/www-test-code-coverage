@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">99.77% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2245/2250</span>
+                <span class='fraction'>2230/2235</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.78% </span>
+                <span class="strong">98.77% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>406/411</span>
+                <span class='fraction'>404/409</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>36/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">99.77% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2245/2250</span>
+                <span class='fraction'>2230/2235</span>
             </div>
         
             
@@ -2298,22 +2298,8 @@
 <a name='L2233'></a><a href='#L2233'>2233</a>
 <a name='L2234'></a><a href='#L2234'>2234</a>
 <a name='L2235'></a><a href='#L2235'>2235</a>
-<a name='L2236'></a><a href='#L2236'>2236</a>
-<a name='L2237'></a><a href='#L2237'>2237</a>
-<a name='L2238'></a><a href='#L2238'>2238</a>
-<a name='L2239'></a><a href='#L2239'>2239</a>
-<a name='L2240'></a><a href='#L2240'>2240</a>
-<a name='L2241'></a><a href='#L2241'>2241</a>
-<a name='L2242'></a><a href='#L2242'>2242</a>
-<a name='L2243'></a><a href='#L2243'>2243</a>
-<a name='L2244'></a><a href='#L2244'>2244</a>
-<a name='L2245'></a><a href='#L2245'>2245</a>
-<a name='L2246'></a><a href='#L2246'>2246</a>
-<a name='L2247'></a><a href='#L2247'>2247</a>
-<a name='L2248'></a><a href='#L2248'>2248</a>
-<a name='L2249'></a><a href='#L2249'>2249</a>
-<a name='L2250'></a><a href='#L2250'>2250</a>
-<a name='L2251'></a><a href='#L2251'>2251</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">44x</span>
+<a name='L2236'></a><a href='#L2236'>2236</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
@@ -2416,22 +2402,6 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">122x</span>
 <span class="cline-any cline-yes">122x</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">106x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
@@ -4599,6 +4569,7 @@ var isComplexLike = require( '@stdlib/assert/is-complex-like' );
 var isEven = require( '@stdlib/math/base/assert/is-even' );
 var isInteger = require( '@stdlib/math/base/assert/is-integer' );
 var isComplex64Array = require( '@stdlib/array/base/assert/is-complex64array' );
+var isComplex128Array = require( '@stdlib/array/base/assert/is-complex128array' );
 var hasIteratorSymbolSupport = require( '@stdlib/assert/has-iterator-symbol-support' );
 var ITERATOR_SYMBOL = require( '@stdlib/symbol/iterator' );
 var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
@@ -4664,22 +4635,6 @@ function isComplexArrayConstructor( value ) {
 &nbsp;
 		// NOTE: weaker test in order to avoid a circular dependency with Complex64Array...
 		value.name === 'Complex64Array'
-	);
-}
-&nbsp;
-/**
-* Returns a boolean indicating if a value is a `Complex128Array`.
-*
-* @private
-* @param {*} value - value to test
-* @returns {boolean} boolean indicating if a value is a `Complex128Array`
-*/
-function isComplex128Array( value ) {
-	return (
-		typeof value === 'object' &amp;&amp;
-		value !== null &amp;&amp;
-		value.constructor.name === 'Complex128Array' &amp;&amp;
-		value.BYTES_PER_ELEMENT === BYTES_PER_ELEMENT
 	);
 }
 &nbsp;
@@ -6820,7 +6775,7 @@ module.exports = Complex128Array;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-14T07:13:22.316Z
+                at 2024-01-14T07:22:49.297Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
