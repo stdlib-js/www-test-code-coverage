@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for number/float32/base/assert/lib/index.js</title>
+    <title>Code coverage report for number/float32/base/assert/is-same-value-zero/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">number/float32/base/assert/lib</a> index.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">number/float32/base/assert/is-same-value-zero/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -121,9 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -173,11 +171,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -203,46 +199,44 @@
 &nbsp;
 'use strict';
 &nbsp;
-/*
-* When adding modules to the namespace, ensure that they are added in alphabetical order according to module name.
-*/
-&nbsp;
-// MODULES //
-&nbsp;
-var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
-&nbsp;
-&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Top-level namespace.
+* Tests if two single-precision floating-point numbers are the same value.
 *
-* @namespace ns
+* ## Notes
+*
+* -   The function implements the SameValueZero Algorithm used by `TypedArray` and `ArrayBuffer` constructors, `Map` and `Set` operations, `String.prototype.includes`, and `Array.prototype.includes` since ES2016.
+* -   In contrast to the strict equality operator `===`, `NaNs` are considered the same value.
+*
+* @param {number} a - first input value
+* @param {number} b - second input value
+* @returns {boolean} boolean indicating whether two single-precision floating-point numbers are the same value
+*
+* @example
+* var bool = isSameValueZerof( 3.14, 3.14 );
+* // returns true
+*
+* @example
+* var bool = isSameValueZerof( -0.0, -0.0 );
+* // returns true
+*
+* @example
+* var bool = isSameValueZerof( -0.0, 0.0 );
+* // returns true
+*
+* @example
+* var bool = isSameValueZerof( NaN, NaN );
+* // returns true
 */
-var ns = {};
-&nbsp;
-/**
-* @name isSameValuef
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/number/float32/base/assert/is-same-value}
-*/
-setReadOnly( ns, 'isSameValuef', require( '@stdlib/number/float32/base/assert/is-same-value' ) );
-&nbsp;
-/**
-* @name isSameValueZerof
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/number/float32/base/assert/is-same-value-zero}
-*/
-setReadOnly( ns, 'isSameValueZerof', require( '@stdlib/number/float32/base/assert/is-same-value-zero' ) );
+function isSameValueZerof( a, b ) {
+	return ( a === b ) || ( a !== a &amp;&amp; b !== b ); // handles NaNs
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = ns;
+module.exports = isSameValueZerof;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -250,16 +244,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-17T03:10:03.880Z
+                at 2024-01-17T03:10:01.861Z
             </div>
-        <script src="../../../../../prettify.js"></script>
+        <script src="../../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../../sorter.js"></script>
-        <script src="../../../../../block-navigation.js"></script>
+        <script src="../../../../../../sorter.js"></script>
+        <script src="../../../../../../block-navigation.js"></script>
     </body>
 </html>
     
