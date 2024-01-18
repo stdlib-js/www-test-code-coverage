@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/base/invgamma/lib/validate.js</title>
+    <title>Code coverage report for random/base/lognormal/lib/lognormal.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/invgamma/lib</a> validate.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/lognormal/lib</a> lognormal.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>44/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>44/44</span>
             </div>
         
             
@@ -107,19 +107,7 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -155,21 +143,9 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">33x</span>
-<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">2600x</span>
+<span class="cline-any cline-yes">2600x</span>
+<span class="cline-any cline-yes">2600x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -197,40 +173,28 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isPositive = require( '@stdlib/assert/is-positive-number' ).isPrimitive;
-var format = require( '@stdlib/string/format' );
+var exp = require( '@stdlib/math/base/special/exp' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Validates parameters.
+* Returns a log-normally distributed pseudorandom number.
 *
 * @private
-* @param {PositiveNumber} alpha - shape parameter
-* @param {PositiveNumber} beta - scale parameter
-* @returns {(Error|null)} error or null
-*
-* @example
-* var err = validate( 1.0, 2.0 );
-* if ( err ) {
-*     throw err;
-* }
+* @param {PRNG} randn - PRNG for standard normally distributed numbers
+* @param {number} mu - location parameter
+* @param {PositiveNumber} sigma - scale parameter
+* @returns {PositiveNumber} pseudorandom number
 */
-function validate( alpha, beta ) {
-	if ( !isPositive( alpha ) ) {
-		return new TypeError( format( 'invalid argument. First argument must be a positive number. Value: `%s`.', alpha ) );
-	}
-	if ( !isPositive( beta ) ) {
-		return new TypeError( format( 'invalid argument. Second argument must be a positive number. Value: `%s`.', beta ) );
-	}
-	return null;
+function lognormal( randn, mu, sigma ) {
+	return exp( mu + (sigma*randn()) );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = validate;
+module.exports = lognormal;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -238,7 +202,7 @@ module.exports = validate;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-18T08:13:36.304Z
+                at 2024-01-18T08:13:40.317Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
