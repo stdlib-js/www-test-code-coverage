@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/zero-to-like/lib/main.js</title>
+    <title>Code coverage report for random/base/levy/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">array/zero-to-like/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/levy/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>65/65</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>65/65</span>
             </div>
         
             
@@ -124,7 +124,11 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -170,16 +174,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,7 +196,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -205,47 +213,51 @@
 &nbsp;
 'use strict';
 &nbsp;
+/**
+* Lévy distributed pseudorandom numbers.
+*
+* @module @stdlib/random/base/levy
+*
+* @example
+* var levy = require( '@stdlib/random/base/levy' );
+*
+* var v = levy( 0.5, 1.0 );
+* // returns &lt;number&gt;
+*
+* @example
+* var factory = require( '@stdlib/random/base/levy' ).factory;
+* var levy = factory( 3.0, 2.0, {
+*     'seed': 297
+* });
+*
+* var v = levy();
+* // returns &lt;number&gt;
+*
+* @example
+* var factory = require( '@stdlib/random/base/levy' ).factory;
+* var levy = factory({
+*     'seed': 297
+* });
+*
+* var v = levy( 3.0, 2.0 );
+* // returns &lt;number&gt;
+*/
+&nbsp;
 // MODULES //
 &nbsp;
-var zeroTo = require( '@stdlib/array/zero-to' );
-var dtype = require( '@stdlib/array/dtype' );
-var format = require( '@stdlib/string/format' );
+var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
+var main = require( './main.js' );
+var factory = require( './factory.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-/**
-* Generates a linearly spaced numeric array whose elements increment by 1 starting from zero and having the same length and data type as a provided input array.
-*
-* @param {(TypedArray|Array|ComplexArray)} x - input array
-* @param {string} [dtype="float64"] - data type
-* @throws {TypeError} first argument must be an array or typed array
-* @throws {TypeError} second argument must be a recognized data type
-* @returns {(TypedArray|Array|ComplexArray)} array or typed array
-*
-* @example
-* var arr = zeroToLike( [ 0.0, 0.0 ] );
-* // returns [ 0.0, 1.0 ]
-*
-* @example
-* var arr = zeroToLike( [ 0.0, 0.0 ], 'float32' );
-* // returns &lt;Float32Array&gt;[ 0.0, 1.0 ]
-*/
-function zeroToLike( x ) {
-	var dt = dtype( x ); // delegate input argument validation to dtype resolution
-	if ( dt === null ) {
-		throw new TypeError( format( 'invalid argument. First argument must be either an array, typed array, or complex typed array. Value: `%s`.', x ) );
-	}
-	if ( arguments.length &gt; 1 ) {
-		dt = arguments[ 1 ];
-	}
-	return zeroTo( x.length, dt );
-}
+setReadOnly( main, 'factory', factory );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = zeroToLike;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -253,16 +265,16 @@ module.exports = zeroToLike;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-19T02:36:16.213Z
+                at 2024-01-19T02:36:24.030Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
     </body>
 </html>
     
