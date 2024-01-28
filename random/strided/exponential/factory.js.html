@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/strided/exponential/lib/index.js</title>
+    <title>Code coverage report for random/strided/exponential/lib/factory.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/strided/exponential/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/strided/exponential/lib</a> factory.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
@@ -126,7 +126,9 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -209,49 +211,50 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Fill a strided array with pseudorandom numbers drawn from an exponential distribution.
-*
-* @module @stdlib/random/strided/exponential
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var exponential = require( '@stdlib/random/strided/exponential' );
-*
-* // Create an array:
-* var out = new Float64Array( 10 );
-*
-* // Fill the array with pseudorandom numbers:
-* exponential( out.length, [ 2.0 ], 0, out, 1 );
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var exponential = require( '@stdlib/random/strided/exponential' );
-*
-* // Create an array:
-* var out = new Float64Array( 10 );
-*
-* // Fill the array with pseudorandom numbers:
-* exponential.ndarray( out.length, [ 2.0 ], 0, 0, out, 1, 0 );
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
-var main = require( './main.js' );
-var factory = require( './factory.js' );
+var unaryFactory = require( '@stdlib/random/strided/tools/unary-factory' );
+var base = require( '@stdlib/random/base/exponential' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-setReadOnly( main, 'factory', factory );
+/**
+* Returns a function for filling strided arrays containing pseudorandom numbers drawn from an exponential distribution.
+*
+* @name factory
+* @type {Function}
+* @param {Options} [options] - function options
+* @param {PRNG} [options.prng] - pseudorandom number generator which generates uniformly distributed pseudorandom numbers
+* @param {PRNGSeedMT19937} [options.seed] - pseudorandom number generator seed
+* @param {PRNGStateMT19937} [options.state] - pseudorandom number generator state
+* @param {boolean} [options.copy=true] - boolean indicating whether to copy a provided pseudorandom number generator state
+* @throws {TypeError} options argument must be an object
+* @throws {TypeError} must provide valid options
+* @throws {Error} must provide a valid state
+* @returns {Function} function for filling strided arrays
+*
+* @example
+* var Float64Array = require( '@stdlib/array/float64' );
+*
+* var exponential = factory();
+* // returns &lt;Function&gt;
+*
+* var out = new Float64Array( 10 );
+* // returns &lt;Float64Array&gt;
+*
+* var arr = exponential( out.length, [ 2.0 ], 0, out, 1 );
+* // returns &lt;Float64Array&gt;
+*
+* var bool = ( arr === out );
+* // returns true
+*/
+var factory = unaryFactory( base );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
-&nbsp;
-// exports: { "factory": "main.factory", "ndarray": "main.ndarray" }
+module.exports = factory;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
