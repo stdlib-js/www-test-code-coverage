@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/strided/tools/unary-factory/lib/main.js</title>
+    <title>Code coverage report for random/strided/tools/binary-factory/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">random/strided/tools/unary-factory/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">random/strided/tools/binary-factory/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">34.78% </span>
+                <span class="strong">34.04% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>80/230</span>
+                <span class='fraction'>80/235</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">34.78% </span>
+                <span class="strong">34.04% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>80/230</span>
+                <span class='fraction'>80/235</span>
             </div>
         
             
@@ -293,7 +293,12 @@
 <a name='L228'></a><a href='#L228'>228</a>
 <a name='L229'></a><a href='#L229'>229</a>
 <a name='L230'></a><a href='#L230'>230</a>
-<a name='L231'></a><a href='#L231'>231</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -368,6 +373,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -553,26 +563,26 @@ var isMethodIn = require( '@stdlib/assert/is-method-in' );
 var isPlainObject = require( '@stdlib/assert/is-plain-object' );
 var constantFunction = require( '@stdlib/utils/constant-function' );
 var noop = require( '@stdlib/utils/noop' );
-var unary = require( '@stdlib/strided/base/unary' );
+var binary = require( '@stdlib/strided/base/binary' );
 var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a factory function for filling strided arrays with pseudorandom values drawn from a unary PRNG.
+* Returns a factory function for filling strided arrays with pseudorandom values drawn from a binary PRNG.
 *
-* @param {Function} prng - unary pseudorandom value generator
-* @param {Function} prng.factory - method which returns a new unary pseudorandom value generator
+* @param {Function} prng - binary pseudorandom value generator
+* @param {Function} prng.factory - method which returns a new binary pseudorandom value generator
 * @throws {TypeError} first argument must be a function
 * @throws {TypeError} first argument must have a `factory` method
 * @returns {Function} function which returns a function for filling strided arrays
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
-* var exponential = require( '@stdlib/random/base/exponential' );
+* var arcsine = require( '@stdlib/random/base/arcsine' );
 *
-* var factory = createFactory( exponential );
+* var factory = createFactory( arcsine );
 * // returns &lt;Function&gt;
 *
 * var random = factory();
@@ -581,13 +591,13 @@ var format = require( '@stdlib/string/format' );
 * var out = new Float64Array( 10 );
 * // returns &lt;Float64Array&gt;
 *
-* random( out.length, [ 2.0 ], 0, out, 1 );
+* random( out.length, [ 2.0 ], 0, [ 5.0 ], 0, out, 1 );
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
-* var exponential = require( '@stdlib/random/base/exponential' );
+* var arcsine = require( '@stdlib/random/base/arcsine' );
 *
-* var factory = createFactory( exponential );
+* var factory = createFactory( arcsine );
 * // returns &lt;Function&gt;
 *
 * var random = factory();
@@ -596,7 +606,7 @@ var format = require( '@stdlib/string/format' );
 * var out = new Float64Array( 10 );
 * // returns &lt;Float64Array&gt;
 *
-* random.ndarray( out.length, [ 2.0 ], 0, 0, out, 1, 0 );
+* random.ndarray( out.length, [ 2.0 ], 0, 0, [ 5.0 ], 0, 0, out, 1, 0 );
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function createFactory( prng ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isFunction( prng ) ) {</span>
@@ -657,14 +667,16 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		*</span>
 <span class="cstat-no" title="statement not covered" >		* @private</span>
 <span class="cstat-no" title="statement not covered" >		* @param {NonNegativeInteger} N - number of indexed elements</span>
-<span class="cstat-no" title="statement not covered" >		* @param {Collection} param1 - PRNG parameter</span>
-<span class="cstat-no" title="statement not covered" >		* @param {integer} sp1 - PRNG parameter stride length</span>
+<span class="cstat-no" title="statement not covered" >		* @param {Collection} param1 - first PRNG parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {integer} sp1 - first PRNG parameter stride length</span>
+<span class="cstat-no" title="statement not covered" >		* @param {Collection} param2 - second PRNG parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {integer} sp2 - second PRNG parameter stride length</span>
 <span class="cstat-no" title="statement not covered" >		* @param {Collection} out - output array</span>
 <span class="cstat-no" title="statement not covered" >		* @param {integer} so - output array stride length</span>
 <span class="cstat-no" title="statement not covered" >		* @returns {Collection} output array</span>
 <span class="cstat-no" title="statement not covered" >		*/</span>
-<span class="cstat-no" title="statement not covered" >		function rand( N, param1, sp1, out, so ) {</span>
-<span class="cstat-no" title="statement not covered" >			unary( [ param1, out ], [ N ], [ sp1, so ], base );</span>
+<span class="cstat-no" title="statement not covered" >		function rand( N, param1, sp1, param2, sp2, out, so ) {</span>
+<span class="cstat-no" title="statement not covered" >			binary( [ param1, param2, out ], [ N ], [ sp1, sp2, so ], base );</span>
 <span class="cstat-no" title="statement not covered" >			return out;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -673,16 +685,19 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		*</span>
 <span class="cstat-no" title="statement not covered" >		* @private</span>
 <span class="cstat-no" title="statement not covered" >		* @param {NonNegativeInteger} N - number of indexed elements</span>
-<span class="cstat-no" title="statement not covered" >		* @param {Collection} param1 - PRNG parameter</span>
-<span class="cstat-no" title="statement not covered" >		* @param {integer} sp1 - PRNG parameter stride length</span>
-<span class="cstat-no" title="statement not covered" >		* @param {NonNegativeInteger} op1 - PRNG parameter starting index</span>
+<span class="cstat-no" title="statement not covered" >		* @param {Collection} param1 - first PRNG parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {integer} sp1 - first PRNG parameter stride length</span>
+<span class="cstat-no" title="statement not covered" >		* @param {NonNegativeInteger} op1 - first PRNG parameter starting index</span>
+<span class="cstat-no" title="statement not covered" >		* @param {Collection} param2 - second PRNG parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {integer} sp2 - second PRNG parameter stride length</span>
+<span class="cstat-no" title="statement not covered" >		* @param {NonNegativeInteger} op2 - second PRNG parameter starting index</span>
 <span class="cstat-no" title="statement not covered" >		* @param {Collection} out - output array</span>
 <span class="cstat-no" title="statement not covered" >		* @param {integer} so - output array stride length</span>
 <span class="cstat-no" title="statement not covered" >		* @param {NonNegativeInteger} oo - output array starting index</span>
 <span class="cstat-no" title="statement not covered" >		* @returns {Collection} output array</span>
 <span class="cstat-no" title="statement not covered" >		*/</span>
-<span class="cstat-no" title="statement not covered" >		function ndarray( N, param1, sp1, op1, out, so, oo ) {</span>
-<span class="cstat-no" title="statement not covered" >			unary.ndarray( [ param1, out ], [ N ], [ sp1, so ], [ op1, oo ], base ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >		function ndarray( N, param1, sp1, op1, param2, sp2, op2, out, so, oo ) {</span>
+<span class="cstat-no" title="statement not covered" >			binary.ndarray( [ param1, param2, out ], [ N ], [ sp1, sp2, so ], [ op1, op2, oo ], base ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >			return out;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -760,7 +775,7 @@ module.exports = createFactory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-28T08:30:52.115Z
+                at 2024-01-28T08:30:49.795Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
