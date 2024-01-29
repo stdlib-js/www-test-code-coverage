@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/base/poisson/lib/knuth.js</title>
+    <title>Code coverage report for random/base/gumbel/lib/validate.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/poisson/lib</a> knuth.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/gumbel/lib</a> validate.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -120,7 +120,8 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -163,15 +164,16 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1701x</span>
-<span class="cline-any cline-yes">1701x</span>
-<span class="cline-any cline-yes">1701x</span>
-<span class="cline-any cline-yes">1701x</span>
-<span class="cline-any cline-yes">16162x</span>
-<span class="cline-any cline-yes">16162x</span>
-<span class="cline-any cline-yes">16162x</span>
-<span class="cline-any cline-yes">1701x</span>
-<span class="cline-any cline-yes">1701x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">53x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -199,41 +201,42 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var exp = require( '@stdlib/math/base/special/exp' );
+var isNumber = require( '@stdlib/assert/is-number' ).isPrimitive;
+var isPositive = require( '@stdlib/assert/is-positive-number' ).isPrimitive;
+var format = require( '@stdlib/string/format' );
+var isnan = require( '@stdlib/assert/is-nan' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a pseudorandom number drawn from a Poisson distribution.
-*
-* ## Notes
-*
-* -   Appropriate for \\(lambda &lt; 30\\).
-*
-* ## References
-*
-* -   Knuth, Donald E. 1997. _The Art of Computer Programming, Volume 2 (3rd Ed.): Seminumerical Algorithms_. Boston, MA, USA: Addison-Wesley Longman Publishing Co., Inc.
+* Validates parameters.
 *
 * @private
-* @param {PRNG} rand - PRNG for generating uniformly distributed numbers
-* @param {PositiveNumber} lambda - mean
-* @returns {NonNegativeInteger} pseudorandom number
+* @param {number} mu - mean
+* @param {PositiveNumber} beta - shape parameter
+* @returns {(Error|null)} error or null
+*
+* @example
+* var err = validate( 1.0, 2.0 );
+* if ( err ) {
+*     throw err;
+* }
 */
-function poisson( rand, lambda ) {
-	var p = rand();
-	var k = 1;
-	while ( p &gt; exp( -lambda ) ) {
-		k += 1;
-		p *= rand();
+function validate( mu, beta ) {
+	if ( !isNumber( mu ) || isnan( mu ) ) {
+		return new TypeError( format( 'invalid argument. First argument must be a number and not NaN. Value: `%s`.', mu ) );
 	}
-	return k - 1;
+	if ( !isPositive( beta ) ) {
+		return new TypeError( format( 'invalid argument. Second argument must be a positive number. Value: `%s`.', beta ) );
+	}
+	return null;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = poisson;
+module.exports = validate;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -241,7 +244,7 @@ module.exports = poisson;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-29T02:34:50.492Z
+                at 2024-01-29T02:34:44.907Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
