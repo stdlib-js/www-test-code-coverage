@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/one-to-like/lib/main.js</title>
+    <title>Code coverage report for math/base/special/copysign/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">array/one-to-like/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/copysign/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>52/52</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>52/52</span>
             </div>
         
             
@@ -115,16 +115,7 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -170,16 +161,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,7 +170,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -205,47 +187,38 @@
 &nbsp;
 'use strict';
 &nbsp;
+/**
+* Return a double-precision floating-point number with the magnitude of `x` and the sign of `y`.
+*
+* @module @stdlib/math/base/special/copysign
+*
+* @example
+* var copysign = require( '@stdlib/math/base/special/copysign' );
+*
+* var z = copysign( -3.14, 10.0 );
+* // returns 3.14
+*
+* z = copysign( 3.14, -1.0 );
+* // returns -3.14
+*
+* z = copysign( 1.0, -0.0 );
+* // returns -1.0
+*
+* z = copysign( -3.14, -0.0 );
+* // returns -3.14
+*
+* z = copysign( -0.0, 1.0 );
+* // returns 0.0
+*/
+&nbsp;
 // MODULES //
 &nbsp;
-var oneTo = require( '@stdlib/array/one-to' );
-var dtype = require( '@stdlib/array/dtype' );
-var format = require( '@stdlib/string/format' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
-/**
-* Generates a linearly spaced numeric array whose elements increment by 1 starting from one and having the same length and data type as a provided input array.
-*
-* @param {(TypedArray|Array|ComplexArray)} x - input array
-* @param {string} [dtype="float64"] - data type
-* @throws {TypeError} first argument must be an array or typed array
-* @throws {TypeError} second argument must be a recognized data type
-* @returns {(TypedArray|Array|ComplexArray)} array or typed array
-*
-* @example
-* var arr = oneToLike( [ 0.0, 0.0 ] );
-* // returns [ 1.0, 2.0 ]
-*
-* @example
-* var arr = oneToLike( [ 0.0, 0.0 ], 'float32' );
-* // returns &lt;Float32Array&gt;[ 1.0, 2.0 ]
-*/
-function oneToLike( x ) {
-	var dt = dtype( x ); // delegate input argument validation to dtype resolution
-	if ( dt === null ) {
-		throw new TypeError( format( 'invalid argument. First argument must be either an array, typed array, or complex typed array. Value: `%s`.', x ) );
-	}
-	if ( arguments.length &gt; 1 ) {
-		dt = arguments[ 1 ];
-	}
-	return oneTo( x.length, dt );
-}
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = oneToLike;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -253,16 +226,16 @@ module.exports = oneToLike;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-30T03:03:19.132Z
+                at 2024-01-30T03:04:01.894Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     
