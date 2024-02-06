@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>158/158</span>
+                <span class='fraction'>137/137</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>158/158</span>
+                <span class='fraction'>137/137</span>
             </div>
         
             
@@ -200,28 +200,7 @@
 <a name='L135'></a><a href='#L135'>135</a>
 <a name='L136'></a><a href='#L136'>136</a>
 <a name='L137'></a><a href='#L137'>137</a>
-<a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a>
-<a name='L146'></a><a href='#L146'>146</a>
-<a name='L147'></a><a href='#L147'>147</a>
-<a name='L148'></a><a href='#L148'>148</a>
-<a name='L149'></a><a href='#L149'>149</a>
-<a name='L150'></a><a href='#L150'>150</a>
-<a name='L151'></a><a href='#L151'>151</a>
-<a name='L152'></a><a href='#L152'>152</a>
-<a name='L153'></a><a href='#L153'>153</a>
-<a name='L154'></a><a href='#L154'>154</a>
-<a name='L155'></a><a href='#L155'>155</a>
-<a name='L156'></a><a href='#L156'>156</a>
-<a name='L157'></a><a href='#L157'>157</a>
-<a name='L158'></a><a href='#L158'>158</a>
-<a name='L159'></a><a href='#L159'>159</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L138'></a><a href='#L138'>138</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -270,27 +249,6 @@
 <span class="cline-any cline-yes">93x</span>
 <span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">93x</span>
@@ -404,7 +362,7 @@
 var args2multislice = require( '@stdlib/slice/base/args2multislice' );
 var Slice = require( '@stdlib/slice/ctor' );
 var normalizeSlice = require( '@stdlib/slice/base/normalize-slice' );
-var eOutOfBounds = require( './error_out_of_bounds.js' );
+var int2slice = require( '@stdlib/slice/base/int2slice' );
 &nbsp;
 &nbsp;
 // FUNCTIONS //
@@ -426,28 +384,7 @@ function normalize( value, len, strict ) {
 	}
 	// Case: integer
 	if ( typeof value === 'number' ) {
-		// If a value exceeds the last possible index, create an "empty" slice...
-		if ( value &gt;= len ) {
-			if ( strict ) {
-				return eOutOfBounds();
-			}
-			return new Slice( len, len, 1 );
-		}
-		// Check whether we need to resolve a slice relative to the last possible index...
-		if ( value &lt; 0 ) {
-			value = len + value;
-&nbsp;
-			// If a value exceeds the first index, create an "empty" slice...
-			if ( value &lt; 0 ) {
-				if ( strict ) {
-					return eOutOfBounds();
-				}
-				return new Slice( 0, 0, 1 );
-			}
-			return new Slice( value, value+1, 1 ); // e.g., Slice( 2, 3, 1 ), which is the slice equivalent of only selecting the second row
-		}
-		// 0 &lt;= s &lt; N
-		return new Slice( value, value+1, 1 );
+		return int2slice( value, len, strict );
 	}
 	// Case: slice
 	return normalizeSlice( value, len, strict );
@@ -544,7 +481,7 @@ module.exports = normalizeMultiSlice;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-14T20:37:43.611Z
+                at 2024-02-06T02:51:39.111Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
