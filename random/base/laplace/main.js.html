@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/base/improved-ziggurat/lib/main.js</title>
+    <title>Code coverage report for random/base/laplace/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/improved-ziggurat/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/laplace/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>76/76</span>
+                <span class='fraction'>50/50</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>76/76</span>
+                <span class='fraction'>50/50</span>
             </div>
         
             
@@ -113,59 +113,7 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -243,54 +191,28 @@ var factory = require( './factory.js' );
 // MAIN //
 &nbsp;
 /**
-* Generates a standard normally distributed random number.
+* Returns a pseudorandom number drawn from a Laplace (double exponential) distribution.
 *
-* ## Method
-*
-* The basic Ziggurat method works as follows:
-*
-*     ```tex
-*     x_{C-1}(r) \left[ f(0) - f\left( x_{C-1}(r) \right) \right] - V(r) = 0
-*     ```
-*
-*     where
-*
-*     ```tex
-*     V(r) = r \; f(r) + \int_r^\infty \; f(x) \; dx
-*     ```
-*
-*     and \\( r \\) denotes the right-most \\( x_1 \\).
-*
-* -   We then use the following rejection algorithm:
-*
-*     -   Draw a box \\( B_i \\) at random with probability \\( \tfrac{1}{C} \\).
-*     -   Draw a random number from the box as \\( z = U_0 x_i \\) for \\( i &gt; 0 \\) and \\( z = U_0 V / f(x_1) \\).
-*     -   If \\( z &lt; x_{i+1} \\), accept \\( z \\).
-*     -   If \\( i = 0 \\), accept a \\( v \\) by transforming the tail of the normal distribution to the unit interval and then use rejection technique by Marsaglia, G. (1964) to generate a standard normal variable. Otherwise, if \\( i &gt; 0 \\) and \\( U_1 \left[ f(x_i) - f(x_{i+1})\right] &lt; f(z) - f(x_{i+1}) \\) accept \\( z \\).
-*     -   Go back to the first step.
-*
-* -   The improved version by Doornik (2005) changes step four in order to correct a deficiency of the original Ziggurat algorithm. The updated version requires the generation of two random numbers, a uniform variable drawn from \\( U(-1,1) \\) and the last seven bits of a random integer.
-*
-* ## References
-*
-* -   Doornik, Jurgen A. 2005. "An Improved Ziggurat Method to Generate Normal Random Samples." &lt;https://www.doornik.com/research/ziggurat.pdf&gt;.
-* -   Marsaglia, George, and Wai Wan Tsang. 2000. "The Ziggurat Method for Generating Random Variables." _Journal of Statistical Software_ 5 (1): 1–7. doi:[10.18637/jss.v005.i08](http://dx.doi.org/10.18637/jss.v005.i08).
-* -   Marsaglia, George. 1964. "Generating a Variable from the Tail of the Normal Distribution." _Technometrics_ 6 (1): 101–2. doi:[10.1080/00401706.1964.10490150](http://dx.doi.org/10.1080/00401706.1964.10490150).
-*
-* @name randn
+* @name laplace
 * @type {PRNG}
+* @param {number} mu - mean
+* @param {PositiveNumber} b - scale parameter
 * @returns {number} pseudorandom number
 *
 * @example
-* var r = randn();
+* var v = laplace( 0.0, 2.0 );
 * // returns &lt;number&gt;
+*
+* @example
+* var v = laplace( 0.0, -1.0 );
+* // returns NaN
 */
-var randn = factory();
+var laplace = factory();
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = randn;
+module.exports = laplace;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -298,7 +220,7 @@ module.exports = randn;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-14T02:41:16.023Z
+                at 2024-02-14T02:41:19.975Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
