@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>838/838</span>
+                <span class='fraction'>847/847</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>838/838</span>
+                <span class='fraction'>847/847</span>
             </div>
         
             
@@ -57,7 +57,7 @@
         <template id="filterTemplate">
             <div class="quiet">
                 Filter:
-                <input oninput="onInput()" type="search" id="fileSearch">
+                <input type="search" id="fileSearch">
             </div>
         </template>
     </div>
@@ -901,7 +901,25 @@
 <a name='L836'></a><a href='#L836'>836</a>
 <a name='L837'></a><a href='#L837'>837</a>
 <a name='L838'></a><a href='#L838'>838</a>
-<a name='L839'></a><a href='#L839'>839</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L839'></a><a href='#L839'>839</a>
+<a name='L840'></a><a href='#L840'>840</a>
+<a name='L841'></a><a href='#L841'>841</a>
+<a name='L842'></a><a href='#L842'>842</a>
+<a name='L843'></a><a href='#L843'>843</a>
+<a name='L844'></a><a href='#L844'>844</a>
+<a name='L845'></a><a href='#L845'>845</a>
+<a name='L846'></a><a href='#L846'>846</a>
+<a name='L847'></a><a href='#L847'>847</a>
+<a name='L848'></a><a href='#L848'>848</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1800,31 +1818,31 @@ setReadOnly( ns, 'base', require( '@stdlib/array/base' ) );
 setReadOnly( ns, 'ArrayBuffer', require( '@stdlib/array/buffer' ) );
 &nbsp;
 /**
-* @name acartesianPower
+* @name cartesianPower
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/cartesian-power}
 */
-setReadOnly( ns, 'acartesianPower', require( '@stdlib/array/cartesian-power' ) );
+setReadOnly( ns, 'cartesianPower', require( '@stdlib/array/cartesian-power' ) );
 &nbsp;
 /**
-* @name acartesianProduct
+* @name cartesianProduct
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/cartesian-product}
 */
-setReadOnly( ns, 'acartesianProduct', require( '@stdlib/array/cartesian-product' ) );
+setReadOnly( ns, 'cartesianProduct', require( '@stdlib/array/cartesian-product' ) );
 &nbsp;
 /**
-* @name acartesianSquare
+* @name cartesianSquare
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/cartesian-square}
 */
-setReadOnly( ns, 'acartesianSquare', require( '@stdlib/array/cartesian-square' ) );
+setReadOnly( ns, 'cartesianSquare', require( '@stdlib/array/cartesian-square' ) );
 &nbsp;
 /**
 * @name Complex64Array
@@ -1845,31 +1863,31 @@ setReadOnly( ns, 'Complex64Array', require( '@stdlib/array/complex64' ) );
 setReadOnly( ns, 'Complex128Array', require( '@stdlib/array/complex128' ) );
 &nbsp;
 /**
-* @name convertArray
+* @name convert
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/convert}
 */
-setReadOnly( ns, 'convertArray', require( '@stdlib/array/convert' ) );
+setReadOnly( ns, 'convert', require( '@stdlib/array/convert' ) );
 &nbsp;
 /**
-* @name convertArraySame
+* @name convertSame
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/convert-same}
 */
-setReadOnly( ns, 'convertArraySame', require( '@stdlib/array/convert-same' ) );
+setReadOnly( ns, 'convertSame', require( '@stdlib/array/convert-same' ) );
 &nbsp;
 /**
-* @name arrayCtors
+* @name ctors
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/ctors}
 */
-setReadOnly( ns, 'arrayCtors', require( '@stdlib/array/ctors' ) );
+setReadOnly( ns, 'ctors', require( '@stdlib/array/ctors' ) );
 &nbsp;
 /**
 * @name DataView
@@ -1890,67 +1908,67 @@ setReadOnly( ns, 'DataView', require( '@stdlib/array/dataview' ) );
 setReadOnly( ns, 'datespace', require( '@stdlib/array/datespace' ) );
 &nbsp;
 /**
-* @name arrayDefaults
+* @name defaults
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/defaults}
 */
-setReadOnly( ns, 'arrayDefaults', require( '@stdlib/array/defaults' ) );
+setReadOnly( ns, 'defaults', require( '@stdlib/array/defaults' ) );
 &nbsp;
 /**
-* @name arrayDataType
+* @name dtype
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/dtype}
 */
-setReadOnly( ns, 'arrayDataType', require( '@stdlib/array/dtype' ) );
+setReadOnly( ns, 'dtype', require( '@stdlib/array/dtype' ) );
 &nbsp;
 /**
-* @name arrayDataTypes
+* @name dtypes
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/dtypes}
 */
-setReadOnly( ns, 'arrayDataTypes', require( '@stdlib/array/dtypes' ) );
+setReadOnly( ns, 'dtypes', require( '@stdlib/array/dtypes' ) );
 &nbsp;
 /**
-* @name aempty
+* @name empty
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/empty}
 */
-setReadOnly( ns, 'aempty', require( '@stdlib/array/empty' ) );
+setReadOnly( ns, 'empty', require( '@stdlib/array/empty' ) );
 &nbsp;
 /**
-* @name aemptyLike
+* @name emptyLike
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/empty-like}
 */
-setReadOnly( ns, 'aemptyLike', require( '@stdlib/array/empty-like' ) );
+setReadOnly( ns, 'emptyLike', require( '@stdlib/array/empty-like' ) );
 &nbsp;
 /**
-* @name filledarray
+* @name filled
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/filled}
 */
-setReadOnly( ns, 'filledarray', require( '@stdlib/array/filled' ) );
+setReadOnly( ns, 'filled', require( '@stdlib/array/filled' ) );
 &nbsp;
 /**
-* @name filledarrayBy
+* @name filledBy
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/filled-by}
 */
-setReadOnly( ns, 'filledarrayBy', require( '@stdlib/array/filled-by' ) );
+setReadOnly( ns, 'filledBy', require( '@stdlib/array/filled-by' ) );
 &nbsp;
 /**
 * @name Float32Array
@@ -1989,22 +2007,22 @@ setReadOnly( ns, 'iterator2array', require( '@stdlib/array/from-iterator' ) );
 setReadOnly( ns, 'scalar2array', require( '@stdlib/array/from-scalar' ) );
 &nbsp;
 /**
-* @name afull
+* @name full
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/full}
 */
-setReadOnly( ns, 'afull', require( '@stdlib/array/full' ) );
+setReadOnly( ns, 'full', require( '@stdlib/array/full' ) );
 &nbsp;
 /**
-* @name afullLike
+* @name fullLike
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/full-like}
 */
-setReadOnly( ns, 'afullLike', require( '@stdlib/array/full-like' ) );
+setReadOnly( ns, 'fullLike', require( '@stdlib/array/full-like' ) );
 &nbsp;
 /**
 * @name incrspace
@@ -2070,85 +2088,94 @@ setReadOnly( ns, 'linspace', require( '@stdlib/array/linspace' ) );
 setReadOnly( ns, 'logspace', require( '@stdlib/array/logspace' ) );
 &nbsp;
 /**
-* @name arrayMinDataType
+* @name minDataType
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/min-dtype}
 */
-setReadOnly( ns, 'arrayMinDataType', require( '@stdlib/array/min-dtype' ) );
+setReadOnly( ns, 'minDataType', require( '@stdlib/array/min-dtype' ) );
 &nbsp;
 /**
-* @name arrayMostlySafeCasts
+* @name mostlySafeCasts
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/mostly-safe-casts}
 */
-setReadOnly( ns, 'arrayMostlySafeCasts', require( '@stdlib/array/mostly-safe-casts' ) );
+setReadOnly( ns, 'mostlySafeCasts', require( '@stdlib/array/mostly-safe-casts' ) );
 &nbsp;
 /**
-* @name anans
+* @name mskfilter
+* @memberof ns
+* @readonly
+* @constructor
+* @see {@link module:@stdlib/array/mskfilter}
+*/
+setReadOnly( ns, 'mskfilter', require( '@stdlib/array/mskfilter' ) );
+&nbsp;
+/**
+* @name nans
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/nans}
 */
-setReadOnly( ns, 'anans', require( '@stdlib/array/nans' ) );
+setReadOnly( ns, 'nans', require( '@stdlib/array/nans' ) );
 &nbsp;
 /**
-* @name anansLike
+* @name nansLike
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/nans-like}
 */
-setReadOnly( ns, 'anansLike', require( '@stdlib/array/nans-like' ) );
+setReadOnly( ns, 'nansLike', require( '@stdlib/array/nans-like' ) );
 &nbsp;
 /**
-* @name arrayNextDataType
+* @name nextDataType
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/next-dtype}
 */
-setReadOnly( ns, 'arrayNextDataType', require( '@stdlib/array/next-dtype' ) );
+setReadOnly( ns, 'nextDataType', require( '@stdlib/array/next-dtype' ) );
 &nbsp;
 /**
-* @name aoneTo
+* @name oneTo
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/one-to}
 */
-setReadOnly( ns, 'aoneTo', require( '@stdlib/array/one-to' ) );
+setReadOnly( ns, 'oneTo', require( '@stdlib/array/one-to' ) );
 &nbsp;
 /**
-* @name aoneToLike
+* @name oneToLike
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/one-to-like}
 */
-setReadOnly( ns, 'aoneToLike', require( '@stdlib/array/one-to-like' ) );
+setReadOnly( ns, 'oneToLike', require( '@stdlib/array/one-to-like' ) );
 &nbsp;
 /**
-* @name aones
+* @name ones
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/ones}
 */
-setReadOnly( ns, 'aones', require( '@stdlib/array/ones' ) );
+setReadOnly( ns, 'ones', require( '@stdlib/array/ones' ) );
 &nbsp;
 /**
-* @name aonesLike
+* @name onesLike
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/ones-like}
 */
-setReadOnly( ns, 'aonesLike', require( '@stdlib/array/ones-like' ) );
+setReadOnly( ns, 'onesLike', require( '@stdlib/array/ones-like' ) );
 &nbsp;
 /**
 * @name typedarraypool
@@ -2160,49 +2187,49 @@ setReadOnly( ns, 'aonesLike', require( '@stdlib/array/ones-like' ) );
 setReadOnly( ns, 'typedarraypool', require( '@stdlib/array/pool' ) );
 &nbsp;
 /**
-* @name arrayPromotionRules
+* @name promotionRules
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/promotion-rules}
 */
-setReadOnly( ns, 'arrayPromotionRules', require( '@stdlib/array/promotion-rules' ) );
+setReadOnly( ns, 'promotionRules', require( '@stdlib/array/promotion-rules' ) );
 &nbsp;
 /**
-* @name reviveTypedArray
+* @name typedarrayReviver
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/reviver}
 */
-setReadOnly( ns, 'reviveTypedArray', require( '@stdlib/array/reviver' ) );
+setReadOnly( ns, 'typedarrayReviver', require( '@stdlib/array/reviver' ) );
 &nbsp;
 /**
-* @name arraySafeCasts
+* @name safeCasts
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/safe-casts}
 */
-setReadOnly( ns, 'arraySafeCasts', require( '@stdlib/array/safe-casts' ) );
+setReadOnly( ns, 'safeCasts', require( '@stdlib/array/safe-casts' ) );
 &nbsp;
 /**
-* @name arraySameKindCasts
+* @name sameKindCasts
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/same-kind-casts}
 */
-setReadOnly( ns, 'arraySameKindCasts', require( '@stdlib/array/same-kind-casts' ) );
+setReadOnly( ns, 'sameKindCasts', require( '@stdlib/array/same-kind-casts' ) );
 &nbsp;
 /**
-* @name arrayShape
+* @name shape
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/shape}
 */
-setReadOnly( ns, 'arrayShape', require( '@stdlib/array/shape' ) );
+setReadOnly( ns, 'shape', require( '@stdlib/array/shape' ) );
 &nbsp;
 /**
 * @name SharedArrayBuffer
@@ -2214,22 +2241,22 @@ setReadOnly( ns, 'arrayShape', require( '@stdlib/array/shape' ) );
 setReadOnly( ns, 'SharedArrayBuffer', require( '@stdlib/array/shared-buffer' ) );
 &nbsp;
 /**
-* @name aslice
+* @name slice
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/slice}
 */
-setReadOnly( ns, 'aslice', require( '@stdlib/array/slice' ) );
+setReadOnly( ns, 'slice', require( '@stdlib/array/slice' ) );
 &nbsp;
 /**
-* @name atake
+* @name take
 * @memberof ns
 * @readonly
 * @type {Function}
 * @see {@link module:@stdlib/array/take}
 */
-setReadOnly( ns, 'atake', require( '@stdlib/array/take' ) );
+setReadOnly( ns, 'take', require( '@stdlib/array/take' ) );
 &nbsp;
 /**
 * @name circarray2iterator
@@ -2529,40 +2556,40 @@ setReadOnly( ns, 'Uint16Array', require( '@stdlib/array/uint16' ) );
 setReadOnly( ns, 'Uint32Array', require( '@stdlib/array/uint32' ) );
 &nbsp;
 /**
-* @name azeroTo
+* @name zeroTo
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/zero-to}
 */
-setReadOnly( ns, 'azeroTo', require( '@stdlib/array/zero-to' ) );
+setReadOnly( ns, 'zeroTo', require( '@stdlib/array/zero-to' ) );
 &nbsp;
 /**
-* @name azeroToLike
+* @name zeroToLike
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/zero-to-like}
 */
-setReadOnly( ns, 'azeroToLike', require( '@stdlib/array/zero-to-like' ) );
+setReadOnly( ns, 'zeroToLike', require( '@stdlib/array/zero-to-like' ) );
 &nbsp;
 /**
-* @name azeros
+* @name zeros
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/zeros}
 */
-setReadOnly( ns, 'azeros', require( '@stdlib/array/zeros' ) );
+setReadOnly( ns, 'zeros', require( '@stdlib/array/zeros' ) );
 &nbsp;
 /**
-* @name azerosLike
+* @name zerosLike
 * @memberof ns
 * @readonly
 * @constructor
 * @see {@link module:@stdlib/array/zeros-like}
 */
-setReadOnly( ns, 'azerosLike', require( '@stdlib/array/zeros-like' ) );
+setReadOnly( ns, 'zerosLike', require( '@stdlib/array/zeros-like' ) );
 &nbsp;
 /**
 * @name constants
@@ -2584,7 +2611,7 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-13T03:33:51.056Z
+                at 2024-02-20T08:40:49.321Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
