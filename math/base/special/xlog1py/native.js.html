@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/xlog1py/lib/index.js</title>
+    <title>Code coverage report for math/base/special/xlog1py/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/xlog1py/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/xlog1py/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>51/51</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>51/51</span>
             </div>
         
             
@@ -114,17 +114,7 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -167,19 +157,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2008x</span>
+<span class="cline-any cline-yes">2008x</span>
+<span class="cline-any cline-yes">2008x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,7 +168,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2024 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -205,42 +185,32 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute `x * ln(y+1)` so that the result is `0` if `x = 0`.
-*
-* @module @stdlib/math/base/special/xlog1py
-*
-* @example
-* var xlog1py = require( '@stdlib/math/base/special/xlog1py' );
-*
-* var out = xlog1py( 3.0, 2.0 );
-* // returns ~3.296
-*
-* out = xlog1py( 1.5, 5.9 );
-* // returns ~2.897
-*
-* out = xlog1py( 0.9, 1.0 );
-* // returns ~0.624
-*
-* out = xlog1py( 1.0, 0.0 );
-* // returns 0.0
-*
-* out = xlog1py( 0.0, -2.0 );
-* // returns 0.0
-*
-* out = xlog1py( 1.5, NaN );
-* // returns NaN
-*
-* out = xlog1py( 0.0, NaN );
-* // returns NaN
-*
-* out = xlog1py( NaN, 2.3 );
-* // returns NaN
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var xlog1py = require( './main.js' );
+var addon = require( './../src/addon.node' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
+/**
+* Computes `x * ln(y+1)` so that the result is `0` if `x = 0`.
+*
+* @private
+* @param {number} x - input value
+* @param {number} y - input value
+* @returns {number} function value
+*
+* @example
+* var v = xlog1py( 3.0, 2.0 );
+* // returns ~3.296
+*
+* @example
+* var v = xlog1py( 0.0, -2.0 );
+* // returns 0.0
+*/
+function xlog1py( x, y ) {
+	return addon( x, y );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
