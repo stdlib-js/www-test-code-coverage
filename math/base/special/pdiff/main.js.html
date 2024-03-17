@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/maxabs/lib/native.js</title>
+    <title>Code coverage report for math/base/special/pdiff/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/maxabs/lib</a> native.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/pdiff/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
@@ -122,7 +122,12 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -172,10 +177,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -184,7 +194,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -203,43 +213,48 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var addon = require( './../src/addon.node' );
+var isnan = require( '@stdlib/math/base/assert/is-nan' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the maximum absolute value.
+* Returns the positive difference between `x` and `y` if `x &gt; y`; otherwise, returns `0`.
 *
-* @private
 * @param {number} x - first number
 * @param {number} y - second number
-* @returns {number} maximum absolute value
+* @returns {number} positive difference
 *
 * @example
-* var v = maxabs( -4.2, 3.14 );
-* // returns 4.2
+* var v = pdiff( 5.9, 3.14 );
+* // returns 2.76
 *
 * @example
-* var v = maxabs( 0.0, -0.0 );
+* var v = pdiff( 3.14, 4.2 );
+* // returns 0.0
+*
+* @example
+* var v = pdiff( 3.14, NaN );
+* // returns NaN
+*
+* @example
+* var v = pdiff( -0.0, +0.0 );
 * // returns +0.0
-*
-* @example
-* var v = maxabs( 3.14, NaN );
-* // returns NaN
-*
-* @example
-* var v = maxabs( NaN, 5.0 );
-* // returns NaN
 */
-function maxabs( x, y ) {
-	return addon( x, y );
+function pdiff( x, y ) {
+	if ( isnan( x ) || isnan( y ) ) {
+		return NaN;
+	}
+	if ( x &gt; y ) {
+		return x - y;
+	}
+	return 0.0;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = maxabs;
+module.exports = pdiff;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -247,7 +262,7 @@ module.exports = maxabs;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-17T00:51:30.000Z
+                at 2024-03-17T00:52:36.574Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
