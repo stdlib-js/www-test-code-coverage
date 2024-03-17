@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for number/uint16/base/from-binary-string/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">number/uint16/base/from-binary-string/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>53/53</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>53/53</span>
             </div>
         
             
@@ -116,8 +116,7 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -162,10 +161,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,7 +172,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -191,40 +189,39 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MAIN //
-&nbsp;
 /**
-* Returns the last `n` UTF-16 code units of a string.
+* Create an unsigned 16-bit integer from a literal bit representation.
 *
-* @param {string} str - input string
-* @param {NonNegativeInteger} n - number of UTF-16 code units to return
-* @returns {string} output string
+* @module @stdlib/number/uint16/base/from-binary-string
 *
 * @example
-* var s = last( 'hello world', 1 );
-* // returns 'd'
+* var fromBinaryStringUint16 = require( '@stdlib/number/uint16/base/from-binary-string' );
 *
-* @example
-* var s = last( 'this is stdlib', 1 );
-* // returns 'b'
+* var bstr = '0101010101010101';
+* var val = fromBinaryStringUint16( bstr );
+* // returns 21845
 *
-* @example
-* var out = last( 'JavaScript', 6 );
-* // returns 'Script'
+* bstr = '0000000000000000';
+* val = fromBinaryStringUint16( bstr );
+* // returns 0
 *
-* @example
-* var out = last( 'New', 6 );
-* // returns 'New'
+* bstr = '0000000000000010';
+* val = fromBinaryStringUint16( bstr );
+* // returns 2
+*
+* bstr = '1111111111111111';
+* val = fromBinaryStringUint16( bstr );
+* // returns 65535
 */
-function last( str, n ) {
-	var len = str.length;
-	return str.substring( len - n, len );
-}
+&nbsp;
+// MODULES //
+&nbsp;
+var fromBinaryStringUint16 = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = last;
+module.exports = fromBinaryStringUint16;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -232,16 +229,16 @@ module.exports = last;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-17T02:36:48.747Z
+                at 2024-03-17T02:36:46.660Z
             </div>
-        <script src="prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="sorter.js"></script>
-        <script src="block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     
