@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/acscd/lib/main.js</title>
+    <title>Code coverage report for math/base/special/acscd/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/acscd/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/acscd/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>67/67</span>
+                <span class='fraction'>65/65</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>67/67</span>
+                <span class='fraction'>65/65</span>
             </div>
         
             
@@ -128,9 +128,7 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -187,8 +185,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6007x</span>
 <span class="cline-any cline-yes">6007x</span>
 <span class="cline-any cline-yes">6007x</span>
 <span class="cline-any cline-yes">6007x</span>
@@ -219,8 +215,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var rad2deg = require( '@stdlib/math/base/special/rad2deg' );
-var acsc = require( '@stdlib/math/base/special/acsc' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -256,8 +251,7 @@ var acsc = require( '@stdlib/math/base/special/acsc' );
 * // returns NaN
 */
 function acscd( x ) {
-	var rad = acsc( x );
-	return rad2deg( rad );
+	return addon( x );
 }
 &nbsp;
 &nbsp;
