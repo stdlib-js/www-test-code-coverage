@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for repl/lib/setdiff.js</title>
+    <title>Code coverage report for repl/lib/completer_preview.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">repl/lib</a> setdiff.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">repl/lib</a> completer_preview.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.95% </span>
+                <span class="strong">94.59% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>108/193</span>
+                <span class='fraction'>210/222</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">87.5% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>21/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.95% </span>
+                <span class="strong">94.59% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>108/193</span>
+                <span class='fraction'>210/222</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -256,7 +256,36 @@
 <a name='L191'></a><a href='#L191'>191</a>
 <a name='L192'></a><a href='#L192'>192</a>
 <a name='L193'></a><a href='#L193'>193</a>
-<a name='L194'></a><a href='#L194'>194</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -304,17 +333,29 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -325,6 +366,63 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">111x</span>
+<span class="cline-any cline-yes">111x</span>
+<span class="cline-any cline-yes">111x</span>
+<span class="cline-any cline-yes">111x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">264x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">264x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -335,6 +433,31 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">141x</span>
+<span class="cline-any cline-yes">141x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -347,6 +470,7 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">264x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -359,37 +483,11 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">266x</span>
+<span class="cline-any cline-yes">219x</span>
+<span class="cline-any cline-yes">219x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">266x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -397,53 +495,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">266x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -452,7 +510,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2019 The Stdlib Authors.
+* Copyright (c) 2024 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -467,181 +525,210 @@
 * limitations under the License.
 */
 &nbsp;
+/* eslint-disable no-restricted-syntax,  no-underscore-dangle, no-invalid-this */
+&nbsp;
 'use strict';
+&nbsp;
+// MODULES //
+&nbsp;
+var readline = require( 'readline' );
+var logger = require( 'debug' );
+var setNonEnumerableReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
+var repeat = require( '@stdlib/string/repeat' );
+var commonPrefix = require( './longest_common_prefix.js' );
+&nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
-var TYPE_SORT_ORDER = {
-	'number': 0,
-	'string': 1,
-	'symbol': 2
-};
+var debug = logger( 'repl:completer:preview' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the set difference between two similarly **sorted** lists.
-*
-* ## Notes
-*
-* -   The contents of the provided arrays are assumed to be either numbers, strings, or symbols.
-*
-* -   The lists are **expected** to be sorted not only, e.g., lexicographically, but also according to type in the **following** order: `numbers`, `strings`, and then `symbols`.
-*
-*     ```text
-*     A = [ 1, 2, 3, '1', '2', '3', Symbol('1'), Symbol('2'), Symbol('3') ]
-*     B = [ 1, 2, '1', '3', Symbol('2'), Symbol('3') ]
-*     // =&gt; [ 3, '2', Symbol('1') ]
-*     ```
+* Constructor for creating a preview completer.
 *
 * @private
-* @param {Array} A - first sorted list
-* @param {Array} B - second sorted list
-* @returns {Array} set difference
-*
-* @example
-* var out = setdiff( [ 1, 2, 3 ], [ 2, 4, 5 ] );
-* // returns [ 1, 3, 4, 5 ]
-*
-* @example
-* var out = setdiff( [ 1 ], [ 2, 4, 5 ] );
-* // returns [ 1, 2, 4, 5 ]
-*
-* @example
-* var out = setdiff( [ 1, 2, 3 ], [ 2 ] );
-* // returns [ 1, 3 ]
-*
-* @example
-* var out = setdiff( [ 1, 2, 3 ], [] );
-* // returns [ 1, 2, 3 ]
-*
-* @example
-* var out = setdiff( [], [ 2, 4, 5 ] );
-* // returns [ 2, 4, 5 ]
-*
-* @example
-* var out = setdiff( [ 1, 2, 3 ], [ 1, 2, 3 ] );
-* // returns []
-*
-* @example
-* var out = setdiff( [], [] );
-* // returns []
-*
-* @example
-* var out = setdiff( [ 1 ], [ 1 ] );
-* // returns []
-*
-* @example
-* var out = setdiff( [ 1, 2, 2, 3, 3 ], [ 2, 4, 5, 5 ] );
-* // returns [ 1, 2, 3, 3, 4, 5, 5 ]
-*
-* @example
-* var out = setdiff( [ 1, 2, 3 ], [ 4, 5 ] );
-* // returns [ 1, 2, 3, 4, 5 ]
-*
-* @example
-* var out = setdiff( [ 1, 2 ], [ 3, 4, 5 ] );
-* // returns [ 1, 2, 3, 4, 5 ]
-*
-* @example
-* var out = setdiff( [ 1, 2, 3, 7 ], [ 0, 1, 2, 4, 5 ] );
-* // returns [ 0, 3, 4, 5, 7 ]
-*
-* @example
-* var out = setdiff( [ 1, 2, 3, 7, 9 ], [ -2, -1, 0, 1, 2, 4, 5 ] );
-* // returns [ -2, -1, 0, 3, 4, 5, 7, 9 ]
+* @constructor
+* @param {Object} rli - readline instance
+* @param {Function} completer - function for generating possible completions
+* @param {WritableStream} ostream - writable stream
+* @returns {PreviewCompleter} completer instance
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function setdiff( A, B ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var out;</span>
-<span class="cstat-no" title="statement not covered" >	var la;</span>
-<span class="cstat-no" title="statement not covered" >	var lb;</span>
-<span class="cstat-no" title="statement not covered" >	var ta;</span>
-<span class="cstat-no" title="statement not covered" >	var tb;</span>
-<span class="cstat-no" title="statement not covered" >	var a;</span>
-<span class="cstat-no" title="statement not covered" >	var b;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" >	var j;</span>
-<span class="cstat-no" title="statement not covered" >	var k;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	la = A.length;</span>
-<span class="cstat-no" title="statement not covered" >	lb = B.length;</span>
-<span class="cstat-no" title="statement not covered" >	if ( la === 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		return B.slice();</span>
+function PreviewCompleter( rli, completer, ostream ) {
+	if ( !(this instanceof PreviewCompleter) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return new PreviewCompleter( rli, completer, ostream );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( lb === 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		return A.slice();</span>
+	debug( 'Creating a preview completer...' );
+&nbsp;
+	// Cache a reference to the provided readline interface:
+	this._rli = rli;
+&nbsp;
+	// Cache a reference to the output writable stream:
+	this._ostream = ostream;
+&nbsp;
+	// Cache a reference to the provided completer:
+	this._completer = completer;
+&nbsp;
+	// Create a callback for processing potential completion previews:
+	this._onCompletions = this._completionCallback();
+&nbsp;
+	// Initialize a buffer containing the currently displayed completion preview:
+	this._preview = '';
+&nbsp;
+	return this;
+}
+&nbsp;
+/**
+* Returns a callback for processing potential completion previews.
+*
+* @private
+* @name _completionCallback
+* @memberof PreviewCompleter.prototype
+* @returns {Function} completion callback
+*/
+setNonEnumerableReadOnly( PreviewCompleter.prototype, '_completionCallback', function completionCallback() {
+	var self = this;
+	return clbk;
+&nbsp;
+	/**
+	* Callback invoked upon resolving potential completion previews.
+	*
+	* @private
+	* @param {(Error|null)} error - error object
+	* @param {Array} completions - completion results
+	* @returns {void}
+	*/
+	function clbk( error, completions ) {
+		var prefix;
+		var list;
+		var N;
+&nbsp;
+		// Check whether we encountered an error when generating completions...
+		if ( error ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			debug( 'Encountered an error when generating completions. Unable to display a completion preview.' );</span>
+<span class="cstat-no" title="statement not covered" >			return;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+		list = completions[ 0 ];
+		if ( list.length === 0 ) {
+			debug( 'Unable to display a completion preview. No completion preview candidates.' );
+			self.clear();
+			return;
+		}
+		// Resolve a common prefix from the completion results:
+		prefix = commonPrefix( list ); // e.g., [ 'back', 'background', 'backward' ] =&gt; 'back'
+&nbsp;
+		// If the completion candidates do not have a common prefix, no completion preview to display, as we do not have a criteria for choosing one candidate over another...
+		if ( prefix === '' ) {
+			debug( 'Unable to display a completion preview. Completion candidates have no common prefix.' );
+			return;
+		}
+		// Extract the completion preview substring (e.g., if the current line is 'ba', preview should be 'ck'):
+		self._preview = prefix.substring( commonPrefix( prefix, completions[ 1 ] ).length ); // eslint-disable-line max-len
+&nbsp;
+		// If the substring is empty, nothing to display...
+		if ( self._preview === '' ) {
+			debug( 'Unable to display a completion preview. Exact match.' );
+			return;
+		}
+		debug( 'Completion preview: %s', self._preview );
+&nbsp;
+		// Compute the number of characters until the end of the line from the current cursor position:
+		N = self._rli.line.length - self._rli.cursor;
+&nbsp;
+		// Move the cursor to the end of the line:
+		readline.moveCursor( self._ostream, N );
+&nbsp;
+		// Append the completion preview to the current line (using ASCII color escape codes for displaying grey text):
+		self._ostream.write( '\u001b[90m' + self._preview + '\u001b[0m' );
+&nbsp;
+		// Move the cursor back to previous position:
+		readline.moveCursor( self._ostream, -self._preview.length-N );
+	}
+});
+&nbsp;
+/**
+* Clears a completion preview.
+*
+* @name clear
+* @memberof PreviewCompleter.prototype
+* @returns {void}
+*/
+setNonEnumerableReadOnly( PreviewCompleter.prototype, 'clear', function clear() {
+	var preview;
+	var N;
+&nbsp;
+	preview = this._preview;
+&nbsp;
+	// If no preview currently displayed, nothing to clear...
+	if ( preview === '' ) {
+		return;
+	}
+	debug( 'Clearing completion preview...' );
+&nbsp;
+	// Compute the number of character until the end of the line from the current cursor position:
+	N = this._rli.line.length - this._rli.cursor;
+&nbsp;
+	// Move the cursor to the end of the line:
+	readline.moveCursor( this._ostream, N );
+&nbsp;
+	// Replace the current display text with whitespace:
+	this._ostream.write( repeat( ' ', preview.length ) );
+&nbsp;
+	// Reset the cursor:
+	readline.moveCursor( this._ostream, -preview.length-N );
+&nbsp;
+	// Reset the completion preview buffer:
+	this._preview = '';
+});
+&nbsp;
+/**
+* Callback for handling a "keypress" event.
+*
+* @name onKeypress
+* @memberof PreviewCompleter.prototype
+* @param {string} data - input data
+* @param {Object} key - key object
+* @returns {void}
+*/
+setNonEnumerableReadOnly( PreviewCompleter.prototype, 'onKeypress', function onKeypress() {
+	this._completer( this._rli.line, this._onCompletions );
+});
+&nbsp;
+/**
+* Callback which should be invoked **before** a "keypress" event is processed by a readline interface.
+*
+* @name beforeKeypress
+* @memberof PreviewCompleter.prototype
+* @param {string} data - input data
+* @param {Object} key - key object
+* @returns {void}
+*/
+setNonEnumerableReadOnly( PreviewCompleter.prototype, 'beforeKeypress', function beforeKeypress( data, key ) {
+	if ( !key || this._preview === '' ) {
+		return;
+	}
+	// Handle the case where the user is not at the end of the line...
+	if ( this._rli.cursor !== this._rli.line.length ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		// If a user is in the middle of a line and presses ENTER, clear the preview string, as the preview was not accepted prior to executing the expression...</span>
+<span class="cstat-no" title="statement not covered" >		if ( key.name === 'return' || key.name === 'enter' ) {</span>
+<span class="cstat-no" title="statement not covered" >			debug( 'Received an ENTER keypress event while in the middle of the line.' );</span>
+<span class="cstat-no" title="statement not covered" >			return this.clear();</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	out = [];</span>
-<span class="cstat-no" title="statement not covered" >	i = 0;</span>
-<span class="cstat-no" title="statement not covered" >	j = 0;</span>
-<span class="cstat-no" title="statement not covered" >	while ( i &lt; la &amp;&amp; j &lt; lb ) {</span>
-<span class="cstat-no" title="statement not covered" >		a = A[ i ];</span>
-<span class="cstat-no" title="statement not covered" >		b = B[ j ];</span>
-<span class="cstat-no" title="statement not covered" >		if ( a === b ) { // addresses numbers, strings, and symbols alike</span>
-<span class="cstat-no" title="statement not covered" >			i += 1;</span>
-<span class="cstat-no" title="statement not covered" >			j += 1;</span>
-<span class="cstat-no" title="statement not covered" >			continue;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		ta = typeof a;</span>
-<span class="cstat-no" title="statement not covered" >		tb = typeof b;</span>
-<span class="cstat-no" title="statement not covered" >		if ( ta !== tb ) {</span>
-<span class="cstat-no" title="statement not covered" >			// Note: we assume we have found a "type" border!</span>
-<span class="cstat-no" title="statement not covered" >			ta = TYPE_SORT_ORDER[ ta ];</span>
-<span class="cstat-no" title="statement not covered" >			tb = TYPE_SORT_ORDER[ tb ];</span>
-<span class="cstat-no" title="statement not covered" >			if ( ta &lt; tb ) {</span>
-<span class="cstat-no" title="statement not covered" >				out.push( a );</span>
-<span class="cstat-no" title="statement not covered" >				i += 1;</span>
-<span class="cstat-no" title="statement not covered" >			} else { // tb &lt; ta</span>
-<span class="cstat-no" title="statement not covered" >				out.push( b );</span>
-<span class="cstat-no" title="statement not covered" >				j += 1;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		// Note: the types for `a` and `b` are the *same*!</span>
-<span class="cstat-no" title="statement not covered" >		else if ( ta === 'symbol' ) {</span>
-<span class="cstat-no" title="statement not covered" >			// Note: symbols don't have a "natural" sort order, so we need to do things in a more computationally intensive way via linear scans...</span>
-<span class="cstat-no" title="statement not covered" >			while ( i &lt; la ) {</span>
-<span class="cstat-no" title="statement not covered" >				for ( k = j+1; k &lt; lb; k++ ) { // `j+1` because we already know the symbols are not equal</span>
-<span class="cstat-no" title="statement not covered" >					if ( a === B[ k ] ) {</span>
-<span class="cstat-no" title="statement not covered" >						break;</span>
-<span class="cstat-no" title="statement not covered" >					}</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				// If we searched through all the symbols in `B` and failed to find a match, we found a unique symbol...</span>
-<span class="cstat-no" title="statement not covered" >				if ( k === lb ) {</span>
-<span class="cstat-no" title="statement not covered" >					out.push( a );</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					// We can leverage the fact that symbols in `A` and `B` should be similarly sorted by recognizing that, if we found a match, this means that the symbols in `B` preceding the match should be unique...</span>
-<span class="cstat-no" title="statement not covered" >					for ( ; j &lt; k; j++ ) {</span>
-<span class="cstat-no" title="statement not covered" >						out.push( B[ j ] );</span>
-<span class="cstat-no" title="statement not covered" >					}</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				i += 1;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		} else if ( a &lt; b ) {</span>
-<span class="cstat-no" title="statement not covered" >			out.push( a );</span>
-<span class="cstat-no" title="statement not covered" >			i += 1;</span>
-<span class="cstat-no" title="statement not covered" >		} else { // b &lt; a</span>
-<span class="cstat-no" title="statement not covered" >			out.push( b );</span>
-<span class="cstat-no" title="statement not covered" >			j += 1;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( i &lt; la ) {</span>
-<span class="cstat-no" title="statement not covered" >		for ( ; i &lt; la; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			out.push( A[ i ] );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( j &lt; lb ) {</span>
-<span class="cstat-no" title="statement not covered" >		for ( ; j &lt; lb; j++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			out.push( B[ j ] );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return out;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+	// When the user is at the end of the line, auto-complete the line with the completion preview when a user presses RETURN or the RIGHT arrow key (note: pressing ENTER will result in both completion AND execution)...
+	if ( key.name === 'return' || key.name === 'enter' || key.name === 'right' ) {
+		debug( 'Completion preview accepted. Performing auto-completion...' );
+		this._rli.write( this._preview );
+		this._preview = '';
+	}
+});
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = setdiff;
+module.exports = PreviewCompleter;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
