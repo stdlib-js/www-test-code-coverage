@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/atanf/lib/index.js</title>
+    <title>Code coverage report for math/base/special/atan/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/atanf/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/atan/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>59/59</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>59/59</span>
             </div>
         
             
@@ -113,7 +113,16 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -158,6 +167,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6512x</span>
+<span class="cline-any cline-yes">6512x</span>
+<span class="cline-any cline-yes">6512x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,7 +184,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2022 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -183,36 +201,45 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute the arctangent of a single-precision floating-point number.
-*
-* @module @stdlib/math/base/special/atanf
-*
-* @example
-* var FLOAT32_PI = require( '@stdlib/constants/float32/pi' );
-* var atanf = require( '@stdlib/math/base/special/atanf' );
-*
-* var v = atanf( 0.0 );
-* // returns 0.0
-*
-* v = atanf( -FLOAT32_PI/4.0 );
-* // returns ~-0.666
-*
-* v = atanf( FLOAT32_PI/4.0 );
-* // returns ~0.666
-*
-* v = atanf( NaN );
-* // returns NaN
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var main = require( './main.js' );
+var addon = require( './../src/addon.node' );
+&nbsp;
+/**
+* Computes the arctangent of a double-precision floating-point number.
+*
+* @private
+* @param {number} x - input value
+* @returns {number} arctangent (in radians)
+*
+* @example
+* var v = atan( 0.0 );
+* // returns ~0.0
+*
+* @example
+* var PI = require( '@stdlib/constants/float64/pi' );
+*
+* var v = atan( -PI/4.0 );
+* // returns ~-0.666
+*
+* @example
+* var PI = require( '@stdlib/constants/float64/pi' );
+*
+* var v = atan( PI/4.0 );
+* // returns ~0.666
+*
+* @example
+* var v = atan( NaN );
+* // returns NaN
+*/
+function atan( x ) {
+	return addon( x );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = atan;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -220,7 +247,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-03T21:56:15.770Z
+                at 2024-04-03T21:55:52.122Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
