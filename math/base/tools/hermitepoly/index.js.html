@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for assert/is-nonnegative-number/lib/main.js</title>
+    <title>Code coverage report for math/base/tools/hermitepoly/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">assert/is-nonnegative-number/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/tools/hermitepoly/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>62/62</span>
+                <span class='fraction'>67/67</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>62/62</span>
+                <span class='fraction'>67/67</span>
             </div>
         
             
@@ -125,7 +125,12 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -179,9 +184,14 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -207,48 +217,53 @@
 &nbsp;
 'use strict';
 &nbsp;
+/**
+* Evaluate a physicist's Hermite polynomial.
+*
+* @module @stdlib/math/base/tools/hermitepoly
+*
+* @example
+* var hermitepoly = require( '@stdlib/math/base/tools/hermitepoly' );
+*
+* var v = hermitepoly( 1, 1.0 );
+* // returns 2.0
+*
+* v = hermitepoly( 1, 0.5 );
+* // returns 0.5
+*
+* v = hermitepoly( -1, 0.5 );
+* // returns NaN
+*
+* v = hermitepoly( 0, 0.5 );
+* // returns 1.0
+*
+* v = hermitepoly( 2, 0.5 );
+* // returns -1.0
+*
+* @example
+* var factory = require( '@stdlib/math/base/tools/hermitepoly' ).factory;
+*
+* var polyval = factory( 2 );
+*
+* var v = polyval( 0.5 );
+* // returns -1.0
+*/
+&nbsp;
 // MODULES //
 &nbsp;
-var isPrimitive = require( './primitive.js' );
-var isObject = require( './object.js' );
+var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
+var main = require( './main.js' );
+var factory = require( './factory.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-/**
-* Tests if a value is a nonnegative number.
-*
-* @param {*} value - value to test
-* @returns {boolean} boolean indicating whether value is a nonnegative number
-*
-* @example
-* var bool = isNonNegativeNumber( 5.0 );
-* // returns true
-*
-* @example
-* var bool = isNonNegativeNumber( new Number( 5.0 ) );
-* // returns true
-*
-* @example
-* var bool = isNonNegativeNumber( 3.14 );
-* // returns true
-*
-* @example
-* var bool = isNonNegativeNumber( -5.0 );
-* // returns false
-*
-* @example
-* var bool = isNonNegativeNumber( null );
-* // returns false
-*/
-function isNonNegativeNumber( value ) {
-	return ( isPrimitive( value ) || isObject( value ) );
-}
+setReadOnly( main, 'factory', factory );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = isNonNegativeNumber;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -256,16 +271,16 @@ module.exports = isNonNegativeNumber;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-18T03:29:53.419Z
+                at 2024-04-18T03:29:57.232Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     
