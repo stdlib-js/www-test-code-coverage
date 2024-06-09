@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">79.06% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>65/78</span>
+                <span class='fraction'>68/86</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">79.06% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>65/78</span>
+                <span class='fraction'>68/86</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -141,7 +141,15 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -201,6 +209,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -243,6 +259,8 @@
 &nbsp;
 var minViewBufferIndex = require( '@stdlib/strided/base/min-view-buffer-index' );
 var offsetView = require( '@stdlib/strided/base/offset-view' );
+var resolve = require( '@stdlib/blas/base/layout-resolve-enum' );
+var format = require( '@stdlib/string/format' );
 var addon = require( './dger.native.js' );
 &nbsp;
 &nbsp;
@@ -251,7 +269,7 @@ var addon = require( './dger.native.js' );
 /**
 * Performs the rank 1 operation `A = alpha*x*y^T + A`.
 *
-* @param {string} order - storage layout
+* @param {*} order - storage layout
 * @param {NonNegativeInteger} M - number of rows in the matrix `A`
 * @param {NonNegativeInteger} N - number of columns in the matrix `A`
 * @param {number} alpha - scalar constant
@@ -263,6 +281,7 @@ var addon = require( './dger.native.js' );
 * @param {NonNegativeInteger} offsetY - starting `y` index
 * @param {Float64Array} A - matrix of coefficients
 * @param {PositiveInteger} LDA - stride of the first dimension of `A` (a.k.a., leading dimension of the matrix `A`)
+* @throws {TypeError} first argument must be a supported BLAS memory layout
 * @returns {Float64Array} `A`
 *
 * @example
@@ -282,14 +301,19 @@ var addon = require( './dger.native.js' );
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dger( order, M, N, alpha, x, strideX, offsetX, y, strideY, offsetY, A, LDA ) { // eslint-disable-line max-len, max-params</span></span>
 <span class="cstat-no" title="statement not covered" >	var viewX;</span>
 <span class="cstat-no" title="statement not covered" >	var viewY;</span>
+<span class="cstat-no" title="statement not covered" >	var ord;</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	ord = resolve( order );</span>
+<span class="cstat-no" title="statement not covered" >	if ( ord === null ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a supported BLAS memory layout. Value: `%s`.', order ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	offsetX = minViewBufferIndex( N, strideX, offsetX );</span>
 <span class="cstat-no" title="statement not covered" >	offsetY = minViewBufferIndex( N, strideY, offsetY );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	viewX = offsetView( x, offsetX );</span>
 <span class="cstat-no" title="statement not covered" >	viewY = offsetView( y, offsetY );</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	addon( 101, M, N, alpha, viewX, strideX, viewY, strideY, A, LDA ); // FIXME: resolve order enum</span>
+<span class="cstat-no" title="statement not covered" >	addon( ord, M, N, alpha, viewX, strideX, viewY, strideY, A, LDA );</span>
 <span class="cstat-no" title="statement not covered" >	return A;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -304,7 +328,7 @@ module.exports = dger;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-02T02:06:48.036Z
+                at 2024-06-09T22:22:27.353Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
