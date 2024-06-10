@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.83% </span>
+                <span class="strong">98.8% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>170/172</span>
+                <span class='fraction'>166/168</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.83% </span>
+                <span class="strong">98.8% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>170/172</span>
+                <span class='fraction'>166/168</span>
             </div>
         
             
@@ -231,11 +231,7 @@
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
 <a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a>
-<a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -319,7 +315,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3503x</span>
 <span class="cline-any cline-yes">3503x</span>
 <span class="cline-any cline-yes">3503x</span>
 <span class="cline-any cline-yes">3503x</span>
@@ -370,7 +365,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">19x</span>
@@ -379,8 +373,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">3480x</span>
 <span class="cline-any cline-yes">3480x</span>
 <span class="cline-any cline-yes">3480x</span>
 <span class="cline-any cline-yes">3480x</span>
@@ -445,7 +437,7 @@
 &nbsp;
 var toWordf = require( '@stdlib/number/float32/base/to-word' );
 var fromWordf = require( '@stdlib/number/float32/base/from-word' );
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var isnanf = require( '@stdlib/math/base/assert/is-nanf' );
 var NINF = require( '@stdlib/constants/float32/ninf' );
 var FLOAT32_EXPONENT_MASK = require( '@stdlib/constants/float32/exponent-mask' );
 var FLOAT32_EXPONENT_BIAS = require( '@stdlib/constants/float32/exponent-bias' );
@@ -496,7 +488,6 @@ function lnf( x ) {
 	var ix;
 	var t2;
 	var t1;
-	var dk;
 	var k;
 	var R;
 	var f;
@@ -509,7 +500,7 @@ function lnf( x ) {
 	if ( x === 0.0 ) {
 		return NINF;
 	}
-	if ( isnan( x ) || x &lt; 0.0 ) {
+	if ( isnanf( x ) || x &lt; 0.0 ) {
 		return NaN;
 	}
 	x = float64ToFloat32( x );
@@ -518,7 +509,7 @@ function lnf( x ) {
 &nbsp;
 	// x &lt; 2**-126
 	if ( ix &lt; 0x00800000 ) {
-		k = float64ToFloat32( k - 25 );
+		k -= 25;
 &nbsp;
 		// Subnormal number, scale up x
 		x = float64ToFloat32( x * TWO25 );
@@ -529,7 +520,7 @@ function lnf( x ) {
 	}
 	k = float64ToFloat32( k + float64ToFloat32( ( ix &gt;&gt; 23 ) - FLOAT32_EXPONENT_BIAS ) ); // eslint-disable-line max-len
 	ix &amp;= FLOAT32_SIGNIFICAND_MASK;
-	i = float64ToFloat32( ix + ( 0x95f64 &lt;&lt; 3 ) ) &amp; 0x800000;
+	i = ( ix + ( 0x95f64 &lt;&lt; 3 ) ) &amp; 0x800000;
 &nbsp;
 	// Normalize x or x/2
 	x = fromWordf( ix | ( i ^ 0x3f800000 ) );
@@ -542,22 +533,19 @@ function lnf( x ) {
 			if ( k === 0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >				return 0.0;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-			dk = k;
-			return float64ToFloat32( float64ToFloat32( dk * LN2_HI ) + float64ToFloat32( dk * LN2_LO ) ); // eslint-disable-line max-len
+			return float64ToFloat32( float64ToFloat32( k * LN2_HI ) + float64ToFloat32( k * LN2_LO ) ); // eslint-disable-line max-len
 		}
 		R = float64ToFloat32( float64ToFloat32( f * f ) * float64ToFloat32( 0.5 - float64ToFloat32( ONE_THIRD * f ) ) ); // eslint-disable-line max-len
 		if ( k === 0 ) {
 			return float64ToFloat32( f - R );
 		}
-		dk = k;
-		return float64ToFloat32( float64ToFloat32( dk * LN2_HI ) - float64ToFloat32( float64ToFloat32( R - float64ToFloat32( dk * LN2_LO ) ) - f ) ); // eslint-disable-line max-len
+		return float64ToFloat32( float64ToFloat32( k * LN2_HI ) - float64ToFloat32( float64ToFloat32( R - float64ToFloat32( k * LN2_LO ) ) - f ) ); // eslint-disable-line max-len
 	}
 	s = float64ToFloat32( f / float64ToFloat32( 2.0 + f ) );
-	dk = k;
 	z = float64ToFloat32( s * s );
-	i = float64ToFloat32( ix - ( 0x6147a &lt;&lt; 3 ) );
+	i = ix - ( 0x6147a &lt;&lt; 3 );
 	w = float64ToFloat32( z * z );
-	j = float64ToFloat32( ( 0x6b851 &lt;&lt; 3 ) - ix );
+	j = ( 0x6b851 &lt;&lt; 3 ) - ix;
 	t1 = float64ToFloat32( w * float64ToFloat32( polyvalP( w ) ) );
 	t2 = float64ToFloat32( z * float64ToFloat32( polyvalQ( w ) ) );
 	i |= j;
@@ -567,12 +555,12 @@ function lnf( x ) {
 		if ( k === 0 ) {
 			return float64ToFloat32( f - float64ToFloat32( hfsq - float64ToFloat32( s * float64ToFloat32( hfsq + R ) ) ) ); // eslint-disable-line max-len
 		}
-		return float64ToFloat32( float64ToFloat32( dk * LN2_HI ) - float64ToFloat32( float64ToFloat32( hfsq - float64ToFloat32( ( s * float64ToFloat32( hfsq + R ) ) + float64ToFloat32( dk * LN2_LO ) ) ) - f ) ); // eslint-disable-line max-len
+		return float64ToFloat32( float64ToFloat32( k * LN2_HI ) - float64ToFloat32( float64ToFloat32( hfsq - float64ToFloat32( ( s * float64ToFloat32( hfsq + R ) ) + float64ToFloat32( k * LN2_LO ) ) ) - f ) ); // eslint-disable-line max-len
 	}
 	if ( k === 0 ) {
 		return float64ToFloat32( f - float64ToFloat32( s * float64ToFloat32( f - R ) ) ); // eslint-disable-line max-len
 	}
-	return float64ToFloat32( float64ToFloat32( dk * LN2_HI ) - float64ToFloat32( float64ToFloat32( float64ToFloat32( s * float64ToFloat32( f - R ) ) - float64ToFloat32( dk * LN2_LO ) ) - f ) ); // eslint-disable-line max-len
+	return float64ToFloat32( float64ToFloat32( k * LN2_HI ) - float64ToFloat32( float64ToFloat32( float64ToFloat32( s * float64ToFloat32( f - R ) ) - float64ToFloat32( k * LN2_LO ) ) - f ) ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
@@ -586,7 +574,7 @@ module.exports = lnf;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-10T12:51:31.773Z
+                at 2024-06-10T19:12:24.548Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
