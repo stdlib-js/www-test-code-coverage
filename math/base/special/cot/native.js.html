@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/cot/lib/main.js</title>
+    <title>Code coverage report for math/base/special/cot/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/cot/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/cot/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -124,7 +124,9 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,7 +190,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2022 The Stdlib Authors.
+* Copyright (c) 2024 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -207,7 +209,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var tan = require( '@stdlib/math/base/special/tan' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -215,6 +217,7 @@ var tan = require( '@stdlib/math/base/special/tan' );
 /**
 * Evaluates the cotangent of a number.
 *
+* @private
 * @param {number} x - input value (in radians)
 * @returns {number} cotangent
 *
@@ -223,15 +226,15 @@ var tan = require( '@stdlib/math/base/special/tan' );
 * // returns Infinity
 *
 * @example
-* var v = cot( 3.141592653589793/2.0 );
+* var v = cot( 3.141592653589793 / 2.0 );
 * // returns ~0.0
 *
 * @example
-* var v = cot( -3.141592653589793/4.0 );
+* var v = cot( -3.141592653589793 / 4.0 );
 * // returns ~-1.0
 *
 * @example
-* var v = cot( 3.141592653589793/4.0 );
+* var v = cot( 3.141592653589793 / 4.0 );
 * // returns ~1.0
 *
 * @example
@@ -239,7 +242,7 @@ var tan = require( '@stdlib/math/base/special/tan' );
 * // returns NaN
 */
 function cot( x ) {
-	return 1.0 / tan( x );
+	return addon( x );
 }
 &nbsp;
 &nbsp;
