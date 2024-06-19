@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.81% </span>
+                <span class="strong">92.52% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>91/97</span>
+                <span class='fraction'>99/107</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">82.6% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>18/20</span>
+                <span class='fraction'>19/23</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.81% </span>
+                <span class="strong">92.52% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>91/97</span>
+                <span class='fraction'>99/107</span>
             </div>
         
             
@@ -160,7 +160,20 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">17x</span>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">17x</span>
@@ -218,6 +231,8 @@
 <span class="cline-any cline-yes">253x</span>
 <span class="cline-any cline-yes">253x</span>
 <span class="cline-any cline-yes">253x</span>
+<span class="cline-any cline-yes">253x</span>
+<span class="cline-any cline-yes">126x</span>
 <span class="cline-any cline-yes">126x</span>
 <span class="cline-any cline-yes">126x</span>
 <span class="cline-any cline-yes">253x</span>
@@ -234,6 +249,7 @@
 <span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-yes">96x</span>
+<span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-yes">226x</span>
 <span class="cline-any cline-yes">216x</span>
 <span class="cline-any cline-yes">216x</span>
@@ -242,6 +258,10 @@
 <span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">126x</span>
 <span class="cline-any cline-yes">126x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -279,9 +299,12 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isMostlySafeCast = require( '@stdlib/array/base/assert/is-mostly-safe-data-type-cast' );
 var isCollection = require( '@stdlib/assert/is-collection' );
 var scalar2array = require( '@stdlib/array/from-scalar' );
+var dtype = require( '@stdlib/array/dtype' );
 var put = require( '@stdlib/array/put' );
+var where = require( '@stdlib/array/base/where' ).assign;
 var format = require( '@stdlib/string/format' );
 var prop2array = require( './prop2array.js' );
 var errMessage = require( './error_message.js' );
@@ -311,12 +334,14 @@ var errMessage = require( './error_message.js' );
 function setElements( target, property, value, ctx ) {
 	var idx;
 	var err;
+	var dt;
 	var v;
 &nbsp;
 	idx = prop2array( property, ctx.cache );
 	if ( isCollection( value ) ) {
 		// When handling collections, we delegate to implementation APIs (see below) to perform argument validation (e.g., ensuring a (mostly) safe cast, broadcast compatibility, etc), so we just reassign the value here:
 		v = value;
+		dt = dtype( value ) <span class="branch-0 cbranch-no" title="branch not covered" >|| 'generic';</span>
 	} else {
 		// When provided a "scalar", we need to check whether the value can be safely cast to the target array data type:
 		err = ctx.validator( value, ctx.dtype );
@@ -330,22 +355,27 @@ function setElements( target, property, value, ctx ) {
 		}
 		// As the scalar can be safely cast, convert the scalar to an array having the same data type as the target array to allow for broadcasting during assignment:
 		v = scalar2array( v, ctx.dtype );
+		dt = ctx.dtype;
 	}
 	if ( idx.type === 'int' ) {
 		try {
-			put( target, idx.data, v );
+			put( target, idx.data, v ); // note: defer to `put` for ensuring a mostly safe cast
 		} catch ( err ) {
 			throw new err.constructor( errMessage( err.message ) );
 		}
 		return true;
 	}
+	// Safe casts are always allowed and allow same kind casts (i.e., downcasts) only when the target array data type is floating-point...
+	if ( !isMostlySafeCast( dt, ctx.dtype ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid operation. Assigned value cannot be safely cast to the target array data type. Data types: [%s, %s].', dt, ctx.dtype ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	if ( idx.type === 'bool' ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		// FIXME: where( idx.data, target, value );</span>
-<span class="cstat-no" title="statement not covered" >		return false;</span>
+<span class="cstat-no" title="statement not covered" >		where( idx.data, v, target, target, 1, 0 );</span>
+<span class="cstat-no" title="statement not covered" >		return true;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 	if ( idx.type === 'mask' ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		// FIXME: where( idx.data, value, target );</span>
-<span class="cstat-no" title="statement not covered" >		return false;</span>
+<span class="cstat-no" title="statement not covered" >		where( idx.data, target, v, target, 1, 0 );</span>
+<span class="cstat-no" title="statement not covered" >		return true;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 	throw new Error( format( 'invalid operation. Unrecognized array index type. Value: `%s`.', idx.type ) );
 }
@@ -361,7 +391,7 @@ module.exports = setElements;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-18T08:42:52.757Z
+                at 2024-06-19T07:38:42.938Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
