@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.41% </span>
+                <span class="strong">88.32% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>290/328</span>
+                <span class='fraction'>295/334</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.41% </span>
+                <span class="strong">88.32% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>290/328</span>
+                <span class='fraction'>295/334</span>
             </div>
         
             
@@ -391,7 +391,13 @@
 <a name='L326'></a><a href='#L326'>326</a>
 <a name='L327'></a><a href='#L327'>327</a>
 <a name='L328'></a><a href='#L328'>328</a>
-<a name='L329'></a><a href='#L329'>329</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<a name='L329'></a><a href='#L329'>329</a>
+<a name='L330'></a><a href='#L330'>330</a>
+<a name='L331'></a><a href='#L331'>331</a>
+<a name='L332'></a><a href='#L332'>332</a>
+<a name='L333'></a><a href='#L333'>333</a>
+<a name='L334'></a><a href='#L334'>334</a>
+<a name='L335'></a><a href='#L335'>335</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -464,6 +470,9 @@
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
@@ -688,13 +697,13 @@
 <span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-yes">4081x</span>
 <span class="cline-any cline-yes">4081x</span>
+<span class="cline-any cline-yes">4081x</span>
+<span class="cline-any cline-yes">4081x</span>
 <span class="cline-any cline-yes">837x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">833x</span>
-<span class="cline-any cline-yes">833x</span>
-<span class="cline-any cline-yes">833x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">833x</span>
 <span class="cline-any cline-yes">833x</span>
 <span class="cline-any cline-yes">833x</span>
@@ -703,6 +712,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">833x</span>
+<span class="cline-any cline-yes">833x</span>
 <span class="cline-any cline-yes">833x</span>
 <span class="cline-any cline-yes">833x</span>
 <span class="cline-any cline-yes">833x</span>
@@ -805,6 +817,9 @@ function SyntaxHighlighter( repl, ostream, enabled ) {
 &nbsp;
 	// Cache a reference to the output writable stream:
 	this._ostream = ostream;
+&nbsp;
+	// Cache a reference to the REPL's multi-line handler:
+	this._multilineHandler = repl._multilineHandler;
 &nbsp;
 	// Initialize a buffer containing the current line to validate line changes:
 	this._line = '';
@@ -1014,25 +1029,27 @@ setNonEnumerableReadOnly( SyntaxHighlighter.prototype, 'onKeypress', function on
 	var tokens;
 &nbsp;
 	if ( !this._enabled ) {
+		// Save raw output if syntax highlighting is disabled:
+		this._multilineHandler.updateLine( this._rli.line ); // save displayed line
 		return;
 	}
 	if ( !this._rli.line ) {
 		debug( 'Empty line detected. Skipping highlighting...' );
+		this._multilineHandler.updateLine( this._rli.line ); // save displayed line
 		return;
 	}
 	if ( this._line !== this._rli.line ) {
-		// Update line buffer:
-		this._line = this._rli.line;
-&nbsp;
 		// Tokenize:
-		debug( 'Line change detected. Tokenizing line: %s', this._line );
-		tokens = tokenizer( this._line, this._repl._context );
+		debug( 'Line change detected. Tokenizing line: %s', this._rli.line );
+		tokens = tokenizer( this._rli.line, this._repl._context );
 		if ( !tokens ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >			debug( 'No tokens found. Skipping highlighting...' );</span>
+<span class="cstat-no" title="statement not covered" >			this._multilineHandler.updateLine( this._rli.line ); // save displayed line</span>
 <span class="cstat-no" title="statement not covered" >			return;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 		// Highlight:
 		debug( '%d tokens found. Highlighting...', tokens.length );
+		this._line = this._rli.line; // updated line buffer
 		this._highlightedLine = this._highlightLine( this._line, tokens );
 	}
 	// Replace:
@@ -1041,6 +1058,7 @@ setNonEnumerableReadOnly( SyntaxHighlighter.prototype, 'onKeypress', function on
 	readline.clearLine( this._ostream, 1 );
 	this._ostream.write( this._highlightedLine );
 	readline.moveCursor( this._ostream, this._rli.cursor - this._line.length, 0 ); // eslint-disable-line max-len
+	this._multilineHandler.updateLine( this._highlightedLine ); // save displayed line
 });
 &nbsp;
 &nbsp;
@@ -1054,7 +1072,7 @@ module.exports = SyntaxHighlighter;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-20T15:20:11.258Z
+                at 2024-06-21T09:00:47.733Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

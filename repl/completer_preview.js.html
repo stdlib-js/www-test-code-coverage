@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.42% </span>
+                <span class="strong">90.17% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>255/282</span>
+                <span class='fraction'>257/285</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.85% </span>
+                <span class="strong">83.78% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>29/35</span>
+                <span class='fraction'>31/37</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.42% </span>
+                <span class="strong">90.17% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>255/282</span>
+                <span class='fraction'>257/285</span>
             </div>
         
             
@@ -345,7 +345,10 @@
 <a name='L280'></a><a href='#L280'>280</a>
 <a name='L281'></a><a href='#L281'>281</a>
 <a name='L282'></a><a href='#L282'>282</a>
-<a name='L283'></a><a href='#L283'>283</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -606,6 +609,7 @@
 <span class="cline-any cline-yes">266x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-yes">266x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -621,6 +625,8 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">45x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -875,34 +881,37 @@ setNonEnumerableReadOnly( PreviewCompleter.prototype, 'onKeypress', function onK
 * @type {Function}
 * @param {string} data - input data
 * @param {(Object|void)} key - key object
-* @returns {void}
+* @returns {boolean} boolean indicating whether the preview was auto-completed
 */
 setNonEnumerableReadOnly( PreviewCompleter.prototype, 'beforeKeypress', function beforeKeypress( data, key ) {
 	if ( !this._enabled ) {
-		return;
+		return false;
 	}
 	if ( !key || this._preview === '' ) {
-		return;
+		return false;
 	}
 	// Avoid clashing with existing TAB completion behavior...
 	if ( key.name === 'tab' ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		return this.clear();</span>
+<span class="cstat-no" title="statement not covered" >		this.clear();</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 	// Handle the case where the user is not at the end of the line...
 	if ( this._rli.cursor !== this._rli.line.length ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		// If a user is in the middle of a line and presses ENTER, clear the preview string, as the preview was not accepted prior to executing the expression...</span>
 <span class="cstat-no" title="statement not covered" >		if ( key.name === 'return' || key.name === 'enter' ) {</span>
 <span class="cstat-no" title="statement not covered" >			debug( 'Received an ENTER keypress event while in the middle of the line.' );</span>
-<span class="cstat-no" title="statement not covered" >			return this.clear();</span>
+<span class="cstat-no" title="statement not covered" >			this.clear();</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return;</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 	// When the user is at the end of the line, auto-complete the line with the completion preview when a user presses RETURN or the RIGHT arrow key (note: pressing ENTER will result in both completion AND execution)...
 	if ( key.name === 'return' || key.name === 'enter' || key.name === 'right' ) {
 		debug( 'Completion preview accepted. Performing auto-completion...' );
 		this._rli.write( this._preview );
 		this._preview = '';
+		return true;
 	}
+	return false;
 });
 &nbsp;
 &nbsp;
@@ -916,7 +925,7 @@ module.exports = PreviewCompleter;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-20T15:20:11.258Z
+                at 2024-06-21T09:00:47.733Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

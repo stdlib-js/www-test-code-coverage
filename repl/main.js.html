@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.87% </span>
+                <span class="strong">78.97% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1150/1458</span>
+                <span class='fraction'>1157/1465</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.54% </span>
+                <span class="strong">54.09% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>31/59</span>
+                <span class='fraction'>33/61</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.87% </span>
+                <span class="strong">78.97% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1150/1458</span>
+                <span class='fraction'>1157/1465</span>
             </div>
         
             
@@ -1521,7 +1521,14 @@
 <a name='L1456'></a><a href='#L1456'>1456</a>
 <a name='L1457'></a><a href='#L1457'>1457</a>
 <a name='L1458'></a><a href='#L1458'>1458</a>
-<a name='L1459'></a><a href='#L1459'>1459</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<a name='L1459'></a><a href='#L1459'>1459</a>
+<a name='L1460'></a><a href='#L1460'>1460</a>
+<a name='L1461'></a><a href='#L1461'>1461</a>
+<a name='L1462'></a><a href='#L1462'>1462</a>
+<a name='L1463'></a><a href='#L1463'>1463</a>
+<a name='L1464'></a><a href='#L1464'>1464</a>
+<a name='L1465'></a><a href='#L1465'>1465</a>
+<a name='L1466'></a><a href='#L1466'>1466</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -1670,8 +1677,6 @@
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
@@ -1861,12 +1866,20 @@
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">5036x</span>
+<span class="cline-any cline-yes">5036x</span>
+<span class="cline-any cline-yes">5036x</span>
 <span class="cline-any cline-yes">358x</span>
 <span class="cline-any cline-yes">358x</span>
 <span class="cline-any cline-yes">358x</span>
 <span class="cline-any cline-yes">4678x</span>
 <span class="cline-any cline-yes">4678x</span>
 <span class="cline-any cline-yes">4678x</span>
+<span class="cline-any cline-yes">4678x</span>
+<span class="cline-any cline-yes">4678x</span>
+<span class="cline-any cline-yes">4676x</span>
+<span class="cline-any cline-yes">4676x</span>
+<span class="cline-any cline-yes">4676x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">5036x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
@@ -1889,6 +1902,7 @@
 <span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-yes">4918x</span>
@@ -3042,8 +3056,8 @@ var commands = require( './commands.js' );
 var displayPrompt = require( './display_prompt.js' );
 var inputPrompt = require( './input_prompt.js' );
 var OutputStream = require( './output_stream.js' );
-var processLine = require( './process_line.js' );
 var completerFactory = require( './completer.js' );
+var MultilineHandler = require( './multiline_handler.js' );
 var PreviewCompleter = require( './completer_preview.js' );
 var AutoCloser = require( './auto_close_pairs.js' );
 var SyntaxHighlighter = require( './syntax_highlighter.js' );
@@ -3218,11 +3232,6 @@ function REPL( options ) {
 	// Define the current workspace:
 	setNonEnumerable( this, '_currentWorkspace', 'base' );
 &nbsp;
-	// Initialize an internal status object for multi-line mode:
-	setNonEnumerable( this, '_multiline', {} );
-	setNonEnumerable( this._multiline, 'active', false );
-	setNonEnumerable( this._multiline, 'mode', 'incomplete_expression' );
-&nbsp;
 	// Initialize an internal flag indicating whether the REPL has been closed:
 	setNonEnumerable( this, '_closed', false );
 &nbsp;
@@ -3253,6 +3262,9 @@ function REPL( options ) {
 		'prompt': opts.inputPrompt,
 		'completer': this._completer
 	}));
+&nbsp;
+	// Initialize a multi-line handler:
+	setNonEnumerableReadOnly( this, '_multilineHandler', new MultilineHandler( this, this._rli._ttyWrite ) );
 &nbsp;
 	// Create a new auto-closer:
 	setNonEnumerableReadOnly( this, '_autoCloser', new AutoCloser( this._rli, this._settings.autoClosePairs, this._settings.autoDeletePairs ) );
@@ -3318,12 +3330,20 @@ function REPL( options ) {
 	* @param {(Object|void)} key - key object
 	*/
 	function beforeKeypress( data, key ) {
+		var completed;
+&nbsp;
 		if ( self._ostream.isPaging ) {
 			self._ostream.beforeKeypress( data, key );
 			return;
 		}
 		self._autoCloser.beforeKeypress( data, key );
-		self._previewCompleter.beforeKeypress( data, key );
+		completed = self._previewCompleter.beforeKeypress( data, key );
+&nbsp;
+		// If completion was auto-completed, don't trigger multi-line keybindings to avoid double operations...
+		if ( !completed ) {
+			self._multilineHandler.beforeKeypress( data, key );
+			return;
+		}
 		self._ttyWrite.call( self._rli, data, key );
 	}
 &nbsp;
@@ -3347,6 +3367,7 @@ function REPL( options ) {
 		if ( autoClosed ) {
 			self._previewCompleter.clear();
 		}
+		self._multilineHandler.onKeypress( data, key );
 		self._syntaxHighlighter.onKeypress();
 		self._previewCompleter.onKeypress( data, key );
 	}
@@ -3360,7 +3381,7 @@ function REPL( options ) {
 	function onLine( line ) {
 		self._SIGINT = false; // reset flag
 		if ( self._closed === false ) {
-			processLine( self, line );
+			self._multilineHandler.processLine( line );
 		}
 	}
 &nbsp;
@@ -4242,7 +4263,7 @@ setNonEnumerableReadOnly( REPL.prototype, 'clearCommand', <span class="fstat-no"
 <span class="cstat-no" title="statement not covered" >		throw new Error( 'invalid operation. Cannot clear the command buffer of a REPL which has already closed.' );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Clear any command which has been buffered but not yet executed:</span>
-<span class="cstat-no" title="statement not covered" >	this._cmd.length = 0;</span>
+<span class="cstat-no" title="statement not covered" >	this._multilineHandler.resetInput();</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return this;</span>
 });
@@ -4444,7 +4465,7 @@ module.exports = REPL;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-20T15:20:11.258Z
+                at 2024-06-21T09:00:47.733Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
