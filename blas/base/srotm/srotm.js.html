@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.32% </span>
+                <span class="strong">76.1% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>116/154</span>
+                <span class='fraction'>121/159</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.32% </span>
+                <span class="strong">76.1% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>116/154</span>
+                <span class='fraction'>121/159</span>
             </div>
         
             
@@ -217,7 +217,17 @@
 <a name='L152'></a><a href='#L152'>152</a>
 <a name='L153'></a><a href='#L153'>153</a>
 <a name='L154'></a><a href='#L154'>154</a>
-<a name='L155'></a><a href='#L155'>155</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -391,6 +401,11 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var f32 = require( '@stdlib/number/float64/base/to-float32' );
+&nbsp;
+&nbsp;
 // MAIN //
 &nbsp;
 /**
@@ -441,8 +456,8 @@ function srotm( N, x, strideX, y, strideY, param ) {
 <span class="cstat-no" title="statement not covered" >			for ( i = 0; i &lt; N; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >				w = x[ ix ];</span>
 <span class="cstat-no" title="statement not covered" >				z = y[ ix ];</span>
-<span class="cstat-no" title="statement not covered" >				x[ ix ] = ( w * sh11 ) + ( z * sh12 );</span>
-<span class="cstat-no" title="statement not covered" >				y[ ix ] = ( w * sh21 ) + ( z * sh22 );</span>
+<span class="cstat-no" title="statement not covered" >				x[ ix ] = f32( f32( w * sh11 ) + f32( z * sh12 ) );</span>
+<span class="cstat-no" title="statement not covered" >				y[ ix ] = f32( f32( w * sh21 ) + f32( z * sh22 ) );</span>
 <span class="cstat-no" title="statement not covered" >				ix += strideX;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			return y;</span>
@@ -453,8 +468,8 @@ function srotm( N, x, strideX, y, strideY, param ) {
 			for ( i = 0; i &lt; N; i++ ) {
 				w = x[ ix ];
 				z = y[ ix ];
-				x[ ix ] = w + ( z * sh12 );
-				y[ ix ] = ( w * sh21 ) + z;
+				x[ ix ] = f32( w + f32( z * sh12 ) );
+				y[ ix ] = f32( f32( w * sh21 ) + z );
 				ix += strideX;
 			}
 			return y;
@@ -464,8 +479,8 @@ function srotm( N, x, strideX, y, strideY, param ) {
 <span class="cstat-no" title="statement not covered" >		for ( i = 0; i &lt; N; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >			w = x[ ix ];</span>
 <span class="cstat-no" title="statement not covered" >			z = y[ ix ];</span>
-<span class="cstat-no" title="statement not covered" >			x[ ix ] = ( w * sh11 ) + z;</span>
-<span class="cstat-no" title="statement not covered" >			y[ ix ] = -w + ( z * sh22 );</span>
+<span class="cstat-no" title="statement not covered" >			x[ ix ] = f32( f32( w * sh11 ) + z );</span>
+<span class="cstat-no" title="statement not covered" >			y[ ix ] = f32( -w + f32( z * sh22 ) );</span>
 <span class="cstat-no" title="statement not covered" >			ix += strideX;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return y;</span>
@@ -488,8 +503,8 @@ function srotm( N, x, strideX, y, strideY, param ) {
 <span class="cstat-no" title="statement not covered" >		for ( i = 0; i &lt; N; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >			w = x[ ix ];</span>
 <span class="cstat-no" title="statement not covered" >			z = y[ iy ];</span>
-<span class="cstat-no" title="statement not covered" >			x[ ix ] = ( w * sh11 ) + ( z * sh12 );</span>
-<span class="cstat-no" title="statement not covered" >			y[ iy ] = ( w * sh21 ) + ( z * sh22 );</span>
+<span class="cstat-no" title="statement not covered" >			x[ ix ] = f32( f32( w * sh11 ) + f32( z * sh12 ) );</span>
+<span class="cstat-no" title="statement not covered" >			y[ iy ] = f32( f32( w * sh21 ) + f32( z * sh22 ) );</span>
 <span class="cstat-no" title="statement not covered" >			ix += strideX;</span>
 <span class="cstat-no" title="statement not covered" >			iy += strideY;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -501,8 +516,8 @@ function srotm( N, x, strideX, y, strideY, param ) {
 		for ( i = 0; i &lt; N; i++ ) {
 			w = x[ ix ];
 			z = y[ iy ];
-			x[ ix ] = w + ( z * sh12 );
-			y[ iy ] = ( w * sh21 ) + z;
+			x[ ix ] = f32( w + f32( z * sh12 ) );
+			y[ iy ] = f32( f32( w * sh21 ) + z );
 			ix += strideX;
 			iy += strideY;
 		}
@@ -513,8 +528,8 @@ function srotm( N, x, strideX, y, strideY, param ) {
 	for ( i = 0; i &lt; N; i++ ) {
 		w = x[ ix ];
 		z = y[ iy ];
-		x[ ix ] = ( w * sh11 ) + z;
-		y[ iy ] = -w + ( z * sh22 );
+		x[ ix ] = f32( f32( w * sh11 ) + z );
+		y[ iy ] = f32( -w + f32( z * sh22 ) );
 		ix += strideX;
 		iy += strideY;
 	}
@@ -532,7 +547,7 @@ module.exports = srotm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-22T23:04:26.406Z
+                at 2024-06-24T09:38:31.630Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
