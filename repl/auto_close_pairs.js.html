@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.78% </span>
+                <span class="strong">91.91% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>360/388</span>
+                <span class='fraction'>364/396</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.27% </span>
+                <span class="strong">83.92% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>44/51</span>
+                <span class='fraction'>47/56</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.78% </span>
+                <span class="strong">91.91% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>360/388</span>
+                <span class='fraction'>364/396</span>
             </div>
         
             
@@ -451,7 +451,15 @@
 <a name='L386'></a><a href='#L386'>386</a>
 <a name='L387'></a><a href='#L387'>387</a>
 <a name='L388'></a><a href='#L388'>388</a>
-<a name='L389'></a><a href='#L389'>389</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L389'></a><a href='#L389'>389</a>
+<a name='L390'></a><a href='#L390'>390</a>
+<a name='L391'></a><a href='#L391'>391</a>
+<a name='L392'></a><a href='#L392'>392</a>
+<a name='L393'></a><a href='#L393'>393</a>
+<a name='L394'></a><a href='#L394'>394</a>
+<a name='L395'></a><a href='#L395'>395</a>
+<a name='L396'></a><a href='#L396'>396</a>
+<a name='L397'></a><a href='#L397'>397</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -506,6 +514,7 @@
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -524,6 +533,7 @@
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
@@ -769,6 +779,9 @@
 <span class="cline-any cline-yes">5000x</span>
 <span class="cline-any cline-yes">4710x</span>
 <span class="cline-any cline-yes">4710x</span>
+<span class="cline-any cline-yes">350x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">5000x</span>
 <span class="cline-any cline-yes">272x</span>
 <span class="cline-any cline-yes">272x</span>
@@ -813,6 +826,9 @@
 <span class="cline-any cline-yes">5234x</span>
 <span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">797x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">316x</span>
 <span class="cline-any cline-yes">316x</span>
 <span class="cline-any cline-yes">316x</span>
@@ -906,17 +922,19 @@ function isQuote( ch ) {
 * @param {Object} rli - readline instance
 * @param {boolean} autoClose - boolean indicating whether auto-closing should be initially enabled
 * @param {boolean} autoDelete - boolean indicating whether auto-deleting should be initially enabled
+* @param {MultilineHandler} multiline - multiline handler instance
 * @returns {AutoCloser} auto-closer instance
 */
-function AutoCloser( rli, autoClose, autoDelete ) {
+function AutoCloser( rli, autoClose, autoDelete, multiline ) {
 	if ( !(this instanceof AutoCloser) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		return new AutoCloser( rli, autoClose, autoDelete );</span>
+<span class="cstat-no" title="statement not covered" >		return new AutoCloser( rli, autoClose, autoDelete, multiline );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 	debug( 'Creating an auto-closer...' );
 	this._rli = rli;
 	this._ignoreBackspace = false;
 	this._autoClose = autoClose;
 	this._autoDelete = autoDelete;
+	this._multiline = multiline;
 	return this;
 }
 &nbsp;
@@ -1157,6 +1175,9 @@ setNonEnumerableReadOnly( AutoCloser.prototype, 'beforeKeypress', function befor
 	if ( !this._autoDelete ) {
 		return false;
 	}
+	if ( this._multiline.isPasting() ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	if ( !key || key.name !== 'backspace' ) {
 		return false;
 	}
@@ -1201,6 +1222,9 @@ setNonEnumerableReadOnly( AutoCloser.prototype, 'onKeypress', function onKeypres
 	if ( !this._autoClose ) {
 		return false;
 	}
+	if ( this._multiline.isPasting() ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	cursor = this._rli.cursor;
 	line = this._rli.line;
 &nbsp;
@@ -1234,7 +1258,7 @@ module.exports = AutoCloser;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-01T18:36:07.874Z
+                at 2024-07-05T20:12:08.165Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

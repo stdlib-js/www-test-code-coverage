@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.34% </span>
+                <span class="strong">88.69% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>671/751</span>
+                <span class='fraction'>675/761</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.46% </span>
+                <span class="strong">76.47% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>51/65</span>
+                <span class='fraction'>52/68</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.34% </span>
+                <span class="strong">88.69% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>671/751</span>
+                <span class='fraction'>675/761</span>
             </div>
         
             
@@ -814,7 +814,17 @@
 <a name='L749'></a><a href='#L749'>749</a>
 <a name='L750'></a><a href='#L750'>750</a>
 <a name='L751'></a><a href='#L751'>751</a>
-<a name='L752'></a><a href='#L752'>752</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L752'></a><a href='#L752'>752</a>
+<a name='L753'></a><a href='#L753'>753</a>
+<a name='L754'></a><a href='#L754'>754</a>
+<a name='L755'></a><a href='#L755'>755</a>
+<a name='L756'></a><a href='#L756'>756</a>
+<a name='L757'></a><a href='#L757'>757</a>
+<a name='L758'></a><a href='#L758'>758</a>
+<a name='L759'></a><a href='#L759'>759</a>
+<a name='L760'></a><a href='#L760'>760</a>
+<a name='L761'></a><a href='#L761'>761</a>
+<a name='L762'></a><a href='#L762'>762</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -1445,7 +1455,6 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -1453,6 +1462,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -1476,6 +1491,11 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -2195,7 +2215,6 @@ setNonEnumerableReadOnly( CompleterEngine.prototype, 'beforeKeypress', function 
 		this._ttyWrite.call( this._rli, data, key );
 		return;
 	}
-&nbsp;
 	// If user is already viewing completions, allow navigating it...
 	if ( this._isNavigating ) {
 		switch ( key.name ) {
@@ -2204,6 +2223,12 @@ setNonEnumerableReadOnly( CompleterEngine.prototype, 'beforeKeypress', function 
 			debug( 'Received a TAB keypress event. Closing the completer engine...' );
 			this.closeCompleter();
 			break;
+&nbsp;
+		// If paste sequences detected, close the completer:
+<span class="branch-0 cbranch-no" title="branch not covered" >		case 'paste-start':</span>
+<span class="cstat-no" title="statement not covered" >			this.closeCompleter();</span>
+<span class="cstat-no" title="statement not covered" >			this._ttyWrite.call( this._rli, data, key );</span>
+<span class="cstat-no" title="statement not covered" >			break;</span>
 &nbsp;
 		// If arrow keys detected, allow navigating the completions...
 		case 'down':
@@ -2227,6 +2252,11 @@ setNonEnumerableReadOnly( CompleterEngine.prototype, 'beforeKeypress', function 
 		}
 		return;
 	}
+	// If we are in the middle of receiving pasted input, use TAB for indentation and don't trigger completions...
+	if ( this._multiline.isPasting() ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		this._ttyWrite.call( this._rli, data, key );</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	// Trigger TAB completions:
 	cursor = this._rli.cursor;
 	line = this._rli.line;
@@ -2323,7 +2353,7 @@ module.exports = CompleterEngine;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-01T18:36:07.874Z
+                at 2024-07-05T20:12:08.165Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
