@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for strided/base/nullary/lib/main.js</title>
+    <title>Code coverage report for strided/base/smap/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/nullary/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/smap/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>77/77</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>77/77</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -125,22 +125,7 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -194,24 +179,9 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -220,7 +190,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2022 The Stdlib Authors.
+* Copyright (c) 2020 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -239,61 +209,46 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isAccessorArray = require( '@stdlib/array/base/assert/is-accessor-array' );
-var accessorSetter = require( '@stdlib/array/base/accessor-setter' );
-var setter = require( '@stdlib/array/base/setter' );
-var dtype = require( '@stdlib/array/dtype' );
-var strided = require( './nullary.js' );
-var accessors = require( './accessors.js' );
+var stride2offset = require( '@stdlib/strided/base/stride2offset' );
+var ndarray = require( './ndarray.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Applies a nullary callback and assigns results to elements in a strided output array.
+* Applies a unary function to a single-precision floating-point strided input array and assigns results to a single-precision floating-point strided output array.
 *
-* @param {ArrayLikeObject&lt;Collection&gt;} arrays - array-like object containing one output array
-* @param {NonNegativeIntegerArray} shape - array-like object containing a single element, the number of indexed elements
-* @param {IntegerArray} strides - array-like object containing the stride length for the output array
-* @param {Callback} fcn - nullary callback
-* @returns {void}
+* @param {NonNegativeInteger} N - number of indexed elements
+* @param {Float32Array} x - input array
+* @param {integer} strideX - `x` stride length
+* @param {Float32Array} y - destination array
+* @param {integer} strideY - `y` stride length
+* @param {Function} fcn - unary function to apply
+* @returns {Float32Array} `y`
 *
 * @example
-* var Float64Array = require( '@stdlib/array/float64' );
+* var Float32Array = require( '@stdlib/array/float32' );
 *
-* function fill() {
-*     return 3.0;
+* function scale( x ) {
+*     return x * 10.0;
 * }
 *
-* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var x = new Float32Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var y = new Float32Array( x.length );
 *
-* var shape = [ x.length ];
-* var strides = [ 1 ];
+* smap( x.length, x, 1, y, 1, scale );
 *
-* nullary( [ x ], shape, strides, fill );
-*
-* console.log( x );
-* // =&gt; &lt;Float64Array&gt;[ 3.0, 3.0, 3.0, 3.0, 3.0 ]
+* console.log( y );
+* // =&gt; &lt;Float32Array&gt;[ 10.0, 20.0, 30.0, 40.0, 50.0 ]
 */
-function nullary( arrays, shape, strides, fcn ) {
-	var xset;
-	var x;
-&nbsp;
-	x = arrays[ 0 ];
-	if ( isAccessorArray( x ) ) {
-		xset = accessorSetter( dtype( x ) );
-	}
-	if ( xset ) {
-		xset = xset <span class="branch-0 cbranch-no" title="branch not covered" >|| setter( dtype( x ) );</span>
-		return accessors( arrays, shape, strides, [ xset ], fcn );
-	}
-	return strided( arrays, shape, strides, fcn );
+function smap( N, x, strideX, y, strideY, fcn ) {
+	return ndarray( N, x, strideX, stride2offset( N, strideX ), y, strideY, stride2offset( N, strideY ), fcn ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = nullary;
+module.exports = smap;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -301,7 +256,7 @@ module.exports = nullary;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-06T21:56:41.244Z
+                at 2024-07-06T21:56:48.648Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
