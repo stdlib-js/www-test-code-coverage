@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for strided/base/cmap/lib/ndarray.js</title>
+    <title>Code coverage report for strided/base/dmskmap2/lib/ndarray.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/cmap/lib</a> ndarray.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/dmskmap2/lib</a> ndarray.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>82/82</span>
+                <span class='fraction'>85/85</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>82/82</span>
+                <span class='fraction'>85/85</span>
             </div>
         
             
@@ -145,7 +145,10 @@
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -201,27 +204,30 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">45x</span>
-<span class="cline-any cline-yes">45x</span>
-<span class="cline-any cline-yes">45x</span>
-<span class="cline-any cline-yes">45x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -250,65 +256,68 @@
 // MAIN //
 &nbsp;
 /**
-* Applies a unary function to a single-precision complex floating-point strided input array and assigns results to a single-precision complex floating-point strided output array.
+* Applies a binary function to double-precision floating-point strided input arrays according to a strided mask array and assigns results to a double-precision floating-point strided output array.
 *
 * @param {NonNegativeInteger} N - number of indexed elements
-* @param {Complex64Array} x - input array
+* @param {Float64Array} x - input array
 * @param {integer} strideX - `x` stride length
 * @param {NonNegativeInteger} offsetX - starting `x` index
-* @param {Complex64Array} y - destination array
+* @param {Float64Array} y - input array
 * @param {integer} strideY - `y` stride length
 * @param {NonNegativeInteger} offsetY - starting `y` index
-* @param {Function} fcn - unary function to apply
-* @returns {Complex64Array} `y`
+* @param {Uint8Array} mask - mask array
+* @param {integer} strideMask - `mask` stride length
+* @param {NonNegativeInteger} offsetMask - starting `mask` index
+* @param {Float64Array} z - destination array
+* @param {integer} strideZ - `z` stride length
+* @param {NonNegativeInteger} offsetZ - starting `z` index
+* @param {Function} fcn - binary function to apply
+* @returns {Float64Array} `z`
 *
 * @example
-* var Complex64Array = require( '@stdlib/array/complex64' );
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
-* var Complex64 = require( '@stdlib/complex/float32/ctor' );
+* var Float64Array = require( '@stdlib/array/float64' );
+* var Uint8Array = require( '@stdlib/array/uint8' );
+* var add = require( '@stdlib/math/base/ops/add' );
 *
-* function scale( x ) {
-*     var re = real( x );
-*     var im = imag( x );
-*     return new Complex64( re*10.0, im*10.0 );
-* }
+* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var y = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var m = new Uint8Array( [ 0, 0, 1, 0, 0 ] );
+* var z = new Float64Array( x.length );
 *
-* var x = new Complex64Array( [ 1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0, 5.0 ] );
-* var y = new Complex64Array( x.length );
+* dmskmap2( x.length, x, 1, 0, y, 1, 0, m, 1, 0, z, 1, 0, add );
 *
-* cmap( x.length, x, 1, 0, y, 1, 0, scale );
-*
-* var v = y.get( 0 );
-* // returns &lt;Complex64&gt;
-*
-* var re = real( v );
-* // returns 10.0
-*
-* var im = imag( v );
-* // returns 10.0
+* console.log( z );
+* // =&gt; &lt;Float64Array&gt;[ 2.0, 4.0, 0.0, 8.0, 10.0 ]
 */
-function cmap( N, x, strideX, offsetX, y, strideY, offsetY, fcn ) {
+function dmskmap2( N, x, strideX, offsetX, y, strideY, offsetY, mask, strideMask, offsetMask, z, strideZ, offsetZ, fcn ) { // eslint-disable-line max-len, max-params
 	var ix;
 	var iy;
+	var iz;
+	var im;
 	var i;
 	if ( N &lt;= 0 ) {
-		return y;
+		return z;
 	}
 	ix = offsetX;
 	iy = offsetY;
+	iz = offsetZ;
+	im = offsetMask;
 	for ( i = 0; i &lt; N; i++ ) {
-		y.set( fcn( x.get( ix ) ), iy );
+		if ( mask[ im ] === 0 ) {
+			z[ iz ] = fcn( x[ ix ], y[ iy ] );
+		}
 		ix += strideX;
 		iy += strideY;
+		iz += strideZ;
+		im += strideMask;
 	}
-	return y;
+	return z;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = cmap;
+module.exports = dmskmap2;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -316,7 +325,7 @@ module.exports = cmap;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-06T21:21:55.077Z
+                at 2024-07-06T21:22:04.898Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for strided/base/cmap/lib/index.js</title>
+    <title>Code coverage report for strided/base/dmap2/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/cmap/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/dmap2/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>95/95</span>
+                <span class='fraction'>69/69</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>95/95</span>
+                <span class='fraction'>69/69</span>
             </div>
         
             
@@ -132,59 +132,7 @@
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -274,63 +222,37 @@
 'use strict';
 &nbsp;
 /**
-* Apply a unary function to a single-precision floating-point strided input array and assign results to a single-precision floating-point strided output array.
+* Apply a binary function to double-precision floating-point strided input arrays and assign results to a double-precision floating-point strided output array.
 *
-* @module @stdlib/strided/base/cmap
-*
-* @example
-* var Complex64Array = require( '@stdlib/array/complex64' );
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
-* var Complex64 = require( '@stdlib/complex/float32/ctor' );
-* var cmap = require( '@stdlib/strided/base/cmap' );
-*
-* function scale( x ) {
-*     var re = real( x );
-*     var im = imag( x );
-*     return new Complex64( re*10.0, im*10.0 );
-* }
-*
-* var x = new Complex64Array( [ 1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0, 5.0 ] );
-* var y = new Complex64Array( x.length );
-*
-* cmap( x.length, x, 1, y, 1, scale );
-*
-* var v = y.get( 0 );
-* // returns &lt;Complex64&gt;
-*
-* var re = real( v );
-* // returns 10.0
-*
-* var im = imag( v );
-* // returns 10.0
+* @module @stdlib/strided/base/dmap2
 *
 * @example
-* var Complex64Array = require( '@stdlib/array/complex64' );
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
-* var Complex64 = require( '@stdlib/complex/float32/ctor' );
-* var cmap = require( '@stdlib/strided/base/cmap' );
+* var Float64Array = require( '@stdlib/array/float64' );
+* var add = require( '@stdlib/math/base/ops/add' );
+* var dmap2 = require( '@stdlib/strided/base/dmap2' );
 *
-* function scale( x ) {
-*     var re = real( x );
-*     var im = imag( x );
-*     return new Complex64( re*10.0, im*10.0 );
-* }
+* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var y = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var z = new Float64Array( x.length );
 *
-* var x = new Complex64Array( [ 1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0, 5.0 ] );
-* var y = new Complex64Array( x.length );
+* dmap2( x.length, x, 1, y, 1, z, 1, add );
 *
-* cmap.ndarray( x.length, x, 1, 0, y, 1, 0, scale );
+* console.log( z );
+* // =&gt; &lt;Float64Array&gt;[ 2.0, 4.0, 6.0, 8.0, 10.0 ]
 *
-* var v = y.get( 0 );
-* // returns &lt;Complex64&gt;
+* @example
+* var Float64Array = require( '@stdlib/array/float64' );
+* var add = require( '@stdlib/math/base/ops/add' );
+* var dmap2 = require( '@stdlib/strided/base/dmap2' );
 *
-* var re = real( v );
-* // returns 10.0
+* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var y = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var z = new Float64Array( x.length );
 *
-* var im = imag( v );
-* // returns 10.0
+* dmap2.ndarray( x.length, x, 1, 0, y, 1, 0, z, 1, 0, add );
+*
+* console.log( z );
+* // =&gt; &lt;Float64Array&gt;[ 2.0, 4.0, 6.0, 8.0, 10.0 ]
 */
 &nbsp;
 // MODULES //
@@ -355,7 +277,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-06T21:21:55.077Z
+                at 2024-07-06T21:22:00.079Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
