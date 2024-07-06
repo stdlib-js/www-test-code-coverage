@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for strided/base/unary/lib/index.js</title>
+    <title>Code coverage report for strided/base/smap2/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/unary/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/smap2/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>69/69</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>69/69</span>
             </div>
         
             
@@ -132,29 +132,7 @@
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -226,7 +204,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2020 The Stdlib Authors.
+* Copyright (c) 2021 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -244,48 +222,37 @@
 'use strict';
 &nbsp;
 /**
-* Apply a unary callback to elements in a strided input array and assign results to elements in a strided output array.
+* Apply a binary function to single-precision floating-point strided input arrays and assign results to a single-precision floating-point strided output array.
 *
-* @module @stdlib/strided/base/unary
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var unary = require( '@stdlib/strided/base/unary' );
-*
-* function scale( x ) {
-*     return x * 10.0;
-* }
-*
-* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
-* var y = new Float64Array( x.length );
-*
-* var shape = [ x.length ];
-* var strides = [ 1, 1 ];
-*
-* unary( [ x, y ], shape, strides, scale );
-*
-* console.log( y );
-* // =&gt; &lt;Float64Array&gt;[ 10.0, 20.0, 30.0, 40.0, 50.0 ]
+* @module @stdlib/strided/base/smap2
 *
 * @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var unary = require( '@stdlib/strided/base/unary' );
+* var Float32Array = require( '@stdlib/array/float32' );
+* var addf = require( '@stdlib/math/base/ops/addf' );
+* var smap2 = require( '@stdlib/strided/base/smap2' );
 *
-* function scale( x ) {
-*     return x * 10.0;
-* }
+* var x = new Float32Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var y = new Float32Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var z = new Float32Array( x.length );
 *
-* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
-* var y = new Float64Array( x.length );
+* smap2( x.length, x, 1, y, 1, z, 1, addf );
 *
-* var shape = [ x.length ];
-* var strides = [ 1, 1 ];
-* var offsets = [ 0, 0 ];
+* console.log( z );
+* // =&gt; &lt;Float32Array&gt;[ 2.0, 4.0, 6.0, 8.0, 10.0 ]
 *
-* unary.ndarray( [ x, y ], shape, strides, offsets, scale );
+* @example
+* var Float32Array = require( '@stdlib/array/float32' );
+* var addf = require( '@stdlib/math/base/ops/addf' );
+* var smap2 = require( '@stdlib/strided/base/smap2' );
 *
-* console.log( y );
-* // =&gt; &lt;Float64Array&gt;[ 10.0, 20.0, 30.0, 40.0, 50.0 ]
+* var x = new Float32Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var y = new Float32Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var z = new Float32Array( x.length );
+*
+* smap2.ndarray( x.length, x, 1, 0, y, 1, 0, z, 1, 0, addf );
+*
+* console.log( z );
+* // =&gt; &lt;Float32Array&gt;[ 2.0, 4.0, 6.0, 8.0, 10.0 ]
 */
 &nbsp;
 // MODULES //
@@ -310,7 +277,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-06T22:36:51.216Z
+                at 2024-07-06T22:36:36.992Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
