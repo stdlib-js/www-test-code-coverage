@@ -546,24 +546,6 @@ setReadOnly( ns, 'base', require( '@stdlib/complex/base' ) );
 setReadOnly( ns, 'complex', require( '@stdlib/complex/cmplx' ) );
 &nbsp;
 /**
-* @name conj
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/complex/conj}
-*/
-setReadOnly( ns, 'conj', require( '@stdlib/complex/conj' ) );
-&nbsp;
-/**
-* @name conjf
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/complex/conjf}
-*/
-setReadOnly( ns, 'conjf', require( '@stdlib/complex/conjf' ) );
-&nbsp;
-/**
 * @name complexCtors
 * @memberof ns
 * @readonly
@@ -591,6 +573,15 @@ setReadOnly( ns, 'complexDataType', require( '@stdlib/complex/dtype' ) );
 setReadOnly( ns, 'complexDataTypes', require( '@stdlib/complex/dtypes' ) );
 &nbsp;
 /**
+* @name conjf
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/complex/float32/conj}
+*/
+setReadOnly( ns, 'conjf', require( '@stdlib/complex/float32/conj' ) );
+&nbsp;
+/**
 * @name Complex64
 * @memberof ns
 * @readonly
@@ -598,6 +589,51 @@ setReadOnly( ns, 'complexDataTypes', require( '@stdlib/complex/dtypes' ) );
 * @see {@link module:@stdlib/complex/float32/ctor}
 */
 setReadOnly( ns, 'Complex64', require( '@stdlib/complex/float32/ctor' ) );
+&nbsp;
+/**
+* @name imagf
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/complex/float32/imag}
+*/
+setReadOnly( ns, 'imagf', require( '@stdlib/complex/float32/imag' ) );
+&nbsp;
+/**
+* @name realf
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/complex/float32/real}
+*/
+setReadOnly( ns, 'realf', require( '@stdlib/complex/float32/real' ) );
+&nbsp;
+/**
+* @name reimf
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/complex/float32/reim}
+*/
+setReadOnly( ns, 'reimf', require( '@stdlib/complex/float32/reim' ) );
+&nbsp;
+/**
+* @name reviveComplex64
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/complex/float32/reviver}
+*/
+setReadOnly( ns, 'reviveComplex64', require( '@stdlib/complex/float32/reviver' ) );
+&nbsp;
+/**
+* @name conj
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/complex/float64/conj}
+*/
+setReadOnly( ns, 'conj', require( '@stdlib/complex/float64/conj' ) );
 &nbsp;
 /**
 * @name Complex128
@@ -613,18 +649,36 @@ setReadOnly( ns, 'Complex128', require( '@stdlib/complex/float64/ctor' ) );
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/complex/imag}
+* @see {@link module:@stdlib/complex/float64/imag}
 */
-setReadOnly( ns, 'imag', require( '@stdlib/complex/imag' ) );
+setReadOnly( ns, 'imag', require( '@stdlib/complex/float64/imag' ) );
 &nbsp;
 /**
-* @name imagf
+* @name real
 * @memberof ns
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/complex/imagf}
+* @see {@link module:@stdlib/complex/float64/real}
 */
-setReadOnly( ns, 'imagf', require( '@stdlib/complex/imagf' ) );
+setReadOnly( ns, 'real', require( '@stdlib/complex/float64/real' ) );
+&nbsp;
+/**
+* @name reim
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/complex/float64/reim}
+*/
+setReadOnly( ns, 'reim', require( '@stdlib/complex/float64/reim' ) );
+&nbsp;
+/**
+* @name reviveComplex128
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/complex/float64/reviver}
+*/
+setReadOnly( ns, 'reviveComplex128', require( '@stdlib/complex/float64/reviver' ) );
 &nbsp;
 /**
 * @name complexPromotionRules
@@ -636,42 +690,6 @@ setReadOnly( ns, 'imagf', require( '@stdlib/complex/imagf' ) );
 setReadOnly( ns, 'complexPromotionRules', require( '@stdlib/complex/promotion-rules' ) );
 &nbsp;
 /**
-* @name real
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/complex/real}
-*/
-setReadOnly( ns, 'real', require( '@stdlib/complex/real' ) );
-&nbsp;
-/**
-* @name realf
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/complex/realf}
-*/
-setReadOnly( ns, 'realf', require( '@stdlib/complex/realf' ) );
-&nbsp;
-/**
-* @name reim
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/complex/reim}
-*/
-setReadOnly( ns, 'reim', require( '@stdlib/complex/reim' ) );
-&nbsp;
-/**
-* @name reimf
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/complex/reimf}
-*/
-setReadOnly( ns, 'reimf', require( '@stdlib/complex/reimf' ) );
-&nbsp;
-/**
 * @name reviveComplex
 * @memberof ns
 * @readonly
@@ -679,24 +697,6 @@ setReadOnly( ns, 'reimf', require( '@stdlib/complex/reimf' ) );
 * @see {@link module:@stdlib/complex/reviver}
 */
 setReadOnly( ns, 'reviveComplex', require( '@stdlib/complex/reviver' ) );
-&nbsp;
-/**
-* @name reviveComplex64
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/complex/float32/reviver}
-*/
-setReadOnly( ns, 'reviveComplex64', require( '@stdlib/complex/float32/reviver' ) );
-&nbsp;
-/**
-* @name reviveComplex128
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/complex/float64/reviver}
-*/
-setReadOnly( ns, 'reviveComplex128', require( '@stdlib/complex/float64/reviver' ) );
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -709,7 +709,7 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-06T21:44:41.314Z
+                at 2024-07-18T01:13:03.419Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
