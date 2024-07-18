@@ -6181,8 +6181,8 @@ var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-propert
 var setReadOnlyAccessor = require( '@stdlib/utils/define-nonenumerable-read-only-accessor' );
 var Float64Array = require( '@stdlib/array/float64' );
 var Complex128 = require( '@stdlib/complex/float64/ctor' );
-var real = require( '@stdlib/complex/real' );
-var imag = require( '@stdlib/complex/imag' );
+var real = require( '@stdlib/complex/float64/real' );
+var imag = require( '@stdlib/complex/float64/imag' );
 var floor = require( '@stdlib/math/base/special/floor' );
 var reinterpret64 = require( '@stdlib/strided/base/reinterpret-complex64' );
 var reinterpret128 = require( '@stdlib/strided/base/reinterpret-complex128' );
@@ -6504,8 +6504,8 @@ setReadOnly( Complex128Array, 'name', 'Complex128Array' );
 *
 * @example
 * var Complex128 = require( '@stdlib/complex/float64/ctor' );
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function clbk( v ) {
 *     return new Complex128( real(v)*2.0, imag(v)*2.0 );
@@ -6689,8 +6689,8 @@ setReadOnly( Complex128Array, 'of', function of() {
 * @returns {(Complex128|void)} array element
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var arr = new Complex128Array( 10 );
 *
@@ -6832,8 +6832,8 @@ setReadOnly( Complex128Array.prototype, 'BYTES_PER_ELEMENT', Complex128Array.BYT
 *
 * @example
 * var Complex128 = require( '@stdlib/complex/float64/ctor' );
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var arr = new Complex128Array( 4 );
 *
@@ -6998,8 +6998,8 @@ setReadOnly( Complex128Array.prototype, 'entries', function entries() {
 * @returns {boolean} boolean indicating whether all elements pass a test
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function predicate( v ) {
 *     return ( real( v ) === imag( v ) );
@@ -7048,8 +7048,8 @@ setReadOnly( Complex128Array.prototype, 'every', function every( predicate, this
 * @returns {Complex128Array} modified array
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var arr = new Complex128Array( 3 );
 *
@@ -7141,8 +7141,8 @@ setReadOnly( Complex128Array.prototype, 'fill', function fill( value, start, end
 * @returns {Complex128Array} complex number array
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function predicate( v ) {
 *     return ( real( v ) === imag( v ) );
@@ -7204,8 +7204,8 @@ setReadOnly( Complex128Array.prototype, 'filter', function filter( predicate, th
 * @returns {(Complex128|void)} array element or undefined
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function predicate( v ) {
 *     return ( real( v ) === imag( v ) );
@@ -7258,8 +7258,8 @@ setReadOnly( Complex128Array.prototype, 'find', function find( predicate, thisAr
 * @returns {integer} index or -1
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function predicate( v ) {
 *     return ( real( v ) === imag( v ) );
@@ -7307,8 +7307,8 @@ setReadOnly( Complex128Array.prototype, 'findIndex', function findIndex( predica
 * @returns {(Complex128|void)} array element or undefined
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function predicate( v ) {
 *     return ( real( v ) === imag( v ) );
@@ -7361,8 +7361,8 @@ setReadOnly( Complex128Array.prototype, 'findLast', function findLast( predicate
 * @returns {integer} index or -1
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function predicate( v ) {
 *     return ( real( v ) === imag( v ) );
@@ -7453,8 +7453,8 @@ setReadOnly( Complex128Array.prototype, 'forEach', function forEach( fcn, thisAr
 *
 * @example
 * var arr = new Complex128Array( 10 );
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var z = arr.get( 0 );
 * // returns &lt;Complex128&gt;
@@ -7883,8 +7883,8 @@ setReadOnly( Complex128Array.prototype, 'lastIndexOf', function lastIndexOf( sea
 *
 * @example
 * var Complex128 = require( '@stdlib/complex/float64/ctor' );
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function scale( v, i ) {
 *     return new Complex128( 2.0*real( v ), 2.0*imag( v ) );
@@ -7952,9 +7952,9 @@ setReadOnly( Complex128Array.prototype, 'map', function map( fcn, thisArg ) {
 * @returns {*} accumulated result
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
-* var cadd = require( '@stdlib/math/base/ops/cadd' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
+* var cadd = require( '@stdlib/complex/float64/base/add' );
 *
 * var arr = new Complex128Array( 3 );
 *
@@ -8017,9 +8017,9 @@ setReadOnly( Complex128Array.prototype, 'reduce', function reduce( reducer, init
 * @returns {*} accumulated result
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
-* var cadd = require( '@stdlib/math/base/ops/cadd' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
+* var cadd = require( '@stdlib/complex/float64/base/add' );
 *
 * var arr = new Complex128Array( 3 );
 *
@@ -8078,8 +8078,8 @@ setReadOnly( Complex128Array.prototype, 'reduceRight', function reduceRight( red
 * @returns {Complex128Array} reversed array
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var arr = new Complex128Array( 3 );
 *
@@ -8179,8 +8179,8 @@ setReadOnly( Complex128Array.prototype, 'reverse', function reverse() {
 * @returns {void}
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var arr = new Complex128Array( 10 );
 *
@@ -8347,8 +8347,8 @@ setReadOnly( Complex128Array.prototype, 'set', function set( value ) {
 * @returns {Complex128Array} complex number array
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var arr = new Complex128Array( 5 );
 *
@@ -8476,8 +8476,8 @@ setReadOnly( Complex128Array.prototype, 'slice', function slice( start, end ) {
 * @returns {boolean} boolean indicating whether at least one element passes a test
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function predicate( v ) {
 *     return ( real( v ) === imag( v ) );
@@ -8522,8 +8522,8 @@ setReadOnly( Complex128Array.prototype, 'some', function some( predicate, thisAr
 * @returns {Complex128Array} sorted array
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function compare( a, b ) {
 *     var re1;
@@ -8626,8 +8626,8 @@ setReadOnly( Complex128Array.prototype, 'sort', function sort( compareFcn ) {
 * @returns {Complex64Array} subarray
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var arr = new Complex128Array( 5 );
 *
@@ -8799,8 +8799,8 @@ setReadOnly( Complex128Array.prototype, 'toLocaleString', function toLocaleStrin
 * @returns {Complex128Array} reversed array
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * var arr = new Complex128Array( 3 );
 *
@@ -8872,8 +8872,8 @@ setReadOnly( Complex128Array.prototype, 'toReversed', function toReversed() {
 * @returns {Complex128Array} sorted array
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 *
 * function compare( a, b ) {
 *     var re1;
@@ -8999,8 +8999,8 @@ setReadOnly( Complex128Array.prototype, 'toString', function toString() {
 * @returns {Iterator} iterator
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 * var arr = new Complex128Array( 2 );
 *
 * arr.set( [ 1.0, -1.0 ], 0 );
@@ -9121,8 +9121,8 @@ setReadOnly( Complex128Array.prototype, 'values', function values() {
 * @returns {Complex128Array} new typed array
 *
 * @example
-* var real = require( '@stdlib/complex/real' );
-* var imag = require( '@stdlib/complex/imag' );
+* var real = require( '@stdlib/complex/float64/real' );
+* var imag = require( '@stdlib/complex/float64/imag' );
 * var Complex128 = require( '@stdlib/complex/float64/ctor' );
 *
 * var arr = new Complex128Array( 3 );
@@ -9181,7 +9181,7 @@ module.exports = Complex128Array;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-15T23:08:31.907Z
+                at 2024-07-18T01:28:37.973Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
