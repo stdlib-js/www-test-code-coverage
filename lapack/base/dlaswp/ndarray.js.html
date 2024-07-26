@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>73/73</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>73/73</span>
             </div>
         
             
@@ -136,14 +136,7 @@
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -196,28 +189,21 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -245,8 +231,6 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
-var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
 &nbsp;
@@ -255,7 +239,6 @@ var base = require( './base.js' );
 /**
 * Performs a series of row interchanges on a matrix `A` using pivot indices stored in `IPIV`.
 *
-* @param {string} order - storage layout
 * @param {PositiveInteger} N - number of columns in `A`
 * @param {Float64Array} A - input matrix
 * @param {integer} strideA1 - stride of the first dimension of `A`
@@ -267,7 +250,6 @@ var base = require( './base.js' );
 * @param {Int32Array} IPIV - vector of pivot indices
 * @param {integer} strideIPIV - `IPIV` stride length
 * @param {NonNegativeInteger} offsetIPIV - index offset for `IPIV`
-* @throws {TypeError} first argument must be a valid order
 * @returns {Float64Array} permuted matrix `A`
 *
 * @example
@@ -277,14 +259,11 @@ var base = require( './base.js' );
 * var IPIV = new Int32Array( [ 2, 0, 1 ] );
 * var A = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] ); // =&gt; [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 *
-* dlaswp( 'row-major', 2, A, 2, 1, 0, 0, 2, 1, IPIV, 1, 0 );
+* dlaswp( 2, A, 2, 1, 0, 0, 2, 1, IPIV, 1, 0 );
 * // A =&gt; &lt;Float64Array&gt;[ 3.0, 4.0, 1.0, 2.0, 5.0, 6.0 ]
 */
-function dlaswp( order, N, A, strideA1, strideA2, offsetA, k1, k2, inck, IPIV, strideIPIV, offsetIPIV ) { // eslint-disable-line max-len, max-params
+function dlaswp( N, A, strideA1, strideA2, offsetA, k1, k2, inck, IPIV, strideIPIV, offsetIPIV ) { // eslint-disable-line max-len, max-params
 	var tmp;
-	if ( !isLayout( order ) ) {
-		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
-	}
 	if ( inck &lt; 0 ) {
 		offsetIPIV += k2 * strideIPIV;
 		strideIPIV *= -1;
@@ -296,7 +275,7 @@ function dlaswp( order, N, A, strideA1, strideA2, offsetA, k1, k2, inck, IPIV, s
 		offsetIPIV += k1 * strideIPIV;
 		inck = 1;
 	}
-	return base( order, N, A, strideA1, strideA2, offsetA, k1, k2, inck, IPIV, strideIPIV, offsetIPIV ); // eslint-disable-line max-len
+	return base( N, A, strideA1, strideA2, offsetA, k1, k2, inck, IPIV, strideIPIV, offsetIPIV ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
@@ -310,7 +289,7 @@ module.exports = dlaswp;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-13T02:22:00.408Z
+                at 2024-07-26T02:48:40.823Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
