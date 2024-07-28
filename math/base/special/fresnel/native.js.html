@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/fresnel/lib/index.js</title>
+    <title>Code coverage report for math/base/special/fresnel/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/fresnel/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/fresnel/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>70/70</span>
+                <span class='fraction'>65/65</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>70/70</span>
+                <span class='fraction'>65/65</span>
             </div>
         
             
@@ -128,12 +128,7 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,16 +183,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5003x</span>
+<span class="cline-any cline-yes">5003x</span>
+<span class="cline-any cline-yes">5003x</span>
+<span class="cline-any cline-yes">5003x</span>
+<span class="cline-any cline-yes">5003x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -206,7 +196,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2024 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -223,56 +213,51 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute the Fresnel integrals S(x) and C(x).
-*
-* @module @stdlib/math/base/special/fresnel
-*
-* @example
-* var fresnel = require( '@stdlib/math/base/special/fresnel' );
-*
-* var v = fresnel( 0.0 );
-* // returns [ 0.0, 0.0 ]
-*
-* v = fresnel( 1.0 );
-* // returns [ ~0.438, ~0.780 ]
-*
-* v = fresnel( Infinity );
-* // returns [ ~0.5, ~0.5 ]
-*
-* v = fresnel( -Infinity );
-* // returns [ ~-0.5, ~-0.5 ]
-*
-* v = fresnel( NaN );
-* // returns [ NaN, NaN ]
-*
-* @example
-* var fresnel = require( '@stdlib/math/base/special/fresnel' );
-*
-* var out = new Float64Array( 2 );
-*
-* var v = fresnel.assign( 0.0, out, 1, 0 );
-* // return &lt;Float64Array&gt;[ ~0.0, ~0.0 ]
-*
-* var bool = ( v === out );
-* // returns true
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
-var main = require( './main.js' );
-var assign = require( './assign.js' );
+var Float64Array = require( '@stdlib/array/float64' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-setReadOnly( main, 'assign', assign );
+/**
+* Computes the Fresnel integrals S(x) and C(x).
+*
+* @private
+* @param {number} x - input value
+* @returns {Array&lt;number&gt;} S(x) and C(x)
+*
+* @example
+* var v = fresnel( 0.0 );
+* // returns &lt;Float64Array&gt;[ 0.0, 0.0 ]
+*
+* @example
+* var v = fresnel( 1.0 );
+* // returns &lt;Float64Array&gt;[ ~0.438, ~0.780 ]
+*
+* @example
+* var v = fresnel( Infinity );
+* // returns &lt;Float64Array&gt;[ ~0.5, ~0.5 ]
+*
+* @example
+* var v = fresnel( -Infinity );
+* // returns &lt;Float64Array&gt;[ ~-0.5, ~-0.5 ]
+*
+* @example
+* var v = fresnel( NaN );
+* // returns &lt;Float64Array&gt;[ NaN, NaN ]
+*/
+function fresnel( x ) {
+	var out = new Float64Array( 2 );
+	addon( x, out );
+	return out;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = fresnel;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
