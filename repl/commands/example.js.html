@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.84% </span>
+                <span class="strong">33.68% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/171</span>
+                <span class='fraction'>63/187</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.84% </span>
+                <span class="strong">33.68% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/171</span>
+                <span class='fraction'>63/187</span>
             </div>
         
             
@@ -234,7 +234,23 @@
 <a name='L169'></a><a href='#L169'>169</a>
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -291,6 +307,22 @@
 <span class="cline-any cline-yes">127x</span>
 <span class="cline-any cline-yes">127x</span>
 <span class="cline-any cline-yes">127x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -464,6 +496,7 @@ function command( repl, cmds ) {
 <span class="fstat-no" title="function not covered" >	function onCommand( alias ) {</span>
 <span class="cstat-no" title="statement not covered" >		var aliases;</span>
 <span class="cstat-no" title="statement not covered" >		var entry;</span>
+<span class="cstat-no" title="statement not covered" >		var lines;</span>
 <span class="cstat-no" title="statement not covered" >		var out;</span>
 <span class="cstat-no" title="statement not covered" >		var len;</span>
 <span class="cstat-no" title="statement not covered" >		var N;</span>
@@ -540,6 +573,7 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( out ) {</span>
+<span class="cstat-no" title="statement not covered" >			lines = [];</span>
 <span class="cstat-no" title="statement not covered" >			out = out.split( RE_EOL );</span>
 <span class="cstat-no" title="statement not covered" >			len = out.length;</span>
 <span class="cstat-no" title="statement not covered" >			i = -1;</span>
@@ -556,13 +590,27 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >		* @private</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} cmd - command</span>
 <span class="cstat-no" title="statement not covered" >		* @param {boolean} success - boolean indicating whether the command successfully executed</span>
+<span class="cstat-no" title="statement not covered" >		* @returns {void}</span>
 <span class="cstat-no" title="statement not covered" >		*/</span>
 <span class="cstat-no" title="statement not covered" >		function next() {</span>
+<span class="cstat-no" title="statement not covered" >			var j;</span>
 <span class="cstat-no" title="statement not covered" >			i += 1;</span>
 <span class="cstat-no" title="statement not covered" >			if ( i &lt; len ) {</span>
 <span class="cstat-no" title="statement not covered" >				// Forward the next line to the REPL readline interface in order to mimic user input...</span>
 <span class="cstat-no" title="statement not covered" >				if ( out[ i ] ) {</span>
-<span class="cstat-no" title="statement not covered" >					repl._rli.write( out[ i ]+'\n' );</span>
+<span class="cstat-no" title="statement not covered" >					lines.push( out[ i ] );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >					// If line is part of a multi-line input, wait for the next line...</span>
+<span class="cstat-no" title="statement not covered" >					if ( repl._multilineHandler.isMultilineInput( lines.join( '\n' ) ) ) {</span>
+<span class="cstat-no" title="statement not covered" >						return next();</span>
+<span class="cstat-no" title="statement not covered" >					}</span>
+<span class="cstat-no" title="statement not covered" >					for ( j = 0; j &lt; lines.length; j++ ) {</span>
+<span class="cstat-no" title="statement not covered" >						repl._rli.write( lines[ j ] );</span>
+<span class="cstat-no" title="statement not covered" >						repl._rli.write( '\n', {</span>
+<span class="cstat-no" title="statement not covered" >							'name': 'return'</span>
+<span class="cstat-no" title="statement not covered" >						});</span>
+<span class="cstat-no" title="statement not covered" >					}</span>
+<span class="cstat-no" title="statement not covered" >					lines = [];</span>
 <span class="cstat-no" title="statement not covered" >					repl.once( 'drain', next );</span>
 <span class="cstat-no" title="statement not covered" >				} else {</span>
 <span class="cstat-no" title="statement not covered" >					nextTick( next );</span>
@@ -583,7 +631,7 @@ module.exports = command;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-27T21:03:25.528Z
+                at 2024-08-01T15:13:12.880Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
