@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/binomcoef/lib/index.js</title>
+    <title>Code coverage report for math/base/special/binomcoef/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/binomcoef/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/binomcoef/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>55/55</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>55/55</span>
             </div>
         
             
@@ -118,10 +118,7 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -168,12 +165,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2014x</span>
+<span class="cline-any cline-yes">2014x</span>
+<span class="cline-any cline-yes">2014x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -182,7 +176,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2024 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -199,44 +193,41 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute the binomial coefficient.
-*
-* @module @stdlib/math/base/special/binomcoef
-*
-* @example
-* var binomcoef = require( '@stdlib/math/base/special/binomcoef' );
-*
-* var v = binomcoef( 8, 2 );
-* // returns 28
-*
-* v = binomcoef( 0, 0 );
-* // returns 1
-*
-* v = binomcoef( -4, 2 );
-* // returns 10
-*
-* v = binomcoef( 5, 3 );
-* // returns 10
-*
-* v = binomcoef( NaN, 3 );
-* // returns NaN
-*
-* v = binomcoef( 5, NaN );
-* // returns NaN
-*
-* v = binomcoef( NaN, NaN );
-* // returns NaN
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var main = require( './main.js' );
+var addon = require( './../src/addon.node' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
+/**
+* Computes the binomial coefficient of two integers.
+*
+* @private
+* @param {integer} n - input value
+* @param {integer} k - second input value
+* @returns {number} function value
+*
+* @example
+* var v = binomcoef( 8, 2 );
+* // returns 28.0
+*
+* @example
+* var v = binomcoef( 0, 0 );
+* // returns 1.0
+*
+* @example
+* var v = binomcoef( -4, 2 );
+* // returns 10.0
+*/
+function binomcoef( n, k ) {
+	return addon( n, k );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = binomcoef;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
