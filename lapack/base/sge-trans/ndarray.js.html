@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for lapack/base/dge-trans/lib/dgetrans.js</title>
+    <title>Code coverage report for lapack/base/sge-trans/lib/ndarray.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">lapack/base/dge-trans/lib</a> dgetrans.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">lapack/base/sge-trans/lib</a> ndarray.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>78/78</span>
+                <span class='fraction'>61/61</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>78/78</span>
+                <span class='fraction'>61/61</span>
             </div>
         
             
@@ -124,24 +124,7 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -192,28 +175,11 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -237,66 +203,49 @@
 * limitations under the License.
 */
 &nbsp;
+/* eslint-disable max-len */
+&nbsp;
 'use strict';
 &nbsp;
 // MODULES //
 &nbsp;
-var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
-var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Converts a matrix from row-major layout to column-major layout or vice versa.
+* Converts a matrix from row-major layout to column-major layout or vice versa using alternative indexing semantics.
 *
-* @param {string} order - storage layout
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
 * @param {NonNegativeInteger} N - number of columns in matrix `A`
-* @param {Float64Array} A - input matrix
-* @param {PositiveInteger} LDA - stride of the first dimension of `A` (a.k.a., leading dimension of the matrix `A`)
-* @param {Float64Array} out - output matrix
-* @param {PositiveInteger} LDO - stride of the first dimension of `out` (a.k.a., leading dimension of the matrix `out`)
-* @throws {TypeError} first argument must be a valid order
-* @returns {Float64Array} `out`
+* @param {Float32Array} A - input matrix
+* @param {integer} strideA1 - stride of the first dimension of `A`
+* @param {integer} strideA2 - stride of the second dimension of `A`
+* @param {NonNegativeInteger} offsetA - starting index for `A`
+* @param {Float32Array} out - output matrix
+* @param {integer} strideO1 - stride of the first dimension of `out`
+* @param {integer} strideO2 - stride of the second dimension of `out`
+* @param {NonNegativeInteger} offsetO - starting index for `out`
+* @returns {Float32Array} `out`
 *
 * @example
-* var Float64Array = require( '@stdlib/array/float64' );
+* var Float32Array = require( '@stdlib/array/float32' );
 *
-* var A = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
-* var out = new Float64Array( 6 );
+* var A = new Float32Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
+* var out = new Float32Array( 6 );
 *
-* out = dgetrans( 'row-major', 2, 3, A, 3, out, 2 );
-* // returns &lt;Float64Array&gt;[ 1.0, 4.0, 2.0, 5.0, 3.0, 6.0 ]
+* out = sgetrans( 2, 3, A, 3, 1, 0, out, 2, 1, 0 );
+* // returns &lt;Float32Array&gt;[ 1.0, 4.0, 2.0, 5.0, 3.0, 6.0 ]
 */
-function dgetrans( order, M, N, A, LDA, out, LDO ) {
-	var sa1;
-	var sa2;
-	var so1;
-	var so2;
-&nbsp;
-	if ( !isLayout( order ) ) {
-		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
-	}
-	if ( order === 'column-major' ) {
-		sa1 = 1;
-		sa2 = LDA;
-		so1 = 1;
-		so2 = LDO;
-	} else { // order === 'row-major'
-		sa1 = LDA;
-		sa2 = 1;
-		so1 = LDO;
-		so2 = 1;
-	}
-	return base( M, N, A, sa1, sa2, 0, out, so1, so2, 0 );
+function sgetrans( M, N, A, strideA1, strideA2, offsetA, out, strideO1, strideO2, offsetO ) {
+	return base( M, N, A, strideA1, strideA2, offsetA, out, strideO1, strideO2, offsetO );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = dgetrans;
+module.exports = sgetrans;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -304,7 +253,7 @@ module.exports = dgetrans;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-14T01:16:49.749Z
+                at 2024-08-14T01:16:53.247Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
