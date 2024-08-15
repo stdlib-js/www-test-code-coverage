@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for blas/base/sgemm/lib/ndarray.js</title>
+    <title>Code coverage report for blas/base/dgemm/lib/dgemm.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/sgemm/lib</a> ndarray.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/dgemm/lib</a> dgemm.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>91/91</span>
+                <span class='fraction'>150/150</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>37/37</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>91/91</span>
+                <span class='fraction'>150/150</span>
             </div>
         
             
@@ -154,7 +154,66 @@
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -222,24 +281,83 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">63x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">63x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">63x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">63x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">63x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">63x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">63x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -267,6 +385,8 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var max = require( '@stdlib/math/base/special/fast/max' );
+var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
 var isMatrixTranspose = require( '@stdlib/blas/base/assert/is-transpose-operation' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
@@ -277,65 +397,122 @@ var base = require( './base.js' );
 /**
 * Performs the matrix-matrix operation `C = α*op(A)*op(B) + β*C` where `op(X)` is either `op(X) = X` or `op(X) = X^T`, `α` and `β` are scalars, `A`, `B`, and `C` are matrices, with `op(A)` an `M` by `K` matrix, `op(B)` a `K` by `N` matrix, and `C` an `M` by `N` matrix.
 *
+* @param {string} order - storage layout
 * @param {string} transA - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
 * @param {string} transB - specifies whether `B` should be transposed, conjugate-transposed, or not transposed
 * @param {NonNegativeInteger} M - number of rows in the matrix `op(A)` and in the matrix `C`
 * @param {NonNegativeInteger} N - number of columns in the matrix `op(B)` and in the matrix `C`
 * @param {NonNegativeInteger} K - number of columns in the matrix `op(A)` and number of rows in the matrix `op(B)`
 * @param {number} alpha - scalar constant
-* @param {Float32Array} A - first matrix
-* @param {integer} strideA1 - stride of the first dimension of `A`
-* @param {integer} strideA2 - stride of the second dimension of `A`
-* @param {NonNegativeInteger} offsetA - starting index for `A`
-* @param {Float32Array} B - second matrix
-* @param {integer} strideB1 - stride of the first dimension of `B`
-* @param {integer} strideB2 - stride of the second dimension of `B`
-* @param {NonNegativeInteger} offsetB - starting index for `B`
+* @param {Float64Array} A - first matrix
+* @param {PositiveInteger} LDA - stride of the first dimension of `A` (a.k.a., leading dimension of the matrix `A`)
+* @param {Float64Array} B - second matrix
+* @param {PositiveInteger} LDB - stride of the first dimension of `B` (a.k.a., leading dimension of the matrix `B`)
 * @param {number} beta - scalar constant
-* @param {Float32Array} C - third matrix
-* @param {integer} strideC1 - stride of the first dimension of `C`
-* @param {integer} strideC2 - stride of the second dimension of `C`
-* @param {NonNegativeInteger} offsetC - starting index for `C`
-* @throws {TypeError} first argument must be a valid transpose operation
+* @param {Float64Array} C - third matrix
+* @param {PositiveInteger} LDC - stride of the first dimension of `C` (a.k.a., leading dimension of the matrix `C`)
+* @throws {TypeError} first argument must be a valid order
 * @throws {TypeError} second argument must be a valid transpose operation
-* @throws {RangeError} third argument must be a nonnegative integer
+* @throws {TypeError} third argument must be a valid transpose operation
 * @throws {RangeError} fourth argument must be a nonnegative integer
 * @throws {RangeError} fifth argument must be a nonnegative integer
-* @returns {Float32Array} `C`
+* @throws {RangeError} sixth argument must be a nonnegative integer
+* @throws {RangeError} ninth argument must be greater than or equal to max(1,M) when `A` is not transposed and max(1,K) otherwise
+* @throws {RangeError} eleventh argument must be greater than or equal to max(1,K) when `B` is not transposed and max(1,N) otherwise
+* @throws {RangeError} fourteenth argument must be greater than or equal to max(1,M)
+* @returns {Float64Array} `C`
 *
 * @example
-* var Float32Array = require( '@stdlib/array/float32' );
+* var Float64Array = require( '@stdlib/array/float64' );
 *
-* var A = new Float32Array( [ 1.0, 2.0, 3.0, 4.0 ] );
-* var B = new Float32Array( [ 1.0, 1.0, 0.0, 1.0 ] );
-* var C = new Float32Array( [ 1.0, 2.0, 3.0, 4.0 ] );
+* var A = new Float64Array( [ 1.0, 2.0, 3.0, 4.0 ] );
+* var B = new Float64Array( [ 1.0, 1.0, 0.0, 1.0 ] );
+* var C = new Float64Array( [ 1.0, 2.0, 3.0, 4.0 ] );
 *
-* sgemm( 'no-transpose', 'no-transpose', 2, 2, 2, 1.0, A, 2, 1, 0, B, 2, 1, 0, 1.0, C, 2, 1, 0 );
-* // C =&gt; &lt;Float32Array&gt;[ 2.0, 5.0, 6.0, 11.0 ]
+* dgemm( 'row-major', 'no-transpose', 'no-transpose', 2, 2, 2, 1.0, A, 2, B, 2, 1.0, C, 2 );
+* // C =&gt; &lt;Float64Array&gt;[ 2.0, 5.0, 6.0, 11.0 ]
 */
-function sgemm( transA, transB, M, N, K, alpha, A, strideA1, strideA2, offsetA, B, strideB1, strideB2, offsetB, beta, C, strideC1, strideC2, offsetC ) { // eslint-disable-line max-params, max-len
+function dgemm( order, transA, transB, M, N, K, alpha, A, LDA, B, LDB, beta, C, LDC ) { // eslint-disable-line max-params, max-len
+	var nrowsa;
+	var nrowsb;
+	var valc;
+	var sa1;
+	var sa2;
+	var sb1;
+	var sb2;
+	var sc1;
+	var sc2;
+&nbsp;
+	if ( !isLayout( order ) ) {
+		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
+	}
 	if ( !isMatrixTranspose( transA ) ) {
-		throw new TypeError( format( 'invalid argument. First argument must be a valid transpose operation. Value: `%s`.', transA ) );
+		throw new TypeError( format( 'invalid argument. Second argument must be a valid transpose operation. Value: `%s`.', transA ) );
 	}
 	if ( !isMatrixTranspose( transB ) ) {
-		throw new TypeError( format( 'invalid argument. Second argument must be a valid transpose operation. Value: `%s`.', transB ) );
+		throw new TypeError( format( 'invalid argument. Third argument must be a valid transpose operation. Value: `%s`.', transB ) );
 	}
 	if ( M &lt; 0 ) {
-		throw new RangeError( format( 'invalid argument. Third argument must be a nonnegative integer. Value: `%d`.', M ) );
-	}
-	if ( N &lt; 0 ) {
 		throw new RangeError( format( 'invalid argument. Fourth argument must be a nonnegative integer. Value: `%d`.', M ) );
 	}
-	if ( K &lt; 0 ) {
-		throw new RangeError( format( 'invalid argument. Fifth argument must be a nonnegative integer. Value: `%d`.', K ) );
+	if ( N &lt; 0 ) {
+		throw new RangeError( format( 'invalid argument. Fifth argument must be a nonnegative integer. Value: `%d`.', M ) );
 	}
-	return base( transA, transB, M, N, K, alpha, A, strideA1, strideA2, offsetA, B, strideB1, strideB2, offsetB, beta, C, strideC1, strideC2, offsetC ); // eslint-disable-line max-len
+	if ( K &lt; 0 ) {
+		throw new RangeError( format( 'invalid argument. Sixth argument must be a nonnegative integer. Value: `%d`.', K ) );
+	}
+	if (
+		( order === 'row-major' &amp;&amp; transA === 'no-transpose' ) ||
+		( order === 'column-major' &amp;&amp; transA === 'transpose' )
+	) {
+		nrowsa = K;
+	} else {
+		nrowsa = M;
+	}
+	if (
+		( order === 'row-major' &amp;&amp; transB === 'no-transpose' ) ||
+		( order === 'column-major' &amp;&amp; transB === 'transpose' )
+	) {
+		nrowsb = N;
+	} else {
+		nrowsb = K;
+	}
+	if ( LDA &lt; max( 1, nrowsa ) ) {
+		throw new RangeError( format( 'invalid argument. Ninth argument must be greater than or equal to max(1,%d). Value: `%d`.', nrowsa, LDA ) );
+	}
+	if ( LDB &lt; max( 1, nrowsb ) ) {
+		throw new RangeError( format( 'invalid argument. Eleventh argument must be greater than or equal to max(1,%d). Value: `%d`.', nrowsb, LDB ) );
+	}
+	if ( order === 'row-major' ) {
+		valc = N;
+	} else {
+		valc = M;
+	}
+	if ( LDC &lt; max( 1, valc ) ) {
+		throw new RangeError( format( 'invalid argument. Fourteenth argument must be greater than or equal to max(1,%d). Value: `%d`.', valc, LDC ) );
+	}
+	if ( order === 'column-major' ) {
+		sa1 = 1;
+		sa2 = LDA;
+		sb1 = 1;
+		sb2 = LDB;
+		sc1 = 1;
+		sc2 = LDC;
+	} else { // order === 'row-major'
+		sa1 = LDA;
+		sa2 = 1;
+		sb1 = LDB;
+		sb2 = 1;
+		sc1 = LDC;
+		sc2 = 1;
+	}
+	return base( transA, transB, M, N, K, alpha, A, sa1, sa2, 0, B, sb1, sb2, 0, beta, C, sc1, sc2, 0 ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = sgemm;
+module.exports = dgemm;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -343,7 +520,7 @@ module.exports = sgemm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-15T21:13:15.186Z
+                at 2024-08-15T21:13:10.852Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
