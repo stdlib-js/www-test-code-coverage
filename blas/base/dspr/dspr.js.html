@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for blas/base/sspr/lib/ndarray.js</title>
+    <title>Code coverage report for blas/base/dspr/lib/dspr.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/sspr/lib</a> ndarray.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/dspr/lib</a> dspr.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>85/85</span>
+                <span class='fraction'>82/82</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>85/85</span>
+                <span class='fraction'>82/82</span>
             </div>
         
             
@@ -145,10 +145,7 @@
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -204,30 +201,27 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -257,6 +251,7 @@
 &nbsp;
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
 var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
+var stride2offset = require( '@stdlib/strided/base/stride2offset' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
@@ -270,29 +265,27 @@ var base = require( './base.js' );
 * @param {string} uplo - specifies whether the upper or lower triangular part of the symmetric matrix `A` is supplied
 * @param {NonNegativeInteger} N - number of elements along each dimension of `A`
 * @param {number} alpha - scalar
-* @param {Float32Array} x - first input array
+* @param {Float64Array} x - input vector
 * @param {integer} strideX - `x` stride length
-* @param {NonNegativeInteger} offsetX - starting index for `x`
-* @param {Float32Array} AP - packed form of a symmetric matrix `A`
-* @param {integer} strideAP - `AP` stride length
-* @param {NonNegativeInteger} offsetAP - starting index for `AP`
+* @param {Float64Array} AP - packed form of a symmetric matrix `A`
 * @throws {TypeError} first argument must be a valid order
 * @throws {TypeError} second argument must specify whether the lower or upper triangular matrix is supplied
 * @throws {RangeError} third argument must be a nonnegative integer
 * @throws {RangeError} sixth argument must be non-zero
-* @throws {RangeError} ninth argument must be non-zero
-* @returns {Float32Array} `A`
+* @returns {Float64Array} `A`
 *
 * @example
-* var Float32Array = require( '@stdlib/array/float32' );
+* var Float64Array = require( '@stdlib/array/float64' );
 *
-* var AP = new Float32Array( [ 1.0, 2.0, 3.0, 1.0, 2.0, 1.0 ] ); // =&gt; [ [ 1.0, 2.0, 3.0 ], [ 0.0, 1.0, 2.0 ], [ 0.0, 0.0, 1.0 ] ]
-* var x = new Float32Array( [ 1.0, 2.0, 3.0 ] );
+* var AP = new Float64Array( [ 1.0, 2.0, 3.0, 1.0, 2.0, 1.0 ] ); // =&gt; [ [ 1.0, 2.0, 3.0 ], [ 0.0, 1.0, 2.0 ], [ 0.0, 0.0, 1.0 ] ]
+* var x = new Float64Array( [ 1.0, 2.0, 3.0 ] );
 *
-* sspr( 'row-major', 'upper', 3, 1.0, x, 1, 0, AP, 1, 0 );
-* // AP =&gt; &lt;Float32Array&gt;[ 2.0, 4.0, 6.0, 5.0, 8.0, 10.0 ]
+* dspr( 'row-major', 'upper', 3, 1.0, x, 1, AP );
+* // AP =&gt; &lt;Float64Array&gt;[ 2.0, 4.0, 6.0, 5.0, 8.0, 10.0 ]
 */
-function sspr( order, uplo, N, alpha, x, strideX, offsetX, AP, strideAP, offsetAP ) { // eslint-disable-line max-len
+function dspr( order, uplo, N, alpha, x, strideX, AP ) {
+	var ox;
+&nbsp;
 	if ( !isLayout( order ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
 	}
@@ -305,19 +298,17 @@ function sspr( order, uplo, N, alpha, x, strideX, offsetX, AP, strideAP, offsetA
 	if ( strideX === 0 ) {
 		throw new RangeError( format( 'invalid argument. Sixth argument must be non-zero. Value: `%d`.', strideX ) );
 	}
-	if ( strideAP === 0 ) {
-		throw new RangeError( format( 'invalid argument. Ninth argument must be non-zero. Value: `%d`.', strideAP ) );
-	}
 	if ( N === 0 || alpha === 0.0 ) {
 		return AP;
 	}
-	return base( order, uplo, N, alpha, x, strideX, offsetX, AP, strideAP, offsetAP ); // eslint disable-line max-len
+	ox = stride2offset( N, strideX );
+	return base( order, uplo, N, alpha, x, strideX, ox, AP, 1, 0 );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = sspr;
+module.exports = dspr;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -325,7 +316,7 @@ module.exports = sspr;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-18T23:00:44.803Z
+                at 2024-08-18T23:00:40.984Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
