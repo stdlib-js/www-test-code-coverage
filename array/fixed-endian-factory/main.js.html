@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.26% </span>
+                <span class="strong">26.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>192/731</span>
+                <span class='fraction'>191/730</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.26% </span>
+                <span class="strong">26.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>192/731</span>
+                <span class='fraction'>191/730</span>
             </div>
         
             
@@ -793,9 +793,7 @@
 <a name='L728'></a><a href='#L728'>728</a>
 <a name='L729'></a><a href='#L729'>729</a>
 <a name='L730'></a><a href='#L730'>730</a>
-<a name='L731'></a><a href='#L731'>731</a>
-<a name='L732'></a><a href='#L732'>732</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L731'></a><a href='#L731'>731</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1594,13 +1592,12 @@ var DTYPE2GET = {
 	'uint32': 'getUint32',
 	'uint16': 'getUint16'
 };
-var DTYPE2ARTICLE = {
-	'float64': 'a',
-	'float32': 'a',
-	'int32': 'an',
-	'int16': 'an',
-	'uint32': 'a',
-	'uint16': 'a'
+var CHAR2ARTICLE = {
+	'c': 'a',
+	'f': 'a',
+	'i': 'an',
+	'u': 'a',
+	'b': 'a'
 };
 var isDataType = contains( DTYPES );
 &nbsp;
@@ -1894,7 +1891,7 @@ var isDataType = contains( DTYPES );
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( 'invalid invocation. `this` context must be a constructor.' );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isTypedArrayConstructor( this ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', DTYPE2ARTICLE[ dtype ], CTOR_NAME ) );</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', CHAR2ARTICLE[ dtype[0] ], CTOR_NAME ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		order = byteOrder( endianness );</span>
 <span class="cstat-no" title="statement not covered" >		if ( order === null || !isByteOrder( order ) ) {</span>
@@ -1972,7 +1969,7 @@ var isDataType = contains( DTYPES );
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( 'invalid invocation. `this` context must be a constructor.' );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isTypedArrayConstructor( this ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', DTYPE2ARTICLE[ dtype ], CTOR_NAME ) );</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', CHAR2ARTICLE[ dtype[0] ], CTOR_NAME ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		order = byteOrder( endianness );</span>
 <span class="cstat-no" title="statement not covered" >		if ( order === null || !isByteOrder( order ) ) {</span>
@@ -2049,7 +2046,7 @@ var isDataType = contains( DTYPES );
 <span class="cstat-no" title="statement not covered" >	*/</span>
 <span class="cstat-no" title="statement not covered" >	setReadOnly( TypedArray.prototype, 'get', function get( idx ) {</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isTypedArray( this ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', DTYPE2ARTICLE[ dtype ], CTOR_NAME ) );</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', CHAR2ARTICLE[ dtype[0] ], CTOR_NAME ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isNonNegativeInteger( idx ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Must provide a nonnegative integer. Value: `%s`.', idx ) );</span>
@@ -2118,7 +2115,7 @@ var isDataType = contains( DTYPES );
 <span class="cstat-no" title="statement not covered" >		var i;</span>
 <span class="cstat-no" title="statement not covered" >		var j;</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isTypedArray( this ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', DTYPE2ARTICLE[ dtype ], CTOR_NAME ) );</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', CHAR2ARTICLE[ dtype[0] ], CTOR_NAME ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		buf = this._buffer;</span>
 <span class="cstat-no" title="statement not covered" >		if ( arguments.length &gt; 1 ) {</span>
@@ -2183,7 +2180,7 @@ var isDataType = contains( DTYPES );
 <span class="cstat-no" title="statement not covered" >		var buf;</span>
 <span class="cstat-no" title="statement not covered" >		var i;</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isTypedArray( this ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', DTYPE2ARTICLE[ dtype ], CTOR_NAME ) );</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', CHAR2ARTICLE[ dtype[0] ], CTOR_NAME ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		out = [];</span>
 <span class="cstat-no" title="statement not covered" >		buf = this._buffer;</span>
@@ -2263,7 +2260,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-25T06:51:16.479Z
+                at 2024-09-25T08:02:38.984Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

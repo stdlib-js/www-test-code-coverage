@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/little-endian-float64/lib/main.js</title>
+    <title>Code coverage report for array/little-endian-factory/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">array/little-endian-float64/lib</a> main.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">array/little-endian-factory/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>98/98</span>
+                <span class='fraction'>106/106</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>98/98</span>
+                <span class='fraction'>106/106</span>
             </div>
         
             
@@ -161,7 +161,23 @@
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
 <a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -279,28 +295,16 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var factory = require( '@stdlib/array/little-endian-factory' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
 /**
-* Typed array constructor which returns a typed array representing an array of double-precision floating-point numbers in little-endian byte order.
+* Return a typed array constructor for creating typed arrays stored in little-endian byte order.
 *
-* @name Float64ArrayLE
-* @constructor
-* @type {Function}
-* @param {(NonNegativeInteger|Collection|ArrayBuffer|Iterable)} [arg] - length, typed array, array-like object, buffer, or an iterable
-* @param {NonNegativeInteger} [byteOffset=0] - byte offset
-* @param {NonNegativeInteger} [length] - view length
-* @throws {TypeError} if provided only one argument, the argument must be a valid argument
-* @throws {TypeError} byte offset must be a nonnegative integer
-* @throws {RangeError} must provide sufficient memory to accommodate byte offset and view length requirements
-* @returns {Float64ArrayLE} typed array instance
+* @module @stdlib/array/little-endian-factory
 *
 * @example
+* var factory = require( '@stdlib/array/little-endian-factory' );
+*
+* var Float64ArrayLE = factory( 'float64' );
+*
 * var arr = new Float64ArrayLE();
 * // returns &lt;Float64ArrayLE&gt;
 *
@@ -308,6 +312,10 @@ var factory = require( '@stdlib/array/little-endian-factory' );
 * // returns 0
 *
 * @example
+* var factory = require( '@stdlib/array/little-endian-factory' );
+*
+* var Float64ArrayLE = factory( 'float64' );
+*
 * var arr = new Float64ArrayLE( 2 );
 * // returns &lt;Float64ArrayLE&gt;
 *
@@ -315,14 +323,21 @@ var factory = require( '@stdlib/array/little-endian-factory' );
 * // returns 2
 *
 * @example
-* var arr = new Float64ArrayLE( [ 1.0, 2.0 ] );
+* var factory = require( '@stdlib/array/little-endian-factory' );
+*
+* var Float64ArrayLE = factory( 'float64' );
+*
+* var arr = new Float64ArrayLE( [ 1.0 ] );
 * // returns &lt;Float64ArrayLE&gt;
 *
 * var len = arr.length;
-* // returns 2
+* // returns 1
 *
 * @example
 * var ArrayBuffer = require( '@stdlib/array/buffer' );
+* var factory = require( '@stdlib/array/little-endian-factory' );
+*
+* var Float64ArrayLE = factory( 'float64' );
 *
 * var buf = new ArrayBuffer( 16 );
 * var arr = new Float64ArrayLE( buf );
@@ -333,6 +348,9 @@ var factory = require( '@stdlib/array/little-endian-factory' );
 *
 * @example
 * var ArrayBuffer = require( '@stdlib/array/buffer' );
+* var factory = require( '@stdlib/array/little-endian-factory' );
+*
+* var Float64ArrayLE = factory( 'float64' );
 *
 * var buf = new ArrayBuffer( 16 );
 * var arr = new Float64ArrayLE( buf, 8 );
@@ -343,6 +361,9 @@ var factory = require( '@stdlib/array/little-endian-factory' );
 *
 * @example
 * var ArrayBuffer = require( '@stdlib/array/buffer' );
+* var factory = require( '@stdlib/array/little-endian-factory' );
+*
+* var Float64ArrayLE = factory( 'float64' );
 *
 * var buf = new ArrayBuffer( 32 );
 * var arr = new Float64ArrayLE( buf, 8, 2 );
@@ -351,12 +372,15 @@ var factory = require( '@stdlib/array/little-endian-factory' );
 * var len = arr.length;
 * // returns 2
 */
-var Float64ArrayLE = factory( 'float64' );
+&nbsp;
+// MODULES //
+&nbsp;
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = Float64ArrayLE;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -364,7 +388,7 @@ module.exports = Float64ArrayLE;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-25T08:02:53.571Z
+                at 2024-09-25T08:02:51.326Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
