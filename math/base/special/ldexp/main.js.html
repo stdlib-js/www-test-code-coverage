@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/exp/lib/expmulti.js</title>
+    <title>Code coverage report for math/base/special/ldexp/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/exp/lib</a> expmulti.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/ldexp/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>99/99</span>
+                <span class='fraction'>150/150</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>99/99</span>
+                <span class='fraction'>150/150</span>
             </div>
         
             
@@ -162,7 +162,58 @@
 <a name='L97'></a><a href='#L97'>97</a>
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -243,19 +294,70 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">4033x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4031x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">1008x</span>
+<span class="cline-any cline-yes">1008x</span>
+<span class="cline-any cline-yes">4038x</span>
+<span class="cline-any cline-yes">3019x</span>
+<span class="cline-any cline-yes">3019x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4027x</span>
+<span class="cline-any cline-yes">4038x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -277,89 +379,140 @@
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
-*
-*
-* ## Notice
-*
-* The following copyrights, licenses, and long comment were part of the original implementation available as part of [Go]{@link https://github.com/golang/go/blob/cb07765045aed5104a3df31507564ac99e6ddce8/src/math/exp.go}, which in turn was based on an implementation available as part of [FreeBSD]{@link https://svnweb.freebsd.org/base/release/9.3.0/lib/msun/src/e_exp.c}. The implementation follows the original, but has been modified for JavaScript.
-*
-* ```text
-* Copyright (c) 2009 The Go Authors. All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are
-* met:
-*
-*    * Redistributions of source code must retain the above copyright
-* notice, this list of conditions and the following disclaimer.
-*    * Redistributions in binary form must reproduce the above
-* copyright notice, this list of conditions and the following disclaimer
-* in the documentation and/or other materials provided with the
-* distribution.
-*    * Neither the name of Google Inc. nor the names of its
-* contributors may be used to endorse or promote products derived from
-* this software without specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-* "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-* A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-* OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-* SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-* LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-* DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-* THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-* (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-* ```
-*
-* ```text
-* Copyright (C) 2004 by Sun Microsystems, Inc. All rights reserved.
-*
-* Developed at SunPro, a Sun Microsystems, Inc. business.
-* Permission to use, copy, modify, and distribute this
-* software is freely granted, provided that this notice
-* is preserved.
-* ```
 */
 &nbsp;
 'use strict';
 &nbsp;
+// NOTES //
+&nbsp;
+/*
+* =&gt; ldexp: load exponent (see [The Open Group]{@link http://pubs.opengroup.org/onlinepubs/9699919799/functions/ldexp.html} and [cppreference]{@link http://en.cppreference.com/w/c/numeric/math/ldexp}).
+*/
+&nbsp;
+&nbsp;
 // MODULES //
 &nbsp;
-var ldexp = require( '@stdlib/math/base/special/ldexp' );
-var polyvalP = require( './polyval_p.js' );
+var PINF = require( '@stdlib/constants/float64/pinf' );
+var NINF = require( '@stdlib/constants/float64/ninf' );
+var BIAS = require( '@stdlib/constants/float64/exponent-bias' );
+var MAX_EXPONENT = require( '@stdlib/constants/float64/max-base2-exponent' );
+var MAX_SUBNORMAL_EXPONENT = require( '@stdlib/constants/float64/max-base2-exponent-subnormal' );
+var MIN_SUBNORMAL_EXPONENT = require( '@stdlib/constants/float64/min-base2-exponent-subnormal' );
+var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var isInfinite = require( '@stdlib/math/base/assert/is-infinite' );
+var copysign = require( '@stdlib/math/base/special/copysign' );
+var normalize = require( '@stdlib/number/float64/base/normalize' ).assign;
+var floatExp = require( '@stdlib/number/float64/base/exponent' );
+var toWords = require( '@stdlib/number/float64/base/to-words' );
+var fromWords = require( '@stdlib/number/float64/base/from-words' );
+&nbsp;
+&nbsp;
+// VARIABLES //
+&nbsp;
+// 1/(1&lt;&lt;52) = 1/(2**52) = 1/4503599627370496
+var TWO52_INV = 2.220446049250313e-16;
+&nbsp;
+// Exponent all 0s: 1 00000000000 11111111111111111111 =&gt; 2148532223
+var CLEAR_EXP_MASK = 0x800fffff&gt;&gt;&gt;0; // asm type annotation
+&nbsp;
+// Normalization workspace:
+var FRAC = [ 0.0, 0.0 ];
+&nbsp;
+// High/low words workspace:
+var WORDS = [ 0, 0 ];
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes \\(e^{r} 2^k\\) where \\(r = \mathrm{hi} - \mathrm{lo}\\) and \\(|r| \leq \ln(2)/2\\).
+* Multiplies a double-precision floating-point number by an integer power of two.
 *
-* @private
-* @param {number} hi - upper bound
-* @param {number} lo - lower bound
-* @param {integer} k - power of 2
-* @returns {number} function value
+* @param {number} frac - fraction
+* @param {integer} exp - exponent
+* @returns {number} double-precision floating-point number
+*
+* @example
+* var x = ldexp( 0.5, 3 ); // =&gt; 0.5 * 2^3 = 0.5 * 8
+* // returns 4.0
+*
+* @example
+* var x = ldexp( 4.0, -2 ); // =&gt; 4 * 2^(-2) = 4 * (1/4)
+* // returns 1.0
+*
+* @example
+* var x = ldexp( 0.0, 20 );
+* // returns 0.0
+*
+* @example
+* var x = ldexp( -0.0, 39 );
+* // returns -0.0
+*
+* @example
+* var x = ldexp( NaN, -101 );
+* // returns NaN
+*
+* @example
+* var x = ldexp( Infinity, 11 );
+* // returns Infinity
+*
+* @example
+* var x = ldexp( -Infinity, -118 );
+* // returns -Infinity
 */
-function expmulti( hi, lo, k ) {
-	var r;
-	var t;
-	var c;
-	var y;
+function ldexp( frac, exp ) {
+	var high;
+	var m;
+	if (
+		exp === 0 ||
+		frac === 0.0 || // handles +-0
+		isnan( frac ) ||
+		isInfinite( frac )
+	) {
+		return frac;
+	}
+	// Normalize the input fraction:
+	normalize( frac, FRAC, 1, 0 );
+	frac = FRAC[ 0 ];
+	exp += FRAC[ 1 ];
 &nbsp;
-	r = hi - lo;
-	t = r * r;
-	c = r - ( t*polyvalP( t ) );
-	y = 1.0 - ( lo - ( (r*c)/(2.0-c) ) - hi );
+	// Extract the exponent from `frac` and add it to `exp`:
+	exp += floatExp( frac );
 &nbsp;
-	return ldexp( y, k );
+	// Check for underflow/overflow...
+	if ( exp &lt; MIN_SUBNORMAL_EXPONENT ) {
+		return copysign( 0.0, frac );
+	}
+	if ( exp &gt; MAX_EXPONENT ) {
+		if ( frac &lt; 0.0 ) {
+			return NINF;
+		}
+		return PINF;
+	}
+	// Check for a subnormal and scale accordingly to retain precision...
+	if ( exp &lt;= MAX_SUBNORMAL_EXPONENT ) {
+		exp += 52;
+		m = TWO52_INV;
+	} else {
+		m = 1.0;
+	}
+	// Split the fraction into higher and lower order words:
+	toWords.assign( frac, WORDS, 1, 0 );
+	high = WORDS[ 0 ];
+&nbsp;
+	// Clear the exponent bits within the higher order word:
+	high &amp;= CLEAR_EXP_MASK;
+&nbsp;
+	// Set the exponent bits to the new exponent:
+	high |= ((exp+BIAS) &lt;&lt; 20);
+&nbsp;
+	// Create a new floating-point number:
+	return m * fromWords( high, WORDS[ 1 ] );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = expmulti;
+module.exports = ldexp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -367,7 +520,7 @@ module.exports = expmulti;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-02T09:21:53.055Z
+                at 2024-10-02T09:22:19.229Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
