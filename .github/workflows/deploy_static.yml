@@ -44,7 +44,7 @@ jobs:
   # Single deploy job since we're just deploying:
   deploy:
     # Define a display name:
-    name: 'Lint Changed Files'
+    name: 'Deploy to GitHub Pages'
 
     # Define the type of virtual host machine:
     runs-on: ubuntu-latest
@@ -66,13 +66,31 @@ jobs:
           # Specify whether to remove untracked files before checking out the repository:
           clean: true
 
-          # Limit clone depth to the last 10 commits:
-          fetch-depth: 10
+          # Fetch all history:
+          fetch-depth: 0
 
           # Specify whether to download Git-LFS files:
           lfs: false
         timeout-minutes: 10
 
+      # Checkout all branches into sub-directories:
+      - name: 'Checkout all branches into sub-directories'
+        run: |
+          # Fetch all remote branches:
+          git fetch --all
+
+          # Create worktrees for all branches:
+          for remote_branch in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/ | grep -v 'HEAD'); do
+            local_branch="${remote_branch#origin/}"
+            echo "Checking out branch $local_branch"
+            git worktree add "$local_branch" "$remote_branch"
+          done
+          
+      # Remove .git directories from worktrees to avoid deploying them:
+      - name: 'Remove .git directories from worktrees'
+        run: |
+          find . -mindepth 2 -type d -name '.git' -exec rm -rf {} +  
+  
       # Setup the GitHub Pages environment:
       - name: 'Setup Pages'
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
