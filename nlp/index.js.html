@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for lapack/base/lib/index.js</title>
+    <title>Code coverage report for nlp/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">lapack/base/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">nlp/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>96/96</span>
+                <span class='fraction'>105/105</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>96/96</span>
+                <span class='fraction'>105/105</span>
             </div>
         
             
@@ -159,7 +159,25 @@
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -258,7 +276,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -289,68 +307,77 @@ var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
 /**
 * Top-level namespace.
 *
-* @namespace ns
+* @namespace nlp
 */
-var ns = {};
+var nlp = {};
 &nbsp;
 /**
-* @name dlacpy
-* @memberof ns
+* @name expandAcronyms
+* @memberof nlp
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/lapack/base/dlacpy}
+* @see {@link module:@stdlib/nlp/expand-acronyms}
 */
-setReadOnly( ns, 'dlacpy', require( '@stdlib/lapack/base/dlacpy' ) );
+setReadOnly( nlp, 'expandAcronyms', require( '@stdlib/nlp/expand-acronyms' ) );
 &nbsp;
 /**
-* @name dlassq
-* @memberof ns
+* @name expandContractions
+* @memberof nlp
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/lapack/base/dlassq}
+* @see {@link module:@stdlib/nlp/expand-contractions}
 */
-setReadOnly( ns, 'dlassq', require( '@stdlib/lapack/base/dlassq' ) );
+setReadOnly( nlp, 'expandContractions', require( '@stdlib/nlp/expand-contractions' ) );
 &nbsp;
 /**
-* @name dlaswp
-* @memberof ns
+* @name lda
+* @memberof nlp
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/lapack/base/dlaswp}
+* @see {@link module:@stdlib/nlp/lda}
 */
-setReadOnly( ns, 'dlaswp', require( '@stdlib/lapack/base/dlaswp' ) );
+setReadOnly( nlp, 'lda', require( '@stdlib/nlp/lda' ) );
 &nbsp;
 /**
-* @name dpttrf
-* @memberof ns
+* @name ordinalize
+* @memberof nlp
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/lapack/base/dpttrf}
+* @see {@link module:@stdlib/nlp/ordinalize}
 */
-setReadOnly( ns, 'dpttrf', require( '@stdlib/lapack/base/dpttrf' ) );
+setReadOnly( nlp, 'ordinalize', require( '@stdlib/nlp/ordinalize' ) );
 &nbsp;
 /**
-* @name slacpy
-* @memberof ns
+* @name porterStemmer
+* @memberof nlp
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/lapack/base/slacpy}
+* @see {@link module:@stdlib/nlp/porter-stemmer}
 */
-setReadOnly( ns, 'slacpy', require( '@stdlib/lapack/base/slacpy' ) );
+setReadOnly( nlp, 'porterStemmer', require( '@stdlib/nlp/porter-stemmer' ) );
 &nbsp;
 /**
-* @name spttrf
-* @memberof ns
+* @name sentencize
+* @memberof nlp
 * @readonly
 * @type {Function}
-* @see {@link module:@stdlib/lapack/base/spttrf}
+* @see {@link module:@stdlib/nlp/sentencize}
 */
-setReadOnly( ns, 'spttrf', require( '@stdlib/lapack/base/spttrf' ) );
+setReadOnly( nlp, 'sentencize', require( '@stdlib/nlp/sentencize' ) );
+&nbsp;
+/**
+* @name tokenize
+* @memberof nlp
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/nlp/tokenize}
+*/
+setReadOnly( nlp, 'tokenize', require( '@stdlib/nlp/tokenize' ) );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = ns;
+module.exports = nlp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -358,16 +385,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-20T03:11:22.756Z
+                at 2024-11-20T03:11:42.948Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
