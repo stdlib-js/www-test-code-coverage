@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>48/48</span>
             </div>
         
             
@@ -277,43 +277,43 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">103x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">109x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">124x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">124x</span>
 <span class="cline-any cline-yes">53x</span>
 <span class="cline-any cline-yes">53x</span>
 <span class="cline-any cline-yes">53x</span>
@@ -367,7 +367,7 @@
 <span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-yes">109x</span>
+<span class="cline-any cline-yes">124x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -420,8 +420,8 @@ var BLOCKSIZE = 128;
 *
 * @param {PositiveInteger} N - number of indexed elements
 * @param {Float64Array} x - input array
-* @param {integer} stride - stride length
-* @param {NonNegativeInteger} offset - starting index
+* @param {integer} strideX - stride length
+* @param {NonNegativeInteger} offsetX - starting index
 * @returns {number} sum
 *
 * @example
@@ -432,7 +432,7 @@ var BLOCKSIZE = 128;
 * var v = dnansumpw( 5, x, 2, 1 );
 * // returns 5.0
 */
-function dnansumpw( N, x, stride, offset ) {
+function dnansumpw( N, x, strideX, offsetX ) {
 	var ix;
 	var s0;
 	var s1;
@@ -450,13 +450,13 @@ function dnansumpw( N, x, stride, offset ) {
 	if ( N &lt;= 0 ) {
 		return 0.0;
 	}
-	if ( N === 1 || stride === 0 ) {
-		if ( isnan( x[ offset ] ) ) {
+	if ( strideX === 0 ) {
+		if ( isnan( x[ offsetX ] ) ) {
 			return 0.0;
 		}
-		return x[ offset ];
+		return x[ offsetX ] * N;
 	}
-	ix = offset;
+	ix = offsetX;
 	if ( N &lt; 8 ) {
 		// Use simple summation...
 		s = 0.0;
@@ -464,64 +464,64 @@ function dnansumpw( N, x, stride, offset ) {
 			if ( isnan( x[ ix ] ) === false ) {
 				s += x[ ix ];
 			}
-			ix += stride;
+			ix += strideX;
 		}
 		return s;
 	}
 	if ( N &lt;= BLOCKSIZE ) {
 		// Sum a block with 8 accumulators (by loop unrolling, we lower the effective blocksize to 16)...
 		s0 = ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-		ix += stride;
+		ix += strideX;
 		s1 = ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-		ix += stride;
+		ix += strideX;
 		s2 = ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-		ix += stride;
+		ix += strideX;
 		s3 = ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-		ix += stride;
+		ix += strideX;
 		s4 = ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-		ix += stride;
+		ix += strideX;
 		s5 = ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-		ix += stride;
+		ix += strideX;
 		s6 = ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-		ix += stride;
+		ix += strideX;
 		s7 = ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-		ix += stride;
+		ix += strideX;
 &nbsp;
 		M = N % 8;
 		for ( i = 8; i &lt; N-M; i += 8 ) {
 			s0 += ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-			ix += stride;
+			ix += strideX;
 			s1 += ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-			ix += stride;
+			ix += strideX;
 			s2 += ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-			ix += stride;
+			ix += strideX;
 			s3 += ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-			ix += stride;
+			ix += strideX;
 			s4 += ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-			ix += stride;
+			ix += strideX;
 			s5 += ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-			ix += stride;
+			ix += strideX;
 			s6 += ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-			ix += stride;
+			ix += strideX;
 			s7 += ( isnan( x[ ix ] ) ) ? 0.0 : x[ ix ];
-			ix += stride;
+			ix += strideX;
 		}
 		// Pairwise sum the accumulators:
-		s = ((s0+s1) + (s2+s3)) + ((s4+s5) + (s6+s7));
+		s = ( (s0+s1) + (s2+s3)) + ((s4+s5) + (s6+s7) );
 &nbsp;
 		// Clean-up loop...
 		for ( i; i &lt; N; i++ ) {
 			if ( isnan( x[ ix ] ) === false ) {
 				s += x[ ix ];
 			}
-			ix += stride;
+			ix += strideX;
 		}
 		return s;
 	}
 	// Recurse by dividing by two, but avoiding non-multiples of unroll factor...
 	n = floor( N/2 );
 	n -= n % 8;
-	return dnansumpw( n, x, stride, ix ) + dnansumpw( N-n, x, stride, ix+(n*stride) ); // eslint-disable-line max-len
+	return dnansumpw( n, x, strideX, ix ) + dnansumpw( N-n, x, strideX, ix+(n*strideX) ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
@@ -535,7 +535,7 @@ module.exports = dnansumpw;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-29T15:52:24.518Z
+                at 2024-11-21T09:23:32.423Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
