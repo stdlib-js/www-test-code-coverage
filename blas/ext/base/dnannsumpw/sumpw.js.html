@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">99% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>203/203</span>
+                <span class='fraction'>198/200</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>18/19</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">99% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>203/203</span>
+                <span class='fraction'>198/200</span>
             </div>
         
             
@@ -263,10 +263,7 @@
 <a name='L198'></a><a href='#L198'>198</a>
 <a name='L199'></a><a href='#L199'>199</a>
 <a name='L200'></a><a href='#L200'>200</a>
-<a name='L201'></a><a href='#L201'>201</a>
-<a name='L202'></a><a href='#L202'>202</a>
-<a name='L203'></a><a href='#L203'>203</a>
-<a name='L204'></a><a href='#L204'>204</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L201'></a><a href='#L201'>201</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -331,8 +328,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">60x</span>
@@ -353,31 +348,30 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">56x</span>
-<span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
@@ -529,15 +523,13 @@ var BLOCKSIZE = 128;
 * var floor = require( '@stdlib/math/base/special/floor' );
 *
 * var x = new Float64Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0, NaN, NaN ] );
-* var N = floor( x.length / 2 );
 *
 * var out = new Float64Array( [ 0.0, 0 ] );
-* var v = sumpw( N, x, 2, 1, out, 1, 0 );
+* var v = sumpw( 5.0, x, 2, 1, out, 1, 0 );
 * // returns &lt;Float64Array&gt;[ 5.0, 4 ]
 */
 function sumpw( N, x, strideX, offsetX, out, strideOut, offsetOut ) {
 	var ix;
-	var io;
 	var s0;
 	var s1;
 	var s2;
@@ -556,13 +548,12 @@ function sumpw( N, x, strideX, offsetX, out, strideOut, offsetOut ) {
 		return out;
 	}
 	ix = offsetX;
-	io = offsetOut;
-	if ( N === 1 || strideX === 0 ) {
-		if ( isnan( x[ ix ] ) ) {
-			return out;
-		}
-		out[ io ] += x[ ix ];
-		out[ io+strideOut ] += 1;
+	if ( strideX === 0 ) {
+		if ( isnan( x[ ix ] ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			return out;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+		out[ offsetOut ] += x[ ix ] * N;
+		out[ offsetOut+strideOut ] += N;
 		return out;
 	}
 	if ( N &lt; 8 ) {
@@ -577,8 +568,8 @@ function sumpw( N, x, strideX, offsetX, out, strideOut, offsetOut ) {
 			}
 			ix += strideX;
 		}
-		out[ io ] += s;
-		out[ io+strideOut ] += n;
+		out[ offsetOut ] += s;
+		out[ offsetOut+strideOut ] += n;
 		return out;
 	}
 	if ( N &lt;= BLOCKSIZE ) {
@@ -645,7 +636,7 @@ function sumpw( N, x, strideX, offsetX, out, strideOut, offsetOut ) {
 			ix += strideX;
 		}
 		// Pairwise sum the accumulators:
-		s = ((s0+s1) + (s2+s3)) + ((s4+s5) + (s6+s7));
+		s = ( (s0+s1) + (s2+s3) ) + ( (s4+s5) + (s6+s7) );
 &nbsp;
 		// Clean-up loop...
 		for ( i; i &lt; N; i++ ) {
@@ -656,8 +647,8 @@ function sumpw( N, x, strideX, offsetX, out, strideOut, offsetOut ) {
 			}
 			ix += strideX;
 		}
-		out[ io ] += s;
-		out[ io+strideOut ] += n;
+		out[ offsetOut ] += s;
+		out[ offsetOut+strideOut ] += n;
 		return out;
 	}
 	// Recurse by dividing by two, but avoiding non-multiples of unroll factor...
@@ -679,7 +670,7 @@ module.exports = sumpw;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-21T22:49:21.162Z
+                at 2024-11-22T00:57:23.766Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
