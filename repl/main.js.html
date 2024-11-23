@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">79.25% </span>
+                <span class="strong">79.39% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1196/1509</span>
+                <span class='fraction'>1206/1519</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.53% </span>
+                <span class="strong">62.96% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>48/78</span>
+                <span class='fraction'>51/81</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">79.25% </span>
+                <span class="strong">79.39% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1196/1509</span>
+                <span class='fraction'>1206/1519</span>
             </div>
         
             
@@ -1572,7 +1572,19 @@
 <a name='L1507'></a><a href='#L1507'>1507</a>
 <a name='L1508'></a><a href='#L1508'>1508</a>
 <a name='L1509'></a><a href='#L1509'>1509</a>
-<a name='L1510'></a><a href='#L1510'>1510</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L1510'></a><a href='#L1510'>1510</a>
+<a name='L1511'></a><a href='#L1511'>1511</a>
+<a name='L1512'></a><a href='#L1512'>1512</a>
+<a name='L1513'></a><a href='#L1513'>1513</a>
+<a name='L1514'></a><a href='#L1514'>1514</a>
+<a name='L1515'></a><a href='#L1515'>1515</a>
+<a name='L1516'></a><a href='#L1516'>1516</a>
+<a name='L1517'></a><a href='#L1517'>1517</a>
+<a name='L1518'></a><a href='#L1518'>1518</a>
+<a name='L1519'></a><a href='#L1519'>1519</a>
+<a name='L1520'></a><a href='#L1520'>1520</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -1724,6 +1736,10 @@
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
@@ -1923,9 +1939,11 @@
 <span class="cline-any cline-yes">5369x</span>
 <span class="cline-any cline-yes">5369x</span>
 <span class="cline-any cline-yes">5369x</span>
+<span class="cline-any cline-yes">5369x</span>
 <span class="cline-any cline-yes">358x</span>
 <span class="cline-any cline-yes">358x</span>
 <span class="cline-any cline-yes">358x</span>
+<span class="cline-any cline-yes">5011x</span>
 <span class="cline-any cline-yes">5011x</span>
 <span class="cline-any cline-yes">5011x</span>
 <span class="cline-any cline-yes">5011x</span>
@@ -1937,11 +1955,13 @@
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">4991x</span>
-<span class="cline-any cline-yes">4991x</span>
-<span class="cline-any cline-yes">4989x</span>
-<span class="cline-any cline-yes">4989x</span>
-<span class="cline-any cline-yes">4989x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5369x</span>
+<span class="cline-any cline-yes">4882x</span>
+<span class="cline-any cline-yes">4882x</span>
+<span class="cline-any cline-yes">4882x</span>
+<span class="cline-any cline-yes">987x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">5369x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
@@ -3146,6 +3166,7 @@ var inputPrompt = require( './input_prompt.js' );
 var OutputStream = require( './output_stream.js' );
 var completerFactory = require( './completer.js' );
 var MultilineHandler = require( './multiline_handler.js' );
+var EditorActions = require( './editor_actions.js' );
 var CompleterEngine = require( './completer_engine.js' );
 var PreviewCompleter = require( './completer_preview.js' );
 var AutoCloser = require( './auto_close_pairs.js' );
@@ -3181,6 +3202,7 @@ var debug = logger( 'repl' );
 * @param {string} [options.save] - file path specifying where to save REPL command history
 * @param {string} [options.log] - file path specifying where to save REPL commands and printed output
 * @param {string} [options.quiet=false] - boolean indicating whether log information, confirmation messages, and other possible REPL diagnostics should be silenced
+* @param {Object} [options.keybindings] - REPL keybindings
 * @param {Object} [options.settings] - REPL settings
 * @param {boolean} [options.settings.autoClosePairs=true] - boolean indicating whether to automatically insert matching brackets, parentheses, and quotes
 * @param {boolean} [options.settings.autoDeletePairs=true] - boolean indicating whether to automatically delete adjacent matching brackets, parentheses, and quotes
@@ -3279,6 +3301,7 @@ function REPL( options ) {
 	setNonEnumerableReadOnly( this, '_timeout', opts.timeout );
 	setNonEnumerableReadOnly( this, '_isTTY', opts.isTTY );
 	setNonEnumerableReadOnly( this, '_sandbox', opts.sandbox );
+	setNonEnumerableReadOnly( this, '_keybindings', opts.keybindings );
 	setNonEnumerableReadOnly( this, '_settings', opts.settings );
 	setNonEnumerable( this, '_quiet', opts.quiet ); // allow this to be internally toggled
 &nbsp;
@@ -3358,6 +3381,9 @@ function REPL( options ) {
 	// Initialize a multi-line handler:
 	setNonEnumerableReadOnly( this, '_multilineHandler', new MultilineHandler( this, this._rli._ttyWrite ) );
 &nbsp;
+	// Initialize an editor actions instance:
+	setNonEnumerableReadOnly( this, '_editorActions', new EditorActions( this, this._rli._ttyWrite ) );
+&nbsp;
 	// Create a new TAB completer engine:
 	setNonEnumerableReadOnly( this, '_completerEngine', new CompleterEngine( this, this._completer, this._wstream, this._rli._ttyWrite ) );
 &nbsp;
@@ -3430,6 +3456,7 @@ function REPL( options ) {
 	*/
 	function beforeKeypress( data, key ) {
 		var completed;
+		var FLG; // flag denoting whether to bypass the default keypress behavior
 &nbsp;
 		if ( self._ostream.isPaging ) {
 			self._ostream.beforeKeypress( data, key );
@@ -3437,6 +3464,7 @@ function REPL( options ) {
 		}
 		self._autoCloser.beforeKeypress( data, key );
 		completed = self._previewCompleter.beforeKeypress( data, key );
+		FLG = self._editorActions.beforeKeypress( data, key );
 &nbsp;
 		// If ENTER keypress is encountered or if a preview was completed while navigating, gracefully close the completer...
 		if ( completed || ( key &amp;&amp; key.name === 'return' ) ) {
@@ -3445,12 +3473,14 @@ function REPL( options ) {
 			self._completerEngine.beforeKeypress( data, key );
 			return;
 		}
-		// If completion was auto-completed, don't trigger multi-line keybindings to avoid double operations...
-		if ( !completed ) {
+		// If completion was auto-completed or an action was triggered, don't trigger multi-line keybindings to avoid double operations...
+		if ( !completed &amp;&amp; !FLG ) {
 			self._multilineHandler.beforeKeypress( data, key );
 			return;
 		}
-		self._ttyWrite.call( self._rli, data, key );
+		if ( !FLG ) {
+			self._ttyWrite.call( self._rli, data, key );
+		}
 	}
 &nbsp;
 	/**
@@ -4597,7 +4627,7 @@ module.exports = REPL;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-20T03:11:36.881Z
+                at 2024-11-23T14:50:39.393Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
