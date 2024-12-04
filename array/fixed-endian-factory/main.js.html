@@ -1903,6 +1903,39 @@
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
@@ -2344,39 +2377,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">108x</span>
@@ -3101,6 +3101,39 @@ function factory( dtype ) { // eslint-disable-line max-lines-per-function, stdli
 	});
 &nbsp;
 	/**
+	* Returns the last element in an array for which a predicate function returns a truthy value.
+	*
+	* @private
+	* @name findLast
+	* @memberof TypedArray.prototype
+	* @type {Function}
+	* @param {Function} predicate - test function
+	* @param {*} [thisArg] - predicate function execution context
+	* @throws {TypeError} `this` must be a typed array
+	* @throws {TypeError} first argument must be a function
+	* @returns {(*|void)} array element or undefined
+	*/
+	setReadOnly( TypedArray.prototype, 'findLast', function findLast( predicate, thisArg ) {
+		var buf;
+		var v;
+		var i;
+&nbsp;
+		if ( !isTypedArray( this ) ) {
+			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', CHAR2ARTICLE[ dtype[0] ], CTOR_NAME ) );
+		}
+		if ( !isFunction( predicate ) ) {
+			throw new TypeError( format( 'invalid argument. First argument must be a function. Value: `%s`.', predicate ) );
+		}
+		buf = this._buffer;
+		for ( i = this._length-1; i &gt;= 0; i-- ) {
+			v = buf[ GETTER ]( i * BYTES_PER_ELEMENT, this._isLE );
+			if ( predicate.call( thisArg, v, i, this ) ) {
+				return v;
+			}
+		}
+	});
+&nbsp;
+	/**
 	* Invokes a function once for each array element.
 	*
 	* @name forEach
@@ -3556,39 +3589,6 @@ function factory( dtype ) { // eslint-disable-line max-lines-per-function, stdli
 	});
 &nbsp;
 	/**
-	* Returns the last element in an array for which a predicate function returns a truthy value.
-	*
-	* @private
-	* @name findLast
-	* @memberof TypedArray.prototype
-	* @type {Function}
-	* @param {Function} predicate - test function
-	* @param {*} [thisArg] - predicate function execution context
-	* @throws {TypeError} `this` must be a typed array
-	* @throws {TypeError} first argument must be a function
-	* @returns {(*|void)} array element or undefined
-	*/
-	setReadOnly( TypedArray.prototype, 'findLast', function findLast( predicate, thisArg ) {
-		var buf;
-		var v;
-		var i;
-&nbsp;
-		if ( !isTypedArray( this ) ) {
-			throw new TypeError( format( 'invalid invocation. `this` is not %s %s.', CHAR2ARTICLE[ dtype[0] ], CTOR_NAME ) );
-		}
-		if ( !isFunction( predicate ) ) {
-			throw new TypeError( format( 'invalid argument. First argument must be a function. Value: `%s`.', predicate ) );
-		}
-		buf = this._buffer;
-		for ( i = this._length-1; i &gt;= 0; i-- ) {
-			v = buf[ GETTER ]( i * BYTES_PER_ELEMENT, this._isLE );
-			if ( predicate.call( thisArg, v, i, this ) ) {
-				return v;
-			}
-		}
-	});
-&nbsp;
-	/**
 	* Returns a new typed array with the element at a provided index replaced with a provided value.
 	*
 	* @name with
@@ -3697,7 +3697,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-04T09:29:53.866Z
+                at 2024-12-04T10:55:13.462Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
