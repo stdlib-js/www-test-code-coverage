@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/cceilf/lib/main.js</title>
+    <title>Code coverage report for math/base/special/cceilf/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/cceilf/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/cceilf/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -170,7 +170,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -182,7 +182,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2023 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -202,16 +202,15 @@
 // MODULES //
 &nbsp;
 var Complex64 = require( '@stdlib/complex/float32/ctor' );
-var ceilf = require( '@stdlib/math/base/special/ceilf' );
-var real = require( '@stdlib/complex/float32/real' );
-var imag = require( '@stdlib/complex/float32/imag' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Rounds each component of a double-precision complex floating-point number toward positive infinity.
+* Rounds each component of a single-precision complex floating-point number toward positive infinity.
 *
+* @private
 * @param {Complex64} z - complex number
 * @returns {Complex64} result
 *
@@ -220,7 +219,7 @@ var imag = require( '@stdlib/complex/float32/imag' );
 * var real = require( '@stdlib/complex/float32/real' );
 * var imag = require( '@stdlib/complex/float32/imag' );
 *
-* var v = cceilf( new Complex64( -1.5, 2.5 ) );
+* var v = cceil( new Complex64( -1.5, 2.5 ) );
 * // returns &lt;Complex64&gt;
 *
 * var re = real( v );
@@ -229,14 +228,15 @@ var imag = require( '@stdlib/complex/float32/imag' );
 * var im = imag( v );
 * // returns 3.0
 */
-function cceilf( z ) {
-	return new Complex64( ceilf( real( z ) ), ceilf( imag( z ) ) );
+function cceil( z ) {
+	var v = addon( z );
+	return new Complex64( v.re, v.im );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = cceilf;
+module.exports = cceil;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
