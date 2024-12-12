@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/base/one-to/lib/index.js</title>
+    <title>Code coverage report for stats/bartlett-test/lib/validate.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">array/base/one-to/lib</a> index.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">stats/bartlett-test/lib</a> validate.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>65/65</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>65/65</span>
             </div>
         
             
@@ -120,7 +120,15 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -162,16 +170,24 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">41x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -180,7 +196,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -197,43 +213,51 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Generate a linearly spaced numeric array whose elements increment by 1 starting from one.
-*
-* @module @stdlib/array/base/one-to
-*
-* @example
-* var oneTo = require( '@stdlib/array/base/one-to' );
-*
-* var arr = oneTo( 6 );
-* // returns [ 1, 2, 3, 4, 5, 6 ]
-*
-* @example
-* var oneTo = require( '@stdlib/array/base/one-to' );
-*
-* var out = [ 0, 0, 0, 0, 0, 0 ];
-* var arr = oneTo.assign( out, 1, 0 );
-* // returns [ 1, 2, 3, 4, 5, 6 ]
-*
-* var bool = ( out === arr );
-* // returns true
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
-var main = require( './main.js' );
-var assign = require( './assign.js' );
+var isArray = require( '@stdlib/assert/is-array' );
+var isNumber = require( '@stdlib/assert/is-number' ).isPrimitive;
+var isObject = require( '@stdlib/assert/is-plain-object' );
+var isnan = require( '@stdlib/assert/is-nan' );
+var hasOwnProp = require( '@stdlib/assert/has-own-property' );
+var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-setReadOnly( main, 'assign', assign );
+/**
+* Validates function options.
+*
+* @private
+* @param {Object} opts - destination for validated options
+* @param {Options} options - function options
+* @param {number} [options.alpha] - significance level
+* @param {Array} [options.groups] - array of group indicators
+* @returns {(null|Error)} null or an error
+*/
+function validate( opts, options ) {
+	if ( !isObject( options ) ) {
+		return new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', options ) );
+	}
+	if ( hasOwnProp( options, 'alpha' ) ) {
+		opts.alpha = options.alpha;
+		if ( !isNumber( opts.alpha ) || isnan( opts.alpha ) ) {
+			return new TypeError( format( 'invalid option. `%s` option must be a number. Option: `%s`.', 'alpha', opts.alpha ) );
+		}
+	}
+	if ( hasOwnProp( options, 'groups' ) ) {
+		opts.groups = options.groups;
+		if ( !isArray( opts.groups ) ) {
+			return new TypeError( format( 'invalid option. `%s` option must be an array. Option: `%s`.', 'groups', opts.groups ) );
+		}
+	}
+	return null;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = validate;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -241,16 +265,16 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-12T03:05:49.734Z
+                at 2024-12-12T03:06:03.812Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     

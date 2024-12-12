@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/base/one-to/lib/index.js</title>
+    <title>Code coverage report for random/strided/weibull/lib/ndarray.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">array/base/one-to/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/strided/weibull/lib</a> ndarray.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
@@ -120,7 +120,25 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -172,6 +190,24 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -197,43 +233,61 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Generate a linearly spaced numeric array whose elements increment by 1 starting from one.
-*
-* @module @stdlib/array/base/one-to
-*
-* @example
-* var oneTo = require( '@stdlib/array/base/one-to' );
-*
-* var arr = oneTo( 6 );
-* // returns [ 1, 2, 3, 4, 5, 6 ]
-*
-* @example
-* var oneTo = require( '@stdlib/array/base/one-to' );
-*
-* var out = [ 0, 0, 0, 0, 0, 0 ];
-* var arr = oneTo.assign( out, 1, 0 );
-* // returns [ 1, 2, 3, 4, 5, 6 ]
-*
-* var bool = ( out === arr );
-* // returns true
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
-var main = require( './main.js' );
-var assign = require( './assign.js' );
+var nullary = require( '@stdlib/strided/base/nullary' ).ndarray;
+var binary = require( '@stdlib/strided/base/binary' ).ndarray;
+var prng = require( './prng.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-setReadOnly( main, 'assign', assign );
+/**
+* Fills a strided array with pseudorandom numbers drawn from a Weibull distribution.
+*
+* @param {NonNegativeInteger} N - number of indexed elements
+* @param {Collection} k - scale parameter
+* @param {integer} sk - `k` stride length
+* @param {NonNegativeInteger} ok - starting `k` index
+* @param {Collection} lambda - shape parameter
+* @param {integer} sl - `lambda` stride length
+* @param {NonNegativeInteger} ol - starting `lambda` index
+* @param {Collection} out - output array
+* @param {integer} so - `out` stride length
+* @param {NonNegativeInteger} oo - starting `out` index
+* @param {Options} [options] - function options
+* @param {PRNG} [options.prng] - pseudorandom number generator which generates uniformly distributed pseudorandom numbers
+* @param {PRNGSeedMT19937} [options.seed] - pseudorandom number generator seed
+* @param {PRNGStateMT19937} [options.state] - pseudorandom number generator state
+* @param {boolean} [options.copy=true] - boolean indicating whether to copy a provided pseudorandom number generator state
+* @throws {Error} must provide valid distribution parameters
+* @throws {Error} must provide valid options
+* @throws {Error} must provide a valid state
+* @returns {Collection} output array
+*
+* @example
+* var Float64Array = require( '@stdlib/array/float64' );
+*
+* // Create an array:
+* var out = new Float64Array( 10 );
+*
+* // Fill the array with pseudorandom numbers:
+* weibull( out.length, [ 2.0 ], 0, 0, [ 5.0 ], 0, 0, out, 1, 0 );
+*/
+function weibull( N, k, sk, ok, lambda, sl, ol, out, so, oo, options ) { // eslint-disable-line max-params
+	var rand = prng( k, sk, ok, lambda, sl, ol, arguments.length &gt; 10, options ); // eslint-disable-line max-len
+	if ( rand.arity === 0 ) {
+		nullary( [ out ], [ N ], [ so ], [ oo ], rand.fcn );
+		return out;
+	}
+	binary( [ k, lambda, out ], [ N ], [ sk, sl, so ], [ ok, ol, oo ], rand.fcn ); // eslint-disable-line max-len
+	return out;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = weibull;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -241,7 +295,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-12T03:05:49.734Z
+                at 2024-12-12T03:06:00.888Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
