@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/filter/lib/main.js</title>
+    <title>Code coverage report for ndarray/filter-map/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">ndarray/filter/lib</a> main.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">ndarray/filter-map/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>196/196</span>
+                <span class='fraction'>201/201</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>196/196</span>
+                <span class='fraction'>201/201</span>
             </div>
         
             
@@ -259,7 +259,17 @@
 <a name='L194'></a><a href='#L194'>194</a>
 <a name='L195'></a><a href='#L195'>195</a>
 <a name='L196'></a><a href='#L196'>196</a>
-<a name='L197'></a><a href='#L197'>197</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -496,24 +506,29 @@ var format = require( '@stdlib/string/format' );
 // MAIN //
 &nbsp;
 /**
-* Returns a shallow copy of an ndarray containing only those elements which pass a test implemented by a predicate function.
+* Filters and maps elements in an input ndarray to elements in a new output ndarray according to a callback function.
 *
 * @param {ndarray} x - input ndarray
 * @param {Options} [options] - function options
 * @param {string} [options.dtype] - output array data type
 * @param {boolean} [options.order] - index iteration order
-* @param {Callback} predicate - predicate function
-* @param {*} [thisArg] - predicate execution context
+* @param {Callback} fcn - callback function
+* @param {*} [thisArg] - callback execution context
 * @throws {TypeError} first argument must be an ndarray-like object
 * @throws {TypeError} callback argument must be a function
 * @throws {TypeError} options argument must be an object
 * @returns {ndarray} output ndarray
 *
 * @example
-* var isEven = require( '@stdlib/assert/is-even' ).isPrimitive;
 * var Float64Array = require( '@stdlib/array/float64' );
 * var ndarray = require( '@stdlib/ndarray/ctor' );
 * var ndarray2array = require( '@stdlib/ndarray/to-array' );
+*
+* function fcn( v ) {
+*     if ( v &gt; 5.0 ) {
+*         return v * 10.0;
+*     }
+* }
 *
 * var buffer = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0 ] );
 * var shape = [ 2, 3 ];
@@ -523,13 +538,13 @@ var format = require( '@stdlib/string/format' );
 * var x = ndarray( 'float64', buffer, shape, strides, offset, 'row-major' );
 * // returns &lt;ndarray&gt;
 *
-* var y = filter( x, isEven );
+* var y = filterMap( x, fcn );
 * // returns &lt;ndarray&gt;
 *
 * var arr = ndarray2array( y );
-* // returns [ 2.0, 4.0, 8.0, 10.0 ]
+* // returns [ 80.0, 90.0, 100.0 ]
 */
-function filter( x, options, predicate, thisArg ) {
+function filterMap( x, options, fcn, thisArg ) {
 	var hasOpts;
 	var ndims;
 	var cache;
@@ -555,16 +570,16 @@ function filter( x, options, predicate, thisArg ) {
 	} else if ( arguments.length === 3 ) {
 		if ( isFunction( options ) ) {
 			clbk = options;
-			ctx = predicate;
+			ctx = fcn;
 		} else {
 			hasOpts = true;
 			opts = options;
-			clbk = predicate;
+			clbk = fcn;
 		}
 	} else {
 		hasOpts = true;
 		opts = options;
-		clbk = predicate;
+		clbk = fcn;
 		ctx = thisArg;
 	}
 	if ( !isFunction( clbk ) ) {
@@ -616,18 +631,18 @@ function filter( x, options, predicate, thisArg ) {
 	// Initialize an index array workspace:
 	idx = zeros( ndims );
 &nbsp;
-	// Initialize a value cache for those elements which pass a predicate function (note: unfortunately, we use an associative array here, as no other good options. If we use a "generic" array, we are limited to 2^32-1 elements. If we allocate, say, a Float64Array buffer for storing indices, we risk materializing lazily-materialized input ndarray values again (e.g., lazy accessor ndarray), which could be expensive. If we allocate a workspace buffer of equal size to the input ndarray to store materialized values, we'd then need to perform another copy in order to shrink the buffer, as, otherwise, could be holding on to significantly more memory than needed for the returned ndarray. There are likely other options, but all involve complexity, so the simplest option is used here.):
+	// Initialize a value cache for those elements which pass a callback function (note: unfortunately, we use an associative array here, as no other good options. If we use a "generic" array, we are limited to 2^32-1 elements. If we allocate, say, a Float64Array buffer for storing indices, we risk materializing lazily-materialized input ndarray values again (e.g., lazy accessor ndarray), which could be expensive. If we allocate a workspace buffer of equal size to the input ndarray to store materialized values, we'd then need to perform another copy in order to shrink the buffer, as, otherwise, could be holding on to significantly more memory than needed for the returned ndarray. There are likely other options, but all involve complexity, so the simplest option is used here.):
 	cache = {
 		'length': 0
 	};
 &nbsp;
-	// Filter elements according to a predicate function...
+	// Filter and map elements according to a callback function...
 	for ( i = 0; i &lt; N; i++ ) {
 		if ( i &gt; 0 ) {
 			idx = nextCartesianIndex( sh, ord, idx, dim, idx );
 		}
-		v = x.get.apply( x, idx );
-		if ( clbk.call( ctx, v, idx.slice(), x ) ) {
+		v = clbk.call( ctx, x.get.apply( x, idx ), idx.slice(), x );
+		if ( v !== void 0 ) {
 			cache[ cache.length ] = v;
 			cache.length += 1;
 		}
@@ -650,7 +665,7 @@ function filter( x, options, predicate, thisArg ) {
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = filter;
+module.exports = filterMap;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -658,7 +673,7 @@ module.exports = filter;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-14T23:23:58.879Z
+                at 2024-12-14T23:23:56.421Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
