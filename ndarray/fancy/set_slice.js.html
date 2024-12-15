@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.02% </span>
+                <span class="strong">45.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>77/171</span>
+                <span class='fraction'>76/168</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.02% </span>
+                <span class="strong">45.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>77/171</span>
+                <span class='fraction'>76/168</span>
             </div>
         
             
@@ -57,7 +57,7 @@
         <template id="filterTemplate">
             <div class="quiet">
                 Filter:
-                <input oninput="onInput()" type="search" id="fileSearch">
+                <input type="search" id="fileSearch">
             </div>
         </template>
     </div>
@@ -231,11 +231,7 @@
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
 <a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a>
-<a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">33x</span>
-<span class="cline-any cline-yes">33x</span>
+<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">33x</span>
@@ -311,8 +307,6 @@
 <span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">33x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -445,7 +439,6 @@ var complexDataType = require( '@stdlib/complex/dtype' );
 var scalar2ndarray = require( '@stdlib/ndarray/from-scalar' );
 var format = require( '@stdlib/string/format' );
 var errMessage = require( './error_message.js' );
-var errConstructor = require( './error_constructor.js' );
 &nbsp;
 &nbsp;
 // FUNCTIONS //
@@ -482,11 +475,10 @@ var errConstructor = require( './error_constructor.js' );
 * @throws {TypeError} target array must have a supported data type
 * @returns {boolean} boolean indicating whether assignment succeeded
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function setSlice( target, property, value, receiver, prop2slice ) { // eslint-disable-line stdlib/jsdoc-require-throws-tags</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function setSlice( target, property, value, receiver, prop2slice ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var strict;</span>
 <span class="cstat-no" title="statement not covered" >	var vdt;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
-<span class="cstat-no" title="statement not covered" >	var E;</span>
 <span class="cstat-no" title="statement not covered" >	var s;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isndarrayLike( value ) ) {</span>
@@ -496,15 +488,15 @@ var errConstructor = require( './error_constructor.js' );
 <span class="cstat-no" title="statement not covered" >		if ( dt === 'generic' ) {</span>
 <span class="cstat-no" title="statement not covered" >			value = scalar2ndarray( value, options( dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		// If the input value is real-valued number, we need to inspect the value to determine whether we can safely cast the value to the target array data type...</span>
+<span class="cstat-no" title="statement not covered" >		// If the input value is a real-valued number, we need to inspect the value to determine whether we can safely cast the value to the target array data type...</span>
 <span class="cstat-no" title="statement not covered" >		else if ( isNumber( value ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			// If the target array has a floating-point data type, we can just go ahead and cast the input scalar to the target array data type...</span>
+<span class="cstat-no" title="statement not covered" >			// If the target array has a floating-point data type, we can just go ahead and cast the input scalar to the target array data type, as number literals are, by default, double-precision floating-point values and casting to lower-precision floating-point is allowed...</span>
 <span class="cstat-no" title="statement not covered" >			if ( isFloatingDataType( dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				value = scalar2ndarray( value, options( dt ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			// If the target array has an unsigned integer data type, then the assigned value must be a compatible nonnegative integer value...</span>
 <span class="cstat-no" title="statement not covered" >			else if ( isUnsignedIntegerDataType( dt ) ) {</span>
-<span class="cstat-no" title="statement not covered" >				vdt = minDataType( value );</span>
+<span class="cstat-no" title="statement not covered" >				vdt = minDataType( value ); // note: we rely on data type resolution to handle the case where `value` is a non-integer value. In that case, `vdt` will resolve to a floating-point data type and `isSafeCast` will evaluate to `false`</span>
 <span class="cstat-no" title="statement not covered" >				if ( isSafeCast( vdt, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >					value = scalar2ndarray( value, options( dt ) );</span>
 <span class="cstat-no" title="statement not covered" >				} else {</span>
@@ -567,8 +559,7 @@ var errConstructor = require( './error_constructor.js' );
 <span class="cstat-no" title="statement not covered" >		sliceAssign( value, receiver, s, strict );</span>
 <span class="cstat-no" title="statement not covered" >		return true;</span>
 <span class="cstat-no" title="statement not covered" >	} catch ( err ) {</span>
-<span class="cstat-no" title="statement not covered" >		E = errConstructor( err );</span>
-<span class="cstat-no" title="statement not covered" >		throw new E( errMessage( err.message ) );</span>
+<span class="cstat-no" title="statement not covered" >		throw new err.constructor( errMessage( err.message ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -583,7 +574,7 @@ module.exports = setSlice;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-06T02:44:44.856Z
+                at 2024-12-15T00:58:40.850Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
