@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/minmaxabs/lib/index.js</title>
+    <title>Code coverage report for math/base/special/minmaxabs/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/minmaxabs/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/minmaxabs/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>57/57</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>59/59</span>
+                <span class='fraction'>57/57</span>
             </div>
         
             
@@ -120,9 +120,7 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -169,13 +167,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -184,7 +180,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2024 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -201,40 +197,38 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Return the minimum and maximum absolute values.
-*
-* @module @stdlib/math/base/special/minmaxabs
-*
-* @example
-* var minmaxabs = require( '@stdlib/math/base/special/minmaxabs' );
-*
-* var v = minmaxabs( 3.14, 4.2 );
-* // returns [ 3.14, 4.2 ]
-*
-* v = minmaxabs( -5.9, 3.14 );
-* // returns [ 3.14, 5.9 ]
-*
-* v = minmaxabs( 3.14, NaN );
-* // returns [ NaN, NaN ]
-*
-* v = minmaxabs( +0.0, -0.0 );
-* // returns [ 0.0, 0.0 ]
-*
-* v = minmaxabs( 3.14 );
-* // returns [ 3.14, 3.14 ]
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
-var assign = require( './assign.js' );
-var minmaxabs = require( './main.js' );
+var Float64Array = require( '@stdlib/array/float64' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-setReadOnly( minmaxabs, 'assign', assign );
+/**
+* Returns the minimum and maximum absolute values.
+*
+* @param {number} x - first number
+* @param {number} y - second number
+* @returns {Array&lt;number&gt;} minimum and maximum absolute values
+*
+* @example
+* var v = minmaxabs( 3.14, 4.2 );
+* // returns [ 3.14, 4.2 ]
+*
+* @example
+* var v = minmaxabs( 3.14, NaN );
+* // returns [ NaN, NaN ]
+*
+* @example
+* var v = minmaxabs( +0.0, -0.0 );
+* // returns [ 0.0, 0.0 ]
+*/
+function minmaxabs( x, y ) {
+	var out = new Float64Array( 2 );
+	addon( out, x, y );
+	return [ out[ 0 ], out[ 1 ] ];
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
