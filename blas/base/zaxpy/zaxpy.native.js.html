@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for blas/base/zaxpy/lib/zaxpy.js</title>
+    <title>Code coverage report for blas/base/zaxpy/lib/zaxpy.native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/zaxpy/lib</a> zaxpy.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/zaxpy/lib</a> zaxpy.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>70/70</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>70/70</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
@@ -133,7 +133,8 @@
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -193,6 +194,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -225,8 +227,8 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var stride2offset = require( '@stdlib/strided/base/stride2offset' );
-var ndarray = require( './ndarray.js' );
+var reinterpret = require( '@stdlib/strided/base/reinterpret-complex128' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -264,9 +266,10 @@ var ndarray = require( './ndarray.js' );
 * // returns 7.0
 */
 function zaxpy( N, za, zx, strideX, zy, strideY ) {
-	var ix = stride2offset( N, strideX );
-	var iy = stride2offset( N, strideY );
-	return ndarray( N, za, zx, strideX, ix, zy, strideY, iy );
+	var viewZX = reinterpret( zx, 0 );
+	var viewZY = reinterpret( zy, 0 );
+	addon( N, za, viewZX, strideX, viewZY, strideY );
+	return zy;
 }
 &nbsp;
 &nbsp;
