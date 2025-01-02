@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.42% </span>
+                <span class="strong">90.7% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>366/396</span>
+                <span class='fraction'>371/409</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.47% </span>
+                <span class="strong">88.63% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>76/84</span>
+                <span class='fraction'>78/88</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.42% </span>
+                <span class="strong">90.7% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>366/396</span>
+                <span class='fraction'>371/409</span>
             </div>
         
             
@@ -459,7 +459,21 @@
 <a name='L394'></a><a href='#L394'>394</a>
 <a name='L395'></a><a href='#L395'>395</a>
 <a name='L396'></a><a href='#L396'>396</a>
-<a name='L397'></a><a href='#L397'>397</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L397'></a><a href='#L397'>397</a>
+<a name='L398'></a><a href='#L398'>398</a>
+<a name='L399'></a><a href='#L399'>399</a>
+<a name='L400'></a><a href='#L400'>400</a>
+<a name='L401'></a><a href='#L401'>401</a>
+<a name='L402'></a><a href='#L402'>402</a>
+<a name='L403'></a><a href='#L403'>403</a>
+<a name='L404'></a><a href='#L404'>404</a>
+<a name='L405'></a><a href='#L405'>405</a>
+<a name='L406'></a><a href='#L406'>406</a>
+<a name='L407'></a><a href='#L407'>407</a>
+<a name='L408'></a><a href='#L408'>408</a>
+<a name='L409'></a><a href='#L409'>409</a>
+<a name='L410'></a><a href='#L410'>410</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -782,6 +796,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-yes">71x</span>
@@ -789,6 +807,10 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">71x</span>
 <span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">33x</span>
@@ -820,6 +842,10 @@
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">16x</span>
@@ -881,6 +907,7 @@
 &nbsp;
 var parse = require( 'acorn-loose' ).parse;
 var walk = require( 'acorn-walk' );
+var hasProp = require( '@stdlib/assert/has-property' );
 var linkedList = require( '@stdlib/utils/linked-list' );
 var contains = require( '@stdlib/array/base/assert/contains' );
 var resolveLocalScopes = require( './resolve_local_scopes.js' );
@@ -1084,7 +1111,7 @@ function tokenizer( line, context ) {
 		for ( i = 0; i &lt; COMMANDS.length; i++ ) {
 			command = COMMANDS[ i ];
 			if ( node.name === command[ 0 ] ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >				tokens.push( {</span>
+<span class="cstat-no" title="statement not covered" >				tokens.push({</span>
 <span class="cstat-no" title="statement not covered" >					'value': node.name,</span>
 <span class="cstat-no" title="statement not covered" >					'type': 'command',</span>
 <span class="cstat-no" title="statement not covered" >					'start': node.start,</span>
@@ -1097,14 +1124,14 @@ function tokenizer( line, context ) {
 		identifier = context[ node.name ];
 		if ( identifier ) {
 			if ( isLiteralType( typeof identifier ) ) {
-				tokens.push( {
+				tokens.push({
 					'value': node.name,
 					'type': 'variable',
 					'start': node.start,
 					'end': node.end
 				});
 			} else {
-				tokens.push( {
+				tokens.push({
 					'value': node.name,
 					'type': typeof identifier,
 					'start': node.start,
@@ -1170,9 +1197,13 @@ function tokenizer( line, context ) {
 			}
 			// Case: 'bar' in `foo['bar']` - property already pushed as a string token. Ignore...
 			if ( property.value.type === 'Literal' ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >				obj = obj[ property.value.value ];</span>
-<span class="cstat-no" title="statement not covered" >				if ( !obj ) {</span>
-<span class="cstat-no" title="statement not covered" >					// Property not found in context:</span>
+<span class="cstat-no" title="statement not covered" >				try {</span>
+<span class="cstat-no" title="statement not covered" >					if ( !hasProp( obj, property.value.value ) ) {</span>
+<span class="cstat-no" title="statement not covered" >						// Property not found in context:</span>
+<span class="cstat-no" title="statement not covered" >						break;</span>
+<span class="cstat-no" title="statement not covered" >					}</span>
+<span class="cstat-no" title="statement not covered" >					obj = obj[ property.value.value ];</span>
+<span class="cstat-no" title="statement not covered" >				} catch ( error ) { // eslint-disable-line no-unused-vars</span>
 <span class="cstat-no" title="statement not covered" >					break;</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >				property = properties.next();</span>
@@ -1180,11 +1211,15 @@ function tokenizer( line, context ) {
 <span class="cstat-no" title="statement not covered" >			}</span>
 			// Case: `foo.bar` - resolve property and push it as a token...
 			if ( property.value.type === 'Identifier' ) {
-				obj = obj[ property.value.name ];
-				if ( !obj ) {
-					// Property not found in context:
-					break;
-				}
+				try {
+					if ( !hasProp( obj, property.value.name ) ) {
+						// Property not found in context:
+						break;
+					}
+					obj = obj[ property.value.name ];
+				} <span class="branch-0 cbranch-no" title="branch not covered" >catch ( error ) { // eslint-disable-line no-unused-vars</span>
+<span class="cstat-no" title="statement not covered" >					break;</span>
+<span class="cstat-no" title="statement not covered" >				}</span>
 				if ( !compute ) {
 					// Push token if property exists in context:
 					if ( isLiteralType( typeof obj ) ) {
@@ -1213,9 +1248,13 @@ function tokenizer( line, context ) {
 					// Couldn't compute the internal `MemberExpression` into a definite name:
 					break;
 				}
-				obj = obj[ computed ];
-				if ( !obj ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >					// Property not found in context:</span>
+				try {
+					if ( !hasProp( obj, computed ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >						// Property not found in context:</span>
+<span class="cstat-no" title="statement not covered" >						break;</span>
+<span class="cstat-no" title="statement not covered" >					}</span>
+					obj = obj[ computed ];
+				} <span class="branch-0 cbranch-no" title="branch not covered" >catch ( error ) { // eslint-disable-line no-unused-vars</span>
 <span class="cstat-no" title="statement not covered" >					break;</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 				property = properties.next();
@@ -1258,7 +1297,7 @@ module.exports = tokenizer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-27T07:35:03.868Z
+                at 2025-01-02T19:32:10.021Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
