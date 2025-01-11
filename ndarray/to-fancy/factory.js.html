@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">67.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>112/168</span>
+                <span class='fraction'>101/150</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">67.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>112/168</span>
+                <span class='fraction'>101/150</span>
             </div>
         
             
@@ -213,25 +213,7 @@
 <a name='L148'></a><a href='#L148'>148</a>
 <a name='L149'></a><a href='#L149'>149</a>
 <a name='L150'></a><a href='#L150'>150</a>
-<a name='L151'></a><a href='#L151'>151</a>
-<a name='L152'></a><a href='#L152'>152</a>
-<a name='L153'></a><a href='#L153'>153</a>
-<a name='L154'></a><a href='#L154'>154</a>
-<a name='L155'></a><a href='#L155'>155</a>
-<a name='L156'></a><a href='#L156'>156</a>
-<a name='L157'></a><a href='#L157'>157</a>
-<a name='L158'></a><a href='#L158'>158</a>
-<a name='L159'></a><a href='#L159'>159</a>
-<a name='L160'></a><a href='#L160'>160</a>
-<a name='L161'></a><a href='#L161'>161</a>
-<a name='L162'></a><a href='#L162'>162</a>
-<a name='L163'></a><a href='#L163'>163</a>
-<a name='L164'></a><a href='#L164'>164</a>
-<a name='L165'></a><a href='#L165'>165</a>
-<a name='L166'></a><a href='#L166'>166</a>
-<a name='L167'></a><a href='#L167'>167</a>
-<a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L151'></a><a href='#L151'>151</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -271,26 +253,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -351,6 +313,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -433,32 +397,12 @@ var getArrayWrapper = require( './get_ndarray_wrapper.js' );
 var defaults = require( './defaults.js' );
 var validate = require( './validate.js' );
 var validator = require( './validator.js' );
-var prop2slice0d = require( './prop2slice.0d.js' );
-var prop2slice1d = require( './prop2slice.1d.js' );
-var prop2slicend = require( './prop2slice.nd.js' );
+var prop2slice = require( './prop2slice.js' );
 var ctor = require( './ctor.js' );
+var getter = require( './getter.js' );
+var setter = require( './setter.js' );
 var get = require( './get.js' );
 var set = require( './set.js' );
-&nbsp;
-&nbsp;
-// FUNCTIONS //
-&nbsp;
-/**
-* Returns a function for converting a property string to a slice according to a specified dimensionality.
-*
-* @private
-* @param {NonNegativeInteger} ndims - number of dimensions
-* @returns {Function} function for converting a property string to a slice
-*/
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function prop2slice( ndims ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	if ( ndims === 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		return prop2slice0d;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( ndims === 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >		return prop2slice1d;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return prop2slicend;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // MAIN //
@@ -541,6 +485,8 @@ function factory() {
 <span class="cstat-no" title="statement not covered" >			o = {</span>
 <span class="cstat-no" title="statement not covered" >				'ref': x,</span>
 <span class="cstat-no" title="statement not covered" >				'dtype': dt,</span>
+<span class="cstat-no" title="statement not covered" >				'getter': getter( x ),</span>
+<span class="cstat-no" title="statement not covered" >				'setter': setter( x ),</span>
 <span class="cstat-no" title="statement not covered" >				'preSetElement': setElementWrapper( dt ),</span>
 <span class="cstat-no" title="statement not covered" >				'postGetArray': getArrayWrapper( ndarray2fancy, opts ),</span>
 <span class="cstat-no" title="statement not covered" >				'cache': opts.cache,</span>
@@ -550,7 +496,7 @@ function factory() {
 <span class="cstat-no" title="statement not covered" >				'ctor': new Proxy( x.constructor || ndarray, {</span>
 <span class="cstat-no" title="statement not covered" >					'construct': ctor( ndarray2fancy, opts )</span>
 <span class="cstat-no" title="statement not covered" >				}),</span>
-<span class="cstat-no" title="statement not covered" >				'prop2slice': prop2slice( arr.shape.length )</span>
+<span class="cstat-no" title="statement not covered" >				'prop2slice': prop2slice( arr.shape.length ) // WARNING: we assume a fixed number of dimensions!</span>
 <span class="cstat-no" title="statement not covered" >			};</span>
 <span class="cstat-no" title="statement not covered" >			return new Proxy( x, {</span>
 <span class="cstat-no" title="statement not covered" >				'get': get( o ),</span>
@@ -574,7 +520,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-15T03:59:09.277Z
+                at 2025-01-11T03:24:32.771Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

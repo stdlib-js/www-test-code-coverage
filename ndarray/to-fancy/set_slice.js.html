@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.23% </span>
+                <span class="strong">45.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>76/168</span>
+                <span class='fraction'>79/173</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.23% </span>
+                <span class="strong">45.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>76/168</span>
+                <span class='fraction'>79/173</span>
             </div>
         
             
@@ -231,7 +231,12 @@
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
 <a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -307,6 +312,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -467,7 +477,10 @@ var errMessage = require( './error_message.js' );
 * @param {string} property - indexing expression
 * @param {*} value - new value
 * @param {Object} receiver - the proxy object or an object inheriting from the proxy
-* @param {Function} prop2slice - function for converting an indexing expression to a slice
+* @param {Object} ctx - context object
+* @param {string} ctx.dtype - ndarray data type
+* @param {Function} ctx.prop2slice - function for converting an indexing expression to a slice
+* @param {boolean} ctx.strict - boolean indicating whether to enforce strict bounds checking
 * @throws {Error} invalid slice operation
 * @throws {RangeError} number of slice dimensions must match the number of array dimensions
 * @throws {Error} assigned value must be broadcast compatible with target array view
@@ -475,14 +488,18 @@ var errMessage = require( './error_message.js' );
 * @throws {TypeError} target array must have a supported data type
 * @returns {boolean} boolean indicating whether assignment succeeded
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function setSlice( target, property, value, receiver, prop2slice ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var strict;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function setSlice( target, property, value, receiver, ctx ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var vdt;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var s;</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	s = ctx.prop2slice( target, property, ctx.strict );</span>
+<span class="cstat-no" title="statement not covered" >	if ( s === null ) {</span>
+<span class="cstat-no" title="statement not covered" >		// If unable to parse the property as an indexing expression, signal that we were unable to perform slice assignment:</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( !isndarrayLike( value ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		dt = target.dtype;</span>
+<span class="cstat-no" title="statement not covered" >		dt = ctx.dtype;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// If the target array data type is "generic", we can just go ahead and "cast" to the target array data type...</span>
 <span class="cstat-no" title="statement not covered" >		if ( dt === 'generic' ) {</span>
@@ -553,14 +570,12 @@ var errMessage = require( './error_message.js' );
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid operation. Assigned value cannot be safely cast to the target array data type. Data types: [%s, %s].', typeof value, dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	strict = false; // TODO: support strict mode</span>
-<span class="cstat-no" title="statement not covered" >	s = prop2slice( target, property, strict );</span>
 <span class="cstat-no" title="statement not covered" >	try {</span>
-<span class="cstat-no" title="statement not covered" >		sliceAssign( value, receiver, s, strict );</span>
-<span class="cstat-no" title="statement not covered" >		return true;</span>
+<span class="cstat-no" title="statement not covered" >		sliceAssign( value, receiver, s, ctx.strict );</span>
 <span class="cstat-no" title="statement not covered" >	} catch ( err ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new err.constructor( errMessage( err.message ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	return true;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -574,7 +589,7 @@ module.exports = setSlice;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-15T03:59:09.277Z
+                at 2025-01-11T03:24:32.771Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.65% </span>
+                <span class="strong">62.65% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>46/67</span>
+                <span class='fraction'>52/83</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.65% </span>
+                <span class="strong">62.65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>46/67</span>
+                <span class='fraction'>52/83</span>
             </div>
         
             
@@ -130,7 +130,23 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -171,6 +187,22 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -219,7 +251,13 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var hasProperty = require( './has_property.js' );
+var isString = require( '@stdlib/assert/is-string' ).isPrimitive;
+var hasProperty = require( '@stdlib/assert/has-property' );
+var isIntegerString = require( './is_integer_string.js' );
+var isArrayIndexString = require( './is_ndindex_string.js' );
+var isCartesianIndexString = require( './is_cartesian_index_string.js' );
+var getElement = require( './get_element.js' );
+var getCartesian = require( './get_cartesian.js' );
 var getValue = require( './get_value.js' );
 var getSlice = require( './get_slice.js' );
 &nbsp;
@@ -253,10 +291,20 @@ var getSlice = require( './get_slice.js' );
 <span class="cstat-no" title="statement not covered" >	* @returns {*} result</span>
 <span class="cstat-no" title="statement not covered" >	*/</span>
 <span class="cstat-no" title="statement not covered" >	function get( target, property, receiver ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( hasProperty( property ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			return getValue( target, property, receiver );</span>
+<span class="cstat-no" title="statement not covered" >		if ( isIntegerString( property ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return getElement( target, property, ctx );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return getSlice( target, property, receiver, ctx.prop2slice );</span>
+<span class="cstat-no" title="statement not covered" >		if ( hasProperty( target, property ) || !isString( property ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return getValue( target, property, receiver, ctx );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		if ( isCartesianIndexString( property ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return getCartesian( target, property, ctx );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		if ( isArrayIndexString( property ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			// FIXME</span>
+<span class="cstat-no" title="statement not covered" >			return;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		return getSlice( target, property, ctx );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -271,7 +319,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-15T03:59:09.277Z
+                at 2025-01-11T03:24:32.771Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
