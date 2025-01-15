@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/arcsine/stdev/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/arcsine/stdev/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/arcsine/stdev/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/arcsine/stdev/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>69/69</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>69/69</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
@@ -132,7 +132,14 @@
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -192,9 +199,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1006x</span>
 <span class="cline-any cline-yes">1006x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1002x</span>
 <span class="cline-any cline-yes">1006x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -204,7 +208,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -221,49 +225,51 @@
 &nbsp;
 'use strict';
 &nbsp;
-// VARIABLES //
+// MODULES //
 &nbsp;
-var SQRT1OVER8 = 0.35355339059327373; // sqrt( 1.0/8.0 )
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the standard deviation of an arcsine distribution.
+* Returns the standard deviation of an arcsine distribution with minimum support `a` and maximum support `b`.
 *
+* @private
 * @param {number} a - minimum support
 * @param {number} b - maximum support
-* @returns {PositiveNumber} standard deviation
+* @returns {number} standard deviation
 *
 * @example
-* var v = stdev( 0.0, 1.0 );
+* var y = stdev( 0.0, 1.0 );
 * // returns ~0.354
 *
 * @example
-* var v = stdev( 4.0, 12.0 );
+* var y = stdev( 4.0, 12.0 );
 * // returns ~2.828
 *
 * @example
-* var v = stdev( -4.0, 4.0 );
+* var y = stdev( -4.0, 4.0 );
 * // returns ~2.828
 *
 * @example
-* var v = stdev( 1.0, -0.1 );
+* var y = stdev( +Infinity, 4.0 );
 * // returns NaN
 *
 * @example
-* var v = stdev( 2.0, NaN );
+* var y = stdev( -Infinity, 4.0 );
+* // returns Infinity
+*
+* @example
+* var y = stdev( 1.0, NaN );
 * // returns NaN
 *
 * @example
-* var v = stdev( NaN, 2.0 );
+* var y = stdev( NaN, 2.0 );
 * // returns NaN
 */
 function stdev( a, b ) {
-	if ( a &gt;= b ) {
-		return NaN;
-	}
-	return SQRT1OVER8 * ( b-a );
+	return addon( a, b );
 }
 &nbsp;
 &nbsp;
