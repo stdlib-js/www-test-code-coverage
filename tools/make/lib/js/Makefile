@@ -20,7 +20,7 @@
 # RULES #
 
 #/
-# Builds javascript.
+# Builds JavaScript.
 #
 # @example
 # make build-js
