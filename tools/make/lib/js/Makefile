@@ -31,7 +31,7 @@ build-js: $(NODE_MODULES)
 .PHONY: build-js
 
 #/
-# Removes javascript bundle.
+# Removes JavaScript bundle.
 #
 # @example
 # make clean-js
