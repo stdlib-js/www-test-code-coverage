@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/arcsine/mode/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/arcsine/mode/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/arcsine/mode/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/arcsine/mode/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>73/73</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>73/73</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
@@ -134,9 +134,12 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -196,13 +199,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">106x</span>
 <span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">104x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">100x</span>
 <span class="cline-any cline-yes">106x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -212,7 +208,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -231,51 +227,49 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the mode of an arcsine distribution.
+* Returns the mode of an arcsine distribution with minimum support `a` and maximum support `b`.
 *
+* @private
 * @param {number} a - minimum support
 * @param {number} b - maximum support
 * @returns {number} mode
 *
 * @example
-* var v = mode( 0.0, 1.0 );
+* var y = mode( 0.0, 1.0 );
 * // returns 0.0
 *
 * @example
-* var v = mode( 4.0, 12.0 );
+* var y = mode( 4.0, 12.0 );
 * // returns 4.0
 *
 * @example
-* var v = mode( -4.0, 4.0 );
+* var y = mode( -4.0, 4.0 );
 * // returns -4.0
 *
 * @example
-* var v = mode( 1.0, -0.1 );
+* var y = mode( +Infinity, 4.0 );
 * // returns NaN
 *
 * @example
-* var v = mode( 2.0, NaN );
+* var y = mode( -Infinity, 4.0 );
+* // returns -Infinity
+*
+* @example
+* var y = mode( 1.0, NaN );
 * // returns NaN
 *
 * @example
-* var v = mode( NaN, 2.0 );
+* var y = mode( NaN, 2.0 );
 * // returns NaN
 */
 function mode( a, b ) {
-	if (
-		isnan( a ) ||
-		isnan( b ) ||
-		a &gt;= b
-	) {
-		return NaN;
-	}
-	return a;
+	return addon( a, b );
 }
 &nbsp;
 &nbsp;
