@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dcuminabs/lib/index.js</title>
+    <title>Code coverage report for stats/base/scuminabs/lib/scuminabs.native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/base/dcuminabs/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/base/scuminabs/lib</a> scuminabs.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>70/70</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>70/70</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
@@ -119,21 +119,7 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -180,24 +166,10 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -223,56 +195,42 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute the cumulative minimum absolute value of double-precision floating-point strided array elements.
-*
-* @module @stdlib/stats/base/dcuminabs
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var dcuminabs = require( '@stdlib/stats/base/dcuminabs' );
-*
-* var x = new Float64Array( [ 1.0, -2.0, 2.0 ] );
-* var y = new Float64Array( x.length );
-*
-* dcuminabs( x.length, x, 1, y, 1 );
-* // y =&gt; &lt;Float64Array&gt;[ 1.0, 1.0, 1.0 ]
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var dcuminabs = require( '@stdlib/stats/base/dcuminabs' );
-*
-* var x = new Float64Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ] );
-* var y = new Float64Array( x.length );
-*
-* dcuminabs.ndarray( 4, x, 2, 1, y, 1, 0 );
-* // y =&gt; &lt;Float64Array&gt;[ 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0 ]
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var join = require( 'path' ).join;
-var tryRequire = require( '@stdlib/utils/try-require' );
-var isError = require( '@stdlib/assert/is-error' );
-var main = require( './main.js' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-var dcuminabs;
-var tmp = tryRequire( join( __dirname, './native.js' ) );
-if ( isError( tmp ) ) {
-	dcuminabs = main;
-} else {
-	dcuminabs = tmp;
+/**
+* Computes the cumulative minimum absolute value of single-precision floating-point strided array elements.
+*
+* @param {PositiveInteger} N - number of indexed elements
+* @param {Float32Array} x - input array
+* @param {integer} strideX - `x` stride length
+* @param {Float32Array} y - output array
+* @param {integer} strideY - `y` stride length
+* @returns {Float32Array} output array
+*
+* @example
+* var Float32Array = require( '@stdlib/array/float32' );
+*
+* var x = new Float32Array( [ 1.0, -2.0, 2.0 ] );
+* var y = new Float32Array( x.length );
+* var N = x.length;
+*
+* var v = scuminabs( N, x, 1, y, 1 );
+* // returns &lt;Float32Array&gt;[ 1.0, 1.0, 1.0 ]
+*/
+function scuminabs( N, x, strideX, y, strideY ) {
+	addon( N, x, strideX, y, strideY );
+	return y;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = dcuminabs;
-&nbsp;
-// exports: { "ndarray": "dcuminabs.ndarray" }
+module.exports = scuminabs;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -280,7 +238,7 @@ module.exports = dcuminabs;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-17T20:05:50.947Z
+                at 2025-01-17T20:07:37.955Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
