@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.13% </span>
+                <span class="strong">52.1% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>86/143</span>
+                <span class='fraction'>62/119</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.13% </span>
+                <span class="strong">52.1% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>86/143</span>
+                <span class='fraction'>62/119</span>
             </div>
         
             
@@ -182,56 +182,7 @@
 <a name='L117'></a><a href='#L117'>117</a>
 <a name='L118'></a><a href='#L118'>118</a>
 <a name='L119'></a><a href='#L119'>119</a>
-<a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a>
-<a name='L132'></a><a href='#L132'>132</a>
-<a name='L133'></a><a href='#L133'>133</a>
-<a name='L134'></a><a href='#L134'>134</a>
-<a name='L135'></a><a href='#L135'>135</a>
-<a name='L136'></a><a href='#L136'>136</a>
-<a name='L137'></a><a href='#L137'>137</a>
-<a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -295,6 +246,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -373,40 +325,15 @@
 &nbsp;
 var isPlainObject = require( '@stdlib/assert/is-plain-object' );
 var isArray = require( '@stdlib/assert/is-array' );
-var isString = require( '@stdlib/assert/is-string' );
-var isBoolean = require( '@stdlib/assert/is-boolean' );
+var isString = require( '@stdlib/assert/is-string' ).isPrimitive;
+var isBoolean = require( '@stdlib/assert/is-boolean' ).isPrimitive;
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var format = require( '@stdlib/string/format' );
+var ACTIONS = require( './actions.js' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
-var ACTIONS = [
-	'moveRight',
-	'moveLeft',
-	'moveWordRight',
-	'moveWordLeft',
-	'moveBeginning',
-	'moveEnd',
-	'tab',
-	'indentLineRight',
-	'indentLineLeft',
-	'deleteLeft',
-	'deleteRight',
-	'deleteWordLeft',
-	'deleteWordRight',
-	'deleteLineLeft',
-	'deleteLineRight',
-	'yankKilled',
-	'yankPop',
-	'undo',
-	'redo',
-	'transposeAboutCursor',
-	'uppercaseNextWord',
-	'capitalizeNextWord',
-	'lowercaseNextWord',
-	'clearScreen'
-];
 var KEY_BOOLEAN_PROPS = [ 'ctrl', 'shift', 'meta' ];
 &nbsp;
 &nbsp;
@@ -445,6 +372,7 @@ var KEY_BOOLEAN_PROPS = [ 'ctrl', 'shift', 'meta' ];
 /**
 * Validates keybindings.
 *
+* @private
 * @param {Object} opts - destination object
 * @param {Object} options - settings options
 * @returns {(Error|null)} error or null
@@ -475,7 +403,7 @@ var KEY_BOOLEAN_PROPS = [ 'ctrl', 'shift', 'meta' ];
 <span class="cstat-no" title="statement not covered" >				if ( err ) {</span>
 <span class="cstat-no" title="statement not covered" >					return err;</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				out.push( {</span>
+<span class="cstat-no" title="statement not covered" >				out.push({</span>
 <span class="cstat-no" title="statement not covered" >					'name': o.name,</span>
 <span class="cstat-no" title="statement not covered" >					'ctrl': o.ctrl || false,</span>
 <span class="cstat-no" title="statement not covered" >					'shift': o.shift || false,</span>
@@ -499,7 +427,7 @@ module.exports = validate;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-10T13:55:57.120Z
+                at 2025-01-17T22:23:55.091Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

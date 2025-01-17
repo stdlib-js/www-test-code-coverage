@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for repl/lib/index_of.js</title>
+    <title>Code coverage report for repl/lib/actions.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">repl/lib</a> index_of.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">repl/lib</a> actions.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -32,14 +32,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
@@ -165,19 +165,19 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -186,7 +186,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2019 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -206,43 +206,43 @@
 // MAIN //
 &nbsp;
 /**
-* Returns the index of a search value in a strided array-like object.
+* List of REPL actions.
 *
 * @private
-* @param {NonNegativeInteger} N - number of elements to search
-* @param {ArrayLike} arr - array to search
-* @param {integer} stride - index stride
-* @param {NonNegativeInteger} offset - index offset
-* @param {*} value - search value
-* @returns {integer} search value index
-*
-* @example
-* var arr = [ 1, 2, 3 ];
-*
-* var bool = indexOf( arr.length, arr, 1, 0, 2 );
-* // returns 1
-*
-* bool = indexOf( arr.length, arr, 1, 0, 4 );
-* // returns -1
+* @name ACTIONS
+* @type {Object}
 */
-function indexOf( N, arr, stride, offset, value ) {
-	var idx;
-	var i;
-&nbsp;
-	idx = offset;
-	for ( i = 0; i &lt; N; i++ ) {
-		if ( arr[ idx ] === value ) {
-			return idx;
-		}
-		idx += stride;
-	}
-	return -1;
-}
+var ACTIONS = [
+	'moveRight',
+	'moveLeft',
+	'moveWordRight',
+	'moveWordLeft',
+	'moveBeginning',
+	'moveEnd',
+	'tab',
+	'indentLineRight',
+	'indentLineLeft',
+	'deleteLeft',
+	'deleteRight',
+	'deleteWordLeft',
+	'deleteWordRight',
+	'deleteLineLeft',
+	'deleteLineRight',
+	'yankKilled',
+	'yankPop',
+	'undo',
+	'redo',
+	'transposeAboutCursor',
+	'uppercaseNextWord',
+	'capitalizeNextWord',
+	'lowercaseNextWord',
+	'clearScreen'
+];
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = indexOf;
+module.exports = ACTIONS;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
