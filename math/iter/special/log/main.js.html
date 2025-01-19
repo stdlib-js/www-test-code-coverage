@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for index.js</title>
+    <title>Code coverage report for math/iter/special/log/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/iter/special/log/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>72/72</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>72/72</span>
             </div>
         
             
@@ -117,7 +117,25 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,6 +184,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,7 +210,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2020 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -191,40 +227,58 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* The maximum biased base 2 exponent for a single-precision floating-point number.
-*
-* @module @stdlib/constants/float32/max-base2-exponent
-* @type {integer32}
-*
-* @example
-* var FLOAT32_MAX_BASE2_EXPONENT = require( '@stdlib/constants/float32/max-base2-exponent' );
-* // returns 127
-*/
+// MODULES //
+&nbsp;
+var iterMap2 = require( '@stdlib/math/iter/tools/map2' );
+var log = require( '@stdlib/math/base/special/log' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* The maximum biased base 2 exponent for a single-precision floating-point number.
+* Returns an iterator which iteratively computes the base `b` logarithm.
 *
-* ```text
-* 11111110 =&gt; 254 - BIAS = 127
-* ```
+* ## Notes
 *
-* where `BIAS = 127`.
+* -   For negative `b` or `x` iterated values, the returned iterator returns `NaN`.
+* -   If provided a numeric value as an iterator argument, the value is broadcast as an **infinite** iterator which **always** returns the provided value.
+* -   If an iterated value is non-numeric (including `NaN`), the returned iterator returns `NaN`. If non-numeric iterated values are possible, you are advised to provide an iterator which type checks and handles non-numeric values accordingly.
+* -   The length of the returned iterator is equal to the length of the shortest provided iterator. In other words, the returned iterator ends once **one** of the provided iterators ends.
+* -   If an environment supports `Symbol.iterator` and all provided iterators are iterable, the returned iterator is iterable.
 *
-* @constant
-* @type {integer32}
-* @default 127
-* @see [IEEE 754]{@link https://en.wikipedia.org/wiki/IEEE_754-1985}
+* @param {(Iterator|number)} x - input iterator
+* @param {(Iterator|number)} b - input iterator
+* @throws {TypeError} first argument must be either an iterator protocol-compliant object or a number
+* @throws {TypeError} second argument must be either an iterator protocol-compliant object or a number
+* @returns {Iterator} iterator
+*
+* @example
+* var uniform = require( '@stdlib/random/iter/uniform' );
+*
+* var x = uniform( 0.0, 100.0 );
+* var y = uniform( 0.0, 10.0 );
+*
+* var iter = iterLog( x, y );
+*
+* var r = iter.next().value;
+* // returns &lt;number&gt;
+*
+* r = iter.next().value;
+* // returns &lt;number&gt;
+*
+* r = iter.next().value;
+* // returns &lt;number&gt;
+*
+* // ...
 */
-var FLOAT32_MAX_BASE2_EXPONENT = 127|0; // asm type annotation
+function iterLog( x, b ) {
+	return iterMap2( x, b, log );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = FLOAT32_MAX_BASE2_EXPONENT;
+module.exports = iterLog;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -232,16 +286,16 @@ module.exports = FLOAT32_MAX_BASE2_EXPONENT;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-19T02:33:03.481Z
+                at 2025-01-19T02:33:37.098Z
             </div>
-        <script src="prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="sorter.js"></script>
-        <script src="block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     
