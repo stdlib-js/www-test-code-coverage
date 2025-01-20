@@ -1,0 +1,19 @@
+{
+  "address": "127.0.0.1",
+  "latest": "",
+  "logger": false,
+  "port": 0,
+  "prefix": "/",
+  "root": "",
+  "static": "",
+  "trustProxy": false,
+  "ignoreTrailingSlash": true,
+  "app": {
+    "title": "Test Code Coverage | stdlib",
+    "description": "Test code coverage website for stdlib, a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing.",
+    "theme": "",
+    "mode": "default",
+    "exampleSyntax": "es5",
+    "prevNextNavigation": "alphabetical"
+  }
+}
