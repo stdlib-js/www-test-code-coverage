@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/betaprime/kurtosis/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/betaprime/logpdf/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/betaprime/kurtosis/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/betaprime/logpdf/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>90/90</span>
+                <span class='fraction'>105/105</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>90/90</span>
+                <span class='fraction'>105/105</span>
             </div>
         
             
@@ -153,96 +153,126 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">117x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3007x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3000x</span>
+<span class="cline-any cline-yes">3000x</span>
+<span class="cline-any cline-yes">3000x</span>
+<span class="cline-any cline-yes">3000x</span>
+<span class="cline-any cline-yes">3018x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
@@ -265,74 +295,89 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var betaln = require( '@stdlib/math/base/special/betaln' );
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var log1p = require( '@stdlib/math/base/special/log1p' );
+var ln = require( '@stdlib/math/base/special/ln' );
+var NINF = require( '@stdlib/constants/float64/ninf' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the excess kurtosis of a beta prime distribution.
+* Evaluates the natural logarithm of the probability density function (logPDF) for a beta prime distribution with first shape parameter `alpha` and second shape parameter `beta` at a value `x`.
 *
+* @param {number} x - input value
 * @param {PositiveNumber} alpha - first shape parameter
 * @param {PositiveNumber} beta - second shape parameter
-* @returns {number} excess kurtosis
+* @returns {number} evaluated logPDF
 *
 * @example
-* var v = kurtosis( 2.0, 6.0 );
-* // returns ~26.143
+* var y = logpdf( 0.5, 1.0, 1.0 );
+* // returns ~-0.811
 *
 * @example
-* var v = kurtosis( 4.0, 12.0 );
-* // returns ~5.764
+* var y = logpdf( 0.5, 2.0, 4.0 );
+* // returns ~-0.13
 *
 * @example
-* var v = kurtosis( 12.0, 6.0 );
-* // returns ~19.49
+* var y = logpdf( 0.2, 2.0, 2.0 );
+* // returns ~-0.547
 *
 * @example
-* var v = kurtosis( 2.0, 4.0 );
+* var y = logpdf( 0.8, 4.0, 4.0 );
+* // returns ~-0.43
+*
+* @example
+* var y = logpdf( -0.5, 4.0, 2.0 );
+* // returns -Infinity
+*
+* @example
+* var y = logpdf( 0.5, -1.0, 0.5 );
 * // returns NaN
 *
 * @example
-* var v = kurtosis( 1.0, -0.1 );
+* var y = logpdf( 0.5, 0.5, -1.0 );
 * // returns NaN
 *
 * @example
-* var v = kurtosis( -0.1, 1.0 );
+* var y = logpdf( NaN, 1.0, 1.0 );
 * // returns NaN
 *
 * @example
-* var v = kurtosis( 2.0, NaN );
+* var y = logpdf( 0.5, NaN, 1.0 );
 * // returns NaN
 *
 * @example
-* var v = kurtosis( NaN, 2.0 );
+* var y = logpdf( 0.5, 1.0, NaN );
 * // returns NaN
 */
-function kurtosis( alpha, beta ) {
-	var abm1;
-	var bm1;
+function logpdf( x, alpha, beta ) {
 	var out;
+&nbsp;
 	if (
+		isnan( x ) ||
 		isnan( alpha ) ||
-		alpha &lt;= 0.0 ||
 		isnan( beta ) ||
-		beta &lt;= 4.0
+		alpha &lt;= 0.0 ||
+		beta &lt;= 0.0
 	) {
 		return NaN;
 	}
-	abm1 = alpha + beta - 1.0;
-	bm1 = beta - 1.0;
-	out = ( alpha * abm1 * ( (5.0*beta )-11.0 ) ) + ( ( bm1*bm1 )*( bm1-1.0 ) );
-	out *= 6.0;
-	out /= alpha * abm1 * ( beta-3.0 ) * ( beta-4.0 );
+	if ( x &lt;= 0.0 ) {
+		// Support of the BetaPrime distribution: (0,∞)
+		return NINF;
+	}
+	out = ( alpha-1.0 ) * ln( x );
+	out -= ( alpha+beta ) * log1p( x );
+	out -= betaln( alpha, beta );
 	return out;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = kurtosis;
+module.exports = logpdf;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -340,7 +385,7 @@ module.exports = kurtosis;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-21T23:42:11.175Z
+                at 2025-01-21T23:42:18.788Z
             </div>
         <script src="../../../../../../prettify.js"></script>
         <script>
