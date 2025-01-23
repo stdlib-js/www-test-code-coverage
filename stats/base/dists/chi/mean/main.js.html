@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/chi/mode/lib/native.js</title>
+    <title>Code coverage report for stats/base/dists/chi/mean/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/chi/mode/lib</a> native.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/chi/mean/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -121,7 +121,11 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -171,9 +175,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">53x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -182,7 +190,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -201,42 +209,46 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var addon = require( './../src/addon.node' );
+var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var gamma = require( '@stdlib/math/base/special/gamma' );
+var SQRT_TWO = require( '@stdlib/constants/float64/sqrt-two' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the mode of a chi distribution.
+* Returns the expected value of a chi distribution.
 *
-* @private
-* @param {PositiveNumber} k - degrees of freedom
-* @returns {NonNegativeNumber} mode
-*
-* @example
-* var v = mode( 9.0 );
-* // returns ~2.828
+* @param {NonNegativeNumber} k - degrees of freedom
+* @returns {NonNegativeNumber} expected value
 *
 * @example
-* var v = mode( 1.0 );
-* // returns 0.0
+* var v = mean( 9.0 );
+* // returns ~2.918
 *
 * @example
-* var v = mode( -0.2 );
+* var v = mean( 1.0 );
+* // returns ~0.798
+*
+* @example
+* var v = mean( -0.2 );
 * // returns NaN
 *
 * @example
-* var v = mode( NaN );
+* var v = mean( NaN );
 * // returns NaN
 */
-function mode( k ) {
-	return addon( k );
+function mean( k ) {
+	if ( isnan( k ) || k &lt; 0.0 ) {
+		return NaN;
+	}
+	return SQRT_TWO * gamma( ( k+1.0 ) / 2.0 ) / gamma( k / 2.0 );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = mode;
+module.exports = mean;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +256,7 @@ module.exports = mode;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-23T00:43:42.130Z
+                at 2025-01-23T00:43:14.409Z
             </div>
         <script src="../../../../../../prettify.js"></script>
         <script>
