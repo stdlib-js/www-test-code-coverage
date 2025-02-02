@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for repl/lib/parse_key.js</title>
+    <title>Code coverage report for repl/lib/eager_evaluator.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">repl/lib</a> parse_key.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">repl/lib</a> eager_evaluator.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.03% </span>
+                <span class="strong">91.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>235/261</span>
+                <span class='fraction'>297/323</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">81.25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>39/48</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">77.77% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.03% </span>
+                <span class="strong">91.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>235/261</span>
+                <span class='fraction'>297/323</span>
             </div>
         
             
@@ -324,7 +324,69 @@
 <a name='L259'></a><a href='#L259'>259</a>
 <a name='L260'></a><a href='#L260'>260</a>
 <a name='L261'></a><a href='#L261'>261</a>
-<a name='L262'></a><a href='#L262'>262</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a>
+<a name='L304'></a><a href='#L304'>304</a>
+<a name='L305'></a><a href='#L305'>305</a>
+<a name='L306'></a><a href='#L306'>306</a>
+<a name='L307'></a><a href='#L307'>307</a>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a>
+<a name='L316'></a><a href='#L316'>316</a>
+<a name='L317'></a><a href='#L317'>317</a>
+<a name='L318'></a><a href='#L318'>318</a>
+<a name='L319'></a><a href='#L319'>319</a>
+<a name='L320'></a><a href='#L320'>320</a>
+<a name='L321'></a><a href='#L321'>321</a>
+<a name='L322'></a><a href='#L322'>322</a>
+<a name='L323'></a><a href='#L323'>323</a>
+<a name='L324'></a><a href='#L324'>324</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -390,6 +452,37 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">558x</span>
+<span class="cline-any cline-yes">558x</span>
+<span class="cline-any cline-yes">558x</span>
+<span class="cline-any cline-yes">558x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">558x</span>
+<span class="cline-any cline-yes">144x</span>
+<span class="cline-any cline-yes">144x</span>
+<span class="cline-any cline-yes">558x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">558x</span>
+<span class="cline-any cline-yes">164x</span>
+<span class="cline-any cline-yes">139x</span>
+<span class="cline-any cline-yes">139x</span>
+<span class="cline-any cline-yes">409x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">270x</span>
+<span class="cline-any cline-yes">558x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -398,6 +491,18 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -411,6 +516,29 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -423,6 +551,21 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3372x</span>
+<span class="cline-any cline-yes">3372x</span>
+<span class="cline-any cline-yes">3372x</span>
+<span class="cline-any cline-yes">384x</span>
+<span class="cline-any cline-yes">384x</span>
+<span class="cline-any cline-yes">245x</span>
+<span class="cline-any cline-yes">245x</span>
+<span class="cline-any cline-yes">384x</span>
+<span class="cline-any cline-yes">139x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -435,81 +578,14 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -524,18 +600,18 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
@@ -548,38 +624,86 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">4959x</span>
-<span class="cline-any cline-yes">4959x</span>
-<span class="cline-any cline-yes">4959x</span>
-<span class="cline-any cline-yes">4959x</span>
-<span class="cline-any cline-yes">4959x</span>
-<span class="cline-any cline-yes">4959x</span>
-<span class="cline-any cline-yes">4252x</span>
-<span class="cline-any cline-yes">4252x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
-<span class="cline-any cline-yes">707x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">5011x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">1476x</span>
+<span class="cline-any cline-yes">1476x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">3756x</span>
+<span class="cline-any cline-yes">4132x</span>
+<span class="cline-any cline-yes">3617x</span>
+<span class="cline-any cline-yes">3617x</span>
+<span class="cline-any cline-yes">3617x</span>
+<span class="cline-any cline-yes">139x</span>
+<span class="cline-any cline-yes">139x</span>
+<span class="cline-any cline-yes">4132x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">139x</span>
+<span class="cline-any cline-yes">139x</span>
+<span class="cline-any cline-yes">4132x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">133x</span>
+<span class="cline-any cline-yes">133x</span>
+<span class="cline-any cline-yes">133x</span>
+<span class="cline-any cline-yes">4132x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5232x</span>
+<span class="cline-any cline-yes">77x</span>
+<span class="cline-any cline-yes">77x</span>
+<span class="cline-any cline-yes">77x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">4132x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">4959x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -588,7 +712,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -603,249 +727,311 @@
 * limitations under the License.
 */
 &nbsp;
+/* eslint-disable no-underscore-dangle, no-restricted-syntax, no-invalid-this, max-len */
+&nbsp;
 'use strict';
 &nbsp;
 // MODULES //
 &nbsp;
-var hasOwnProp = require( '@stdlib/assert/has-own-property' );
-var pick = require( '@stdlib/utils/pick' );
-var containsFactory = require( '@stdlib/array/base/assert/contains' ).factory;
-var isUndefined = require( '@stdlib/assert/is-undefined' );
+var readline = require( 'readline' );
+var inspect = require( 'util' ).inspect;
+var logger = require( 'debug' );
+var parse = require( 'acorn' ).parse;
+var replace = require( '@stdlib/string/replace' );
+var setNonEnumerableReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
+var copy = require( '@stdlib/array/base/copy' );
+var max = require( '@stdlib/math/base/special/max' );
+var processCommand = require( './process_command.js' );
+var compileCommand = require( './compile_command.js' );
+var ANSI_COLORS = require( './ansi_colors.js' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
-// Control sequence prefix in ALT combinations:
-var ALT_CSI = '\u001B';
-&nbsp;
-// Properties in parsed keybinding:
-var KEYBINDING_PROPS = [ 'name', 'ctrl', 'shift', 'meta' ];
-&nbsp;
-/**
-* Asserts if a sequence is an unrecognized symbol.
-*
-* ## Notes
-*
-* -   `SHIFT+&lt;symbol&gt;` will result in a keybinding with the name of the resulting symbol and not the original symbol with shift enabled.
-*
-* @private
-* @name isUnrecognizedSymbol
-* @type {Function}
-*/
-var isUnrecognizedSymbol = containsFactory([
-	'`',
-	'~',
-	'!',
-	'@',
-	'#',
-	'$',
-	'%',
-	'^',
-	'&amp;',
-	'*',
-	'(',
-	')',
-	'-',
-	'_',
-	'=',
-	'+',
-	'{',
-	'}',
-	'[',
-	']',
-	'|',
-	'\\',
-	':',
-	';',
-	'"',
-	'\'',
-	'&lt;',
-	',',
-	'&gt;',
-	'.',
-	'?',
-	'/'
-]);
-&nbsp;
-/**
-* Table mapping unrecognized control sequences to their possible key objects.
-*
-* ## Notes
-*
-* -   The following map is recorded as observed in gnome.
-*
-* @private
-* @name CTRL_SEQUENCES_KEYMAP
-* @type {Object}
-*/
-var CTRL_SEQUENCES_KEYMAP = {
-	'\u001F': [
-		{
-			'name': '/',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		},
-		{
-			'name': '-',
-			'ctrl': true,
-			'shift': false,
-			'meta': true
-		},
-		{
-			'name': '7',
-			'ctrl': true,
-			'shift': false,
-			'meta': true
-		}
-	],
-	'\u001C': [
-		{
-			'name': '\\',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		},
-		{
-			'name': '\\',
-			'ctrl': true,
-			'shift': true,
-			'meta': false
-		},
-		{
-			'name': '|',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		},
-		{
-			'name': '4',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		}
-	],
-	'\u001D': [
-		{
-			'name': ']',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		},
-		{
-			'name': ']',
-			'ctrl': true,
-			'shift': true,
-			'meta': false
-		},
-		{
-			'name': '}',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		},
-		{
-			'name': '5',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		}
-	],
-	'\u001E': [
-		{
-			'name': '6',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		},
-		{
-			'name': '6',
-			'ctrl': true,
-			'shift': true,
-			'meta': false
-		},
-		{
-			'name': '^',
-			'ctrl': true,
-			'shift': false,
-			'meta': false
-		}
-	]
+var debug = logger( 'repl:eager-evaluator' );
+var AOPTS = {
+	'ecmaVersion': 'latest'
 };
+var ROPTS = {
+	'timeout': 100, // (in milliseconds) this controls how long eagerly evaluated commands have to execute; we need to avoid setting this too high in order to avoid eager evaluation interfering with the UX when naturally typing
+	'displayErrors': false,
+	'breakOnSigint': true // Node.js &gt;=6.3.0
+};
+var tempDB = {
+	'base_sin': {
+		'isPure': true
+	}
+};
+var ANSI_GRAY = ANSI_COLORS[ 'brightBlack' ];
+var ANSI_RESET = ANSI_COLORS[ 'reset' ];
 &nbsp;
 &nbsp;
 // FUNCTIONS //
 &nbsp;
 /**
-* Parses unrecognized control sequences emitted by `ALT+&lt;symbol&gt;` combinations.
+* Recursively traverses the node to determine whether the node is side-effect-free.
 *
 * @private
-* @param {string} seq - control sequence
-* @returns {(Object|null)} parsed key object or null if not a meta symbol sequence
+* @param {Object} node - ast node
+* @returns {boolean} boolean indicating whether the node is side-effect-free
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function parseMetaSymbolSequence( seq ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	if (</span>
-<span class="cstat-no" title="statement not covered" >		!seq ||</span>
-<span class="cstat-no" title="statement not covered" >		seq.length !== 2 ||</span>
-<span class="cstat-no" title="statement not covered" >		seq[ 0 ] !== ALT_CSI ||</span>
-<span class="cstat-no" title="statement not covered" >		isUnrecognizedSymbol( seq[ 1 ] )</span>
-<span class="cstat-no" title="statement not covered" >	) {</span>
-<span class="cstat-no" title="statement not covered" >		return null;</span>
+function traverse( node ) {
+	var fname;
+	var i;
+	if ( !node ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return {</span>
-<span class="cstat-no" title="statement not covered" >		'name': seq[ 1 ],</span>
-<span class="cstat-no" title="statement not covered" >		'ctrl': false,</span>
-<span class="cstat-no" title="statement not covered" >		'shift': false,</span>
-<span class="cstat-no" title="statement not covered" >		'meta': true</span>
-<span class="cstat-no" title="statement not covered" >	};</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+	if ( node.type === 'Literal' || node.type === 'Identifier' || node.type === 'MemberExpression' ) {
+		return true;
+	}
+	if ( node.type === 'BinaryExpression' ) {
+		if ( traverse( node.left ) &amp;&amp; traverse( node.right ) ) {
+			return true;
+		}
+	} else if ( node.type === 'ExpressionStatement' ) {
+		if ( traverse( node.expression ) ) {
+			return true;
+		}
+	} else if ( node.type === 'CallExpression' ) {
+		fname = getFunctionName( node.callee );
+		if ( tempDB[fname] <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; tempDB[fname].isPure </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			// Examine each function argument for potential side-effects...</span>
+<span class="cstat-no" title="statement not covered" >			for ( i = 0; i &lt; node.arguments.length; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >				if ( !traverse( node.arguments[ i ] ) ) {</span>
+<span class="cstat-no" title="statement not covered" >					return false;</span>
+<span class="cstat-no" title="statement not covered" >				}</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			return true;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+	}
+	return false;
+}
+&nbsp;
+/**
+* Resolves the function name associated with a provided AST node.
+*
+* @private
+* @param {Object} node - ast node
+* @returns {string} function name representing the node
+*/
+function getFunctionName( node ) {
+	if ( !node ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return '';</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( node.type === 'MemberExpression' ) {
+		return getFunctionName( node.object ) + '_' + node.property.name;
+	}
+	if ( node.type === 'Identifier' ) {
+		return node.name;
+	}
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	return '';</span></span>
+}
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Parses a readline keypress object.
+* Constructor for creating an eager evaluator.
 *
-* @param {Object} key - readline keypress object
-* @returns {Array&lt;Object&gt;} list of possible key objects
+* @private
+* @param {REPL} repl - repl instance
+* @param {Object} rli - readline instance
+* @param {boolean} enabled - boolean indicating whether the eager evaluator should be initially enabled
+* @returns {EagerEvaluator} eager evaluator instance
 */
-function parseKey( key ) {
-	var out;
-	var seq;
-&nbsp;
-	// If key is already defined, no need to parse it...
-	if ( !isUndefined( key.name ) ) {
-		return [ pick( key, KEYBINDING_PROPS ) ];
-	}
-	seq = key.sequence;
-&nbsp;
-	// Check if it's an unrecognized symbol:
-	if ( isUnrecognizedSymbol( seq ) ) {
-		return [
-			{
-				'name': seq,
-				'ctrl': false,
-				'shift': false,
-				'meta': false
-			}
-		];
-	}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	// Check if it's a `CTRL+&lt;symbol&gt;` combination:</span></span>
-<span class="cstat-no" title="statement not covered" >	if ( hasOwnProp( CTRL_SEQUENCES_KEYMAP, seq ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		return CTRL_SEQUENCES_KEYMAP[ seq ];</span>
+function EagerEvaluator( repl, rli, enabled ) {
+	if ( !(this instanceof EagerEvaluator) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return new EagerEvaluator( repl, rli, enabled );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Check if it's a `META+&lt;symbol&gt;` combination:</span>
-<span class="cstat-no" title="statement not covered" >	out = parseMetaSymbolSequence( seq );</span>
-<span class="cstat-no" title="statement not covered" >	if ( out ) {</span>
-<span class="cstat-no" title="statement not covered" >		return [ out ];</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return [ pick( key, KEYBINDING_PROPS ) ]; // couldn't parse, return original key</span>
+	debug( 'Creating a new eager evaluator...' );
+&nbsp;
+	// Cache a reference to the provided REPL instance:
+	this._repl = repl;
+&nbsp;
+	// Cache a reference to the readline interface:
+	this._rli = rli;
+&nbsp;
+	// Cache a reference to the command array:
+	this._cmd = repl._cmd;
+&nbsp;
+	// Initialize a flag indicating whether the eager evaluator is enabled:
+	this._enabled = enabled;
+&nbsp;
+	// Initialize a flag indicating whether we are currently previewing eagerly-evaluated output:
+	this._isPreviewing = false;
+&nbsp;
+	return this;
 }
+&nbsp;
+/**
+* Checks whether provided code is free of side-effects.
+*
+* @private
+* @name _isSideEffectFree
+* @memberof EagerEvaluator.prototype
+* @type {Function}
+* @param {string} code - input code
+* @returns {boolean} boolean indicating whether provided code is free of side-effects
+*/
+setNonEnumerableReadOnly( EagerEvaluator.prototype, '_isSideEffectFree', function isSideEffectFree( code ) {
+	var ast;
+	var i;
+&nbsp;
+	try {
+		ast = parse( code, AOPTS );
+	} catch ( err ) {
+		debug( 'Encountered an error when generating AST: %s', err.message );
+		return false;
+	}
+	for ( i = 0; i &lt; ast.body.length; i++ ) {
+		if ( !traverse( ast.body[ i ] ) ) {
+			return false;
+		}
+	}
+	return true;
+});
+&nbsp;
+/**
+* Clears eagerly-evaluated output.
+*
+* @private
+* @name clear
+* @memberof EagerEvaluator.prototype
+* @type {Function}
+* @returns {void}
+*/
+setNonEnumerableReadOnly( EagerEvaluator.prototype, 'clear', function clear() {
+	var cursorPosition;
+&nbsp;
+	cursorPosition = this._rli.cursor;
+	readline.moveCursor( this._repl._ostream, 0, 1 );
+	readline.clearLine( this._repl._ostream, 0 );
+	readline.moveCursor( this._repl._ostream, 0, -1 );
+	readline.cursorTo( this._repl._ostream, cursorPosition + this._repl.promptLength() );
+	this._isPreviewing = false;
+});
+&nbsp;
+/**
+* Disables the eager evaluator.
+*
+* @private
+* @name disable
+* @memberof EagerEvaluator.prototype
+* @type {Function}
+* @returns {EagerEvaluator} eager evaluator instance
+*/
+setNonEnumerableReadOnly( EagerEvaluator.prototype, 'disable', <span class="fstat-no" title="function not covered" >function disable() {</span>
+<span class="cstat-no" title="statement not covered" >	this._enabled = false;</span>
+<span class="cstat-no" title="statement not covered" >	return this;</span>
+});
+&nbsp;
+/**
+* Enables the eager evaluator.
+*
+* @private
+* @name enable
+* @memberof EagerEvaluator.prototype
+* @type {Function}
+* @returns {EagerEvaluator} eager evaluator instance
+*/
+setNonEnumerableReadOnly( EagerEvaluator.prototype, 'enable', <span class="fstat-no" title="function not covered" >function enable() {</span>
+<span class="cstat-no" title="statement not covered" >	this._enabled = true;</span>
+<span class="cstat-no" title="statement not covered" >	return this;</span>
+});
+&nbsp;
+/**
+* Callback which should be invoked **before** a "keypress" event.
+*
+* @private
+* @name beforeKeypress
+* @memberof EagerEvaluator.prototype
+* @type {Function}
+* @param {string} data - input data
+* @param {(Object|void)} key - key object
+* @returns {void}
+*/
+setNonEnumerableReadOnly( EagerEvaluator.prototype, 'beforeKeypress', function beforeKeypress() {
+	if ( this._isPreviewing ) {
+		this.clear();
+	}
+});
+&nbsp;
+/**
+* Callback for handling a "keypress" event.
+*
+* @private
+* @name onKeypress
+* @memberof EagerEvaluator.prototype
+* @type {Function}
+* @param {string} data - input data
+* @param {(Object|void)} key - key object
+* @returns {void}
+*/
+setNonEnumerableReadOnly( EagerEvaluator.prototype, 'onKeypress', function onKeypress() {
+	var cursorPosition;
+	var executable;
+	var index;
+	var code;
+	var cmd;
+	var pre;
+	var res;
+	var tmp;
+&nbsp;
+	if ( !this._enabled || this._rli.line === '' ) {
+		return;
+	}
+&nbsp;
+	// Build the final command:
+	cmd = copy( this._cmd );
+	cmd[ max( cmd.length - 1, 0 ) ] = this._rli.line; // eager-evaluation should only work when on the last line, hence updating the last index
+&nbsp;
+	code = cmd.join( '\n' );
+	debug( 'Eagerly evaluating: %s', code );
+	if ( !this._isSideEffectFree( code ) ) {
+		debug( 'Unable to perform eager-evaluation due to potential side-effects. Skipping...' );
+		return;
+	}
+	debug( 'Processing command...' );
+	tmp = processCommand( code );
+	if ( tmp instanceof Error ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		debug( 'Error encountered when processing command: %s', tmp.message );</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	debug( 'Compiling command...' );
+	executable = compileCommand( tmp );
+	if ( executable instanceof Error ) {
+		debug( 'Error encountered when compiling command: %s', executable.message );
+		return;
+	}
+	try {
+		if ( this._repl._sandbox ) {
+			res = executable.compiled.runInContext( this._repl._context, ROPTS );
+		}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
+<span class="cstat-no" title="statement not covered" >			res = executable.compiled.runInThisContext( ROPTS );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+	} catch ( err ) {
+		debug( 'Encountered an error when executing the command: %s', err.message );
+		return;
+	}
+&nbsp;
+	res = inspect( res );
+	index = res.indexOf( '\n' );
+	if ( index !== -1 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		res = res.slice( 0, index ) + '...';</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	cursorPosition = this._rli.cursor;
+	pre = replace( this._repl._outputPrompt, '%d', ( this._repl._count+1 ).toString() );
+	this._repl._ostream.write( '\n' + ANSI_GRAY + pre + res + ANSI_RESET );
+	readline.moveCursor( this._repl._ostream, 0, -1 );
+	readline.cursorTo( this._repl._ostream, cursorPosition + this._repl.promptLength() );
+	this._isPreviewing = true;
+	debug( 'Successfully evaluated command.' );
+});
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = parseKey;
+module.exports = EagerEvaluator;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
