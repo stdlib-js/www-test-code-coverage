@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/planck/median/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/planck/median/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/planck/median/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/planck/median/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>62/62</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>62/62</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -121,12 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -178,9 +173,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1003x</span>
 <span class="cline-any cline-yes">1003x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1000x</span>
 <span class="cline-any cline-yes">1003x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -209,17 +201,16 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var ceil = require( '@stdlib/math/base/special/ceil' );
-var ln = require( '@stdlib/math/base/special/ln' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the median of a Planck distribution.
+* Returns the median of a Planck distribution with shape parameter `lambda`.
 *
-* @param {PositiveNumber} lambda - shape parameter
+* @private
+* @param {number} lambda - shape parameter
 * @returns {NonNegativeInteger} median
 *
 * @example
@@ -231,18 +222,15 @@ var ln = require( '@stdlib/math/base/special/ln' );
 * // returns 0
 *
 * @example
-* var v = median( -1.1 );
+* var v = median( NaN );
 * // returns NaN
 *
 * @example
-* var v = median( NaN );
+* var v = median( -1.5 );
 * // returns NaN
 */
 function median( lambda ) {
-	if ( isnan( lambda ) || lambda &lt;= 0.0 ) {
-		return NaN;
-	}
-	return ceil( -ln( 0.5 ) / lambda ) - 1.0;
+	return addon( lambda );
 }
 &nbsp;
 &nbsp;
