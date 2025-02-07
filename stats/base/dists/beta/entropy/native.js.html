@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/beta/entropy/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/beta/entropy/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/beta/entropy/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/beta/entropy/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>79/79</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>79/79</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
@@ -134,15 +134,7 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -207,14 +199,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1012x</span>
 <span class="cline-any cline-yes">1012x</span>
-<span class="cline-any cline-yes">1012x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">1003x</span>
-<span class="cline-any cline-yes">1003x</span>
-<span class="cline-any cline-yes">1003x</span>
-<span class="cline-any cline-yes">1003x</span>
-<span class="cline-any cline-yes">1003x</span>
 <span class="cline-any cline-yes">1012x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -224,7 +208,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -243,8 +227,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var digamma = require( '@stdlib/math/base/special/digamma' );
-var betaln = require( '@stdlib/math/base/special/betaln' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -252,6 +235,7 @@ var betaln = require( '@stdlib/math/base/special/betaln' );
 /**
 * Returns the differential entropy of a beta distribution.
 *
+* @private
 * @param {PositiveNumber} alpha - first shape parameter
 * @param {PositiveNumber} beta - second shape parameter
 * @returns {NonPositiveNumber} differential entropy
@@ -285,15 +269,7 @@ var betaln = require( '@stdlib/math/base/special/betaln' );
 * // returns NaN
 */
 function entropy( alpha, beta ) {
-	var out;
-	if ( alpha &lt;= 0.0 || beta &lt;= 0.0 ) {
-		return NaN;
-	}
-	out = betaln( alpha, beta );
-	out -= ( alpha-1.0 ) * digamma( alpha );
-	out -= ( beta-1.0 ) * digamma( beta );
-	out += ( alpha+beta-2.0 ) * digamma( alpha+beta );
-	return out;
+	return addon( alpha, beta );
 }
 &nbsp;
 &nbsp;
