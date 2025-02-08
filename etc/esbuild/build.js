@@ -18,20 +18,20 @@
 
 'use strict';
 
-
 // MODULES //
 
 var esbuild = require( 'esbuild' );
-var config = require( './config' );
+var config = require( './config.js' );
 
 
 // MAIN //
 
 /**
-* Builds the website using esbuild.
+* Builds the website.
 *
 * @async
 * @throws {Error} build failure
+* @returns {Promise} promise which resolves upon building the website
 */
 async function main() {
 	try {

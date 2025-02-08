@@ -24,7 +24,6 @@ limitations under the License.
 
 This project uses [`make`][make] as its development utility. For an overview of `make`, see the `make` [manual][make]. 
 
-
 ## Usage
 
 #### Help

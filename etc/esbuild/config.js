@@ -18,34 +18,32 @@
 
 'use strict';
 
-
 // MODULES //
 
-var path = require( 'path' );
+var resolve = require( 'path' ).resolve;
 
 
-// VARIABLES //
+// MAIN //
 
-var SRC_DIR = path.resolve( __dirname, '../../src' );
-var BUILD_DIR = path.resolve( __dirname, '../../public/js' );
-
-
-// EXPORTS //
-
-module.exports = {
-	entryPoints: [
-		SRC_DIR + '/index.jsx'
+var config = {
+	'entryPoints': [
+		resolve( __dirname, '../../src/index.jsx' )
 	],
-	bundle: true,
-	outfile: BUILD_DIR + '/bundle.js',
-	minify: true,
-	sourcemap: false,
-	target: 'es2015',
-	jsxFactory: 'h',
-	jsxFragment: 'Fragment',
-	jsxImportSource: 'preact',
-	alias: {
+	'bundle': true,
+	'outfile': resolve( __dirname, '../../public/js/bundle.js' ),
+	'minify': true,
+	'sourcemap': false,
+	'target': 'es2015',
+	'jsxFactory': 'h',
+	'jsxFragment': 'Fragment',
+	'jsxImportSource': 'preact',
+	'alias': {
 		'react': 'preact/compat',
 		'react-dom': 'preact/compat'
 	}
 };
+
+
+// EXPORTS //
+
+module.exports = config;

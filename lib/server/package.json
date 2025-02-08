@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "",
+  "name": "@stdlib/www-test-coverage-server",
   "version": "0.0.0",
   "description": "Create an HTTP server for serving test code coverage.",
   "license": "Apache-2.0",

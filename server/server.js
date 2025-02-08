@@ -56,7 +56,6 @@ function done( error ) {
 */
 function main() {
 	var opts = {
-		// 'latest': config.versions[ 0 ],
 		'logger': 'info',
 		'port': PORT,
 		'prefix': '/',

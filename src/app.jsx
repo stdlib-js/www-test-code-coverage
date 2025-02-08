@@ -16,6 +16,7 @@
 * limitations under the License.
 */
 
+'use strict';
 
 // MODULES //
 
@@ -37,5 +38,8 @@ function App() {
 		</div>
 	)
 }
+
+
+// EXPORTS //
 
 export default App;

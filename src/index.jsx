@@ -16,10 +16,11 @@
 * limitations under the License.
 */
 
+'use strict';
 
 // MODULES //
 
-import { h, render } from 'preact';
+import { render } from 'preact';
 import App from './app.jsx';
 
 

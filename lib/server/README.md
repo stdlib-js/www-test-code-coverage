@@ -18,6 +18,6 @@ limitations under the License.
 
 -->
 
-# Test code coverage Server
+# Server
 
-> Create an HTTP server for serving test code coverage.
+> HTTP server for serving test code coverage.

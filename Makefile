@@ -66,8 +66,8 @@ BUILD_FOLDER ?= js
 # Define filename extension conventions (keep in alphabetical order):
 CSS_FILENAME_EXT ?= css
 
-# Define Node paths: (WARNING: we cannot use an absolute path here because of Webpack which only allows relative paths)
-NODE_PATH ?= ./node_modules/@stdlib/stdlib/lib/node_modules
+# Define Node paths:
+NODE_PATH ?=
 
 
 # DEPENDENCIES #
