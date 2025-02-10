@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/laplace/cdf/lib/factory.js</title>
+    <title>Code coverage report for stats/base/dists/laplace/logpdf/lib/factory.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/laplace/cdf/lib</a> factory.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/laplace/logpdf/lib</a> factory.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>83/83</span>
+                <span class='fraction'>84/84</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>83/83</span>
+                <span class='fraction'>84/84</span>
             </div>
         
             
@@ -146,7 +146,12 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -218,10 +223,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3002x</span>
-<span class="cline-any cline-yes">3003x</span>
-<span class="cline-any cline-yes">2095x</span>
-<span class="cline-any cline-yes">2095x</span>
-<span class="cline-any cline-yes">907x</span>
+<span class="cline-any cline-yes">3002x</span>
 <span class="cline-any cline-yes">3003x</span>
 <span class="cline-any cline-yes">3014x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -253,26 +255,30 @@
 &nbsp;
 var constantFunction = require( '@stdlib/utils/constant-function' );
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var exp = require( '@stdlib/math/base/special/exp' );
+var abs = require( '@stdlib/math/base/special/abs' );
+var ln = require( '@stdlib/math/base/special/ln' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a function for evaluating the cumulative distribution function (CDF) for a Laplace distribution with location parameter `mu` and scale parameter `b`.
+* Returns a function for evaluating the logarithm of the probability density function (PDF) for a Laplace distribution with location parameter `mu` and scale parameter `b`.
 *
 * @param {number} mu - location parameter
 * @param {PositiveNumber} b - scale parameter
-* @returns {Function} CDF
+* @returns {Function} logPDF
 *
 * @example
-* var cdf = factory( 3.0, 1.5 );
+* var logpdf = factory( 10.0, 2.0 );
 *
-* var y = cdf( 1.0 );
-* // returns ~0.132
+* var y = logpdf( 10.0 );
+* // returns ~-1.386
 *
-* y = cdf( 4.0 );
-* // returns ~0.743
+* y = logpdf( 5.0 );
+* // returns ~-3.886
+*
+* y = logpdf( 12.0 );
+* // returns ~-2.386
 */
 function factory( mu, b ) {
 	if (
@@ -282,29 +288,26 @@ function factory( mu, b ) {
 	) {
 		return constantFunction( NaN );
 	}
-	return cdf;
+	return logpdf;
 &nbsp;
 	/**
-	* Evaluates the cumulative distribution function (CDF) for a Laplace distribution.
+	* Evaluates the logarithm of the probability density function (PDF) for a Laplace distribution.
 	*
 	* @private
 	* @param {number} x - input value
-	* @returns {Probability} evaluated CDF
+	* @returns {number} evaluated logarithm of PDF
 	*
 	* @example
-	* var y = cdf( 2.0 );
+	* var y = logpdf( -3.14 );
 	* // returns &lt;number&gt;
 	*/
-	function cdf( x ) {
+	function logpdf( x ) {
 		var z;
 		if ( isnan( x ) ) {
 			return NaN;
 		}
 		z = ( x - mu ) / b;
-		if ( x &lt; mu ) {
-			return 0.5 * exp( z );
-		}
-		return 1.0 - (0.5 * exp( -z ));
+		return -( abs( z ) + ln( 2.0 * b ) );
 	}
 }
 &nbsp;
@@ -319,7 +322,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-10T12:13:26.602Z
+                at 2025-02-10T12:14:31.441Z
             </div>
         <script src="../../../../../../prettify.js"></script>
         <script>
