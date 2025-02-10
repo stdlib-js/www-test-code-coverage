@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/pareto-type1/skewness/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/pareto-type1/median/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/pareto-type1/skewness/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/pareto-type1/median/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>79/79</span>
+                <span class='fraction'>73/73</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>79/79</span>
+                <span class='fraction'>73/73</span>
             </div>
         
             
@@ -136,13 +136,7 @@
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -204,18 +198,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1001x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">1000x</span>
-<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1012x</span>
+<span class="cline-any cline-yes">1012x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1002x</span>
+<span class="cline-any cline-yes">1012x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -243,63 +231,57 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var sqrt = require( '@stdlib/math/base/special/sqrt' );
+var pow = require( '@stdlib/math/base/special/pow' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the skewness of a Pareto (Type I) distribution.
+* Returns the median of a Pareto (Type I) distribution.
 *
 * @param {PositiveNumber} alpha - shape parameter
 * @param {PositiveNumber} beta - scale parameter
-* @returns {PositiveNumber} skewness
+* @returns {PositiveNumber} median
 *
 * @example
-* var v = skewness( 3.5, 1.0 );
-* // returns ~11.784
+* var v = median( 1.0, 1.0 );
+* // returns 2.0
 *
 * @example
-* var v = skewness( 4.0, 12.0 );
-* // returns ~7.071
+* var v = median( 4.0, 12.0 );
+* // returns ~14.27
 *
 * @example
-* var v = skewness( 8.0, 2.0 );
-* // returns ~3.118
+* var v = median( 8.0, 2.0 );
+* // returns ~2.181
 *
 * @example
-* var v = skewness( 1.0, -0.1 );
+* var v = median( 1.0, -0.1 );
 * // returns NaN
 *
 * @example
-* var v = skewness( -0.1, 1.0 );
+* var v = median( -0.1, 1.0 );
 * // returns NaN
 *
 * @example
-* var v = skewness( 2.0, NaN );
+* var v = median( 2.0, NaN );
 * // returns NaN
 *
 * @example
-* var v = skewness( NaN, 2.0 );
+* var v = median( NaN, 2.0 );
 * // returns NaN
 */
-function skewness( alpha, beta ) {
-	if (
-		isnan( alpha ) ||
-		alpha &lt;= 3.0 ||
-		isnan( beta ) ||
-		beta &lt;= 0.0
-	) {
+function median( alpha, beta ) {
+	if ( alpha &lt;= 0.0 || beta &lt;= 0.0 ) {
 		return NaN;
 	}
-	return 2.0 * ( 1.0+alpha ) / ( alpha-3.0 ) * sqrt( ( alpha-2.0 ) / alpha );
+	return beta * pow( 2.0, 1.0/alpha );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = skewness;
+module.exports = median;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -307,7 +289,7 @@ module.exports = skewness;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-10T05:55:20.408Z
+                at 2025-02-10T05:54:41.741Z
             </div>
         <script src="../../../../../../prettify.js"></script>
         <script>
