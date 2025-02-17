@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/cflipsignf/lib/main.js</title>
+    <title>Code coverage report for math/base/special/kronecker-delta/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/cflipsignf/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/kronecker-delta/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>65/65</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>65/65</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -126,9 +126,7 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -179,15 +177,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2018x</span>
-<span class="cline-any cline-yes">2018x</span>
-<span class="cline-any cline-yes">2018x</span>
-<span class="cline-any cline-yes">2018x</span>
-<span class="cline-any cline-yes">1028x</span>
-<span class="cline-any cline-yes">1028x</span>
-<span class="cline-any cline-yes">1028x</span>
-<span class="cline-any cline-yes">2018x</span>
-<span class="cline-any cline-yes">2018x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1009x</span>
+<span class="cline-any cline-yes">1009x</span>
+<span class="cline-any cline-yes">1009x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -196,7 +192,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2021 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -215,49 +211,47 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var Complex64 = require( '@stdlib/complex/float32/ctor' );
-var isNegativeZerof = require( '@stdlib/math/base/assert/is-negative-zerof' );
-var realf = require( '@stdlib/complex/float32/real' );
-var imagf = require( '@stdlib/complex/float32/imag' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a single-precision complex floating-point number with the same magnitude as `z` and the sign of `y*z`.
+* Evaluates the Kronecker delta.
 *
-* @param {Complex64} z - complex number
-* @param {number} y - number from which to derive the sign
-* @returns {Complex64} result
+* @private
+* @param {number} i - input value
+* @param {number} j - input value
+* @returns {number} function value
 *
 * @example
-* var Complex64 = require( '@stdlib/complex/float32/ctor' );
-* var realf = require( '@stdlib/complex/float32/real' );
-* var imagf = require( '@stdlib/complex/float32/imag' );
+* var v = kroneckerDelta( 3.14, 3.14 );
+* // returns 1.0
 *
-* var v = cflipsignf( new Complex64( -4.0, 5.0 ), -55.0 );
-* // returns &lt;Complex64&gt;
+* @example
+* var v = kroneckerDelta( 3.14, 0.0 );
+* // returns 0.0
 *
-* var re = realf( v );
-* // returns 4.0
+* @example
+* var v = kroneckerDelta( NaN, 3.14 );
+* // returns NaN
 *
-* var im = imagf( v );
-* // returns -5.0
+* @example
+* var v = kroneckerDelta( 3.14, NaN );
+* // returns NaN
+*
+* @example
+* var v = kroneckerDelta( NaN, NaN );
+* // returns NaN
 */
-function cflipsignf( z, y ) {
-	var re = realf( z );
-	var im = imagf( z );
-	if ( y &lt; 0 || isNegativeZerof( y ) ) {
-		re = -re;
-		im = -im;
-	}
-	return new Complex64( re, im );
+function kroneckerDelta( i, j ) {
+	return addon( i, j );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = cflipsignf;
+module.exports = kroneckerDelta;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -265,7 +259,7 @@ module.exports = cflipsignf;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-17T14:49:23.501Z
+                at 2025-02-17T14:49:52.931Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
