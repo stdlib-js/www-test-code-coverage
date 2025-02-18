@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/pareto-type1/skewness/lib/native.js</title>
+    <title>Code coverage report for stats/base/dists/pareto-type1/variance/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/pareto-type1/skewness/lib</a> native.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/pareto-type1/variance/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>71/71</span>
+                <span class='fraction'>83/83</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>71/71</span>
+                <span class='fraction'>83/83</span>
             </div>
         
             
@@ -134,7 +134,20 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -199,6 +212,17 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1015x</span>
 <span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1006x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1001x</span>
 <span class="cline-any cline-yes">1015x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -208,7 +232,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -227,55 +251,67 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var addon = require( './../src/addon.node' );
+var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var pow = require( '@stdlib/math/base/special/pow' );
+var PINF = require( '@stdlib/constants/float64/pinf' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the skewness of a Pareto (Type I) distribution.
+* Returns the variance of a Pareto (Type I) distribution.
 *
-* @private
 * @param {PositiveNumber} alpha - shape parameter
 * @param {PositiveNumber} beta - scale parameter
-* @returns {PositiveNumber} skewness
+* @returns {PositiveNumber} variance
 *
 * @example
-* var v = skewness( 3.5, 1.0 );
-* // returns ~11.784
+* var v = variance( 4.0, 12.0 );
+* // returns 32.0
 *
 * @example
-* var v = skewness( 4.0, 12.0 );
-* // returns ~7.071
+* var v = variance( 8.0, 2.0 );
+* // returns ~0.109
 *
 * @example
-* var v = skewness( 8.0, 2.0 );
-* // returns ~3.118
+* var v = variance( 1.0, 1.0 );
+* // returns Infinity
 *
 * @example
-* var v = skewness( 1.0, -0.1 );
+* var v = variance( 1.0, -0.1 );
 * // returns NaN
 *
 * @example
-* var v = skewness( -0.1, 1.0 );
+* var v = variance( -0.1, 1.0 );
 * // returns NaN
 *
 * @example
-* var v = skewness( 2.0, NaN );
+* var v = variance( 2.0, NaN );
 * // returns NaN
 *
 * @example
-* var v = skewness( NaN, 2.0 );
+* var v = variance( NaN, 2.0 );
 * // returns NaN
 */
-function skewness( alpha, beta ) {
-	return addon( alpha, beta );
+function variance( alpha, beta ) {
+	if (
+		isnan( alpha ) ||
+		alpha &lt;= 0.0 ||
+		isnan( beta ) ||
+		beta &lt;= 0.0
+	) {
+		return NaN;
+	}
+	if ( alpha &lt; 2.0 ) {
+		return PINF;
+	}
+	return ( beta*beta * alpha ) / ( pow( alpha-1.0, 2.0 ) * ( alpha-2.0 ) );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = skewness;
+module.exports = variance;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -283,7 +319,7 @@ module.exports = skewness;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-18T01:03:44.794Z
+                at 2025-02-18T01:04:15.380Z
             </div>
         <script src="../../../../../../prettify.js"></script>
         <script>
