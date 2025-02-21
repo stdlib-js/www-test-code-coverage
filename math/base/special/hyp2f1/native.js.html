@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/hyp2f1/lib/index.js</title>
+    <title>Code coverage report for math/base/special/hyp2f1/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/hyp2f1/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/hyp2f1/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>73/73</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>73/73</span>
             </div>
         
             
@@ -121,7 +121,22 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,6 +189,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2114x</span>
+<span class="cline-any cline-yes">2114x</span>
+<span class="cline-any cline-yes">2114x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -199,39 +229,54 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var addon = require( './../src/addon.node' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
 /**
-* Evaluate the Gaussian hypergoemetric function.
+* Evaluates the Gaussian hypergeometric function.
 *
-* @module @stdlib/math/base/special/hyp2f1
+* @private
+* @param {number} a - input value
+* @param {number} b - input value
+* @param {number} c - input value
+* @param {number} x - input value
+* @returns {number} function value
 *
 * @example
-* var hyp2f1 = require( '@stdlib/math/base/special/hyp2f1' );
-*
 * var v = hyp2f1( 1.0, 1.0, 1.0, 0.0 );
 * // returns 1.0
 *
-* v = hyp2f1( 10.0, 7.4, -1.8, -0.99 );
+* @example
+* var v = hyp2f1( 10.0, 7.4, -1.8, -0.99 );
 * // returns ~0.423
 *
-* v = hyp2f1( 10.0, 1.0, -1.8, -0.99 );
+* @example
+* var v = hyp2f1( 10.0, 1.0, -1.8, -0.99 );
 * // returns ~-0.875
 *
-* v = hyp2f1( 2.0, 3.0, 5.0, 0.99 );
+* @example
+* var v = hyp2f1( 2.0, 3.0, 5.0, 0.99 );
 * // returns ~27.699
 *
-* v = hyp2f1( 3.0, 4.0, 7.0, 1.0 );
+* @example
+* var v = hyp2f1( 3.0, 4.0, 7.0, 1.0 );
 * // returns +Infinity
 *
-* v = hyp2f1( NaN, 3.0, 2.0, 0.5 );
+* @example
+* var v = hyp2f1( NaN, 3.0, 2.0, 0.5 );
 * // returns NaN
 *
-* v = hyp2f1( 1.0, NaN, 2.0, 0.5 );
+* @example
+* var v = hyp2f1( 1.0, NaN, 2.0, 0.5 );
 * // returns NaN
 */
-&nbsp;
-// MODULES //
-&nbsp;
-var hyp2f1 = require( './main.js' );
+function hyp2f1( a, b, c, x ) {
+	return addon( a, b, c, x );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
