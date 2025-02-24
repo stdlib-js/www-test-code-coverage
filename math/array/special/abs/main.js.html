@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/array/tools/lib/index.js</title>
+    <title>Code coverage report for math/array/special/abs/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">math/array/tools/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/array/special/abs/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>74/74</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>74/74</span>
             </div>
         
             
@@ -123,7 +123,35 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -203,46 +231,60 @@
 &nbsp;
 'use strict';
 &nbsp;
-/*
-* When adding modules to the namespace, ensure that they are added in alphabetical order according to module name.
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
+var unaryFactory = require( '@stdlib/math/array/tools/unary-factory' );
+var dtypes = require( '@stdlib/array/dtypes' );
+var base = require( '@stdlib/math/base/special/abs' );
+&nbsp;
+&nbsp;
+// VARIABLES //
+&nbsp;
+var IDTYPES = dtypes( 'real_and_generic' );
+var ODTYPES = dtypes( 'real_and_generic' );
+var POLICY = 'same';
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Top-level namespace.
+* Computes the absolute value for each element in an input array.
 *
-* @namespace ns
-*/
-var ns = {};
-&nbsp;
-/**
-* @name unary
-* @memberof ns
-* @readonly
+* @name abs
 * @type {Function}
-* @see {@link module:@stdlib/math/array/tools/unary}
+* @param {Collection} x - input array
+* @param {Object} [options] - function options
+* @param {string} [options.dtype] - output array data type
+* @throws {TypeError} first argument must be a collection
+* @throws {TypeError} options argument must be an object
+* @throws {TypeError} must provide valid options
+* @returns {(Array|TypedArray)} output array
+*
+* @example
+* var out = abs( [ -1.0, -2.0, -3.0 ] );
+* // returns [ 1.0, 2.0, 3.0 ]
+*
+* @example
+* var opts = {
+*     'dtype': 'float64'
+* };
+* var out = abs( [ -1.0, -2.0, -3.0 ], opts );
+* // returns &lt;Float64Array&gt;[ 1.0, 2.0, 3.0 ]
+*
+* @example
+* var y = [ 0.0, 0.0, 0.0 ];
+*
+* var out = abs.assign( [ -1.0, -2.0, -3.0 ], y );
+* // returns [ 1.0, 2.0, 3.0 ]
+*
+* var bool = ( out === y );
 */
-setReadOnly( ns, 'unary', require( '@stdlib/math/array/tools/unary' ) );
-&nbsp;
-/**
-* @name unaryFactory
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/math/array/tools/unary-factory}
-*/
-setReadOnly( ns, 'unaryFactory', require( '@stdlib/math/array/tools/unary-factory' ) );
+var abs = unaryFactory( base, IDTYPES, ODTYPES, POLICY );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = ns;
+module.exports = abs;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -250,16 +292,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-24T11:55:04.661Z
+                at 2025-02-24T11:54:57.957Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     
