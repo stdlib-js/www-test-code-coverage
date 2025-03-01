@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/bessely0/lib/rational_p2q2.js</title>
+    <title>Code coverage report for math/base/special/bessely1/lib/rational_pcqc.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/bessely0/lib</a> rational_p2q2.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/bessely1/lib</a> rational_pcqc.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.18% </span>
+                <span class="strong">98.43% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>59/64</span>
+                <span class='fraction'>63/64</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/5</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.18% </span>
+                <span class="strong">98.43% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>59/64</span>
+                <span class='fraction'>63/64</span>
             </div>
         
             
@@ -164,28 +164,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
+<span class="cline-any cline-yes">18849x</span>
+<span class="cline-any cline-yes">18849x</span>
+<span class="cline-any cline-yes">18849x</span>
+<span class="cline-any cline-yes">18849x</span>
+<span class="cline-any cline-yes">18849x</span>
+<span class="cline-any cline-yes">5149x</span>
+<span class="cline-any cline-yes">5149x</span>
+<span class="cline-any cline-yes">18849x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
-<span class="cline-any cline-yes">735x</span>
+<span class="cline-any cline-yes">18849x</span>
+<span class="cline-any cline-yes">13700x</span>
+<span class="cline-any cline-yes">13700x</span>
+<span class="cline-any cline-yes">18849x</span>
+<span class="cline-any cline-yes">13699x</span>
+<span class="cline-any cline-yes">13699x</span>
+<span class="cline-any cline-yes">18849x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">13700x</span>
+<span class="cline-any cline-yes">18849x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -194,7 +194,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2022 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -215,7 +215,7 @@
 // MAIN //
 &nbsp;
 /**
-* Evaluates a rational function (i.e., the ratio of two polynomials described by the coefficients stored in \\(P\\) and \\(Q\\)).
+* Evaluates a rational function, i.e., the ratio of two polynomials described by the coefficients stored in \\(P\\) and \\(Q\\).
 *
 * ## Notes
 *
@@ -232,21 +232,21 @@ function evalrational( x ) {
 	var ax;
 	var s1;
 	var s2;
-	if ( x === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		return -0.051200622130023854;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( x === 0.0 ) {
+		return 1.0;
+	}
 	if ( x &lt; 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		ax = -x;</span>
 	} else {
 		ax = x;
 	}
-	if ( ax &lt;= 1.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		s1 = -22213976967566.19 + (x * (-551074352067.2264 + (x * (43600098638.60306 + (x * (-695904393.9461962 + (x * (4690528.861167863 + (x * (-14566.865832663636 + (x * 17.427031242901595))))))))))); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >		s2 = 433861465807072.6 + (x * (5426682441941.234 + (x * (34015103849.97124 + (x * (139602027.7098683 + (x * (406699.82352539554 + (x * (830.3085761207029 + (x * 1.0))))))))))); // eslint-disable-line max-len</span>
+	if ( ax &lt;= 1.0 ) {
+		s1 = -4435757.816794128 + (x * (-9942246.505077641 + (x * (-6603373.248364939 + (x * (-1523529.3511811374 + (x * (-109824.05543459347 + (x * (-1611.6166443246102 + (x * 0.0))))))))))); // eslint-disable-line max-len
+		s2 = -4435757.816794128 + (x * (-9934124.389934586 + (x * (-6585339.4797230875 + (x * (-1511809.5066341609 + (x * (-107263.8599110382 + (x * (-1455.0094401904962 + (x * 1.0))))))))))); // eslint-disable-line max-len
 	} else {
 		x = 1.0 / x;
-		s1 = 17.427031242901595 + (x * (-14566.865832663636 + (x * (4690528.861167863 + (x * (-695904393.9461962 + (x * (43600098638.60306 + (x * (-551074352067.2264 + (x * -22213976967566.19))))))))))); // eslint-disable-line max-len
-		s2 = 1.0 + (x * (830.3085761207029 + (x * (406699.82352539554 + (x * (139602027.7098683 + (x * (34015103849.97124 + (x * (5426682441941.234 + (x * 433861465807072.6))))))))))); // eslint-disable-line max-len
+		s1 = 0.0 + (x * (-1611.6166443246102 + (x * (-109824.05543459347 + (x * (-1523529.3511811374 + (x * (-6603373.248364939 + (x * (-9942246.505077641 + (x * -4435757.816794128))))))))))); // eslint-disable-line max-len
+		s2 = 1.0 + (x * (-1455.0094401904962 + (x * (-107263.8599110382 + (x * (-1511809.5066341609 + (x * (-6585339.4797230875 + (x * (-9934124.389934586 + (x * -4435757.816794128))))))))))); // eslint-disable-line max-len
 	}
 	return s1 / s2;
 }
@@ -262,7 +262,7 @@ module.exports = evalrational;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-01T15:14:04.953Z
+                at 2025-03-01T15:14:09.064Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
