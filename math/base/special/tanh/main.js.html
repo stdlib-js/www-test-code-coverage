@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/tan/lib/main.js</title>
+    <title>Code coverage report for math/base/special/tanh/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/tan/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/tanh/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>122/122</span>
+                <span class='fraction'>124/124</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>122/122</span>
+                <span class='fraction'>124/124</span>
             </div>
         
             
@@ -185,7 +185,9 @@
 <a name='L120'></a><a href='#L120'>120</a>
 <a name='L121'></a><a href='#L121'>121</a>
 <a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -279,29 +281,31 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">12505x</span>
-<span class="cline-any cline-yes">2000x</span>
-<span class="cline-any cline-yes">2000x</span>
-<span class="cline-any cline-yes">1500x</span>
-<span class="cline-any cline-yes">1500x</span>
-<span class="cline-any cline-yes">500x</span>
-<span class="cline-any cline-yes">500x</span>
-<span class="cline-any cline-yes">10505x</span>
-<span class="cline-any cline-yes">12505x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10020x</span>
+<span class="cline-any cline-yes">10020x</span>
+<span class="cline-any cline-yes">10020x</span>
+<span class="cline-any cline-yes">10020x</span>
+<span class="cline-any cline-yes">10020x</span>
+<span class="cline-any cline-yes">3976x</span>
+<span class="cline-any cline-yes">3976x</span>
+<span class="cline-any cline-yes">10020x</span>
+<span class="cline-any cline-yes">1784x</span>
+<span class="cline-any cline-yes">1784x</span>
+<span class="cline-any cline-yes">1784x</span>
+<span class="cline-any cline-yes">892x</span>
+<span class="cline-any cline-yes">892x</span>
+<span class="cline-any cline-yes">10020x</span>
+<span class="cline-any cline-yes">4260x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">10502x</span>
-<span class="cline-any cline-yes">10502x</span>
-<span class="cline-any cline-yes">10502x</span>
-<span class="cline-any cline-yes">12505x</span>
+<span class="cline-any cline-yes">4257x</span>
+<span class="cline-any cline-yes">4257x</span>
+<span class="cline-any cline-yes">4257x</span>
+<span class="cline-any cline-yes">6041x</span>
+<span class="cline-any cline-yes">10020x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -327,15 +331,15 @@
 *
 * ## Notice
 *
-* The following copyright, license, and long comment were part of the original implementation available as part of [FreeBSD]{@link https://svnweb.freebsd.org/base/release/9.3.0/lib/msun/src/s_tan.c}. The implementation follows the original, but has been modified for JavaScript.
+* The original C code, long comment, copyright, license, and constants are from [Cephes]{@link http://www.netlib.org/cephes}. The implementation follows the original, but has been modified for JavaScript.
 *
 * ```text
-* Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
+* Copyright 1984, 1995, 2000 by Stephen L. Moshier
 *
-* Developed at SunPro, a Sun Microsystems, Inc. business.
-* Permission to use, copy, modify, and distribute this
-* software is freely granted, provided that this notice
-* is preserved.
+* Some software in this archive may be from the book _Methods and Programs for Mathematical Functions_ (Prentice-Hall or Simon &amp; Schuster International, 1989) or from the Cephes Mathematical Library, a commercial product. In either event, it is copyrighted by the author. What you see here may be used freely but it comes with no support or guarantee.
+*
+* Stephen L. Moshier
+* moshier@na-net.ornl.gov
 * ```
 */
 &nbsp;
@@ -343,92 +347,94 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var getHighWord = require( '@stdlib/number/float64/base/get-high-word' );
-var kernelTan = require( '@stdlib/math/base/special/kernel-tan' );
-var rempio2 = require( '@stdlib/math/base/special/rempio2' );
-var HIGH_WORD_ABS_MASK = require( '@stdlib/constants/float64/high-word-abs-mask' );
-var HIGH_WORD_EXPONENT_MASK = require( '@stdlib/constants/float64/high-word-exponent-mask' );
+var abs = require( '@stdlib/math/base/special/abs' );
+var exp = require( '@stdlib/math/base/special/exp' );
+var ratval = require( './rational_pq.js' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
-// Scratch buffer:
-var buffer = [ 0.0, 0.0 ]; // WARNING: not thread safe
-&nbsp;
-// High word for pi/4: 0x3fe921fb =&gt; 00111111111010010010000111111011
-var HIGH_WORD_PIO4 = 0x3fe921fb|0; // asm type annotation
-&nbsp;
-// High word for a small value: 2^-27 = 7.450580596923828e-9 =&gt; high word =&gt; 0x3e400000 =&gt; 00111110010000000000000000000000
-var HIGH_WORD_TWO_NEG_27 = 0x3e400000|0; // asm type annotation
+// log(2**127)
+var MAXLOG = 8.8029691931113054295988e+01;
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates the tangent of a number.
+* Computes the hyperbolic tangent of a double-precision floating-point number.
 *
 * ## Method
 *
-* -   Let \\(S\\), \\(C\\), and \\(T\\) denote the \\(\sin\\), \\(\cos\\), and \\(\tan\\), respectively, on \\(\[-\pi/4, +\pi/4\]\\).
+* For \\( |x| &lt; 0.625 \\), we use a rational function of the form (Cody and Waite)
 *
-* -   Reduce the argument \\(x\\) to \\(y1+y2 = x-k\pi/2\\) in \\(\[-\pi/4, +\pi/4\]\\), and let \\(n = k \mod 4\\).
+* ```tex
+* x + x^3 \frac{\mathrm{P}(x)}{\mathrm{Q}(x)}
+* ```
 *
-* -   We have
+* Otherwise,
 *
-*     | n | sin(x) | cos(x) | tan(x) |
-*     | - | ------ | ------ | ------ |
-*     | 0 |    S   |    C   |   T    |
-*     | 1 |    C   |   -S   |  -1/T  |
-*     | 2 |   -S   |   -C   |   T    |
-*     | 3 |   -C   |    S   |  -1/T  |
+* ```tex
+* \begin{align*}
+* \operatorname{tanh}(x) &amp;= \frac{\operatorname{sinh}(x)}{\operatorname{cosh(x)}} \\
+* &amp;= 1 - \frac{2}{e^{2x} + 1}
+* \end{align*}
+* ```
 *
-* @param {number} x - input value (in radians)
-* @returns {number} tangent
+* ## Notes
+*
+* -   Relative error:
+*
+*     | arithmetic | domain | # trials | peak    | rms     |
+*     |:----------:|:------:|:--------:|:-------:|:-------:|
+*     | DEC        | -2,2   | 50000    | 3.3e-17 | 6.4e-18 |
+*     | IEEE       | -2,2   | 30000    | 2.5e-16 | 5.8e-17 |
+*
+* @param {number} x - input value
+* @returns {number} hyperbolic tangent
 *
 * @example
-* var v = tan( 0.0 );
-* // returns ~0.0
+* var v = tanh( 0.0 );
+* // returns 0.0
 *
 * @example
-* var v = tan( -3.141592653589793/4.0 );
-* // returns ~-1.0
+* var v = tanh( 2.0 );
+* // returns ~0.964
 *
 * @example
-* var v = tan( 3.141592653589793/4.0 );
-* // returns ~1.0
+* var v = tanh( -2.0 );
+* // returns ~-0.964
 *
 * @example
-* var v = tan( NaN );
+* var v = tanh( NaN );
 * // returns NaN
 */
-function tan( x ) {
-	var ix;
-	var n;
-&nbsp;
-	ix = getHighWord( x );
-	ix &amp;= HIGH_WORD_ABS_MASK;
-&nbsp;
-	// Case: |x| ~&lt; π/4
-	if ( ix &lt;= HIGH_WORD_PIO4 ) {
-		// Case: |x| &lt; 2**-27
-		if ( ix &lt; HIGH_WORD_TWO_NEG_27 ) {
-			return x;
+function tanh( x ) {
+	var s;
+	var z;
+	z = abs( x );
+	if ( z &gt; 0.5*MAXLOG ) {
+		return ( x &lt; 0.0 ) ? -1.0 : 1.0;
+	}
+	if ( z &gt;= 0.625 ) {
+		s = exp( 2.0 * z );
+		z = 1.0 - ( 2.0/(s+1.0) );
+		if ( x &lt; 0.0 ) {
+			z = -z;
 		}
-		return kernelTan( x, 0.0, 1 );
+	} else {
+		if ( x === 0.0 ) {
+			return x; // Handle `+-0`
+		}
+		s = x * x;
+		z = x + ( x*s*ratval( s ) );
 	}
-	// Case: tan(Inf or NaN) is NaN
-	if ( ix &gt;= HIGH_WORD_EXPONENT_MASK ) {
-		return NaN;
-	}
-	// Argument reduction needed...
-	n = rempio2( x, buffer );
-	return kernelTan( buffer[ 0 ], buffer[ 1 ], 1-((n&amp;1)&lt;&lt;1) );
+	return z;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = tan;
+module.exports = tanh;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -436,7 +442,7 @@ module.exports = tan;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-01T01:49:10.188Z
+                at 2025-03-01T01:50:08.277Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
