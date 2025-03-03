@@ -386,20 +386,20 @@ var abs = require( '@stdlib/math/base/special/abs' );
 * @private
 * @param {NonNegativeInteger} N - order of matrix A
 * @param {Float64Array} DL - sub diagonal elements of A. On exit, DL is overwritten by the multipliers that define the matrix L from the LU factorization of A.
-* @param {integer} strideDL - stride length for `DL`
-* @param {NonNegativeInteger} offsetDL - starting index of `DL`
+* @param {integer} sdl - stride length for `DL`
+* @param {NonNegativeInteger} odl - starting index of `DL`
 * @param {Float64Array} D - diagonal elements of A. On exit, D is overwritten by the diagonal elements of the upper triangular matrix U from the LU factorization of A.
-* @param {integer} strideD - stride length for `D`
-* @param {NonNegativeInteger} offsetD - starting index of `D`
+* @param {integer} sd - stride length for `D`
+* @param {NonNegativeInteger} od - starting index of `D`
 * @param {Float64Array} DU - super diagonal elements of A. On exit, DU is overwritten by the elements of the first super-diagonal of U.
-* @param {integer} strideDU - stride length for `DU`
-* @param {NonNegativeInteger} offsetDU - starting index of `DU`
+* @param {integer} sdu - stride length for `DU`
+* @param {NonNegativeInteger} odu - starting index of `DU`
 * @param {Float64Array} DU2 - On exit, DU2 is overwritten by the elements of the second super-diagonal of U.
-* @param {integer} strideDU2 - stride length for `DU2`
-* @param {NonNegativeInteger} offsetDU2 - starting index of `DU2`
+* @param {integer} sdu2 - stride length for `DU2`
+* @param {NonNegativeInteger} odu2 - starting index of `DU2`
 * @param {Int32Array} IPIV - vector of pivot indices
-* @param {integer} strideIPIV - stride length for `IPIV`
-* @param {NonNegativeInteger} offsetIPIV - starting index of `IPIV`
+* @param {integer} si - stride length for `IPIV`
+* @param {NonNegativeInteger} oi - starting index of `IPIV`
 * @returns {integer} status code
 *
 * @example
@@ -418,7 +418,7 @@ var abs = require( '@stdlib/math/base/special/abs' );
 * // DU =&gt; &lt;Float64Array&gt;[ 1, 1 ]
 * // DU2 =&gt; &lt;Float64Array&gt;[ 0 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dgttrf( N, DL, strideDL, offsetDL, D, strideD, offsetD, DU, strideDU, offsetDU, DU2, strideDU2, offsetDU2, IPIV, strideIPIV, offsetIPIV ) { // eslint-disable-line max-len, max-params</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dgttrf( N, DL, sdl, odl, D, sd, od, DU, sdu, odu, DU2, sdu2, odu2, IPIV, si, oi ) { // eslint-disable-line max-len, max-params</span></span>
 <span class="cstat-no" title="statement not covered" >	var fact;</span>
 <span class="cstat-no" title="statement not covered" >	var temp;</span>
 <span class="cstat-no" title="statement not covered" >	var idu2;</span>
@@ -432,61 +432,61 @@ var abs = require( '@stdlib/math/base/special/abs' );
 <span class="cstat-no" title="statement not covered" >		return 0;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	idl = offsetDL;</span>
-<span class="cstat-no" title="statement not covered" >	id = offsetD;</span>
-<span class="cstat-no" title="statement not covered" >	idu = offsetDU;</span>
-<span class="cstat-no" title="statement not covered" >	idu2 = offsetDU2;</span>
-<span class="cstat-no" title="statement not covered" >	ip = offsetIPIV;</span>
+<span class="cstat-no" title="statement not covered" >	idl = odl;</span>
+<span class="cstat-no" title="statement not covered" >	id = od;</span>
+<span class="cstat-no" title="statement not covered" >	idu = odu;</span>
+<span class="cstat-no" title="statement not covered" >	idu2 = odu2;</span>
+<span class="cstat-no" title="statement not covered" >	ip = oi;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; N; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		IPIV[ ip + (strideIPIV*i) ] = i;</span>
+<span class="cstat-no" title="statement not covered" >		IPIV[ ip + (si*i) ] = i;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; N-2; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		DU2[ idu + (strideDU*i) ] = 0;</span>
+<span class="cstat-no" title="statement not covered" >		DU2[ idu + (sdu*i) ] = 0;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; N-2; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( abs( D[ id + (strideD*i) ] ) &gt;= abs( DL[ idl + (strideDL*i) ] ) ) { // no row interchange required</span>
+<span class="cstat-no" title="statement not covered" >		if ( abs( D[ id + (sd*i) ] ) &gt;= abs( DL[ idl + (sdl*i) ] ) ) { // no row interchange required</span>
 <span class="cstat-no" title="statement not covered" >			if ( D[ id ] !== 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				fact = DL[ idl + (strideDL*i) ] / D[ id + (strideD*i) ];</span>
-<span class="cstat-no" title="statement not covered" >				DL[ idl + (strideDL*i) ] = fact;</span>
-<span class="cstat-no" title="statement not covered" >				D[ id + (strideD*(i+1)) ] = D[ id + (strideD*(i+1)) ] - ( fact*DU[ idu + (strideDU*i) ] ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >				fact = DL[ idl + (sdl*i) ] / D[ id + (sd*i) ];</span>
+<span class="cstat-no" title="statement not covered" >				DL[ idl + (sdl*i) ] = fact;</span>
+<span class="cstat-no" title="statement not covered" >				D[ id + (sd*(i+1)) ] = D[ id + (sd*(i+1)) ] - ( fact*DU[ idu + (sdu*i) ] ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			fact = D[ id+(strideD*i) ] / DL[ idl+(strideDL*i) ];</span>
-<span class="cstat-no" title="statement not covered" >			D[ id+(strideD*i) ] = DL[ idl+(strideDL*i) ];</span>
-<span class="cstat-no" title="statement not covered" >			DL[ idl+(strideDL*i) ] = fact;</span>
-<span class="cstat-no" title="statement not covered" >			temp = DU[ idu+(strideDU*i) ];</span>
-<span class="cstat-no" title="statement not covered" >			DU[ idu+(strideDU*i) ] = D[ id + (strideD*(i+1)) ];</span>
-<span class="cstat-no" title="statement not covered" >			D[ id+(strideD*(i+1)) ] = temp - ( fact*D[ id+(strideD*(i+1)) ] );</span>
-<span class="cstat-no" title="statement not covered" >			DU2[ idu2+(strideDU2*i) ] = DU[ idu+(strideDU*(i+1)) ];</span>
-<span class="cstat-no" title="statement not covered" >			DU[ idu+(strideDU*(i+1)) ] = -fact*DU[ idu+(strideDU*(i+1)) ];</span>
-<span class="cstat-no" title="statement not covered" >			IPIV[ ip+(strideIPIV*i) ] = i + 1;</span>
+<span class="cstat-no" title="statement not covered" >			fact = D[ id+(sd*i) ] / DL[ idl+(sdl*i) ];</span>
+<span class="cstat-no" title="statement not covered" >			D[ id+(sd*i) ] = DL[ idl+(sdl*i) ];</span>
+<span class="cstat-no" title="statement not covered" >			DL[ idl+(sdl*i) ] = fact;</span>
+<span class="cstat-no" title="statement not covered" >			temp = DU[ idu+(sdu*i) ];</span>
+<span class="cstat-no" title="statement not covered" >			DU[ idu+(sdu*i) ] = D[ id + (sd*(i+1)) ];</span>
+<span class="cstat-no" title="statement not covered" >			D[ id+(sd*(i+1)) ] = temp - ( fact*D[ id+(sd*(i+1)) ] );</span>
+<span class="cstat-no" title="statement not covered" >			DU2[ idu2+(sdu2*i) ] = DU[ idu+(sdu*(i+1)) ];</span>
+<span class="cstat-no" title="statement not covered" >			DU[ idu+(sdu*(i+1)) ] = -fact*DU[ idu+(sdu*(i+1)) ];</span>
+<span class="cstat-no" title="statement not covered" >			IPIV[ ip+(si*i) ] = i + 1;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( N &gt; 1 ) {</span>
 <span class="cstat-no" title="statement not covered" >		i = N - 2;</span>
-<span class="cstat-no" title="statement not covered" >		if ( abs( D[ id + (strideD*i) ] ) &gt;= abs( DL[ idl + (strideDL*i) ] ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			if ( D[ id + (strideD*i) ] !== 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				fact = DL[ idl + (strideDL*i) ] / D[ id + (strideD*i) ];</span>
-<span class="cstat-no" title="statement not covered" >				DL[ idl + (strideDL*i) ] = fact;</span>
-<span class="cstat-no" title="statement not covered" >				D[ id + (strideD*(i+1)) ] = D[ id + (strideD*(i+1)) ] - (fact*DU[ idu + (strideDU*i) ]); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >		if ( abs( D[ id + (sd*i) ] ) &gt;= abs( DL[ idl + (sdl*i) ] ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			if ( D[ id + (sd*i) ] !== 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >				fact = DL[ idl + (sdl*i) ] / D[ id + (sd*i) ];</span>
+<span class="cstat-no" title="statement not covered" >				DL[ idl + (sdl*i) ] = fact;</span>
+<span class="cstat-no" title="statement not covered" >				D[ id + (sd*(i+1)) ] = D[ id + (sd*(i+1)) ] - (fact*DU[ idu + (sdu*i) ]); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			fact = D[ id+(strideD*i) ] / DL[ idl+(strideDL*i) ];</span>
-<span class="cstat-no" title="statement not covered" >			D[ id+(strideD*i) ] = DL[ idl+(strideDL*i) ];</span>
-<span class="cstat-no" title="statement not covered" >			DL[ idl+(strideDL*i) ] = fact;</span>
-<span class="cstat-no" title="statement not covered" >			temp = DU[ idu+(strideDU*i) ];</span>
-<span class="cstat-no" title="statement not covered" >			DU[ idu+(strideDU*i) ] = D[ id + (strideD*(i+1)) ];</span>
-<span class="cstat-no" title="statement not covered" >			D[ id+(strideD*(i+1)) ] = temp - ( fact*D[ id+(strideD*(i+1)) ] );</span>
-<span class="cstat-no" title="statement not covered" >			IPIV[ ip+(strideIPIV*i) ] = i + 1;</span>
+<span class="cstat-no" title="statement not covered" >			fact = D[ id+(sd*i) ] / DL[ idl+(sdl*i) ];</span>
+<span class="cstat-no" title="statement not covered" >			D[ id+(sd*i) ] = DL[ idl+(sdl*i) ];</span>
+<span class="cstat-no" title="statement not covered" >			DL[ idl+(sdl*i) ] = fact;</span>
+<span class="cstat-no" title="statement not covered" >			temp = DU[ idu+(sdu*i) ];</span>
+<span class="cstat-no" title="statement not covered" >			DU[ idu+(sdu*i) ] = D[ id + (sd*(i+1)) ];</span>
+<span class="cstat-no" title="statement not covered" >			D[ id+(sd*(i+1)) ] = temp - ( fact*D[ id+(sd*(i+1)) ] );</span>
+<span class="cstat-no" title="statement not covered" >			IPIV[ ip+(si*i) ] = i + 1;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; N; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( D[ id+(strideD*i) ] === 0.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( D[ id+(sd*i) ] === 0.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >			return i;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -505,7 +505,7 @@ module.exports = dgttrf;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-03T08:53:52.527Z
+                at 2025-03-03T12:18:46.202Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
