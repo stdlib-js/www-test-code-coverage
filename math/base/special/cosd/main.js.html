@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>72/72</span>
+                <span class='fraction'>86/86</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>72/72</span>
+                <span class='fraction'>86/86</span>
             </div>
         
             
@@ -135,7 +135,24 @@
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -191,16 +208,27 @@
 <span class="cline-any cline-yes">2004x</span>
 <span class="cline-any cline-yes">2004x</span>
 <span class="cline-any cline-yes">2004x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2004x</span>
 <span class="cline-any cline-yes">2002x</span>
 <span class="cline-any cline-yes">2004x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2001x</span>
 <span class="cline-any cline-yes">2001x</span>
 <span class="cline-any cline-yes">2001x</span>
-<span class="cline-any cline-yes">2001x</span>
+<span class="cline-any cline-yes">2004x</span>
+<span class="cline-any cline-yes">252x</span>
+<span class="cline-any cline-yes">252x</span>
+<span class="cline-any cline-yes">2004x</span>
+<span class="cline-any cline-yes">501x</span>
+<span class="cline-any cline-yes">501x</span>
+<span class="cline-any cline-yes">2004x</span>
+<span class="cline-any cline-yes">500x</span>
+<span class="cline-any cline-yes">500x</span>
+<span class="cline-any cline-yes">2004x</span>
+<span class="cline-any cline-yes">500x</span>
+<span class="cline-any cline-yes">500x</span>
+<span class="cline-any cline-yes">248x</span>
 <span class="cline-any cline-yes">2004x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -229,10 +257,13 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var cos = require( '@stdlib/math/base/special/cos' );
 var deg2rad = require( '@stdlib/math/base/special/deg2rad' );
-var isInteger = require( '@stdlib/math/base/assert/is-integer' );
-var isInfinite = require( '@stdlib/assert/is-infinite' );
+var kernelSin = require( '@stdlib/math/base/special/kernel-sin' );
+var kernelCos = require( '@stdlib/math/base/special/kernel-cos' );
+var fmod = require( '@stdlib/math/base/special/fmod' );
+var abs = require( '@stdlib/math/base/special/abs' );
+var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var isInfinite = require( '@stdlib/math/base/assert/is-infinite' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -260,19 +291,30 @@ var isInfinite = require( '@stdlib/assert/is-infinite' );
 * // returns NaN
 */
 function cosd( x ) {
-	var xRad;
+	var rx;
 &nbsp;
-	if ( isInfinite( x ) ) {
+	if (
+		isInfinite( x ) ||
+		isnan( x )
+	) {
 		return NaN;
 	}
 &nbsp;
-	if ( isInteger( ( ( x / 90.0 ) - 1.0 ) / 2.0 ) ) {
-		return 0.0;
+	rx = abs( fmod( x, 360.0 ) );
+&nbsp;
+	if ( rx &lt;= 45.0 ) {
+		return kernelCos( deg2rad( rx ), 0.0 );
 	}
-&nbsp;
-	xRad = deg2rad( x );
-&nbsp;
-	return cos( xRad );
+	if ( rx &lt; 135.0 ) {
+		return kernelSin( deg2rad( 90.0-rx ), 0.0 );
+	}
+	if ( rx &lt;= 225.0 ) {
+		return -kernelCos( deg2rad( 180.0-rx ), 0.0 );
+	}
+	if ( rx &lt; 315.0 ) {
+		return kernelSin( deg2rad( rx-270.0 ), 0.0 );
+	}
+	return kernelCos( deg2rad( 360.0-rx ), 0.0 );
 }
 &nbsp;
 &nbsp;
@@ -286,7 +328,7 @@ module.exports = cosd;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-14T02:50:16.437Z
+                at 2025-03-04T02:45:44.080Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
