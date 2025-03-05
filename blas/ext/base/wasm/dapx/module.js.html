@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>202/202</span>
+                <span class='fraction'>214/214</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>202/202</span>
+                <span class='fraction'>214/214</span>
             </div>
         
             
@@ -265,7 +265,23 @@
 <a name='L200'></a><a href='#L200'>200</a>
 <a name='L201'></a><a href='#L201'>201</a>
 <a name='L202'></a><a href='#L202'>202</a>
-<a name='L203'></a><a href='#L203'>203</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -407,8 +423,16 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -512,6 +536,7 @@ var wasmBinary = require( './binary.js' );
 * @example
 * var Memory = require( '@stdlib/wasm/memory' );
 * var oneTo = require( '@stdlib/array/one-to' );
+* var zeros = require( '@stdlib/array/zeros' );
 *
 * // Create a new memory instance with an initial size of 10 pages (640KiB) and a maximum size of 100 pages (6.4MiB):
 * var mem = new Memory({
@@ -520,11 +545,11 @@ var wasmBinary = require( './binary.js' );
 * });
 *
 * // Create a BLAS routine:
-* var dapx = new Module( mem );
+* var mod = new Module( mem );
 * // returns &lt;Module&gt;
 *
 * // Initialize the routine:
-* dapx.initializeSync();
+* mod.initializeSync();
 *
 * // Define a vector data type:
 * var dtype = 'float64';
@@ -536,11 +561,14 @@ var wasmBinary = require( './binary.js' );
 * var xptr = 0;
 *
 * // Write vector values to module memory:
-* dapx.write( xptr, oneTo( N, dtype ) );
+* mod.write( xptr, oneTo( N, dtype ) );
 *
 * // Perform computation:
-* var y = dapx.main( N, 5.0, xptr, 1 );
-* // y =&gt; &lt;Float64Array&gt;[ 5.0, 6.0, 7.0 ]
+* mod.main( N, 5.0, xptr, 1 );
+*
+* var view = zeros( N, dtype );
+* mod.read( xptr, view );
+* // view =&gt; &lt;Float64Array&gt;[ 6.0, 7.0, 8.0 ]
 */
 function Module( memory ) {
 	if ( !( this instanceof Module ) ) {
@@ -578,6 +606,7 @@ inherits( Module, WasmModule );
 * @example
 * var Memory = require( '@stdlib/wasm/memory' );
 * var oneTo = require( '@stdlib/array/one-to' );
+* var zeros = require( '@stdlib/array/zeros' );
 *
 * // Create a new memory instance with an initial size of 10 pages (640KiB) and a maximum size of 100 pages (6.4MiB):
 * var mem = new Memory({
@@ -586,11 +615,11 @@ inherits( Module, WasmModule );
 * });
 *
 * // Create a BLAS routine:
-* var dapx = new Module( mem );
+* var mod = new Module( mem );
 * // returns &lt;Module&gt;
 *
 * // Initialize the routine:
-* dapx.initializeSync();
+* mod.initializeSync();
 *
 * // Define a vector data type:
 * var dtype = 'float64';
@@ -602,11 +631,14 @@ inherits( Module, WasmModule );
 * var xptr = 0;
 *
 * // Write vector values to module memory:
-* dapx.write( xptr, oneTo( N, dtype ) );
+* mod.write( xptr, oneTo( N, dtype ) );
 *
 * // Perform computation:
-* var y = dapx.main( N, 5.0, xptr, 1 );
-* // y =&gt; &lt;Float64Array&gt;[ 5.0, 6.0, 7.0 ]
+* mod.main( N, 5.0, xptr, 1 );
+*
+* var view = zeros( N, dtype );
+* mod.read( xptr, view );
+* // view =&gt; &lt;Float64Array&gt;[ 6.0, 7.0, 8.0 ]
 */
 setReadOnly( Module.prototype, 'main', function dapx( N, alpha, xptr, strideX ) {
 	this._instance.exports.stdlib_strided_dapx( N, alpha, xptr, strideX );
@@ -630,6 +662,7 @@ setReadOnly( Module.prototype, 'main', function dapx( N, alpha, xptr, strideX ) 
 * @example
 * var Memory = require( '@stdlib/wasm/memory' );
 * var oneTo = require( '@stdlib/array/one-to' );
+* var zeros = require( '@stdlib/array/zeros' );
 *
 * // Create a new memory instance with an initial size of 10 pages (640KiB) and a maximum size of 100 pages (6.4MiB):
 * var mem = new Memory({
@@ -638,11 +671,11 @@ setReadOnly( Module.prototype, 'main', function dapx( N, alpha, xptr, strideX ) 
 * });
 *
 * // Create a BLAS routine:
-* var dapx = new Module( mem );
+* var mod = new Module( mem );
 * // returns &lt;Module&gt;
 *
 * // Initialize the routine:
-* dapx.initializeSync();
+* mod.initializeSync();
 *
 * // Define a vector data type:
 * var dtype = 'float64';
@@ -654,11 +687,14 @@ setReadOnly( Module.prototype, 'main', function dapx( N, alpha, xptr, strideX ) 
 * var xptr = 0;
 *
 * // Write vector values to module memory:
-* dapx.write( xptr, oneTo( N, dtype ) );
+* mod.write( xptr, oneTo( N, dtype ) );
 *
 * // Perform computation:
-* var y = dapx.ndarray( N, 5.0, xptr, 1, 0 );
-* // y =&gt; &lt;Float64Array&gt;[ 5.0, 6.0, 7.0 ]
+* mod.ndarray( N, 5.0, xptr, 1, 0 );
+*
+* var view = zeros( N, dtype );
+* mod.read( xptr, view );
+* // view =&gt; &lt;Float64Array&gt;[ 6.0, 7.0, 8.0 ]
 */
 setReadOnly( Module.prototype, 'ndarray', function dapx( N, alpha, xptr, strideX, offsetX ) {
 	this._instance.exports.stdlib_strided_dapx_ndarray( N, alpha, xptr, strideX, offsetX ); // eslint-disable-line max-len
@@ -676,7 +712,7 @@ module.exports = Module;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-04T20:22:42.229Z
+                at 2025-03-05T06:32:07.123Z
             </div>
         <script src="../../../../../../prettify.js"></script>
         <script>
