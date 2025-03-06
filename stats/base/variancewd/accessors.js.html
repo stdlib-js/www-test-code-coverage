@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.24% </span>
+                <span class="strong">55.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>53/91</span>
+                <span class='fraction'>50/90</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.24% </span>
+                <span class="strong">55.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>53/91</span>
+                <span class='fraction'>50/90</span>
             </div>
         
             
@@ -153,8 +153,8 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -238,10 +238,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -264,6 +262,8 @@
 */
 &nbsp;
 'use strict';
+&nbsp;
+// MAIN //
 &nbsp;
 /**
 * Computes the variance of a strided array using Welford's algorithm and accessors.
@@ -290,8 +290,7 @@
 * var v = variancewd( x.data.length, 1, x, 1, 0 );
 * // returns 10.0
 */
-&nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function variancewd(N, correction, x, strideX, offsetX) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function variancewd( N, correction, x, strideX, offsetX ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var delta2;</span>
 <span class="cstat-no" title="statement not covered" >	var delta;</span>
 <span class="cstat-no" title="statement not covered" >	var xbuf;</span>
@@ -304,24 +303,26 @@
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	n = N - correction;</span>
-<span class="cstat-no" title="statement not covered" >	if (N &lt;= 0 || n &lt;= 0.0) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( N &lt;= 0 || n &lt;= 0.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return NaN;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if (N === 1 || strideX === 0) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( N === 1 || strideX === 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return 0.0;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Cache reference to array data:</span>
 <span class="cstat-no" title="statement not covered" >	xbuf = x.data;</span>
-<span class="cstat-no" title="statement not covered" >	get = x.accessors[0];</span>
+<span class="cstat-no" title="statement not covered" >	// Cache a reference to the element accessor:</span>
+<span class="cstat-no" title="statement not covered" >	get = x.accessors[ 0 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	ix = offsetX;</span>
 <span class="cstat-no" title="statement not covered" >	M2 = 0.0;</span>
 <span class="cstat-no" title="statement not covered" >	mu = 0.0;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	for (i = 0; i &lt; N; i++) {</span>
-<span class="cstat-no" title="statement not covered" >		v = get(xbuf, ix);</span>
+<span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; N; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >		v = get( xbuf, ix );</span>
 <span class="cstat-no" title="statement not covered" >		delta = v - mu;</span>
-<span class="cstat-no" title="statement not covered" >		mu += delta / (i + 1);</span>
+<span class="cstat-no" title="statement not covered" >		mu += delta / ( i + 1 );</span>
 <span class="cstat-no" title="statement not covered" >		delta2 = v - mu;</span>
 <span class="cstat-no" title="statement not covered" >		M2 += delta * delta2;</span>
 <span class="cstat-no" title="statement not covered" >		ix += strideX;</span>
@@ -330,11 +331,7 @@
 <span class="cstat-no" title="statement not covered" >	return M2 / n;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-/**
-* Exports function for computing the variance of a strided array using Welford's algorithm and accessors.
-*
-* @type {Function}
-*/
+// EXPORTS //
 module.exports = variancewd;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -343,7 +340,7 @@ module.exports = variancewd;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-06T22:03:31.221Z
+                at 2025-03-06T22:08:48.084Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
