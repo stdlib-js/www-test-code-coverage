@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dnanvariancech/lib/index.js</title>
+    <title>Code coverage report for stats/base/meanpn/lib/accessors.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/base/dnanvariancech/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/base/meanpn/lib</a> accessors.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>77/77</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>77/77</span>
             </div>
         
             
@@ -131,7 +131,16 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -179,21 +188,30 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -219,54 +237,63 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute the variance of a double-precision floating-point strided array ignoring `NaN` values and using a one-pass trial mean algorithm.
-*
-* @module @stdlib/stats/base/dnanvariancech
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var dnanvariancech = require( '@stdlib/stats/base/dnanvariancech' );
-*
-* var x = new Float64Array( [ 1.0, -2.0, NaN, 2.0 ] );
-*
-* var v = dnanvariancech( x.length, 1, x, 1 );
-* // returns ~4.3333
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var dnanvariancech = require( '@stdlib/stats/base/dnanvariancech' );
-*
-* var x = new Float64Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0, NaN, NaN ] );
-*
-* var v = dnanvariancech.ndarray( 5, 1, x, 2, 1 );
-* // returns 6.25
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var join = require( 'path' ).join;
-var tryRequire = require( '@stdlib/utils/try-require' );
-var isError = require( '@stdlib/assert/is-error' );
-var main = require( './main.js' );
+var gsumpw = require( '@stdlib/blas/ext/base/gsumpw' ).ndarray;
+var gapxsumpw = require( '@stdlib/blas/ext/base/gapxsumpw' ).ndarray;
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-var dnanvariancech;
-var tmp = tryRequire( join( __dirname, './native.js' ) );
-if ( isError( tmp ) ) {
-	dnanvariancech = main;
-} else {
-	dnanvariancech = tmp;
+/**
+* Computes the arithmetic mean of a strided array using a two-pass error correction algorithm.
+*
+* @param {PositiveInteger} N - number of indexed elements
+* @param {NumericArray} x - input array
+* @param {integer} strideX - stride length
+* @param {NonNegativeInteger} offsetX - starting index
+* @returns {number} arithmetic mean
+*
+* @example
+* var floor = require( '@stdlib/math/base/special/floor' );
+* var toAccessorArray = require( '@stdlib/array/base/to-accessor-array' );
+* var arraylike2object = require( '@stdlib/array/base/arraylike2object' );
+*
+* var x = toAccessorArray([ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ]);
+* var N = floor( x.length / 2 );
+*
+* var v = meanpn( N, arraylike2object(x), 2, 1 );
+* // returns 1.25
+*/
+function meanpn( N, x, strideX, offsetX ) {
+	var xbuf;
+	var get;
+	var ix;
+	var mu;
+	var c;
+&nbsp;
+	xbuf = x.data;
+&nbsp;
+	get = x.accessors[ 0 ];
+&nbsp;
+	if ( N === 1 || strideX === 0 ) {
+		return get( xbuf, offsetX );
+	}
+&nbsp;
+	ix = offsetX;
+&nbsp;
+	// Compute an estimate for the meanpn:
+	mu = gsumpw( N, xbuf, strideX, ix ) / N;
+&nbsp;
+	// Compute an error term:
+	c = gapxsumpw( N, -mu, xbuf, strideX, ix ) / N;
+	return mu + c;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = dnanvariancech;
-&nbsp;
-// exports: { "ndarray": "dnanvariancech.ndarray" }
+module.exports = meanpn;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -274,7 +301,7 @@ module.exports = dnanvariancech;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-09T03:00:17.031Z
+                at 2025-03-09T03:00:20.548Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
