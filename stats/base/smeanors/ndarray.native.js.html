@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for strided/base/dmskmap/lib/main.js</title>
+    <title>Code coverage report for stats/base/smeanors/lib/ndarray.native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">strided/base/dmskmap/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/base/smeanors/lib</a> ndarray.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>66/66</span>
+                <span class='fraction'>60/60</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>66/66</span>
+                <span class='fraction'>60/60</span>
             </div>
         
             
@@ -123,13 +123,7 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -176,17 +170,11 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -217,50 +205,44 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var stride2offset = require( '@stdlib/strided/base/stride2offset' );
-var ndarray = require( './ndarray.js' );
+var Float32Array = require( '@stdlib/array/float32' );
+var addon = require( './smeanors.native.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Applies a unary function to a double-precision floating-point strided input array according to a strided mask array and assigns results to a double-precision floating-point strided output array.
+* Computes the arithmetic mean of a single-precision floating-point strided array using ordinary recursive summation.
 *
-* @param {NonNegativeInteger} N - number of indexed elements
-* @param {Float64Array} x - input array
-* @param {integer} strideX - `x` stride length
-* @param {Uint8Array} mask - mask array
-* @param {integer} strideMask - `mask` stride length
-* @param {Float64Array} y - destination array
-* @param {integer} strideY - `y` stride length
-* @param {Function} fcn - unary function to apply
-* @returns {Float64Array} `y`
+* @param {PositiveInteger} N - number of indexed elements
+* @param {Float32Array} x - input array
+* @param {integer} stride - stride length
+* @param {NonNegativeInteger} offset - starting index
+* @returns {number} arithmetic mean
 *
 * @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var Uint8Array = require( '@stdlib/array/uint8' );
+* var Float32Array = require( '@stdlib/array/float32' );
+* var floor = require( '@stdlib/math/base/special/floor' );
 *
-* function scale( x ) {
-*     return x * 10.0;
-* }
+* var x = new Float32Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ] );
+* var N = floor( x.length / 2 );
 *
-* var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
-* var m = new Uint8Array( [ 0, 0, 1, 0, 0 ] );
-* var y = new Float64Array( x.length );
-*
-* dmskmap( x.length, x, 1, m, 1, y, 1, scale );
-*
-* console.log( y );
-* // =&gt; &lt;Float64Array&gt;[ 10.0, 20.0, 0.0, 40.0, 50.0 ]
+* var v = smeanors( N, x, 2, 1 );
+* // returns 1.25
 */
-function dmskmap( N, x, strideX, mask, strideMask, y, strideY, fcn ) {
-	return ndarray( N, x, strideX, stride2offset( N, strideX ), mask, strideMask, stride2offset( N, strideMask ), y, strideY, stride2offset( N, strideY ), fcn ); // eslint-disable-line max-len
+function smeanors( N, x, stride, offset ) {
+	var view;
+	if ( stride &lt; 0 ) {
+		offset += (N-1) * stride;
+	}
+	view = new Float32Array( x.buffer, x.byteOffset+(x.BYTES_PER_ELEMENT*offset), x.length-offset ); // eslint-disable-line max-len
+	return addon( N, view, stride );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = dmskmap;
+module.exports = smeanors;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -268,7 +250,7 @@ module.exports = dmskmap;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-19T10:48:55.232Z
+                at 2025-03-19T10:48:52.529Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
