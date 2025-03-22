@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.46% </span>
+                <span class="strong">98.36% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>128/130</span>
+                <span class='fraction'>120/122</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.46% </span>
+                <span class="strong">98.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>128/130</span>
+                <span class='fraction'>120/122</span>
             </div>
         
             
@@ -185,15 +185,7 @@
 <a name='L120'></a><a href='#L120'>120</a>
 <a name='L121'></a><a href='#L121'>121</a>
 <a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L123'></a><a href='#L123'>123</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -247,10 +239,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
@@ -273,6 +261,7 @@
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
@@ -294,31 +283,26 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -345,14 +329,13 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var isNegativeZero = require( '@stdlib/math/base/assert/is-negative-zero' );
-&nbsp;
+var isnan = require('@stdlib/math/base/assert/is-nan');
+var isNegativeZero = require('@stdlib/math/base/assert/is-negative-zero');
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes the minimum value of a strided array according to a mask
+* Computes the minimum value of a strided array according to a mask.
 *
 * @private
 * @param {PositiveInteger} N - number of indexed elements
@@ -366,17 +349,16 @@ var isNegativeZero = require( '@stdlib/math/base/assert/is-negative-zero' );
 * @param {Array&lt;Function&gt;} mask.accessors - mask element accessors
 * @param {integer} strideMask - stride length for `mask`
 * @param {NonNegativeInteger} offsetMask - starting index for `mask`
-* @returns {Object} output minimum value
-/*
-* @example 
-&nbsp;
-* var floor = require( '@stdlib/math/base/special/floor' );
+* @returns {number} Minimum value according to mask.
+*
+* @example
+* var floor = require('@stdlib/math/base/special/floor');
 *
 * var x = [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0, -5.0, -6.0 ];
 * var mask = [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 ];
-* var N = floor( x.length / 2 );
+* var N = floor(x.length / 2);
 *
-* var v = mskmax( 5, arraylike2object( toAccessorArray( x ) ), 2, 1, arraylike2object( toAccessorArray( mask ) ), 2, 1 );
+* var v = nanmskmin(5, arraylike2object(toAccessorArray(x)), 2, 1, arraylike2object(toAccessorArray(mask)), 2, 1);
 * // returns -2.0
 */
 function nanmskmin( N, x, strideX, offsetX, mask, strideMask, offsetMask ) {
@@ -391,66 +373,60 @@ function nanmskmin( N, x, strideX, offsetX, mask, strideMask, offsetMask ) {
 	var i;
 &nbsp;
 	// Cache references to array data:
-&nbsp;
 	xbuf = x.data;
 	mbuf = mask.data;
 &nbsp;
 	// Cache references to element accessors:
-&nbsp;
 	xget = x.accessors[ 0 ];
 	mget = mask.accessors[ 0 ];
 &nbsp;
 	if ( N &lt;= 0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		return NaN;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	
+&nbsp;
 	ix = offsetX;
 	im = offsetMask;
-	for (i = 0; i &lt; N; i++) {
-		if( mget( mbuf, im ) === 0){
+&nbsp;
+	for ( i = 0; i &lt; N; i++ ) {
+		if ( mget(mbuf, im) === 0 ) {
 			break;
 		}
-		
 		ix += strideX;
 		im += strideMask;
-	}       
-		if ( i === N ) {
-			return NaN
+	}
+&nbsp;
+	if ( i === N ) {
+		return NaN;
+	}
+&nbsp;
+	min = xget(xbuf, ix);
+&nbsp;
+	if ( isnan(min) ) {
+		return NaN;
+	}
+&nbsp;
+	for ( i = i + 1; i &lt; N; i++ ) {
+		ix += strideX;
+		im += strideMask;
+&nbsp;
+		if ( mget(mbuf, im) !== 0 ) {
+			continue;
 		}
-	
-		min = xget( xbuf, ix );
-	
-		if ( isnan( min ) ) {
-			return NaN;
+&nbsp;
+		v = xget(xbuf, ix);
+&nbsp;
+		if ( isnan(v) ) {
+			return v;
 		}
-	
-		i+1;
-	
-		for ( i; i&lt;N; i++ ) {
-			ix += strideX;
-			im += strideMask;
-			if ( mget( mbuf, im ) !==0 ){
-				continue;
-			}
-			
-			v = xget( xbuf, ix );
-			
-			if ( isnan( v ) ) {
-				
-				return v;
-			}
-			
-			if ( v &lt; min || ( v === min &amp;&amp; isNegativeZero( v ) ) ) {
-				
-				min = v;
-			}
-			
+&nbsp;
+		if ( v &lt; min || ( v === min &amp;&amp; isNegativeZero(v) ) ) {
+			min = v;
 		}
-		return min;
+	}
+	return min;
 }
 &nbsp;
-//Exports
-&nbsp;
+// EXPORTS //
 &nbsp;
 module.exports = nanmskmin;
 &nbsp;</pre></td></tr></table></pre>
@@ -460,7 +436,7 @@ module.exports = nanmskmin;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-22T09:34:35.701Z
+                at 2025-03-22T09:52:19.159Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
