@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>88/88</span>
+                <span class='fraction'>98/98</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>88/88</span>
+                <span class='fraction'>98/98</span>
             </div>
         
             
@@ -151,7 +151,17 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -225,15 +235,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -261,11 +281,13 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isScalarMostlySafeCompatible = require( '@stdlib/ndarray/base/assert/is-scalar-mostly-safe-compatible' ); // eslint-disable-line id-length
 var broadcastScalar = require( '@stdlib/ndarray/base/broadcast-scalar' );
 var getDtype = require( '@stdlib/ndarray/base/dtype' );
 var getShape = require( '@stdlib/ndarray/base/shape' );
 var getOrder = require( '@stdlib/ndarray/base/order' );
 var assign = require( '@stdlib/ndarray/base/assign' );
+var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -281,6 +303,7 @@ var assign = require( '@stdlib/ndarray/base/assign' );
 * @param {NonNegativeInteger} x.offset - index offset
 * @param {string} x.order - specifies whether `x` is row-major (C-style) or column-major (Fortran-style)
 * @param {*} value - scalar value
+* @throws {TypeError} second argument cannot be safely cast to the input array data type
 * @returns {void}
 *
 * @example
@@ -314,10 +337,17 @@ var assign = require( '@stdlib/ndarray/base/assign' );
 * // =&gt; &lt;Float64Array&gt;[ 10.0, 10.0, 10.0, 10.0, 10.0, 10.0 ]
 */
 function fill( x, value ) {
+	var dt;
 	var v;
 &nbsp;
+	dt = getDtype( x );
+&nbsp;
+	// Safe casts are always allowed and allow same kind casts (i.e., downcasts) only when the output data type is floating-point...
+	if ( !isScalarMostlySafeCompatible( value, dt ) ) {
+		throw new TypeError( format( 'invalid argument. The second argument cannot be safely cast to the input array data type. Data type: %s. Value: `%s`.', dt, value ) );
+	}
 	// Broadcast the fill value to an ndarray of same shape and data type as the input ndarray:
-	v = broadcastScalar( value, getDtype( x ), getShape( x ), getOrder( x ) );
+	v = broadcastScalar( value, dt, getShape( x ), getOrder( x ) );
 &nbsp;
 	// Assign the fill value to each element of the input ndarray:
 	assign( [ v, x ] ); // TODO: consider replacing with ndarray/base/assign-scalar in order to avoid zero-dimensional ndarray creation and subsequent broadcasting
@@ -334,7 +364,7 @@ module.exports = fill;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-22T12:24:41.968Z
+                at 2025-03-23T11:34:18.970Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
