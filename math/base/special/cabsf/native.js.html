@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/cabsf/lib/main.js</title>
+    <title>Code coverage report for math/base/special/cabsf/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/cabsf/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/cabsf/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>48/48</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>48/48</span>
             </div>
         
             
@@ -111,9 +111,7 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -153,8 +151,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2006x</span>
 <span class="cline-any cline-yes">2006x</span>
 <span class="cline-any cline-yes">2006x</span>
 <span class="cline-any cline-yes">2006x</span>
@@ -166,7 +162,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2021 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -185,9 +181,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var hypotf = require( '@stdlib/math/base/special/hypotf' );
-var real = require( '@stdlib/complex/float32/real' );
-var imag = require( '@stdlib/complex/float32/imag' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -195,6 +189,7 @@ var imag = require( '@stdlib/complex/float32/imag' );
 /**
 * Computes the absolute value of a single-precision complex floating-point number.
 *
+* @private
 * @param {Complex64} z - complex number
 * @returns {number} absolute value
 *
@@ -205,8 +200,7 @@ var imag = require( '@stdlib/complex/float32/imag' );
 * // returns ~5.83
 */
 function cabsf( z ) {
-	// TODO: consider whether to use C99 rules for special cases involving infinities and nans (see https://github.com/python/cpython/blob/f4c03484da59049eb62a9bf7777b963e2267d187/Objects/complexobject.c#L191)
-	return hypotf( real( z ), imag( z ) );
+	return addon( z );
 }
 &nbsp;
 &nbsp;
