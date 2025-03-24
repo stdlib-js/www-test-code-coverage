@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/base/xorshift/lib/factory.js</title>
+    <title>Code coverage report for random/base/xorshift32/lib/factory.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/xorshift/lib</a> factory.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/base/xorshift32/lib</a> factory.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -1006,8 +1006,8 @@ function verifyState( state, FLG ) {
 * Returns a 32-bit xorshift pseudorandom number generator based on George Marsaglia.
 *
 * @param {Options} [options] - options
-* @param {PRNGSeedXORSHIFT} [options.seed] - pseudorandom number generator seed
-* @param {PRNGStateXORSHIFT} [options.state] - pseudorandom number generator state
+* @param {PRNGSeedXorshift32} [options.seed] - pseudorandom number generator seed
+* @param {PRNGStateXorshift32} [options.state] - pseudorandom number generator state
 * @param {boolean} [options.copy=true] - boolean indicating whether to copy a provided pseudorandom number generator state
 * @throws {TypeError} options argument must be an object
 * @throws {TypeError} a seed must be either a positive integer less than or equal to the maximum unsigned 32-bit integer or an array-like object containing such integers
@@ -1018,18 +1018,18 @@ function verifyState( state, FLG ) {
 * @returns {PRNG} LCG PRNG
 *
 * @example
-* var xorshift = factory();
+* var xorshift32 = factory();
 *
-* var v = xorshift();
+* var v = xorshift32();
 * // returns &lt;number&gt;
 *
 * @example
 * // Return a seeded LCG:
-* var xorshift = factory({
+* var xorshift32 = factory({
 *     'seed': 1234
 * });
 *
-* var v = xorshift();
+* var v = xorshift32();
 * // returns 332584831
 */
 function factory( options ) {
@@ -1133,34 +1133,34 @@ function factory( options ) {
 		// Initialize the internal PRNG state:
 		state[ 0 ] = seed[ 0 ];
 	}
-	setReadOnly( xorshift, 'NAME', 'xorshift' );
-	setReadOnlyAccessor( xorshift, 'seed', getSeed );
-	setReadOnlyAccessor( xorshift, 'seedLength', getSeedLength );
-	setReadWriteAccessor( xorshift, 'state', getState, setState );
-	setReadOnlyAccessor( xorshift, 'stateLength', getStateLength );
-	setReadOnlyAccessor( xorshift, 'byteLength', getStateSize );
-	setReadOnly( xorshift, 'toJSON', toJSON );
-	setReadOnly( xorshift, 'MIN', 1 );
-	setReadOnly( xorshift, 'MAX', UINT32_MAX );
-	setReadOnly( xorshift, 'normalized', normalized );
+	setReadOnly( xorshift32, 'NAME', 'xorshift32' );
+	setReadOnlyAccessor( xorshift32, 'seed', getSeed );
+	setReadOnlyAccessor( xorshift32, 'seedLength', getSeedLength );
+	setReadWriteAccessor( xorshift32, 'state', getState, setState );
+	setReadOnlyAccessor( xorshift32, 'stateLength', getStateLength );
+	setReadOnlyAccessor( xorshift32, 'byteLength', getStateSize );
+	setReadOnly( xorshift32, 'toJSON', toJSON );
+	setReadOnly( xorshift32, 'MIN', 1 );
+	setReadOnly( xorshift32, 'MAX', UINT32_MAX );
+	setReadOnly( xorshift32, 'normalized', normalized );
 &nbsp;
-	setReadOnly( normalized, 'NAME', xorshift.NAME );
+	setReadOnly( normalized, 'NAME', xorshift32.NAME );
 	setReadOnlyAccessor( normalized, 'seed', getSeed );
 	setReadOnlyAccessor( normalized, 'seedLength', getSeedLength );
 	setReadWriteAccessor( normalized, 'state', getState, setState );
 	setReadOnlyAccessor( normalized, 'stateLength', getStateLength );
 	setReadOnlyAccessor( normalized, 'byteLength', getStateSize );
 	setReadOnly( normalized, 'toJSON', toJSON );
-	setReadOnly( normalized, 'MIN', (xorshift.MIN-1.0) / NORMALIZATION_CONSTANT );
-	setReadOnly( normalized, 'MAX', (xorshift.MAX-1.0) / NORMALIZATION_CONSTANT );
+	setReadOnly( normalized, 'MIN', (xorshift32.MIN-1.0) / NORMALIZATION_CONSTANT );
+	setReadOnly( normalized, 'MAX', (xorshift32.MAX-1.0) / NORMALIZATION_CONSTANT );
 &nbsp;
-	return xorshift;
+	return xorshift32;
 &nbsp;
 	/**
 	* Returns the PRNG seed.
 	*
 	* @private
-	* @returns {PRNGSeedXORSHIFT} seed
+	* @returns {PRNGSeedXorshift32} seed
 	*/
 	function getSeed() {
 		var len = STATE[ SEED_SECTION_OFFSET ];
@@ -1215,7 +1215,7 @@ function factory( options ) {
 	* -   The first element of each section following the preamble specifies the section length. The remaining section elements comprise the section contents.
 	*
 	* @private
-	* @returns {PRNGStateXORSHIFT} current state
+	* @returns {PRNGStateXorshift32} current state
 	*/
 	function getState() {
 		var len = STATE.length;
@@ -1231,7 +1231,7 @@ function factory( options ) {
 	* -   If PRNG state is "shared" and one sets the generator state to a state array of the same length, the PRNG state is updated (along with the state of all other PRNGs sharing the PRNG's state array).
 	*
 	* @private
-	* @param {PRNGStateXORSHIFT} s - generator state
+	* @param {PRNGStateXorshift32} s - generator state
 	* @throws {TypeError} must provide an `Uint32Array`
 	* @throws {Error} must provide a valid state
 	*/
@@ -1278,7 +1278,7 @@ function factory( options ) {
 	function toJSON() {
 		var out = {};
 		out.type = 'PRNG';
-		out.name = xorshift.NAME;
+		out.name = xorshift32.NAME;
 		out.state = typedarray2json( STATE );
 		out.params = [];
 		return out;
@@ -1290,7 +1290,7 @@ function factory( options ) {
 	* @private
 	* @returns {uinteger32} pseudorandom integer
 	*/
-	function xorshift() {
+	function xorshift32() {
 		var s = state[ 0 ] &gt;&gt;&gt; 0; // asm type annotation
 		s ^= s &lt;&lt; 13;
 		s ^= s &gt;&gt;&gt; 17;
@@ -1306,7 +1306,7 @@ function factory( options ) {
 	* @returns {number} pseudorandom number
 	*/
 	function normalized() {
-		return (xorshift()-1) / NORMALIZATION_CONSTANT;
+		return (xorshift32()-1) / NORMALIZATION_CONSTANT;
 	}
 }
 &nbsp;
@@ -1321,7 +1321,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-23T20:32:13.468Z
+                at 2025-03-24T07:04:47.742Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
