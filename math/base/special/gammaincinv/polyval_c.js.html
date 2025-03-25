@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/gammaln/lib/index.js</title>
+    <title>Code coverage report for math/base/special/gammaincinv/lib/polyval_c.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammaln/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammaincinv/lib</a> polyval_c.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">87.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>41/47</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">87.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>41/47</span>
             </div>
         
             
@@ -110,18 +110,7 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -157,23 +146,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -182,7 +160,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2022 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -197,46 +175,35 @@
 * limitations under the License.
 */
 &nbsp;
+/* This is a generated file. Do not edit directly. */
 'use strict';
 &nbsp;
+// MAIN //
+&nbsp;
 /**
-* Evaluate the natural logarithm of the gamma function.
+* Evaluates a polynomial.
 *
-* @module @stdlib/math/base/special/gammaln
+* ## Notes
 *
-* @example
-* var gammaln = require( '@stdlib/math/base/special/gammaln' );
+* -   The implementation uses [Horner's rule][horners-method] for efficient computation.
 *
-* var v = gammaln( 1.0 );
-* // returns 0.0
+* [horners-method]: https://en.wikipedia.org/wiki/Horner%27s_method
 *
-* v = gammaln( 2.0 );
-* // returns 0.0
-*
-* v = gammaln( 4.0 );
-* // returns ~1.792
-*
-* v = gammaln( -0.5 );
-* // returns ~1.266
-*
-* v = gammaln( 0.5 );
-* // returns ~0.572
-*
-* v = gammaln( 0.0 );
-* // returns Infinity
-*
-* v = gammaln( NaN );
-* // returns NaN
+* @private
+* @param {number} x - value at which to evaluate the polynomial
+* @returns {number} evaluated polynomial
 */
-&nbsp;
-// MODULES //
-&nbsp;
-var main = require( './main.js' );
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function evalpoly( x ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	if ( x === 0.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		return 0.025721014990011306;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	return 0.025721014990011306 + (x * (0.08247596616699963 + (x * (-0.0025328157302663564 + (x * (0.0006099292666946337 + (x * (-0.00033543297638406 + (x * 0.000250505279903))))))))); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = evalpoly;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +211,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-25T08:23:08.051Z
+                at 2025-03-25T08:22:35.173Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

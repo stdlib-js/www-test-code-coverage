@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/gammaln/lib/index.js</title>
+    <title>Code coverage report for math/base/special/gammainc/lib/lower_incomplete_gamma_series.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammaln/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammainc/lib</a> lower_incomplete_gamma_series.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -121,7 +121,17 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -165,15 +175,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">805x</span>
+<span class="cline-any cline-yes">22227x</span>
+<span class="cline-any cline-yes">22227x</span>
+<span class="cline-any cline-yes">22227x</span>
+<span class="cline-any cline-yes">22227x</span>
+<span class="cline-any cline-yes">22227x</span>
+<span class="cline-any cline-yes">805x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -195,48 +215,58 @@
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
+*
+*
+* ## Notice
+*
+* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_37_0/boost/math/special_functions/gamma.hpp}. The implementation has been modified for JavaScript.
+*
+* ```text
+* (C) Copyright John Maddock 2006.
+* (C) Copyright Paul A. Bristow 2007.
+*
+* Use, modification and distribution are subject to the
+* Boost Software License, Version 1.0. (See accompanying file
+* LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
+* ```
 */
 &nbsp;
 'use strict';
 &nbsp;
+// MAIN //
+&nbsp;
 /**
-* Evaluate the natural logarithm of the gamma function.
+* Creates a function to evaluate a series expansion of the incomplete gamma function.
 *
-* @module @stdlib/math/base/special/gammaln
-*
-* @example
-* var gammaln = require( '@stdlib/math/base/special/gammaln' );
-*
-* var v = gammaln( 1.0 );
-* // returns 0.0
-*
-* v = gammaln( 2.0 );
-* // returns 0.0
-*
-* v = gammaln( 4.0 );
-* // returns ~1.792
-*
-* v = gammaln( -0.5 );
-* // returns ~1.266
-*
-* v = gammaln( 0.5 );
-* // returns ~0.572
-*
-* v = gammaln( 0.0 );
-* // returns Infinity
-*
-* v = gammaln( NaN );
-* // returns NaN
+* @private
+* @param {number} a1 - function parameter
+* @param {number} z1 - function parameter
+* @returns {Function} series function
 */
+function lowerIncompleteGammaSeries( a1, z1 ) {
+	var result = 1.0;
+	var a = a1;
+	var z = z1;
+	return next;
 &nbsp;
-// MODULES //
-&nbsp;
-var main = require( './main.js' );
+	/**
+	* Calculate the next term of the series.
+	*
+	* @private
+	* @returns {number} series expansion term
+	*/
+	function next() {
+		var r = result;
+		a += 1.0;
+		result *= z/a;
+		return r;
+	}
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = lowerIncompleteGammaSeries;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +274,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-25T08:23:08.051Z
+                at 2025-03-25T08:22:32.245Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

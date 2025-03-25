@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/gammaln/lib/index.js</title>
+    <title>Code coverage report for math/base/special/gammaincinv/lib/chepolsum.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammaln/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammaincinv/lib</a> chepolsum.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>79/79</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>79/79</span>
             </div>
         
             
@@ -121,7 +121,28 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,6 +195,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">22176x</span>
+<span class="cline-any cline-yes">22176x</span>
+<span class="cline-any cline-yes">22176x</span>
+<span class="cline-any cline-yes">22176x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -199,44 +241,65 @@
 &nbsp;
 'use strict';
 &nbsp;
+// VARIABLES //
+&nbsp;
+// Chebyshev polynomial coefficients...
+var A = [
+	1.996379051590076518221,
+	-0.17971032528832887213e-2,
+	0.131292857963846713e-4,
+	-0.2340875228178749e-6,
+	0.72291210671127e-8,
+	-0.3280997607821e-9,
+	0.198750709010e-10,
+	-0.15092141830e-11,
+	0.1375340084e-12,
+	-0.145728923e-13,
+	0.17532367e-14,
+	-0.2351465e-15,
+	0.346551e-16,
+	-0.55471e-17,
+	0.9548e-18,
+	-0.1748e-18,
+	0.332e-19,
+	-0.58e-20
+];
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
 /**
-* Evaluate the natural logarithm of the gamma function.
+* Computes the sum of a Chebyshev polynomial.
 *
-* @module @stdlib/math/base/special/gammaln
-*
-* @example
-* var gammaln = require( '@stdlib/math/base/special/gammaln' );
-*
-* var v = gammaln( 1.0 );
-* // returns 0.0
-*
-* v = gammaln( 2.0 );
-* // returns 0.0
-*
-* v = gammaln( 4.0 );
-* // returns ~1.792
-*
-* v = gammaln( -0.5 );
-* // returns ~1.266
-*
-* v = gammaln( 0.5 );
-* // returns ~0.572
-*
-* v = gammaln( 0.0 );
-* // returns Infinity
-*
-* v = gammaln( NaN );
-* // returns NaN
+* @private
+* @param {PositiveInteger} n - degree of polynomial
+* @param {number} t - input value
+* @returns {number} Chebyshev sum
 */
+function chepolsum( n, t ) {
+	var tt;
+	var u0;
+	var u1;
+	var u2;
+	var k;
 &nbsp;
-// MODULES //
-&nbsp;
-var main = require( './main.js' );
+	u0 = 0.0;
+	u1 = 0.0;
+	tt = t + t;
+	k = n;
+	do {
+		u2 = u1;
+		u1 = u0;
+		u0 = ( tt*u1 ) - u2 + A[ k ];
+		k -= 1;
+	} while ( k &gt;= 0 );
+	return ( u0-u2 ) / 2.0;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = chepolsum;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +307,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-25T08:23:08.051Z
+                at 2025-03-25T08:22:35.173Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

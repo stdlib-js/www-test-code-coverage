@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/gammaln/lib/index.js</title>
+    <title>Code coverage report for math/base/special/gammaincinv/lib/gamstar.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammaln/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammaincinv/lib</a> gamstar.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>54/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>54/54</span>
             </div>
         
             
@@ -117,11 +117,7 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,20 +156,16 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1732x</span>
+<span class="cline-any cline-yes">1732x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">1732x</span>
+<span class="cline-any cline-yes">499x</span>
+<span class="cline-any cline-yes">499x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1732x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -199,44 +191,40 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Evaluate the natural logarithm of the gamma function.
-*
-* @module @stdlib/math/base/special/gammaln
-*
-* @example
-* var gammaln = require( '@stdlib/math/base/special/gammaln' );
-*
-* var v = gammaln( 1.0 );
-* // returns 0.0
-*
-* v = gammaln( 2.0 );
-* // returns 0.0
-*
-* v = gammaln( 4.0 );
-* // returns ~1.792
-*
-* v = gammaln( -0.5 );
-* // returns ~1.266
-*
-* v = gammaln( 0.5 );
-* // returns ~0.572
-*
-* v = gammaln( 0.0 );
-* // returns Infinity
-*
-* v = gammaln( NaN );
-* // returns NaN
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var main = require( './main.js' );
+var exp = require( '@stdlib/math/base/special/exp' );
+var gamma = require( '@stdlib/math/base/special/gamma' );
+var ln = require( '@stdlib/math/base/special/ln' );
+var FLOAT32_MAX = require( '@stdlib/constants/float32/max' );
+var SQRT_TWO_PI = require( '@stdlib/constants/float64/sqrt-two-pi' );
+var stirling = require( './stirling.js' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
+/**
+* Computes the regulated gamma function.
+*
+* @private
+* @param {number} x - input value
+* @returns {number} function value
+*/
+function gamstar( x ) {
+	if ( x &gt;= 3.0 ) {
+		return exp( stirling(x) );
+	}
+	if ( x &gt; 0.0 ) {
+		return gamma(x) / ( exp( -x + ( ( x-0.5 ) * ln(x) ) ) * SQRT_TWO_PI );
+	}
+	// Case: x &lt;= 0.0
+	return FLOAT32_MAX;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = gamstar;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +232,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-25T08:23:08.051Z
+                at 2025-03-25T08:22:35.173Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
