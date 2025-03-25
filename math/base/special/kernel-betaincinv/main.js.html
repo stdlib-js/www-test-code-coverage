@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/kernel-betainc/lib/assign.js</title>
+    <title>Code coverage report for math/base/special/kernel-betaincinv/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/kernel-betainc/lib</a> assign.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/kernel-betaincinv/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.74% </span>
+                <span class="strong">64.89% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>167/431</span>
+                <span class='fraction'>281/433</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.96% </span>
+                <span class="strong">53.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>17/27</span>
+                <span class='fraction'>24/45</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.74% </span>
+                <span class="strong">64.89% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>167/431</span>
+                <span class='fraction'>281/433</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -494,7 +494,9 @@
 <a name='L429'></a><a href='#L429'>429</a>
 <a name='L430'></a><a href='#L430'>430</a>
 <a name='L431'></a><a href='#L431'>431</a>
-<a name='L432'></a><a href='#L432'>432</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L432'></a><a href='#L432'>432</a>
+<a name='L433'></a><a href='#L433'>433</a>
+<a name='L434'></a><a href='#L434'>434</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -578,75 +580,245 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">1994x</span>
+<span class="cline-any cline-yes">1994x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">973x</span>
+<span class="cline-any cline-yes">1994x</span>
+<span class="cline-any cline-yes">1994x</span>
+<span class="cline-any cline-yes">1994x</span>
+<span class="cline-any cline-yes">378x</span>
+<span class="cline-any cline-yes">378x</span>
+<span class="cline-any cline-yes">378x</span>
+<span class="cline-any cline-yes">1994x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1197x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1167x</span>
+<span class="cline-any cline-yes">1167x</span>
+<span class="cline-any cline-yes">1167x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1167x</span>
+<span class="cline-any cline-yes">1167x</span>
+<span class="cline-any cline-yes">1167x</span>
+<span class="cline-any cline-yes">1167x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">449x</span>
+<span class="cline-any cline-yes">449x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">239x</span>
+<span class="cline-any cline-yes">449x</span>
+<span class="cline-any cline-yes">449x</span>
+<span class="cline-any cline-yes">449x</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">449x</span>
+<span class="cline-any cline-yes">359x</span>
+<span class="cline-any cline-yes">449x</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">449x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1616x</span>
+<span class="cline-any cline-yes">1994x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -659,20 +831,22 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -684,24 +858,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -713,213 +869,61 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">998x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">1998x</span>
+<span class="cline-any cline-yes">999x</span>
+<span class="cline-any cline-yes">999x</span>
+<span class="cline-any cline-yes">999x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">999x</span>
+<span class="cline-any cline-yes">999x</span>
+<span class="cline-any cline-yes">999x</span>
+<span class="cline-any cline-yes">1998x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1998x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">1000x</span>
+<span class="cline-any cline-yes">1000x</span>
+<span class="cline-any cline-yes">1000x</span>
+<span class="cline-any cline-yes">2000x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -947,11 +951,11 @@
 *
 * ## Notice
 *
-* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_61_0/boost/math/special_functions/beta.hpp}. The implementation has been modified for JavaScript.
+* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_62_0/boost/math/special_functions/detail/ibeta_inverse.hpp}. The implementation has been modified for JavaScript.
 *
 * ```text
-* (C) Copyright John Maddock 2006.
-* (C) Copyright Paul A. Bristow 2007.
+* Copyright John Maddock 2006.
+* Copyright Paul A. Bristow 2007.
 *
 * Use, modification and distribution are subject to the
 * Boost Software License, Version 1.0. (See accompanying file
@@ -963,399 +967,401 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var evalpoly = require( '@stdlib/math/base/tools/evalpoly' );
+var betainc = require( '@stdlib/math/base/special/betainc' );
 var expm1 = require( '@stdlib/math/base/special/expm1' );
-var floor = require( '@stdlib/math/base/special/floor' );
 var log1p = require( '@stdlib/math/base/special/log1p' );
 var asin = require( '@stdlib/math/base/special/asin' );
 var beta = require( '@stdlib/math/base/special/beta' );
 var sqrt = require( '@stdlib/math/base/special/sqrt' );
+var abs = require( '@stdlib/math/base/special/abs' );
 var exp = require( '@stdlib/math/base/special/exp' );
 var pow = require( '@stdlib/math/base/special/pow' );
+var sin = require( '@stdlib/math/base/special/sin' );
 var max = require( '@stdlib/math/base/special/max' );
 var min = require( '@stdlib/math/base/special/min' );
-var MAX_FLOAT64 = require( '@stdlib/constants/float64/max' );
-var MIN_FLOAT64 = require( '@stdlib/constants/float64/smallest-normal' );
-var MAX_INT32 = require( '@stdlib/constants/int32/max' );
+var ln = require( '@stdlib/math/base/special/ln' );
+var FLOAT64_MIN_NORM = require( '@stdlib/constants/float64/smallest-normal' );
 var HALF_PI = require( '@stdlib/constants/float64/half-pi' );
-var PI = require( '@stdlib/constants/float64/pi' );
-var betaSmallBLargeASeries = require( './beta_small_b_large_a_series.js' );
-var risingFactorialRatio = require( './rising_factorial_ratio.js' );
-var ibetaPowerTerms = require( './ibeta_power_terms.js' );
-var ibetaFraction2 = require( './ibeta_fraction2.js' );
-var binomialCCDF = require( './binomial_ccdf.js' );
-var ibetaAStep = require( './ibeta_a_step.js' );
-var ibetaSeries = require( './ibeta_series.js' );
+var EPSILON = require( '@stdlib/constants/float64/eps' );
+var findIBetaInvFromTDist = require( './find_ibeta_inv_from_t_dist.js' );
+var temme1 = require( './temme1.js' );
+var temme2 = require( './temme2.js' );
+var temme3 = require( './temme3.js' );
+var halleyIterate = require( './halley_iterate.js' );
+var ibetaRoots = require( './ibeta_roots.js' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
-var ONE_OVER_PI = 1.0 / PI;
+var DIGITS = 32;
+var MAX_ITERATIONS = 1000;
+&nbsp;
+// Workspace for the polynomial coefficients:
+var terms = [ 0.0, 0.0, 0.0, 0.0, 0.0 ]; // WARNING: not thread safe
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates the incomplete beta function and its first derivative and assigns results to a provided output array.
+* Calculates the inverse of the incomplete beta function.
 *
-* ## Notes
-*
-* -   This function divides up the input range and selects the right implementation method for each domain.
-*
-* @param {Probability} x - function input
-* @param {NonNegativeNumber} a - function parameter
-* @param {NonNegativeNumber} b - function parameter
-* @param {boolean} regularized - boolean indicating if the function should evaluate the regularized boolean beta function
-* @param {boolean} upper - boolean indicating if the function should return the upper tail of the incomplete beta function instead
-* @param {(Array|TypedArray|Object)} out - output array
-* @param {integer} stride - output array stride
-* @param {NonNegativeInteger} offset - output array index offset
-* @returns {(Array|TypedArray|Object)} function value and first derivative
-*
-* @example
-* var out = ibetaImp( 0.5, 2.0, 2.0, false, false, [ 0.0, 0.0 ], 1, 0 );
-* // returns [ ~0.083, ~1.5 ]
-*
-* @example
-* var out = ibetaImp( 0.2, 1.0, 2.0, false, true, [ 0.0, 0.0 ], 1, 0 );
-* // returns [ 0.32, 1.6 ]
-*
-* @example
-* var out = ibetaImp( 0.2, 1.0, 2.0, true, true, [ 0.0, 0.0 ], 1, 0 );
-* // returns [ 0.64, 1.6 ]
+* @private
+* @param {PositiveNumber} a - function parameter
+* @param {PositiveNumber} b - function parameter
+* @param {Probability} p - function parameter
+* @param {Probability} q - probability equal to `1 - p`
+* @returns {Array} two-element array holding function value `y` and `1-y`
 */
-function ibetaImp( x, a, b, regularized, upper, out, stride, offset ) {
+function ibetaInvImp( a, b, p, q ) {
+	var digits;
+	var invert;
 	var lambda;
-	var prefix;
-	var fract;
-	var bbar;
-	var div;
+	var lower;
+	var theta;
+	var upper;
+	var roots;
+	var maxv;
+	var minv;
+	var bet;
+	var ppa;
 	var tmp;
-	var i0;
-	var i1;
-	var k;
-	var n;
-	var p;
+	var xs2;
+	var ap1;
+	var bm1;
+	var fs;
+	var lx;
+	var ps;
+	var xg;
+	var xs;
+	var yp;
+	var a2;
+	var a3;
+	var b2;
+	var r;
+	var l;
+	var u;
+	var x;
 	var y;
 &nbsp;
-	y = 1.0 - x;
-	i0 = offset;
-	i1 = offset + stride;
+	// The flag invert is set to true if we swap a for b and p for q, in which case the result has to be subtracted from 1:
+	invert = false;
 &nbsp;
-	// Derivative not set...
-	out[ i1 ] = -1;
-	if ( isnan( x ) || x &lt; 0.0 || x &gt; 1.0 ) {
-		out[ i0 ] = NaN;
-		out[ i1 ] = NaN;
-		return out;
-	}
-	if ( regularized ) {
-		if ( a &lt; 0.0 || b &lt; 0.0 ) {
-			out[ i0 ] = NaN;
-			out[ i1 ] = NaN;
-			return out;
-		}
-		// Extend to a few very special cases...
-		if ( a === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >			if ( b === 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				out[ i0 ] = NaN;</span>
-<span class="cstat-no" title="statement not covered" >				out[ i1 ] = NaN;</span>
-<span class="cstat-no" title="statement not covered" >				return out;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			if ( b &gt; 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				out[ i0 ] = ( upper ) ? 0.0 : 1.0;</span>
-<span class="cstat-no" title="statement not covered" >				return out;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-		} else if ( b === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >			if ( a &gt; 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				out[ i0 ] = ( upper ) ? 1.0 : 0.0;</span>
-<span class="cstat-no" title="statement not covered" >				return out;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-	} else if ( a &lt;= 0.0 || b &lt;= 0.0 ) {
-		out[ i0 ] = NaN;
-		out[ i1 ] = NaN;
-		return out;
-	}
-	if ( x === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		if ( a === 1.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >			out[ i1 ] = 1.0;</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			out[ i1 ] = ( a &lt; 1.0 ) ? MAX_FLOAT64 / 2.0 : MIN_FLOAT64 * 2.0;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >			out[ i0 ] = ( regularized ) ? 1.0 : beta( a, b );</span>
-<span class="cstat-no" title="statement not covered" >			return out;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		out[ i0 ] = 0.0;</span>
-<span class="cstat-no" title="statement not covered" >		return out;</span>
+	// Handle trivial cases first...
+	if ( q === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return [ 1.0, 0.0 ];</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	if ( x === 1.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+	if ( p === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return [ 0.0, 1.0 ];</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( a === 1.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		if ( b === 1.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >			out[ i1 ] = 1.0;</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			out[ i1 ] = ( b &lt; 1.0 ) ? MAX_FLOAT64 / 2.0 : MIN_FLOAT64 * 2.0;</span>
+<span class="cstat-no" title="statement not covered" >			return [ p, 1.0-p ];</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >			out[ i0 ] = 0.0;</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			out[ i0 ] = ( regularized ) ? 1.0 : beta( a, b );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return out;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-	if ( a === 0.5 <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; b === 0.5 </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		out[ i1 ] = ONE_OVER_PI * sqrt( y * x );</span>
+<span class="cstat-no" title="statement not covered" >		// Change things around so we can handle as b == 1 special case below:</span>
+<span class="cstat-no" title="statement not covered" >		tmp = b;</span>
+<span class="cstat-no" title="statement not covered" >		b = a;</span>
+<span class="cstat-no" title="statement not covered" >		a = tmp;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		// We have an arcsine distribution:</span>
-<span class="cstat-no" title="statement not covered" >		p = ( upper ) ? asin( sqrt(y) ) : asin( sqrt(x) );</span>
-<span class="cstat-no" title="statement not covered" >		p /= HALF_PI;</span>
-<span class="cstat-no" title="statement not covered" >		if ( !regularized ) {</span>
-<span class="cstat-no" title="statement not covered" >			p *= PI;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		out[ i0 ] = p;</span>
-<span class="cstat-no" title="statement not covered" >		return out;</span>
+<span class="cstat-no" title="statement not covered" >		tmp = q;</span>
+<span class="cstat-no" title="statement not covered" >		q = p;</span>
+<span class="cstat-no" title="statement not covered" >		p = tmp;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		invert = true;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	if ( a === 1.0 ) {
+	// Depending upon which approximation method we use, we may end up calculating either x or y initially (where y = 1-x):
+	x = 0.0; // Set to a safe zero to avoid a
+&nbsp;
+	// For some of the methods we can put tighter bounds on the result than simply [0,1]:
+	lower = 0.0;
+	upper = 1.0;
+&nbsp;
+	// Student's T with b = 0.5 gets handled as a special case, swap around if the arguments are in the "wrong" order:
+	if ( a === 0.5 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if ( b === 0.5 ) {</span>
+<span class="cstat-no" title="statement not covered" >			x = sin( p*HALF_PI );</span>
+<span class="cstat-no" title="statement not covered" >			x *= x;</span>
+<span class="cstat-no" title="statement not covered" >			y = sin( q*HALF_PI );</span>
+<span class="cstat-no" title="statement not covered" >			y *= y;</span>
+<span class="cstat-no" title="statement not covered" >			return [ x, y ];</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		if ( b &gt; 0.5 ) {</span>
+<span class="cstat-no" title="statement not covered" >			tmp = b;</span>
+<span class="cstat-no" title="statement not covered" >			b = a;</span>
+<span class="cstat-no" title="statement not covered" >			a = tmp;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >			tmp = q;</span>
+<span class="cstat-no" title="statement not covered" >			q = p;</span>
+<span class="cstat-no" title="statement not covered" >			p = tmp;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >			invert = !invert;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	// Select calculation method for the initial estimate:
+	if ( b === 0.5 <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; a &gt;= 0.5 <span class="branch-0 cbranch-no" title="branch not covered" ></span>&amp;&amp; p !== 1.0 </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		// We have a Student's T distribution:</span>
+<span class="cstat-no" title="statement not covered" >		yp = {};</span>
+<span class="cstat-no" title="statement not covered" >		x = findIBetaInvFromTDist( a, p, yp );</span>
+<span class="cstat-no" title="statement not covered" >		y = yp.value;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	else if ( b === 1.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if ( p &lt; q ) {</span>
+<span class="cstat-no" title="statement not covered" >			if ( a &gt; 1.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >				x = pow( p, 1.0/a );</span>
+<span class="cstat-no" title="statement not covered" >				y = -expm1( ln(p) / a );</span>
+<span class="cstat-no" title="statement not covered" >			} else {</span>
+<span class="cstat-no" title="statement not covered" >				x = pow( p, 1.0/a );</span>
+<span class="cstat-no" title="statement not covered" >				y = 1.0 - x;</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >		} else {</span>
+<span class="cstat-no" title="statement not covered" >			x = exp( log1p(-q) / a );</span>
+<span class="cstat-no" title="statement not covered" >			y = -expm1( log1p(-q) / a );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		if ( invert ) {</span>
+<span class="cstat-no" title="statement not covered" >			tmp = y;</span>
+<span class="cstat-no" title="statement not covered" >			y = x;</span>
+<span class="cstat-no" title="statement not covered" >			x = tmp;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		return [ x, y ];</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	else if ( a+b &gt; 5.0 ) {
+		// When a+b is large then we can use one of Prof Temme's asymptotic expansions, begin by swapping things around so that p &lt; 0.5, we do this to avoid cancellations errors when p is large.
+		if ( p &gt; 0.5 ) {
+			tmp = b;
+			b = a;
+			a = tmp;
+&nbsp;
+			tmp = q;
+			q = p;
+			p = tmp;
+&nbsp;
+			invert = !invert;
+		}
+		minv = min( a, b );
+		maxv = max( a, b );
+		if ( ( sqrt(minv) &gt; (maxv-minv) ) &amp;&amp; minv &gt; 5.0 ) {
+			// When a and b differ by a small amount the curve is quite symmetrical and we can use an error function to approximate the inverse. This is the cheapest of the three Temme expansions, and the calculated value for x will never be much larger than p, so we don't have to worry about cancellation as long as p is small.
+			x = temme1( a, b, p );
+			y = 1.0 - x;
+		} else {
+			r = a + b;
+			theta = asin( sqrt( a/r ) );
+			lambda = minv / r;
+			if (
+				lambda &gt;= 0.2 &amp;&amp;
+				lambda &lt;= 0.8 &amp;&amp;
+				r &gt;= 10
+			) {
+				// The second error function case is the next cheapest to use, it breaks down when the result is likely to be very small, if `a+b` is also small, but we can use a cheaper expansion there in any case. As before `x` won't be much larger than `p`, so as long as `p` is small we should be free of cancellation error.
+				ppa = pow( p, 1.0/a );
+				if ( ppa &lt; 0.0025 <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; ( a+b ) &lt; 200.0 </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >					x = ppa * pow( a*beta( a, b ), 1.0/a );</span>
+				} else {
+					x = temme2( p, r, theta );
+				}
+				y = 1.0 - x;
+			} else {
+				// If we get here then a and b are very different in magnitude and we need to use the third of Temme's methods which involves inverting the incomplete gamma.  This is much more expensive than the other methods.  We also can only use this method when a &gt; b, which can lead to cancellation errors if we really want y (as we will when x is close to 1), so a different expansion is used in that case.
+				if ( a &lt; b ) {
+					tmp = b;
+					b = a;
+					a = tmp;
+&nbsp;
+					tmp = q;
+					q = p;
+					p = tmp;
+					invert = !invert;
+				}
+				// Try and compute the easy way first:
+				bet = 0.0;
+				if ( b &lt; 2.0 ) {
+					bet = beta( a, b );
+				}
+				if ( bet === 0.0 ) {
+					y = 1.0;
+				} else {
+					y = pow( b*q*bet, 1.0/b );
+					x = 1.0 - y;
+				}
+			}
+			if ( y &gt; 1.0e-5 ) {
+				x = temme3( a, b, p, q );
+				y = 1.0 - x;
+			}
+		}
+	}
+	else if ( a &lt; 1.0 <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; b &lt; 1.0 </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		// Both a and b less than 1, there is a point of inflection at xs:</span>
+<span class="cstat-no" title="statement not covered" >		xs = ( 1.0-a ) / ( 2.0-a-b );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		// Now we need to ensure that we start our iteration from the right side of the inflection point:</span>
+<span class="cstat-no" title="statement not covered" >		fs = betainc( xs, a, b ) - p;</span>
+<span class="cstat-no" title="statement not covered" >		if ( abs(fs)/p &lt; EPSILON*3.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >			// The result is at the point of inflection, best just return it:</span>
+<span class="cstat-no" title="statement not covered" >			if ( invert ) {</span>
+<span class="cstat-no" title="statement not covered" >				return [ 1.0-xs, xs ];</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			return [ xs, 1.0-xs ];</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		if ( fs &lt; 0.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >			tmp = b;</span>
+<span class="cstat-no" title="statement not covered" >			b = a;</span>
+<span class="cstat-no" title="statement not covered" >			a = tmp;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >			tmp = q;</span>
+<span class="cstat-no" title="statement not covered" >			q = p;</span>
+<span class="cstat-no" title="statement not covered" >			p = tmp;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >			invert = !invert;</span>
+<span class="cstat-no" title="statement not covered" >			xs = 1.0 - xs;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		xg = pow( a*p*beta( a, b ), 1.0/a );</span>
+<span class="cstat-no" title="statement not covered" >		x = xg / ( 1.0+xg );</span>
+<span class="cstat-no" title="statement not covered" >		y = 1.0 / ( 1.0+xg );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		// And finally we know that our result is below the inflection point, so set an upper limit on our search:</span>
+<span class="cstat-no" title="statement not covered" >		if ( x &gt; xs ) {</span>
+<span class="cstat-no" title="statement not covered" >			x = xs;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		upper = xs;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	else if ( a &gt; 1.0 &amp;&amp; b &gt; 1.0 ) {
+		// Small a and b, both greater than 1, there is a point of inflection at xs, and it's complement is xs2, we must always start our iteration from the right side of the point of inflection.
+		xs = ( a-1.0 ) / ( a+b-2.0 );
+		xs2 = ( b-1.0 ) / ( a+b-2.0 );
+		ps = betainc( xs, a, b ) - p;
+&nbsp;
+		if ( ps &lt; 0.0 ) {
+			tmp = b;
+			b = a;
+			a = tmp;
+&nbsp;
+			tmp = q;
+			q = p;
+			p = tmp;
+&nbsp;
+			tmp = xs2;
+			xs2 = xs;
+			xs = tmp;
+&nbsp;
+			invert = !invert;
+		}
+		// Estimate x and y, using expm1 to get a good estimate for y when it's very small:
+		lx = ln( p*a*beta( a, b ) ) / a;
+		x = exp( lx );
+		y = ( x &lt; 0.9 ) ? 1.0-x <span class="branch-0 cbranch-no" title="branch not covered" >: -expm1(lx);</span>
+&nbsp;
+		if ( b &lt; a &amp;&amp; x &lt; 0.2 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			// Under a limited range of circumstances we can improve our estimate for x...</span>
+<span class="cstat-no" title="statement not covered" >			ap1 = a - 1.0;</span>
+<span class="cstat-no" title="statement not covered" >			bm1 = b - 1.0;</span>
+<span class="cstat-no" title="statement not covered" >			a2 = a * a;</span>
+<span class="cstat-no" title="statement not covered" >			a3 = a * a2;</span>
+<span class="cstat-no" title="statement not covered" >			b2 = b * b;</span>
+<span class="cstat-no" title="statement not covered" >			terms[ 0 ] = 0.0;</span>
+<span class="cstat-no" title="statement not covered" >			terms[ 1 ] = 1.0;</span>
+<span class="cstat-no" title="statement not covered" >			terms[ 2 ] = bm1 / ap1;</span>
+<span class="cstat-no" title="statement not covered" >			ap1 *= ap1;</span>
+<span class="cstat-no" title="statement not covered" >			terms[ 3 ] = bm1 * (3.0*a*b + 5.0*b + a2 - a - 4.0) / (2.0 * (a+2.0) * ap1); // eslint-disable-line max-len, no-mixed-operators</span>
+<span class="cstat-no" title="statement not covered" >			ap1 *= (a + 1.0);</span>
+<span class="cstat-no" title="statement not covered" >			terms[ 4 ] = bm1 * (33.0*a*b2 + 31.0*b2 + 8.0*a2*b2 - 30.0*a*b - 47.0*b + 11.0*a2*b + 6.0*a3*b + 18.0 + 4.0*a - a3 + a2*a2 - 10.0*a2); // eslint-disable-line max-len, no-mixed-operators</span>
+<span class="cstat-no" title="statement not covered" >			terms[ 4 ] /= (3.0 * (a+3.0) * (a+2.0) * ap1);</span>
+<span class="cstat-no" title="statement not covered" >			x = evalpoly( terms, x );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+		// Know that result is below the inflection point, so set an upper limit on search...
+		if ( x &gt; xs ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			x = xs;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+		upper = xs;
+	}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
+<span class="cstat-no" title="statement not covered" >		// Case: ( a &lt;= 1 ) != ( b &lt;= 1 ). If all else fails we get here, only one of a and b is above 1, and a+b is small.  Start by swapping things around so that we have a concave curve with b &gt; a and no points of inflection in [0,1].  As long as we expect x to be small then we can use the simple (and cheap) power term to estimate x, but when we expect x to be large then this greatly underestimates x and leaves us trying to iterate "round the corner" which may take almost forever. We could use Temme's inverse gamma function case in that case, this works really rather well (albeit expensively) even though strictly speaking we're outside it's defined range. However it's expensive to compute, and an alternative approach which models the curve as a distorted quarter circle is much cheaper to compute, and still keeps the number of iterations required down to a reasonable level. With thanks to Prof. Temme for this suggestion.</span>
+<span class="cstat-no" title="statement not covered" >		if ( b &lt; a ) {</span>
+<span class="cstat-no" title="statement not covered" >			tmp = b;</span>
+<span class="cstat-no" title="statement not covered" >			b = a;</span>
+<span class="cstat-no" title="statement not covered" >			a = tmp;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >			tmp = q;</span>
+<span class="cstat-no" title="statement not covered" >			q = p;</span>
+<span class="cstat-no" title="statement not covered" >			p = tmp;</span>
+<span class="cstat-no" title="statement not covered" >			invert = !invert;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		if ( pow( p, 1.0/a ) &lt; 0.5 ) {</span>
+<span class="cstat-no" title="statement not covered" >			x = pow( p*a*beta( a, b ), 1.0/a );</span>
+<span class="cstat-no" title="statement not covered" >			if ( x === 0.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >				x = FLOAT64_MIN_NORM;</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			y = 1.0 - x;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		// Case: pow(q, 1/b) &lt; 0.1</span>
+<span class="cstat-no" title="statement not covered" >		else {</span>
+<span class="cstat-no" title="statement not covered" >			// Model a distorted quarter circle:</span>
+<span class="cstat-no" title="statement not covered" >			y = pow( 1.0-pow( p, b*beta( a, b ) ), 1.0/b );</span>
+<span class="cstat-no" title="statement not covered" >			if ( y === 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >				y = FLOAT64_MIN_NORM;</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			x = 1.0 - y;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	// Now we have a guess for x (and for y) we can set things up for iteration.  If x &gt; 0.5 it pays to swap things round:
+	if ( x &gt; 0.5 ) {
 		tmp = b;
 		b = a;
 		a = tmp;
+&nbsp;
+		tmp = q;
+		q = p;
+		p = tmp;
 &nbsp;
 		tmp = y;
 		y = x;
 		x = tmp;
 &nbsp;
-		upper = !upper;
+		invert = !invert;
+		l = 1.0 - upper;
+		u = 1.0 - lower;
+		lower = l;
+		upper = u;
 	}
-	if ( b === 1.0 ) {
-		// Special case see: http://functions.wolfram.com/GammaBetaErf/BetaRegularized/03/01/01/
-		if ( a === 1.0 ) {
-			out[ i0 ] = ( upper ) <span class="branch-0 cbranch-no" title="branch not covered" >? y </span>: x;
-			out[ i1 ] = 1.0;
-			return out;
+	// Lower bound for our search:  We're not interested in denormalized answers as these tend to take up lots of iterations, given that we can't get accurate derivatives in this area (they tend to be infinite).
+	if ( lower === 0 ) {
+		if ( invert ) {
+			// We're not interested in answers smaller than machine epsilon:
+			lower = EPSILON;
+			if ( x &lt; lower ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >				x = lower;</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+		} else {
+			lower = FLOAT64_MIN_NORM;
 		}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >		out[ i1 ] = a * pow( x, a - 1.0 );</span></span>
-<span class="cstat-no" title="statement not covered" >		if ( y &lt; 0.5 ) {</span>
-<span class="cstat-no" title="statement not covered" >			p = ( upper ) ? -expm1( a * log1p(-y) ) : exp( a * log1p(-y) );</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			p = ( upper ) ? -( pow( x, a ) - 1.0 ) : pow( x, a );</span>
+		if ( x &lt; lower ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			x = lower;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		if ( !regularized ) {</span>
-<span class="cstat-no" title="statement not covered" >			p /= a;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		out[ i0 ] = p;</span>
-<span class="cstat-no" title="statement not covered" >		return out;</span>
+	}
+	// Figure out how many digits to iterate towards:
+	digits = DIGITS;
+	if ( x &lt; 1.0e-50 <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; ( a &lt; 1.0 || b &lt; 1.0 ) </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		// If we're in a region where the first derivative is very large, then we have to take care that the root-finder doesn't terminate prematurely.  We'll bump the precision up to avoid this, but we have to take care not to set the precision too high or the last few iterations will just thrash around and convergence may be slow in this case. Try 3/4 of machine epsilon:</span>
+<span class="cstat-no" title="statement not covered" >		digits *= 3;</span>
+<span class="cstat-no" title="statement not covered" >		digits /= 2;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	if ( min( a, b ) &lt;= 1.0 ) {</span></span>
-<span class="cstat-no" title="statement not covered" >		if ( x &gt; 0.5 ) {</span>
-<span class="cstat-no" title="statement not covered" >			tmp = b;</span>
-<span class="cstat-no" title="statement not covered" >			b = a;</span>
-<span class="cstat-no" title="statement not covered" >			a = tmp;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			tmp = y;</span>
-<span class="cstat-no" title="statement not covered" >			y = x;</span>
-<span class="cstat-no" title="statement not covered" >			x = tmp;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			upper = !upper;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		if ( max( a, b ) &lt;= 1.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >			// Both a,b &lt; 1:</span>
-<span class="cstat-no" title="statement not covered" >			if ( (a &gt;= min( 0.2, b ) ) || ( pow(x, a) &lt;= 0.9 ) ) {</span>
-<span class="cstat-no" title="statement not covered" >				if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >					fract = -( ( regularized ) ? 1.0 : beta( a, b ) );</span>
-<span class="cstat-no" title="statement not covered" >					upper = false;</span>
-<span class="cstat-no" title="statement not covered" >					fract = -ibetaSeries( a, b, x, fract, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					fract = ibetaSeries( a, b, x, 0, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			} else {</span>
-<span class="cstat-no" title="statement not covered" >				tmp = b;</span>
-<span class="cstat-no" title="statement not covered" >				b = a;</span>
-<span class="cstat-no" title="statement not covered" >				a = tmp;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				tmp = y;</span>
-<span class="cstat-no" title="statement not covered" >				y = x;</span>
-<span class="cstat-no" title="statement not covered" >				x = tmp;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				upper = !upper;</span>
-<span class="cstat-no" title="statement not covered" >				if ( y &gt;= 0.3 ) {</span>
-<span class="cstat-no" title="statement not covered" >					if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >						fract = -( ( regularized ) ? 1.0 : beta( a, b ) );</span>
-<span class="cstat-no" title="statement not covered" >						upper = false;</span>
-<span class="cstat-no" title="statement not covered" >						fract = -ibetaSeries( a, b, x, fract, regularized, out, y ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >					} else {</span>
-<span class="cstat-no" title="statement not covered" >						fract = ibetaSeries( a, b, x, 0, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >					}</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					// Sidestep on a, and then use the series representation:</span>
-<span class="cstat-no" title="statement not covered" >					if ( regularized ) {</span>
-<span class="cstat-no" title="statement not covered" >						prefix = 1;</span>
-<span class="cstat-no" title="statement not covered" >					} else {</span>
-<span class="cstat-no" title="statement not covered" >						prefix = risingFactorialRatio( a + b, a, 20 );</span>
-<span class="cstat-no" title="statement not covered" >					}</span>
-<span class="cstat-no" title="statement not covered" >					fract = ibetaAStep( a, b, x, y, 20, regularized, out );</span>
-<span class="cstat-no" title="statement not covered" >					if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >						fract -= ( ( regularized ) ? 1 : beta( a, b ) );</span>
-<span class="cstat-no" title="statement not covered" >						upper = false;</span>
-<span class="cstat-no" title="statement not covered" >						fract = -betaSmallBLargeASeries( a + 20.0, b, x, y, fract, prefix, regularized ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >					} else {</span>
-<span class="cstat-no" title="statement not covered" >						fract = betaSmallBLargeASeries( a + 20.0, b, x, y, fract, prefix, regularized ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >					}</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		} else if ( b &lt;= 1.0 || ( x &lt; 0.1 &amp;&amp; ( pow( b * x, a ) &lt;= 0.7 ) ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >				fract = -( ( regularized ) ? 1 : beta( a, b ) );</span>
-<span class="cstat-no" title="statement not covered" >				upper = false;</span>
-<span class="cstat-no" title="statement not covered" >				fract = -ibetaSeries( a, b, x, fract, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >			} else {</span>
-<span class="cstat-no" title="statement not covered" >				fract = ibetaSeries( a, b, x, 0.0, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			tmp = b;</span>
-<span class="cstat-no" title="statement not covered" >			b = a;</span>
-<span class="cstat-no" title="statement not covered" >			a = tmp;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			tmp = y;</span>
-<span class="cstat-no" title="statement not covered" >			y = x;</span>
-<span class="cstat-no" title="statement not covered" >			x = tmp;</span>
-<span class="cstat-no" title="statement not covered" >			upper = !upper;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			if ( y &gt;= 0.3 ) {</span>
-<span class="cstat-no" title="statement not covered" >				if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >					fract = -(( regularized ) ? 1.0 : beta( a, b ));</span>
-<span class="cstat-no" title="statement not covered" >					upper = false;</span>
-<span class="cstat-no" title="statement not covered" >					fract = -ibetaSeries( a, b, x, fract, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					fract = ibetaSeries( a, b, x, 0.0, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			else if ( a &gt;= 15.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >					fract = -(( regularized ) ? 1.0 : beta( a, b ));</span>
-<span class="cstat-no" title="statement not covered" >					upper = false;</span>
-<span class="cstat-no" title="statement not covered" >					fract = -betaSmallBLargeASeries( a, b, x, y, fract, 1.0, regularized ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					fract = betaSmallBLargeASeries( a, b, x, y, 0.0, 1.0, regularized ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			else {</span>
-<span class="cstat-no" title="statement not covered" >				if ( regularized ) {</span>
-<span class="cstat-no" title="statement not covered" >					prefix = 1;</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					// Sidestep to improve errors:</span>
-<span class="cstat-no" title="statement not covered" >					prefix = risingFactorialRatio( a + b, a, 20.0 );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				fract = ibetaAStep( a, b, x, y, 20.0, regularized, out );</span>
-<span class="cstat-no" title="statement not covered" >				if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >					fract -= ( ( regularized ) ? 1.0 : beta( a, b ) );</span>
-<span class="cstat-no" title="statement not covered" >					upper = false;</span>
-<span class="cstat-no" title="statement not covered" >					fract = -betaSmallBLargeASeries( a + 20.0, b, x, y, fract, prefix, regularized ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					fract = betaSmallBLargeASeries( a + 20.0, b, x, y, fract, prefix, regularized ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		// Both a,b &gt;= 1:</span>
-<span class="cstat-no" title="statement not covered" >		if ( a &lt; b ) {</span>
-<span class="cstat-no" title="statement not covered" >			lambda = a - ( (a + b) * x );</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			lambda = ( (a + b) * y ) - b;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		if ( lambda &lt; 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >			tmp = b;</span>
-<span class="cstat-no" title="statement not covered" >			b = a;</span>
-<span class="cstat-no" title="statement not covered" >			a = tmp;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			tmp = y;</span>
-<span class="cstat-no" title="statement not covered" >			y = x;</span>
-<span class="cstat-no" title="statement not covered" >			x = tmp;</span>
-<span class="cstat-no" title="statement not covered" >			upper = !upper;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		if ( b &lt; 40.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >			if (</span>
-<span class="cstat-no" title="statement not covered" >				floor(a) === a &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >				floor(b) === b &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >				a &lt; MAX_INT32 - 100</span>
-<span class="cstat-no" title="statement not covered" >			) {</span>
-<span class="cstat-no" title="statement not covered" >				// Relate to the binomial distribution and use a finite sum:</span>
-<span class="cstat-no" title="statement not covered" >				k = a - 1.0;</span>
-<span class="cstat-no" title="statement not covered" >				n = b + k;</span>
-<span class="cstat-no" title="statement not covered" >				fract = binomialCCDF( n, k, x, y );</span>
-<span class="cstat-no" title="statement not covered" >				if ( !regularized ) {</span>
-<span class="cstat-no" title="statement not covered" >					fract *= beta( a, b );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			else if ( b * x &lt;= 0.7 ) {</span>
-<span class="cstat-no" title="statement not covered" >				if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >					fract = -( ( regularized ) ? 1.0 : beta( a, b ) );</span>
-<span class="cstat-no" title="statement not covered" >					upper = false;</span>
-<span class="cstat-no" title="statement not covered" >					fract = -ibetaSeries( a, b, x, fract, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					fract = ibetaSeries( a, b, x, 0.0, regularized, out, y );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			else if ( a &gt; 15.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				// Sidestep so we can use the series representation:</span>
-<span class="cstat-no" title="statement not covered" >				n = floor( b );</span>
-<span class="cstat-no" title="statement not covered" >				if ( n === b ) {</span>
-<span class="cstat-no" title="statement not covered" >					n -= 1;</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				bbar = b - n;</span>
-<span class="cstat-no" title="statement not covered" >				if ( regularized ) {</span>
-<span class="cstat-no" title="statement not covered" >					prefix = 1;</span>
-<span class="cstat-no" title="statement not covered" >				} else {</span>
-<span class="cstat-no" title="statement not covered" >					prefix = risingFactorialRatio( a + bbar, bbar, n );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				fract = ibetaAStep( bbar, a, y, x, n, regularized );</span>
-<span class="cstat-no" title="statement not covered" >				fract = betaSmallBLargeASeries( a, bbar, x, y, fract, 1.0, regularized ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >				fract /= prefix;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			else if ( regularized ) {</span>
-<span class="cstat-no" title="statement not covered" >				n = floor( b );</span>
-<span class="cstat-no" title="statement not covered" >				bbar = b - n;</span>
-<span class="cstat-no" title="statement not covered" >				if ( bbar &lt;= 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >					n -= 1;</span>
-<span class="cstat-no" title="statement not covered" >					bbar += 1;</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				fract = ibetaAStep( bbar, a, y, x, n, regularized );</span>
-<span class="cstat-no" title="statement not covered" >				fract += ibetaAStep( a, bbar, x, y, 20.0, regularized );</span>
-<span class="cstat-no" title="statement not covered" >				if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >					fract -= 1;</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				fract = betaSmallBLargeASeries( a + 20.0, bbar, x, y, fract, 1, regularized ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >				if ( upper ) {</span>
-<span class="cstat-no" title="statement not covered" >					fract = -fract;</span>
-<span class="cstat-no" title="statement not covered" >					upper = false;</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			else {</span>
-<span class="cstat-no" title="statement not covered" >				fract = ibetaFraction2( a, b, x, y, regularized, out );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			fract = ibetaFraction2( a, b, x, y, regularized, out );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
+	// Now iterate, we can use either p or q as the target here depending on which is smaller:
+	roots = ibetaRoots( a, b, ( (p &lt; q) ? p : q ), p &gt;= q );
+	x = halleyIterate( roots, x, lower, upper, digits, MAX_ITERATIONS );
+&nbsp;
+	// Tidy up, if we "lower" was too high then zero is the best answer we have:
+	if ( x === lower ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		x = 0.0;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( out[ i1 ] &lt; 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		out[ i1 ] = ibetaPowerTerms( a, b, x, y, true );</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	div = y * x;</span>
-<span class="cstat-no" title="statement not covered" >	if ( out[ i1 ] !== 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( ( MAX_FLOAT64 * div &lt; out[ i1 ] ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			// Overflow, return an arbitrarily large value:</span>
-<span class="cstat-no" title="statement not covered" >			out[ i1 ] = MAX_FLOAT64 / 2.0;</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			out[ i1 ] /= div;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-	out[ i0 ] = ( upper ) ? ( ( regularized ) ? 1.0 : beta( a, b ) ) - fract <span class="branch-0 cbranch-no" title="branch not covered" >: fract;</span> // eslint-disable-line max-len
-	return out;
+	if ( invert ) {
+		return [ 1.0-x, x ];
+	}
+	return [ x, 1.0-x ];
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = ibetaImp;
+module.exports = ibetaInvImp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -1363,7 +1369,7 @@ module.exports = ibetaImp;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-25T08:22:24.428Z
+                at 2025-03-25T08:22:27.070Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

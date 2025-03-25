@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/kernel-betainc/lib/binomial_ccdf.js</title>
+    <title>Code coverage report for math/base/special/kernel-betaincinv/lib/inverse_students_t_hill.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/kernel-betainc/lib</a> binomial_ccdf.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/kernel-betaincinv/lib</a> inverse_students_t_hill.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.86% </span>
+                <span class="strong">63.72% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/102</span>
+                <span class='fraction'>65/102</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.86% </span>
+                <span class="strong">63.72% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/102</span>
+                <span class='fraction'>65/102</span>
             </div>
         
             
@@ -218,13 +218,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -287,10 +287,11 @@
 *
 * ## Notice
 *
-* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_61_0/boost/math/special_functions/beta.hpp}. The implementation has been modified for JavaScript.
+* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_61_0/boost/math/special_functions/detail/t_distribution_inv.hpp}. The implementation has been modified for JavaScript.
 *
 * ```text
-* (C) Copyright John Maddock 2006.
+* Copyright John Maddock 2006.
+* Copyright Paul A. Bristow 2007.
 *
 * Use, modification and distribution are subject to the
 * Boost Software License, Version 1.0. (See accompanying file
@@ -298,77 +299,76 @@
 * ```
 */
 &nbsp;
+/* eslint-disable no-mixed-operators */
+&nbsp;
 'use strict';
 &nbsp;
 // MODULES //
 &nbsp;
-var binomcoef = require( '@stdlib/math/base/special/binomcoef' );
-var floor = require( '@stdlib/math/base/special/floor' );
+var erfcinv = require( '@stdlib/math/base/special/erfcinv' );
+var expm1 = require( '@stdlib/math/base/special/expm1' );
+var sqrt = require( '@stdlib/math/base/special/sqrt' );
 var pow = require( '@stdlib/math/base/special/pow' );
-var MIN_VALUE = require( '@stdlib/constants/float64/smallest-normal' );
+var HALF_PI = require( '@stdlib/constants/float64/half-pi' );
+var SQRT2 = require( '@stdlib/constants/float64/sqrt-two' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* For integer arguments we can relate the incomplete beta to the complement of the binomial distribution cdf and use this finite sum.
+* Evaluates Student's t quantiles via a method due to Hill.
+*
+* ## References
+*
+* -   Hill, G. W. 1970. "Algorithm 396: Student's T-Quantiles." _Communications of the ACM_ 13 (10). New York, NY, USA: ACM: 619–20. doi:[10.1145/355598.355600](https://doi.org/10.1145/355598.355600).
 *
 * @private
-* @param {NonNegativeInteger} n - number of trials
-* @param {NonNegativeInteger} k - function input
-* @param {Probability} x - function input
-* @param {Probability} y - probability equal to `1-x`
-* @returns {number} sum
+* @param {PositiveNumber} ndf - degrees of freedom
+* @param {Probability} u - input probability
+* @returns {number} function value
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function binomialCCDF( n, k, x, y ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var startTerm;</span>
-<span class="cstat-no" title="statement not covered" >	var result;</span>
-<span class="cstat-no" title="statement not covered" >	var start;</span>
-<span class="cstat-no" title="statement not covered" >	var term;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function inverseStudentsTHill( ndf, u ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var a;</span>
+<span class="cstat-no" title="statement not covered" >	var b;</span>
+<span class="cstat-no" title="statement not covered" >	var c;</span>
+<span class="cstat-no" title="statement not covered" >	var d;</span>
+<span class="cstat-no" title="statement not covered" >	var q;</span>
+<span class="cstat-no" title="statement not covered" >	var x;</span>
+<span class="cstat-no" title="statement not covered" >	var y;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	result = pow( x, n );</span>
-<span class="cstat-no" title="statement not covered" >	if ( result &gt; MIN_VALUE ) {</span>
-<span class="cstat-no" title="statement not covered" >		term = result;</span>
-<span class="cstat-no" title="statement not covered" >		for ( i = floor( n - 1 ); i &gt; k; i-- ) {</span>
-<span class="cstat-no" title="statement not covered" >			term *= ((i + 1) * y) / ((n - i) * x);</span>
-<span class="cstat-no" title="statement not covered" >			result += term;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		// First term underflows so we need to start at the mode of the distribution and work outwards:</span>
-<span class="cstat-no" title="statement not covered" >		start = floor( n * x );</span>
-<span class="cstat-no" title="statement not covered" >		if ( start &lt;= k + 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >			start = floor( k + 2 );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		result = pow( x, start ) * pow( y, n - start );</span>
-<span class="cstat-no" title="statement not covered" >		result *= binomcoef( floor(n), floor(start) );</span>
-<span class="cstat-no" title="statement not covered" >		if ( result === 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >			// OK, starting slightly above the mode didn't work, we'll have to sum the terms the old fashioned way:</span>
-<span class="cstat-no" title="statement not covered" >			for ( i = start - 1; i &gt; k; i-- ) {</span>
-<span class="cstat-no" title="statement not covered" >				result += pow( x, i ) * pow( y, n - i );</span>
-<span class="cstat-no" title="statement not covered" >				result *= binomcoef( floor(n), floor(i) );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			term = result;</span>
-<span class="cstat-no" title="statement not covered" >			startTerm = result;</span>
-<span class="cstat-no" title="statement not covered" >			for ( i = start - 1; i &gt; k; i-- ) {</span>
-<span class="cstat-no" title="statement not covered" >				term *= ((i + 1) * y) / ((n - i) * x);</span>
-<span class="cstat-no" title="statement not covered" >				result += term;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			term = startTerm;</span>
-<span class="cstat-no" title="statement not covered" >			for ( i = start + 1; i &lt;= n; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >				term *= (n - i + 1) * x / (i * y);</span>
-<span class="cstat-no" title="statement not covered" >				result += term;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	if ( ndf &gt; 1e20 ) {</span>
+<span class="cstat-no" title="statement not covered" >		return -erfcinv( 2 * u ) * SQRT2;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return result;</span>
+<span class="cstat-no" title="statement not covered" >	a = 1.0 / ( ndf - 0.5 );</span>
+<span class="cstat-no" title="statement not covered" >	b = 48.0 / (a * a);</span>
+<span class="cstat-no" title="statement not covered" >	c = ( ( ( ( (20700.0*a/b) - 98.0 ) * a ) - 16.0 ) * a ) + 96.36;</span>
+<span class="cstat-no" title="statement not covered" >	d = ( ( ( (94.5/(b+c)) - 3.0 ) / b ) + 1.0 ) * sqrt( a * HALF_PI ) * ndf;</span>
+<span class="cstat-no" title="statement not covered" >	y = pow( d * 2.0 * u, 2.0 / ndf );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	if ( y &gt; ( 0.05 + a ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		// Asymptotic inverse expansion about normal:</span>
+<span class="cstat-no" title="statement not covered" >		x = -erfcinv( 2.0 * u ) * SQRT2;</span>
+<span class="cstat-no" title="statement not covered" >		y = x * x;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		if ( ndf &lt; 5.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >			c += 0.3 * ( ndf-4.5 ) * ( x + 0.6 );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		c += ( ( ( ( ( ( (0.05*d*x)-5.0 ) * x ) - 7.0 ) * x )- 2.0 ) * x ) + b;</span>
+<span class="cstat-no" title="statement not covered" >		y = ((((((0.4*y+6.3)*y)+36.0) * y + 94.5) / c - y - 3.0) / b + 1.0) * x;</span>
+<span class="cstat-no" title="statement not covered" >		y = expm1( a * y * y );</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		y = ((1.0 / ( ( (ndf+6.0) / (ndf*y) - 0.089 * d - 0.822 ) *</span>
+<span class="cstat-no" title="statement not covered" >		(ndf+2.0) * 3.0 ) + 0.5 / (ndf+4.0)) * y - 1.0) *</span>
+<span class="cstat-no" title="statement not covered" >		(ndf+1.0) / (ndf+2.0) + 1.0 / y;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	q = sqrt( ndf * y );</span>
+<span class="cstat-no" title="statement not covered" >	return -q;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = binomialCCDF;
+module.exports = inverseStudentsTHill;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -376,7 +376,7 @@ module.exports = binomialCCDF;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-25T08:22:24.428Z
+                at 2025-03-25T08:22:27.070Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
