@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/nonfibonacci/lib/native.js</title>
+    <title>Code coverage report for math/base/special/negalucas/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/nonfibonacci/lib</a> native.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/negalucas/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>75/75</span>
+                <span class='fraction'>93/93</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>75/75</span>
+                <span class='fraction'>93/93</span>
             </div>
         
             
@@ -138,7 +138,25 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -202,12 +220,30 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1103x</span>
-<span class="cline-any cline-yes">1103x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1100x</span>
-<span class="cline-any cline-yes">1103x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">680x</span>
+<span class="cline-any cline-yes">680x</span>
+<span class="cline-any cline-yes">680x</span>
+<span class="cline-any cline-yes">680x</span>
+<span class="cline-any cline-yes">680x</span>
+<span class="cline-any cline-yes">677x</span>
+<span class="cline-any cline-yes">680x</span>
+<span class="cline-any cline-yes">102x</span>
+<span class="cline-any cline-yes">102x</span>
+<span class="cline-any cline-yes">578x</span>
+<span class="cline-any cline-yes">680x</span>
+<span class="cline-any cline-yes">424x</span>
+<span class="cline-any cline-yes">424x</span>
+<span class="cline-any cline-yes">154x</span>
+<span class="cline-any cline-yes">680x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -216,7 +252,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -235,59 +271,77 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isnan = require( '@stdlib/math/base/assert/is-nan' );
 var isInteger = require( '@stdlib/math/base/assert/is-integer' );
-var addon = require( './../src/addon.node' );
+var abs = require( '@stdlib/math/base/special/abs' );
+var MAX_LUCAS = require( '@stdlib/constants/float64/max-safe-nth-lucas' );
+var NEGALUCAS = require( './negalucas.json' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes the nth non-Fibonacci number.
+* Computes the nth negaLucas number.
 *
-* ## References
-*
-* -   Gould, H.W. 1965. "Non-Fibonacci Numbers." _Fibonacci Quarterly_, no. 3: 177–83. &lt;http://www.fq.math.ca/Scanned/3-3/gould.pdf&gt;.
-* -   Farhi, Bakir. 2011. "An explicit formula generating the non-Fibonacci numbers." _arXiv_ abs/1105.1127 \[Math.NT\] (May): 1–5. &lt;https://arxiv.org/abs/1105.1127&gt;.
-*
-* @private
-* @param {NonNegativeInteger} n - the non-Fibonacci number to compute
-* @returns {NonNegativeInteger} non-Fibonacci number
+* @param {NonPositiveInteger} n - the negaLucas number to compute
+* @returns {integer} negaLucas number
 *
 * @example
-* var v = nonfibonacci( 1 );
-* // returns 4
+* var y = negalucas( 0 );
+* // returns 2
 *
 * @example
-* var v = nonfibonacci( 2 );
-* // returns 6
+* var y = negalucas( -1 );
+* // returns -1
 *
 * @example
-* var v = nonfibonacci( 3 );
+* var y = negalucas( -2 );
+* // returns 3
+*
+* @example
+* var y = negalucas( -3 );
+* // returns -4
+*
+* @example
+* var y = negalucas( -4 );
 * // returns 7
 *
 * @example
-* var v = nonfibonacci( NaN );
+* var y = negalucas( -5 );
+* // returns -11
+*
+* @example
+* var y = negalucas( -6 );
+* // returns 18
+*
+* @example
+* var y = negalucas( NaN );
 * // returns NaN
 *
 * @example
-* var v = nonfibonacci( 3.14 );
-* // returns NaN
-*
-* @example
-* var v = nonfibonacci( -1 );
+* var y = negalucas( -3.14 );
 * // returns NaN
 */
-function nonfibonacci( n ) {
-	if ( isInteger( n ) === false ) {
+function negalucas( n ) {
+	var an;
+	if (
+		isnan( n ) ||
+		isInteger( n ) === false ||
+		n &gt; 0
+	) {
 		return NaN;
 	}
-	return addon( n );
+	an = abs( n );
+	if ( an &gt; MAX_LUCAS ) {
+		return NaN;
+	}
+	return NEGALUCAS[ an ];
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = nonfibonacci;
+module.exports = negalucas;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -295,7 +349,7 @@ module.exports = nonfibonacci;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-30T19:32:51.555Z
+                at 2025-03-30T19:32:24.007Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

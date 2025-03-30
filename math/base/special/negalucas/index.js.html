@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/nonfibonacci/lib/native.js</title>
+    <title>Code coverage report for math/base/special/negalucas/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/nonfibonacci/lib</a> native.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/negalucas/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>75/75</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>75/75</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -121,24 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -191,23 +174,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1103x</span>
-<span class="cline-any cline-yes">1103x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1100x</span>
-<span class="cline-any cline-yes">1103x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -216,7 +182,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -233,61 +199,44 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var isInteger = require( '@stdlib/math/base/assert/is-integer' );
-var addon = require( './../src/addon.node' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
 /**
-* Computes the nth non-Fibonacci number.
+* Compute the nth negaLucas number.
 *
-* ## References
-*
-* -   Gould, H.W. 1965. "Non-Fibonacci Numbers." _Fibonacci Quarterly_, no. 3: 177–83. &lt;http://www.fq.math.ca/Scanned/3-3/gould.pdf&gt;.
-* -   Farhi, Bakir. 2011. "An explicit formula generating the non-Fibonacci numbers." _arXiv_ abs/1105.1127 \[Math.NT\] (May): 1–5. &lt;https://arxiv.org/abs/1105.1127&gt;.
-*
-* @private
-* @param {NonNegativeInteger} n - the non-Fibonacci number to compute
-* @returns {NonNegativeInteger} non-Fibonacci number
+* @module @stdlib/math/base/special/negalucas
 *
 * @example
-* var v = nonfibonacci( 1 );
-* // returns 4
+* var negalucas = require( '@stdlib/math/base/special/negalucas' );
 *
-* @example
-* var v = nonfibonacci( 2 );
-* // returns 6
+* var y = negalucas( 0 );
+* // returns 2
 *
-* @example
-* var v = nonfibonacci( 3 );
+* y = negalucas( -1 );
+* // returns -1
+*
+* y = negalucas( -2 );
+* // returns 3
+*
+* y = negalucas( -3 );
+* // returns -4
+*
+* y = negalucas( -4 );
 * // returns 7
 *
-* @example
-* var v = nonfibonacci( NaN );
-* // returns NaN
+* y = negalucas( -5 );
+* // returns -11
 *
-* @example
-* var v = nonfibonacci( 3.14 );
-* // returns NaN
-*
-* @example
-* var v = nonfibonacci( -1 );
-* // returns NaN
+* y = negalucas( -6 );
+* // returns 18
 */
-function nonfibonacci( n ) {
-	if ( isInteger( n ) === false ) {
-		return NaN;
-	}
-	return addon( n );
-}
+&nbsp;
+// MODULES //
+&nbsp;
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = nonfibonacci;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -295,7 +244,7 @@ module.exports = nonfibonacci;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-30T19:32:51.555Z
+                at 2025-03-30T19:32:24.007Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
