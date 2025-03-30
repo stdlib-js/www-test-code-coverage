@@ -1256,7 +1256,7 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we can avoid iteration altogether...</span>
 <span class="cstat-no" title="statement not covered" >	if ( K === 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( x.accessorProtocol || y.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( y.accessorProtocol ) {</span>
 <span class="cstat-no" title="statement not covered" >			return ACCESSOR_UNARY[ K ]( fcn, arr, opts );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return UNARY[ K ]( fcn, arr, opts );</span>
@@ -1309,7 +1309,7 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we only have one loop dimension and can thus readily perform one-dimensional iteration...</span>
 <span class="cstat-no" title="statement not covered" >	if ( K === 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( x.accessorProtocol || y.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( y.accessorProtocol ) {</span>
 <span class="cstat-no" title="statement not covered" >			return ACCESSOR_UNARY[ K ]( fcn, arr, views, sl, opts );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return UNARY[ K ]( fcn, arr, views, sl, opts );</span>
@@ -1329,7 +1329,7 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" >			arr[ j ].strides = [ arr[j].strides[i] ];</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		sl = [ sl[i] ];</span>
-<span class="cstat-no" title="statement not covered" >		if ( x.accessorProtocol || y.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( y.accessorProtocol ) {</span>
 <span class="cstat-no" title="statement not covered" >			return ACCESSOR_UNARY[ 1 ]( fcn, arr, views, sl, opts );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return UNARY[ 1 ]( fcn, arr, views, sl, opts );</span>
@@ -1340,7 +1340,7 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" >	// Determine whether we can avoid blocked iteration...</span>
 <span class="cstat-no" title="statement not covered" >	if ( iox !== 0 &amp;&amp; ioy !== 0 &amp;&amp; iox === ioy &amp;&amp; K &lt;= MAX_DIMS ) {</span>
 <span class="cstat-no" title="statement not covered" >		// So long as iteration for each respective array always moves in the same direction (i.e., no mixed sign strides), we can leverage cache-optimal (i.e., normal) nested loops without resorting to blocked iteration...</span>
-<span class="cstat-no" title="statement not covered" >		if ( x.accessorProtocol || y.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( y.accessorProtocol ) {</span>
 <span class="cstat-no" title="statement not covered" >			return ACCESSOR_UNARY[ K ]( fcn, arr, views, sl, opts );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return UNARY[ K ]( fcn, arr, views, sl, opts );</span>
@@ -1349,13 +1349,13 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we can perform blocked iteration...</span>
 <span class="cstat-no" title="statement not covered" >	if ( K &lt;= MAX_DIMS ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( x.accessorProtocol || y.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( y.accessorProtocol ) {</span>
 <span class="cstat-no" title="statement not covered" >			return BLOCKED_ACCESSOR_UNARY[ K-2 ]( fcn, arr, views, sl, opts );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return BLOCKED_UNARY[ K-2 ]( fcn, arr, views, sl, opts );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Fall-through to linear view iteration without regard for how data is stored in memory (i.e., take the slow path)...</span>
-<span class="cstat-no" title="statement not covered" >	if ( x.accessorProtocol || y.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( y.accessorProtocol ) {</span>
 <span class="cstat-no" title="statement not covered" >		return accessorunarynd( fcn, arr, views, sl, opts );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	unarynd( fcn, arr, views, sl, opts );</span>
@@ -1372,7 +1372,7 @@ module.exports = unaryReduceSubarray;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-30T02:15:18.719Z
+                at 2025-03-30T06:33:48.025Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
