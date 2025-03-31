@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>158/158</span>
+                <span class='fraction'>172/172</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>158/158</span>
+                <span class='fraction'>172/172</span>
             </div>
         
             
@@ -221,7 +221,21 @@
 <a name='L156'></a><a href='#L156'>156</a>
 <a name='L157'></a><a href='#L157'>157</a>
 <a name='L158'></a><a href='#L158'>158</a>
-<a name='L159'></a><a href='#L159'>159</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -295,6 +309,10 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
@@ -328,6 +346,11 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -345,6 +368,11 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -367,12 +395,12 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -459,8 +487,12 @@ function dgttrf( N, DL, sdl, odl, D, sd, od, DU, sdu, odu, DU2, sdu2, odu2, IPIV
 	var idu2;
 	var idu;
 	var idl;
+	var dli;
+	var dui;
 	var id;
 	var ip;
+	var di;
+	var ii;
 	var i;
 &nbsp;
 	// Quick return if possible
@@ -481,51 +513,61 @@ function dgttrf( N, DL, sdl, odl, D, sd, od, DU, sdu, odu, DU2, sdu2, odu2, IPIV
 &nbsp;
 	// Initialise ith element of DU2 as 0
 	for ( i = 0; i &lt; N-2; i++ ) {
-		DU2[ idu + (sdu*i) ] = 0;
+		DU2[ idu + dui ] = 0;
 	}
 &nbsp;
 	for ( i = 0; i &lt; N-2; i++ ) {
-		if ( abs( D[ id + (sd*i) ] ) &gt;= abs( DL[ idl + (sdl*i) ] ) ) { // No row interchange required, eleminate ith element of DL
+		di = sd * i;
+		dli = sdl * i;
+		ii = si * i;
+		dui = sdu * i;
+&nbsp;
+		if ( abs( D[ id + di ] ) &gt;= abs( DL[ idl + dli ] ) ) { // No row interchange required, eleminate ith element of DL
 			if ( D[ id ] !== 0.0 ) {
-				fact = DL[ idl + (sdl*i) ] / D[ id + (sd*i) ];
-				DL[ idl + (sdl*i) ] = fact;
-				D[ id + (sd*(i+1)) ] = D[ id + (sd*(i+1)) ] - ( fact*DU[ idu + (sdu*i) ] ); // eslint-disable-line max-len
+				fact = DL[ idl + dli ] / D[ id + di ];
+				DL[ idl + dli ] = fact;
+				D[ id + di + sd ] = D[ id + di + sd ] - ( fact*DU[ idu + dui ] ); // eslint-disable-line max-len
 			}
 		} else { // Interchange the ith and (i+1)th rows and eliminate ith element of DL
-			fact = D[ id+(sd*i) ] / DL[ idl+(sdl*i) ];
-			D[ id+(sd*i) ] = DL[ idl+(sdl*i) ];
-			DL[ idl+(sdl*i) ] = fact;
-			temp = DU[ idu+(sdu*i) ];
-			DU[ idu+(sdu*i) ] = D[ id + (sd*(i+1)) ];
-			D[ id+(sd*(i+1)) ] = temp - ( fact*D[ id+(sd*(i+1)) ] );
-			DU2[ idu2+(sdu2*i) ] = DU[ idu+(sdu*(i+1)) ];
-			DU[ idu+(sdu*(i+1)) ] = -fact*DU[ idu+(sdu*(i+1)) ];
-			IPIV[ ip+(si*i) ] = i + 1;
+			fact = D[ id + di ] / DL[ idl + dli ];
+			D[ id + di ] = DL[ idl + dli ];
+			DL[ idl + dli ] = fact;
+			temp = DU[ idu + dui ];
+			DU[ idu + dui ] = D[ id + di + sd ];
+			D[ id + di + sd ] = temp - ( fact * D[ id + di + sd ] );
+			DU2[ idu2 + ( sdu2 * i ) ] = DU[ idu + dui + sdu ];
+			DU[ idu + dui + sdu ] = -fact * DU[ idu + dui + sdu ];
+			IPIV[ ip + ii ] = i + 1;
 		}
 	}
 &nbsp;
 	if ( N &gt; 1 ) {
 		i = N - 2;
-		if ( abs( D[ id + (sd*i) ] ) &gt;= abs( DL[ idl + (sdl*i) ] ) ) {
-			if ( D[ id + (sd*i) ] !== 0 ) {
-				fact = DL[ idl + (sdl*i) ] / D[ id + (sd*i) ];
-				DL[ idl + (sdl*i) ] = fact;
-				D[ id + (sd*(i+1)) ] = D[ id + (sd*(i+1)) ] - (fact*DU[ idu + (sdu*i) ]); // eslint-disable-line max-len
+		di = sd * i;
+		dli = sdl * i;
+		ii = si * i;
+		dui = sdu * i;
+&nbsp;
+		if ( abs( D[ id + di ] ) &gt;= abs( DL[ idl + dli ] ) ) {
+			if ( D[ id + di ] !== 0 ) {
+				fact = DL[ idl + dli ] / D[ id + di ];
+				DL[ idl + dli ] = fact;
+				D[ id + di + sd ] = D[ id + di + sd ] - (fact*DU[ idu + dui ]);
 			}
 		} else {
-			fact = D[ id+(sd*i) ] / DL[ idl+(sdl*i) ];
-			D[ id+(sd*i) ] = DL[ idl+(sdl*i) ];
-			DL[ idl+(sdl*i) ] = fact;
-			temp = DU[ idu+(sdu*i) ];
-			DU[ idu+(sdu*i) ] = D[ id + (sd*(i+1)) ];
-			D[ id+(sd*(i+1)) ] = temp - ( fact*D[ id+(sd*(i+1)) ] );
-			IPIV[ ip+(si*i) ] = i + 1;
+			fact = D[ id + di ] / DL[ idl + dli ];
+			D[ id + di ] = DL[ idl + dli ];
+			DL[ idl + dli ] = fact;
+			temp = DU[ idu + dui ];
+			DU[ idu + dui ] = D[ id + di + sd ];
+			D[ id + di + sd ] = temp - ( fact * D[ id + di + sd ] );
+			IPIV[ ip + ii ] = i + 1;
 		}
 	}
 &nbsp;
 	// Check for a 0 on the diagonal of U
 	for ( i = 0; i &lt; N; i++ ) {
-		if ( D[ id+(sd*i) ] === 0.0 ) {
+		if ( D[ sd * i ] === 0.0 ) {
 			return i;
 		}
 	}
@@ -544,7 +586,7 @@ module.exports = dgttrf;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-28T16:23:24.643Z
+                at 2025-03-31T11:06:44.969Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
