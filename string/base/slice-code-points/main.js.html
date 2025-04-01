@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>109/109</span>
+                <span class='fraction'>107/107</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>109/109</span>
+                <span class='fraction'>107/107</span>
             </div>
         
             
@@ -170,9 +170,7 @@
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
 <a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L108'></a><a href='#L108'>108</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -221,39 +219,37 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
@@ -275,7 +271,7 @@
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -321,7 +317,6 @@ var RE_UTF16_HIGH_SURROGATE = /[\uD800-\uDBFF]/; // TODO: replace with stdlib pk
 * @param {string} str - input string
 * @param {integer} start - the `ith` Unicode code point to start a slice (inclusive)
 * @param {integer} end - the `jth` Unicode code point to end a slice (exclusive)
-* @throws {TypeError} must provide exactly 3 arguments
 * @returns {string} output string
 *
 * @example
@@ -351,12 +346,11 @@ function sliceCodePoints( str, start, end ) {
 	}
 	if ( end &lt; 0 ) {
 		end = max( totalCodePoints + end, 0 );
+	} else if ( end &gt; totalCodePoints ) {
+		end = totalCodePoints;
 	}
 	if ( start &gt;= totalCodePoints || end &lt;= start ) {
 		return '';
-	}
-	if ( end &gt; totalCodePoints ) {
-		end = totalCodePoints;
 	}
 	codePoints = '';
 	idx = 0;
@@ -397,7 +391,7 @@ module.exports = sliceCodePoints;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-15T11:10:07.313Z
+                at 2025-04-01T04:52:48.813Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
