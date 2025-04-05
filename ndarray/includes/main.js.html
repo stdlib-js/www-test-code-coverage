@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/unary-reduce-subarray/lib/3d.js</title>
+    <title>Code coverage report for ndarray/includes/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-reduce-subarray/lib</a> 3d.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">ndarray/includes/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.55% </span>
+                <span class="strong">57.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>106/178</span>
+                <span class='fraction'>98/171</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.55% </span>
+                <span class="strong">57.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>106/178</span>
+                <span class='fraction'>98/171</span>
             </div>
         
             
@@ -234,14 +234,7 @@
 <a name='L169'></a><a href='#L169'>169</a>
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a>
-<a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a>
-<a name='L176'></a><a href='#L176'>176</a>
-<a name='L177'></a><a href='#L177'>177</a>
-<a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -334,14 +327,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -441,162 +427,155 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major-string' );
-var incrementOffsets = require( './increment_offsets.js' );
-var setViewOffsets = require( './set_view_offsets.js' );
-var offsets = require( './offsets.js' );
+var isScalarMostlySafeCompatible = require( '@stdlib/ndarray/base/assert/is-scalar-mostly-safe-compatible' ); // eslint-disable-line id-length
+var isMostlySafeCast = require( '@stdlib/ndarray/base/assert/is-mostly-safe-data-type-cast' );
+var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
+var unaryReduceSubarray = require( '@stdlib/ndarray/base/unary-reduce-subarray' );
+var base = require( '@stdlib/ndarray/base/includes' );
+var spreadDimensions = require( '@stdlib/ndarray/base/spread-dimensions' );
+var indicesComplement = require( '@stdlib/array/base/indices-complement' );
+var getShape = require( '@stdlib/ndarray/shape' ); // note: non-base accessor is intentional due to the input array originating in userland
+var getOrder = require( '@stdlib/ndarray/base/order' );
+var getData = require( '@stdlib/ndarray/base/data-buffer' );
+var getStrides = require( '@stdlib/ndarray/base/strides' );
+var getOffset = require( '@stdlib/ndarray/base/offset' );
+var getDType = require( '@stdlib/ndarray/base/dtype' );
+var empty = require( '@stdlib/ndarray/empty' );
+var ndarrayCtor = require( '@stdlib/ndarray/base/ctor' );
+var maybeBroadcastArray = require( '@stdlib/ndarray/base/maybe-broadcast-array' );
+var broadcastScalar = require( '@stdlib/ndarray/base/broadcast-scalar' );
+var reinterpretBoolean = require( '@stdlib/strided/base/reinterpret-boolean' );
+var takeIndexed = require( '@stdlib/array/base/take-indexed' );
+var zeroTo = require( '@stdlib/array/base/zero-to' );
+var objectAssign = require( '@stdlib/object/assign' );
+var format = require( '@stdlib/string/format' );
+var defaults = require( './defaults.json' );
+var validate = require( './validate.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Performs a reduction over an input ndarray and assigns results to a provided output ndarray.
+* Tests whether an ndarray contains a specified value along one or more dimensions.
 *
-* @private
-* @param {Function} fcn - reduction function
-* @param {Array&lt;Object&gt;} arrays - ndarrays
-* @param {Array&lt;Object&gt;} views - initialized ndarray-like objects representing sub-array views
-* @param {IntegerArray} strides - loop dimension strides for the input ndarray
-* @param {Options} opts - function options
-* @returns {void}
+* @param {ndarray} x - input ndarray
+* @param {(ndarray|*)} searchElement - search element
+* @param {Options} [options] - function options
+* @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction
+* @param {boolean} [options.keepdims=false] - boolean indicating whether the reduced dimensions should be included in the returned ndarray as singleton dimensions
+* @throws {TypeError} first argument must be an ndarray-like object
+* @throws {Error} second argument must be broadcast-compatible with the non-reduced dimensions of the input ndarray
+* @throws {TypeError} second argument must have a data type which can be safely cast to the data type of the input ndarray
+* @throws {TypeError} options argument must be an object
+* @throws {RangeError} dimension indices must not exceed input ndarray bounds
+* @throws {RangeError} number of dimension indices must not exceed the number of input ndarray dimensions
+* @throws {Error} must provide valid options
+* @returns {ndarray} output ndarray
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
-* var filled = require( '@stdlib/array/base/filled' );
-* var ndarray2array = require( '@stdlib/ndarray/base/to-array' );
-* var base = require( '@stdlib/ndarray/base/every' );
+* var ndarray = require( '@stdlib/ndarray/ctor' );
 *
-* // Create data buffers:
-* var xbuf = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 0.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0 ] );
-* var ybuf = filled( false, 3 );
+* // Create a data buffer:
+* var xbuf = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0 ] );
 *
-* // Define the array shapes:
-* var xsh = [ 1, 1, 3, 2, 2 ];
-* var ysh = [ 1, 1, 3 ];
+* // Define the shape of the input array:
+* var sh = [ 3, 1, 2 ];
 *
 * // Define the array strides:
-* var sx = [ 12, 12, 4, 2, 1 ];
-* var sy = [ 3, 3, 1 ];
+* var sx = [ 4, 4, 1 ];
 *
-* // Define the index offsets:
-* var ox = 0;
-* var oy = 0;
+* // Define the index offset:
+* var ox = 1;
 *
-* // Create an input ndarray-like object:
-* var x = {
-*     'dtype': 'float64',
-*     'data': xbuf,
-*     'shape': xsh,
-*     'strides': sx,
-*     'offset': ox,
-*     'order': 'row-major'
-* };
+* // Create an input ndarray:
+* var x = new ndarray( 'float64', xbuf, sh, sx, ox, 'row-major' );
 *
-* // Create an output ndarray-like object:
-* var y = {
-*     'dtype': 'generic',
-*     'data': ybuf,
-*     'shape': ysh,
-*     'strides': sy,
-*     'offset': oy,
-*     'order': 'row-major'
-* };
+* // Perform reduction:
+* var out = includes( x, 6.0 );
+* // returns &lt;ndarray&gt;
 *
-* // Initialize ndarray-like objects representing sub-array views:
-* var views = [
-*     {
-*         'dtype': x.dtype,
-*         'data': x.data,
-*         'shape': [ 2, 2 ],
-*         'strides': [ 2, 1 ],
-*         'offset': x.offset,
-*         'order': x.order
-*     }
-* ];
-*
-* // Perform a reduction:
-* unary3d( base, [ x, y ], views, [ 12, 12, 4 ], {} );
-*
-* var arr = ndarray2array( y.data, y.shape, y.strides, y.offset, y.order );
-* // returns [ [ [ true, false, true ] ] ]
+* var v = out.get();
+* // returns true
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function unary3d( fcn, arrays, views, strides, opts ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var ybuf;</span>
-<span class="cstat-no" title="statement not covered" >	var dv0;</span>
-<span class="cstat-no" title="statement not covered" >	var dv1;</span>
-<span class="cstat-no" title="statement not covered" >	var dv2;</span>
-<span class="cstat-no" title="statement not covered" >	var sh;</span>
-<span class="cstat-no" title="statement not covered" >	var S0;</span>
-<span class="cstat-no" title="statement not covered" >	var S1;</span>
-<span class="cstat-no" title="statement not covered" >	var S2;</span>
-<span class="cstat-no" title="statement not covered" >	var sv;</span>
-<span class="cstat-no" title="statement not covered" >	var iv;</span>
-<span class="cstat-no" title="statement not covered" >	var i0;</span>
-<span class="cstat-no" title="statement not covered" >	var i1;</span>
-<span class="cstat-no" title="statement not covered" >	var i2;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function includes( x, searchElement, options ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var opts;</span>
+<span class="cstat-no" title="statement not covered" >	var view;</span>
+<span class="cstat-no" title="statement not covered" >	var err;</span>
+<span class="cstat-no" title="statement not covered" >	var idx;</span>
+<span class="cstat-no" title="statement not covered" >	var shx;</span>
+<span class="cstat-no" title="statement not covered" >	var shy;</span>
+<span class="cstat-no" title="statement not covered" >	var ord;</span>
+<span class="cstat-no" title="statement not covered" >	var dt;</span>
+<span class="cstat-no" title="statement not covered" >	var N;</span>
+<span class="cstat-no" title="statement not covered" >	var v;</span>
 <span class="cstat-no" title="statement not covered" >	var y;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Note on variable naming convention: S#, dv#, i# where # corresponds to the loop number, with `0` being the innermost loop...</span>
+<span class="cstat-no" title="statement not covered" >	if ( !isndarrayLike( x ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be an ndarray-like object. Value: `%s`.', x ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	shx = getShape( x );</span>
+<span class="cstat-no" title="statement not covered" >	N = shx.length;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the output ndarray and associated shape:</span>
-<span class="cstat-no" title="statement not covered" >	y = arrays[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >	sh = y.shape;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Extract loop variables for purposes of loop interchange: dimensions and loop offset (pointer) increments...</span>
-<span class="cstat-no" title="statement not covered" >	if ( isRowMajor( y.order ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		// For row-major ndarrays, the last dimensions have the fastest changing indices...</span>
-<span class="cstat-no" title="statement not covered" >		S0 = sh[ 2 ];</span>
-<span class="cstat-no" title="statement not covered" >		S1 = sh[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >		S2 = sh[ 0 ];</span>
-<span class="cstat-no" title="statement not covered" >		dv0 = [ strides[2] ];                     // offset increment for innermost loop</span>
-<span class="cstat-no" title="statement not covered" >		dv1 = [ strides[1] - ( S0*strides[2] ) ];</span>
-<span class="cstat-no" title="statement not covered" >		dv2 = [ strides[0] - ( S1*strides[1] ) ]; // offset increment for outermost loop</span>
-<span class="cstat-no" title="statement not covered" >		for ( i = 1; i &lt; arrays.length; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			sv = arrays[ i ].strides;</span>
-<span class="cstat-no" title="statement not covered" >			dv0.push( sv[2] );</span>
-<span class="cstat-no" title="statement not covered" >			dv1.push( sv[1] - ( S0*sv[2] ) );</span>
-<span class="cstat-no" title="statement not covered" >			dv2.push( sv[0] - ( S1*sv[1] ) );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else { // order === 'column-major'</span>
-<span class="cstat-no" title="statement not covered" >		// For column-major ndarrays, the first dimensions have the fastest changing indices...</span>
-<span class="cstat-no" title="statement not covered" >		S0 = sh[ 0 ];</span>
-<span class="cstat-no" title="statement not covered" >		S1 = sh[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >		S2 = sh[ 2 ];</span>
-<span class="cstat-no" title="statement not covered" >		dv0 = [ strides[0] ];                     // offset increment for innermost loop</span>
-<span class="cstat-no" title="statement not covered" >		dv1 = [ strides[1] - ( S0*strides[0] ) ];</span>
-<span class="cstat-no" title="statement not covered" >		dv2 = [ strides[2] - ( S1*strides[1] ) ]; // offset increment for outermost loop</span>
-<span class="cstat-no" title="statement not covered" >		for ( i = 1; i &lt; arrays.length; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			sv = arrays[ i ].strides;</span>
-<span class="cstat-no" title="statement not covered" >			dv0.push( sv[0] );</span>
-<span class="cstat-no" title="statement not covered" >			dv1.push( sv[1] - ( S0*sv[0] ) );</span>
-<span class="cstat-no" title="statement not covered" >			dv2.push( sv[2] - ( S1*sv[1] ) );</span>
+<span class="cstat-no" title="statement not covered" >	opts = objectAssign( {}, defaults );</span>
+<span class="cstat-no" title="statement not covered" >	if ( arguments.length &gt; 2 ) {</span>
+<span class="cstat-no" title="statement not covered" >		err = validate( opts, N, options );</span>
+<span class="cstat-no" title="statement not covered" >		if ( err ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw err;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Resolve a list of pointers to the first indexed elements in the respective ndarrays:</span>
-<span class="cstat-no" title="statement not covered" >	iv = offsets( arrays );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Cache a reference to the output ndarray buffer:</span>
-<span class="cstat-no" title="statement not covered" >	ybuf = y.data;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Iterate over the non-reduced ndarray dimensions...</span>
-<span class="cstat-no" title="statement not covered" >	for ( i2 = 0; i2 &lt; S2; i2++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		for ( i1 = 0; i1 &lt; S1; i1++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			for ( i0 = 0; i0 &lt; S0; i0++ ) {</span>
-<span class="cstat-no" title="statement not covered" >				setViewOffsets( views, iv );</span>
-<span class="cstat-no" title="statement not covered" >				ybuf[ iv[1] ] = fcn( views, opts );</span>
-<span class="cstat-no" title="statement not covered" >				incrementOffsets( iv, dv0 );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			incrementOffsets( iv, dv1 );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		incrementOffsets( iv, dv2 );</span>
+<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, reduce the entire input array across all dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	if ( opts.dims === null ) {</span>
+<span class="cstat-no" title="statement not covered" >		opts.dims = zeroTo( N );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the list of non-reduced dimensions:</span>
+<span class="cstat-no" title="statement not covered" >	idx = indicesComplement( N, opts.dims );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the output array shape:</span>
+<span class="cstat-no" title="statement not covered" >	shy = takeIndexed( shx, idx );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Resolve input array meta data:</span>
+<span class="cstat-no" title="statement not covered" >	dt = getDType( x );</span>
+<span class="cstat-no" title="statement not covered" >	ord = getOrder( x );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Determine how to broadcast the search element...</span>
+<span class="cstat-no" title="statement not covered" >	if ( isndarrayLike( searchElement ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isMostlySafeCast( getDType( searchElement ), dt ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Second argument cannot be safely cast to the input array data type. Value: `%s`.', searchElement ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		try {</span>
+<span class="cstat-no" title="statement not covered" >			v = maybeBroadcastArray( searchElement, shy );</span>
+<span class="cstat-no" title="statement not covered" >		} catch ( err ) { // eslint-disable-line no-unused-vars</span>
+<span class="cstat-no" title="statement not covered" >			throw new Error( 'invalid argument. Second argument must be broadcast-compatible with the non-reduced dimensions of the input array.' );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	} else if ( isScalarMostlySafeCompatible( searchElement, dt ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		v = broadcastScalar( searchElement, dt, shy, ord );</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument cannot be safely cast to the input array data type. Value: `%s`.', searchElement ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Initialize an output array whose shape matches that of the non-reduced dimensions and which has the same memory layout as the input array:</span>
+<span class="cstat-no" title="statement not covered" >	y = empty( shy, {</span>
+<span class="cstat-no" title="statement not covered" >		'dtype': 'bool',</span>
+<span class="cstat-no" title="statement not covered" >		'order': ord</span>
+<span class="cstat-no" title="statement not covered" >	});</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Reinterpret the output array as an "indexed" array to ensure faster element access:</span>
+<span class="cstat-no" title="statement not covered" >	view = new ndarrayCtor( 'uint8', reinterpretBoolean( getData( y ), 0 ), shy, getStrides( y, 0 ), getOffset( y ), getOrder( y ) );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Perform the reduction:</span>
+<span class="cstat-no" title="statement not covered" >	unaryReduceSubarray( base, [ x, view, v ], opts.dims );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Check whether we need to reinsert singleton dimensions which can be useful for broadcasting the returned output array to the shape of the original input array...</span>
+<span class="cstat-no" title="statement not covered" >	if ( opts.keepdims ) {</span>
+<span class="cstat-no" title="statement not covered" >		y = spreadDimensions( N, y, idx );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	return y;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = unary3d;
+module.exports = includes;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -604,16 +583,16 @@ module.exports = unary3d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-05T09:26:57.993Z
+                at 2025-04-05T09:27:00.512Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     
