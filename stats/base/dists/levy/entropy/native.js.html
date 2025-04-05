@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/levy/entropy/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/levy/entropy/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/levy/entropy/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/levy/entropy/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>77/77</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>77/77</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -126,28 +126,7 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -204,13 +183,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">109x</span>
 <span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">109x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">100x</span>
 <span class="cline-any cline-yes">109x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -220,7 +192,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -239,25 +211,18 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var ln = require( '@stdlib/math/base/special/ln' );
-var GAMMA = require( '@stdlib/constants/float64/eulergamma' );
-var PI = require( '@stdlib/constants/float64/pi' );
-&nbsp;
-&nbsp;
-// VARIABLES //
-&nbsp;
-var THREE_GAMMA = 3.0 * GAMMA;
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the differential entropy for a Lévy distribution with location `mu` and scale `s`.
+* Returns the differential entropy for a Lévy distribution with location `mu` and scale `c`.
 *
+* @private
 * @param {number} mu - location parameter
 * @param {PositiveNumber} c - scale parameter
-* @returns {number} entropy
+* @returns {PositiveNumber} differential entropy
 *
 * @example
 * var y = entropy( 0.0, 1.0 );
@@ -280,14 +245,7 @@ var THREE_GAMMA = 3.0 * GAMMA;
 * // returns NaN
 */
 function entropy( mu, c ) {
-	if (
-		isnan( mu ) ||
-		isnan( c ) ||
-		c &lt;= 0.0
-	) {
-		return NaN;
-	}
-	return ( 1.0 + THREE_GAMMA + ln( 16.0*c*c*PI ) ) / 2.0;
+	return addon( mu, c );
 }
 &nbsp;
 &nbsp;
