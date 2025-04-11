@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/unary-reduce-subarray/lib/3d.js</title>
+    <title>Code coverage report for ndarray/base/unary-reduce-subarray/lib/3d_accessors.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-reduce-subarray/lib</a> 3d.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-reduce-subarray/lib</a> 3d_accessors.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.55% </span>
+                <span class="strong">59.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>106/178</span>
+                <span class='fraction'>110/186</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.55% </span>
+                <span class="strong">59.13% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>106/178</span>
+                <span class='fraction'>110/186</span>
             </div>
         
             
@@ -241,7 +241,15 @@
 <a name='L176'></a><a href='#L176'>176</a>
 <a name='L177'></a><a href='#L177'>177</a>
 <a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -342,6 +350,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -461,14 +477,16 @@ var offsets = require( './offsets.js' );
 * @returns {void}
 *
 * @example
+* var toAccessorArray = require( '@stdlib/array/base/to-accessor-array' );
+* var accessors = require( '@stdlib/array/base/accessors' );
 * var Float64Array = require( '@stdlib/array/float64' );
 * var filled = require( '@stdlib/array/base/filled' );
 * var ndarray2array = require( '@stdlib/ndarray/base/to-array' );
 * var base = require( '@stdlib/ndarray/base/every' );
 *
 * // Create data buffers:
-* var xbuf = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 0.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0 ] );
-* var ybuf = filled( false, 3 );
+* var xbuf = toAccessorArray( new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 0.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0 ] ) );
+* var ybuf = toAccessorArray( filled( false, 3 ) );
 *
 * // Define the array shapes:
 * var xsh = [ 1, 1, 3, 2, 2 ];
@@ -489,7 +507,8 @@ var offsets = require( './offsets.js' );
 *     'shape': xsh,
 *     'strides': sx,
 *     'offset': ox,
-*     'order': 'row-major'
+*     'order': 'row-major',
+*     'accessors': accessors( xbuf ).accessors
 * };
 *
 * // Create an output ndarray-like object:
@@ -499,7 +518,8 @@ var offsets = require( './offsets.js' );
 *     'shape': ysh,
 *     'strides': sy,
 *     'offset': oy,
-*     'order': 'row-major'
+*     'order': 'row-major',
+*     'accessors': accessors( ybuf ).accessors
 * };
 *
 * // Initialize ndarray-like objects representing sub-array views:
@@ -522,6 +542,7 @@ var offsets = require( './offsets.js' );
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function unary3d( fcn, arrays, views, strides, opts ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var ybuf;</span>
+<span class="cstat-no" title="statement not covered" >	var set;</span>
 <span class="cstat-no" title="statement not covered" >	var dv0;</span>
 <span class="cstat-no" title="statement not covered" >	var dv1;</span>
 <span class="cstat-no" title="statement not covered" >	var dv2;</span>
@@ -558,7 +579,7 @@ var offsets = require( './offsets.js' );
 <span class="cstat-no" title="statement not covered" >			dv1.push( sv[1] - ( S0*sv[2] ) );</span>
 <span class="cstat-no" title="statement not covered" >			dv2.push( sv[0] - ( S1*sv[1] ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else { // order === 'column-major'</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		// For column-major ndarrays, the first dimensions have the fastest changing indices...</span>
 <span class="cstat-no" title="statement not covered" >		S0 = sh[ 0 ];</span>
 <span class="cstat-no" title="statement not covered" >		S1 = sh[ 1 ];</span>
@@ -579,12 +600,15 @@ var offsets = require( './offsets.js' );
 <span class="cstat-no" title="statement not covered" >	// Cache a reference to the output ndarray buffer:</span>
 <span class="cstat-no" title="statement not covered" >	ybuf = y.data;</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Cache accessors:</span>
+<span class="cstat-no" title="statement not covered" >	set = y.accessors[ 1 ];</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Iterate over the non-reduced ndarray dimensions...</span>
 <span class="cstat-no" title="statement not covered" >	for ( i2 = 0; i2 &lt; S2; i2++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		for ( i1 = 0; i1 &lt; S1; i1++ ) {</span>
 <span class="cstat-no" title="statement not covered" >			for ( i0 = 0; i0 &lt; S0; i0++ ) {</span>
 <span class="cstat-no" title="statement not covered" >				setViewOffsets( views, iv );</span>
-<span class="cstat-no" title="statement not covered" >				ybuf[ iv[1] ] = fcn( views, opts );</span>
+<span class="cstat-no" title="statement not covered" >				set( ybuf, iv[ 1 ], fcn( views, opts ) );</span>
 <span class="cstat-no" title="statement not covered" >				incrementOffsets( iv, dv0 );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			incrementOffsets( iv, dv1 );</span>

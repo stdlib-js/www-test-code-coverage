@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/unary-reduce-subarray/lib/3d.js</title>
+    <title>Code coverage report for ndarray/base/unary-reduce-subarray/lib/4d.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-reduce-subarray/lib</a> 3d.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-reduce-subarray/lib</a> 4d.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.55% </span>
+                <span class="strong">55.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>106/178</span>
+                <span class='fraction'>106/190</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.55% </span>
+                <span class="strong">55.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>106/178</span>
+                <span class='fraction'>106/190</span>
             </div>
         
             
@@ -241,7 +241,19 @@
 <a name='L176'></a><a href='#L176'>176</a>
 <a name='L177'></a><a href='#L177'>177</a>
 <a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -342,6 +354,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -471,12 +495,12 @@ var offsets = require( './offsets.js' );
 * var ybuf = filled( false, 3 );
 *
 * // Define the array shapes:
-* var xsh = [ 1, 1, 3, 2, 2 ];
-* var ysh = [ 1, 1, 3 ];
+* var xsh = [ 1, 1, 1, 3, 2, 2 ];
+* var ysh = [ 1, 1, 1, 3 ];
 *
 * // Define the array strides:
-* var sx = [ 12, 12, 4, 2, 1 ];
-* var sy = [ 3, 3, 1 ];
+* var sx = [ 12, 12, 12, 4, 2, 1 ];
+* var sy = [ 3, 3, 3, 1 ];
 *
 * // Define the index offsets:
 * var ox = 0;
@@ -515,25 +539,28 @@ var offsets = require( './offsets.js' );
 * ];
 *
 * // Perform a reduction:
-* unary3d( base, [ x, y ], views, [ 12, 12, 4 ], {} );
+* unary4d( base, [ x, y ], views, [ 12, 12, 12, 4 ], {} );
 *
 * var arr = ndarray2array( y.data, y.shape, y.strides, y.offset, y.order );
-* // returns [ [ [ true, false, true ] ] ]
+* // returns [ [ [ [ true, false, true ] ] ] ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function unary3d( fcn, arrays, views, strides, opts ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function unary4d( fcn, arrays, views, strides, opts ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var ybuf;</span>
 <span class="cstat-no" title="statement not covered" >	var dv0;</span>
 <span class="cstat-no" title="statement not covered" >	var dv1;</span>
 <span class="cstat-no" title="statement not covered" >	var dv2;</span>
+<span class="cstat-no" title="statement not covered" >	var dv3;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" >	var S0;</span>
 <span class="cstat-no" title="statement not covered" >	var S1;</span>
 <span class="cstat-no" title="statement not covered" >	var S2;</span>
+<span class="cstat-no" title="statement not covered" >	var S3;</span>
 <span class="cstat-no" title="statement not covered" >	var sv;</span>
 <span class="cstat-no" title="statement not covered" >	var iv;</span>
 <span class="cstat-no" title="statement not covered" >	var i0;</span>
 <span class="cstat-no" title="statement not covered" >	var i1;</span>
 <span class="cstat-no" title="statement not covered" >	var i2;</span>
+<span class="cstat-no" title="statement not covered" >	var i3;</span>
 <span class="cstat-no" title="statement not covered" >	var y;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -546,31 +573,37 @@ var offsets = require( './offsets.js' );
 <span class="cstat-no" title="statement not covered" >	// Extract loop variables for purposes of loop interchange: dimensions and loop offset (pointer) increments...</span>
 <span class="cstat-no" title="statement not covered" >	if ( isRowMajor( y.order ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		// For row-major ndarrays, the last dimensions have the fastest changing indices...</span>
-<span class="cstat-no" title="statement not covered" >		S0 = sh[ 2 ];</span>
-<span class="cstat-no" title="statement not covered" >		S1 = sh[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >		S2 = sh[ 0 ];</span>
-<span class="cstat-no" title="statement not covered" >		dv0 = [ strides[2] ];                     // offset increment for innermost loop</span>
-<span class="cstat-no" title="statement not covered" >		dv1 = [ strides[1] - ( S0*strides[2] ) ];</span>
-<span class="cstat-no" title="statement not covered" >		dv2 = [ strides[0] - ( S1*strides[1] ) ]; // offset increment for outermost loop</span>
+<span class="cstat-no" title="statement not covered" >		S0 = sh[ 3 ];</span>
+<span class="cstat-no" title="statement not covered" >		S1 = sh[ 2 ];</span>
+<span class="cstat-no" title="statement not covered" >		S2 = sh[ 1 ];</span>
+<span class="cstat-no" title="statement not covered" >		S3 = sh[ 0 ];</span>
+<span class="cstat-no" title="statement not covered" >		dv0 = [ strides[3] ];                     // offset increment for innermost loop</span>
+<span class="cstat-no" title="statement not covered" >		dv1 = [ strides[2] - ( S0*strides[3] ) ];</span>
+<span class="cstat-no" title="statement not covered" >		dv2 = [ strides[1] - ( S1*strides[2] ) ];</span>
+<span class="cstat-no" title="statement not covered" >		dv3 = [ strides[0] - ( S2*strides[1] ) ]; // offset increment for outermost loop</span>
 <span class="cstat-no" title="statement not covered" >		for ( i = 1; i &lt; arrays.length; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >			sv = arrays[ i ].strides;</span>
-<span class="cstat-no" title="statement not covered" >			dv0.push( sv[2] );</span>
-<span class="cstat-no" title="statement not covered" >			dv1.push( sv[1] - ( S0*sv[2] ) );</span>
-<span class="cstat-no" title="statement not covered" >			dv2.push( sv[0] - ( S1*sv[1] ) );</span>
+<span class="cstat-no" title="statement not covered" >			dv0.push( sv[3] );</span>
+<span class="cstat-no" title="statement not covered" >			dv1.push( sv[2] - ( S0*sv[3] ) );</span>
+<span class="cstat-no" title="statement not covered" >			dv2.push( sv[1] - ( S1*sv[2] ) );</span>
+<span class="cstat-no" title="statement not covered" >			dv3.push( sv[0] - ( S2*sv[1]) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	} else { // order === 'column-major'</span>
 <span class="cstat-no" title="statement not covered" >		// For column-major ndarrays, the first dimensions have the fastest changing indices...</span>
 <span class="cstat-no" title="statement not covered" >		S0 = sh[ 0 ];</span>
 <span class="cstat-no" title="statement not covered" >		S1 = sh[ 1 ];</span>
 <span class="cstat-no" title="statement not covered" >		S2 = sh[ 2 ];</span>
+<span class="cstat-no" title="statement not covered" >		S3 = sh[ 3 ];</span>
 <span class="cstat-no" title="statement not covered" >		dv0 = [ strides[0] ];                     // offset increment for innermost loop</span>
 <span class="cstat-no" title="statement not covered" >		dv1 = [ strides[1] - ( S0*strides[0] ) ];</span>
-<span class="cstat-no" title="statement not covered" >		dv2 = [ strides[2] - ( S1*strides[1] ) ]; // offset increment for outermost loop</span>
+<span class="cstat-no" title="statement not covered" >		dv2 = [ strides[2] - ( S1*strides[1] ) ];</span>
+<span class="cstat-no" title="statement not covered" >		dv3 = [ strides[3] - ( S2*strides[2] ) ]; // offset increment for outermost loop</span>
 <span class="cstat-no" title="statement not covered" >		for ( i = 1; i &lt; arrays.length; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >			sv = arrays[ i ].strides;</span>
 <span class="cstat-no" title="statement not covered" >			dv0.push( sv[0] );</span>
 <span class="cstat-no" title="statement not covered" >			dv1.push( sv[1] - ( S0*sv[0] ) );</span>
 <span class="cstat-no" title="statement not covered" >			dv2.push( sv[2] - ( S1*sv[1] ) );</span>
+<span class="cstat-no" title="statement not covered" >			dv3.push( sv[3] - ( S2*sv[2] ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Resolve a list of pointers to the first indexed elements in the respective ndarrays:</span>
@@ -580,23 +613,26 @@ var offsets = require( './offsets.js' );
 <span class="cstat-no" title="statement not covered" >	ybuf = y.data;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Iterate over the non-reduced ndarray dimensions...</span>
-<span class="cstat-no" title="statement not covered" >	for ( i2 = 0; i2 &lt; S2; i2++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		for ( i1 = 0; i1 &lt; S1; i1++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			for ( i0 = 0; i0 &lt; S0; i0++ ) {</span>
-<span class="cstat-no" title="statement not covered" >				setViewOffsets( views, iv );</span>
-<span class="cstat-no" title="statement not covered" >				ybuf[ iv[1] ] = fcn( views, opts );</span>
-<span class="cstat-no" title="statement not covered" >				incrementOffsets( iv, dv0 );</span>
+<span class="cstat-no" title="statement not covered" >	for ( i3 = 0; i3 &lt; S3; i3++ ) {</span>
+<span class="cstat-no" title="statement not covered" >		for ( i2 = 0; i2 &lt; S2; i2++ ) {</span>
+<span class="cstat-no" title="statement not covered" >			for ( i1 = 0; i1 &lt; S1; i1++ ) {</span>
+<span class="cstat-no" title="statement not covered" >				for ( i0 = 0; i0 &lt; S0; i0++ ) {</span>
+<span class="cstat-no" title="statement not covered" >					setViewOffsets( views, iv );</span>
+<span class="cstat-no" title="statement not covered" >					ybuf[ iv[1] ] = fcn( views, opts );</span>
+<span class="cstat-no" title="statement not covered" >					incrementOffsets( iv, dv0 );</span>
+<span class="cstat-no" title="statement not covered" >				}</span>
+<span class="cstat-no" title="statement not covered" >				incrementOffsets( iv, dv1 );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			incrementOffsets( iv, dv1 );</span>
+<span class="cstat-no" title="statement not covered" >			incrementOffsets( iv, dv2 );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		incrementOffsets( iv, dv2 );</span>
+<span class="cstat-no" title="statement not covered" >		incrementOffsets( iv, dv3 );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = unary3d;
+module.exports = unary4d;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
