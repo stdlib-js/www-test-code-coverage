@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/pareto-type1/variance/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/pareto-type1/variance/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/pareto-type1/variance/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/pareto-type1/variance/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>83/83</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>83/83</span>
+                <span class='fraction'>71/71</span>
             </div>
         
             
@@ -134,20 +134,7 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -212,17 +199,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1015x</span>
 <span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1006x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1001x</span>
 <span class="cline-any cline-yes">1015x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -232,7 +208,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -251,9 +227,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var pow = require( '@stdlib/math/base/special/pow' );
-var PINF = require( '@stdlib/constants/float64/pinf' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -261,6 +235,7 @@ var PINF = require( '@stdlib/constants/float64/pinf' );
 /**
 * Returns the variance of a Pareto (Type I) distribution.
 *
+* @private
 * @param {PositiveNumber} alpha - shape parameter
 * @param {PositiveNumber} beta - scale parameter
 * @returns {PositiveNumber} variance
@@ -294,18 +269,7 @@ var PINF = require( '@stdlib/constants/float64/pinf' );
 * // returns NaN
 */
 function variance( alpha, beta ) {
-	if (
-		isnan( alpha ) ||
-		alpha &lt;= 0.0 ||
-		isnan( beta ) ||
-		beta &lt;= 0.0
-	) {
-		return NaN;
-	}
-	if ( alpha &lt; 2.0 ) {
-		return PINF;
-	}
-	return ( beta*beta * alpha ) / ( pow( alpha-1.0, 2.0 ) * ( alpha-2.0 ) );
+	return addon( alpha, beta );
 }
 &nbsp;
 &nbsp;
