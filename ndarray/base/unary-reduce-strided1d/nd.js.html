@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.32% </span>
+                <span class="strong">75.7% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>133/172</span>
+                <span class='fraction'>134/177</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.32% </span>
+                <span class="strong">75.7% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>133/172</span>
+                <span class='fraction'>134/177</span>
             </div>
         
             
@@ -235,7 +235,12 @@
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
 <a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -363,6 +368,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -431,6 +441,7 @@
 &nbsp;
 var numel = require( '@stdlib/ndarray/base/numel' );
 var vind2bind = require( '@stdlib/ndarray/base/vind2bind' );
+var copyIndexed = require( '@stdlib/array/base/copy-indexed' );
 var zeros = require( '@stdlib/array/base/zeros' );
 var setViewOffsets = require( './set_view_offsets.js' );
 var offsets = require( './offsets.js' );
@@ -538,12 +549,13 @@ var MODE = 'throw';
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function unarynd( fcn, arrays, views, strides, strategy, opts ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var ybuf;</span>
 <span class="cstat-no" title="statement not covered" >	var len;</span>
+<span class="cstat-no" title="statement not covered" >	var arr;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" >	var iv;</span>
 <span class="cstat-no" title="statement not covered" >	var io;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
-<span class="cstat-no" title="statement not covered" >	var v;</span>
 <span class="cstat-no" title="statement not covered" >	var y;</span>
+<span class="cstat-no" title="statement not covered" >	var v;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" >	var j;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -559,6 +571,9 @@ var MODE = 'throw';
 <span class="cstat-no" title="statement not covered" >	// Resolve a list of pointers to the first indexed elements in the respective ndarrays:</span>
 <span class="cstat-no" title="statement not covered" >	iv = offsets( arrays );</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Shallow copy the list of views to an internal array so that we can update with reshaped views without impacting the original list of views:</span>
+<span class="cstat-no" title="statement not covered" >	v = copyIndexed( views );</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Cache a reference to the output ndarray buffer:</span>
 <span class="cstat-no" title="statement not covered" >	ybuf = y.data;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -566,12 +581,12 @@ var MODE = 'throw';
 <span class="cstat-no" title="statement not covered" >	io = zeros( N );</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; len; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		for ( j = 0; j &lt; N; j++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			v = arrays[ j ];</span>
-<span class="cstat-no" title="statement not covered" >			io[ j ] = vind2bind( sh, v.strides, iv[ j ], v.order, i, MODE );</span>
+<span class="cstat-no" title="statement not covered" >			arr = arrays[ j ];</span>
+<span class="cstat-no" title="statement not covered" >			io[ j ] = vind2bind( sh, arr.strides, iv[ j ], arr.order, i, MODE );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		setViewOffsets( views, io );</span>
-<span class="cstat-no" title="statement not covered" >		views[ 0 ] = strategy( views[ 0 ] );</span>
-<span class="cstat-no" title="statement not covered" >		ybuf[ io[1] ] = fcn( views, opts );</span>
+<span class="cstat-no" title="statement not covered" >		v[ 0 ] = strategy( views[ 0 ] );</span>
+<span class="cstat-no" title="statement not covered" >		ybuf[ io[1] ] = fcn( v, opts );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -586,7 +601,7 @@ module.exports = unarynd;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-22T09:17:18.970Z
+                at 2025-04-22T20:50:56.907Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
