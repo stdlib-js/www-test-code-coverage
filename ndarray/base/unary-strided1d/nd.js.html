@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.25% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>174/209</span>
+                <span class='fraction'>175/210</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.25% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>174/209</span>
+                <span class='fraction'>175/210</span>
             </div>
         
             
@@ -272,7 +272,9 @@
 <a name='L207'></a><a href='#L207'>207</a>
 <a name='L208'></a><a href='#L208'>208</a>
 <a name='L209'></a><a href='#L209'>209</a>
-<a name='L210'></a><a href='#L210'>210</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -505,6 +507,7 @@
 &nbsp;
 var numel = require( '@stdlib/ndarray/base/numel' );
 var vind2bind = require( '@stdlib/ndarray/base/vind2bind' );
+var copyIndexed = require( '@stdlib/array/base/copy-indexed' );
 var zeros = require( '@stdlib/array/base/zeros' );
 var setViewOffsets = require( './set_view_offsets.js' );
 var offsets = require( './offsets.js' );
@@ -652,18 +655,15 @@ var MODE = 'throw';
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function unarynd( fcn, arrays, views, shape, stridesX, stridesY, strategyX, strategyY, opts ) { // eslint-disable-line max-len</span></span>
 <span class="cstat-no" title="statement not covered" >	var len;</span>
+<span class="cstat-no" title="statement not covered" >	var arr;</span>
 <span class="cstat-no" title="statement not covered" >	var iv;</span>
 <span class="cstat-no" title="statement not covered" >	var io;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
 <span class="cstat-no" title="statement not covered" >	var v;</span>
-<span class="cstat-no" title="statement not covered" >	var y;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" >	var j;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	N = arrays.length;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the output ndarray:</span>
-<span class="cstat-no" title="statement not covered" >	y = arrays[ 1 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Compute the total number of elements over which to iterate:</span>
 <span class="cstat-no" title="statement not covered" >	len = numel( shape );</span>
@@ -671,18 +671,21 @@ var MODE = 'throw';
 <span class="cstat-no" title="statement not covered" >	// Resolve a list of pointers to the first indexed elements in the respective ndarrays:</span>
 <span class="cstat-no" title="statement not covered" >	iv = offsets( arrays );</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Shallow copy the list of views to an internal array so that we can update with reshaped views without impacting the original list of views:</span>
+<span class="cstat-no" title="statement not covered" >	v = copyIndexed( views );</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Iterate based on the linear **view** index, regardless as to how the data is stored in memory...</span>
 <span class="cstat-no" title="statement not covered" >	io = zeros( N );</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; len; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		for ( j = 0; j &lt; N; j++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			v = arrays[ j ];</span>
-<span class="cstat-no" title="statement not covered" >			io[ j ] = vind2bind( shape, v.strides, iv[ j ], v.order, i, MODE );</span>
+<span class="cstat-no" title="statement not covered" >			arr = arrays[ j ];</span>
+<span class="cstat-no" title="statement not covered" >			io[ j ] = vind2bind( shape, arr.strides, iv[ j ], arr.order, i, MODE ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		setViewOffsets( views, io );</span>
-<span class="cstat-no" title="statement not covered" >		views[ 0 ] = strategyX.input( views[ 0 ] );</span>
-<span class="cstat-no" title="statement not covered" >		views[ 1 ] = strategyY.input( views[ 1 ] );</span>
-<span class="cstat-no" title="statement not covered" >		fcn( views, opts );</span>
-<span class="cstat-no" title="statement not covered" >		strategyY.output( y );</span>
+<span class="cstat-no" title="statement not covered" >		v[ 0 ] = strategyX.input( views[ 0 ] );</span>
+<span class="cstat-no" title="statement not covered" >		v[ 1 ] = strategyY.input( views[ 1 ] );</span>
+<span class="cstat-no" title="statement not covered" >		fcn( v, opts );</span>
+<span class="cstat-no" title="statement not covered" >		strategyY.output( views[ 1 ] );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -697,7 +700,7 @@ module.exports = unarynd;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-22T09:17:21.777Z
+                at 2025-04-22T09:49:54.940Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

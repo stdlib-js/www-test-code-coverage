@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.48% </span>
+                <span class="strong">59.79% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>173/286</span>
+                <span class='fraction'>174/291</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.48% </span>
+                <span class="strong">59.79% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>173/286</span>
+                <span class='fraction'>174/291</span>
             </div>
         
             
@@ -349,7 +349,12 @@
 <a name='L284'></a><a href='#L284'>284</a>
 <a name='L285'></a><a href='#L285'>285</a>
 <a name='L286'></a><a href='#L286'>286</a>
-<a name='L287'></a><a href='#L287'>287</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -517,6 +522,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -662,6 +672,7 @@
 var loopOrder = require( '@stdlib/ndarray/base/unary-loop-interchange-order' );
 var blockSize = require( '@stdlib/ndarray/base/unary-tiling-block-size' );
 var takeIndexed = require( '@stdlib/array/base/take-indexed' );
+var copyIndexed = require( '@stdlib/array/base/copy-indexed' );
 var zeros = require( '@stdlib/array/base/zeros' );
 var incrementOffsets = require( './increment_offsets.js' );
 var setViewOffsets = require( './set_view_offsets.js' );
@@ -826,6 +837,7 @@ var offsets = require( './offsets.js' );
 <span class="cstat-no" title="statement not covered" >	var N;</span>
 <span class="cstat-no" title="statement not covered" >	var x;</span>
 <span class="cstat-no" title="statement not covered" >	var y;</span>
+<span class="cstat-no" title="statement not covered" >	var v;</span>
 <span class="cstat-no" title="statement not covered" >	var o;</span>
 <span class="cstat-no" title="statement not covered" >	var k;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -859,6 +871,9 @@ var offsets = require( './offsets.js' );
 <span class="cstat-no" title="statement not covered" >	dv1 = zeros( N );</span>
 <span class="cstat-no" title="statement not covered" >	dv2 = zeros( N );</span>
 <span class="cstat-no" title="statement not covered" >	iv = zeros( N );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Shallow copy the list of views to an internal array so that we can update with reshaped views without impacting the original list of views:</span>
+<span class="cstat-no" title="statement not covered" >	v = copyIndexed( views );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Iterate over blocks...</span>
 <span class="cstat-no" title="statement not covered" >	for ( j2 = sh[2]; j2 &gt; 0; ) {</span>
@@ -902,10 +917,10 @@ var offsets = require( './offsets.js' );
 <span class="cstat-no" title="statement not covered" >					for ( i1 = 0; i1 &lt; s1; i1++ ) {</span>
 <span class="cstat-no" title="statement not covered" >						for ( i0 = 0; i0 &lt; s0; i0++ ) {</span>
 <span class="cstat-no" title="statement not covered" >							setViewOffsets( views, iv );</span>
-<span class="cstat-no" title="statement not covered" >							views[ 0 ] = strategyX.input( views[ 0 ] );</span>
-<span class="cstat-no" title="statement not covered" >							views[ 1 ] = strategyY.input( views[ 1 ] );</span>
-<span class="cstat-no" title="statement not covered" >							fcn( views, opts );</span>
-<span class="cstat-no" title="statement not covered" >							strategyY.output( y );</span>
+<span class="cstat-no" title="statement not covered" >							v[ 0 ] = strategyX.input( views[ 0 ] );</span>
+<span class="cstat-no" title="statement not covered" >							v[ 1 ] = strategyY.input( views[ 1 ] );</span>
+<span class="cstat-no" title="statement not covered" >							fcn( v, opts );</span>
+<span class="cstat-no" title="statement not covered" >							strategyY.output( views[ 1 ] );</span>
 <span class="cstat-no" title="statement not covered" >							incrementOffsets( iv, dv0 );</span>
 <span class="cstat-no" title="statement not covered" >						}</span>
 <span class="cstat-no" title="statement not covered" >						incrementOffsets( iv, dv1 );</span>
@@ -928,7 +943,7 @@ module.exports = blockedunary3d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-22T09:17:21.777Z
+                at 2025-04-22T09:49:54.940Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
