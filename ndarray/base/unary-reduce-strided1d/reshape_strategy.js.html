@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.96% </span>
+                <span class="strong">37.2% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>95/257</span>
+                <span class='fraction'>96/258</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.96% </span>
+                <span class="strong">37.2% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>95/257</span>
+                <span class='fraction'>96/258</span>
             </div>
         
             
@@ -320,7 +320,8 @@
 <a name='L255'></a><a href='#L255'>255</a>
 <a name='L256'></a><a href='#L256'>256</a>
 <a name='L257'></a><a href='#L257'>257</a>
-<a name='L258'></a><a href='#L258'>258</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -381,6 +382,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -643,10 +645,11 @@ var emptyLike = require( '@stdlib/ndarray/base/empty-like' );
 * Returns a function which returns an ndarray view in which the singleton dimensions are removed from an input ndarray having only a single non-singleton dimension.
 *
 * @private
+* @param {ndarrayLike} arr - original ndarray
 * @param {NonNegativeInteger} index - index of the non-singleton dimension
 * @returns {Function} function for returning an ndarray view
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function squeeze( index ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function squeeze( arr, index ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	return reshape;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
@@ -657,12 +660,12 @@ var emptyLike = require( '@stdlib/ndarray/base/empty-like' );
 <span class="cstat-no" title="statement not covered" >	* @returns {ndarrayLike} a squeezed ndarray view</span>
 <span class="cstat-no" title="statement not covered" >	*/</span>
 <span class="cstat-no" title="statement not covered" >	function reshape( x ) {</span>
-<span class="cstat-no" title="statement not covered" >		// NOTE: the following properties must be set in the exact same order as in `x` in order to ensure that the returned object has the same hidden shape as the input ndarray-like object...</span>
+<span class="cstat-no" title="statement not covered" >		// NOTE: the following properties must be set in the exact same order as in `arr` in order to ensure that the returned object has the same hidden shape as the input ndarray-like object...</span>
 <span class="cstat-no" title="statement not covered" >		return {</span>
 <span class="cstat-no" title="statement not covered" >			'dtype': x.dtype,</span>
 <span class="cstat-no" title="statement not covered" >			'data': x.data,</span>
-<span class="cstat-no" title="statement not covered" >			'shape': [ x.shape[ index ] ],</span>
-<span class="cstat-no" title="statement not covered" >			'strides': [ x.strides[ index ] ],</span>
+<span class="cstat-no" title="statement not covered" >			'shape': [ arr.shape[ index ] ],</span>
+<span class="cstat-no" title="statement not covered" >			'strides': [ arr.strides[ index ] ],</span>
 <span class="cstat-no" title="statement not covered" >			'offset': x.offset,</span>
 <span class="cstat-no" title="statement not covered" >			'order': x.order</span>
 <span class="cstat-no" title="statement not covered" >		};</span>
@@ -809,7 +812,7 @@ var emptyLike = require( '@stdlib/ndarray/base/empty-like' );
 <span class="cstat-no" title="statement not covered" >				break;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return squeeze( i );</span>
+<span class="cstat-no" title="statement not covered" >		return squeeze( x, i );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	iox = iterationOrder( x.strides ); // +/-1</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -841,7 +844,7 @@ module.exports = strategy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-21T07:02:47.656Z
+                at 2025-04-22T09:13:46.524Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
