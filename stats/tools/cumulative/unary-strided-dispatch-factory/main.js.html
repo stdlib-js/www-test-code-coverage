@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/tools/reduce/unary-strided-dispatch-factory/lib/main.js</title>
+    <title>Code coverage report for stats/tools/cumulative/unary-strided-dispatch-factory/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">stats/tools/reduce/unary-strided-dispatch-factory/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">stats/tools/cumulative/unary-strided-dispatch-factory/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.25% </span>
+                <span class="strong">62.11% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>98/160</span>
+                <span class='fraction'>100/161</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.25% </span>
+                <span class="strong">62.11% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>98/160</span>
+                <span class='fraction'>100/161</span>
             </div>
         
             
@@ -223,7 +223,8 @@
 <a name='L158'></a><a href='#L158'>158</a>
 <a name='L159'></a><a href='#L159'>159</a>
 <a name='L160'></a><a href='#L160'>160</a>
-<a name='L161'></a><a href='#L161'>161</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -316,7 +317,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -406,15 +408,15 @@
 // MODULES //
 &nbsp;
 var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
-var UnaryStridedDispatch = require( '@stdlib/stats/tools/reduce/unary-strided-dispatch' );
+var UnaryStridedDispatch = require( '@stdlib/stats/tools/cumulative/unary-strided-dispatch' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a function for performing a reduction on a provided ndarray.
+* Returns a function for applying a strided function a provided ndarray.
 *
-* @param {Object} table - dispatch table containing strided array reduction functions
+* @param {Object} table - dispatch table containing strided array functions
 * @param {ArrayLikeObject&lt;StringArray&gt;} idtypes - list containing lists of supported input data types for each ndarray argument
 * @param {StringArray} odtypes - list of supported output data types
 * @param {string} policy - output data type policy
@@ -422,11 +424,12 @@ var UnaryStridedDispatch = require( '@stdlib/stats/tools/reduce/unary-strided-di
 * @throws {TypeError} second argument must be an array containing arrays of supported data types
 * @throws {TypeError} third argument must be an array of supported data types
 * @throws {TypeError} fourth argument must be a supported output data type policy
-* @returns {Function} function for performing a reduction on an ndarray
+* @returns {Function} function for applying a strided function an ndarray
 *
 * @example
-* var base = require( '@stdlib/stats/base/ndarray/max' );
+* var base = require( '@stdlib/stats/base/ndarray/cumax' );
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
+* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
 * var idt = dtypes( 'real_and_generic' );
@@ -436,20 +439,21 @@ var UnaryStridedDispatch = require( '@stdlib/stats/tools/reduce/unary-strided-di
 * var table = {
 *     'default': base
 * };
-* var max = factory( table, [ idt ], odt, policy );
+* var cumax = factory( table, [ idt ], odt, policy );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var y = max( x );
+* var y = cumax( x );
 * // returns &lt;ndarray&gt;
 *
-* var v = y.get();
-* // returns 2.0
+* var arr = ndarray2array( y );
+* // returns [ -1.0, 2.0, 2.0 ]
 *
 * @example
-* var base = require( '@stdlib/stats/base/ndarray/max' );
+* var base = require( '@stdlib/stats/base/ndarray/cumax' );
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
+* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
 * var idt = dtypes( 'real_and_generic' );
@@ -459,19 +463,19 @@ var UnaryStridedDispatch = require( '@stdlib/stats/tools/reduce/unary-strided-di
 * var table = {
 *     'default': base
 * };
-* var max = factory( table, [ idt ], odt, policy );
+* var cumax = factory( table, [ idt ], odt, policy );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var ybuf = [ 0.0 ];
-* var y = new ndarray( 'generic', ybuf, [], [ 0 ], 0, 'row-major' );
+* var ybuf = [ 0.0, 0.0, 0.0 ];
+* var y = new ndarray( 'generic', ybuf, [ ybuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var out = max.assign( x, y );
+* var out = cumax.assign( x, y );
 * // returns &lt;ndarray&gt;
 *
-* var v = out.get();
-* // returns 2.0
+* var arr = ndarray2array( out );
+* // returns [ -1.0, 2.0, 2.0 ]
 *
 * var bool = ( out === y );
 * // returns true
@@ -482,14 +486,13 @@ var UnaryStridedDispatch = require( '@stdlib/stats/tools/reduce/unary-strided-di
 <span class="cstat-no" title="statement not covered" >	return main;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
-<span class="cstat-no" title="statement not covered" >	* Performs a reduction a provided input ndarray.</span>
+<span class="cstat-no" title="statement not covered" >	* Applies a strided function to a provided input ndarray.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
 <span class="cstat-no" title="statement not covered" >	* @private</span>
 <span class="cstat-no" title="statement not covered" >	* @param {ndarrayLike} x - input ndarray</span>
 <span class="cstat-no" title="statement not covered" >	* @param {...ndarrayLike} [args] - additional ndarray arguments</span>
 <span class="cstat-no" title="statement not covered" >	* @param {Options} [options] - function options</span>
-<span class="cstat-no" title="statement not covered" >	* @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction</span>
-<span class="cstat-no" title="statement not covered" >	* @param {boolean} [options.keepdims=false] - boolean indicating whether the reduced dimensions should be included in the returned ndarray as singleton dimensions</span>
+<span class="cstat-no" title="statement not covered" >	* @param {IntegerArray} [options.dims] - list of dimensions over which to perform operation</span>
 <span class="cstat-no" title="statement not covered" >	* @param {string} [options.dtype] - output ndarray data type</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} first argument must be an ndarray-like object</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} options argument must be an object</span>
@@ -510,14 +513,14 @@ var UnaryStridedDispatch = require( '@stdlib/stats/tools/reduce/unary-strided-di
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
-<span class="cstat-no" title="statement not covered" >	* Performs a reduction a provided input ndarray and assigns results to a provided output ndarray.</span>
+<span class="cstat-no" title="statement not covered" >	* Applies a strided function to a provided input ndarray and assigns results to a provided output ndarray.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
 <span class="cstat-no" title="statement not covered" >	* @private</span>
 <span class="cstat-no" title="statement not covered" >	* @param {ndarrayLike} x - input ndarray</span>
 <span class="cstat-no" title="statement not covered" >	* @param {...ndarrayLike} [args] - additional ndarray arguments</span>
 <span class="cstat-no" title="statement not covered" >	* @param {ndarrayLike} out - output ndarray</span>
 <span class="cstat-no" title="statement not covered" >	* @param {Options} [options] - function options</span>
-<span class="cstat-no" title="statement not covered" >	* @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction</span>
+<span class="cstat-no" title="statement not covered" >	* @param {IntegerArray} [options.dims] - list of dimensions over which to perform operation</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} first argument must be an ndarray</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} first argument must have a supported data type</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} output argument must be an ndarray</span>
@@ -550,7 +553,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-23T08:41:08.092Z
+                at 2025-04-23T08:40:57.284Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

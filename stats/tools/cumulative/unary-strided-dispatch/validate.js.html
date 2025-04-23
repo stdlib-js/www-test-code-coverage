@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/tools/reduce/unary-strided-dispatch-factory/lib/index.js</title>
+    <title>Code coverage report for stats/tools/cumulative/unary-strided-dispatch/lib/validate.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">stats/tools/reduce/unary-strided-dispatch-factory/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">stats/tools/cumulative/unary-strided-dispatch/lib</a> validate.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>90/90</span>
+                <span class='fraction'>63/90</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>90/90</span>
+                <span class='fraction'>63/90</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -211,33 +211,33 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -263,76 +263,76 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Create a function for performing a reduction on a provided ndarray.
-*
-* @module @stdlib/stats/tools/reduce/unary-strided-dispatch-factory
-*
-* @example
-* var base = require( '@stdlib/stats/base/ndarray/max' );
-* var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var ndarray = require( '@stdlib/ndarray/base/ctor' );
-* var factory = require( '@stdlib/stats/tools/reduce/unary-strided-dispatch-factory' );
-*
-* var idt = dtypes( 'real_and_generic' );
-* var odt = idt;
-* var policy = 'same';
-*
-* var table = {
-*     'default': base
-* };
-* var max = factory( table, [ idt ], odt, policy );
-*
-* var xbuf = [ -1.0, 2.0, -3.0 ];
-* var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
-*
-* var y = max( x );
-* // returns &lt;ndarray&gt;
-*
-* var v = y.get();
-* // returns 2.0
-*
-* @example
-* var base = require( '@stdlib/stats/base/ndarray/max' );
-* var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var ndarray = require( '@stdlib/ndarray/base/ctor' );
-* var factory = require( '@stdlib/stats/tools/reduce/unary-strided-dispatch-factory' );
-*
-* var idt = dtypes( 'real_and_generic' );
-* var odt = idt;
-* var policy = 'same';
-*
-* var table = {
-*     'default': base
-* };
-* var max = factory( table, [ idt ], odt, policy );
-*
-* var xbuf = [ -1.0, 2.0, -3.0 ];
-* var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
-*
-* var ybuf = [ 0.0 ];
-* var y = new ndarray( 'generic', ybuf, [], [ 0 ], 0, 'row-major' );
-*
-* var out = max.assign( x, y );
-* // returns &lt;ndarray&gt;
-*
-* var v = out.get();
-* // returns 2.0
-*
-* var bool = ( out === y );
-* // returns true
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var main = require( './main.js' );
+var isObject = require( '@stdlib/assert/is-plain-object' );
+var hasOwnProp = require( '@stdlib/assert/has-own-property' );
+var isIntegerArray = require( '@stdlib/assert/is-integer-array' ).primitives;
+var isEmptyCollection = require( '@stdlib/assert/is-empty-collection' );
+var normalizeIndices = require( '@stdlib/ndarray/base/to-unique-normalized-indices' );
+var join = require( '@stdlib/array/base/join' );
+var contains = require( '@stdlib/array/base/assert/contains' );
+var format = require( '@stdlib/string/format' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
+/**
+* Validates function options.
+*
+* @private
+* @param {Object} opts - destination object
+* @param {NonNegativeInteger} ndims - number of input ndarray dimensions
+* @param {Array} dtypes - list of supported output data types
+* @param {Options} options - function options
+* @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction
+* @param {string} [options.dtype] - output ndarray data type
+* @returns {(Error|null)} null or an error object
+*
+* @example
+* var dtypes = [ 'float64', 'float32', 'generic' ];
+*
+* var opts = {};
+* var options = {
+*     'dims': [ 0 ]
+* };
+* var err = validate( opts, 3, dtypes, options );
+* if ( err ) {
+*     throw err;
+* }
+*/
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function validate( opts, ndims, dtypes, options ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var tmp;</span>
+<span class="cstat-no" title="statement not covered" >	if ( !isObject( options ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		return new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', options ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	if ( hasOwnProp( options, 'dims' ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		opts.dims = options.dims;</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isIntegerArray( opts.dims ) &amp;&amp; !isEmptyCollection( opts.dims ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be an array of integers. Option: `%s`.', 'dims', opts.dims ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		tmp = normalizeIndices( opts.dims, ndims-1 );</span>
+<span class="cstat-no" title="statement not covered" >		if ( tmp === null ) {</span>
+<span class="cstat-no" title="statement not covered" >			return new RangeError( format( 'invalid option. `%s` option contains an out-of-bounds dimension index. Option: [%s].', 'dims', join( opts.dims, ',' ) ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		if ( tmp.length !== opts.dims.length ) {</span>
+<span class="cstat-no" title="statement not covered" >			return new Error( format( 'invalid option. `%s` option contains duplicate indices. Option: [%s].', 'dims', join( opts.dims, ',' ) ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		opts.dims = tmp;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	if ( hasOwnProp( options, 'dtype' ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		opts.dtype = options.dtype;</span>
+<span class="cstat-no" title="statement not covered" >		if ( !contains( dtypes, opts.dtype ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be one of the following: "%s". Option: `%s`.', 'dtype', join( dtypes, '", "' ), opts.dtype ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	return null;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
-&nbsp;
-// exports: { "assign": "main.assign" }
+module.exports = validate;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -340,7 +340,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-23T08:41:08.092Z
+                at 2025-04-23T08:40:59.929Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
