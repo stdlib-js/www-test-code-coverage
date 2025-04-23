@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/ndarray/max/lib/main.js</title>
+    <title>Code coverage report for stats/base/ndarray/cumax/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">stats/base/ndarray/max/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">stats/base/ndarray/cumax/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>55/55</span>
+                <span class='fraction'>54/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>55/55</span>
+                <span class='fraction'>54/54</span>
             </div>
         
             
@@ -117,8 +117,7 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -164,10 +163,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -193,41 +191,40 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
-var getStride = require( '@stdlib/ndarray/base/stride' );
-var getOffset = require( '@stdlib/ndarray/base/offset' );
-var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var strided = require( '@stdlib/stats/base/max' ).ndarray;
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
 /**
-* Computes the maximum value of a one-dimensional ndarray.
+* Compute the cumulative maximum value of a one-dimensional ndarray.
 *
-* @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing an input ndarray
-* @returns {number} maximum value
+* @module @stdlib/stats/base/ndarray/cumax
 *
 * @example
+* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
+* var cumax = require( '@stdlib/stats/base/ndarray/cumax' );
 *
 * var xbuf = [ 1.0, 3.0, 4.0, 2.0 ];
 * var x = new ndarray( 'generic', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
 *
-* var v = max( [ x ] );
-* // returns 4.0
+* var ybuf = [ 0.0, 0.0, 0.0, 0.0 ];
+* var y = new ndarray( 'generic', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
+*
+* var v = cumax( [ x, y ] );
+* // returns &lt;ndarray&gt;
+*
+* var bool = ( v === y );
+* // returns true
+*
+* var arr = ndarray2array( v );
+* // returns [ 1.0, 3.0, 4.0, 4.0 ]
 */
-function max( arrays ) {
-	var x = arrays[ 0 ];
-	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
-}
+&nbsp;
+// MODULES //
+&nbsp;
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = max;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -235,7 +232,7 @@ module.exports = max;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-23T05:11:34.241Z
+                at 2025-04-23T05:11:27.070Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
