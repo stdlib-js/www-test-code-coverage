@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.68% </span>
+                <span class="strong">48.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>222/456</span>
+                <span class='fraction'>221/455</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.68% </span>
+                <span class="strong">48.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>222/456</span>
+                <span class='fraction'>221/455</span>
             </div>
         
             
@@ -518,8 +518,7 @@
 <a name='L453'></a><a href='#L453'>453</a>
 <a name='L454'></a><a href='#L454'>454</a>
 <a name='L455'></a><a href='#L455'>455</a>
-<a name='L456'></a><a href='#L456'>456</a>
-<a name='L457'></a><a href='#L457'>457</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L456'></a><a href='#L456'>456</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -592,7 +591,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1053,18 +1051,17 @@ var indexOfTypes = require( './index_of_types.js' );
 * Reorders a list of ndarrays such that the output ndarray is the second ndarray argument when passing along to a resolved lower-level strided function.
 *
 * @private
-* @param {NonNegativeInteger} N - number of ndarrays in `arrays` to reorder
-* @param {Array&lt;ndarray&gt;} arrays - list of ndarrays
+* @param {Array&lt;ndarray&gt;} arrays - list of input ndarrays
 * @param {ndarray} output - output ndarray
 * @returns {Array&lt;ndarray&gt;} reordered list
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function reorder( N, arrays, output ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function reorder( arrays, output ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var out;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" >	var j;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	out = [];</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 0, j = 0; i &lt;= N; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >	for ( i = 0, j = 0; i &lt;= arrays.length; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		if ( i === 1 ) {</span>
 <span class="cstat-no" title="statement not covered" >			out.push( output );</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
@@ -1287,7 +1284,7 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Perform operation:</span>
-<span class="cstat-no" title="statement not covered" >	unaryStrided1d( f, reorder( args.length, args, y ), opts.dims );</span>
+<span class="cstat-no" title="statement not covered" >	unaryStrided1d( f, reorder( args, y ), opts.dims );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
@@ -1390,8 +1387,11 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >	else if ( i &lt; nargs-1 ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Argument %d must be an ndarray-like object. Value: `%s`.', i, arguments[ i ] ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Cache a reference to the output ndarray:</span>
+<span class="cstat-no" title="statement not covered" >	y = args.pop();</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Verify that additional ndarray arguments have expected dtypes (note: we intentionally don't validate the output ndarray dtype in order to provide an escape hatch for a user wanting to have an output ndarray having a specific dtype that `apply` does not support)...</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 1; i &lt; args.length-1; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >	for ( i = 1; i &lt; args.length; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		dt = getDType( args[ i ] );</span>
 <span class="cstat-no" title="statement not covered" >		if ( !contains( this._idtypes[ i ], dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Argument %d must have one of the following data types: "%s". Data type: `%s`.', i, join( this._idtypes[ i ], '", "' ), dt ) );</span>
@@ -1410,9 +1410,6 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >	if ( opts.dims === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.dims = zeroTo( N );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Cache a reference to the output ndarray:</span>
-<span class="cstat-no" title="statement not covered" >	y = args[ args.length-1 ];</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input and output ndarray data types:</span>
 <span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( dt ), resolveEnum( getDType( y ) ) ];</span>
 <span class="cstat-no" title="statement not covered" >	idx = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
@@ -1422,7 +1419,7 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Perform operation:</span>
-<span class="cstat-no" title="statement not covered" >	unaryStrided1d( f, reorder( args.length-1, args, y ), opts.dims ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
+<span class="cstat-no" title="statement not covered" >	unaryStrided1d( f, reorder( args, y ), opts.dims ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
@@ -1438,7 +1435,7 @@ module.exports = UnaryStrided1dDispatch;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-24T07:53:51.773Z
+                at 2025-04-24T07:58:43.750Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
