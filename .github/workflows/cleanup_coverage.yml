@@ -94,9 +94,8 @@ jobs:
       # Find and delete unneeded coverage directories:
       - name: 'Find and delete unneeded coverage directories'
         run: |
-          echo "Current working directory: $(pwd)"
-          echo "Listing top-level directories:"
-          ls -la
+          WORKING_DIR=$(pwd)
+          echo "Current working directory: $WORKING_DIR"
 
           # Find all coverage directories:
           find . \
@@ -131,12 +130,12 @@ jobs:
             if [ -z "$dir" ]; then
               continue
             fi
-            if [ -d "$dir" ]; then
-              rm -r -- "$dir"
-            elif [ -d "./$dir" ]; then
-              rm -r -- "./$dir"
+            full_path="$WORKING_DIR/$dir"
+            if [ -d "$full_path" ]; then
+              echo "Removing directory: $full_path"
+              rm -r -- "$full_path"
             else
-              echo "Warning: Directory not found: $dir"
+              echo "Warning: Directory not found: $full_path"
             fi
           done < dirs_to_remove.txt
 
