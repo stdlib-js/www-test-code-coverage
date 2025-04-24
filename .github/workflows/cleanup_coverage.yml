@@ -139,10 +139,13 @@ jobs:
             fi
           done < dirs_to_remove.txt
 
-          # Perform clean-up:
+    # Perform clean-up
+      - name: 'Perform clean-up'
+        run: |
           rm coverage_dirs.txt
           rm package_dirs.txt
           rm dirs_to_remove.txt
+          rm -rf ./tmp
 
       # Import GPG key to sign commits:
       - name: 'Import GPG key to sign commits'
