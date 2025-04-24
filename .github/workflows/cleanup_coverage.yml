@@ -124,6 +124,9 @@ jobs:
 
           # Delete directories:
           while IFS= read -r dir; do
+            if [ -z "$dir" ]; then
+              continue
+            fi
             if [ -d "$dir" ]; then
               rm -r -- "$dir"
             elif [ -d "./$dir" ]; then
