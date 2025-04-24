@@ -124,8 +124,12 @@ jobs:
 
           # Delete directories:
           while IFS= read -r dir; do
-            if [ -n "$dir" ]; then
+            if [ -d "$dir" ]; then
               rm -r -- "$dir"
+            elif [ -d "./$dir" ]; then
+              rm -r -- "./$dir"
+            else
+              echo "Warning: Directory not found: $dir"
             fi
           done < dirs_to_remove.txt
 
