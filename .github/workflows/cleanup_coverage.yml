@@ -94,6 +94,10 @@ jobs:
       # Find and delete unneeded coverage directories:
       - name: 'Find and delete unneeded coverage directories'
         run: |
+          echo "Current working directory: $(pwd)"
+          echo "Listing top-level directories:"
+          ls -la
+
           # Find all coverage directories:
           find . \
             \( -name .git -prune \) -o \
