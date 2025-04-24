@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/unary-strided1d-dispatch/lib/main.js</title>
+    <title>Code coverage report for ndarray/base/unary-reduce-strided1d-dispatch/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-strided1d-dispatch/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-reduce-strided1d-dispatch/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.78% </span>
+                <span class="strong">47.63% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>221/453</span>
+                <span class='fraction'>222/466</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.78% </span>
+                <span class="strong">47.63% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>221/453</span>
+                <span class='fraction'>222/466</span>
             </div>
         
             
@@ -516,7 +516,20 @@
 <a name='L451'></a><a href='#L451'>451</a>
 <a name='L452'></a><a href='#L452'>452</a>
 <a name='L453'></a><a href='#L453'>453</a>
-<a name='L454'></a><a href='#L454'>454</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L454'></a><a href='#L454'>454</a>
+<a name='L455'></a><a href='#L455'>455</a>
+<a name='L456'></a><a href='#L456'>456</a>
+<a name='L457'></a><a href='#L457'>457</a>
+<a name='L458'></a><a href='#L458'>458</a>
+<a name='L459'></a><a href='#L459'>459</a>
+<a name='L460'></a><a href='#L460'>460</a>
+<a name='L461'></a><a href='#L461'>461</a>
+<a name='L462'></a><a href='#L462'>462</a>
+<a name='L463'></a><a href='#L463'>463</a>
+<a name='L464'></a><a href='#L464'>464</a>
+<a name='L465'></a><a href='#L465'>465</a>
+<a name='L466'></a><a href='#L466'>466</a>
+<a name='L467'></a><a href='#L467'>467</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -579,6 +592,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -614,7 +630,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -829,7 +844,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1004,14 +1030,17 @@ var isFunctionArray = require( '@stdlib/assert/is-function-array' );
 var isDataType = require( '@stdlib/array/base/assert/is-data-type' );
 var isOutputDataTypePolicy = require( '@stdlib/ndarray/base/assert/is-output-data-type-policy' );
 var contains = require( '@stdlib/array/base/assert/contains' );
-var unaryStrided1d = require( '@stdlib/ndarray/base/unary-strided1d' );
+var unaryReduceStrided1d = require( '@stdlib/ndarray/base/unary-reduce-strided1d' );
 var unaryOutputDataType = require( '@stdlib/ndarray/base/unary-output-dtype' );
 var resolveEnum = require( '@stdlib/ndarray/base/dtype-resolve-enum' );
+var spreadDimensions = require( '@stdlib/ndarray/base/spread-dimensions' );
 var getShape = require( '@stdlib/ndarray/shape' ); // note: non-base accessor is intentional due to input ndarrays originating in userland
 var ndims = require( '@stdlib/ndarray/ndims' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var getOrder = require( '@stdlib/ndarray/base/order' );
 var empty = require( '@stdlib/ndarray/empty' );
+var indicesComplement = require( '@stdlib/array/base/indices-complement' );
+var takeIndexed = require( '@stdlib/array/base/take-indexed' );
 var zeroTo = require( '@stdlib/array/base/zero-to' );
 var join = require( '@stdlib/array/base/join' );
 var copy = require( '@stdlib/array/base/copy' );
@@ -1072,13 +1101,13 @@ var indexOfTypes = require( './index_of_types.js' );
 // MAIN //
 &nbsp;
 /**
-* Constructor for applying a strided function to an input ndarray.
+* Constructor for performing a reduction on an input ndarray.
 *
 * @constructor
 * @param {Object} table - dispatch table
-* @param {Function} table.default - default strided function
-* @param {StringArray} [table.types=[]] - one-dimensional list of ndarray data types describing specialized input and output ndarray argument signatures
-* @param {ArrayLikeObject&lt;Function&gt;} [table.fcns=[]] - list of strided functions which are specific to specialized input and output ndarray argument signatures
+* @param {Function} table.default - default strided reduction function
+* @param {StringArray} [table.types=[]] - one-dimensional list of ndarray data types describing specialized input ndarray argument signatures
+* @param {ArrayLikeObject&lt;Function&gt;} [table.fcns=[]] - list of strided reduction functions which are specific to specialized input ndarray argument signatures
 * @param {ArrayLikeObject&lt;StringArray&gt;} idtypes - list containing lists of supported input data types for each ndarray argument
 * @param {StringArray} odtypes - list of supported output data types
 * @param {string} policy - output data type policy
@@ -1090,9 +1119,8 @@ var indexOfTypes = require( './index_of_types.js' );
 * @returns {UnaryStrided1dDispatch} instance
 *
 * @example
-* var base = require( '@stdlib/stats/base/ndarray/cumax' );
+* var base = require( '@stdlib/stats/base/ndarray/max' );
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
 * var idt = dtypes( 'real_and_generic' );
@@ -1102,16 +1130,16 @@ var indexOfTypes = require( './index_of_types.js' );
 * var table = {
 *     'default': base
 * };
-* var cumax = new UnaryStrided1dDispatch( table, [ idt ], odt, policy );
+* var max = new UnaryStrided1dDispatch( table, [ idt ], odt, policy );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var y = cumax.apply( x );
+* var y = max.apply( x );
 * // returns &lt;ndarray&gt;
 *
-* var arr = ndarray2array( y );
-* // returns [ -1.0, 2.0, 2.0 ]
+* var v = y.get();
+* // returns 2.0
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function UnaryStrided1dDispatch( table, idtypes, odtypes, policy ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
@@ -1159,8 +1187,8 @@ var indexOfTypes = require( './index_of_types.js' );
 <span class="cstat-no" title="statement not covered" >		'types': ( table.types ) ? types2enums( table.types ) : [], // note: convert to enums (i.e., integers) to ensure faster comparisons</span>
 <span class="cstat-no" title="statement not covered" >		'fcns': ( table.fcns ) ? copy( table.fcns ) : []</span>
 <span class="cstat-no" title="statement not covered" >	};</span>
-<span class="cstat-no" title="statement not covered" >	if ( this._table.types.length !== this._table.fcns.length*2 ) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new Error( 'invalid argument. First argument specifies an unexpected number of types. A pair of input and output ndarray data types must be specified for each provided strided function.' );</span>
+<span class="cstat-no" title="statement not covered" >	if ( this._table.types.length !== this._table.fcns.length ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new Error( 'invalid argument. First argument specifies an unexpected number of types. An input ndarray data type must be specified for each provided strided reduction function.' );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	this._idtypes = idtypes;</span>
 <span class="cstat-no" title="statement not covered" >	this._odtypes = odtypes;</span>
@@ -1169,7 +1197,7 @@ var indexOfTypes = require( './index_of_types.js' );
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 /**
-* Applies a strided function to a provided input ndarray.
+* Performs a reduction on a provided input ndarray.
 *
 * @name apply
 * @memberof UnaryStrided1dDispatch.prototype
@@ -1177,7 +1205,8 @@ var indexOfTypes = require( './index_of_types.js' );
 * @param {ndarrayLike} x - input ndarray
 * @param {...ndarrayLike} [args] - additional ndarray arguments
 * @param {Options} [options] - function options
-* @param {IntegerArray} [options.dims] - list of dimensions over which to perform an operation
+* @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction
+* @param {boolean} [options.keepdims=false] - boolean indicating whether the reduced dimensions should be included in the returned ndarray as singleton dimensions
 * @param {string} [options.dtype] - output ndarray data type
 * @throws {TypeError} first argument must be an ndarray-like object
 * @throws {TypeError} options argument must be an object
@@ -1187,9 +1216,8 @@ var indexOfTypes = require( './index_of_types.js' );
 * @returns {ndarray} output ndarray
 *
 * @example
-* var base = require( '@stdlib/stats/base/ndarray/cumax' );
+* var base = require( '@stdlib/stats/base/ndarray/max' );
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
 * var idt = dtypes( 'real_and_generic' );
@@ -1199,16 +1227,16 @@ var indexOfTypes = require( './index_of_types.js' );
 * var table = {
 *     'default': base
 * };
-* var cumax = new UnaryStrided1dDispatch( table, [ idt ], odt, policy );
+* var max = new UnaryStrided1dDispatch( table, [ idt ], odt, policy );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var y = cumax.apply( x );
+* var y = max.apply( x );
 * // returns &lt;ndarray&gt;
 *
-* var arr = ndarray2array( y );
-* // returns [ -1.0, 2.0, 2.0 ]
+* var v = y.get();
+* // returns 2.0
 */
 setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" title="function not covered" >function apply( x ) {</span>
 <span class="cstat-no" title="statement not covered" >	var options;</span>
@@ -1217,7 +1245,9 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 <span class="cstat-no" title="statement not covered" >	var args;</span>
 <span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var err;</span>
+<span class="cstat-no" title="statement not covered" >	var idx;</span>
 <span class="cstat-no" title="statement not covered" >	var shx;</span>
+<span class="cstat-no" title="statement not covered" >	var shy;</span>
 <span class="cstat-no" title="statement not covered" >	var arr;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var f;</span>
@@ -1260,32 +1290,42 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 <span class="cstat-no" title="statement not covered" >			throw err;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, apply the strided function across all dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, reduce the entire input array across all dimensions...</span>
 <span class="cstat-no" title="statement not covered" >	if ( opts.dims === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.dims = zeroTo( N );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Initialize an output array whose shape and memory layout matches the input array:</span>
-<span class="cstat-no" title="statement not covered" >	y = empty( shx, {</span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the list of non-reduced dimensions:</span>
+<span class="cstat-no" title="statement not covered" >	idx = indicesComplement( N, opts.dims );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the output array shape:</span>
+<span class="cstat-no" title="statement not covered" >	shy = takeIndexed( shx, idx );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Initialize an output array whose shape matches that of the non-reduced dimensions and which has the same memory layout as the input array:</span>
+<span class="cstat-no" title="statement not covered" >	y = empty( shy, {</span>
 <span class="cstat-no" title="statement not covered" >		'dtype': opts.dtype || unaryOutputDataType( dt, this._policy ),</span>
 <span class="cstat-no" title="statement not covered" >		'order': getOrder( x )</span>
 <span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input and output ndarray data types:</span>
-<span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( dt ), resolveEnum( getDType( y ) ) ];</span>
-<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input ndarray data type:</span>
+<span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( dt ) ];</span>
+<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 1, this._table.types, 1, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.fcns[ i ];</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Perform operation:</span>
-<span class="cstat-no" title="statement not covered" >	unaryStrided1d( f, reorder( args, y ), opts.dims );</span>
+<span class="cstat-no" title="statement not covered" >	// Perform the reduction:</span>
+<span class="cstat-no" title="statement not covered" >	unaryReduceStrided1d( f, reorder( args, y ), opts.dims );</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Check whether we need to reinsert singleton dimensions which can be useful for broadcasting the returned output array to the shape of the original input array...</span>
+<span class="cstat-no" title="statement not covered" >	if ( opts.keepdims ) {</span>
+<span class="cstat-no" title="statement not covered" >		y = spreadDimensions( N, y, idx );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
 &nbsp;
 /**
-* Applies a strided function to a provided input ndarray and assigns results to a provided output ndarray.
+* Performs a reduction on a provided input ndarray and assigns results to a provided output ndarray.
 *
 * @name assign
 * @memberof UnaryStrided1dDispatch.prototype
@@ -1294,7 +1334,7 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 * @param {...ndarrayLike} [args] - additional ndarray arguments
 * @param {ndarrayLike} out - output ndarray
 * @param {Options} [options] - function options
-* @param {IntegerArray} [options.dims] - list of dimensions over which to perform an operation
+* @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction
 * @throws {TypeError} first argument must be an ndarray
 * @throws {TypeError} first argument must have a supported data type
 * @throws {TypeError} output argument must be an ndarray
@@ -1305,9 +1345,8 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 * @returns {ndarrayLike} output ndarray
 *
 * @example
-* var base = require( '@stdlib/stats/base/ndarray/cumax' );
+* var base = require( '@stdlib/stats/base/ndarray/max' );
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
 * var idt = dtypes( 'real_and_generic' );
@@ -1317,19 +1356,19 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 * var table = {
 *     'default': base
 * };
-* var cumax = new UnaryStrided1dDispatch( table, [ idt ], odt, policy );
+* var max = new UnaryStrided1dDispatch( table, [ idt ], odt, policy );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var ybuf = [ 0.0, 0.0, 0.0 ];
-* var y = new ndarray( 'generic', ybuf, [ ybuf.length ], [ 1 ], 0, 'row-major' );
+* var ybuf = [ 0.0 ];
+* var y = new ndarray( 'generic', ybuf, [], [ 0 ], 0, 'row-major' );
 *
-* var out = cumax.assign( x, y );
+* var out = max.assign( x, y );
 * // returns &lt;ndarray&gt;
 *
-* var arr = ndarray2array( y );
-* // returns [ -1.0, 2.0, 2.0 ]
+* var v = out.get();
+* // returns 2.0
 *
 * var bool = ( out === y );
 * // returns true
@@ -1400,20 +1439,20 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >			throw err;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, apply the strided function across all dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, reduce the entire input array across all dimensions...</span>
 <span class="cstat-no" title="statement not covered" >	if ( opts.dims === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.dims = zeroTo( N );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input and output ndarray data types:</span>
-<span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( dt ), resolveEnum( getDType( y ) ) ];</span>
-<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input ndarray data type:</span>
+<span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( dt ) ];</span>
+<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 1, this._table.types, 1, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.fcns[ i ];</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Perform operation:</span>
-<span class="cstat-no" title="statement not covered" >	unaryStrided1d( f, reorder( args, y ), opts.dims ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
+<span class="cstat-no" title="statement not covered" >	// Perform the reduction:</span>
+<span class="cstat-no" title="statement not covered" >	unaryReduceStrided1d( f, reorder( args, y ), opts.dims ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
@@ -1429,7 +1468,7 @@ module.exports = UnaryStrided1dDispatch;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-24T09:54:17.061Z
+                at 2025-04-24T09:54:11.560Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
