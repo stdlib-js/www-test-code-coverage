@@ -124,7 +124,9 @@ jobs:
 
           # Delete directories:
           while IFS= read -r dir; do
-            rm -r -- "$dir"
+            if [ -n "$dir" ]; then
+              rm -r -- "$dir"
+            fi
           done < dirs_to_remove.txt
 
           # Perform clean-up:
