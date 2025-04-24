@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for utils/every-own-by/lib/main.js</title>
+    <title>Code coverage report for object/none-own-by/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">utils/every-own-by/lib</a> main.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">object/none-own-by/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>77/77</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>77/77</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
@@ -138,9 +138,7 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -194,24 +192,22 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -239,52 +235,50 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isObject = require( '@stdlib/assert/is-object' );
-var isFunction = require( '@stdlib/assert/is-function' );
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
+var isFunction = require( '@stdlib/assert/is-function' );
+var isObject = require( '@stdlib/assert/is-object' );
 var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Tests whether all own elements in a collection pass a test implemented by a predicate function.
+* Tests whether every own property of an object fails a test implemented by a predicate function.
 *
 * @param {Object} obj - input object
 * @param {Function} predicate - test function
 * @param {*} [thisArg] - execution context
 * @throws {TypeError} first argument must be an object
 * @throws {TypeError} second argument must be a function
-* @returns {boolean} boolean indicating whether all own elements pass a test
+* @returns {boolean} boolean indicating whether all elements fail a test
 *
 * @example
-* function isPositive( v ) {
-*     return ( v &gt; 0 );
-* }
-*
-* var obj = {
-*     'a': 1,
-*     'b': 2,
-*     'c': 3
+* function isUnderage( age ) {
+*    return ( age &lt; 18 );
 * };
 *
-* var bool = everyOwnBy( obj, isPositive );
-* // returns true
+* var obj = {
+*   'a': 10,
+*   'b': 12,
+*   'c': 15
+* };
+*
+* var bool = noneOwnBy( obj, isUnderage );
+* // returns false
 */
-function everyOwnBy( obj, predicate, thisArg ) {
+function noneOwnBy( obj, predicate, thisArg ) {
 	var key;
+&nbsp;
 	if ( !isObject( obj ) ) {
-		throw new TypeError( format( 'invalid argument. First argument must be an object. Value: `%s`.', obj ) );
+		throw new TypeError( format(' invalid argument. First argument must be an object. Value: `%s`.', obj ) );
 	}
 	if ( !isFunction( predicate ) ) {
 		throw new TypeError( format( 'invalid argument. Second argument must be a function. Value: `%s`.', predicate ) );
 	}
-&nbsp;
 	for ( key in obj ) {
-		if ( hasOwnProp( obj, key ) ) {
-			if ( !predicate.call( thisArg, obj[ key ], key, obj ) ) {
-				return false;
-			}
+		if ( hasOwnProp( obj, key ) &amp;&amp; predicate.call( thisArg, obj[key], key, obj ) ) {
+			return false;
 		}
 	}
 	return true;
@@ -293,7 +287,7 @@ function everyOwnBy( obj, predicate, thisArg ) {
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = everyOwnBy;
+module.exports = noneOwnBy;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -301,7 +295,7 @@ module.exports = everyOwnBy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-24T05:52:38.579Z
+                at 2025-04-24T05:52:36.781Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
