@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.78% </span>
+                <span class="strong">49.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>221/453</span>
+                <span class='fraction'>223/452</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.78% </span>
+                <span class="strong">49.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>221/453</span>
+                <span class='fraction'>223/452</span>
             </div>
         
             
@@ -515,8 +515,7 @@
 <a name='L450'></a><a href='#L450'>450</a>
 <a name='L451'></a><a href='#L451'>451</a>
 <a name='L452'></a><a href='#L452'>452</a>
-<a name='L453'></a><a href='#L453'>453</a>
-<a name='L454'></a><a href='#L454'>454</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L453'></a><a href='#L453'>453</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -579,6 +578,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -598,11 +598,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -829,6 +825,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -882,6 +879,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1016,6 +1014,7 @@ var zeroTo = require( '@stdlib/array/base/zero-to' );
 var join = require( '@stdlib/array/base/join' );
 var copy = require( '@stdlib/array/base/copy' );
 var everyBy = require( '@stdlib/array/base/every-by' );
+var slice = require( '@stdlib/array/base/slice' );
 var objectAssign = require( '@stdlib/object/assign' );
 var format = require( '@stdlib/string/format' );
 var defaults = require( './defaults.json' );
@@ -1044,27 +1043,23 @@ var indexOfTypes = require( './index_of_types.js' );
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 /**
-* Reorders a list of ndarrays such that the output ndarray is the second ndarray argument when passing along to a resolved lower-level strided function.
+* Reorders a list of ndarrays such that the output ndarray is the specified index ndarray argument when passing along to a resolved lower-level strided function.
 *
 * @private
 * @param {Array&lt;ndarray&gt;} arrays - list of input ndarrays
 * @param {ndarray} output - output ndarray
+* @param {NonNegativeInteger} index - specified index
 * @returns {Array&lt;ndarray&gt;} reordered list
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function reorder( arrays, output ) { // TODO: consider replacing with an `array/base/*` utility which expands an input array by inserting a specified value at a specified index and returns a new array</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function reorder( arrays, output, index ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var out;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" >	var j;</span>
+<span class="cstat-no" title="statement not covered" >	var a1;</span>
+<span class="cstat-no" title="statement not covered" >	var a2;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	out = [];</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 0, j = 0; i &lt;= arrays.length; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( i === 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >			out.push( output );</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			out.push( arrays[ j ] );</span>
-<span class="cstat-no" title="statement not covered" >			j += 1;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	a1 = slice( arrays, 0, index );</span>
+<span class="cstat-no" title="statement not covered" >	a2 = slice( arrays, index, arrays.length - 1 );</span>
+<span class="cstat-no" title="statement not covered" >	out = a1.concat( [ output ], a2 );</span>
 <span class="cstat-no" title="statement not covered" >	return out;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -1219,6 +1214,7 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 <span class="cstat-no" title="statement not covered" >	var err;</span>
 <span class="cstat-no" title="statement not covered" >	var shx;</span>
 <span class="cstat-no" title="statement not covered" >	var arr;</span>
+<span class="cstat-no" title="statement not covered" >	var idx;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var f;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
@@ -1272,9 +1268,9 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input and output ndarray data types:</span>
 <span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( dt ), resolveEnum( getDType( y ) ) ];</span>
-<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >	if ( i &gt;= 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		f = this._table.fcns[ i ];</span>
+<span class="cstat-no" title="statement not covered" >	idx = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	if ( idx &gt;= 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		f = this._table.fcns[ idx ];</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -1343,6 +1339,7 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >	var arr;</span>
 <span class="cstat-no" title="statement not covered" >	var err;</span>
 <span class="cstat-no" title="statement not covered" >	var flg;</span>
+<span class="cstat-no" title="statement not covered" >	var idx;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
 <span class="cstat-no" title="statement not covered" >	var f;</span>
@@ -1406,9 +1403,9 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input and output ndarray data types:</span>
 <span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( dt ), resolveEnum( getDType( y ) ) ];</span>
-<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >	if ( i &gt;= 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		f = this._table.fcns[ i ];</span>
+<span class="cstat-no" title="statement not covered" >	idx = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	if ( idx &gt;= 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		f = this._table.fcns[ idx ];</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -1429,7 +1426,7 @@ module.exports = UnaryStrided1dDispatch;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-24T09:54:17.061Z
+                at 2025-04-24T10:14:28.585Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
