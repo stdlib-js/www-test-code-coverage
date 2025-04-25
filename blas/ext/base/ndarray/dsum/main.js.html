@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/ndarray/scumax/lib/main.js</title>
+    <title>Code coverage report for blas/ext/base/ndarray/dsum/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">stats/base/ndarray/scumax/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">blas/ext/base/ndarray/dsum/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
@@ -119,19 +119,7 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -178,22 +166,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -225,48 +201,36 @@ var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
 var getStride = require( '@stdlib/ndarray/base/stride' );
 var getOffset = require( '@stdlib/ndarray/base/offset' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var strided = require( '@stdlib/stats/strided/scumax' ).ndarray;
+var strided = require( '@stdlib/blas/ext/base/dsum' ).ndarray;
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes the cumulative maximum value of a one-dimensional single-precision floating-point ndarray.
+* Computes the sum of all elements in a one-dimensional double-precision floating-point ndarray.
 *
-* @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing an input ndarray and an output ndarray
-* @returns {number} maximum value
+* @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing an input ndarray
+* @returns {number} sum
 *
 * @example
-* var Float32Array = require( '@stdlib/array/float32' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
+* var Float64Array = require( '@stdlib/array/float64' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
-* var xbuf = new Float32Array( [ 1.0, 3.0, 4.0, 2.0 ] );
-* var x = new ndarray( 'float32', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
+* var xbuf = new Float64Array( [ 1.0, 3.0, 4.0, 2.0 ] );
+* var x = new ndarray( 'float64', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
 *
-* var ybuf = new Float32Array( [ 0.0, 0.0, 0.0, 0.0 ] );
-* var y = new ndarray( 'float32', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
-*
-* var v = scumax( [ x, y ] );
-* // returns &lt;ndarray&gt;
-*
-* var bool = ( v === y );
-* // returns true
-*
-* var arr = ndarray2array( v );
-* // returns [ 1.0, 3.0, 4.0, 4.0 ]
+* var v = dsum( [ x ] );
+* // returns 10.0
 */
-function scumax( arrays ) {
+function dsum( arrays ) {
 	var x = arrays[ 0 ];
-	var y = arrays[ 1 ];
-	strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ), getData( y ), getStride( y, 0 ), getOffset( y ) ); // eslint-disable-line max-len
-	return y;
+	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = scumax;
+module.exports = dsum;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -274,16 +238,16 @@ module.exports = scumax;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-25T02:42:44.078Z
+                at 2025-04-25T02:42:30.529Z
             </div>
-        <script src="../../../../../prettify.js"></script>
+        <script src="../../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../../sorter.js"></script>
-        <script src="../../../../../block-navigation.js"></script>
+        <script src="../../../../../../sorter.js"></script>
+        <script src="../../../../../../block-navigation.js"></script>
     </body>
 </html>
     

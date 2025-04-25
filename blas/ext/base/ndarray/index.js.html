@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/ndarray/scumax/lib/main.js</title>
+    <title>Code coverage report for blas/ext/base/ndarray/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">stats/base/ndarray/scumax/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">blas/ext/base/ndarray/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>69/69</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>69/69</span>
             </div>
         
             
@@ -131,7 +131,8 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,12 +189,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -219,54 +221,55 @@
 &nbsp;
 'use strict';
 &nbsp;
+/*
+* When adding modules to the namespace, ensure that they are added in alphabetical order according to module name.
+*/
+&nbsp;
 // MODULES //
 &nbsp;
-var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
-var getStride = require( '@stdlib/ndarray/base/stride' );
-var getOffset = require( '@stdlib/ndarray/base/offset' );
-var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var strided = require( '@stdlib/stats/strided/scumax' ).ndarray;
+var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes the cumulative maximum value of a one-dimensional single-precision floating-point ndarray.
+* Top-level namespace.
 *
-* @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing an input ndarray and an output ndarray
-* @returns {number} maximum value
-*
-* @example
-* var Float32Array = require( '@stdlib/array/float32' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
-* var ndarray = require( '@stdlib/ndarray/base/ctor' );
-*
-* var xbuf = new Float32Array( [ 1.0, 3.0, 4.0, 2.0 ] );
-* var x = new ndarray( 'float32', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
-*
-* var ybuf = new Float32Array( [ 0.0, 0.0, 0.0, 0.0 ] );
-* var y = new ndarray( 'float32', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
-*
-* var v = scumax( [ x, y ] );
-* // returns &lt;ndarray&gt;
-*
-* var bool = ( v === y );
-* // returns true
-*
-* var arr = ndarray2array( v );
-* // returns [ 1.0, 3.0, 4.0, 4.0 ]
+* @namespace ns
 */
-function scumax( arrays ) {
-	var x = arrays[ 0 ];
-	var y = arrays[ 1 ];
-	strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ), getData( y ), getStride( y, 0 ), getOffset( y ) ); // eslint-disable-line max-len
-	return y;
-}
+var ns = {};
+&nbsp;
+/**
+* @name dsum
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/blas/ext/base/ndarray/dsum}
+*/
+setReadOnly( ns, 'dsum', require( '@stdlib/blas/ext/base/ndarray/dsum' ) );
+&nbsp;
+/**
+* @name gsum
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/blas/ext/base/ndarray/gsum}
+*/
+setReadOnly( ns, 'gsum', require( '@stdlib/blas/ext/base/ndarray/gsum' ) );
+&nbsp;
+/**
+* @name ssum
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/blas/ext/base/ndarray/ssum}
+*/
+setReadOnly( ns, 'ssum', require( '@stdlib/blas/ext/base/ndarray/ssum' ) );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = scumax;
+module.exports = ns;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -274,7 +277,7 @@ module.exports = scumax;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-25T02:42:44.078Z
+                at 2025-04-25T02:42:41.738Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
