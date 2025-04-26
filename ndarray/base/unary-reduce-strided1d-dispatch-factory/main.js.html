@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.19% </span>
+                <span class="strong">63.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>102/164</span>
+                <span class='fraction'>110/172</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.19% </span>
+                <span class="strong">63.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>102/164</span>
+                <span class='fraction'>110/172</span>
             </div>
         
             
@@ -227,7 +227,23 @@
 <a name='L162'></a><a href='#L162'>162</a>
 <a name='L163'></a><a href='#L163'>163</a>
 <a name='L164'></a><a href='#L164'>164</a>
-<a name='L165'></a><a href='#L165'>165</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -428,11 +444,13 @@ var UnaryStrided1dDispatch = require( '@stdlib/ndarray/base/unary-reduce-strided
 * @param {ArrayLikeObject&lt;Function&gt;} [table.fcns] - list of strided reduction functions which are specific to specialized input ndarray argument signatures
 * @param {ArrayLikeObject&lt;StringArray&gt;} idtypes - list containing lists of supported input data types for each ndarray argument
 * @param {StringArray} odtypes - list of supported output data types
-* @param {string} policy - output data type policy
+* @param {Object} policies - policies
+* @param {string} policies.output - output data type policy
+* @param {string} policies.casting - input ndarray casting policy
 * @throws {TypeError} first argument must be an object having valid properties
 * @throws {TypeError} second argument must be an array containing arrays of supported data types
 * @throws {TypeError} third argument must be an array of supported data types
-* @throws {TypeError} fourth argument must be a supported output data type policy
+* @throws {TypeError} fourth argument must be an object having supported policies
 * @throws {Error} first argument must be an object having valid properties
 * @returns {Function} function for performing a reduction on an ndarray
 *
@@ -443,12 +461,15 @@ var UnaryStrided1dDispatch = require( '@stdlib/ndarray/base/unary-reduce-strided
 *
 * var idt = dtypes( 'real_and_generic' );
 * var odt = idt;
-* var policy = 'same';
+* var policies = {
+*     'output': 'same',
+*     'casting': 'none'
+* };
 *
 * var table = {
 *     'default': base
 * };
-* var max = factory( table, [ idt ], odt, policy );
+* var max = factory( table, [ idt ], odt, policies );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
@@ -466,12 +487,15 @@ var UnaryStrided1dDispatch = require( '@stdlib/ndarray/base/unary-reduce-strided
 *
 * var idt = dtypes( 'real_and_generic' );
 * var odt = idt;
-* var policy = 'same';
+* var policies = {
+*     'output': 'same',
+*     'casting': 'none'
+* };
 *
 * var table = {
 *     'default': base
 * };
-* var max = factory( table, [ idt ], odt, policy );
+* var max = factory( table, [ idt ], odt, policies );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
@@ -488,8 +512,8 @@ var UnaryStrided1dDispatch = require( '@stdlib/ndarray/base/unary-reduce-strided
 * var bool = ( out === y );
 * // returns true
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function factory( table, idtypes, odtypes, policy ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var f = new UnaryStrided1dDispatch( table, idtypes, odtypes, policy );</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function factory( table, idtypes, odtypes, policies ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var f = new UnaryStrided1dDispatch( table, idtypes, odtypes, policies );</span>
 <span class="cstat-no" title="statement not covered" >	setReadOnly( main, 'assign', assign );</span>
 <span class="cstat-no" title="statement not covered" >	return main;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -562,7 +586,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-24T10:00:00.791Z
+                at 2025-04-26T11:58:57.052Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
