@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.1% </span>
+                <span class="strong">46.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>236/501</span>
+                <span class='fraction'>240/513</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.1% </span>
+                <span class="strong">46.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>236/501</span>
+                <span class='fraction'>240/513</span>
             </div>
         
             
@@ -564,7 +564,19 @@
 <a name='L499'></a><a href='#L499'>499</a>
 <a name='L500'></a><a href='#L500'>500</a>
 <a name='L501'></a><a href='#L501'>501</a>
-<a name='L502'></a><a href='#L502'>502</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L502'></a><a href='#L502'>502</a>
+<a name='L503'></a><a href='#L503'>503</a>
+<a name='L504'></a><a href='#L504'>504</a>
+<a name='L505'></a><a href='#L505'>505</a>
+<a name='L506'></a><a href='#L506'>506</a>
+<a name='L507'></a><a href='#L507'>507</a>
+<a name='L508'></a><a href='#L508'>508</a>
+<a name='L509'></a><a href='#L509'>509</a>
+<a name='L510'></a><a href='#L510'>510</a>
+<a name='L511'></a><a href='#L511'>511</a>
+<a name='L512'></a><a href='#L512'>512</a>
+<a name='L513'></a><a href='#L513'>513</a>
+<a name='L514'></a><a href='#L514'>514</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -717,6 +729,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1184,11 +1208,15 @@ var indexOfTypes = require( './index_of_types.js' );
 * @param {Object} policies - policies
 * @param {string} policies.output - output data type policy
 * @param {string} policies.casting - input ndarray casting policy
+* @param {Options} [options] - function options
+* @param {boolean} [options.strictTraversalOrder=false] - boolean specifying whether to require that element traversal match the memory layout of an input ndarray
 * @throws {TypeError} first argument must be an object having valid properties
+* @throws {Error} first argument must be an object having valid properties
 * @throws {TypeError} second argument must be an array containing arrays of supported data types
 * @throws {TypeError} third argument must be an array of supported data types
 * @throws {TypeError} fourth argument must be an object having supported policies
-* @throws {Error} first argument must be an object having valid properties
+* @throws {TypeError} options argument must be an object
+* @throws {TypeError} must provide valid options
 * @returns {UnaryStrided1dDispatch} instance
 *
 * @example
@@ -1218,10 +1246,13 @@ var indexOfTypes = require( './index_of_types.js' );
 * var arr = ndarray2array( y );
 * // returns [ -1.0, 2.0, 2.0 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function UnaryStrided1dDispatch( table, idtypes, odtypes, policies ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function UnaryStrided1dDispatch( table, idtypes, odtypes, policies, options ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" >	if ( !( this instanceof UnaryStrided1dDispatch ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( arguments.length &gt; 4 ) {</span>
+<span class="cstat-no" title="statement not covered" >			return new UnaryStrided1dDispatch( table, idtypes, odtypes, policies, options ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return new UnaryStrided1dDispatch( table, idtypes, odtypes, policies );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( !isObject( table ) ) {</span>
@@ -1279,6 +1310,11 @@ var indexOfTypes = require( './index_of_types.js' );
 <span class="cstat-no" title="statement not covered" >		'output': policies.output,</span>
 <span class="cstat-no" title="statement not covered" >		'casting': policies.casting</span>
 <span class="cstat-no" title="statement not covered" >	};</span>
+<span class="cstat-no" title="statement not covered" >	if ( arguments.length &gt; 4 ) {</span>
+<span class="cstat-no" title="statement not covered" >		this._apply = unaryStrided1d.factory( options ); // note: delegate options validation to factory method</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		this._apply = unaryStrided1d;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return this;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -1409,7 +1445,7 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Perform operation:</span>
-<span class="cstat-no" title="statement not covered" >	unaryStrided1d( f, reorder( args, y ), opts.dims );</span>
+<span class="cstat-no" title="statement not covered" >	this._apply( f, reorder( args, y ), opts.dims );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
@@ -1557,7 +1593,7 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Perform operation:</span>
-<span class="cstat-no" title="statement not covered" >	unaryStrided1d( f, reorder( args, y ), opts.dims ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
+<span class="cstat-no" title="statement not covered" >	this._apply( f, reorder( args, y ), opts.dims ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
@@ -1573,7 +1609,7 @@ module.exports = UnaryStrided1dDispatch;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-26T22:56:07.913Z
+                at 2025-04-27T23:34:28.284Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

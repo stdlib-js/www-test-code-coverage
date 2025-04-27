@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.73% </span>
+                <span class="strong">63.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>112/173</span>
+                <span class='fraction'>116/182</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.73% </span>
+                <span class="strong">63.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>112/173</span>
+                <span class='fraction'>116/182</span>
             </div>
         
             
@@ -236,7 +236,16 @@
 <a name='L171'></a><a href='#L171'>171</a>
 <a name='L172'></a><a href='#L172'>172</a>
 <a name='L173'></a><a href='#L173'>173</a>
-<a name='L174'></a><a href='#L174'>174</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -343,6 +352,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -449,11 +467,15 @@ var UnaryStrided1dDispatch = require( '@stdlib/ndarray/base/unary-strided1d-disp
 * @param {Object} policies - policies
 * @param {string} policies.output - output data type policy
 * @param {string} policies.casting - input ndarray casting policy
+* @param {Options} [options] - function options
+* @param {boolean} [options.strictTraversalOrder=false] - boolean specifying whether to require that element traversal match the memory layout of an input ndarray
 * @throws {TypeError} first argument must be an object having valid properties
+* @throws {Error} first argument must be an object having valid properties
 * @throws {TypeError} second argument must be an array containing arrays of supported data types
 * @throws {TypeError} third argument must be an array of supported data types
 * @throws {TypeError} fourth argument must be an object having supported policies
-* @throws {Error} first argument must be an object having valid properties
+* @throws {TypeError} options argument must be an object
+* @throws {TypeError} must provide valid options
 * @returns {Function} function for applying a strided function an ndarray
 *
 * @example
@@ -516,8 +538,13 @@ var UnaryStrided1dDispatch = require( '@stdlib/ndarray/base/unary-strided1d-disp
 * var bool = ( out === y );
 * // returns true
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function factory( table, idtypes, odtypes, policies ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var f = new UnaryStrided1dDispatch( table, idtypes, odtypes, policies );</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function factory( table, idtypes, odtypes, policies, options ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var f;</span>
+<span class="cstat-no" title="statement not covered" >	if ( arguments.length &gt; 4 ) {</span>
+<span class="cstat-no" title="statement not covered" >		f = new UnaryStrided1dDispatch( table, idtypes, odtypes, policies, options ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		f = new UnaryStrided1dDispatch( table, idtypes, odtypes, policies );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	setReadOnly( main, 'assign', assign );</span>
 <span class="cstat-no" title="statement not covered" >	return main;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -589,7 +616,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-26T22:56:04.815Z
+                at 2025-04-27T23:34:25.625Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

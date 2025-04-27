@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/unary-strided1d/lib/initialize_array_views.js</title>
+    <title>Code coverage report for ndarray/base/unary-strided1d/lib/validate.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-strided1d/lib</a> initialize_array_views.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-strided1d/lib</a> validate.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.17% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>40/57</span>
+                <span class='fraction'>54/66</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.17% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>40/57</span>
+                <span class='fraction'>54/66</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -120,7 +120,16 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -155,11 +164,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -197,43 +215,52 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var isObject = require( '@stdlib/assert/is-plain-object' );
+var hasOwnProp = require( '@stdlib/assert/has-own-property' );
+var isBoolean = require( '@stdlib/assert/is-boolean' ).isPrimitive;
+var format = require( '@stdlib/string/format' );
+&nbsp;
+&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Initialize ndarray-like objects for representing zero-dimensional sub-array views of ancillary ndarray arguments.
-*
-* ## Notes
-*
-* -   This function ignores the first two ndarray-like objects, which are assumed to be the input and output ndarray, respectively.
-* -   This function mutates the provided output array.
+* Validates function options.
 *
 * @private
-* @param {ArrayLikeObject&lt;Object&gt;} arrays - list of ndarray-like objects
-* @param {Array&lt;Object&gt;} out - output array
-* @returns {Array&lt;Object&gt;} output array
+* @param {Object} opts - destination object
+* @param {Options} options - function options
+* @param {boolean} [options.strictTraversalOrder] - boolean indicating whether the order of element traversal must match the memory layout order of an input ndarray
+* @returns {(Error|null)} null or an error object
+*
+* @example
+* var opts = {};
+* var options = {
+*     'strictTraversalOrder': true
+* };
+* var err = validate( opts, options );
+* if ( err ) {
+*     throw err;
+* }
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function initializeViews( arrays, out ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var v;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 2; i &lt; arrays.length; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		v = arrays[ i ];</span>
-<span class="cstat-no" title="statement not covered" >		out.push({</span>
-<span class="cstat-no" title="statement not covered" >			'dtype': v.dtype,</span>
-<span class="cstat-no" title="statement not covered" >			'data': v.data,</span>
-<span class="cstat-no" title="statement not covered" >			'shape': [],</span>
-<span class="cstat-no" title="statement not covered" >			'strides': [ 0 ],</span>
-<span class="cstat-no" title="statement not covered" >			'offset': v.offset,</span>
-<span class="cstat-no" title="statement not covered" >			'order': v.order</span>
-<span class="cstat-no" title="statement not covered" >		});</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function validate( opts, options ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	if ( !isObject( options ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		return new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', options ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return out;</span>
+<span class="cstat-no" title="statement not covered" >	if ( hasOwnProp( options, 'strictTraversalOrder' ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		opts.strictTraversalOrder = options.strictTraversalOrder;</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isBoolean( opts.strictTraversalOrder ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be a boolean. Option: `%s`.', 'strictTraversalOrder', opts.strictTraversalOrder ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	return null;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = initializeViews;
+module.exports = validate;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
