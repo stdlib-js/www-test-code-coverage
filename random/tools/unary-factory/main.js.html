@@ -717,10 +717,10 @@ var format = require( '@stdlib/string/format' );
 // MAIN //
 &nbsp;
 /**
-* Returns a function for generating pseudorandom numbers drawn from a single-parameter probability distribution.
+* Returns a function for generating pseudorandom values drawn from a unary PRNG.
 *
-* @param {Function} prng - unary pseudorandom number generator
-* @param {Function} prng.factory - method which returns a new unary pseudorandom number generator
+* @param {Function} prng - unary pseudorandom value generator
+* @param {Function} prng.factory - method which returns a new unary pseudorandom value generator
 * @param {StringArray} idtypes - list of supported input data types
 * @param {StringArray} odtypes - list of supported output data types
 * @param {Object} policies - policies
@@ -827,14 +827,14 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	return factory;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
-<span class="cstat-no" title="statement not covered" >	* Returns a function for generating pseudorandom numbers drawn from a single-parameter probability distribution.</span>
+<span class="cstat-no" title="statement not covered" >	* Returns a function for generating pseudorandom values drawn from a unary PRNG.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
 <span class="cstat-no" title="statement not covered" >	* @private</span>
 <span class="cstat-no" title="statement not covered" >	* @param {Options} [options] - function options</span>
 <span class="cstat-no" title="statement not covered" >	* @param {PRNG} [options.prng] - pseudorandom number generator which generates uniformly distributed pseudorandom numbers</span>
-<span class="cstat-no" title="statement not covered" >	* @param {*} [options.seed] - pseudorandom number generator seed</span>
-<span class="cstat-no" title="statement not covered" >	* @param {*} [options.state] - pseudorandom number generator state</span>
-<span class="cstat-no" title="statement not covered" >	* @param {boolean} [options.copy] - boolean indicating whether to copy a provided pseudorandom number generator state</span>
+<span class="cstat-no" title="statement not covered" >	* @param {*} [options.seed] - pseudorandom value generator seed</span>
+<span class="cstat-no" title="statement not covered" >	* @param {*} [options.state] - pseudorandom value generator state</span>
+<span class="cstat-no" title="statement not covered" >	* @param {boolean} [options.copy] - boolean indicating whether to copy a provided pseudorandom value generator state</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} options argument must be an object</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} must provide valid options</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {Error} must provide a valid state</span>
@@ -871,11 +871,11 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		return rand;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		/**</span>
-<span class="cstat-no" title="statement not covered" >		* Returns an ndarray filled with pseudorandom numbers drawn from a single-parameter probability distribution.</span>
+<span class="cstat-no" title="statement not covered" >		* Returns an ndarray filled with pseudorandom values drawn from a unary PRNG.</span>
 <span class="cstat-no" title="statement not covered" >		*</span>
 <span class="cstat-no" title="statement not covered" >		* @private</span>
 <span class="cstat-no" title="statement not covered" >		* @param {NonNegativeIntegerArray} shape - output ndarray shape</span>
-<span class="cstat-no" title="statement not covered" >		* @param {(number|ComplexLike|ndarrayLike)} param1 - distribution parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param1 - PRNG parameter</span>
 <span class="cstat-no" title="statement not covered" >		* @param {Options} [options] - function options</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} [options.dtype] - output data type</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} [options.order] - memory layout (either row-major or column-major)</span>
@@ -883,8 +883,8 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		* @param {StringArray} [options.submode] - specifies how to handle subscripts which exceed ndarray dimensions on a per dimension basis</span>
 <span class="cstat-no" title="statement not covered" >		* @param {boolean} [options.readonly] - boolean indicating whether an ndarray should be read-only</span>
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} first argument must be a valid shape</span>
-<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} must provide valid distribution parameters</span>
-<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} distribution parameters and the desired shape must be broadcast compatible</span>
+<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} must provide valid PRNG parameters</span>
+<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} PRNG parameters and the desired shape must be broadcast compatible</span>
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} options argument must be an object</span>
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} must provide valid options</span>
 <span class="cstat-no" title="statement not covered" >		* @returns {ndarray} output array</span>
@@ -897,14 +897,14 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		/**</span>
-<span class="cstat-no" title="statement not covered" >		* Fills an ndarray with pseudorandom numbers drawn from a single-parameter probability distribution.</span>
+<span class="cstat-no" title="statement not covered" >		* Fills an ndarray with pseudorandom values drawn from a unary PRNG.</span>
 <span class="cstat-no" title="statement not covered" >		*</span>
 <span class="cstat-no" title="statement not covered" >		* @private</span>
-<span class="cstat-no" title="statement not covered" >		* @param {(number|ComplexLike|ndarrayLike)} param1 - distribution parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param1 - PRNG parameter</span>
 <span class="cstat-no" title="statement not covered" >		* @param {ndarrayLike} out - output ndarray</span>
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} second argument must be an ndarray</span>
-<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} must provide valid distribution parameters</span>
-<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} distribution parameters and the output ndarray must be broadcast compatible</span>
+<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} must provide valid PRNG parameters</span>
+<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} PRNG parameters and the output ndarray must be broadcast compatible</span>
 <span class="cstat-no" title="statement not covered" >		* @returns {ndarray} output ndarray</span>
 <span class="cstat-no" title="statement not covered" >		*/</span>
 <span class="cstat-no" title="statement not covered" >		function assign( param1, out ) {</span>
@@ -952,7 +952,7 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		/**</span>
-<span class="cstat-no" title="statement not covered" >		* Returns the current pseudorandom number generator state.</span>
+<span class="cstat-no" title="statement not covered" >		* Returns the current pseudorandom value generator state.</span>
 <span class="cstat-no" title="statement not covered" >		*</span>
 <span class="cstat-no" title="statement not covered" >		* @private</span>
 <span class="cstat-no" title="statement not covered" >		* @returns {*} current state</span>
@@ -962,7 +962,7 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		/**</span>
-<span class="cstat-no" title="statement not covered" >		* Sets the pseudorandom number generator state.</span>
+<span class="cstat-no" title="statement not covered" >		* Sets the pseudorandom value generator state.</span>
 <span class="cstat-no" title="statement not covered" >		*</span>
 <span class="cstat-no" title="statement not covered" >		* @private</span>
 <span class="cstat-no" title="statement not covered" >		* @param {*} s - generator state</span>
@@ -985,7 +985,7 @@ module.exports = createFactory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-01T23:54:25.130Z
+                at 2025-05-02T08:50:19.187Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
