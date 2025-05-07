@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/base/assert/any-has-property/lib/main.js</title>
+    <title>Code coverage report for array/base/assert/any-has-own-property/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">array/base/assert/any-has-property/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">array/base/assert/any-has-own-property/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -274,11 +274,11 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -317,11 +317,11 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -389,13 +389,13 @@
 &nbsp;
 var isAccessorArray = require( '@stdlib/array/base/assert/is-accessor-array' );
 var resolveGetter = require( '@stdlib/array/base/resolve-getter' );
-var hasProp = require( '@stdlib/assert/has-property' );
+var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 &nbsp;
 &nbsp;
 // FUNCTIONS //
 &nbsp;
 /**
-* Tests whether at least one element in a provided indexed array has a specified property, either own or inherited.
+* Tests whether at least one element in a provided indexed array has a specified own property.
 *
 * @private
 * @param {Collection} arr - input array
@@ -420,12 +420,12 @@ var hasProp = require( '@stdlib/assert/has-property' );
 * // returns false
 *
 * bool = indexed( [ o1, o2, o3 ], 'toString' );
-* // returns true
+* // returns false
 */
 function indexed( arr, prop ) {
 	var i;
 	for ( i = 0; i &lt; arr.length; i++ ) {
-		if ( hasProp( arr[ i ], prop ) ) {
+		if ( hasOwnProp( arr[ i ], prop ) ) {
 			return true;
 		}
 	}
@@ -433,7 +433,7 @@ function indexed( arr, prop ) {
 }
 &nbsp;
 /**
-* Tests whether at least one element in a provided accessor array has a specified property, either own or inherited.
+* Tests whether at least one element in a provided accessor array has a specified own property.
 *
 * @private
 * @param {Collection} arr - input array
@@ -460,7 +460,7 @@ function indexed( arr, prop ) {
 * // returns false
 *
 * bool = accessors( toAccessorArray( [ o1, o2, o3 ] ), 'toString' );
-* // returns true
+* // returns false
 */
 function accessors( arr, prop ) {
 	var get;
@@ -468,7 +468,7 @@ function accessors( arr, prop ) {
 &nbsp;
 	get = resolveGetter( arr );
 	for ( i = 0; i &lt; arr.length; i++ ) {
-		if ( hasProp( get( arr, i ), prop ) ) {
+		if ( hasOwnProp( get( arr, i ), prop ) ) {
 			return true;
 		}
 	}
@@ -479,7 +479,7 @@ function accessors( arr, prop ) {
 // MAIN //
 &nbsp;
 /**
-* Tests whether at least one element in a provided array has a specified property, either own or inherited.
+* Tests whether at least one element in a provided array has a specified own property.
 *
 * @param {Collection} arr - input array
 * @param {(string|symbol)} prop - property
@@ -496,16 +496,16 @@ function accessors( arr, prop ) {
 *     'c': 3
 * };
 *
-* var bool = anyHasProp( [ o1, o2, o3 ], 'b' );
+* var bool = anyHasOwnProp( [ o1, o2, o3 ], 'b' );
 * // returns true
 *
-* bool = anyHasProp( [ o1, o2, o3 ], 'd' );
+* bool = anyHasOwnProp( [ o1, o2, o3 ], 'd' );
 * // returns false
 *
-* bool = anyHasProp( [ o1, o2, o3 ], 'toString' );
-* // returns true
+* bool = anyHasOwnProp( [ o1, o2, o3 ], 'toString' );
+* // returns false
 */
-function anyHasProp( arr, prop ) {
+function anyHasOwnProp( arr, prop ) {
 	if ( isAccessorArray( arr ) ) {
 		return accessors( arr, prop );
 	}
@@ -515,7 +515,7 @@ function anyHasProp( arr, prop ) {
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = anyHasProp;
+module.exports = anyHasOwnProp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -523,7 +523,7 @@ module.exports = anyHasProp;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-07T03:48:50.500Z
+                at 2025-05-07T03:48:48.011Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
