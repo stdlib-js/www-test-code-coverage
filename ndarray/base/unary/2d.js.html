@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">94.8% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>158/158</span>
+                <span class='fraction'>146/154</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">94.8% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>158/158</span>
+                <span class='fraction'>146/154</span>
             </div>
         
             
@@ -217,15 +217,7 @@
 <a name='L152'></a><a href='#L152'>152</a>
 <a name='L153'></a><a href='#L153'>153</a>
 <a name='L154'></a><a href='#L154'>154</a>
-<a name='L155'></a><a href='#L155'>155</a>
-<a name='L156'></a><a href='#L156'>156</a>
-<a name='L157'></a><a href='#L157'>157</a>
-<a name='L158'></a><a href='#L158'>158</a>
-<a name='L159'></a><a href='#L159'>159</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
+<a name='L155'></a><a href='#L155'>155</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
@@ -339,22 +331,22 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -399,11 +391,6 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var strides2order = require( '@stdlib/ndarray/base/strides2order' );
-&nbsp;
-&nbsp;
 // MAIN //
 &nbsp;
 /**
@@ -424,6 +411,7 @@ var strides2order = require( '@stdlib/ndarray/base/strides2order' );
 * @param {IntegerArray} y.strides - stride lengths
 * @param {NonNegativeInteger} y.offset - index offset
 * @param {string} y.order - specifies whether `y` is row-major (C-style) or column-major (Fortran-style)
+* @param {boolean} isRowMajor - boolean indicating if provided arrays are in row-major order
 * @param {Callback} fcn - unary callback
 * @returns {void}
 *
@@ -468,12 +456,12 @@ var strides2order = require( '@stdlib/ndarray/base/strides2order' );
 * };
 *
 * // Apply the unary function:
-* unary2d( x, y, scale );
+* unary2d( x, y, true, scale );
 *
 * console.log( y.data );
 * // =&gt; &lt;Float64Array&gt;[ 20.0, 30.0, 60.0, 70.0 ]
 */
-function unary2d( x, y, fcn ) {
+function unary2d( x, y, isRowMajor, fcn ) {
 	var xbuf;
 	var ybuf;
 	var dx0;
@@ -496,7 +484,7 @@ function unary2d( x, y, fcn ) {
 	sh = x.shape;
 	sx = x.strides;
 	sy = y.strides;
-	if ( strides2order( sx ) === 1 ) {
+	if ( isRowMajor ) {
 		// For row-major ndarrays, the last dimensions have the fastest changing indices...
 		S0 = sh[ 1 ];
 		S1 = sh[ 0 ];
@@ -504,15 +492,15 @@ function unary2d( x, y, fcn ) {
 		dx1 = sx[ 0 ] - ( S0*sx[1] ); // offset increment for outermost loop
 		dy0 = sy[ 1 ];
 		dy1 = sy[ 0 ] - ( S0*sy[1] );
-	} else { // order === 'column-major'
-		// For column-major ndarrays, the first dimensions have the fastest changing indices...
-		S0 = sh[ 0 ];
-		S1 = sh[ 1 ];
-		dx0 = sx[ 0 ];                // offset increment for innermost loop
-		dx1 = sx[ 1 ] - ( S0*sx[0] ); // offset increment for outermost loop
-		dy0 = sy[ 0 ];
-		dy1 = sy[ 1 ] - ( S0*sy[0] );
-	}
+	}<span class="branch-0 cbranch-no" title="branch not covered" > else { // order === 'column-major'</span>
+<span class="cstat-no" title="statement not covered" >		// For column-major ndarrays, the first dimensions have the fastest changing indices...</span>
+<span class="cstat-no" title="statement not covered" >		S0 = sh[ 0 ];</span>
+<span class="cstat-no" title="statement not covered" >		S1 = sh[ 1 ];</span>
+<span class="cstat-no" title="statement not covered" >		dx0 = sx[ 0 ];                // offset increment for innermost loop</span>
+<span class="cstat-no" title="statement not covered" >		dx1 = sx[ 1 ] - ( S0*sx[0] ); // offset increment for outermost loop</span>
+<span class="cstat-no" title="statement not covered" >		dy0 = sy[ 0 ];</span>
+<span class="cstat-no" title="statement not covered" >		dy1 = sy[ 1 ] - ( S0*sy[0] );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	// Set the pointers to the first indexed elements in the respective ndarrays...
 	ix = x.offset;
 	iy = y.offset;
@@ -544,7 +532,7 @@ module.exports = unary2d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-08T02:52:08.893Z
+                at 2025-05-08T05:38:55.294Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

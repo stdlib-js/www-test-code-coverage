@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.38% </span>
+                <span class="strong">58.04% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>202/346</span>
+                <span class='fraction'>202/348</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.38% </span>
+                <span class="strong">58.04% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>202/346</span>
+                <span class='fraction'>202/348</span>
             </div>
         
             
@@ -409,7 +409,9 @@
 <a name='L344'></a><a href='#L344'>344</a>
 <a name='L345'></a><a href='#L345'>345</a>
 <a name='L346'></a><a href='#L346'>346</a>
-<a name='L347'></a><a href='#L347'>347</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L347'></a><a href='#L347'>347</a>
+<a name='L348'></a><a href='#L348'>348</a>
+<a name='L349'></a><a href='#L349'>349</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -606,6 +608,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -961,6 +965,7 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" >	var iox;</span>
 <span class="cstat-no" title="statement not covered" >	var ioy;</span>
 <span class="cstat-no" title="statement not covered" >	var len;</span>
+<span class="cstat-no" title="statement not covered" >	var ord;</span>
 <span class="cstat-no" title="statement not covered" >	var sx;</span>
 <span class="cstat-no" title="statement not covered" >	var sy;</span>
 <span class="cstat-no" title="statement not covered" >	var ox;</span>
@@ -1040,7 +1045,8 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" >	ioy = iterationOrder( sy ); // +/-1</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we can avoid blocked iteration...</span>
-<span class="cstat-no" title="statement not covered" >	if ( iox !== 0 &amp;&amp; ioy !== 0 &amp;&amp; strides2order( sx ) === strides2order( sy ) ) { // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	ord = strides2order( sx );</span>
+<span class="cstat-no" title="statement not covered" >	if ( iox !== 0 &amp;&amp; ioy !== 0 &amp;&amp; ord === strides2order( sy ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		// Determine the minimum and maximum linear indices which are accessible by the array views:</span>
 <span class="cstat-no" title="statement not covered" >		xmmv = minmaxViewBufferIndex( shx, sx, x.offset );</span>
 <span class="cstat-no" title="statement not covered" >		ymmv = minmaxViewBufferIndex( shy, sy, y.offset );</span>
@@ -1075,9 +1081,9 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" >		if ( ndims &lt;= MAX_DIMS ) {</span>
 <span class="cstat-no" title="statement not covered" >			// So long as iteration for each respective array always moves in the same direction (i.e., no mixed sign strides), we can leverage cache-optimal (i.e., normal) nested loops without resorting to blocked iteration...</span>
 <span class="cstat-no" title="statement not covered" >			if ( x.accessorProtocol || y.accessorProtocol ) {</span>
-<span class="cstat-no" title="statement not covered" >				return ACCESSOR_UNARY[ ndims ]( x, y, fcn, clbk, thisArg );</span>
+<span class="cstat-no" title="statement not covered" >				return ACCESSOR_UNARY[ ndims ]( x, y, ord, fcn, clbk, thisArg );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			return UNARY[ ndims ]( x, y, fcn, clbk, thisArg );</span>
+<span class="cstat-no" title="statement not covered" >			return UNARY[ ndims ]( x, y, ord, fcn, clbk, thisArg );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Fall-through to blocked iteration...</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -1108,7 +1114,7 @@ module.exports = unaryBy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-08T02:51:53.507Z
+                at 2025-05-08T05:38:39.627Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
