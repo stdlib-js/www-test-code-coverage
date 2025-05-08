@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.19% </span>
+                <span class="strong">51.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>171/334</span>
+                <span class='fraction'>171/330</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.19% </span>
+                <span class="strong">51.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>171/334</span>
+                <span class='fraction'>171/330</span>
             </div>
         
             
@@ -393,11 +393,7 @@
 <a name='L328'></a><a href='#L328'>328</a>
 <a name='L329'></a><a href='#L329'>329</a>
 <a name='L330'></a><a href='#L330'>330</a>
-<a name='L331'></a><a href='#L331'>331</a>
-<a name='L332'></a><a href='#L332'>332</a>
-<a name='L333'></a><a href='#L333'>333</a>
-<a name='L334'></a><a href='#L334'>334</a>
-<a name='L335'></a><a href='#L335'>335</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L331'></a><a href='#L331'>331</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -563,10 +559,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -756,7 +748,6 @@
 // MODULES //
 &nbsp;
 var copyIndexed = require( '@stdlib/array/base/copy-indexed' );
-var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major-string' );
 var incrementOffsets = require( './increment_offsets.js' );
 var setViewOffsets = require( './set_view_offsets.js' );
 var offsets = require( './offsets.js' );
@@ -774,6 +765,7 @@ var offsets = require( './offsets.js' );
 * @param {NonNegativeIntegerArray} shape - loop dimensions
 * @param {IntegerArray} stridesX - loop dimension strides for the input ndarray
 * @param {IntegerArray} stridesY - loop dimension strides for the output ndarray
+* @param {boolean} isRowMajor - boolean indicating if provided arrays are in row-major order
 * @param {Object} strategyX - strategy for marshaling data to and from an input ndarray view
 * @param {Object} strategyY - strategy for marshaling data to and from an output ndarray view
 * @param {Options} opts - function options
@@ -892,12 +884,12 @@ var offsets = require( './offsets.js' );
 * };
 *
 * // Apply strided function:
-* unary7d( wrapper, [ x, y, initial ], views, [ 1, 1, 1, 1, 1, 1, 3 ], [ 12, 12, 12, 12, 12, 12, 4 ], [ 12, 12, 12, 12, 12, 12, 4 ], strategy, strategy, {} );
+* unary7d( wrapper, [ x, y, initial ], views, [ 1, 1, 1, 1, 1, 1, 3 ], [ 12, 12, 12, 12, 12, 12, 4 ], [ 12, 12, 12, 12, 12, 12, 4 ], true, strategy, strategy, {} );
 *
 * var arr = ndarray2array( y.data, y.shape, y.strides, y.offset, y.order );
 * // returns [ [ [ [ [ [ [ [ [ 1.0, 3.0 ], [ 6.0, 10.0 ] ], [ [ 5.0, 11.0 ], [ 18.0, 26.0 ] ], [ [ 9.0, 19.0 ], [ 30.0, 42.0 ] ] ] ] ] ] ] ] ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function unary7d( fcn, arrays, views, shape, stridesX, stridesY, strategyX, strategyY, opts ) { // eslint-disable-line max-len</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function unary7d( fcn, arrays, views, shape, stridesX, stridesY, isRowMajor, strategyX, strategyY, opts ) { // eslint-disable-line max-len</span></span>
 <span class="cstat-no" title="statement not covered" >	var dv0;</span>
 <span class="cstat-no" title="statement not covered" >	var dv1;</span>
 <span class="cstat-no" title="statement not covered" >	var dv2;</span>
@@ -921,17 +913,13 @@ var offsets = require( './offsets.js' );
 <span class="cstat-no" title="statement not covered" >	var i4;</span>
 <span class="cstat-no" title="statement not covered" >	var i5;</span>
 <span class="cstat-no" title="statement not covered" >	var i6;</span>
-<span class="cstat-no" title="statement not covered" >	var x;</span>
 <span class="cstat-no" title="statement not covered" >	var v;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Note on variable naming convention: S#, dv#, i# where # corresponds to the loop number, with `0` being the innermost loop...</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the input ndarray:</span>
-<span class="cstat-no" title="statement not covered" >	x = arrays[ 0 ];</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Extract loop variables for purposes of loop interchange: dimensions and loop offset (pointer) increments...</span>
-<span class="cstat-no" title="statement not covered" >	if ( isRowMajor( x.order ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( isRowMajor ) {</span>
 <span class="cstat-no" title="statement not covered" >		// For row-major ndarrays, the last dimensions have the fastest changing indices...</span>
 <span class="cstat-no" title="statement not covered" >		S0 = shape[ 6 ];</span>
 <span class="cstat-no" title="statement not covered" >		S1 = shape[ 5 ];</span>
@@ -1072,7 +1060,7 @@ module.exports = unary7d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-06T08:57:07.239Z
+                at 2025-05-08T06:24:43.006Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
