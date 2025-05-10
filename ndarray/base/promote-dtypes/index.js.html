@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/unary-output-dtype/lib/main.js</title>
+    <title>Code coverage report for ndarray/base/promote-dtypes/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-output-dtype/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/promote-dtypes/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>43/43</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>43/43</span>
             </div>
         
             
@@ -106,11 +106,7 @@
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -148,10 +144,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">205x</span>
-<span class="cline-any cline-yes">205x</span>
-<span class="cline-any cline-yes">205x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,7 +152,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -177,33 +169,29 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var outputDataType = require( '@stdlib/ndarray/base/output-dtype' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
 /**
-* Resolves the output ndarray data type for a unary function.
+* Resolve the data type that results from applying promotion rules to a provided list of data types.
 *
-* @param {string} dtype - input ndarray data type
-* @param {string} policy - output ndarray data type policy
-* @throws {TypeError} second argument must be a recognized data type policy
-* @returns {string} output ndarray data type
+* @module @stdlib/ndarray/base/promote-dtypes
 *
 * @example
-* var dt = resolve( 'float64', 'complex_floating_point' );
-* // returns &lt;string&gt;
+* var promoteDataTypes = require( '@stdlib/ndarray/base/promote-dtypes' );
+*
+* var dt = promoteDataTypes( [ 'float32', 'float64' ] );
+* // returns 'float64'
+*
+* dt = promoteDataTypes( [ 'binary', 'complex128' ] );
+* // returns null
 */
-function resolve( dtype, policy ) {
-	return outputDataType( [ dtype ], policy );
-}
+&nbsp;
+// MODULES //
+&nbsp;
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = resolve;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -211,7 +199,7 @@ module.exports = resolve;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-10T11:02:26.862Z
+                at 2025-05-10T11:02:24.786Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
