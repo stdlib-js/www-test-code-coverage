@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/binary-loop-interchange-order/lib/main.js</title>
+    <title>Code coverage report for ndarray/base/loop-interchange-order/lib/sort2ins.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/binary-loop-interchange-order/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/loop-interchange-order/lib</a> sort2ins.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>81/81</span>
+                <span class='fraction'>98/98</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>81/81</span>
+                <span class='fraction'>98/98</span>
             </div>
         
             
@@ -144,24 +144,24 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -219,6 +219,40 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -228,7 +262,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -245,67 +279,84 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var loopOrder = require( '@stdlib/ndarray/base/loop-interchange-order' );
-&nbsp;
-&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Reorders ndarray dimensions and associated strides for loop interchange.
+* Simultaneously sorts two arrays based on the sort order of the first array using insertion sort.
 *
 * ## Notes
 *
-* -   The returned object has the following properties:
+* -   The first array is sorted in increasing order according to absolute value.
+* -   The algorithm has space complexity `O(1)` and worst case time complexity `O(N^2)`.
+* -   The algorithm is efficient for small arrays (typically `N &lt;= 20`) and is particularly efficient for sorting arrays which are already substantially sorted.
+* -   The algorithm is **stable**, meaning that the algorithm does **not** change the order of array elements which are equal or equivalent.
+* -   The input arrays are sorted in-place (i.e., the input arrays are mutated).
 *
-*     -   **sh**: dimensions sorted in loop order.
-*     -   **sx**: first input ndarray strides sorted in loop order.
-*     -   **sy**: second input ndarray strides sorted in loop order.
-*     -   **sz**: output ndarray strides sorted in loop order.
-*
-* @param {NonNegativeIntegerArray} sh - array dimensions
-* @param {IntegerArray} sx - first input array stride lengths
-* @param {IntegerArray} sy - second input array stride lengths
-* @param {IntegerArray} sz - output array stride lengths
-* @returns {Object} loop interchange data
+* @private
+* @param {Array} x - first array
+* @param {Array} y - second array
+* @returns {void}
 *
 * @example
-* var sh = [ 2, 3, 4 ];
+* var x = [ -4, -2, 3, 1 ];
+* var y = [ 0, 1, 2, 3 ];
 *
-* var sx = [ 12, 4, 1 ]; // row-major
-* var sy = [ 24, 8, 1 ]; // row-major
-* var sz = [ 1, -2, 6 ]; // column-major
+* sort2ins( x, y );
 *
-* var o = binaryLoopOrder( sh, sx, sy, sz );
-* // returns {...}
+* console.log( x );
+* // =&gt; [ 1, -2, 3, -4 ]
 *
-* var ssh = o.sh;
-* // returns [ 4, 3, 2 ]
-*
-* var ssx = o.sx;
-* // returns [ 1, 4, 12 ]
-*
-* var ssy = o.sy;
-* // returns [ 1, 8, 24 ]
-*
-* var ssz = o.sz;
-* // returns [ 6, -2, 1 ]
+* console.log( y );
+* // =&gt; [ 3, 1, 2, 0 ]
 */
-function binaryLoopOrder( sh, sx, sy, sz ) {
-	var tmp = loopOrder( sh, [ sx, sy, sz ] );
-	return {
-		'sh': tmp[ 0 ],
-		'sx': tmp[ 1 ],
-		'sy': tmp[ 2 ],
-		'sz': tmp[ 3 ]
-	};
+function sort2ins( x, y ) {
+	var avx;
+	var aux;
+	var ix;
+	var iy;
+	var jx;
+	var jy;
+	var vx;
+	var vy;
+	var ux;
+	var i;
+&nbsp;
+	ix = 1;
+	iy = 1;
+&nbsp;
+	// Sort in increasing order...
+	for ( i = 1; i &lt; x.length; i++ ) {
+		vx = x[ ix ];
+		avx = ( vx &lt; 0 ) ? -vx : vx;
+&nbsp;
+		vy = y[ iy ];
+&nbsp;
+		jx = ix - 1;
+		jy = iy - 1;
+&nbsp;
+		// Shift all larger values to the left of the current element to the right...
+		while ( jx &gt;= 0 ) {
+			ux = x[ jx ];
+			aux = ( ux &lt; 0 ) ? -ux : ux;
+			if ( aux &lt;= avx ) {
+				break;
+			}
+			x[ jx+1 ] = ux;
+			y[ jy+1 ] = y[ jy ];
+			jx -= 1;
+			jy -= 1;
+		}
+		x[ jx+1 ] = vx;
+		y[ jy+1 ] = vy;
+		ix += 1;
+		iy += 1;
+	}
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = binaryLoopOrder;
+module.exports = sort2ins;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -313,7 +364,7 @@ module.exports = binaryLoopOrder;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-12T09:47:13.872Z
+                at 2025-05-12T09:47:20.270Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
