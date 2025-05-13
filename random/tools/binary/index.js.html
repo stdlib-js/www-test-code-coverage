@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/tools/lib/index.js</title>
+    <title>Code coverage report for random/tools/binary/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">random/tools/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/tools/binary/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>69/69</span>
+                <span class='fraction'>79/79</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>69/69</span>
+                <span class='fraction'>79/79</span>
             </div>
         
             
@@ -132,7 +132,27 @@
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -221,55 +241,65 @@
 &nbsp;
 'use strict';
 &nbsp;
-/*
-* When adding modules to the namespace, ensure that they are added in alphabetical order according to module name.
+/**
+* Constructor for creating ndarrays filled with pseudorandom values drawn from a binary PRNG.
+*
+* @module @stdlib/random/tools/binary
+*
+* @example
+* var dtypes = require( '@stdlib/ndarray/dtypes' );
+* var uniform = require( '@stdlib/random/base/uniform' );
+* var Random = require( '@stdlib/random/tools/binary' );
+*
+* var idt = dtypes( 'real_and_generic' );
+* var odt = dtypes( 'real_floating_point_and_generic' );
+*
+* var policies = {
+*     'output': 'real_floating_point_and_generic'
+* };
+* var options = {
+*     'order': 'row-major'
+* };
+*
+* var rand = new Random( uniform, [ idt, idt ], odt, policies, options );
+*
+* var v = rand.generate( [ 2, 2 ], 0.0, 1.0 );
+* // returns &lt;ndarray&gt;
+*
+* @example
+* var dtypes = require( '@stdlib/ndarray/dtypes' );
+* var ndzeros = require( '@stdlib/ndarray/zeros' );
+* var uniform = require( '@stdlib/random/base/uniform' );
+* var Random = require( '@stdlib/random/tools/binary' );
+*
+* var idt = dtypes( 'real_and_generic' );
+* var odt = dtypes( 'real_floating_point_and_generic' );
+*
+* var policies = {
+*     'output': 'real_floating_point_and_generic'
+* };
+* var options = {
+*     'order': 'row-major'
+* };
+*
+* var rand = new Random( uniform, [ idt, idt ], odt, policies, options );
+*
+* var out = ndzeros( [ 2, 2 ] );
+* var v = rand.assign( 0.0, 1.0, out );
+* // returns &lt;ndarray&gt;
+*
+* var bool = ( v === out );
+* // returns true
 */
 &nbsp;
 // MODULES //
 &nbsp;
-var setReadOnly = require( '@stdlib/utils/define-read-only-property' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
-/**
-* Namespace.
-*
-* @namespace ns
-*/
-var ns = {};
-&nbsp;
-/**
-* @name binary
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/random/tools/binary}
-*/
-setReadOnly( ns, 'binary', require( '@stdlib/random/tools/binary' ) );
-&nbsp;
-/**
-* @name unary
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/random/tools/unary}
-*/
-setReadOnly( ns, 'unary', require( '@stdlib/random/tools/unary' ) );
-&nbsp;
-/**
-* @name unaryFactory
-* @memberof ns
-* @readonly
-* @type {Function}
-* @see {@link module:@stdlib/random/tools/unary-factory}
-*/
-setReadOnly( ns, 'unaryFactory', require( '@stdlib/random/tools/unary-factory' ) );
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = ns;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -277,16 +307,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-13T02:16:27.952Z
+                at 2025-05-13T02:16:25.071Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
     </body>
 </html>
     
