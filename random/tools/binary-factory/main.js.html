@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for random/tools/unary-factory/lib/main.js</title>
+    <title>Code coverage report for random/tools/binary-factory/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/tools/unary-factory/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">random/tools/binary-factory/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.54% </span>
+                <span class="strong">36.59% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>116/309</span>
+                <span class='fraction'>116/317</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.54% </span>
+                <span class="strong">36.59% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>116/309</span>
+                <span class='fraction'>116/317</span>
             </div>
         
             
@@ -372,7 +372,15 @@
 <a name='L307'></a><a href='#L307'>307</a>
 <a name='L308'></a><a href='#L308'>308</a>
 <a name='L309'></a><a href='#L309'>309</a>
-<a name='L310'></a><a href='#L310'>310</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a>
+<a name='L316'></a><a href='#L316'>316</a>
+<a name='L317'></a><a href='#L317'>317</a>
+<a name='L318'></a><a href='#L318'>318</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -483,6 +491,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -718,18 +734,18 @@ var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var everyBy = require( '@stdlib/array/base/every-by' );
 var constantFunction = require( '@stdlib/utils/constant-function' );
 var noop = require( '@stdlib/utils/noop' );
-var Random = require( '@stdlib/random/tools/unary' );
+var Random = require( '@stdlib/random/tools/binary' );
 var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a function for generating pseudorandom values drawn from a unary PRNG.
+* Returns a function for generating pseudorandom values drawn from a binary PRNG.
 *
-* @param {Function} prng - unary pseudorandom value generator
-* @param {Function} prng.factory - method which returns a new unary pseudorandom value generator
-* @param {StringArray} idtypes - list of supported input data types
+* @param {Function} prng - binary pseudorandom value generator
+* @param {Function} prng.factory - method which returns a new binary pseudorandom value generator
+* @param {ArrayLikeObject&lt;StringArray&gt;} idtypes - list containing a list of supported input data types for each PRNG parameter
 * @param {StringArray} odtypes - list of supported output data types
 * @param {Object} policies - policies
 * @param {string} policies.output - output data type policy
@@ -737,7 +753,7 @@ var format = require( '@stdlib/string/format' );
 * @param {string} options.order - default memory layout (either row-major or column-major)
 * @throws {TypeError} first argument must be a function
 * @throws {TypeError} first argument must have a `factory` method
-* @throws {TypeError} second argument must be an array of supported data types
+* @throws {TypeError} second argument must be an array containing arrays of supported data types
 * @throws {TypeError} third argument must be an array of supported data types
 * @throws {TypeError} fourth argument must be an object
 * @throws {TypeError} must provide valid options
@@ -745,7 +761,7 @@ var format = require( '@stdlib/string/format' );
 *
 * @example
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var exponential = require( '@stdlib/random/base/exponential' );
+* var uniform = require( '@stdlib/random/base/uniform' );
 *
 * var idt = dtypes( 'real_and_generic' );
 * var odt = dtypes( 'real_floating_point_and_generic' );
@@ -757,18 +773,18 @@ var format = require( '@stdlib/string/format' );
 *     'order': 'row-major'
 * };
 *
-* var factory = createFactory( exponential, idt, odt, policies, options );
+* var factory = createFactory( uniform, [ idt, idt ], odt, policies, options );
 *
 * var rand = factory();
 * // returns &lt;Function&gt;
 *
-* var v = rand( [ 2, 2 ], 2.0 );
+* var v = rand( [ 2, 2 ], 0.0, 1.0 );
 * // returns &lt;ndarray&gt;
 *
 * @example
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
 * var ndzeros = require( '@stdlib/ndarray/zeros' );
-* var exponential = require( '@stdlib/random/base/exponential' );
+* var uniform = require( '@stdlib/random/base/uniform' );
 *
 * var idt = dtypes( 'real_and_generic' );
 * var odt = dtypes( 'real_floating_point_and_generic' );
@@ -780,13 +796,13 @@ var format = require( '@stdlib/string/format' );
 *     'order': 'row-major'
 * };
 *
-* var factory = createFactory( exponential, idt, odt, policies, options );
+* var factory = createFactory( uniform, [ idt, idt ], odt, policies, options );
 *
 * var rand = factory();
 * // returns &lt;Function&gt;
 *
 * var out = ndzeros( [ 2, 2 ] );
-* var v = rand.assign( 2.0, out );
+* var v = rand.assign( 0.0, 1.0, out );
 * // returns &lt;ndarray&gt;
 *
 * var bool = ( v === out );
@@ -794,6 +810,7 @@ var format = require( '@stdlib/string/format' );
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function createFactory( prng, idtypes, odtypes, policies, options ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var OPTIONS;</span>
+<span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isFunction( prng ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a function. Value: `%s`.', prng ) );</span>
@@ -801,12 +818,17 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	if ( !isMethodIn( prng, 'factory' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must have a `%s` method.', 'factory' ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if (</span>
-<span class="cstat-no" title="statement not covered" >		!isCollection( idtypes ) ||</span>
-<span class="cstat-no" title="statement not covered" >		idtypes.length &lt; 1 ||</span>
-<span class="cstat-no" title="statement not covered" >		!everyBy( idtypes, isDataType )</span>
-<span class="cstat-no" title="statement not covered" >	) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an array of data types. Value: `%s`.', idtypes ) );</span>
+<span class="cstat-no" title="statement not covered" >	if ( !isCollection( idtypes ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an array-like object. Value: `%s`.', idtypes ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; idtypes.length; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >		if (</span>
+<span class="cstat-no" title="statement not covered" >			!isCollection( idtypes[ i ] ) ||</span>
+<span class="cstat-no" title="statement not covered" >			idtypes[ i ].length &lt; 1 ||</span>
+<span class="cstat-no" title="statement not covered" >			!everyBy( idtypes[ i ], isDataType )</span>
+<span class="cstat-no" title="statement not covered" >		) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Second argument must contain arrays of data types. Value: `%s`.', idtypes ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if (</span>
 <span class="cstat-no" title="statement not covered" >		!isCollection( odtypes ) ||</span>
@@ -836,7 +858,7 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	return factory;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
-<span class="cstat-no" title="statement not covered" >	* Returns a function for generating pseudorandom values drawn from a unary PRNG.</span>
+<span class="cstat-no" title="statement not covered" >	* Returns a function for generating pseudorandom values drawn from a binary PRNG.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
 <span class="cstat-no" title="statement not covered" >	* @private</span>
 <span class="cstat-no" title="statement not covered" >	* @param {Options} [options] - function options</span>
@@ -883,11 +905,12 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		return rand;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		/**</span>
-<span class="cstat-no" title="statement not covered" >		* Returns an ndarray filled with pseudorandom values drawn from a unary PRNG.</span>
+<span class="cstat-no" title="statement not covered" >		* Returns an ndarray filled with pseudorandom values drawn from a binary PRNG.</span>
 <span class="cstat-no" title="statement not covered" >		*</span>
 <span class="cstat-no" title="statement not covered" >		* @private</span>
 <span class="cstat-no" title="statement not covered" >		* @param {NonNegativeIntegerArray} shape - output ndarray shape</span>
-<span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param1 - PRNG parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param1 - first PRNG parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param2 - second PRNG parameter</span>
 <span class="cstat-no" title="statement not covered" >		* @param {Options} [options] - function options</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} [options.dtype] - output data type</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} [options.order] - memory layout (either row-major or column-major)</span>
@@ -901,26 +924,27 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} must provide valid options</span>
 <span class="cstat-no" title="statement not covered" >		* @returns {ndarray} output array</span>
 <span class="cstat-no" title="statement not covered" >		*/</span>
-<span class="cstat-no" title="statement not covered" >		function rand( shape, param1, options ) {</span>
-<span class="cstat-no" title="statement not covered" >			if ( arguments.length &lt; 3 ) {</span>
-<span class="cstat-no" title="statement not covered" >				return random.generate( shape, param1 );</span>
+<span class="cstat-no" title="statement not covered" >		function rand( shape, param1, param2, options ) {</span>
+<span class="cstat-no" title="statement not covered" >			if ( arguments.length &lt; 4 ) {</span>
+<span class="cstat-no" title="statement not covered" >				return random.generate( shape, param1, param2 );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			return random.generate( shape, param1, options );</span>
+<span class="cstat-no" title="statement not covered" >			return random.generate( shape, param1, param2, options );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		/**</span>
-<span class="cstat-no" title="statement not covered" >		* Fills an ndarray with pseudorandom values drawn from a unary PRNG.</span>
+<span class="cstat-no" title="statement not covered" >		* Fills an ndarray with pseudorandom values drawn from a binary PRNG.</span>
 <span class="cstat-no" title="statement not covered" >		*</span>
 <span class="cstat-no" title="statement not covered" >		* @private</span>
-<span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param1 - PRNG parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param1 - first PRNG parameter</span>
+<span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param2 - second PRNG parameter</span>
 <span class="cstat-no" title="statement not covered" >		* @param {ndarrayLike} out - output ndarray</span>
-<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} second argument must be an ndarray</span>
+<span class="cstat-no" title="statement not covered" >		* @throws {TypeError} third argument must be an ndarray</span>
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} must provide valid PRNG parameters</span>
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} PRNG parameters and the output ndarray must be broadcast compatible</span>
 <span class="cstat-no" title="statement not covered" >		* @returns {ndarray} output ndarray</span>
 <span class="cstat-no" title="statement not covered" >		*/</span>
-<span class="cstat-no" title="statement not covered" >		function assign( param1, out ) {</span>
-<span class="cstat-no" title="statement not covered" >			return random.assign( param1, out );</span>
+<span class="cstat-no" title="statement not covered" >		function assign( param1, param2, out ) {</span>
+<span class="cstat-no" title="statement not covered" >			return random.assign( param1, param2, out );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		/**</span>
@@ -997,7 +1021,7 @@ module.exports = createFactory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-13T02:51:18.370Z
+                at 2025-05-13T02:51:12.780Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
