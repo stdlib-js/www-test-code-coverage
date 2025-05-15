@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for array/typed/lib/index.js</title>
+    <title>Code coverage report for ndarray/vector/ctor/lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">array/typed/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/vector/ctor/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>126/126</span>
+                <span class='fraction'>124/124</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>126/126</span>
+                <span class='fraction'>124/124</span>
             </div>
         
             
@@ -187,11 +187,7 @@
 <a name='L122'></a><a href='#L122'>122</a>
 <a name='L123'></a><a href='#L123'>123</a>
 <a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L125'></a><a href='#L125'>125</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -318,7 +314,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -336,101 +332,99 @@
 'use strict';
 &nbsp;
 /**
-* Create a typed array.
+* Create a vector (i.e., a one-dimensional ndarray).
 *
-* @module @stdlib/array/typed
-*
-* @example
-* var typedarray = require( '@stdlib/array/typed' );
-*
-* var arr = typedarray();
-* // returns &lt;Float64Array&gt;
+* @module @stdlib/ndarray/vector/ctor
 *
 * @example
-* var typedarray = require( '@stdlib/array/typed' );
+* var Vector = require( '@stdlib/ndarray/vector/ctor' );
 *
-* var arr = typedarray( 2 );
-* // returns &lt;Float64Array&gt;[ 0.0, 0.0 ]
+* var v = new Vector();
+* // returns &lt;ndarray&gt;
 *
-* @example
-* var typedarray = require( '@stdlib/array/typed' );
+* var len = v.length;
+* // returns 0
 *
-* var arr = typedarray( 2, 'float32' );
-* // returns &lt;Float32Array&gt;[ 0.0, 0.0 ]
-*
-* @example
-* var typedarray = require( '@stdlib/array/typed' );
-*
-* var arr = typedarray( [ 0.5, 0.5 ] );
-* // returns &lt;Float64Array&gt;[ 0.5, 0.5 ]
+* var dt = v.dtype;
+* // returns 'float64'
 *
 * @example
-* var typedarray = require( '@stdlib/array/typed' );
+* var Vector = require( '@stdlib/ndarray/vector/ctor' );
 *
-* var arr = typedarray( [ 5, -3 ], 'int32' );
-* // returns &lt;Int32Array&gt;[ 5, -3 ]
+* var v = new Vector( 2 );
+* // returns &lt;ndarray&gt;
 *
-* @example
-* var typedarray = require( '@stdlib/array/typed' );
+* var len = v.length;
+* // returns 2
 *
-* var arr1 = typedarray( [ 5, 3 ], 'int32' );
-* var arr2 = typedarray( arr1 );
-* // returns &lt;Float64Array&gt;[ 5.0, 3.0 ]
-*
-* @example
-* var typedarray = require( '@stdlib/array/typed' );
-*
-* var arr1 = typedarray( [ 5, 3 ], 'int32' );
-* var arr2 = typedarray( arr1, 'uint32' );
-* // returns &lt;Uint32Array&gt;[ 5, 3 ]
+* var dt = v.dtype;
+* // returns 'float64'
 *
 * @example
-* var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var typedarray = require( '@stdlib/array/typed' );
+* var Vector = require( '@stdlib/ndarray/vector/ctor' );
 *
-* var buf = new ArrayBuffer( 16 );
-* var arr = typedarray( buf );
-* // returns &lt;Float64Array&gt;[ 0.0, 0.0 ]
+* var v = new Vector( [ 1.0, 2.0 ] );
+* // returns &lt;ndarray&gt;
+*
+* var len = v.length;
+* // returns 2
+*
+* var dt = v.dtype;
+* // returns 'float64'
+*
+* @example
+* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+*
+* var v = new Vector( [ 1.0, 2.0 ], 'float32' );
+* // returns &lt;ndarray&gt;
+*
+* var len = v.length;
+* // returns 2
+*
+* var dt = v.dtype;
+* // returns 'float32'
 *
 * @example
 * var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var typedarray = require( '@stdlib/array/typed' );
-*
-* var buf = new ArrayBuffer( 16 );
-* var arr = typedarray( buf, 'float32' );
-* // returns &lt;Float32Array&gt;[ 0.0, 0.0, 0.0, 0.0 ]
-*
-* @example
-* var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var typedarray = require( '@stdlib/array/typed' );
-*
-* var buf = new ArrayBuffer( 16 );
-* var arr = typedarray( buf, 8 );
-* // returns &lt;Float64Array&gt;[ 0.0 ]
-*
-* @example
-* var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var typedarray = require( '@stdlib/array/typed' );
-*
-* var buf = new ArrayBuffer( 16 );
-* var arr = typedarray( buf, 8, 'float32' );
-* // returns &lt;Float32Array&gt;[ 0.0, 0.0 ]
-*
-* @example
-* var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var typedarray = require( '@stdlib/array/typed' );
+* var Vector = require( '@stdlib/ndarray/vector/ctor' );
 *
 * var buf = new ArrayBuffer( 32 );
-* var arr = typedarray( buf, 8, 2 );
-* // returns &lt;Float64Array&gt;[ 0.0, 0.0 ]
+* var v = new Vector( buf );
+* // returns &lt;ndarray&gt;
+*
+* var len = v.length;
+* // returns 4
+*
+* var dt = v.dtype;
+* // returns 'float64'
 *
 * @example
 * var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var typedarray = require( '@stdlib/array/typed' );
+* var Vector = require( '@stdlib/ndarray/vector/ctor' );
 *
 * var buf = new ArrayBuffer( 32 );
-* var arr = typedarray( buf, 8, 2, 'int32' );
-* // returns &lt;Int32Array&gt;[ 0, 0 ]
+* var v = new Vector( buf, 16 );
+* // returns &lt;ndarray&gt;
+*
+* var len = v.length;
+* // returns 2
+*
+* var dt = v.dtype;
+* // returns 'float64'
+*
+* @example
+* var ArrayBuffer = require( '@stdlib/array/buffer' );
+* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+*
+* var buf = new ArrayBuffer( 64 );
+* var v = new Vector( buf, 16, 2 );
+* // returns &lt;ndarray&gt;
+*
+* var len = v.length;
+* // returns 2
+*
+* var dt = v.dtype;
+* // returns 'float64'
 */
 &nbsp;
 // MODULES //
@@ -448,16 +442,16 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-15T03:03:49.995Z
+                at 2025-05-15T03:03:52.492Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../sorter.js"></script>
+        <script src="../../../../block-navigation.js"></script>
     </body>
 </html>
     
