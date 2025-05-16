@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/ctor/lib/is_contiguous.js</title>
+    <title>Code coverage report for ndarray/base/ctor/lib/valueof.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/ctor/lib</a> is_contiguous.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/ctor/lib</a> valueof.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>46/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>46/46</span>
             </div>
         
             
@@ -109,15 +109,7 @@
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -149,23 +141,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">123x</span>
-<span class="cline-any cline-yes">123x</span>
-<span class="cline-any cline-yes">123x</span>
-<span class="cline-any cline-yes">123x</span>
-<span class="cline-any cline-yes">123x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">103x</span>
-<span class="cline-any cline-yes">103x</span>
-<span class="cline-any cline-yes">103x</span>
-<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,7 +158,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -191,40 +175,32 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var minmaxViewBufferIndex = require( '@stdlib/ndarray/base/minmax-view-buffer-index' );
-&nbsp;
-&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Determines if an array is contiguous.
+* Converts an ndarray instance to a primitive value.
+*
+* ## Notes
+*
+* -   Only zero-dimensional ndarrays are converted to a primitive value. For ndarray instances having one or more dimensions, the method returns the `this` value, as is the default behavior for objects.
 *
 * @private
-* @param {NonNegativeInteger} len - array length
-* @param {NonNegativeIntegerArray} shape - array shape
-* @param {IntegerArray} strides - stride array
-* @param {NonNegativeInteger} offset - index offset
-* @param {integer} iterationOrder - iteration order
-* @returns {boolean} boolean indicating if an array is contiguous
+* @returns {(*|ndarray)} result
 */
-function isContiguous( len, shape, strides, offset, iterationOrder ) {
-	var buf;
-&nbsp;
-	// If an array does not contain any elements, then no data to store, and, if the array is unordered, adjacent array elements are not guaranteed to be stored next to each other.
-	if ( len === 0 || iterationOrder === 0 ) {
-		return false;
+function valueOf() { // eslint-disable-line stdlib/no-redeclare
+	/* eslint-disable no-invalid-this */
+	if ( this._ndims === 0 ) {
+		return this.iget();
 	}
-	// Ensure that the array is compatible with a single memory segment:
-	buf = minmaxViewBufferIndex( shape, strides, offset );
-	return ( len === ( buf[1]-buf[0]+1 ) );
+	return this;
+&nbsp;
+	/* eslint-enable no-invalid-this */
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = isContiguous;
+module.exports = valueOf;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
