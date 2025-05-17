@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>133/133</span>
+                <span class='fraction'>147/147</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>133/133</span>
+                <span class='fraction'>147/147</span>
             </div>
         
             
@@ -196,7 +196,35 @@
 <a name='L131'></a><a href='#L131'>131</a>
 <a name='L132'></a><a href='#L132'>132</a>
 <a name='L133'></a><a href='#L133'>133</a>
-<a name='L134'></a><a href='#L134'>134</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -355,93 +383,107 @@
 * @module @stdlib/ndarray/vector/ctor
 *
 * @example
-* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+* var numel = require( '@stdlib/ndarray/numel' );
+* var vector = require( '@stdlib/ndarray/vector/ctor' );
 *
-* var v = new Vector();
+* var v = vector();
 * // returns &lt;ndarray&gt;
 *
-* var len = v.length;
+* var len = numel( v );
 * // returns 0
 *
-* var dt = v.dtype;
+* var dt = getDType( v );
 * // returns 'float64'
 *
 * @example
-* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+* var numel = require( '@stdlib/ndarray/numel' );
+* var vector = require( '@stdlib/ndarray/vector/ctor' );
 *
-* var v = new Vector( 2 );
+* var v = vector( 2 );
 * // returns &lt;ndarray&gt;
 *
-* var len = v.length;
+* var len = numel( v );
 * // returns 2
 *
-* var dt = v.dtype;
+* var dt = getDType( v );
 * // returns 'float64'
 *
 * @example
-* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+* var numel = require( '@stdlib/ndarray/numel' );
+* var vector = require( '@stdlib/ndarray/vector/ctor' );
 *
-* var v = new Vector( [ 1.0, 2.0 ] );
+* var v = vector( [ 1.0, 2.0 ] );
 * // returns &lt;ndarray&gt;
 *
-* var len = v.length;
+* var len = numel( v );
 * // returns 2
 *
-* var dt = v.dtype;
+* var dt = getDType( v );
 * // returns 'float64'
 *
 * @example
-* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+* var numel = require( '@stdlib/ndarray/numel' );
+* var vector = require( '@stdlib/ndarray/vector/ctor' );
 *
-* var v = new Vector( [ 1.0, 2.0 ], 'float32' );
+* var v = vector( [ 1.0, 2.0 ], 'float32' );
 * // returns &lt;ndarray&gt;
 *
-* var len = v.length;
+* var len = numel( v );
 * // returns 2
 *
-* var dt = v.dtype;
+* var dt = getDType( v );
 * // returns 'float32'
 *
 * @example
 * var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+* var numel = require( '@stdlib/ndarray/numel' );
+* var vector = require( '@stdlib/ndarray/vector/ctor' );
 *
 * var buf = new ArrayBuffer( 32 );
-* var v = new Vector( buf );
+* var v = vector( buf );
 * // returns &lt;ndarray&gt;
 *
-* var len = v.length;
+* var len = numel( v );
 * // returns 4
 *
-* var dt = v.dtype;
+* var dt = getDType( v );
 * // returns 'float64'
 *
 * @example
 * var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+* var numel = require( '@stdlib/ndarray/numel' );
+* var vector = require( '@stdlib/ndarray/vector/ctor' );
 *
 * var buf = new ArrayBuffer( 32 );
-* var v = new Vector( buf, 16 );
+* var v = vector( buf, 16 );
 * // returns &lt;ndarray&gt;
 *
-* var len = v.length;
+* var len = numel( v );
 * // returns 2
 *
-* var dt = v.dtype;
+* var dt = getDType( v );
 * // returns 'float64'
 *
 * @example
 * var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var Vector = require( '@stdlib/ndarray/vector/ctor' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+* var numel = require( '@stdlib/ndarray/numel' );
+* var vector = require( '@stdlib/ndarray/vector/ctor' );
 *
 * var buf = new ArrayBuffer( 64 );
-* var v = new Vector( buf, 16, 2 );
+* var v = vector( buf, 16, 2 );
 * // returns &lt;ndarray&gt;
 *
-* var len = v.length;
+* var len = numel( v );
 * // returns 2
 *
-* var dt = v.dtype;
+* var dt = getDType( v );
 * // returns 'float64'
 */
 &nbsp;
@@ -469,7 +511,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-17T06:37:34.679Z
+                at 2025-05-17T08:59:57.376Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
