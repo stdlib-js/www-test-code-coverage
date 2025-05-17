@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/vector/float32/lib/index.js</title>
+    <title>Code coverage report for ndarray/vector/float64/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/vector/float32/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/vector/float64/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>100/100</span>
+                <span class='fraction'>109/109</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>100/100</span>
+                <span class='fraction'>109/109</span>
             </div>
         
             
@@ -163,7 +163,25 @@
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
 <a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -283,86 +301,95 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var factory = require( '@stdlib/ndarray/vector/ctor' ).factory;
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
 /**
-* Create a single-precision floating-point vector (i.e., a one-dimensional ndarray).
+* Returns a double-precision floating-point vector (i.e., a one-dimensional ndarray).
 *
-* @module @stdlib/ndarray/vector/float32
+* @name Float64Vector
+* @type {Function}
+* @param {(NonNegativeInteger|Collection|ArrayBuffer|Iterable)} [arg] - length, typed array, array-like object, buffer, or iterable
+* @param {NonNegativeInteger} [byteOffset=0] - byte offset
+* @param {NonNegativeInteger} [length] - view length
+* @param {Options} [options] - function options
+* @param {boolean} [options.readonly=false] - boolean indicating whether to return a read-only vector
+* @param {string} [options.mode='throw'] - specifies how to handle indices which exceed vector dimensions
+* @param {string} [options.order='row-major'] - memory layout (either row-major or column-major)
+* @throws {TypeError} first argument must be either a length, typed array, array-like object, buffer, iterable, or options object
+* @throws {TypeError} must provide valid options
+* @returns {ndarray} one-dimensional ndarray
 *
 * @example
 * var numel = require( '@stdlib/ndarray/numel' );
-* var Float32Vector = require( '@stdlib/ndarray/vector/float32' );
 *
-* var v = new Float32Vector();
+* var arr = new Float64Vector();
 * // returns &lt;ndarray&gt;
 *
-* var len = numel( v );
+* var len = numel( arr );
 * // returns 0
 *
 * @example
 * var numel = require( '@stdlib/ndarray/numel' );
-* var Float32Vector = require( '@stdlib/ndarray/vector/float32' );
 *
-* var v = new Float32Vector( 2 );
+* var arr = new Float64Vector( 2 );
 * // returns &lt;ndarray&gt;
 *
-* var len = numel( v );
+* var len = numel( arr );
 * // returns 2
 *
 * @example
 * var numel = require( '@stdlib/ndarray/numel' );
-* var Float32Vector = require( '@stdlib/ndarray/vector/float32' );
 *
-* var v = new Float32Vector( [ 1.0, 2.0 ] );
+* var arr = new Float64Vector( [ 1.0, 2.0 ] );
 * // returns &lt;ndarray&gt;
 *
-* var len = numel( v );
+* var len = numel( arr );
 * // returns 2
 *
 * @example
-* var ArrayBuffer = require( '@stdlib/array/buffer' );
 * var numel = require( '@stdlib/ndarray/numel' );
-* var Float32Vector = require( '@stdlib/ndarray/vector/float32' );
+* var ArrayBuffer = require( '@stdlib/array/buffer' );
 *
 * var buf = new ArrayBuffer( 32 );
-* var v = new Float32Vector( buf );
+* var arr = new Float64Vector( buf );
 * // returns &lt;ndarray&gt;
 *
-* var len = numel( v );
-* // returns 8
-*
-* @example
-* var ArrayBuffer = require( '@stdlib/array/buffer' );
-* var numel = require( '@stdlib/ndarray/numel' );
-* var Float32Vector = require( '@stdlib/ndarray/vector/float32' );
-*
-* var buf = new ArrayBuffer( 32 );
-* var v = new Float32Vector( buf, 16 );
-* // returns &lt;ndarray&gt;
-*
-* var len = numel( v );
+* var len = numel( arr );
 * // returns 4
 *
 * @example
-* var ArrayBuffer = require( '@stdlib/array/buffer' );
 * var numel = require( '@stdlib/ndarray/numel' );
-* var Float32Vector = require( '@stdlib/ndarray/vector/float32' );
+* var ArrayBuffer = require( '@stdlib/array/buffer' );
 *
-* var buf = new ArrayBuffer( 64 );
-* var v = new Float32Vector( buf, 16, 2 );
+* var buf = new ArrayBuffer( 32 );
+* var arr = new Float64Vector( buf, 16 );
 * // returns &lt;ndarray&gt;
 *
-* var len = numel( v );
+* var len = numel( arr );
+* // returns 2
+*
+* @example
+* var numel = require( '@stdlib/ndarray/numel' );
+* var ArrayBuffer = require( '@stdlib/array/buffer' );
+*
+* var buf = new ArrayBuffer( 64 );
+* var arr = new Float64Vector( buf, 16, 2 );
+* // returns &lt;ndarray&gt;
+*
+* var len = numel( arr );
 * // returns 2
 */
-&nbsp;
-// MODULES //
-&nbsp;
-var main = require( './main.js' );
+var Float64Vector = factory( 'float64' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = Float64Vector;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -370,7 +397,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-17T19:05:09.736Z
+                at 2025-05-17T19:05:12.277Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
