@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/heavisidef/lib/index.js</title>
+    <title>Code coverage report for math/base/special/heavisidef/lib/enum.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/heavisidef/lib</a> index.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/heavisidef/lib</a> enum.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>52/52</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/58</span>
+                <span class='fraction'>52/52</span>
             </div>
         
             
@@ -115,19 +115,7 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -199,44 +187,38 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MAIN //
+&nbsp;
 /**
-* Evaluate the Heaviside function for a single-precision floating-point number.
+* Returns an object mapping supported function continuity type strings to enumeration constants.
 *
-* @module @stdlib/math/base/special/heavisidef
+* @private
+* @returns {Object} object mapping supported function continuity types to enumeration constants
 *
 * @example
-* var heavisidef = require( '@stdlib/math/base/special/heavisidef' );
-*
-* var v = heavisidef( 3.14 );
-* // returns 1.0
-*
-* v = heavisidef( -3.14 );
-* // returns 0.0
-*
-* v = heavisidef( 0.0 );
-* // returns NaN
-*
-* v = heavisidef( 0.0, 'half-maximum' );
-* // returns 0.5
-*
-* v = heavisidef( 0.0, 'left-continuous' );
-* // returns 0.0
-*
-* v = heavisidef( 0.0, 'right-continuous' );
-* // returns 1.0
-*
-* v = heavisidef( NaN );
-* // returns NaN
+* var table = enumeration();
+* // returns &lt;Object&gt;
 */
+function enumeration() {
+	return {
+		// Half-maximum:
+		'half-maximum': 0,
 &nbsp;
-// MODULES //
+		// Left-continuous:
+		'left-continuous': 1,
 &nbsp;
-var main = require( './main.js' );
+		// Right-continuous:
+		'right-continuous': 2,
+&nbsp;
+		// Discontinuous:
+		'discontinuous': 3
+	};
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = enumeration;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
