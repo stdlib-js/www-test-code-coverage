@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.4% </span>
+                <span class="strong">95.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>118/135</span>
+                <span class='fraction'>129/135</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.95% </span>
+                <span class="strong">90.62% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>20/23</span>
+                <span class='fraction'>29/32</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.4% </span>
+                <span class="strong">95.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>118/135</span>
+                <span class='fraction'>129/135</span>
             </div>
         
             
@@ -264,17 +264,17 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">16x</span>
@@ -294,8 +294,8 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -308,26 +308,26 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -430,7 +430,7 @@ function dgebak( job, side, N, M, ilo, ihi, scale, strideScale, offsetScale, V, 
 		return V;
 	}
 &nbsp;
-	if ( job === 'scale' <span class="branch-0 cbranch-no" title="branch not covered" >|| job === 'both' </span>) {
+	if ( job === 'scale' || job === 'both' ) {
 		if ( side === 'right' ) {
 			for ( i = ilo; i &lt;= ihi; i++ ) {
 				s = scale[ offsetScale + ( i * strideScale ) ];
@@ -444,22 +444,22 @@ function dgebak( job, side, N, M, ilo, ihi, scale, strideScale, offsetScale, V, 
 		}
 	}
 &nbsp;
-	if ( job === 'permute' || job === 'both' ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		for ( ii = 0; ii &lt; N; ii++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			i = ii;</span>
-<span class="cstat-no" title="statement not covered" >			if ( i &gt;= ilo &amp;&amp; i &lt;= ihi ) {</span>
-<span class="cstat-no" title="statement not covered" >				continue;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			if ( i &lt; ilo ) {</span>
+	if ( job === 'permute' || job === 'both' ) {
+		for ( ii = 0; ii &lt; N; ii++ ) {
+			i = ii;
+			if ( i &gt;= ilo &amp;&amp; i &lt;= ihi ) {
+				continue;
+			}
+			if ( i &lt; ilo ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >				i = ilo - ( ii + 1 ); // Use ii + 1 here to match fortran's 1 based implementation</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			k = trunc( scale[ offsetScale + (i * strideScale) ] ); // K = int ( scale[ i ] )</span>
-<span class="cstat-no" title="statement not covered" >			if ( k === i ) {</span>
+			k = trunc( scale[ offsetScale + (i * strideScale) ] ); // K = int ( scale[ i ] )
+			if ( k === i ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >				continue;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			dswap( M, V, strideV2, offsetV + ( i * strideV1 ), V, strideV2, offsetV + ( k * strideV1 ) ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
+			dswap( M, V, strideV2, offsetV + ( i * strideV1 ), V, strideV2, offsetV + ( k * strideV1 ) ); // eslint-disable-line max-len
+		}
+	}
 &nbsp;
 	return V;
 }
@@ -475,7 +475,7 @@ module.exports = dgebak;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-20T05:18:57.595Z
+                at 2025-05-20T06:14:56.259Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
