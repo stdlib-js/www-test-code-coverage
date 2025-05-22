@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for lapack/base/dgebal/lib/index.js</title>
+    <title>Code coverage report for lapack/base/dgebal/lib/isjob.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">lapack/base/dgebal/lib</a> index.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">lapack/base/dgebal/lib</a> isjob.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>78/78</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>78/78</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -125,23 +125,7 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -196,22 +180,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -239,64 +207,48 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* LAPACK routine to balance a general real matrix `A`.
-*
-* @module @stdlib/lapack/base/dgebal
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var Int32Array = require( '@stdlib/array/int32' );
-* var dgebal = require( '@stdlib/lapack/base/dgebal' );
-*
-* var A = new Float64Array( [ 1.0, 100.0, 0.0, 2.0, 200.0, 0.0, 0.0, 0.0, 3.0 ] );
-* var out = new Int32Array( 2 );
-* var scale = new Float64Array( 3 );
-*
-* dgebal( 'row-major', 'both', 3, A, 3, out, scale );
-* // A =&gt; &lt;Float64Array&gt;[ 1, 12.5, 0, 16, 200, 0, 0, 0, 3 ]
-* // out =&gt; &lt;Int32Array&gt;[ 0, 1 ]
-* // scale =&gt; &lt;Float64Array&gt;[ 8, 1, 2 ]
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var Int32Array = require( '@stdlib/array/int32' );
-* var dgebal = require( '@stdlib/lapack/base/dgebal' );
-*
-* var A = new Float64Array( [ 1.0, 100.0, 0.0, 2.0, 200.0, 0.0, 0.0, 0.0, 3.0 ] );
-* var out = new Int32Array( 2 );
-* var scale = new Float64Array( 3 );
-*
-* dgebal.ndarray( 'both', 3, A, 3, 1, 0, out, 1, 0, scale, 1, 0 );
-* // A =&gt; &lt;Float64Array&gt;[ 1, 12.5, 0, 16, 200, 0, 0, 0, 3 ]
-* // out =&gt; &lt;Int32Array&gt;[ 0, 1 ]
-* // scale =&gt; &lt;Float64Array&gt;[ 8, 1, 2 ]
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var join = require( 'path' ).join;
-var tryRequire = require( '@stdlib/utils/try-require' );
-var isError = require( '@stdlib/assert/is-error' );
-var main = require( './main.js' );
+var contains = require( '@stdlib/array/base/assert/contains' ).factory;
+&nbsp;
+&nbsp;
+// VARIABLES //
+&nbsp;
+var JOBS = [ 'none', 'permute', 'scale', 'both' ];
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-var dgebal;
-var tmp = tryRequire( join( __dirname, './native.js' ) );
-if ( isError( tmp ) ) {
-	dgebal = main;
-} else {
-	dgebal = tmp;
-}
+/**
+* Tests whether an input value is a supported job.
+*
+* @name isJob
+* @type {Function}
+* @param {*} v - value to test
+* @returns {boolean} boolean indicating whether an input value is a supported job
+*
+* @example
+* var bool = isJob( 'both' );
+* // returns true
+*
+* bool = isJob( 'none' );
+* // returns true
+*
+* bool = isJob( 'permute' );
+* // returns true
+*
+* bool = isJob( 'scale' );
+* // returns true
+*
+* bool = isJob( 'foo' );
+* // returns false
+*/
+var isJob = contains( JOBS );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = dgebal;
-&nbsp;
-// exports: { "ndarray": "dgebal.ndarray" }
+module.exports = isJob;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
