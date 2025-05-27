@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>67/67</span>
+                <span class='fraction'>72/72</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>67/67</span>
+                <span class='fraction'>72/72</span>
             </div>
         
             
@@ -130,7 +130,12 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -183,15 +188,20 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -221,6 +231,7 @@
 &nbsp;
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
 var format = require( '@stdlib/string/format' );
+var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
 var base = require( './base.js' );
 &nbsp;
 &nbsp;
@@ -229,13 +240,14 @@ var base = require( './base.js' );
 /**
 * Computes the row and column scaling factors intended to equilibrate a symmetric positive definite matrix `A` in packed storage and reduce it's condition number (with respect to the two-norm).
 *
-* @param {string} order - specifies whether `AP` is packed in row-major or column-major order
-* @param {string} uplo - 'Upper' or 'Lower' triangle of `A` is stored
+* @param {string} order - storage layout
+* @param {string} uplo - specifies whether upper or lower triangle of `A` is stored ( `upper` or `lower` )
 * @param {NonNegativeInteger} N - order of the matrix `A`
-* @param {Float64Array} AP - array containing the upper or lower triangle of `A` in packed form
-* @param {Float64Array} S - array to store the scale factors of `A`
+* @param {Float64Array} AP - array containing the upper or lower triangle of `A` in packed form, expectes `N * (  N + 1 ) / 2` indexed elements
+* @param {Float64Array} S - array to store the scale factors of `A`, expects `N` indexed elements
 * @param {Float64Array} out - array to store the output
 * @throws {TypeError} first argument must be a valid order
+* @throws {TypeError} second argument must be a valid side
 * @throws {RangeError} third argument must be a nonnegative integer
 * @returns {integer} status code
 *
@@ -246,7 +258,7 @@ var base = require( './base.js' );
 * var S = new Float64Array( 3 );
 * var out = new Float64Array( 2 );
 *
-* dppequ( 'row-major', 'L', 3, AP, S, out );
+* dppequ( 'row-major', 'lower', 3, AP, S, out );
 * // S =&gt; &lt;Float64Array&gt;[ 1, ~0.58, ~0.33 ]
 * // out =&gt; &lt;Float64Array&gt;[ ~0.33, 9 ]
 */
@@ -254,8 +266,11 @@ function dppequ( order, uplo, N, AP, S, out ) {
 	if ( !isLayout( order ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
 	}
+	if ( !isMatrixTriangle( uplo ) ) {
+		throw new TypeError( format( 'invalid argument. Second argument must be a valid side. Value: `%s`.', order ) );
+	}
 	if ( N &lt; 0 ) {
-		throw new RangeError( format( 'invalid argument. First argument must be a nonnegative integer. Value: `%d`.', N ) );
+		throw new RangeError( format( 'invalid argument. Third argument must be a nonnegative integer. Value: `%d`.', N ) );
 	}
 	return base( order, uplo, N, AP, 1, 0, S, 1, 0, out, 1, 0 );
 }
@@ -271,7 +286,7 @@ module.exports = dppequ;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-26T17:29:06.294Z
+                at 2025-05-27T03:49:35.632Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
