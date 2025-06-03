@@ -832,27 +832,27 @@
 // FUNCTIONS //
 &nbsp;
 /**
-* Solve `AT * X = B` using the LU factorization of A computed by `dgttrf`, overwriting B with the solution.
+* Solve AT * X = B using the LU factorization of A computed by `dgttrf`, overwriting B with the solution.
 *
 * @private
-* @param {NonNegativeInteger} N - order of the matrix `A`
-* @param {NonNegativeInteger} nrhs - number of right-hand sides, i.e., the number of columns of the matrix `B`
-* @param {Float64Array} DL - multipliers that define the matrix `L`
+* @param {NonNegativeInteger} N - order of the matrix A
+* @param {NonNegativeInteger} nrhs - number of right-hand sides, i.e., the number of columns of the matrix B
+* @param {Float64Array} DL - multipliers that define the matrix L
 * @param {integer} strideDL - stride length for DL
 * @param {NonNegativeInteger} offsetDL - starting index of DL
 * @param {Float64Array} D - N diagonal elements of the upper triangular matrix U
 * @param {integer} strideD - stride length for D
 * @param {NonNegativeInteger} offsetD - starting index of D
-* @param {Float64Array} DU - elements of the first super-diagonal of `U`
+* @param {Float64Array} DU - elements of the first super-diagonal of U
 * @param {integer} strideDU - stride length for DU
 * @param {NonNegativeInteger} offsetDU - starting index of DU
-* @param {Float64Array} DU2 - elements of the second super-diagonal of `U`
+* @param {Float64Array} DU2 - elements of the second super-diagonal of U
 * @param {integer} strideDU2 - stride length for DU2
 * @param {NonNegativeInteger} offsetDU2 - starting index of DU2
 * @param {Int32Array} IPIV - vector of pivot indices
 * @param {integer} strideIPIV - stride length for IPIV
 * @param {NonNegativeInteger} offsetIPIV - starting index for IPIV
-* @param {Float64Array} B - right-hand side matrix B, overwritten by the solution matrix `X`
+* @param {Float64Array} B - right-hand side matrix B, overwritten by the solution matrix X
 * @param {integer} strideB1 - stride of the first dimension of B
 * @param {integer} strideB2 - stride of the second dimension of B
 * @param {NonNegativeInteger} offsetB - starting index of B
@@ -974,27 +974,27 @@ function transpose( N, nrhs, DL, strideDL, offsetDL, D, strideD, offsetD, DU, st
 }
 &nbsp;
 /**
-* Solve `A * X = B` using the LU factorization of A computed by `dgttrf`, overwriting B with the solution.
+* Solve A * X = B using the LU factorization of A computed by `dgttrf`, overwriting B with the solution.
 *
 * @private
-* @param {NonNegativeInteger} N - order of the matrix `A`
-* @param {NonNegativeInteger} nrhs - number of right-hand sides, i.e., the number of columns of the matrix `B`
-* @param {Float64Array} DL - multipliers that define the matrix `L`
+* @param {NonNegativeInteger} N - order of the matrix A
+* @param {NonNegativeInteger} nrhs - number of right-hand sides, i.e., the number of columns of the matrix B
+* @param {Float64Array} DL - multipliers that define the matrix L
 * @param {integer} strideDL - stride length for DL
 * @param {NonNegativeInteger} offsetDL - starting index of DL
 * @param {Float64Array} D - N diagonal elements of the upper triangular matrix U
 * @param {integer} strideD - stride length for D
 * @param {NonNegativeInteger} offsetD - starting index of D
-* @param {Float64Array} DU - elements of the first super-diagonal of `U`
+* @param {Float64Array} DU - elements of the first super-diagonal of U
 * @param {integer} strideDU - stride length for DU
 * @param {NonNegativeInteger} offsetDU - starting index of DU
-* @param {Float64Array} DU2 - elements of the second super-diagonal of `U`
+* @param {Float64Array} DU2 - elements of the second super-diagonal of U
 * @param {integer} strideDU2 - stride length for DU2
 * @param {NonNegativeInteger} offsetDU2 - starting index of DU2
 * @param {Int32Array} IPIV - vector of pivot indices
 * @param {integer} strideIPIV - stride length for IPIV
 * @param {NonNegativeInteger} offsetIPIV - starting index for IPIV
-* @param {Float64Array} B - right-hand side matrix B, overwritten by the solution matrix `X`
+* @param {Float64Array} B - right-hand side matrix B, overwritten by the solution matrix X
 * @param {integer} strideB1 - stride of the first dimension of B
 * @param {integer} strideB2 - stride of the second dimension of B
 * @param {NonNegativeInteger} offsetB - starting index of B
@@ -1121,29 +1121,29 @@ function noTranspose( N, nrhs, DL, strideDL, offsetDL, D, strideD, offsetD, DU, 
 *
 * ## Notes
 *
-* -   To solve `A * X = B` (no transpose), use `itrans` = 0.
-* -   To solve `AT * X = B` (transpose), use `itrans` = 1.
-* -   To solve `AT * X = B` (conjugate transpose = transpose), use `itrans` = 2.
+* -   To solve A * X = B (no transpose), use itrans = 0.
+* -   To solve AT * X = B (transpose), use itrans = 1.
+* -   To solve AT * X = B (conjugate transpose = transpose), use itrans = 2.
 *
 * @param {integer} itrans - specifies the form of the system of equations
-* @param {NonNegativeInteger} N - order of the matrix `A`
-* @param {NonNegativeInteger} nrhs - number of right-hand sides, i.e., the number of columns of the matrix `B`
-* @param {Float64Array} DL - multipliers that define the matrix `L`
+* @param {NonNegativeInteger} N - order of the matrix A
+* @param {NonNegativeInteger} nrhs - number of right-hand sides, i.e., the number of columns of the matrix B
+* @param {Float64Array} DL - multipliers that define the matrix L
 * @param {integer} strideDL - stride length for DL
 * @param {NonNegativeInteger} offsetDL - starting index of DL
 * @param {Float64Array} D - N diagonal elements of the upper triangular matrix U
 * @param {integer} strideD - stride length for D
 * @param {NonNegativeInteger} offsetD - starting index of D
-* @param {Float64Array} DU - elements of the first super-diagonal of `U`
+* @param {Float64Array} DU - elements of the first super-diagonal of U
 * @param {integer} strideDU - stride length for DU
 * @param {NonNegativeInteger} offsetDU - starting index of DU
-* @param {Float64Array} DU2 - elements of the second super-diagonal of `U`
+* @param {Float64Array} DU2 - elements of the second super-diagonal of U
 * @param {integer} strideDU2 - stride length for DU2
 * @param {NonNegativeInteger} offsetDU2 - starting index of DU2
 * @param {Int32Array} IPIV - vector of pivot indices
 * @param {integer} strideIPIV - stride length for IPIV
 * @param {NonNegativeInteger} offsetIPIV - starting index for IPIV
-* @param {Float64Array} B - right-hand side matrix B, overwritten by the solution matrix `X`
+* @param {Float64Array} B - right-hand side matrix B, overwritten by the solution matrix X
 * @param {integer} strideB1 - stride of the first dimension of B
 * @param {integer} strideB2 - stride of the second dimension of B
 * @param {NonNegativeInteger} offsetB - starting index of B
@@ -1168,7 +1168,7 @@ function dgtts2( itrans, N, nrhs, DL, strideDL, offsetDL, D, strideD, offsetD, D
 		return B;
 	}
 	if ( itrans === 0 ) {
-		// Solve `A * X = B` using the LU factorization of A, overwriting B with the solution
+		// Solve A * X = B using the LU factorization of A, overwriting B with the solution
 		return noTranspose( N, nrhs, DL, strideDL, offsetDL, D, strideD, offsetD, DU, strideDU, offsetDU, DU2, strideDU2, offsetDU2, IPIV, strideIPIV, offsetIPIV, B, strideB1, strideB2, offsetB );
 	}
 	// Solve Solve A**T * X = B using the LU factorization of A,  overwriting B with the solution.
@@ -1186,7 +1186,7 @@ module.exports = dgtts2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-03T04:43:55.782Z
+                at 2025-06-03T05:15:04.236Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
