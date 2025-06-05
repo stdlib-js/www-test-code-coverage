@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>65/65</span>
+                <span class='fraction'>95/95</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>65/65</span>
+                <span class='fraction'>95/95</span>
             </div>
         
             
@@ -128,7 +128,67 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -221,21 +281,51 @@ var base = require( './base.js' );
 // MAIN //
 &nbsp;
 /**
-* Generates a real elementary reflector `H` of order `N` such that applying `H` to a vector `[alpha; X]` zeros out `X` using alternative indexing semantics.
+* Generates a real elementary reflector `H` of order `N` such that applying `H` to a vector `[alpha; X]` zeros out `X` usinig alternative indexing semantics.
+*
+* `H` is a Householder matrix with the form:
+*
+* ```tex
+* H \cdot \begin{bmatrix} \alpha \\ x \end{bmatrix} = \begin{bmatrix} \beta \\ 0 \end{bmatrix}, \quad \text{and} \quad H^T H = I
+* ```
+*
+* where:
+*
+* -   `tau` is a scalar
+* -   `X` is a vector of length `N-1`
+* -   `beta` is a scalar value
+* -   `H` is an orthogonal matrix known as a Householder reflector.
+*
+* The reflector `H` is constructed in the form:
+*
+* ```tex
+* H = I - \tau \begin{bmatrix}1 \\ v \end{bmatrix} \begin{bmatrix}1 &amp; v^T \end{bmatrix}
+* ```
+*
+* where:
+*
+* -   `tau` is a real scalar
+* -   `V` is a real vector of length `N-1` that defines the Householder vector
+* -   The vector `[1; V]` is the Householder direction\
+*
+* The values of `tau` and `V` are chosen so that applying `H` to the vector `[alpha; X]` results in a new vector `[beta; 0]`, i.e., only the first component remains nonzero. The reflector matrix `H` is symmetric and orthogonal, satisfying `H^T = H` and `H^T H = I`
+*
+* ## Special cases
+*
+* -   If all elements of `X` are zero, then `tau = 0` and `H = I`, the identity matrix.
+* -   Otherwise, `tau` satisfies `1 ≤ tau ≤ 2`, ensuring numerical stability in transformations.
 *
 * ## Notes
 *
-* -   `H` is a Householder matrix with the form `H = I - tau * [1; V] * [1, V^T]`, where `tau` is a scalar and `V` is a vector.
-* -   the input vector is `[alpha; X]`, where `alpha` is a scalar and `X` is a real `(n-1)`-element vector.
-* -   the result of applying `H` to `[alpha; X]` is `[beta; 0]`, with `beta` being a scalar and the rest of the vector zeroed.
-* -   if all elements of `X` are zero, then `tau = 0` and `H` is the identity matrix.
-* -   otherwise, `1 &lt;= tau &lt;= 2`
+* -   `X` should have `N-1` indexed elements
+* -   The output array contains the following two elements: `alpha` and `tau`
+&nbsp;
 *
 * @param {NonNegativeInteger} N - number of rows/columns of the elementary reflector `H`
-* @param {Float64Array} X - overwritten by the vector `V` on exit, expects `N - 1` indexed elements
+* @param {Float64Array} X - input vector
 * @param {integer} strideX - stride length for `X`
 * @param {NonNegativeInteger} offsetX - starting index of `X`
-* @param {Float64Array} out - array to store `alpha` and `tau`, first indexed element stores `alpha` and the second indexed element stores `tau`
+* @param {Float64Array} out - output array
 * @param {integer} strideOut - stride length for `out`
 * @param {NonNegativeInteger} offsetOut - starting index of `out`
 * @returns {void}
@@ -265,7 +355,7 @@ module.exports = dlarfg;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-05T06:03:41.757Z
+                at 2025-06-05T07:21:14.057Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
