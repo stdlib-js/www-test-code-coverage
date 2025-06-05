@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>116/116</span>
+                <span class='fraction'>113/113</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>116/116</span>
+                <span class='fraction'>113/113</span>
             </div>
         
             
@@ -176,10 +176,7 @@
 <a name='L111'></a><a href='#L111'>111</a>
 <a name='L112'></a><a href='#L112'>112</a>
 <a name='L113'></a><a href='#L113'>113</a>
-<a name='L114'></a><a href='#L114'>114</a>
-<a name='L115'></a><a href='#L115'>115</a>
-<a name='L116'></a><a href='#L116'>116</a>
-<a name='L117'></a><a href='#L117'>117</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L114'></a><a href='#L114'>114</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -253,7 +250,6 @@
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -263,7 +259,6 @@
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -284,7 +279,6 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -328,13 +322,13 @@ var dlapy2 = require( '@stdlib/lapack/base/dlapy2' );
 // MAIN //
 &nbsp;
 /**
-* Generates a real elementary reflector `H` of order `N` such that applying `H` to a vector `[alpha; x]` zeros out `X`.
+* Generates a real elementary reflector `H` of order `N` such that applying `H` to a vector `[alpha; X]` zeros out `X`.
 *
 * ## Notes
 *
-* -   `H` is a Householder matrix with the form `H = I - tau * [1; v] * [1, v^T]`, where `tau` is a scalar and `v` is a vector.
-* -   the input vector is `[alpha; x]`, where `alpha` is a scalar and `X` is a real `(n-1)`-element vector.
-* -   the result of applying `H` to `[alpha; x]` is `[beta; 0]`, with `beta` being a scalar and the rest of the vector zeroed.
+* -   `H` is a Householder matrix with the form `H = I - tau * [1; V] * [1, V^T]`, where `tau` is a scalar and `V` is a vector.
+* -   the input vector is `[alpha; X]`, where `alpha` is a scalar and `X` is a real `(n-1)`-element vector.
+* -   the result of applying `H` to `[alpha; X]` is `[beta; 0]`, with `beta` being a scalar and the rest of the vector zeroed.
 * -   if all elements of `X` are zero, then `tau = 0` and `H` is the identity matrix.
 * -   otherwise, `1 &lt;= tau &lt;= 2`
 *
@@ -346,7 +340,7 @@ var dlapy2 = require( '@stdlib/lapack/base/dlapy2' );
 * @param {Float64Array} out - array to store `alpha` and `tau`, first indexed element stores `alpha` and the second indexed element stores `tau`
 * @param {integer} strideOut - stride length for `out`
 * @param {NonNegativeInteger} offsetOut - starting index of `out`
-* @returns {void} overwrites the array `X` and `out` in place
+* @returns {void}
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
@@ -369,8 +363,7 @@ function dlarfg( N, X, strideX, offsetX, out, strideOut, offsetOut ) {
 	var i;
 &nbsp;
 	if ( N &lt;= 1 ) {
-		tau = 0.0; // tau = 0.0
-		out[ offsetOut + strideOut ] = tau;
+		out[ offsetOut + strideOut ] = 0.0;
 		return;
 	}
 &nbsp;
@@ -378,11 +371,10 @@ function dlarfg( N, X, strideX, offsetX, out, strideOut, offsetOut ) {
 	alpha = out[ offsetOut ];
 &nbsp;
 	if ( xnorm === 0.0 ) {
-		tau = 0.0; // tau = 0.0
-		out[ strideOut + offsetOut ] = tau;
+		out[ strideOut + offsetOut ] = 0.0;
 	} else {
 		beta = -1.0 * sign( dlapy2( alpha, xnorm ), alpha );
-		safemin = dlamch( 'S' ) / dlamch( 'E' );
+		safemin = dlamch( 'safemin' ) / dlamch( 'epsilon' );
 		knt = 0;
 		if ( abs( beta ) &lt; safemin ) {
 			rsafmin = 1.0 / safemin;
@@ -390,19 +382,18 @@ function dlarfg( N, X, strideX, offsetX, out, strideOut, offsetOut ) {
 				knt += 1;
 				dscal( N-1, rsafmin, X, strideX, offsetX );
 				beta *= rsafmin;
-				alpha *= rsafmin; // alpha *= rsafmin
+				alpha *= rsafmin;
 			}
 			xnorm = dnrm2( N - 1, X, strideX, offsetX );
 			beta = -1.0 * sign( dlapy2( alpha, xnorm ), alpha );
 		}
-		tau = ( beta - alpha ) / beta; // tau = (beta - alpha) / beta
+		tau = ( beta - alpha ) / beta;
 		dscal( N-1, 1.0 / ( alpha - beta ), X, strideX, offsetX );
 		for ( i = 0; i &lt; knt; i++ ) {
 			beta *= safemin;
 		}
-		alpha = beta;
 &nbsp;
-		out[ offsetOut ] = alpha;
+		out[ offsetOut ] = beta;
 		out[ strideOut + offsetOut ] = tau;
 	}
 }
@@ -418,7 +409,7 @@ module.exports = dlarfg;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-04T03:31:12.657Z
+                at 2025-06-05T04:51:44.445Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
