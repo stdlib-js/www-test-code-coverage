@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/unary-strided1d-dispatch/lib/main.js</title>
+    <title>Code coverage report for ndarray/base/unary-reduce-strided1d-dispatch-by/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-strided1d-dispatch/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/unary-reduce-strided1d-dispatch-by/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.78% </span>
+                <span class="strong">42.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>240/513</span>
+                <span class='fraction'>255/600</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">46.78% </span>
+                <span class="strong">42.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>240/513</span>
+                <span class='fraction'>255/600</span>
             </div>
         
             
@@ -576,7 +576,94 @@
 <a name='L511'></a><a href='#L511'>511</a>
 <a name='L512'></a><a href='#L512'>512</a>
 <a name='L513'></a><a href='#L513'>513</a>
-<a name='L514'></a><a href='#L514'>514</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L514'></a><a href='#L514'>514</a>
+<a name='L515'></a><a href='#L515'>515</a>
+<a name='L516'></a><a href='#L516'>516</a>
+<a name='L517'></a><a href='#L517'>517</a>
+<a name='L518'></a><a href='#L518'>518</a>
+<a name='L519'></a><a href='#L519'>519</a>
+<a name='L520'></a><a href='#L520'>520</a>
+<a name='L521'></a><a href='#L521'>521</a>
+<a name='L522'></a><a href='#L522'>522</a>
+<a name='L523'></a><a href='#L523'>523</a>
+<a name='L524'></a><a href='#L524'>524</a>
+<a name='L525'></a><a href='#L525'>525</a>
+<a name='L526'></a><a href='#L526'>526</a>
+<a name='L527'></a><a href='#L527'>527</a>
+<a name='L528'></a><a href='#L528'>528</a>
+<a name='L529'></a><a href='#L529'>529</a>
+<a name='L530'></a><a href='#L530'>530</a>
+<a name='L531'></a><a href='#L531'>531</a>
+<a name='L532'></a><a href='#L532'>532</a>
+<a name='L533'></a><a href='#L533'>533</a>
+<a name='L534'></a><a href='#L534'>534</a>
+<a name='L535'></a><a href='#L535'>535</a>
+<a name='L536'></a><a href='#L536'>536</a>
+<a name='L537'></a><a href='#L537'>537</a>
+<a name='L538'></a><a href='#L538'>538</a>
+<a name='L539'></a><a href='#L539'>539</a>
+<a name='L540'></a><a href='#L540'>540</a>
+<a name='L541'></a><a href='#L541'>541</a>
+<a name='L542'></a><a href='#L542'>542</a>
+<a name='L543'></a><a href='#L543'>543</a>
+<a name='L544'></a><a href='#L544'>544</a>
+<a name='L545'></a><a href='#L545'>545</a>
+<a name='L546'></a><a href='#L546'>546</a>
+<a name='L547'></a><a href='#L547'>547</a>
+<a name='L548'></a><a href='#L548'>548</a>
+<a name='L549'></a><a href='#L549'>549</a>
+<a name='L550'></a><a href='#L550'>550</a>
+<a name='L551'></a><a href='#L551'>551</a>
+<a name='L552'></a><a href='#L552'>552</a>
+<a name='L553'></a><a href='#L553'>553</a>
+<a name='L554'></a><a href='#L554'>554</a>
+<a name='L555'></a><a href='#L555'>555</a>
+<a name='L556'></a><a href='#L556'>556</a>
+<a name='L557'></a><a href='#L557'>557</a>
+<a name='L558'></a><a href='#L558'>558</a>
+<a name='L559'></a><a href='#L559'>559</a>
+<a name='L560'></a><a href='#L560'>560</a>
+<a name='L561'></a><a href='#L561'>561</a>
+<a name='L562'></a><a href='#L562'>562</a>
+<a name='L563'></a><a href='#L563'>563</a>
+<a name='L564'></a><a href='#L564'>564</a>
+<a name='L565'></a><a href='#L565'>565</a>
+<a name='L566'></a><a href='#L566'>566</a>
+<a name='L567'></a><a href='#L567'>567</a>
+<a name='L568'></a><a href='#L568'>568</a>
+<a name='L569'></a><a href='#L569'>569</a>
+<a name='L570'></a><a href='#L570'>570</a>
+<a name='L571'></a><a href='#L571'>571</a>
+<a name='L572'></a><a href='#L572'>572</a>
+<a name='L573'></a><a href='#L573'>573</a>
+<a name='L574'></a><a href='#L574'>574</a>
+<a name='L575'></a><a href='#L575'>575</a>
+<a name='L576'></a><a href='#L576'>576</a>
+<a name='L577'></a><a href='#L577'>577</a>
+<a name='L578'></a><a href='#L578'>578</a>
+<a name='L579'></a><a href='#L579'>579</a>
+<a name='L580'></a><a href='#L580'>580</a>
+<a name='L581'></a><a href='#L581'>581</a>
+<a name='L582'></a><a href='#L582'>582</a>
+<a name='L583'></a><a href='#L583'>583</a>
+<a name='L584'></a><a href='#L584'>584</a>
+<a name='L585'></a><a href='#L585'>585</a>
+<a name='L586'></a><a href='#L586'>586</a>
+<a name='L587'></a><a href='#L587'>587</a>
+<a name='L588'></a><a href='#L588'>588</a>
+<a name='L589'></a><a href='#L589'>589</a>
+<a name='L590'></a><a href='#L590'>590</a>
+<a name='L591'></a><a href='#L591'>591</a>
+<a name='L592'></a><a href='#L592'>592</a>
+<a name='L593'></a><a href='#L593'>593</a>
+<a name='L594'></a><a href='#L594'>594</a>
+<a name='L595'></a><a href='#L595'>595</a>
+<a name='L596'></a><a href='#L596'>596</a>
+<a name='L597'></a><a href='#L597'>597</a>
+<a name='L598'></a><a href='#L598'>598</a>
+<a name='L599'></a><a href='#L599'>599</a>
+<a name='L600'></a><a href='#L600'>600</a>
+<a name='L601'></a><a href='#L601'>601</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -643,6 +730,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -732,9 +822,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -798,12 +885,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -851,6 +933,45 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -935,6 +1056,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -991,6 +1131,40 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1107,7 +1281,7 @@
 * limitations under the License.
 */
 &nbsp;
-/* eslint-disable no-restricted-syntax, no-invalid-this */
+/* eslint-disable no-restricted-syntax, no-invalid-this, max-lines, max-len */
 &nbsp;
 'use strict';
 &nbsp;
@@ -1125,10 +1299,11 @@ var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
 var isOutputDataTypePolicy = require( '@stdlib/ndarray/base/assert/is-output-data-type-policy' );
 var isInputCastingPolicy = require( '@stdlib/ndarray/base/assert/is-input-casting-policy' );
 var contains = require( '@stdlib/array/base/assert/contains' );
-var unaryStrided1d = require( '@stdlib/ndarray/base/unary-strided1d' );
+var unaryReduceStrided1dBy = require( '@stdlib/ndarray/base/unary-reduce-strided1d-by' );
 var unaryOutputDataType = require( '@stdlib/ndarray/base/unary-output-dtype' );
 var unaryInputCastingDataType = require( '@stdlib/ndarray/base/unary-input-casting-dtype' );
 var resolveEnum = require( '@stdlib/ndarray/base/dtype-resolve-enum' );
+var spreadDimensions = require( '@stdlib/ndarray/base/spread-dimensions' );
 var getShape = require( '@stdlib/ndarray/shape' ); // note: non-base accessor is intentional due to input ndarrays originating in userland
 var ndims = require( '@stdlib/ndarray/ndims' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
@@ -1136,6 +1311,8 @@ var getOrder = require( '@stdlib/ndarray/base/order' );
 var assign = require( '@stdlib/ndarray/base/assign' );
 var baseEmpty = require( '@stdlib/ndarray/base/empty' );
 var empty = require( '@stdlib/ndarray/empty' );
+var indicesComplement = require( '@stdlib/array/base/indices-complement' );
+var takeIndexed = require( '@stdlib/array/base/take-indexed' );
 var zeroTo = require( '@stdlib/array/base/zero-to' );
 var join = require( '@stdlib/array/base/join' );
 var copy = require( '@stdlib/array/base/copy' );
@@ -1196,33 +1373,28 @@ var indexOfTypes = require( './index_of_types.js' );
 // MAIN //
 &nbsp;
 /**
-* Constructor for applying a strided function to an input ndarray.
+* Constructor for performing a reduction on an input ndarray according to a callback function.
 *
 * @constructor
 * @param {Object} table - dispatch table
-* @param {Function} table.default - default strided function
-* @param {StringArray} [table.types=[]] - one-dimensional list of ndarray data types describing specialized input and output ndarray argument signatures
-* @param {ArrayLikeObject&lt;Function&gt;} [table.fcns=[]] - list of strided functions which are specific to specialized input and output ndarray argument signatures
+* @param {Function} table.default - default strided reduction function
+* @param {StringArray} [table.types=[]] - one-dimensional list of ndarray data types describing specialized input ndarray argument signatures
+* @param {ArrayLikeObject&lt;Function&gt;} [table.fcns=[]] - list of strided reduction functions which are specific to specialized input ndarray argument signatures
 * @param {ArrayLikeObject&lt;StringArray&gt;} idtypes - list containing lists of supported input data types for each ndarray argument
 * @param {StringArray} odtypes - list of supported output data types
 * @param {Object} policies - policies
 * @param {string} policies.output - output data type policy
 * @param {string} policies.casting - input ndarray casting policy
-* @param {Options} [options] - function options
-* @param {boolean} [options.strictTraversalOrder=false] - boolean specifying whether to require that element traversal match the memory layout of an input ndarray
 * @throws {TypeError} first argument must be an object having valid properties
-* @throws {Error} first argument must be an object having valid properties
 * @throws {TypeError} second argument must be an array containing arrays of supported data types
 * @throws {TypeError} third argument must be an array of supported data types
 * @throws {TypeError} fourth argument must be an object having supported policies
-* @throws {TypeError} options argument must be an object
-* @throws {TypeError} must provide valid options
-* @returns {UnaryStrided1dDispatch} instance
+* @throws {Error} first argument must be an object having valid properties
+* @returns {UnaryStrided1dDispatchBy} instance
 *
 * @example
-* var base = require( '@stdlib/stats/base/ndarray/cumax' );
+* var base = require( '@stdlib/stats/base/ndarray/max-by' );
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
 * var idt = dtypes( 'real_and_generic' );
@@ -1235,25 +1407,26 @@ var indexOfTypes = require( './index_of_types.js' );
 * var table = {
 *     'default': base
 * };
-* var cumax = new UnaryStrided1dDispatch( table, [ idt ], odt, policies );
+* var maxBy = new UnaryStrided1dDispatchBy( table, [ idt ], odt, policies );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var y = cumax.apply( x );
+* function clbk( v ) {
+*     return v * 2.0;
+* }
+*
+* var y = maxBy.apply( x, clbk );
 * // returns &lt;ndarray&gt;
 *
-* var arr = ndarray2array( y );
-* // returns [ -1.0, 2.0, 2.0 ]
+* var v = y.get();
+* // returns 4.0
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function UnaryStrided1dDispatch( table, idtypes, odtypes, policies, options ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function UnaryStrided1dDispatchBy( table, idtypes, odtypes, policies ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" >	if ( !( this instanceof UnaryStrided1dDispatch ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( arguments.length &gt; 4 ) {</span>
-<span class="cstat-no" title="statement not covered" >			return new UnaryStrided1dDispatch( table, idtypes, odtypes, policies, options ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return new UnaryStrided1dDispatch( table, idtypes, odtypes, policies );</span>
+<span class="cstat-no" title="statement not covered" >	if ( !( this instanceof UnaryStrided1dDispatchBy ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		return new UnaryStrided1dDispatchBy( table, idtypes, odtypes, policies );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( !isObject( table ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be an object. Value: `%s`.', table ) );</span>
@@ -1301,8 +1474,8 @@ var indexOfTypes = require( './index_of_types.js' );
 <span class="cstat-no" title="statement not covered" >		'types': ( table.types ) ? types2enums( table.types ) : [], // note: convert to enums (i.e., integers) to ensure faster comparisons</span>
 <span class="cstat-no" title="statement not covered" >		'fcns': ( table.fcns ) ? copy( table.fcns ) : []</span>
 <span class="cstat-no" title="statement not covered" >	};</span>
-<span class="cstat-no" title="statement not covered" >	if ( this._table.types.length !== this._table.fcns.length*2 ) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new Error( 'invalid argument. First argument specifies an unexpected number of types. A pair of input and output ndarray data types must be specified for each provided strided function.' );</span>
+<span class="cstat-no" title="statement not covered" >	if ( this._table.types.length !== this._table.fcns.length ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new Error( 'invalid argument. First argument specifies an unexpected number of types. An input ndarray data type must be specified for each provided strided function.' );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	this._idtypes = idtypes;</span>
 <span class="cstat-no" title="statement not covered" >	this._odtypes = odtypes;</span>
@@ -1310,36 +1483,34 @@ var indexOfTypes = require( './index_of_types.js' );
 <span class="cstat-no" title="statement not covered" >		'output': policies.output,</span>
 <span class="cstat-no" title="statement not covered" >		'casting': policies.casting</span>
 <span class="cstat-no" title="statement not covered" >	};</span>
-<span class="cstat-no" title="statement not covered" >	if ( arguments.length &gt; 4 ) {</span>
-<span class="cstat-no" title="statement not covered" >		this._apply = unaryStrided1d.factory( options ); // note: delegate options validation to factory method</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		this._apply = unaryStrided1d;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return this;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 /**
-* Applies a strided function to a provided input ndarray.
+* Performs a reduction on a provided input ndarray according to a callback function.
 *
 * @name apply
-* @memberof UnaryStrided1dDispatch.prototype
+* @memberof UnaryStrided1dDispatchBy.prototype
 * @type {Function}
 * @param {ndarrayLike} x - input ndarray
 * @param {...ndarrayLike} [args] - additional ndarray arguments
 * @param {Options} [options] - function options
-* @param {IntegerArray} [options.dims] - list of dimensions over which to perform an operation
+* @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction
+* @param {boolean} [options.keepdims=false] - boolean indicating whether the reduced dimensions should be included in the returned ndarray as singleton dimensions
 * @param {string} [options.dtype] - output ndarray data type
+* @param {Function} clbk - callback function
+* @param {*} [thisArg] - callback function execution context
 * @throws {TypeError} first argument must be an ndarray-like object
 * @throws {TypeError} options argument must be an object
+* @throws {TypeError} callback argument must be a function
 * @throws {RangeError} dimension indices must not exceed input ndarray bounds
 * @throws {RangeError} number of dimension indices must not exceed the number of input ndarray dimensions
 * @throws {Error} must provide valid options
 * @returns {ndarray} output ndarray
 *
 * @example
-* var base = require( '@stdlib/stats/base/ndarray/cumax' );
+* var base = require( '@stdlib/stats/base/ndarray/max-by' );
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
 * var idt = dtypes( 'real_and_generic' );
@@ -1352,29 +1523,38 @@ var indexOfTypes = require( './index_of_types.js' );
 * var table = {
 *     'default': base
 * };
-* var cumax = new UnaryStrided1dDispatch( table, [ idt ], odt, policies );
+* var maxBy = new UnaryStrided1dDispatchBy( table, [ idt ], odt, policies );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var y = cumax.apply( x );
+* function clbk( v ) {
+*     return v * 2.0;
+* }
+*
+* var y = maxBy.apply( x, clbk );
 * // returns &lt;ndarray&gt;
 *
-* var arr = ndarray2array( y );
-* // returns [ -1.0, 2.0, 2.0 ]
+* var v = y.get();
+* // returns 4.0
 */
-setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" title="function not covered" >function apply( x ) {</span>
+setReadOnly( UnaryStrided1dDispatchBy.prototype, 'apply', <span class="fstat-no" title="function not covered" >function apply( x ) {</span>
+<span class="cstat-no" title="statement not covered" >	var thisArg;</span>
 <span class="cstat-no" title="statement not covered" >	var options;</span>
 <span class="cstat-no" title="statement not covered" >	var dtypes;</span>
 <span class="cstat-no" title="statement not covered" >	var nargs;</span>
+<span class="cstat-no" title="statement not covered" >	var clbk;</span>
 <span class="cstat-no" title="statement not covered" >	var args;</span>
 <span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var err;</span>
+<span class="cstat-no" title="statement not covered" >	var idx;</span>
 <span class="cstat-no" title="statement not covered" >	var shx;</span>
+<span class="cstat-no" title="statement not covered" >	var shy;</span>
 <span class="cstat-no" title="statement not covered" >	var arr;</span>
+<span class="cstat-no" title="statement not covered" >	var tmp;</span>
 <span class="cstat-no" title="statement not covered" >	var xdt;</span>
 <span class="cstat-no" title="statement not covered" >	var ydt;</span>
-<span class="cstat-no" title="statement not covered" >	var tmp;</span>
+<span class="cstat-no" title="statement not covered" >	var flg;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var f;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
@@ -1399,30 +1579,72 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 <span class="cstat-no" title="statement not covered" >		if ( !contains( this._idtypes[ i ], dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Argument %d must have one of the following data types: "%s". Data type: `%s`.', i, join( this._idtypes[ i ], '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		// Note: we don't type promote additional ndarray arguments, as they are passed as scalars to the underlying strided reduction function...</span>
 <span class="cstat-no" title="statement not covered" >		args.push( arr );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// If we didn't make it up until the last argument, this means that we found a non-options argument which was not an ndarray...</span>
-<span class="cstat-no" title="statement not covered" >	if ( i &lt; nargs-1 ) {</span>
+<span class="cstat-no" title="statement not covered" >	// Check whether we found a non-options argument which was not an ndarray...</span>
+<span class="cstat-no" title="statement not covered" >	if ( i &lt; nargs-3 ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Argument %d must be an ndarray-like object. Value: `%s`.', i, arguments[ i ] ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ... )</span>
+<span class="cstat-no" title="statement not covered" >	if ( i === nargs ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Callback argument must be a function. Value: `%s`.', arguments[ nargs-1 ] ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., options, clbk, thisArg )</span>
+<span class="cstat-no" title="statement not covered" >	if ( i === nargs-3 ) {</span>
+<span class="cstat-no" title="statement not covered" >		flg = true;</span>
+<span class="cstat-no" title="statement not covered" >		options = arguments[ nargs-3 ];</span>
+<span class="cstat-no" title="statement not covered" >		clbk = arguments[ nargs-2 ];</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isFunction( clbk ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Callback argument must be a function. Value: `%s`.', clbk ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		thisArg = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., clbk )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( i === nargs-1 ) {</span>
+<span class="cstat-no" title="statement not covered" >		clbk = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isFunction( clbk ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Callback argument must be a function. Value: `%s`.', clbk ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., clbk, thisArg )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( isFunction( arguments[ nargs-2 ] ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		clbk = arguments[ nargs-2 ];</span>
+<span class="cstat-no" title="statement not covered" >		thisArg = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., options, clbk )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( isFunction( arguments[ nargs-1 ] ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		flg = true;</span>
+<span class="cstat-no" title="statement not covered" >		options = arguments[ nargs-2 ];</span>
+<span class="cstat-no" title="statement not covered" >		clbk = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., ???, ??? )</span>
+<span class="cstat-no" title="statement not covered" >	else {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Callback argument must be a function. Value: `%s`.', arguments[ nargs-2 ] ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	shx = getShape( x );</span>
 <span class="cstat-no" title="statement not covered" >	N = shx.length;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	opts = objectAssign( {}, defaults );</span>
-<span class="cstat-no" title="statement not covered" >	if ( nargs &gt; i ) {</span>
-<span class="cstat-no" title="statement not covered" >		options = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >	if ( flg ) {</span>
 <span class="cstat-no" title="statement not covered" >		err = validate( opts, N, this._odtypes, options );</span>
 <span class="cstat-no" title="statement not covered" >		if ( err ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw err;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, apply the strided function across all dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, reduce the entire input ndarray across all dimensions...</span>
 <span class="cstat-no" title="statement not covered" >	if ( opts.dims === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.dims = zeroTo( N );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Initialize an output array whose shape and memory layout matches the input array:</span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the list of non-reduced dimensions:</span>
+<span class="cstat-no" title="statement not covered" >	idx = indicesComplement( N, opts.dims );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the output array shape:</span>
+<span class="cstat-no" title="statement not covered" >	shy = takeIndexed( shx, idx );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Initialize an output array whose shape matches that of the non-reduced dimensions and which has the same memory layout as the input ndarray:</span>
 <span class="cstat-no" title="statement not covered" >	ydt = opts.dtype || unaryOutputDataType( xdt, this._policies.output );</span>
-<span class="cstat-no" title="statement not covered" >	y = empty( shx, {</span>
+<span class="cstat-no" title="statement not covered" >	y = empty( shy, {</span>
 <span class="cstat-no" title="statement not covered" >		'dtype': ydt,</span>
 <span class="cstat-no" title="statement not covered" >		'order': getOrder( x )</span>
 <span class="cstat-no" title="statement not covered" >	});</span>
@@ -1436,44 +1658,50 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 <span class="cstat-no" title="statement not covered" >		args[ 0 ] = tmp;</span>
 <span class="cstat-no" title="statement not covered" >		xdt = dt;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input and output ndarray data types:</span>
-<span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( xdt ), resolveEnum( ydt ) ];</span>
-<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input ndarray data type:</span>
+<span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( xdt ) ];</span>
+<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 1, this._table.types, 1, 1, 0, dtypes, 1, 0 );</span>
 <span class="cstat-no" title="statement not covered" >	if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.fcns[ i ];</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Perform operation:</span>
-<span class="cstat-no" title="statement not covered" >	this._apply( f, reorder( args, y ), opts.dims );</span>
+<span class="cstat-no" title="statement not covered" >	// Perform the reduction:</span>
+<span class="cstat-no" title="statement not covered" >	unaryReduceStrided1dBy( f, reorder( args, y ), opts.dims, clbk, thisArg );</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Check whether we need to reinsert singleton dimensions which can be useful for broadcasting the returned output array to the shape of the original input array...</span>
+<span class="cstat-no" title="statement not covered" >	if ( opts.keepdims ) {</span>
+<span class="cstat-no" title="statement not covered" >		y = spreadDimensions( N, y, idx );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
 &nbsp;
 /**
-* Applies a strided function to a provided input ndarray and assigns results to a provided output ndarray.
+* Performs a reduction on a provided input ndarray according to a callback function and assigns results to a provided output ndarray.
 *
 * @name assign
-* @memberof UnaryStrided1dDispatch.prototype
+* @memberof UnaryStrided1dDispatchBy.prototype
 * @type {Function}
 * @param {ndarrayLike} x - input ndarray
 * @param {...ndarrayLike} [args] - additional ndarray arguments
 * @param {ndarrayLike} out - output ndarray
 * @param {Options} [options] - function options
-* @param {IntegerArray} [options.dims] - list of dimensions over which to perform an operation
+* @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction
+* @param {Function} clbk - callback function
+* @param {*} [thisArg] - callback function execution context
 * @throws {TypeError} first argument must be an ndarray
 * @throws {TypeError} first argument must have a supported data type
 * @throws {TypeError} output argument must be an ndarray
 * @throws {TypeError} options argument must be an object
+* @throws {TypeError} callback argument must be a function
 * @throws {RangeError} dimension indices must not exceed input ndarray bounds
 * @throws {RangeError} number of dimension indices must not exceed the number of input ndarray dimensions
 * @throws {Error} must provide valid options
 * @returns {ndarrayLike} output ndarray
 *
 * @example
-* var base = require( '@stdlib/stats/base/ndarray/cumax' );
+* var base = require( '@stdlib/stats/base/ndarray/max-by' );
 * var dtypes = require( '@stdlib/ndarray/dtypes' );
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
 * var idt = dtypes( 'real_and_generic' );
@@ -1486,27 +1714,33 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" t
 * var table = {
 *     'default': base
 * };
-* var cumax = new UnaryStrided1dDispatch( table, [ idt ], odt, policies );
+* var maxBy = new UnaryStrided1dDispatchBy( table, [ idt ], odt, policies );
 *
 * var xbuf = [ -1.0, 2.0, -3.0 ];
 * var x = new ndarray( 'generic', xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
 *
-* var ybuf = [ 0.0, 0.0, 0.0 ];
-* var y = new ndarray( 'generic', ybuf, [ ybuf.length ], [ 1 ], 0, 'row-major' );
+* var ybuf = [ 0.0 ];
+* var y = new ndarray( 'generic', ybuf, [], [ 0 ], 0, 'row-major' );
 *
-* var out = cumax.assign( x, y );
+* function clbk( v ) {
+*     return v * 2.0;
+* }
+*
+* var out = maxBy.assign( x, y, clbk );
 * // returns &lt;ndarray&gt;
 *
-* var arr = ndarray2array( y );
-* // returns [ -1.0, 2.0, 2.0 ]
+* var v = out.get();
+* // returns 4.0
 *
 * var bool = ( out === y );
 * // returns true
 */
-setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" title="function not covered" >function assign( x ) {</span>
+setReadOnly( UnaryStrided1dDispatchBy.prototype, 'assign', <span class="fstat-no" title="function not covered" >function assign( x ) {</span>
+<span class="cstat-no" title="statement not covered" >	var thisArg;</span>
 <span class="cstat-no" title="statement not covered" >	var options;</span>
 <span class="cstat-no" title="statement not covered" >	var dtypes;</span>
 <span class="cstat-no" title="statement not covered" >	var nargs;</span>
+<span class="cstat-no" title="statement not covered" >	var clbk;</span>
 <span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var args;</span>
 <span class="cstat-no" title="statement not covered" >	var arr;</span>
@@ -1543,19 +1777,46 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >	if ( i &lt; 2 ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an ndarray-like object. Value: `%s`.', arguments[ 1 ] ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// If we processed all but the last argument, assume that the last argument is an options argument...</span>
-<span class="cstat-no" title="statement not covered" >	else if ( i === nargs-1 ) {</span>
-<span class="cstat-no" title="statement not covered" >		options = arguments[ i ];</span>
-<span class="cstat-no" title="statement not covered" >		flg = true;</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., out )</span>
+<span class="cstat-no" title="statement not covered" >	if ( i === nargs ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Callback argument must be a function. Value: `%s`.', arguments[ nargs-1 ] ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Otherwise, if we have more than one argument remaining, then at least one argument is not an ndarray but should be...</span>
-<span class="cstat-no" title="statement not covered" >	else if ( i &lt; nargs-1 ) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Argument %d must be an ndarray-like object. Value: `%s`.', i, arguments[ i ] ) );</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., out, options, clbk, thisArg )</span>
+<span class="cstat-no" title="statement not covered" >	if ( i === nargs-3 ) {</span>
+<span class="cstat-no" title="statement not covered" >		flg = true;</span>
+<span class="cstat-no" title="statement not covered" >		options = arguments[ nargs-3 ];</span>
+<span class="cstat-no" title="statement not covered" >		clbk = arguments[ nargs-2 ];</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isFunction( clbk ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Callback argument must be a function. Value: `%s`.', clbk ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		thisArg = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., out, clbk )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( i === nargs-1 ) {</span>
+<span class="cstat-no" title="statement not covered" >		clbk = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isFunction( clbk ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Callback argument must be a function. Value: `%s`.', clbk ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., out, clbk, thisArg )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( isFunction( arguments[ nargs-2 ] ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		clbk = arguments[ nargs-2 ];</span>
+<span class="cstat-no" title="statement not covered" >		thisArg = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., out, options, clbk )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( isFunction( arguments[ nargs-1 ] ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		flg = true;</span>
+<span class="cstat-no" title="statement not covered" >		options = arguments[ nargs-2 ];</span>
+<span class="cstat-no" title="statement not covered" >		clbk = arguments[ nargs-1 ];</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: ( ..., out, ???, ??? )</span>
+<span class="cstat-no" title="statement not covered" >	else {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Callback argument must be a function. Value: `%s`.', arguments[ nargs-2 ] ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Cache a reference to the output ndarray:</span>
 <span class="cstat-no" title="statement not covered" >	y = args.pop();</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Verify that additional ndarray arguments have expected dtypes (note: we intentionally don't validate the output ndarray dtype in order to provide an escape hatch for a user wanting to have an output ndarray having a specific dtype that `apply` does not support)...</span>
+<span class="cstat-no" title="statement not covered" >	// Verify that additional ndarray arguments have expected dtypes (note: we intentionally don't validate the output ndarray dtype in order to provide an escape hatch for a user wanting to have an output ndarray having a specific dtype that `apply` does not support; note: we don't type promote additional ndarray arguments, as they are passed as scalars to the underlying strided reduction function)...</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 1; i &lt; args.length; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		dt = getDType( args[ i ] );</span>
 <span class="cstat-no" title="statement not covered" >		if ( !contains( this._idtypes[ i ], dt ) ) {</span>
@@ -1571,12 +1832,12 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >			throw err;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, apply the strided function across all dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, reduce the entire input array across all dimensions...</span>
 <span class="cstat-no" title="statement not covered" >	if ( opts.dims === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.dims = zeroTo( N );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we need to cast the input ndarray...</span>
-<span class="cstat-no" title="statement not covered" >	dt = unaryInputCastingDataType( xdt, getDType( y ), this._policies.casting ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	dt = unaryInputCastingDataType( xdt, getDType( y ), this._policies.casting );</span>
 <span class="cstat-no" title="statement not covered" >	if ( xdt !== dt ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
 <span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, getShape( x ), getOrder( x ) );</span>
@@ -1584,16 +1845,16 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >		args[ 0 ] = tmp;</span>
 <span class="cstat-no" title="statement not covered" >		xdt = dt;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input and output ndarray data types:</span>
-<span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( dt ), resolveEnum( getDType( y ) ) ];</span>
-<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 2, this._table.types, 2, 1, 0, dtypes, 1, 0 ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input ndarray data type:</span>
+<span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( xdt ) ];</span>
+<span class="cstat-no" title="statement not covered" >	i = indexOfTypes( this._table.fcns.length, 1, this._table.types, 1, 1, 0, dtypes, 1, 0 );</span>
 <span class="cstat-no" title="statement not covered" >	if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.fcns[ i ];</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Perform operation:</span>
-<span class="cstat-no" title="statement not covered" >	this._apply( f, reorder( args, y ), opts.dims ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
+<span class="cstat-no" title="statement not covered" >	// Perform the reduction:</span>
+<span class="cstat-no" title="statement not covered" >	unaryReduceStrided1dBy( f, reorder( args, y ), opts.dims, clbk, thisArg ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
@@ -1601,7 +1862,7 @@ setReadOnly( UnaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no" 
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = UnaryStrided1dDispatch;
+module.exports = UnaryStrided1dDispatchBy;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -1609,7 +1870,7 @@ module.exports = UnaryStrided1dDispatch;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-06T09:17:11.915Z
+                at 2025-06-06T09:17:03.765Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
