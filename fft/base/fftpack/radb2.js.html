@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.87% </span>
+                <span class="strong">82.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>203/251</span>
+                <span class='fraction'>230/278</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.87% </span>
+                <span class="strong">82.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>203/251</span>
+                <span class='fraction'>230/278</span>
             </div>
         
             
@@ -314,7 +314,34 @@
 <a name='L249'></a><a href='#L249'>249</a>
 <a name='L250'></a><a href='#L250'>250</a>
 <a name='L251'></a><a href='#L251'>251</a>
-<a name='L252'></a><a href='#L252'>252</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -427,6 +454,33 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -684,9 +738,36 @@ function iptr( i, j, k, M, stride, offset ) {
 *
 * ## Notes
 *
-* When writing to an output array stored in linear memory, we can reinterpret the array as a three-dimensional logical view containing `L` independent sub-sequences having two "columns" corresponding to the real and imaginary parts of a folded complex vector and where each "column" has `M` elements.
+* When writing to an output array stored in linear memory, we can reinterpret the array as a three-dimensional logical view containing `L` independent sub-sequences having two "rows" corresponding to the two parts of the butterfly (`even + odd` and `even - odd`, respectively) and where each "row" has `M*L` elements.
 *
-* Accordingly, the following is a logical view of an input array (zero-based indexing) which contains `L = 3` transforms and in which each "column" sub-sequence has length `M = 4`:
+* Accordingly, the following is a logical view of an output array (zero-based indexing) which contains `L = 3` transforms and in which each sub-sequence has length `M = 4`:
+*
+* ```text
+*                  │            k = 0                      k = 1                      k = 2
+*                  │ ───────────────────────────────────────────────────────────────────────────────→ k
+* j = 0 (even+odd) │  out(0,0,0) ... out(3,0,0)  out(0,1,0) ... out(3,1,0)  out(0,2,0) ... out(3,2,0)
+*                  │
+* j = 1 (even-odd) │  out(0,0,1) ... out(3,0,1)  out(0,1,1) ... out(3,1,1)  out(0,2,1) ... out(3,2,1)
+*                  └────────────────────────────────────────────────────────────────────────────────→ i
+*                         ↑              ↑           ↑              ↑           ↑              ↑
+*                       i = 0           M-1          0             M-1          0             M-1
+* ```
+*
+* In the above,
+*
+* -   `i` is the fastest varying index, which walks within one short sub-sequence corresponding to either the `even + odd` or `even - odd` part of the butterfly.
+* -   `j` selects between the `even + odd` and `even - odd` part of the butterfly.
+* -   `k` specifies the index of one of the `L` independent transforms we are processing.
+*
+* In linear memory, the three-dimensional logical view is arranged as follows:
+*
+* ```text
+* | out(0,0,0)...out(3,0,0) ... out(0,2,0)...out(3,2,0) | out(0,0,1)...out(3,0,1) ... out(0,2,1)...out(3,2,1) |
+* ```
+*
+* As may be observed, when resolving an index in the output array, the `j` and `k` dimensions are swapped. This stems from `radb2` being only one stage in a multi-stage driver which alternates between using `ch` and `out` as workspace buffers. After each stage, the next stage reads what the previous stage wrote.
+*
+* Each stage expects a transpose, and, in order to avoid explicit transposition between the stages, we swap the last two logical dimensions while still maintaining cache locality within the inner loop logical dimension, as indexed by `i`.
 *
 * @private
 * @param {NonNegativeInteger} i - index of an element within a sub-sequence
@@ -771,9 +852,6 @@ function radb2( M, L, cc, oc, out, oo, twiddles, ot ) { // FIXME: support stride
 <span class="cstat-no" title="statement not covered" >			for ( i = 2; i &lt; M; i += 2 ) {</span>
 <span class="cstat-no" title="statement not covered" >				ic = MP1 - i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				it1 = i - 1 + ot;</span>
-<span class="cstat-no" title="statement not covered" >				it2 = i + ot;</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >				ip1 = iptr( i, 0, k, M, sc, oc );</span>
 <span class="cstat-no" title="statement not covered" >				ip2 = iptr( ic-1, 1, k, M, sc, oc );</span>
 <span class="cstat-no" title="statement not covered" >				tr2 = cc[ ip1 ] - cc[ ip2 ];</span>
@@ -787,6 +865,9 @@ function radb2( M, L, cc, oc, out, oo, twiddles, ot ) { // FIXME: support stride
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >				io = optr( i+1, k, 0, L, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] - cc[ ip2 ];</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >				it1 = i - 1 + ot;</span>
+<span class="cstat-no" title="statement not covered" >				it2 = i + ot;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >				io = optr( i, k, 1, L, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >				out[ io ] = ( twiddles[ it1 ] * tr2 ) - ( twiddles[ it2 ] * ti2 );</span>
@@ -823,7 +904,7 @@ module.exports = radb2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-11T10:14:46.641Z
+                at 2025-06-11T23:43:41.088Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
