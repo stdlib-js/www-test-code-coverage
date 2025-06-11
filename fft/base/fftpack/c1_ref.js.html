@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for fft/base/fftpack/lib/rffti.js</title>
+    <title>Code coverage report for fft/base/fftpack/lib/c1_ref.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">fft/base/fftpack/lib</a> rffti.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">fft/base/fftpack/lib</a> c1_ref.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.77% </span>
+                <span class="strong">96.29% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>90/93</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>78/81</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
+                <span class="quiet">Branches</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.77% </span>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">96.29% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>90/93</span>
+                <span class='fraction'>78/81</span>
             </div>
         
             
@@ -144,26 +144,7 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -239,11 +220,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -309,39 +285,27 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var rffti1 = require( './rffti1.js' );
-&nbsp;
-&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Initializes the workspace array for performing a real-valued Fourier transform.
+* Computes an index into the intermediate array `c1`.
 *
-* @param {NonNegativeInteger} N - length of the sequence to transform
-* @param {Float64Array} workspace - workspace array
-* @param {NonNegativeInteger} offsetW - starting index for `workspace`
-* @returns {void}
+* @private
+* @param {NonNegativeInteger} a1 - index of first dimension
+* @param {NonNegativeInteger} a2 - index of second dimension
+* @param {NonNegativeInteger} a3 - index of third dimension
+* @param {NonNegativeInteger} l1 - length parameter related to the FFT stage
+* @param {NonNegativeInteger} ido - dimension order
+* @returns {NonNegativeInteger} computed index
 */
-function rffti( N, workspace, offsetW ) { // FIXME: add support for stride
-	var offsetT;
-	var offsetF;
-&nbsp;
-	if ( N === 1 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		// FFT of one data point is the identity, so no initialization necessary...</span>
-<span class="cstat-no" title="statement not covered" >		return;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-	offsetT = offsetW + N; // index offset for twiddle factors
-	offsetF = offsetT + N; // index offset for factors describing the sub-transforms
-&nbsp;
-	rffti1( N, workspace, offsetT, workspace, offsetF );
-}
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function c1Ref( a1, a2, a3, l1, ido ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	return ( ( (a3*l1)+a2 ) * ido ) + a1;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = rffti;
+module.exports = c1Ref;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
