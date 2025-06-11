@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.23% </span>
+                <span class="strong">80.87% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>203/253</span>
+                <span class='fraction'>203/251</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.23% </span>
+                <span class="strong">80.87% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>203/253</span>
+                <span class='fraction'>203/251</span>
             </div>
         
             
@@ -314,9 +314,7 @@
 <a name='L249'></a><a href='#L249'>249</a>
 <a name='L250'></a><a href='#L250'>250</a>
 <a name='L251'></a><a href='#L251'>251</a>
-<a name='L252'></a><a href='#L252'>252</a>
-<a name='L253'></a><a href='#L253'>253</a>
-<a name='L254'></a><a href='#L254'>254</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L252'></a><a href='#L252'>252</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -513,8 +511,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -725,7 +721,7 @@ function optr( i, k, j, L, M, stride, offset ) {
 * @returns {void}
 */
 function radb2( M, L, cc, oc, out, oo, twiddles, ot ) { // FIXME: support strides
-	var idp2;
+	var MP1;
 	var tr2;
 	var ti2;
 	var ip1;
@@ -767,37 +763,35 @@ function radb2( M, L, cc, oc, out, oo, twiddles, ot ) { // FIXME: support stride
 		return;
 	}
 <span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span>
-<span class="cstat-no" title="statement not covered" >	// FIXME: everything below needs updating as `iptr` and `optr` have been converted to zero-based indexing</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( M !== 2 ) {</span>
-<span class="cstat-no" title="statement not covered" >		idp2 = M + 2;</span>
+<span class="cstat-no" title="statement not covered" >		MP1 = M + 1;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// FIXME: describe what is happening in the loops below</span>
 <span class="cstat-no" title="statement not covered" >		for ( k = 0; k &lt; L; k++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			for ( i = 3; i &lt;= M; i += 2 ) {</span>
-<span class="cstat-no" title="statement not covered" >				ic = idp2 - i;</span>
+<span class="cstat-no" title="statement not covered" >			for ( i = 2; i &lt; M; i += 2 ) {</span>
+<span class="cstat-no" title="statement not covered" >				ic = MP1 - i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				it1 = i - 2 + ot;</span>
-<span class="cstat-no" title="statement not covered" >				it2 = i - 1 + ot;</span>
+<span class="cstat-no" title="statement not covered" >				it1 = i - 1 + ot;</span>
+<span class="cstat-no" title="statement not covered" >				it2 = i + ot;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i-1, 1, k, M, oc );</span>
-<span class="cstat-no" title="statement not covered" >				ip2 = iptr( ic-1, 2, k, M, oc );</span>
+<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i, 0, k, M, sc, oc );</span>
+<span class="cstat-no" title="statement not covered" >				ip2 = iptr( ic-1, 1, k, M, sc, oc );</span>
 <span class="cstat-no" title="statement not covered" >				tr2 = cc[ ip1 ] - cc[ ip2 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				io = optr( i-1, k, 1, L, M, oo );</span>
+<span class="cstat-no" title="statement not covered" >				io = optr( i, k, 0, L, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] + cc[ ip2 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i, 1, k, M, oc );</span>
-<span class="cstat-no" title="statement not covered" >				ip2 = iptr( ic, 2, k, M, oc );</span>
+<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i+1, 0, k, M, sc, oc );</span>
+<span class="cstat-no" title="statement not covered" >				ip2 = iptr( ic, 1, k, M, sc, oc );</span>
 <span class="cstat-no" title="statement not covered" >				ti2 = cc[ ip1 ] + cc[ ip2 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				io = optr( i, k, 1, L, M, oo );</span>
+<span class="cstat-no" title="statement not covered" >				io = optr( i+1, k, 0, L, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] - cc[ ip2 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				io = optr( i-1, k, 2, L, M, oo );</span>
+<span class="cstat-no" title="statement not covered" >				io = optr( i, k, 1, L, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >				out[ io ] = ( twiddles[ it1 ] * tr2 ) - ( twiddles[ it2 ] * ti2 );</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				io = optr( i, k, 2, L, M, oo );</span>
+<span class="cstat-no" title="statement not covered" >				io = optr( i+1, k, 1, L, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >				out[ io ] = ( twiddles[ it1 ] * ti2 ) + ( twiddles[ it2 ] * tr2 );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -808,12 +802,12 @@ function radb2( M, L, cc, oc, out, oo, twiddles, ot ) { // FIXME: support stride
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// FIXME: describe what is happening here</span>
 <span class="cstat-no" title="statement not covered" >	for ( k = 0; k &lt; L; k++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		ip1 = iptr( M, 1, k, M, oc );</span>
-<span class="cstat-no" title="statement not covered" >		io = optr( M, k, 1, L, M, oo );</span>
+<span class="cstat-no" title="statement not covered" >		ip1 = iptr( M-1, 0, k, M, sc, oc );</span>
+<span class="cstat-no" title="statement not covered" >		io = optr( M-1, k, 0, L, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >		out[ io ] = cc[ ip1 ] + cc[ ip1 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		ip1 = iptr( 1, 2, k, M, oc );</span>
-<span class="cstat-no" title="statement not covered" >		io = optr( M, k, 2, L, M, oo );</span>
+<span class="cstat-no" title="statement not covered" >		ip1 = iptr( 0, 1, k, M, sc, oc );</span>
+<span class="cstat-no" title="statement not covered" >		io = optr( M-1, k, 1, L, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >		out[ io ] = -( cc[ ip1 ] + cc[ ip1 ] );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 }
@@ -829,7 +823,7 @@ module.exports = radb2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-11T09:59:11.113Z
+                at 2025-06-11T10:14:46.641Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
