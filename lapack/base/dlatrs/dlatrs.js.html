@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.07% </span>
+                <span class="strong">86.53% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>102/104</span>
+                <span class='fraction'>90/104</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.44% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>17/18</span>
+                <span class='fraction'>2/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.07% </span>
+                <span class="strong">86.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>102/104</span>
+                <span class='fraction'>90/104</span>
             </div>
         
             
@@ -235,37 +235,37 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">85x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">85x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">85x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -343,27 +343,27 @@ function dlatrs( order, uplo, trans, diag, normin, N, A, LDA, X, CNORM ) {
 	var sa1;
 	var sa2;
 &nbsp;
-	if ( !isLayout( order ) ) {
-		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
-	}
-	if ( !isMatrixTriangle( uplo ) ) {
-		throw new TypeError( format( 'invalid argument. Second argument must be a valid side. Value: `%s`.', uplo ) );
-	}
-	if ( !isTransposeOperation( trans ) ) {
-		throw new TypeError( format( 'invalid argument. Third argument must be a valid transpose operation. Value: `%s`.', trans ) );
-	}
-	if ( !isDiagonalType( diag ) ) {
-		throw new TypeError( format( 'invalid argument. Second argument must be a valid diagonal type. Value: `%s`.', diag ) );
-	}
-	if ( isRowMajor( order ) &amp;&amp; LDA &lt; max( 1, N ) ) {
-		throw new RangeError( format( 'invalid argument. Sixth argument must be greater than or equal to max(1,%d). Value: `%d`.', N, LDA ) );
-	}
+	if ( !isLayout( order ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( !isMatrixTriangle( uplo ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be a valid side. Value: `%s`.', uplo ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( !isTransposeOperation( trans ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Third argument must be a valid transpose operation. Value: `%s`.', trans ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( !isDiagonalType( diag ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be a valid diagonal type. Value: `%s`.', diag ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( isRowMajor( order ) &amp;&amp; LDA &lt; max( 1, N ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new RangeError( format( 'invalid argument. Sixth argument must be greater than or equal to max(1,%d). Value: `%d`.', N, LDA ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	if ( normin !== 'yes' &amp;&amp; normin !== 'no' ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Fifth argument must be either yes or no. Value: `%d`.', normin ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	if ( isColumnMajor( order ) ) {
-		sa1 = 1;
-		sa2 = LDA;
+	if ( isColumnMajor( order ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		sa1 = 1;</span>
+<span class="cstat-no" title="statement not covered" >		sa2 = LDA;</span>
 	} else { // order === 'row-major'
 		sa1 = LDA;
 		sa2 = 1;
@@ -382,7 +382,7 @@ module.exports = dlatrs;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-11T05:17:41.121Z
+                at 2025-06-11T06:20:42.798Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
