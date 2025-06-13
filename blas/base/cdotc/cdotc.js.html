@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>73/73</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>73/73</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -125,18 +125,7 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -185,25 +174,14 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -232,14 +210,13 @@
 // MODULES //
 &nbsp;
 var stride2offset = require( '@stdlib/strided/base/stride2offset' );
-var Complex64 = require( '@stdlib/complex/float32/ctor' );
 var ndarray = require( './ndarray.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes the dot product of `x` and `y`.
+* Computes the dot product `x^H * y` of `x` and `y`.
 *
 * @param {PositiveInteger} N - number of indexed elements
 * @param {Complex64Array} x - first input array
@@ -251,28 +228,18 @@ var ndarray = require( './ndarray.js' );
 * @example
 * var Complex64Array = require( '@stdlib/array/complex64' );
 * var Complex64 = require( '@stdlib/complex/float32/ctor' );
-* var realf = require( '@stdlib/complex/float32/real' );
-* var imagf = require( '@stdlib/complex/float32/imag' );
 * var cdotc = require( '@stdlib/blas/base/cdotc' );
 *
 * var x = new Complex64Array( [ 7.0, -8.0, -1.0, -9.0 ] );
 * var y = new Complex64Array( [ 6.0, -6.0, -9.0, 5.0 ] );
 *
-* var out = cdotc( x.length, x, 1, y, 1 );
-* // returns &lt;Complex64&gt;
-*
-* var re = realf( out );
-* // returns 54
-*
-* var im = imagf( out );
-* // returns -80
+* var z = cdotc( x.length, x, 1, y, 1 );
+* // returns &lt;Complex64&gt;[ 54.0, -80.0 ]
 */
 function cdotc( N, x, strideX, y, strideY ) {
 	var ix;
 	var iy;
-	if ( N &lt;= 0 ) {
-		return new Complex64( 0, 0 );
-	}
+&nbsp;
 	ix = stride2offset( N, strideX );
 	iy = stride2offset( N, strideY );
 	return ndarray( N, x, strideX, ix, y, strideY, iy );
@@ -289,7 +256,7 @@ module.exports = cdotc;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-14T14:33:13.471Z
+                at 2025-06-13T07:31:43.105Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
