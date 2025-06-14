@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.22% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>350/360</span>
+                <span class='fraction'>358/358</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.21% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>110/112</span>
+                <span class='fraction'>111/111</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.22% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>350/360</span>
+                <span class='fraction'>358/358</span>
             </div>
         
             
@@ -421,9 +421,7 @@
 <a name='L356'></a><a href='#L356'>356</a>
 <a name='L357'></a><a href='#L357'>357</a>
 <a name='L358'></a><a href='#L358'>358</a>
-<a name='L359'></a><a href='#L359'>359</a>
-<a name='L360'></a><a href='#L360'>360</a>
-<a name='L361'></a><a href='#L361'>361</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L359'></a><a href='#L359'>359</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -686,12 +684,11 @@
 <span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">126x</span>
+<span class="cline-any cline-yes">126x</span>
+<span class="cline-any cline-yes">126x</span>
 <span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-yes">42x</span>
@@ -718,11 +715,10 @@
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
@@ -1041,17 +1037,16 @@ function strmm( side, uplo, transa, diag, M, N, alpha, A, strideA1, strideA2, of
 		for ( j = N - 1; j &gt;= 0; j-- ) {
 			if ( nonunit ) {
 				oa2 = offsetA + ( j * sa1 ) + ( j * sa0 );
-				tmp = f32( alpha * A[ oa2 ] );
+				tmp = f32( A[ oa2 ] );
 				for ( i = 0; i &lt; M; i++ ) {
 					ob2 = offsetB + ( i * sb1 ) + ( j * sb0 );
 					B[ ob2 ] = f32( B[ ob2 ] * tmp );
 				}
-			} else if ( alpha !== 1.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >				for ( i = 0; i &lt; M; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >					ob2 = offsetB + ( i * sb1 ) + ( j * sb0 );</span>
-<span class="cstat-no" title="statement not covered" >					B[ ob2 ] = f32( B[ ob2 ] * alpha );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
+			}
+			for ( i = 0; i &lt; M; i++ ) {
+				ob2 = offsetB + ( i * sb1 ) + ( j * sb0 );
+				B[ ob2 ] = f32( B[ ob2 ] * alpha );
+			}
 			for ( k = 0; k &lt; j; k++ ) {
 				oa2 = offsetA + ( k * sa1 ) + ( j * sa0 );
 				if ( A[ oa2 ] !== 0.0 ) {
@@ -1072,17 +1067,16 @@ function strmm( side, uplo, transa, diag, M, N, alpha, A, strideA1, strideA2, of
 		for ( j = 0; j &lt; N; j++ ) {
 			if ( nonunit ) {
 				oa2 = offsetA + ( j * sa1 ) + ( j * sa0 );
-				tmp = f32( alpha * A[ oa2 ] );
+				tmp = f32( A[ oa2 ] );
 				for ( i = 0; i &lt; M; i++ ) {
 					ob2 = offsetB + ( i * sb1 ) + ( j * sb0 );
 					B[ ob2 ] = f32( B[ ob2 ] * tmp );
 				}
-			} else if ( alpha !== 1.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >				for ( i = 0; i &lt; M; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >					ob2 = offsetB + ( i * sb1 ) + ( j * sb0 );</span>
-<span class="cstat-no" title="statement not covered" >					B[ ob2 ] = f32( B[ ob2 ] * alpha );</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
+			}
+			for ( i = 0; i &lt; M; i++ ) {
+				ob2 = offsetB + ( i * sb1 ) + ( j * sb0 );
+				B[ ob2 ] = f32( B[ ob2 ] * alpha );
+			}
 			for ( k = j + 1; k &lt; N; k++ ) {
 				oa2 = offsetA + ( k * sa1 ) + ( j * sa0 );
 				if ( A[ oa2 ] !== 0.0 ) {
@@ -1150,7 +1144,7 @@ module.exports = strmm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-14T06:32:01.708Z
+                at 2025-06-14T07:43:10.003Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
