@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.52% </span>
+                <span class="strong">77.98% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>294/352</span>
+                <span class='fraction'>287/368</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.52% </span>
+                <span class="strong">77.98% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>294/352</span>
+                <span class='fraction'>287/368</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -415,7 +415,23 @@
 <a name='L350'></a><a href='#L350'>350</a>
 <a name='L351'></a><a href='#L351'>351</a>
 <a name='L352'></a><a href='#L352'>352</a>
-<a name='L353'></a><a href='#L353'>353</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L353'></a><a href='#L353'>353</a>
+<a name='L354'></a><a href='#L354'>354</a>
+<a name='L355'></a><a href='#L355'>355</a>
+<a name='L356'></a><a href='#L356'>356</a>
+<a name='L357'></a><a href='#L357'>357</a>
+<a name='L358'></a><a href='#L358'>358</a>
+<a name='L359'></a><a href='#L359'>359</a>
+<a name='L360'></a><a href='#L360'>360</a>
+<a name='L361'></a><a href='#L361'>361</a>
+<a name='L362'></a><a href='#L362'>362</a>
+<a name='L363'></a><a href='#L363'>363</a>
+<a name='L364'></a><a href='#L364'>364</a>
+<a name='L365'></a><a href='#L365'>365</a>
+<a name='L366'></a><a href='#L366'>366</a>
+<a name='L367'></a><a href='#L367'>367</a>
+<a name='L368'></a><a href='#L368'>368</a>
+<a name='L369'></a><a href='#L369'>369</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -696,13 +712,29 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1019,27 +1051,20 @@ function radf2( M, L, cc, sc, oc, out, so, oo, twiddles, st, ot ) { // eslint-di
 	var i;
 	var k;
 &nbsp;
-	/*
+	/**
 	* First, perform the core butterfly for each sub-sequence being transformed.
 	*
-	* In the following loop, we FIXME: ????
-&nbsp;
-	*   Input rows  (length-M complex vectors, Re/Im interleaved):
+	* In the following loop, we handle harmonic `n = 0` for every transform. As described for `iptr`, the input array is interpreted as a three-dimensional array, containing two "rows" per sub-sequence.
 	*
-	*       row0 = even + odd    = [a0, b0, a1, b1, …]
-	*       row1 = even − odd    = [c0, d0, c1, d1, …]
+	*     row0 = even + odd    (j = 0)
+	*     row1 = even - odd    (j = 1)
 	*
-	* For n = 0 (elements i = 0,1) the twiddle factor is +1, so
+	* For a radix-2 forward FFT of a real-valued signal `x` and `n = 0`,
 	*
-	*   E₀ = ½(row0 + row1)   and   O₀ = ½(row0 − row1)
+	*     x[0] = row0 + row1 = 2⋅even
+	*     x[M] = row0 - row1 = 2⋅odd
 	*
-	* The forward radix-2 butterfly stores two **columns**:
-	*
-	*   CH(1,1,K)   ← row0 + row1           ⟶  optr( 0   , 0, k, … )
-	*   CH(IDO,2,K) ← row0 − row1           ⟶  optr( M-1 , 1, k, … )
-	*
-	* i.e. column j = 0 holds “even + odd” starting at i = 0,
-	*      column j = 1 holds “even − odd” starting at i = M-1.
+	* Because `W_N^0 = 1`, no twiddle multiplication is necessary.
 	*/
 	for ( k = 0; k &lt; L; k++ ) {
 		ip1 = iptr( 0, k, 0, L, M, sc, oc ); // real part row 0
@@ -1055,10 +1080,19 @@ function radf2( M, L, cc, sc, oc, out, so, oo, twiddles, st, ot ) { // eslint-di
 	if ( M &lt; 2 ) {
 		return;
 	}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	/*</span></span>
-<span class="cstat-no" title="statement not covered" >	* Next, apply the general case where we need to loop through the non-trivial harmonics of each complex sub-vector.</span>
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	/**</span></span>
+<span class="cstat-no" title="statement not covered" >	* Next, apply the general case where we need to loop through the non-trivial harmonics.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
-<span class="cstat-no" title="statement not covered" >	* // FIXME: complete extended description</span>
+<span class="cstat-no" title="statement not covered" >	* For each harmonic `n = 1, ..., M/2-1`, we need to</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* -   recover even/odd spectra from the two input rows.</span>
+<span class="cstat-no" title="statement not covered" >	* -   multiply the odd part by the twiddle factor `W_n = cos(θ) - j sin(θ)`.</span>
+<span class="cstat-no" title="statement not covered" >	* -   form the following</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	*         x[2n]   = E_n + W_n⋅O_n    =&gt; column 0</span>
+<span class="cstat-no" title="statement not covered" >	*         x[2n+1] = E_n - W_n⋅O_n    =&gt; column 1</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* The mirror index `im = M + 1 - i` selects the conjugate-symmetric partner, thus allowing the routine to read each symmetry pair only once.</span>
 <span class="cstat-no" title="statement not covered" >	*/</span>
 <span class="cstat-no" title="statement not covered" >	if ( M &gt;= 3 ) {</span>
 <span class="cstat-no" title="statement not covered" >		MP1 = M + 1;</span>
@@ -1067,49 +1101,63 @@ function radf2( M, L, cc, sc, oc, out, so, oo, twiddles, st, ot ) { // eslint-di
 <span class="cstat-no" title="statement not covered" >		for ( k = 0; k &lt; L; k++ ) {</span>
 <span class="cstat-no" title="statement not covered" >			// Loop over the elements in each sub-sequence...</span>
 <span class="cstat-no" title="statement not covered" >			for ( i = 2; i &lt; M; i += 2 ) {</span>
-<span class="cstat-no" title="statement not covered" >				im = MP1 - i; // "mirror" index =&gt; ????</span>
+<span class="cstat-no" title="statement not covered" >				im = MP1 - i; // "mirror" index</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				it1 = ( (i-1)*st ) + ot; // ????</span>
-<span class="cstat-no" title="statement not covered" >				it2 = ( i*st ) + ot;     // ????</span>
+<span class="cstat-no" title="statement not covered" >				// Resolve twiddle factor indices:</span>
+<span class="cstat-no" title="statement not covered" >				it1 = ( (i-1)*st ) + ot; // cos(θ)</span>
+<span class="cstat-no" title="statement not covered" >				it2 = ( i*st ) + ot;     // sin(θ)</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i, k, 1, L, M, sc, oc ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				ip2 = iptr( i+1, k, 1, L, M, sc, oc ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				tr2 = ( twiddles[ it1 ] * cc[ ip1 ] ) + ( twiddles[ it2 ] * cc[ ip2 ] ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				ti2 = ( twiddles[ it1 ] * cc[ ip2 ] ) - ( twiddles[ it2 ] * cc[ ip1 ] ); // ????</span>
+<span class="cstat-no" title="statement not covered" >				// Load the `even-odd` row...</span>
+<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i, k, 1, L, M, sc, oc );   // c = Re(row1)</span>
+<span class="cstat-no" title="statement not covered" >				ip2 = iptr( i+1, k, 1, L, M, sc, oc ); // d = Im(row1)</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i+1, k, 0, L, M, sc, oc ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				io = optr( i+1, 0, k, M, so, oo ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] + ti2; // ????</span>
+<span class="cstat-no" title="statement not covered" >				// tmp = W_n ⋅ (c + j⋅d)</span>
+<span class="cstat-no" title="statement not covered" >				tr2 = ( twiddles[ it1 ] * cc[ ip1 ] ) + ( twiddles[ it2 ] * cc[ ip2 ] ); // Re(tmp)</span>
+<span class="cstat-no" title="statement not covered" >				ti2 = ( twiddles[ it1 ] * cc[ ip2 ] ) - ( twiddles[ it2 ] * cc[ ip1 ] ); // Im(tmp)</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				io = optr( im, 1, k, M, so, oo ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				out[ io ] = ti2 - cc[ ip1 ]; // ????</span>
+<span class="cstat-no" title="statement not covered" >				// Load the `even+odd` row...</span>
+<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i+1, k, 0, L, M, sc, oc ); // b = Im(row0)</span>
+<span class="cstat-no" title="statement not covered" >				io = optr( i+1, 0, k, M, so, oo );     // Im(x[2n])</span>
+<span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] + ti2;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i, k, 0, L, M, sc, oc ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				io = optr( i, 0, k, M, so, oo ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] + tr2; // ????</span>
+<span class="cstat-no" title="statement not covered" >				io = optr( im, 1, k, M, so, oo );      // Im(x[2n+1])</span>
+<span class="cstat-no" title="statement not covered" >				out[ io ] = ti2 - cc[ ip1 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				io = optr( im-1, 1, k, M, so, oo ); // ????</span>
-<span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] - tr2; // ????</span>
+<span class="cstat-no" title="statement not covered" >				ip1 = iptr( i, k, 0, L, M, sc, oc );   // a = Re(row0)</span>
+<span class="cstat-no" title="statement not covered" >				io = optr( i, 0, k, M, so, oo );       // Re(x[2n])</span>
+<span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] + tr2;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >				io = optr( im-1, 1, k, M, so, oo );    // Re(x[2n+1])</span>
+<span class="cstat-no" title="statement not covered" >				out[ io ] = cc[ ip1 ] - tr2;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		// When `M` is odd, there is no Nyquist pair to process, and, thus, the central element is purely real and was handled in the very first butterfly, so we do not need to perform any further transformations...</span>
+<span class="cstat-no" title="statement not covered" >		// When `M` is odd, there is no Nyquist pair to process, so we do not need to perform any further transformations...</span>
 <span class="cstat-no" title="statement not covered" >		if ( M%2 === 1 ) {</span>
 <span class="cstat-no" title="statement not covered" >			return;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	/*</span>
+<span class="cstat-no" title="statement not covered" >	/**</span>
 <span class="cstat-no" title="statement not covered" >	* Lastly, handle the Nyquist frequency where `i = M-1` (i.e., the last element of each sub-sequence).</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
 <span class="cstat-no" title="statement not covered" >	* When `M` is even, the Nyquist index is `i = M/2`. In this stage, we've stored that element at the end of each sub-sequence (i.e., `i = M-1` in the packed layout).</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
-<span class="cstat-no" title="statement not covered" >	* At this point, FIXME: ????</span>
+<span class="cstat-no" title="statement not covered" >	* At this point, the cosine term is -1 and the sine term is 0, so the twiddle multiplication collapses to simple addition/subtraction.</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* In this case,</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	*     W_n⋅O_n = ±Re(O_n)</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* where</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	*     row0 =  Re(E_n)</span>
+<span class="cstat-no" title="statement not covered" >	*     row1 = -Re(O_n)</span>
 <span class="cstat-no" title="statement not covered" >	*/</span>
 <span class="cstat-no" title="statement not covered" >	for ( k = 0; k &lt; L; k++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		ip1 = iptr( M-1, k, 1, L, M, sc, oc );</span>
+<span class="cstat-no" title="statement not covered" >		ip1 = iptr( M-1, k, 1, L, M, sc, oc ); // -Re(O_n)</span>
 <span class="cstat-no" title="statement not covered" >		io = optr( 0, 1, k, M, so, oo );</span>
-<span class="cstat-no" title="statement not covered" >		out[ io ] = -cc[ ip1 ];</span>
+<span class="cstat-no" title="statement not covered" >		out[ io ] = -cc[ ip1 ];                // -(-Re(O_n)) = Re(O_n)</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		ip1 = iptr( M-1, k, 0, L, M, sc, oc );</span>
+<span class="cstat-no" title="statement not covered" >		ip1 = iptr( M-1, k, 0, L, M, sc, oc ); // Re(E_n)</span>
 <span class="cstat-no" title="statement not covered" >		io = optr( M-1, 0, k, M, so, oo );</span>
 <span class="cstat-no" title="statement not covered" >		out[ io ] = cc[ ip1 ];</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -1126,7 +1174,7 @@ module.exports = radf2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-14T03:25:17.301Z
+                at 2025-06-14T10:30:44.334Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
