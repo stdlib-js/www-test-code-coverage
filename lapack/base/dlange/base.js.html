@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>362/362</span>
+                <span class='fraction'>363/363</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>362/362</span>
+                <span class='fraction'>363/363</span>
             </div>
         
             
@@ -425,7 +425,13 @@
 <a name='L360'></a><a href='#L360'>360</a>
 <a name='L361'></a><a href='#L361'>361</a>
 <a name='L362'></a><a href='#L362'>362</a>
-<a name='L363'></a><a href='#L363'>363</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L363'></a><a href='#L363'>363</a>
+<a name='L364'></a><a href='#L364'>364</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -765,17 +771,13 @@
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -820,6 +822,11 @@ var sqrt = require( '@stdlib/math/base/special/sqrt' );
 var abs = require( '@stdlib/math/base/special/abs' );
 &nbsp;
 &nbsp;
+// VARIABLES //
+&nbsp;
+var workspace = new Float64Array( 2 );
+&nbsp;
+&nbsp;
 // FUNCTIONS //
 &nbsp;
 /**
@@ -835,7 +842,7 @@ var abs = require( '@stdlib/math/base/special/abs' );
 * @param {Float64Array} work - work array, should have `N` indexed elements if row-major layout is used
 * @param {integer} strideWork - stride length of `work`
 * @param {NonNegativeInteger} offsetWork - starting index of `work`
-* @returns {number} required norm value
+* @returns {number} result
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
@@ -910,7 +917,7 @@ function oneNorm( M, N, A, strideA1, strideA2, offsetA, work, strideWork, offset
 * @param {integer} strideA1 - stride of the first dimension of `A`
 * @param {integer} strideA2 - stride of the second dimension of `A`
 * @param {NonNegativeInteger} offsetA - starting index of `A`
-* @returns {number} required norm value
+* @returns {number} result
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
@@ -972,7 +979,7 @@ function maxAbs( M, N, A, strideA1, strideA2, offsetA ) {
 * @param {Float64Array} work - work array, should have `M` indexed elements if column-major layout is used
 * @param {integer} strideWork - stride length of `work`
 * @param {NonNegativeInteger} offsetWork - starting index of `work`
-* @returns {number} required norm value
+* @returns {number} result
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
@@ -1046,18 +1053,17 @@ function infinityNorm( M, N, A, strideA1, strideA2, offsetA, work, strideWork, o
 * @param {integer} strideA1 - stride of the first dimension of `A`
 * @param {integer} strideA2 - stride of the second dimension of `A`
 * @param {NonNegativeInteger} offsetA - starting index of `A`
-* @returns {number} required norm value
+* @returns {number} result
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
 *
 * var A = new Float64Array( [ 1.0, 4.0, 7.0, 10.0, 2.0, 5.0, 8.0, 11.0, 3.0, 6.0, 9.0, 12.0 ] );
 *
-* var out = frobeniusNorm( 3, 4, A, 4, 1, 0 );
+* var result = frobeniusNorm( 3, 4, A, 4, 1, 0 );
 * // returns ~25.5
 */
 function frobeniusNorm( M, N, A, strideA1, strideA2, offsetA ) {
-	var out;
 	var da0;
 	var da1;
 	var S1;
@@ -1065,7 +1071,8 @@ function frobeniusNorm( M, N, A, strideA1, strideA2, offsetA ) {
 	var ia;
 	var i;
 &nbsp;
-	out = new Float64Array( [ 0.0, 1.0 ] );
+	workspace[ 0 ] = 0.0;
+	workspace[ 1 ] = 1.0;
 &nbsp;
 	if ( isRowMajor( [ strideA1, strideA2 ] ) ) {
 		S1 = M;
@@ -1081,11 +1088,11 @@ function frobeniusNorm( M, N, A, strideA1, strideA2, offsetA ) {
 &nbsp;
 	ia = offsetA;
 	for ( i = 0; i &lt; S1; i++ ) {
-		dlassq( S2, A, da0, ia, out[ 0 ], out[ 1 ], out, 1, 0 );
+		dlassq( S2, A, da0, ia, workspace[ 0 ], workspace[ 1 ], workspace, 1, 0 ); // eslint-disable-line max-len
 		ia += da1;
 	}
 &nbsp;
-	return out[ 0 ] * sqrt( out[ 1 ] );
+	return workspace[ 0 ] * sqrt( workspace[ 1 ] );
 }
 &nbsp;
 &nbsp;
@@ -1112,7 +1119,7 @@ function frobeniusNorm( M, N, A, strideA1, strideA2, offsetA ) {
 * @param {Float64Array} work - temporary workspace array
 * @param {integer} strideWork - stride length of `work`
 * @param {NonNegativeInteger} offsetWork - starting index of `work`
-* @returns {number} required norm value
+* @returns {number} result
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
@@ -1127,19 +1134,15 @@ function dlange( norm, M, N, A, strideA1, strideA2, offsetA, work, strideWork, o
 	if ( min( M, N ) === 0 ) {
 		return 0.0;
 	}
-&nbsp;
 	if ( norm === 'max' ) {
 		return maxAbs( M, N, A, strideA1, strideA2, offsetA );
 	}
-&nbsp;
 	if ( norm === 'one' ) {
 		return oneNorm( M, N, A, strideA1, strideA2, offsetA, work, strideWork, offsetWork ); // eslint-disable-line max-len
 	}
-&nbsp;
 	if ( norm === 'infinity' ) {
 		return infinityNorm( M, N, A, strideA1, strideA2, offsetA, work, strideWork, offsetWork ); // eslint-disable-line max-len
 	}
-&nbsp;
 	if ( norm === 'frobenius' ) {
 		return frobeniusNorm( M, N, A, strideA1, strideA2, offsetA );
 	}
@@ -1156,7 +1159,7 @@ module.exports = dlange;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-06T08:30:05.481Z
+                at 2025-06-16T17:28:05.968Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
