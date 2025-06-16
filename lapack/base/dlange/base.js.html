@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">98.63% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>363/363</span>
+                <span class='fraction'>362/367</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.57% </span>
+                <span class="strong">86.11% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>31/35</span>
+                <span class='fraction'>31/36</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">98.63% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>363/363</span>
+                <span class='fraction'>362/367</span>
             </div>
         
             
@@ -426,8 +426,11 @@
 <a name='L361'></a><a href='#L361'>361</a>
 <a name='L362'></a><a href='#L362'>362</a>
 <a name='L363'></a><a href='#L363'>363</a>
-<a name='L364'></a><a href='#L364'>364</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L364'></a><a href='#L364'>364</a>
+<a name='L365'></a><a href='#L365'>365</a>
+<a name='L366'></a><a href='#L366'>366</a>
+<a name='L367'></a><a href='#L367'>367</a>
+<a name='L368'></a><a href='#L368'>368</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -585,21 +588,26 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">144x</span>
 <span class="cline-any cline-yes">144x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-yes">144x</span>
 <span class="cline-any cline-yes">144x</span>
-<span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -814,7 +822,6 @@
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
 var dlassq = require( '@stdlib/lapack/base/dlassq' ).ndarray;
 var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major' );
-var loopOrder = require( '@stdlib/ndarray/base/nullary-loop-interchange-order' );
 var dasum = require( '@stdlib/blas/base/dasum' ).ndarray;
 var Float64Array = require( '@stdlib/array/float64' );
 var min = require( '@stdlib/math/base/special/min' );
@@ -931,30 +938,35 @@ function maxAbs( M, N, A, strideA1, strideA2, offsetA ) {
 	var value;
 	var temp;
 	var da0;
+	var sa1;
+	var sa2;
 	var da1;
 	var ia;
-	var sa;
-	var sh;
-	var S0;
 	var S1;
-	var o;
+	var S2;
 	var i;
 	var j;
 &nbsp;
 	value = 0.0;
 &nbsp;
-	// Resolve the loop interchange order:
-	o = loopOrder( [ M, N ], [ strideA1, strideA2 ] );
-	sh = o.sh;
-	sa = o.sx;
-	S0 = sh[ 0 ];
-	S1 = sh[ 1 ];
-	da0 = sa[ 0 ];
-	da1 = sa[ 1 ] - ( S0*sa[0] );
+	if ( isRowMajor( strideA1, strideA2 ) ) {
+		S1 = M;
+		S2 = N;
+		sa1 = strideA1;
+		sa2 = strideA2;
+	}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
+<span class="cstat-no" title="statement not covered" >		S1 = N;</span>
+<span class="cstat-no" title="statement not covered" >		S2 = M;</span>
+<span class="cstat-no" title="statement not covered" >		sa1 = strideA2;</span>
+<span class="cstat-no" title="statement not covered" >		sa2 = strideA1;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+&nbsp;
+	da0 = sa2;
+	da1 = sa1 - (S2 * sa2);
 	ia = offsetA;
 &nbsp;
 	for ( i = 0; i &lt; S1; i++ ) {
-		for ( j = 0; j &lt; S0; j++ ) {
+		for ( j = 0; j &lt; S2; j++ ) {
 			temp = A[ ia ];
 			if ( value &lt; temp || isnan( temp ) ) {
 				value = temp;
@@ -1159,7 +1171,7 @@ module.exports = dlange;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-16T17:28:05.968Z
+                at 2025-06-16T18:10:18.825Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
