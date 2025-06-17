@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/pareto-type1/quantile/lib/native.js</title>
+    <title>Code coverage report for stats/base/dists/pareto-type1/variance/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/pareto-type1/quantile/lib</a> native.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/pareto-type1/variance/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -210,20 +210,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">1006x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1001x</span>
+<span class="cline-any cline-yes">1015x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -232,7 +232,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2025 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -251,67 +251,67 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var addon = require( './../src/addon.node' );
+var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var pow = require( '@stdlib/math/base/special/pow' );
+var PINF = require( '@stdlib/constants/float64/pinf' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates the quantile function for a Pareto (Type I) distribution with shape parameter `alpha` and scale parameter `beta` at a probability `p`.
+* Returns the variance of a Pareto (Type I) distribution.
 *
-* @param {Probability} p - input value
 * @param {PositiveNumber} alpha - shape parameter
 * @param {PositiveNumber} beta - scale parameter
-* @returns {number} evaluated quantile function
+* @returns {PositiveNumber} variance
 *
 * @example
-* var y = quantile( 0.8, 2.0, 1.0 );
-* // returns ~2.236
+* var v = variance( 4.0, 12.0 );
+* // returns 32.0
 *
 * @example
-* var y = quantile( 0.8, 1.0, 10.0 );
-* // returns ~50.0
+* var v = variance( 8.0, 2.0 );
+* // returns ~0.109
 *
 * @example
-* var y = quantile( 0.1, 1.0, 10.0 );
-* // returns ~11.111
+* var v = variance( 1.0, 1.0 );
+* // returns Infinity
 *
 * @example
-* var y = quantile( 1.1, 1.0, 1.0 );
+* var v = variance( 1.0, -0.1 );
 * // returns NaN
 *
 * @example
-* var y = quantile( -0.2, 1.0, 1.0 );
+* var v = variance( -0.1, 1.0 );
 * // returns NaN
 *
 * @example
-* var y = quantile( NaN, 1.0, 1.0 );
+* var v = variance( 2.0, NaN );
 * // returns NaN
 *
 * @example
-* var y = quantile( 0.5, NaN, 1.0 );
-* // returns NaN
-*
-* @example
-* var y = quantile( 0.5, 1.0, NaN );
-* // returns NaN
-*
-* @example
-* var y = quantile( 0.5, -1.0, 1.0 );
-* // returns NaN
-*
-* @example
-* var y = quantile( 0.5, 1.0, -1.0 );
+* var v = variance( NaN, 2.0 );
 * // returns NaN
 */
-function quantile( p, alpha, beta ) {
-	return addon( p, alpha, beta );
+function variance( alpha, beta ) {
+	if (
+		isnan( alpha ) ||
+		alpha &lt;= 0.0 ||
+		isnan( beta ) ||
+		beta &lt;= 0.0
+	) {
+		return NaN;
+	}
+	if ( alpha &lt; 2.0 ) {
+		return PINF;
+	}
+	return ( beta*beta * alpha ) / ( pow( alpha-1.0, 2.0 ) * ( alpha-2.0 ) );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = quantile;
+module.exports = variance;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -319,7 +319,7 @@ module.exports = quantile;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-17T14:01:41.804Z
+                at 2025-06-17T14:02:13.304Z
             </div>
         <script src="../../../../../../prettify.js"></script>
         <script>
