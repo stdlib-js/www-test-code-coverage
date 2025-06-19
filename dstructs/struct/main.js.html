@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.41% </span>
+                <span class="strong">23.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>111/474</span>
+                <span class='fraction'>112/475</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.41% </span>
+                <span class="strong">23.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>111/474</span>
+                <span class='fraction'>112/475</span>
             </div>
         
             
@@ -537,7 +537,9 @@
 <a name='L472'></a><a href='#L472'>472</a>
 <a name='L473'></a><a href='#L473'>473</a>
 <a name='L474'></a><a href='#L474'>474</a>
-<a name='L475'></a><a href='#L475'>475</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L475'></a><a href='#L475'>475</a>
+<a name='L476'></a><a href='#L476'>476</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1042,6 +1044,7 @@ var isCollection = require( '@stdlib/assert/is-collection' );
 var isArrayBuffer = require( '@stdlib/assert/is-arraybuffer' );
 var isObject = require( '@stdlib/assert/is-object' );
 var hasProp = require( '@stdlib/assert/has-property' );
+var min = require( '@stdlib/math/base/special/fast/min' );
 var join = require( '@stdlib/array/base/join' );
 var filled = require( '@stdlib/array/base/filled' );
 var indexOf = require( '@stdlib/array/base/index-of' );
@@ -1165,7 +1168,7 @@ var struct2json = require( './to_json.js' );
 <span class="cstat-no" title="statement not covered" >	* @private</span>
 <span class="cstat-no" title="statement not covered" >	* @param {(Object|ArrayBuffer)} [arg] - array buffer or data object</span>
 <span class="cstat-no" title="statement not covered" >	* @param {NonNegativeInteger} [byteOffset=0] - offset, in bytes, to the first byte in a provided buffer for the returned `struct` to reference</span>
-<span class="cstat-no" title="statement not covered" >	* @param {NonNegativeInteger} [byteLength] - number of elements in the byte array</span>
+<span class="cstat-no" title="statement not covered" >	* @param {NonNegativeInteger} [byteLength] - maximum number of elements in the byte array</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {RangeError} must provide sufficient memory to accommodate byte offset and view length requirements</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} second argument must be a nonnegative integer</span>
 <span class="cstat-no" title="statement not covered" >	* @throws {TypeError} third argument must be a nonnegative integer</span>
@@ -1199,18 +1202,18 @@ var struct2json = require( './to_json.js' );
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( isArrayBuffer( arg ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			if ( nargs === 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >				view = new DataView( arg );</span>
+<span class="cstat-no" title="statement not covered" >				view = new DataView( arg, 0, BYTE_LENGTH );</span>
 <span class="cstat-no" title="statement not covered" >			} else {</span>
 <span class="cstat-no" title="statement not covered" >				if ( !isNonNegativeInteger( byteOffset ) ) {</span>
 <span class="cstat-no" title="statement not covered" >					throw new TypeError( format( 'invalid argument. Byte offset must be a nonnegative integer. Value: `%s`.', byteOffset ) );</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >				if ( nargs === 2 ) {</span>
-<span class="cstat-no" title="statement not covered" >					view = new DataView( arg, byteOffset );</span>
+<span class="cstat-no" title="statement not covered" >					view = new DataView( arg, byteOffset, BYTE_LENGTH );</span>
 <span class="cstat-no" title="statement not covered" >				} else {</span>
 <span class="cstat-no" title="statement not covered" >					if ( !isNonNegativeInteger( byteLength ) ) {</span>
 <span class="cstat-no" title="statement not covered" >						throw new TypeError( format( 'invalid argument. Byte length must be a nonnegative integer. Value: `%s`.', byteLength ) );</span>
 <span class="cstat-no" title="statement not covered" >					}</span>
-<span class="cstat-no" title="statement not covered" >					view = new DataView( arg, byteOffset, byteLength );</span>
+<span class="cstat-no" title="statement not covered" >					view = new DataView( arg, byteOffset, min( byteLength, BYTE_LENGTH ) ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			if ( view.byteLength &lt; BYTE_LENGTH ) {</span>
@@ -1492,7 +1495,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-18T11:11:33.795Z
+                at 2025-06-19T10:12:50.972Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
