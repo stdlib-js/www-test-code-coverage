@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.57% </span>
+                <span class="strong">23.06% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>112/475</span>
+                <span class='fraction'>113/490</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.57% </span>
+                <span class="strong">23.06% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>112/475</span>
+                <span class='fraction'>113/490</span>
             </div>
         
             
@@ -538,7 +538,22 @@
 <a name='L473'></a><a href='#L473'>473</a>
 <a name='L474'></a><a href='#L474'>474</a>
 <a name='L475'></a><a href='#L475'>475</a>
-<a name='L476'></a><a href='#L476'>476</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L476'></a><a href='#L476'>476</a>
+<a name='L477'></a><a href='#L477'>477</a>
+<a name='L478'></a><a href='#L478'>478</a>
+<a name='L479'></a><a href='#L479'>479</a>
+<a name='L480'></a><a href='#L480'>480</a>
+<a name='L481'></a><a href='#L481'>481</a>
+<a name='L482'></a><a href='#L482'>482</a>
+<a name='L483'></a><a href='#L483'>483</a>
+<a name='L484'></a><a href='#L484'>484</a>
+<a name='L485'></a><a href='#L485'>485</a>
+<a name='L486'></a><a href='#L486'>486</a>
+<a name='L487'></a><a href='#L487'>487</a>
+<a name='L488'></a><a href='#L488'>488</a>
+<a name='L489'></a><a href='#L489'>489</a>
+<a name='L490'></a><a href='#L490'>490</a>
+<a name='L491'></a><a href='#L491'>491</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -645,6 +660,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1063,6 +1093,7 @@ var partitions = require( './partitions.js' );
 var flatten = require( './flatten_fields.js' );
 var struct2string = require( './to_string.js' );
 var struct2json = require( './to_json.js' );
+var layoutFormat = require( './format_layout.js' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -1321,6 +1352,20 @@ var struct2json = require( './to_json.js' );
 <span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
+<span class="cstat-no" title="statement not covered" >	* Returns a string corresponding to the `struct` layout.</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* @private</span>
+<span class="cstat-no" title="statement not covered" >	* @name layout</span>
+<span class="cstat-no" title="statement not covered" >	* @memberof Struct</span>
+<span class="cstat-no" title="statement not covered" >	* @readonly</span>
+<span class="cstat-no" title="statement not covered" >	* @type {string}</span>
+<span class="cstat-no" title="statement not covered" >	*/</span>
+<span class="cstat-no" title="statement not covered" >	setNonEnumerableReadOnlyAccessor( Struct, 'layout', function get() {</span>
+<span class="cstat-no" title="statement not covered" >		// As this is not likely to be a commonly used API, intentionally recompute the layout format in order to avoid consuming memory for what could be a long string...</span>
+<span class="cstat-no" title="statement not covered" >		return layoutFormat( FIELDS );</span>
+<span class="cstat-no" title="statement not covered" >	});</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	/**</span>
 <span class="cstat-no" title="statement not covered" >	* Returns the length, in bytes, of the value specified by the provided field name.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
 <span class="cstat-no" title="statement not covered" >	* @private</span>
@@ -1495,7 +1540,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-19T10:12:50.972Z
+                at 2025-06-20T03:49:13.975Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
