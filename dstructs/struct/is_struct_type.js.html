@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dstructs/struct/lib/number2boolean.js</title>
+    <title>Code coverage report for dstructs/struct/lib/is_struct_type.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">dstructs/struct/lib</a> number2boolean.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">dstructs/struct/lib</a> is_struct_type.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">78.43% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>39/42</span>
+                <span class='fraction'>40/51</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">78.43% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>39/42</span>
+                <span class='fraction'>40/51</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,7 +105,16 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -139,6 +148,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -169,26 +187,35 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var Boolean = require( '@stdlib/boolean/ctor' );
+var isPositiveInteger = require( '@stdlib/assert/is-positive-integer' ).isPrimitive;
+var isFunction = require( '@stdlib/assert/is-function' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Converts a number to a boolean.
+* Returns a boolean indicating if a value is a `struct` instance.
 *
 * @private
-* @param {number} value - input value
-* @returns {boolean} result
+* @param {*} value - value to test
+* @returns {boolean} boolean indicating if a value is a `struct` instance
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function number2boolean( value ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	return Boolean( value );</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function isStructType( value ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	return (</span>
+<span class="cstat-no" title="statement not covered" >		isFunction( value ) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >		isPositiveInteger( value.alignment ) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >		isPositiveInteger( value.byteLength ) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >		isFunction( value.byteLengthOf ) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >		isFunction( value.byteOffsetOf ) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >		isFunction( value.bufferOf ) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >		isFunction( value.viewOf )</span>
+<span class="cstat-no" title="statement not covered" >	);</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = number2boolean;
+module.exports = isStructType;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dstructs/struct/lib/number2boolean.js</title>
+    <title>Code coverage report for dstructs/struct/lib/is_struct_instance.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">dstructs/struct/lib</a> number2boolean.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">dstructs/struct/lib</a> is_struct_instance.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">85.41% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>39/42</span>
+                <span class='fraction'>41/48</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">85.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>39/42</span>
+                <span class='fraction'>41/48</span>
             </div>
         
             
@@ -105,7 +105,13 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -139,6 +145,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -169,26 +181,32 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var Boolean = require( '@stdlib/boolean/ctor' );
+var isDataView = require( '@stdlib/assert/is-dataview' );
+var isObject = require( '@stdlib/assert/is-object' );
+var PRIVATE_BUFFER = require( './private_buffer.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Converts a number to a boolean.
+* Returns a boolean indicating if a value is a `struct` instance.
 *
 * @private
-* @param {number} value - input value
-* @returns {boolean} result
+* @param {*} value - value to test
+* @returns {boolean} boolean indicating if a value is a `struct` instance
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function number2boolean( value ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	return Boolean( value );</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function isStructInstance( value ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	// NOTE: the following is a relatively weak test, but we cannot use `instanceof` checks, etc, due to the factory nature of the implementation. Regardless, here, we are just trying to sniff out a `struct` type. If calling as a constructor later fails, we punt the responsibility off to the user to handle what should be an edge case. If, in the future, this check proves insufficient, we can add further "brand" checks...</span>
+<span class="cstat-no" title="statement not covered" >	return (</span>
+<span class="cstat-no" title="statement not covered" >		isObject( value ) &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >		isDataView( value[ PRIVATE_BUFFER ] )</span>
+<span class="cstat-no" title="statement not covered" >	);</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = number2boolean;
+module.exports = isStructInstance;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

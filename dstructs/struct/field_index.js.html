@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dstructs/struct/lib/number2boolean.js</title>
+    <title>Code coverage report for dstructs/struct/lib/field_index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">dstructs/struct/lib</a> number2boolean.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">dstructs/struct/lib</a> field_index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>39/42</span>
+                <span class='fraction'>44/55</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>39/42</span>
+                <span class='fraction'>44/55</span>
             </div>
         
             
@@ -105,7 +105,20 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -139,6 +152,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -169,26 +195,39 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var Boolean = require( '@stdlib/boolean/ctor' );
+var indexOf = require( '@stdlib/array/base/index-of' );
+var join = require( '@stdlib/array/base/join' );
+var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Converts a number to a boolean.
+* Returns the index of a specified field name in a provided list of field names.
 *
 * @private
-* @param {number} value - input value
-* @returns {boolean} result
+* @param {Array&lt;string&gt;} names - list of field names
+* @param {string} name - field name
+* @throws {Error} struct must have at least one field
+* @throws {TypeError} must provide a recognized field name
+* @returns {(integer|Error)} index or an error object
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function number2boolean( value ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	return Boolean( value );</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function fieldIndex( names, name ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var idx;</span>
+<span class="cstat-no" title="statement not covered" >	if ( names.length === 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		return new Error( 'invalid operation. struct does not have any fields.' );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	idx = indexOf( names, name, 0 );</span>
+<span class="cstat-no" title="statement not covered" >	if ( idx &lt; 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		return new TypeError( format( 'invalid argument. Field name must be one of the following: "%s". Value: `%s`.', join( names, ', ' ), name ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	return idx;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = number2boolean;
+module.exports = fieldIndex;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
