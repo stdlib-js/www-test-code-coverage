@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/strided/dztest/lib/ndarray.js</title>
+    <title>Code coverage report for stats/strided/sztest/lib/ndarray.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/strided/dztest/lib</a> ndarray.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/strided/sztest/lib</a> ndarray.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>141/141</span>
+                <span class='fraction'>147/147</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>141/141</span>
+                <span class='fraction'>147/147</span>
             </div>
         
             
@@ -204,7 +204,14 @@
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
 <a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -303,6 +310,11 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -367,15 +379,16 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var isnanf = require( '@stdlib/math/base/assert/is-nanf' );
 var quantile = require( '@stdlib/stats/base/dists/normal/quantile' ).factory;
 var cdf = require( '@stdlib/stats/base/dists/normal/cdf' ).factory;
-var dmean = require( '@stdlib/stats/strided/dmean' ).ndarray;
+var smean = require( '@stdlib/stats/strided/smean' ).ndarray;
 var sqrt = require( '@stdlib/math/base/special/sqrt' );
 var abs = require( '@stdlib/math/base/special/abs' );
-var Float64Array = require( '@stdlib/array/float64' );
-var PINF = require( '@stdlib/constants/float64/pinf' );
-var NINF = require( '@stdlib/constants/float64/ninf' );
+var Float32Array = require( '@stdlib/array/float32' );
+var PINF = require( '@stdlib/constants/float32/pinf' );
+var NINF = require( '@stdlib/constants/float32/ninf' );
+var f32 = require( '@stdlib/number/float64/base/to-float32' );
 &nbsp;
 &nbsp;
 // VARIABLES //
@@ -384,39 +397,39 @@ var normalCDF = cdf( 0.0, 1.0 );
 var normalQuantile = quantile( 0.0, 1.0 );
 &nbsp;
 // Initialize a workspace for storing confidence intervals:
-var WORKSPACE = new Float64Array( 2 );
+var WORKSPACE = new Float32Array( 2 );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes a one-sample Z-test for a double-precision floating-point strided array using alternative indexing semantics.
+* Computes a one-sample Z-test for a single-precision floating-point strided array using alternative indexing semantics.
 *
 * @param {PositiveInteger} N - number of indexed elements
 * @param {string} alternative - alternative hypothesis
 * @param {number} alpha - significance level
 * @param {number} mu - mean under the null hypothesis
 * @param {PositiveNumber} sigma - known standard deviation
-* @param {Float64Array} x - input array
+* @param {Float32Array} x - input array
 * @param {integer} strideX - stride length
 * @param {NonNegativeInteger} offsetX - starting index
 * @param {Object} out - output results object
 * @returns {Object} results object
 *
 * @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var Results = require( '@stdlib/stats/base/ztest/one-sample/results/float64' );
+* var Float32Array = require( '@stdlib/array/float32' );
+* var Results = require( '@stdlib/stats/base/ztest/one-sample/results/float32' );
 *
-* var x = new Float64Array( [ 4.0, 4.0, 6.0, 6.0, 5.0 ] );
+* var x = new Float32Array( [ 4.0, 4.0, 6.0, 6.0, 5.0 ] );
 *
 * var results = new Results();
-* var out = dztest( x.length, 'two-sided', 0.05, 0.0, 1.0, x, 1, 0, results );
+* var out = sztest( x.length, 'two-sided', 0.05, 0.0, 1.0, x, 1, 0, results );
 * // returns {...}
 *
 * var bool = ( out === results );
 * // returns true
 */
-function dztest( N, alternative, alpha, mu, sigma, x, strideX, offsetX, out ) {
+function sztest( N, alternative, alpha, mu, sigma, x, strideX, offsetX, out ) {
 	var pValue;
 	var stderr;
 	var xmean;
@@ -425,9 +438,9 @@ function dztest( N, alternative, alpha, mu, sigma, x, strideX, offsetX, out ) {
 &nbsp;
 	if (
 		N &lt;= 0 ||
-		isnan( alpha ) ||
-		isnan( mu ) ||
-		isnan( sigma ) ||
+		isnanf( alpha ) ||
+		isnanf( mu ) ||
+		isnanf( sigma ) ||
 		sigma &lt;= 0.0 ||
 		alpha &lt; 0.0 ||
 		alpha &gt; 1.0
@@ -444,11 +457,16 @@ function dztest( N, alternative, alpha, mu, sigma, x, strideX, offsetX, out ) {
 		out.sd = NaN;
 		return out;
 	}
+	// "Cast" input values to single-precision:
+	alpha = f32( alpha );
+	mu = f32( mu );
+	sigma = f32( sigma );
+&nbsp;
 	// Compute the standard error of the mean:
-	stderr = sigma / sqrt( N );
+	stderr = sigma / sqrt( N ); // note: intentionally evaluated in double-precision to avoid `N` exceeding max safe float32 integer
 &nbsp;
 	// Compute the arithmetic mean of the input array:
-	xmean = dmean( N, x, strideX, offsetX );
+	xmean = smean( N, x, strideX, offsetX );
 &nbsp;
 	// Compute the test statistic (i.e., the z-score, which is the distance of the sample mean from the population mean in units of standard error):
 	stat = ( xmean - mu ) / stderr;
@@ -474,18 +492,18 @@ function dztest( N, alternative, alpha, mu, sigma, x, strideX, offsetX, out ) {
 	out.rejected = ( pValue &lt;= alpha );
 	out.alternative = alternative;
 	out.alpha = alpha;
-	out.pValue = pValue;
-	out.statistic = stat;
+	out.pValue = f32( pValue );
+	out.statistic = f32( stat );
 	out.ci = WORKSPACE;
 	out.nullValue = mu;
-	out.sd = stderr;
+	out.sd = f32( stderr );
 	return out;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = dztest;
+module.exports = sztest;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -493,7 +511,7 @@ module.exports = dztest;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-20T06:33:06.077Z
+                at 2025-06-20T06:33:48.303Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
