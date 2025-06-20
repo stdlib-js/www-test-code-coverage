@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>71/71</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>71/71</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
@@ -127,14 +127,7 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -183,23 +176,16 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
-<span class="cline-any cline-yes">2008x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
+<span class="cline-any cline-yes">2013x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -236,38 +222,31 @@ var csignumf = require( './main.js' );
 // MAIN //
 &nbsp;
 /**
-* Computes the signum of a single-precision complex number stored in a real-valued strided array view and assigns the result to a provided strided output array.
+* Evaluates the signum function of a single-precision floating-point complex number stored in a real-valued strided array view and assigns results to a provided strided output array.
 *
-* @param {Float32Array} z - complex number view (interleaved real and imaginary)
-* @param {integer} sz - stride length for `z`
-* @param {NonNegativeInteger} oz - starting index for `z`
-* @param {Float32Array} out - output array
-* @param {integer} so - stride length for `out`
-* @param {NonNegativeInteger} oo - starting index for `out`
-* @returns {Float32Array} output array
+* @param {Float32Array} z - complex number view
+* @param {integer} strideZ - stride length for `z`
+* @param {NonNegativeInteger} offsetZ - starting index for `z`
+* @param {Collection} out - output array
+* @param {integer} strideOut - stride length for `out`
+* @param {NonNegativeInteger} offsetOut - starting index for `out`
+* @returns {Collection} output array
 *
 * @example
 * var Float32Array = require( '@stdlib/array/float32' );
-* var strided = require( '@stdlib/math/base/special/csignumf' ).strided;
 *
-* var z = new Float32Array( [ 3.0, 4.0 ] );
-* var out = new Float32Array( 2 );
+* var z = new Float32Array( [ -4.2, 5.5 ] );
 *
-* strided( z, 1, 0, out, 1, 0 );
-* console.log( out );
-* // =&gt; &lt;Float32Array&gt;[ ~0.6, ~0.8 ]
+* var out = strided( z, 1, 0, new Float32Array( 2 ), 1, 0 );
+* // returns &lt;Float32Array&gt;[ ~-0.607, ~0.795 ]
 */
-function strided( z, sz, oz, out, so, oo ) {
-	var result;
-	var re;
-	var im;
+function strided( z, strideZ, offsetZ, out, strideOut, offsetOut ) {
+	var v;
 &nbsp;
-	re = z[ oz ];
-	im = z[ oz + sz ];
-	result = csignumf( new Complex64( re, im ) );
+	v = csignumf( new Complex64( z[ offsetZ ], z[ offsetZ + strideZ ] ) );
 &nbsp;
-	out[ oo ] = real( result );
-	out[ oo + so ] = imag( result );
+	out[ offsetOut ] = real( v );
+	out[ offsetOut + strideOut ] = imag( v );
 &nbsp;
 	return out;
 }
@@ -283,7 +262,7 @@ module.exports = strided;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-12T10:39:40.929Z
+                at 2025-06-20T09:46:24.332Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
