@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/planck/kurtosis/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/planck/kurtosis/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/planck/kurtosis/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/planck/kurtosis/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -121,10 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -176,9 +173,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1003x</span>
 <span class="cline-any cline-yes">1003x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1000x</span>
 <span class="cline-any cline-yes">1003x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -207,8 +201,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var cosh = require( '@stdlib/math/base/special/cosh' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -216,8 +209,9 @@ var cosh = require( '@stdlib/math/base/special/cosh' );
 /**
 * Returns the excess kurtosis of a Planck distribution.
 *
-* @param {PositiveNumber} lambda - shape parameter
-* @returns {PositiveNumber} excess kurtosis
+* @private
+* @param {number} lambda - shape parameter
+* @returns {number} excess kurtosis
 *
 * @example
 * var v = kurtosis( 0.1 );
@@ -228,18 +222,15 @@ var cosh = require( '@stdlib/math/base/special/cosh' );
 * // returns ~8.7048
 *
 * @example
-* var v = kurtosis( -1.1 );
+* var v = kurtosis( NaN );
 * // returns NaN
 *
 * @example
-* var v = kurtosis( NaN );
+* var v = kurtosis( -1.1 );
 * // returns NaN
 */
 function kurtosis( lambda ) {
-	if ( isnan( lambda ) || lambda &lt;= 0.0 ) {
-		return NaN;
-	}
-	return 4.0 + ( 2.0 * cosh( lambda ) );
+	return addon( lambda );
 }
 &nbsp;
 &nbsp;
