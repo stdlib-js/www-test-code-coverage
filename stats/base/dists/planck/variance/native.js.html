@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/dists/planck/variance/lib/main.js</title>
+    <title>Code coverage report for stats/base/dists/planck/variance/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/planck/variance/lib</a> main.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/planck/variance/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>64/64</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>64/64</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -121,14 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -180,11 +173,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1003x</span>
 <span class="cline-any cline-yes">1003x</span>
-<span class="cline-any cline-yes">1003x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1000x</span>
-<span class="cline-any cline-yes">1000x</span>
 <span class="cline-any cline-yes">1003x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -194,7 +182,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -213,9 +201,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var exp = require( '@stdlib/math/base/special/exp' );
-var expm1 = require( '@stdlib/math/base/special/expm1' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -223,8 +209,9 @@ var expm1 = require( '@stdlib/math/base/special/expm1' );
 /**
 * Returns the variance of a Planck distribution.
 *
-* @param {PositiveNumber} lambda - shape parameter
-* @returns {PositiveNumber} variance
+* @private
+* @param {number} lambda - shape parameter
+* @returns {number} variance
 *
 * @example
 * var v = variance( 0.1 );
@@ -235,20 +222,15 @@ var expm1 = require( '@stdlib/math/base/special/expm1' );
 * // returns ~0.3697
 *
 * @example
-* var v = variance( -1.0 );
+* var v = variance( NaN );
 * // returns NaN
 *
 * @example
-* var v = variance( NaN );
+* var v = variance( -1.0 );
 * // returns NaN
 */
 function variance( lambda ) {
-	var temp;
-	if ( isnan( lambda ) || lambda &lt;= 0.0 ) {
-		return NaN;
-	}
-	temp = expm1( -lambda );
-	return exp( -lambda ) / ( temp * temp );
+	return addon( lambda );
 }
 &nbsp;
 &nbsp;
