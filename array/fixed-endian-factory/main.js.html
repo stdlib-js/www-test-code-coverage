@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.04% </span>
+                <span class="strong">81.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1005/1225</span>
+                <span class='fraction'>1008/1230</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.68% </span>
+                <span class="strong">92.12% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>152/164</span>
+                <span class='fraction'>152/165</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.04% </span>
+                <span class="strong">81.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1005/1225</span>
+                <span class='fraction'>1008/1230</span>
             </div>
         
             
@@ -1288,7 +1288,12 @@
 <a name='L1223'></a><a href='#L1223'>1223</a>
 <a name='L1224'></a><a href='#L1224'>1224</a>
 <a name='L1225'></a><a href='#L1225'>1225</a>
-<a name='L1226'></a><a href='#L1226'>1226</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">14x</span>
+<a name='L1226'></a><a href='#L1226'>1226</a>
+<a name='L1227'></a><a href='#L1227'>1227</a>
+<a name='L1228'></a><a href='#L1228'>1228</a>
+<a name='L1229'></a><a href='#L1229'>1229</a>
+<a name='L1230'></a><a href='#L1230'>1230</a>
+<a name='L1231'></a><a href='#L1231'>1231</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
@@ -1506,6 +1511,8 @@
 <span class="cline-any cline-yes">111x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">111x</span>
+<span class="cline-any cline-yes">111x</span>
 <span class="cline-any cline-yes">111x</span>
 <span class="cline-any cline-yes">111x</span>
 <span class="cline-any cline-yes">111x</span>
@@ -1568,6 +1575,9 @@
 <span class="cline-any cline-yes">84x</span>
 <span class="cline-any cline-yes">87x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -2749,6 +2759,8 @@ function factory( dtype ) { // eslint-disable-line max-lines-per-function, stdli
 	* @throws {TypeError} if provided only two arguments, the second argument must be a valid argument
 	* @throws {TypeError} byte offset must be a nonnegative integer
 	* @throws {RangeError} must provide sufficient memory to accommodate byte offset and view length requirements
+	* @throws {RangeError} byte offset must be a multiple of the data type size
+	* @throws {TypeError} view length must be a positive multiple of the data type size
 	* @returns {TypedArray} typed array instance
 	*/
 	function TypedArray() {
@@ -2793,6 +2805,9 @@ function factory( dtype ) { // eslint-disable-line max-lines-per-function, stdli
 				buf = fromArray( new DataView( new ArrayBuffer( arg.length*BYTES_PER_ELEMENT ) ), arg, isLE );
 			} else if ( isArrayBuffer( arg ) ) {
 				buf = new DataView( arg );
+				if ( !isNonNegativeInteger( arg.byteLength/BYTES_PER_ELEMENT ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >					throw new RangeError( format( 'invalid argument. ArrayBuffer byte length must be a multiple of %u. Byte length: `%u`.', BYTES_PER_ELEMENT, buf.byteLength ) );</span>
+<span class="cstat-no" title="statement not covered" >				}</span>
 			}<span class="branch-0 cbranch-no" title="branch not covered" > else if ( isObject( arg ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				if ( HAS_ITERATOR_SYMBOL === false ) {</span>
 <span class="cstat-no" title="statement not covered" >					throw new TypeError( format( 'invalid argument. Environment lacks Symbol.iterator support. Must provide a length, ArrayBuffer, typed array, or array-like object. Value: `%s`.', arg ) );</span>
@@ -3125,7 +3140,7 @@ function factory( dtype ) { // eslint-disable-line max-lines-per-function, stdli
 		}
 		buf = this._buffer;
 		out = [];
-		for ( i = 0; i &lt; this._length; i++) {
+		for ( i = 0; i &lt; this._length; i++ ) {
 			v = buf[ GETTER ]( i*BYTES_PER_ELEMENT, this._isLE );
 			if ( predicate.call( thisArg, v, i, this ) ) {
 				out.push( v );
@@ -3561,7 +3576,7 @@ function factory( dtype ) { // eslint-disable-line max-lines-per-function, stdli
 <span class="cstat-no" title="statement not covered" >			) {</span>
 <span class="cstat-no" title="statement not covered" >				// We need to copy source values...</span>
 <span class="cstat-no" title="statement not covered" >				tmp = [];</span>
-<span class="cstat-no" title="statement not covered" >				for ( i = 0; i &lt; value.length; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >				for ( i = 0; i &lt; N; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >					tmp.push( get( value, i ) );</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >				sbuf = tmp;</span>
@@ -3745,7 +3760,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-17T03:05:27.317Z
+                at 2025-06-21T12:40:12.883Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
