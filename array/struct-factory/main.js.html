@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.54% </span>
+                <span class="strong">24.6% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>152/595</span>
+                <span class='fraction'>141/573</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.54% </span>
+                <span class="strong">24.6% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>152/595</span>
+                <span class='fraction'>141/573</span>
             </div>
         
             
@@ -636,29 +636,7 @@
 <a name='L571'></a><a href='#L571'>571</a>
 <a name='L572'></a><a href='#L572'>572</a>
 <a name='L573'></a><a href='#L573'>573</a>
-<a name='L574'></a><a href='#L574'>574</a>
-<a name='L575'></a><a href='#L575'>575</a>
-<a name='L576'></a><a href='#L576'>576</a>
-<a name='L577'></a><a href='#L577'>577</a>
-<a name='L578'></a><a href='#L578'>578</a>
-<a name='L579'></a><a href='#L579'>579</a>
-<a name='L580'></a><a href='#L580'>580</a>
-<a name='L581'></a><a href='#L581'>581</a>
-<a name='L582'></a><a href='#L582'>582</a>
-<a name='L583'></a><a href='#L583'>583</a>
-<a name='L584'></a><a href='#L584'>584</a>
-<a name='L585'></a><a href='#L585'>585</a>
-<a name='L586'></a><a href='#L586'>586</a>
-<a name='L587'></a><a href='#L587'>587</a>
-<a name='L588'></a><a href='#L588'>588</a>
-<a name='L589'></a><a href='#L589'>589</a>
-<a name='L590'></a><a href='#L590'>590</a>
-<a name='L591'></a><a href='#L591'>591</a>
-<a name='L592'></a><a href='#L592'>592</a>
-<a name='L593'></a><a href='#L593'>593</a>
-<a name='L594'></a><a href='#L594'>594</a>
-<a name='L595'></a><a href='#L595'>595</a>
-<a name='L596'></a><a href='#L596'>596</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L574'></a><a href='#L574'>574</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -711,28 +689,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1278,7 +1234,6 @@
 // MODULES //
 &nbsp;
 var isNonNegativeInteger = require( '@stdlib/assert/is-nonnegative-integer' ).isPrimitive;
-var isPositiveInteger = require( '@stdlib/assert/is-positive-integer' ).isPrimitive;
 var isInteger = require( '@stdlib/assert/is-integer' ).isPrimitive;
 var isArrayBuffer = require( '@stdlib/assert/is-arraybuffer' );
 var isCollection = require( '@stdlib/assert/is-collection' );
@@ -1298,6 +1253,7 @@ var accessorGetter = require( '@stdlib/array/base/accessor-getter' );
 var gcopy = require( '@stdlib/blas/base/gcopy' ).ndarray;
 var structFactory = require( '@stdlib/dstructs/struct' );
 var format = require( '@stdlib/string/format' );
+var isStructConstructor = require( './is_struct_constructor.js' );
 var fromArray = require( './from_array.js' );
 var fromIterator = require( './from_iterator.js' );
 &nbsp;
@@ -1306,28 +1262,6 @@ var fromIterator = require( './from_iterator.js' );
 &nbsp;
 var HAS_ITERATOR_SYMBOL = hasIteratorSymbolSupport();
 var CTOR_NAME = 'StructArray';
-&nbsp;
-&nbsp;
-// FUNCTIONS //
-&nbsp;
-/**
-* Returns a boolean indicating if a value is a `struct` constructor.
-*
-* @private
-* @param {*} value - value to test
-* @returns {boolean} boolean indicating if a value is a `struct` constructor
-*/
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function isStructConstructor( value ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	return (</span>
-<span class="cstat-no" title="statement not covered" >		isFunction( value ) &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >		isPositiveInteger( value.alignment ) &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >		isPositiveInteger( value.byteLength ) &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >		isFunction( value.byteLengthOf ) &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >		isFunction( value.byteOffsetOf ) &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >		isFunction( value.bufferOf ) &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >		isFunction( value.viewOf )</span>
-<span class="cstat-no" title="statement not covered" >	);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // MAIN //
@@ -1855,7 +1789,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-21T12:40:15.383Z
+                at 2025-06-22T10:58:50.266Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
