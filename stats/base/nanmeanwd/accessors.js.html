@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats/base/nanmeanwd/lib/ndarray.js</title>
+    <title>Code coverage report for stats/base/nanmeanwd/lib/accessors.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/base/nanmeanwd/lib</a> ndarray.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">stats/base/nanmeanwd/lib</a> accessors.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -224,28 +224,28 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">38x</span>
@@ -253,11 +253,11 @@
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -266,7 +266,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2020 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -282,12 +282,6 @@
 */
 &nbsp;
 'use strict';
-&nbsp;
-// MODULES //
-&nbsp;
-var arraylike2object = require( '@stdlib/array/base/arraylike2object' );
-var accessors = require( './accessors.js' );
-&nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
@@ -312,41 +306,47 @@ var accessors = require( './accessors.js' );
 * -   Welford, B. P. 1962. "Note on a Method for Calculating Corrected Sums of Squares and Products." _Technometrics_ 4 (3). Taylor &amp; Francis: 419–20. doi:[10.1080/00401706.1962.10490022](https://doi.org/10.1080/00401706.1962.10490022).
 * -   van Reeken, A. J. 1968. "Letters to the Editor: Dealing with Neely's Algorithms." _Communications of the ACM_ 11 (3): 149–50. doi:[10.1145/362929.362961](https://doi.org/10.1145/362929.362961).
 *
+* @private
 * @param {PositiveInteger} N - number of indexed elements
-* @param {NumericArray} x - input array
+* @param {Object} x - input array object
+* @param {Collection} x.data - input array data
+* @param {Array&lt;Function&gt;} x.accessors - array element accessors
 * @param {integer} strideX - stride length
 * @param {NonNegativeInteger} offsetX - starting index
 * @returns {number} arithmetic mean
 *
 * @example
-* var x = [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0, NaN, NaN ];
+* var toAccessorArray = require( '@stdlib/array/base/to-accessor-array' );
+* var arraylike2object = require( '@stdlib/array/base/arraylike2object' );
 *
-* var v = nanmeanwd( 5, x, 2, 1 );
+* var x = toAccessorArray( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0, NaN, NaN ] );
+*
+* var v = nanmeanwd( 5, arraylike2object( x ), 2, 1 );
 * // returns 1.25
 */
 function nanmeanwd( N, x, strideX, offsetX ) {
+	var xbuf;
+	var get;
 	var mu;
 	var ix;
-	var o;
 	var v;
 	var n;
 	var i;
 &nbsp;
-	if ( N &lt;= 0 ) {
-		return NaN;
-	}
-	o = arraylike2object( x );
-	if ( o.accessorProtocol ) {
-		return accessors( N, o, strideX, offsetX );
-	}
+	// Cache reference to array data:
+	xbuf = x.data;
+&nbsp;
+	// Cache a reference to the element accessor:
+	get = x.accessors[ 0 ];
+&nbsp;
 	if ( N === 1 || strideX === 0 ) {
-		return x[ offsetX ];
+		return get( xbuf, offsetX );
 	}
 	ix = offsetX;
 	mu = 0.0;
 	n = 0;
 	for ( i = 0; i &lt; N; i++ ) {
-		v = x[ ix ];
+		v = get( xbuf, ix );
 		if ( v === v ) {
 			n += 1;
 			mu += ( v-mu ) / n;
