@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/clampf/lib/native.js</title>
+    <title>Code coverage report for stats/base/dists/invgamma/cdf/lib/native.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/clampf/lib</a> native.js</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">stats/base/dists/invgamma/cdf/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>69/69</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>69/69</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
@@ -127,12 +127,7 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,14 +183,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">3013x</span>
+<span class="cline-any cline-yes">3013x</span>
+<span class="cline-any cline-yes">3013x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -204,7 +194,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2020 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -229,47 +219,42 @@ var addon = require( './../src/addon.node' );
 // MAIN //
 &nbsp;
 /**
-* Restricts a single-precision floating-point number to a specified range.
+* Evaluates the cumulative distribution function (CDF) for an inverse gamma distribution.
 *
 * @private
-* @param {number} v - input value
-* @param {number} min - minimum value
-* @param {number} max - maximum value
-* @returns {number} value restricted to a specified range
+* @param {number} x - input value
+* @param {PositiveNumber} alpha - shape parameter
+* @param {PositiveNumber} beta - scale parameter
+* @returns {Probability} evaluated CDF
 *
 * @example
-* var v = clampf( 3.0, 0.0, 5.0 );
-* // returns 3.0
+* var y = cdf( 2.0, 1.0, 1.0 );
+* // returns ~0.607
 *
-* v = clampf( -3.0, 0.0, 5.0 );
+* @example
+* var y = cdf( 2.0, 3.0, 1.0 );
+* // returns ~0.986
+*
+* @example
+* var y = cdf( -1.0, 2.0, 2.0 );
 * // returns 0.0
 *
-* v = clampf( 10.0, 0.0, 5.0 );
-* // returns 5.0
-*
-* v = clampf( -0.0, 0.0, 5.0 );
-* // returns 0.0
-*
-* v = clampf( 0.0, -0.0, 5.0 );
-* // returns 0.0
-*
-* v = clampf( NaN, 0.0, 5.0 );
+* @example
+* var y = cdf( NaN, 1.0, 1.0 );
 * // returns NaN
 *
-* v = clampf( 0.0, NaN, 5.0 );
-* // returns NaN
-*
-* v = clampf( 3.14, 0.0, NaN );
+* @example
+* var y = cdf( 0.0, NaN, 1.0 );
 * // returns NaN
 */
-function clampf( v, min, max ) {
-	return addon( v, min, max );
+function cdf( x, alpha, beta ) {
+	return addon( x, alpha, beta );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = clampf;
+module.exports = cdf;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -277,16 +262,16 @@ module.exports = clampf;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-28T01:00:16.337Z
+                at 2025-06-28T01:05:47.737Z
             </div>
-        <script src="../../../../../prettify.js"></script>
+        <script src="../../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../../sorter.js"></script>
-        <script src="../../../../../block-navigation.js"></script>
+        <script src="../../../../../../sorter.js"></script>
+        <script src="../../../../../../block-navigation.js"></script>
     </body>
 </html>
     
