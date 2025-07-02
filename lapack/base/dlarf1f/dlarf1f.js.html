@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">98.07% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>91/104</span>
+                <span class='fraction'>102/104</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">94.11% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/10</span>
+                <span class='fraction'>16/17</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">98.07% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>91/104</span>
+                <span class='fraction'>102/104</span>
             </div>
         
             
@@ -235,37 +235,37 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -356,19 +356,19 @@ function dlarf1f( order, side, M, N, V, incv, tau, C, LDC, work ) {
 	if ( incv === 0 ) {
 		throw new RangeError( format( 'invalid argument. Fifth argument must not be zero' ) );
 	}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	if ( isColumnMajor( order ) ) {</span></span>
-<span class="cstat-no" title="statement not covered" >		sc1 = 1;</span>
-<span class="cstat-no" title="statement not covered" >		sc2 = LDC;</span>
-<span class="cstat-no" title="statement not covered" >	} else { // order === 'row-major'</span>
-<span class="cstat-no" title="statement not covered" >		sc1 = LDC;</span>
-<span class="cstat-no" title="statement not covered" >		sc2 = 1;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( side === 'left' ) {</span>
-<span class="cstat-no" title="statement not covered" >		ov = stride2offset( M, incv );</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
+	if ( isColumnMajor( order ) ) {
+		sc1 = 1;
+		sc2 = LDC;
+	} else { // order === 'row-major'
+		sc1 = LDC;
+		sc2 = 1;
+	}
+	if ( side === 'left' ) {
+		ov = stride2offset( M, incv );
+	}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
 <span class="cstat-no" title="statement not covered" >		ov = stride2offset( N, incv );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return base( side, M, N, V, incv, ov, tau, C, sc1, sc2, 0, work, 1, 0 );</span>
+	return base( side, M, N, V, incv, ov, tau, C, sc1, sc2, 0, work, 1, 0 );
 }
 &nbsp;
 &nbsp;
@@ -382,7 +382,7 @@ module.exports = dlarf1f;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-01T20:41:02.997Z
+                at 2025-07-02T10:21:01.687Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
