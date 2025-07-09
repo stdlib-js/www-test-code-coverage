@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.5% </span>
+                <span class="strong">96.9% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>470/487</span>
+                <span class='fraction'>469/484</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.74% </span>
+                <span class="strong">89.18% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>35/39</span>
+                <span class='fraction'>33/37</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.5% </span>
+                <span class="strong">96.9% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>470/487</span>
+                <span class='fraction'>469/484</span>
             </div>
         
             
@@ -547,10 +547,8 @@
 <a name='L482'></a><a href='#L482'>482</a>
 <a name='L483'></a><a href='#L483'>483</a>
 <a name='L484'></a><a href='#L484'>484</a>
-<a name='L485'></a><a href='#L485'>485</a>
-<a name='L486'></a><a href='#L486'>486</a>
-<a name='L487'></a><a href='#L487'>487</a>
-<a name='L488'></a><a href='#L488'>488</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L485'></a><a href='#L485'>485</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -735,9 +733,7 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -875,8 +871,10 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -993,16 +991,12 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">59x</span>
-<span class="cline-any cline-yes">59x</span>
-<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">59x</span>
 <span class="cline-any cline-yes">59x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -1065,10 +1059,11 @@ var abs = require( '@stdlib/math/base/special/abs' );
 var idamax = require( '@stdlib/blas/base/idamax' ).ndarray;
 var dcopy = require( '@stdlib/blas/base/dcopy' ).ndarray;
 var dasum = require( '@stdlib/blas/base/dasum' ).ndarray;
-var nint = require( './nint.js' );
+var dfill = require( '@stdlib/blas/ext/base/dfill' ).ndarray;
+var nint = require( '@stdlib/math/base/special/round-nearest-even' );
 &nbsp;
 &nbsp;
-// MAIN //
+// FUNCTIONS //
 &nbsp;
 /**
 * Applies a deterministic fallback vector for final evaluation.
@@ -1214,19 +1209,17 @@ function isaveIsOne( N, V, offsetV, X, strideX, offsetX, ISGN, strideISGN, offse
 * // KASE =&gt; &lt;Int32Array&gt;[ 1 ]
 */
 function isaveIsTwo( N, X, strideX, offsetX, KASE, offsetKASE, ISAVE, strideISAVE, offsetISAVE ) {
-	var ix;
-	var i;
+	var xmax;
+	var i1;
 &nbsp;
-	ISAVE[ offsetISAVE + strideISAVE ] = idamax( N, X, strideX, offsetX );
-	ISAVE[ offsetISAVE + ( 2 * strideISAVE ) ] = 2;
+	i1 = offsetISAVE + strideISAVE;
+	ISAVE[ i1 ] = idamax( N, X, strideX, offsetX ); // stores the index of the max element in X
+	ISAVE[ i1 + strideISAVE ] = 2;
+	xmax = offsetX + ( ISAVE[ i1 ] * strideX ); // pointer to the max element in X
 &nbsp;
-	ix = offsetX;
-	for ( i = 0; i &lt; N; i++ ) {
-		X[ ix ] = 0.0;
-		ix += strideX;
-	}
+	dfill( N, 0.0, X, strideX, offsetX );
 &nbsp;
-	X[ offsetX + ( ISAVE[ offsetISAVE + strideISAVE ] * strideX ) ] = 1.0;
+	X[ xmax ] = 1.0;
 	KASE[ offsetKASE ] = 1;
 	ISAVE[ offsetISAVE ] = 3;
 }
@@ -1354,21 +1347,23 @@ function isaveIsThree( N, X, strideX, offsetX, V, strideV, offsetV, EST, offsetE
 * // KASE =&gt; &lt;Int32Array&gt;[ 1 ]
 */
 function isaveIsFour( N, X, strideX, offsetX, ISAVE, strideISAVE, offsetISAVE, KASE, offsetKASE ) {
+	var prevxmax;
 	var jlast;
-	var ix;
-	var i;
+	var xmax;
+	var i2;
 &nbsp;
 	jlast = ISAVE[ offsetISAVE + strideISAVE ];
+	prevxmax = offsetX + ( jlast * strideX ); // points to X[ isave(1) ]
 	ISAVE[ offsetISAVE + strideISAVE ] = idamax( N, X, strideX, offsetX );
+	xmax = offsetX + ( ISAVE[ offsetISAVE + strideISAVE ] * strideX ); // points to the largest value in X
+	i2 = offsetISAVE + ( 2 * strideISAVE ); // points to isave(2), the number of refinement iterations
 &nbsp;
-	if ( X[ offsetX + ( jlast * strideX ) ] !== abs( X[ offsetX + ( ISAVE[ offsetISAVE + strideISAVE ] * strideX ) ] ) <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; ISAVE[ offsetISAVE + ( 2 * strideISAVE ) ] &lt; 5 </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		ISAVE[ offsetISAVE + ( 2 * strideISAVE ) ] += 1;</span>
-<span class="cstat-no" title="statement not covered" >		ix = offsetX;</span>
-<span class="cstat-no" title="statement not covered" >		for ( i = 0; i &lt; N; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			X[ ix ] = 0.0;</span>
-<span class="cstat-no" title="statement not covered" >			ix += strideX;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		X[ offsetX + ( ISAVE[ offsetISAVE + strideISAVE ] * strideX ) ] = 1.0;</span>
+	if ( X[ prevxmax ] !== abs( X[ xmax ] ) <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; ISAVE[ i2 ] &lt; 5 </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		ISAVE[ i2 ] += 1;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		dfill( N, 0.0, X, strideX, offsetX );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		X[ xmax ] = 1.0;</span>
 <span class="cstat-no" title="statement not covered" >		KASE[ offsetKASE ] = 1;</span>
 <span class="cstat-no" title="statement not covered" >		ISAVE[ offsetISAVE ] = 3;</span>
 <span class="cstat-no" title="statement not covered" >		return;</span>
@@ -1423,6 +1418,9 @@ function isaveIsFive( N, V, strideV, offsetV, X, strideX, offsetX, EST, offsetES
 &nbsp;
 	KASE[ offsetKASE ] = 0;
 }
+&nbsp;
+&nbsp;
+// MAIN //
 &nbsp;
 /**
 * Estimates the one-norm of a square matrix `A`, using reverse communication for evaluating matrix-vector products.
@@ -1481,15 +1479,8 @@ function isaveIsFive( N, V, strideV, offsetV, X, strideX, offsetX, EST, offsetES
 * // KASE =&gt; &lt;Int32Array&gt;[ 1 ]
 */
 function dlacn2( N, V, strideV, offsetV, X, strideX, offsetX, ISGN, strideISGN, offsetISGN, EST, offsetEST, KASE, offsetKASE, ISAVE, strideISAVE, offsetISAVE ) {
-	var ix;
-	var i;
-&nbsp;
 	if ( KASE[ offsetKASE ] === 0 ) {
-		ix = offsetX;
-		for ( i = 0; i &lt; N; i++ ) {
-			X[ ix ] = 1 / N;
-			ix += strideX;
-		}
+		dfill( N, 1 / N, X, strideX, offsetX );
 		KASE[ offsetKASE ] = 1;
 		ISAVE[ offsetISAVE ] = 1;
 		return;
@@ -1531,7 +1522,7 @@ module.exports = dlacn2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-08T11:04:10.037Z
+                at 2025-07-09T07:22:05.720Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
