@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for blas/base/dsyr2/lib/dsyr2.js</title>
+    <title>Code coverage report for blas/base/dsyr2/lib/dsyr2.native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/dsyr2/lib</a> dsyr2.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/dsyr2/lib</a> dsyr2.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>108/108</span>
+                <span class='fraction'>95/95</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>108/108</span>
+                <span class='fraction'>95/95</span>
             </div>
         
             
@@ -158,20 +158,7 @@
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -235,11 +222,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -263,14 +245,6 @@
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">38x</span>
@@ -282,7 +256,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -301,13 +275,13 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
 var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
-var stride2offset = require( '@stdlib/strided/base/stride2offset' );
+var resolveOrder = require( '@stdlib/blas/base/layout-resolve-enum' );
+var resolveUplo = require( '@stdlib/blas/base/matrix-triangle-resolve-enum' );
 var max = require( '@stdlib/math/base/special/fast/max' );
 var format = require( '@stdlib/string/format' );
-var base = require( './base.js' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -344,11 +318,6 @@ var base = require( './base.js' );
 * // A =&gt; &lt;Float64Array&gt;[ 3.0, 6.0, 9.0, 2.0, 9.0, 14.0, 3.0, 2.0, 19.0 ]
 */
 function dsyr2( order, uplo, N, alpha, x, strideX, y, strideY, A, LDA ) {
-	var sa1;
-	var sa2;
-	var ox;
-	var oy;
-&nbsp;
 	if ( !isLayout( order ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
 	}
@@ -371,16 +340,8 @@ function dsyr2( order, uplo, N, alpha, x, strideX, y, strideY, A, LDA ) {
 	if ( N === 0 || alpha === 0.0 ) {
 		return A;
 	}
-	if ( isColumnMajor( order ) ) {
-		sa1 = 1;
-		sa2 = LDA;
-	} else { // order === 'row-major'
-		sa1 = LDA;
-		sa2 = 1;
-	}
-	ox = stride2offset( N, strideX );
-	oy = stride2offset( N, strideY );
-	return base( uplo, N, alpha, x, strideX, ox, y, strideY, oy, A, sa1, sa2, 0 ); // eslint-disable-line max-len
+	addon( resolveOrder( order ), resolveUplo( uplo ), N, alpha, x, strideX, y, strideY, A, LDA ); // eslint-disable-line max-len
+	return A;
 }
 &nbsp;
 &nbsp;
