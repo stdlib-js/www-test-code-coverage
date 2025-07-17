@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>116/116</span>
+                <span class='fraction'>117/117</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>116/116</span>
+                <span class='fraction'>117/117</span>
             </div>
         
             
@@ -179,8 +179,8 @@
 <a name='L114'></a><a href='#L114'>114</a>
 <a name='L115'></a><a href='#L115'>115</a>
 <a name='L116'></a><a href='#L116'>116</a>
-<a name='L117'></a><a href='#L117'>117</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -257,7 +257,7 @@
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">15x</span>
@@ -269,6 +269,7 @@
 <span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">45x</span>
 <span class="cline-any cline-yes">45x</span>
 <span class="cline-any cline-yes">45x</span>
@@ -282,6 +283,7 @@
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">102x</span>
 <span class="cline-any cline-yes">102x</span>
 <span class="cline-any cline-yes">102x</span>
 <span class="cline-any cline-yes">102x</span>
@@ -318,7 +320,6 @@
 // MODULES //
 &nbsp;
 var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major' );
-var f32 = require( '@stdlib/number/float64/base/to-float32' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -329,7 +330,7 @@ var f32 = require( '@stdlib/number/float64/base/to-float32' );
 * @private
 * @param {string} uplo - specifies whether the upper or lower triangular part of the symmetric matrix `A` should be referenced
 * @param {NonNegativeInteger} N - number of elements along each dimension of `A`
-* @param {number} alpha - scalar
+* @param {number} alpha - scalar constant
 * @param {Float32Array} x - input vector
 * @param {integer} strideX - `x` stride length
 * @param {NonNegativeInteger} offsetX - starting index for `x`
@@ -342,11 +343,11 @@ var f32 = require( '@stdlib/number/float64/base/to-float32' );
 * @example
 * var Float32Array = require( '@stdlib/array/float32' );
 *
-* var A = new Float32Array( [ 1.0, 2.0, 3.0, 0.0, 1.0, 2.0, 0.0, 0.0, 1.0 ] ); // =&gt; [ [ 1.0, 2.0, 3.0 ], [ 0.0, 1.0, 2.0 ], [ 0.0, 0.0, 1.0 ] ]
+* var A = new Float32Array( [ 1.0, 2.0, 3.0, 2.0, 1.0, 2.0, 3.0, 2.0, 1.0 ] ); // =&gt; [ [ 1.0, 2.0, 3.0 ], [ 2.0, 1.0, 2.0 ], [ 3.0, 2.0, 1.0 ] ]
 * var x = new Float32Array( [ 1.0, 2.0, 3.0 ] );
 *
 * ssyr( 'upper', 3, 1.0, x, 1, 0, A, 3, 1, 0 );
-* // A =&gt; &lt;Float32Array&gt;[ 2.0, 4.0, 6.0, 0.0, 5.0, 8.0, 0.0, 0.0, 10.0 ]
+* // A =&gt; &lt;Float32Array&gt;[ 2.0, 4.0, 6.0, 2.0, 5.0, 8.0, 3.0, 2.0, 10.0 ]
 */
 function ssyr( uplo, N, alpha, x, strideX, offsetX, A, strideA1, strideA2, offsetA ) { // eslint-disable-line max-len
 	var isrm;
@@ -357,7 +358,7 @@ function ssyr( uplo, N, alpha, x, strideX, offsetX, A, strideA1, strideA2, offse
 	var sa1;
 	var i0;
 	var i1;
-	var oa;
+	var ia;
 	var ox;
 &nbsp;
 	isrm = isRowMajor( [ strideA1, strideA2 ] );
@@ -372,18 +373,19 @@ function ssyr( uplo, N, alpha, x, strideX, offsetX, A, strideA1, strideA2, offse
 	}
 	ox = offsetX;
 	if (
-		( isrm &amp;&amp; uplo === 'lower' ) ||
-		( !isrm &amp;&amp; uplo === 'upper' )
+		( !isrm &amp;&amp; uplo === 'upper' ) ||
+		( isrm &amp;&amp; uplo === 'lower' )
 	) {
 		ix1 = ox;
 		for ( i1 = 0; i1 &lt; N; i1++ ) {
 			if ( x[ ix1 ] !== 0.0 ) {
-				tmp = f32( alpha * x[ ix1 ] );
-				oa = offsetA + (sa1*i1);
+				tmp = alpha * x[ ix1 ];
+				ia = offsetA + (sa1*i1);
 				ix0 = ox;
 				for ( i0 = 0; i0 &lt;= i1; i0++ ) {
-					A[ oa+(sa0*i0) ] += f32( x[ ix0 ] * tmp );
+					A[ ia ] += x[ ix0 ] * tmp;
 					ix0 += strideX;
+					ia += sa0;
 				}
 			}
 			ix1 += strideX;
@@ -394,12 +396,13 @@ function ssyr( uplo, N, alpha, x, strideX, offsetX, A, strideA1, strideA2, offse
 	ix1 = ox;
 	for ( i1 = 0; i1 &lt; N; i1++ ) {
 		if ( x[ ix1 ] !== 0.0 ) {
-			tmp = f32( alpha * x[ ix1 ] );
-			oa = offsetA + (sa1*i1);
+			tmp = alpha * x[ ix1 ];
+			ia = offsetA + (sa1*i1) + (sa0*i1);
 			ix0 = ix1;
 			for ( i0 = i1; i0 &lt; N; i0++ ) {
-				A[ oa+(sa0*i0) ] += f32( x[ ix0 ] * tmp );
+				A[ ia ] += x[ ix0 ] * tmp;
 				ix0 += strideX;
+				ia += sa0;
 			}
 		}
 		ix1 += strideX;
@@ -418,7 +421,7 @@ module.exports = ssyr;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-07T22:18:13.032Z
+                at 2025-07-17T08:32:25.770Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
