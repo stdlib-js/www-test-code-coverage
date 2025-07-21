@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>174/174</span>
+                <span class='fraction'>179/179</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>174/174</span>
+                <span class='fraction'>179/179</span>
             </div>
         
             
@@ -237,7 +237,12 @@
 <a name='L172'></a><a href='#L172'>172</a>
 <a name='L173'></a><a href='#L173'>173</a>
 <a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -293,6 +298,7 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
@@ -336,6 +342,7 @@
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -355,6 +362,7 @@
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
@@ -380,6 +388,7 @@
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -395,6 +404,7 @@
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
@@ -454,7 +464,7 @@ var min = require( '@stdlib/math/base/special/min' );
 * @param {integer} strideA2 - stride of the second dimension of `A`
 * @param {NonNegativeInteger} offsetA - starting index for `A`
 * @param {Float64Array} x - input vector
-* @param {integer} strideX - `x` stride length
+* @param {integer} strideX - stride length for `x`
 * @param {NonNegativeInteger} offsetX - starting index for `x`
 * @returns {Float64Array} `x`
 *
@@ -474,6 +484,7 @@ function dtbsv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 	var tmp;
 	var sa0;
 	var sa1;
+	var sa2;
 	var ix0;
 	var ix1;
 	var i0;
@@ -507,7 +518,8 @@ function dtbsv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 				oa = offsetA + ( sa1 * i1 );
 				for ( i0 = i1 + 1; i0 &lt;= min( N - 1, i1 + K ); i0++ ) {
 					ix0 = ox + ( i0 * strideX );
-					idx = oa + ( sa0 * ( K + i0 - i1 ) );
+					sa2 = ( K + i0 - i1 );
+					idx = oa + ( sa0 * sa2 );
 					tmp -= x[ ix0 ] * A[ idx ];
 				}
 				if ( nonunit ) {
@@ -530,7 +542,8 @@ function dtbsv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 				oa = offsetA + ( sa1 * i1 );
 				for ( i0 = max( 0, i1-K ); i0 &lt; i1; i0++ ) {
 					ix0 = ox + ( i0 * strideX );
-					idx = offsetA + ( ( i0 * sa1 ) + ( (i1 - i0) * sa0 ) );
+					sa2 = ( (i1 - i0) * sa0 );
+					idx = offsetA + ( ( i0 * sa1 ) + sa2 );
 					tmp -= A[ idx ] * x[ ix0 ];
 				}
 				if ( nonunit ) {
@@ -552,7 +565,8 @@ function dtbsv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 			oa = offsetA + ( sa1*i1 );
 			for ( i0 = max( 0, i1 - K ); i0 &lt; i1; i0++ ) {
 				ix0 = offsetX + ( i0 * strideX );
-				tmp -= x[ ix0 ] * A[ oa + ( sa0 * (K + i0 - i1 ) ) ];
+				sa2 = ( sa0 * (K + i0 - i1 ) );
+				tmp -= x[ ix0 ] * A[ oa + sa2 ];
 			}
 			if ( nonunit ) {
 				tmp /= A[ oa + ( sa0 * K ) ];
@@ -570,7 +584,8 @@ function dtbsv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 		oa = offsetA + (sa1 * i1);
 		for ( i0 = min( N - 1, i1 + K ); i0 &gt; i1; i0-- ) {
 			ix0 = ox - ( ( N - 1 - i0 ) * strideX );
-			tmp -= x[ ix0 ] * A[ oa + ( sa0 * (i0 - i1) ) ];
+			sa2 = ( sa0 * (i0 - i1) );
+			tmp -= x[ ix0 ] * A[ oa + sa2 ];
 		}
 		if ( nonunit ) {
 			tmp /= A[ oa ];
@@ -592,7 +607,7 @@ module.exports = dtbsv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-30T07:09:58.676Z
+                at 2025-07-21T07:31:30.318Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
