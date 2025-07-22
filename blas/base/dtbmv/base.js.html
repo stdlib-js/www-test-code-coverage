@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>171/171</span>
+                <span class='fraction'>180/180</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>171/171</span>
+                <span class='fraction'>180/180</span>
             </div>
         
             
@@ -234,7 +234,16 @@
 <a name='L169'></a><a href='#L169'>169</a>
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -290,6 +299,8 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
@@ -330,7 +341,9 @@
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
@@ -351,7 +364,9 @@
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
@@ -372,7 +387,9 @@
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
@@ -391,6 +408,7 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
@@ -448,7 +466,7 @@ var min = require( '@stdlib/math/base/special/min' );
 * @param {integer} strideA2 - stride of the second dimension of `A`
 * @param {NonNegativeInteger} offsetA - starting index for `A`
 * @param {Float64Array} x - input vector
-* @param {integer} strideX - `x` stride length
+* @param {integer} strideX - stride length for `x`
 * @param {NonNegativeInteger} offsetX - starting index for `x`
 * @returns {Float64Array} `x`
 *
@@ -464,14 +482,16 @@ var min = require( '@stdlib/math/base/special/min' );
 function dtbmv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, strideX, offsetX ) { // eslint-disable-line max-params, max-len
 	var nonunit;
 	var isrm;
-	var idx;
+	var ida;
 	var tmp;
 	var sa0;
 	var sa1;
 	var ix0;
 	var ix1;
+	var oa2;
 	var i0;
 	var i1;
+	var ia;
 	var oa;
 	var ox;
 &nbsp;
@@ -499,12 +519,14 @@ function dtbmv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 			oa = offsetA + ( sa1 * i1 );
 			tmp = x[ ix1 ];
 			if ( nonunit ) {
-				tmp = A[ oa + ( sa0 * K ) ] * x[ ix1 ];
+				oa2 = oa + ( sa0 * K );
+				tmp = A[ oa2 ] * x[ ix1 ];
 			}
 			for ( i0 = i1 + 1; i0 &lt;= min( N - 1, i1 + K ); i0++ ) {
 				ix0 = ox + ( i0 * strideX );
-				idx = oa + ( sa0 * ( K + i0 - i1 ) );
-				tmp += A[ idx ] * x[ ix0 ];
+				ia = sa0 * ( K + i0 - i1 );
+				ida = oa + ia;
+				tmp += A[ ida ] * x[ ix0 ];
 			}
 			x[ ix1 ] = tmp;
 			ix1 += strideX;
@@ -520,12 +542,14 @@ function dtbmv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 			oa = offsetA;
 			tmp = x[ ix1 ];
 			if ( nonunit ) {
-				tmp = A[ oa + ( sa1 * i1 ) ] * x[ ix1 ];
+				oa2 = oa + ( sa1 * i1 );
+				tmp = A[ oa2 ] * x[ ix1 ];
 			}
 			for ( i0 = max( 0, i1 - K ); i0 &lt; i1; i0++ ) {
-				idx = oa + ( sa1 * i0 ) + ( sa0 * ( i1 - i0 ) );
+				ia = sa0 * ( i1 - i0 );
+				ida = oa + ( sa1 * i0 ) + ia;
 				ix0 = ox + ( i0 * strideX );
-				tmp += A[ idx ] * x[ ix0 ];
+				tmp += A[ ida ] * x[ ix0 ];
 			}
 			x[ ix1 ] = tmp;
 			ix1 -= strideX;
@@ -541,12 +565,14 @@ function dtbmv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 			oa = offsetA + ( sa1 * i1 );
 			tmp = x[ ix1 ];
 			if ( nonunit ) {
-				tmp = A[ oa + ( sa0 * K ) ] * x[ ix1 ];
+				oa2 = oa + ( sa0 * K );
+				tmp = A[ oa2 ] * x[ ix1 ];
 			}
 			for ( i0 = max( 0, i1 - K ); i0 &lt; i1; i0++ ) {
-				idx = oa + ( sa0 * ( K + i0 - i1 ) );
+				ia = sa0 * ( K + i0 - i1 );
+				ida = oa + ia;
 				ix0 = ox + ( i0 * strideX );
-				tmp += A[ idx ] * x[ ix0 ];
+				tmp += A[ ida ] * x[ ix0 ];
 			}
 			x[ ix1 ] = tmp;
 			ix1 -= strideX;
@@ -563,8 +589,9 @@ function dtbmv( uplo, trans, diag, N, K, A, strideA1, strideA2, offsetA, x, stri
 		}
 		for ( i0 = i1 + 1; i0 &lt;= min( N - 1, i1 + K ); i0++ ) {
 			ix0 = ox + ( i0 * strideX );
-			idx = oa + ( sa0 * ( i0 - i1 ) );
-			tmp += A[ idx ] * x[ ix0 ];
+			ia = sa0 * ( i0 - i1 );
+			ida = oa + ia;
+			tmp += A[ ida ] * x[ ix0 ];
 		}
 		x[ ix1 ] = tmp;
 		ix1 += strideX;
@@ -583,7 +610,7 @@ module.exports = dtbmv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-22T04:12:53.919Z
+                at 2025-07-22T08:00:30.594Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
