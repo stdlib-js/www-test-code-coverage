@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>201/201</span>
+                <span class='fraction'>202/202</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>201/201</span>
+                <span class='fraction'>202/202</span>
             </div>
         
             
@@ -264,7 +264,8 @@
 <a name='L199'></a><a href='#L199'>199</a>
 <a name='L200'></a><a href='#L200'>200</a>
 <a name='L201'></a><a href='#L201'>201</a>
-<a name='L202'></a><a href='#L202'>202</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -340,28 +341,29 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -382,7 +384,7 @@
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
@@ -392,7 +394,7 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -459,7 +461,7 @@
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -544,26 +546,27 @@ var copy = require( '@stdlib/array/base/copy' );
 function zip2views( arrays, labels ) {
 	var getter;
 	var setter;
+	var list;
 	var keys;
 	var out;
 	var acc;
 	var M;
 	var N;
 	var i;
-	var j;
 &nbsp;
 	M = arrays.length;
 	if ( M &lt; 1 ) {
 		return [];
 	}
-	N = arrays[ 0 ].length;
+	list = copy( arrays );
+	N = list[ 0 ].length;
 	if ( N &lt; 1 ) {
 		return [];
 	}
 	// Resolve element accessors...
 	acc = [];
-	for ( j = 0; j &lt; M; j++ ) {
-		acc.push( accessors( arrays[ j ] ).accessors );
+	for ( i = 0; i &lt; M; i++ ) {
+		acc.push( accessors( list[ i ] ).accessors );
 	}
 	// Create a copy of provided labels to prevent external mutation:
 	keys = copy( labels );
@@ -583,10 +586,10 @@ function zip2views( arrays, labels ) {
 	}
 &nbsp;
 	// Define read/write accessors for each label...
-	for ( j = 0; j &lt; M; j++ ) {
-		getter = getValue( arrays[ j ], acc[ j ][ 0 ] );
-		setter = setValue( arrays[ j ], acc[ j ][ 1 ] );
-		setReadWriteAccessor( Datum.prototype, keys[ j ], getter, setter );
+	for ( i = 0; i &lt; M; i++ ) {
+		getter = getValue( list[ i ], acc[ i ][ 0 ] );
+		setter = setValue( list[ i ], acc[ i ][ 1 ] );
+		setReadWriteAccessor( Datum.prototype, keys[ i ], getter, setter );
 	}
 	// Ensure that the returned array correctly serializes to JSON:
 	setNonEnumerableReadOnly( Datum.prototype, 'toJSON', toJSON );
@@ -673,7 +676,7 @@ module.exports = zip2views;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-27T06:35:20.792Z
+                at 2025-07-28T10:31:31.735Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

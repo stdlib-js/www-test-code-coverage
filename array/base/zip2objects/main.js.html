@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>90/90</span>
+                <span class='fraction'>93/93</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>90/90</span>
+                <span class='fraction'>93/93</span>
             </div>
         
             
@@ -153,7 +153,10 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -201,35 +204,38 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">32x</span>
@@ -237,7 +243,7 @@
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -266,6 +272,7 @@
 // MODULES //
 &nbsp;
 var resolveGetter = require( '@stdlib/array/base/resolve-getter' );
+var copy = require( '@stdlib/array/base/copy' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -293,6 +300,7 @@ var resolveGetter = require( '@stdlib/array/base/resolve-getter' );
 */
 function zip2objects( arrays, labels ) {
 	var getters;
+	var list;
 	var keys;
 	var get;
 	var out;
@@ -306,7 +314,8 @@ function zip2objects( arrays, labels ) {
 	if ( M &lt; 1 ) {
 		return [];
 	}
-	N = arrays[ 0 ].length;
+	list = copy( arrays );
+	N = list[ 0 ].length;
 	if ( N &lt; 1 ) {
 		return [];
 	}
@@ -315,14 +324,14 @@ function zip2objects( arrays, labels ) {
 	get = resolveGetter( labels );
 	keys = [];
 	for ( j = 0; j &lt; M; j++ ) {
-		getters.push( resolveGetter( arrays[ j ] ) );
+		getters.push( resolveGetter( list[ j ] ) );
 		keys.push( get( labels, j ) );
 	}
 	out = [];
 	for ( i = 0; i &lt; N; i++ ) {
 		obj = {};
 		for ( j = 0; j &lt; M; j++ ) {
-			obj[ keys[ j ] ] = getters[ j ]( arrays[ j ], i );
+			obj[ keys[ j ] ] = getters[ j ]( list[ j ], i );
 		}
 		out.push( obj );
 	}
@@ -340,7 +349,7 @@ module.exports = zip2objects;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-27T05:44:26.539Z
+                at 2025-07-28T10:31:29.493Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
