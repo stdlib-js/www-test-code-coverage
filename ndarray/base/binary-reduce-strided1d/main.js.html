@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.37% </span>
+                <span class="strong">61.99% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>340/554</span>
+                <span class='fraction'>354/571</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.37% </span>
+                <span class="strong">61.99% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>340/554</span>
+                <span class='fraction'>354/571</span>
             </div>
         
             
@@ -617,7 +617,24 @@
 <a name='L552'></a><a href='#L552'>552</a>
 <a name='L553'></a><a href='#L553'>553</a>
 <a name='L554'></a><a href='#L554'>554</a>
-<a name='L555'></a><a href='#L555'>555</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L555'></a><a href='#L555'>555</a>
+<a name='L556'></a><a href='#L556'>556</a>
+<a name='L557'></a><a href='#L557'>557</a>
+<a name='L558'></a><a href='#L558'>558</a>
+<a name='L559'></a><a href='#L559'>559</a>
+<a name='L560'></a><a href='#L560'>560</a>
+<a name='L561'></a><a href='#L561'>561</a>
+<a name='L562'></a><a href='#L562'>562</a>
+<a name='L563'></a><a href='#L563'>563</a>
+<a name='L564'></a><a href='#L564'>564</a>
+<a name='L565'></a><a href='#L565'>565</a>
+<a name='L566'></a><a href='#L566'>566</a>
+<a name='L567'></a><a href='#L567'>567</a>
+<a name='L568'></a><a href='#L568'>568</a>
+<a name='L569'></a><a href='#L569'>569</a>
+<a name='L570'></a><a href='#L570'>570</a>
+<a name='L571'></a><a href='#L571'>571</a>
+<a name='L572'></a><a href='#L572'>572</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -745,6 +762,23 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1199,6 +1233,7 @@ var indicesComplement = require( '@stdlib/array/base/indices-complement' );
 var takeIndexed2 = require( '@stdlib/array/base/take-indexed2' );
 var iterationOrder = require( '@stdlib/ndarray/base/iteration-order' );
 var strides2order = require( '@stdlib/ndarray/base/strides2order' );
+var anyIsEntryIn = require( '@stdlib/array/base/any-is-entry-in' );
 var numel = require( '@stdlib/ndarray/base/numel' );
 var join = require( '@stdlib/array/base/join' );
 var format = require( '@stdlib/string/format' );
@@ -1299,6 +1334,22 @@ var BLOCKED_ACCESSOR_BINARY = [
 	blockedaccessorbinary10d // 8
 ];
 var MAX_DIMS = BINARY.length - 1;
+&nbsp;
+&nbsp;
+// FUNCTIONS //
+&nbsp;
+/**
+* Returns a boolean indicating if at least one ndarray data buffer implements the accessor protocol.
+*
+* @private
+* @param {ndarrayLike} x - first ndarray
+* @param {ndarrayLike} y - second ndarray
+* @param {ndarrayLike} z - third ndarray
+* @returns {boolean} boolean indicating whether an ndarray data buffer implements the accessor protocol
+*/
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function hasAccessors( x, y, z ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	return anyIsEntryIn( [ x, y, z ], 'accessorProtocol', true );</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // MAIN //
@@ -1658,17 +1709,17 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we can avoid iteration altogether...</span>
 <span class="cstat-no" title="statement not covered" >	if ( K === 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( z.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( hasAccessors( x, y, z ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			return ACCESSOR_BINARY[ K ]( fcn, arr, strategy1, strategy2, opts );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return BINARY[ K ]( fcn, arr, strategy1, strategy2, opts );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we only have one loop dimension and can thus readily perform one-dimensional iteration...</span>
 <span class="cstat-no" title="statement not covered" >	if ( K === 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( z.accessorProtocol ) {</span>
-<span class="cstat-no" title="statement not covered" >			return ACCESSOR_BINARY[ K ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts );</span>
+<span class="cstat-no" title="statement not covered" >		if ( hasAccessors( x, y, z ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return ACCESSOR_BINARY[ K ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return BINARY[ K ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts );</span>
+<span class="cstat-no" title="statement not covered" >		return BINARY[ K ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	sz = z.strides;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -1686,10 +1737,10 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		slx = [ slx[i] ];</span>
 <span class="cstat-no" title="statement not covered" >		sly = [ sly[i] ];</span>
-<span class="cstat-no" title="statement not covered" >		if ( z.accessorProtocol ) {</span>
-<span class="cstat-no" title="statement not covered" >			return ACCESSOR_BINARY[ 1 ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts );</span>
+<span class="cstat-no" title="statement not covered" >		if ( hasAccessors( x, y, z ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return ACCESSOR_BINARY[ 1 ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return BINARY[ 1 ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts );</span>
+<span class="cstat-no" title="statement not covered" >		return BINARY[ 1 ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	iox = iterationOrder( slx ); // +/-1</span>
 <span class="cstat-no" title="statement not covered" >	ioy = iterationOrder( sly ); // +/-1</span>
@@ -1700,22 +1751,22 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" >	ordy = strides2order( sly );</span>
 <span class="cstat-no" title="statement not covered" >	if ( iox !== 0 &amp;&amp; ioy !== 0 &amp;&amp; ioz !== 0 &amp;&amp; ordx === strides2order( sz ) &amp;&amp; ordy === strides2order( sz ) &amp;&amp; K &lt;= MAX_DIMS ) { // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		// So long as iteration for each respective array always moves in the same direction (i.e., no mixed sign strides) and the memory layouts are the same, we can leverage cache-optimal (i.e., normal) nested loops without resorting to blocked iteration...</span>
-<span class="cstat-no" title="statement not covered" >		if ( z.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( hasAccessors( x, y, z ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			return ACCESSOR_BINARY[ K ]( fcn, arr, views, slx, sly, ordx === 1, strategy1, strategy2, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return BINARY[ K ]( fcn, arr, views, slx, sly, ordx === 1, strategy1, strategy2, opts );</span>
+<span class="cstat-no" title="statement not covered" >		return BINARY[ K ]( fcn, arr, views, slx, sly, ordx === 1, strategy1, strategy2, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// At this point, we're either dealing with non-contiguous n-dimensional arrays, high dimensional n-dimensional arrays, and/or arrays having differing memory layouts, so our only hope is that we can still perform blocked iteration...</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we can perform blocked iteration...</span>
 <span class="cstat-no" title="statement not covered" >	if ( K &lt;= MAX_DIMS ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( z.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( hasAccessors( x, y, z ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			return BLOCKED_ACCESSOR_BINARY[ K-2 ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return BLOCKED_BINARY[ K-2 ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts );</span>
+<span class="cstat-no" title="statement not covered" >		return BLOCKED_BINARY[ K-2 ]( fcn, arr, views, slx, sly, strategy1, strategy2, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Fall-through to linear view iteration without regard for how data is stored in memory (i.e., take the slow path)...</span>
-<span class="cstat-no" title="statement not covered" >	if ( z.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( hasAccessors( x, y, z ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		return accessorbinarynd( fcn, arr, views, strategy1, strategy2, opts );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	binarynd( fcn, arr, views, strategy1, strategy2, opts );</span>
@@ -1732,7 +1783,7 @@ module.exports = binaryReduceStrided1d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-05T12:56:00.384Z
+                at 2025-08-06T10:51:21.062Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
