@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.94% </span>
+                <span class="strong">93.68% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>94/95</span>
+                <span class='fraction'>89/95</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/9</span>
+                <span class='fraction'>5/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.94% </span>
+                <span class="strong">93.68% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>94/95</span>
+                <span class='fraction'>89/95</span>
             </div>
         
             
@@ -233,21 +233,21 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">169x</span>
+<span class="cline-any cline-yes">169x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">169x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">169x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">169x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">161x</span>
+<span class="cline-any cline-yes">169x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -329,19 +329,19 @@ var base = require( './base.js' );
 * // C =&gt; &lt;Float64Array&gt;[ -1350.00, -1400.00, -1450.00, -30961.00, -32102.00, -33243.00, -266612.00, -275464.00, -284316.00 ]
 */
 function dlarfb( side, trans, direct, storev, M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork ) { // eslint-disable-line max-len, max-params
-	if ( !isOperationSide( side ) ) {
-		throw new TypeError( format( 'invalid argument. First argument must be a valid BLAS operation side. Value: `%s`.', side ) );
-	}
-	if ( !isTransposeOperation( trans ) ) {
-		throw new TypeError( format( 'invalid argument. Second argument must be a valid BLAS transpose operation. Value: `%s`.', trans ) );
-	}
-	if ( direct !== 'forward' &amp;&amp; direct !== 'backward' ) {
-		throw new TypeError( format( 'invalid argument. Third argument must be either `forward` or `backward`. Value: `%s`.', direct ) );
-	}
+	if ( !isOperationSide( side ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid BLAS operation side. Value: `%s`.', side ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( !isTransposeOperation( trans ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be a valid BLAS transpose operation. Value: `%s`.', trans ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( direct !== 'forward' &amp;&amp; direct !== 'backward' ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Third argument must be either `forward` or `backward`. Value: `%s`.', direct ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	if ( !isMatrixOrientation( storev ) ) {
 		throw new TypeError( format( 'invalid argument. Fourth argument must be a valid matrix orientation. Value: `%s`.', storev ) );
 	}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	return base( side, trans, direct, storev, M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork ); // eslint-disable-line max-len</span></span>
+	return base( side, trans, direct, storev, M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
@@ -355,7 +355,7 @@ module.exports = dlarfb;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-10T11:13:52.517Z
+                at 2025-08-11T04:56:39.189Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
