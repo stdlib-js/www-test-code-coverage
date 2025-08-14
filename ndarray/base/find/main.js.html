@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.96% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>192/194</span>
+                <span class='fraction'>194/194</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>14/15</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.96% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>192/194</span>
+                <span class='fraction'>194/194</span>
             </div>
         
             
@@ -405,35 +405,35 @@
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
+<span class="cline-any cline-yes">881x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">877x</span>
+<span class="cline-any cline-yes">877x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">876x</span>
-<span class="cline-any cline-yes">876x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">876x</span>
-<span class="cline-any cline-yes">880x</span>
+<span class="cline-any cline-yes">881x</span>
 <span class="cline-any cline-yes">330x</span>
 <span class="cline-any cline-yes">330x</span>
 <span class="cline-any cline-yes">165x</span>
@@ -445,7 +445,7 @@
 <span class="cline-any cline-yes">274x</span>
 <span class="cline-any cline-yes">274x</span>
 <span class="cline-any cline-yes">272x</span>
-<span class="cline-any cline-yes">880x</span>
+<span class="cline-any cline-yes">881x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
@@ -623,9 +623,9 @@ function find( arrays, predicate, thisArg ) {
 		return FIND[ ndims ]( x, sv, predicate, thisArg );
 	}
 	// Check whether we were provided an empty ndarray...
-	if ( numel( shx ) === 0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		return sv;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
+	if ( numel( shx ) === 0 ) {
+		return sv;
+	}
 	// Determine whether we can linear view iteration...
 	if ( ndims &lt;= MAX_DIMS &amp;&amp; iterationOrder( x.strides ) !== 0 ) {
 		// So long as iteration always moves in the same direction (i.e., no mixed sign strides), we can leverage cache-optimal (i.e., normal) nested loops...
@@ -652,7 +652,7 @@ module.exports = find;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-14T12:55:23.055Z
+                at 2025-08-14T13:04:52.644Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
