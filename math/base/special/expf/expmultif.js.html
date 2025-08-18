@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/expf/lib/expmulti.js</title>
+    <title>Code coverage report for math/base/special/expf/lib/expmultif.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/expf/lib</a> expmulti.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/expf/lib</a> expmultif.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.36% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>74/76</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.36% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>74/76</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
@@ -191,25 +191,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-yes">3998x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">3998x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
+<span class="cline-any cline-yes">4002x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -235,17 +235,16 @@
 *
 * ## Notice
 *
-* The following copyrights, licenses, and long comment were part of the original implementation available as part of{@link https://svnweb.freebsd.org/base/release/12.2.0/lib/msun/src/e_expf.c?view=markup}, The implementation follows the original, but has been modified for JavaScript.
+* The following copyrights, licenses, and long comment were part of the original implementation available as part of{@link https://svnweb.freebsd.org/base/release/12.2.0/lib/msun/src/e_expf.c}, The implementation follows the original, but has been modified for JavaScript.
 *
-* e_expf.c -- float version of e_exp.c.
-* Conversion to float by Ian Lance Taylor, Cygnus Support, ian@cygnus.com.
-* ====================================================
-* Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
+* ```text
+* Copyright (C) 2004 by Sun Microsystems, Inc. All rights reserved.
+*
 * Developed at SunPro, a Sun Microsystems, Inc. business.
 * Permission to use, copy, modify, and distribute this
 * software is freely granted, provided that this notice
 * is preserved.
-* ====================================================
+* ```
 */
 &nbsp;
 'use strict';
@@ -253,13 +252,20 @@
 // MODULES //
 &nbsp;
 var ldexpf = require( '@stdlib/math/base/special/ldexpf' );
+var f32 = require( '@stdlib/number/float64/base/to-float32' );
 var polyvalP = require( './polyval_p.js' );
+&nbsp;
+&nbsp;
+// VARIABLES //
+&nbsp;
+var ONE = f32( 1.0 );
+var TWO = f32( 2.0 );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes \\(e^{r} 2^k\\) where \\(r = \mathrm{hi} - \mathrm{lo}\\) and \\(|r| \leq \ln(2)/2\\).
+* Computes \\(e^{r} 2^k\\) for a single-precision floating-point number, where \\(r = \mathrm{hi} - \mathrm{lo}\\) and \\(|r| \leq \ln(2)/2\\).
 *
 * @private
 * @param {number} hi - upper bound
@@ -267,30 +273,24 @@ var polyvalP = require( './polyval_p.js' );
 * @param {integer} k - power of 2
 * @returns {number} function value
 */
-function expmulti( hi, lo, k ) {
-	var twom100;
+function expmultif( hi, lo, k ) {
 	var r;
 	var t;
 	var c;
 	var y;
 &nbsp;
-	twom100 = 7.8886090522e-31;
-	r = hi - lo;
-	t = r * r;
-	c = r - ( t*polyvalP( t ) );
-	y = 1.0 - ( lo - ( (r*c)/(2.0-c) ) - hi );
+	r = f32( hi - lo );
+	t = f32( r * r );
+	c = f32( r - f32( t*polyvalP( t ) ) );
+	y = f32( ONE - f32( f32( lo - f32( f32(r*c)/f32(TWO-c) ) ) - hi ) );
 &nbsp;
-	if ( k &gt;= -125 ) {
-		return ldexpf( y, k );
-	}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span>
-<span class="cstat-no" title="statement not covered" >	return ldexpf( y, k + 100 ) * twom100 * twom100;</span>
+	return ldexpf( y, k );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = expmulti;
+module.exports = expmultif;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -298,7 +298,7 @@ module.exports = expmulti;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-18T06:25:36.097Z
+                at 2025-08-18T06:27:29.394Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
