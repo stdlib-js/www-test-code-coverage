@@ -1170,7 +1170,7 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">84x</span>
 <span class="cline-any cline-yes">84x</span>
 <span class="cline-any cline-yes">84x</span>
@@ -1220,7 +1220,7 @@ var bignum = 1.0 / smlnum;
 // FUNCTIONS //
 &nbsp;
 /**
-* Multiplies a real M by N general matrix `A` by a real scalar `mul`.
+* Multiplies a double-precision floating-point M-by-N general matrix `A` by a double-precision floating-point scalar `mul`.
 *
 * @private
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
@@ -1257,7 +1257,7 @@ function scaleGeneral( M, N, A, strideA1, strideA2, offsetA, mul ) {
 	da0 = o.sx[ 0 ];
 	da1 = o.sx[ 1 ] - ( S0 * o.sx[ 0 ] );
 &nbsp;
-	// Set the pointers to the first indexed elements in the respective matrices...
+	// Set the pointer to the first indexed element:
 	ia = offsetA;
 &nbsp;
 	// Iterate over the matrix dimensions...
@@ -1271,7 +1271,7 @@ function scaleGeneral( M, N, A, strideA1, strideA2, offsetA, mul ) {
 }
 &nbsp;
 /**
-* Multiplies a real M by N upper triangular matrix `A` by a real scalar `mul`.
+* Multiplies a double-precision floating-point M-by-N upper triangular matrix `A` by a real scalar `mul`.
 *
 * @private
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
@@ -1329,7 +1329,7 @@ function scaleUpper( M, N, A, strideA1, strideA2, offsetA, isrm, mul ) {
 }
 &nbsp;
 /**
-* Multiplies a real M by N lower triangular matrix `A` by a real scalar `mul`.
+* Multiplies a double-precision floating-point M-by-N lower triangular matrix `A` by a real scalar `mul`.
 *
 * @private
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
@@ -1387,7 +1387,7 @@ function scaleLower( M, N, A, strideA1, strideA2, offsetA, isrm, mul ) {
 }
 &nbsp;
 /**
-* Multiplies a real M by N upper Hessenberg matrix `A` by a real scalar `mul`.
+* Multiplies a double-precision floating-point M-by-N upper Hessenberg matrix `A` by a real scalar `mul`.
 *
 * @private
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
@@ -1446,10 +1446,10 @@ function scaleUpperHHessenberg( M, N, A, strideA1, strideA2, offsetA, isrm, mul 
 }
 &nbsp;
 /**
-* Multiplies a real M by N symmetric banded lower matrix `A` by a real scalar `mul`.
+* Multiplies a double-precision floating-point M-by-N symmetric banded lower matrix `A` by a real scalar `mul`.
 *
 * @private
-* @param {NonNegativeInteger} KL - lower band width of `A`
+* @param {NonNegativeInteger} KL - lower bandwidth of `A` (i.e., number of sub-diagonals)
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
 * @param {NonNegativeInteger} N - number of columns in matrix `A`
 * @param {Float64Array} A - input matrix
@@ -1510,10 +1510,10 @@ function scaleSymmetricBandedLower( KL, M, N, A, strideA1, strideA2, offsetA, is
 }
 &nbsp;
 /**
-* Multiplies a real M by N symmetric banded upper matrix `A` by a real scalar `mul`.
+* Multiplies a double-precision floating-point M-by-N symmetric banded upper matrix `A` by a real scalar `mul`.
 *
 * @private
-* @param {NonNegativeInteger} KU - upper band width of `A`
+* @param {NonNegativeInteger} KU - upper bandwidth of `A`
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
 * @param {NonNegativeInteger} N - number of columns in matrix `A`
 * @param {Float64Array} A - input matrix
@@ -1570,11 +1570,11 @@ function scaleSymmetricBandedUpper( KU, M, N, A, strideA1, strideA2, offsetA, is
 }
 &nbsp;
 /**
-* Multiplies a real M by N banded matrix `A` by a real scalar `mul`.
+* Multiplies a double-precision floating-point M-by-N banded matrix `A` by a real scalar `mul`.
 *
 * @private
-* @param {NonNegativeInteger} KL - lower band width of `A`
-* @param {NonNegativeInteger} KU - upper band width of `A`
+* @param {NonNegativeInteger} KL - lower bandwidth of `A`
+* @param {NonNegativeInteger} KU - upper bandwidth of `A`
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
 * @param {NonNegativeInteger} N - number of columns in matrix `A`
 * @param {Float64Array} A - input matrix
@@ -1630,13 +1630,13 @@ function scaleBanded( KL, KU, M, N, A, strideA1, strideA2, offsetA, mul ) {
 // MAIN //
 &nbsp;
 /**
-* Multiplies a real M by N matrix `A` by a real scalar `CTO/CFROM`.
+* Multiplies a double-precision floating-point M-by-N matrix `A` by a double-precision floating-point scalar.
 *
 * @param {string} type - specifies the type of matrix `A`
-* @param {NonNegativeInteger} KL - lower band width of `A`. Referenced only if type is `symmetric-banded-lower` or `banded`.
-* @param {NonNegativeInteger} KU - upper band width of `A`. Referenced only if type is `symmetric-banded-upper` or `banded`.
-* @param {number} CFROM - the matrix `A` is multiplied by `CTO / CFROM`
-* @param {number} CTO - the matrix `A` is multiplied by `CTO / CFROM`
+* @param {NonNegativeInteger} KL - lower bandwidth of `A`. Referenced only if type is `symmetric-banded-lower` or `banded`.
+* @param {NonNegativeInteger} KU - upper bandwidth of `A`. Referenced only if type is `symmetric-banded-upper` or `banded`.
+* @param {number} gamma - the matrix `A` is multiplied by `β/γ`
+* @param {number} beta - the matrix `A` is multiplied by `β/γ`
 * @param {NonNegativeInteger} M - number of rows in matrix `A`
 * @param {NonNegativeInteger} N - number of columns in matrix `A`
 * @param {Float64Array} A - input matrix
@@ -1653,7 +1653,7 @@ function scaleBanded( KL, KU, M, N, A, strideA1, strideA2, offsetA, mul ) {
 * dlascl( 'general', 0, 0, 1.0, 2.0, 3, 2, A, 2, 1, 0 );
 * // A =&gt; &lt;Float64Array&gt;[ 2.0, 4.0, 6.0, 8.0, 10.0, 12.0 ]
 */
-function dlascl( type, KL, KU, CFROM, CTO, M, N, A, strideA1, strideA2, offsetA ) { // eslint-disable-line max-params
+function dlascl( type, KL, KU, gamma, beta, M, N, A, strideA1, strideA2, offsetA ) { // eslint-disable-line max-params
 	var cfromc;
 	var cfrom1;
 	var isrm;
@@ -1668,12 +1668,12 @@ function dlascl( type, KL, KU, CFROM, CTO, M, N, A, strideA1, strideA2, offsetA 
 &nbsp;
 	done = false;
 &nbsp;
-	cfromc = CFROM;
-	ctoc = CTO;
+	cfromc = gamma;
+	ctoc = beta;
 	isrm = isRowMajor( [ strideA1, strideA2 ] );
 &nbsp;
 	while ( !done ) {
-		cfrom1 = CTO * smlnum;
+		cfrom1 = beta * smlnum;
 		if ( cfrom1 === cfromc ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >			// cfromc is Infinity, multiply by a correctly signed zero for finite ctoc or NaN</span>
 <span class="cstat-no" title="statement not covered" >			mul = ctoc / cfromc;</span>
@@ -1726,8 +1726,8 @@ function dlascl( type, KL, KU, CFROM, CTO, M, N, A, strideA1, strideA2, offsetA 
 		}
 		if ( type === 'banded' ) {
 			scaleBanded( KL, KU, M, N, A, strideA1, strideA2, offsetA, mul );
-			continue;
 		}
+		continue;
 	}
 &nbsp;
 	return A;
@@ -1744,7 +1744,7 @@ module.exports = dlascl;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-09T08:27:04.901Z
+                at 2025-08-19T12:25:56.089Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
