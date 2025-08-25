@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for string/capitalize/lib/main.js</title>
+    <title>Code coverage report for string/repeat/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">string/capitalize/lib</a> main.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">string/repeat/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>46/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>46/46</span>
             </div>
         
             
@@ -109,24 +109,7 @@
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -167,23 +150,6 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -209,49 +175,32 @@
 &nbsp;
 'use strict';
 &nbsp;
+/**
+* Repeat a string a specified number of times and return the concatenated result.
+*
+* @module @stdlib/string/repeat
+*
+* @example
+* var repeat = require( '@stdlib/string/repeat' );
+*
+* var str = repeat( 'a', 5 );
+* // returns 'aaaaa'
+*
+* str = repeat( '', 100 );
+* // returns ''
+*
+* str = repeat( 'beep', 0 );
+* // returns ''
+*/
+&nbsp;
 // MODULES //
 &nbsp;
-var isString = require( '@stdlib/assert/is-string' ).isPrimitive;
-var format = require( '@stdlib/string/format' );
-var base = require( '@stdlib/string/base/capitalize' );
-&nbsp;
-&nbsp;
-// MAIN //
-&nbsp;
-/**
-* Capitalizes the first character in a string.
-*
-* @param {string} str - input string
-* @throws {TypeError} must provide a string
-* @returns {string} capitalized string
-*
-* @example
-* var out = capitalize( 'last man standing' );
-* // returns 'Last man standing'
-*
-* @example
-* var out = capitalize( 'presidential election' );
-* // returns 'Presidential election'
-*
-* @example
-* var out = capitalize( 'javaScript' );
-* // returns 'JavaScript'
-*
-* @example
-* var out = capitalize( 'Hidden Treasures' );
-* // returns 'Hidden Treasures'
-*/
-function capitalize( str ) {
-	if ( !isString( str ) ) {
-		throw new TypeError( format( 'invalid argument. First argument must be a string. Value: `%s`.', str ) );
-	}
-	return base( str );
-}
+var main = require( './main.js' );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = capitalize;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -259,7 +208,7 @@ module.exports = capitalize;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-25T02:55:06.502Z
+                at 2025-08-25T02:55:31.232Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for string/capitalize/lib/main.js</title>
+    <title>Code coverage report for string/repeat/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">string/capitalize/lib</a> main.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">string/repeat/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>66/66</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/63</span>
+                <span class='fraction'>66/66</span>
             </div>
         
             
@@ -126,7 +126,10 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -178,12 +181,15 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -211,47 +217,50 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isNonNegativeInteger = require( '@stdlib/assert/is-nonnegative-integer' ).isPrimitive;
 var isString = require( '@stdlib/assert/is-string' ).isPrimitive;
 var format = require( '@stdlib/string/format' );
-var base = require( '@stdlib/string/base/capitalize' );
+var base = require( '@stdlib/string/base/repeat' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Capitalizes the first character in a string.
+* Repeats a string a specified number of times and returns the concatenated result.
 *
-* @param {string} str - input string
-* @throws {TypeError} must provide a string
-* @returns {string} capitalized string
-*
-* @example
-* var out = capitalize( 'last man standing' );
-* // returns 'Last man standing'
-*
-* @example
-* var out = capitalize( 'presidential election' );
-* // returns 'Presidential election'
+* @param {string} str - string to repeat
+* @param {NonNegativeInteger} n - number of times to repeat the string
+* @throws {TypeError} first argument must be a string
+* @throws {TypeError} second argument must be a nonnegative integer
+* @throws {RangeError} output string length must not exceed maximum allowed string length
+* @returns {string} repeated string
 *
 * @example
-* var out = capitalize( 'javaScript' );
-* // returns 'JavaScript'
+* var str = repeat( 'a', 5 );
+* // returns 'aaaaa'
 *
 * @example
-* var out = capitalize( 'Hidden Treasures' );
-* // returns 'Hidden Treasures'
+* var str = repeat( '', 100 );
+* // returns ''
+*
+* @example
+* var str = repeat( 'beep', 0 );
+* // returns ''
 */
-function capitalize( str ) {
+function repeat( str, n ) {
 	if ( !isString( str ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a string. Value: `%s`.', str ) );
 	}
-	return base( str );
+	if ( !isNonNegativeInteger( n ) ) {
+		throw new TypeError( format( 'invalid argument. Second argument must be a nonnegative integer. Value: `%s`.', n ) );
+	}
+	return base( str, n );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = capitalize;
+module.exports = repeat;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -259,7 +268,7 @@ module.exports = capitalize;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-25T02:55:06.502Z
+                at 2025-08-25T02:55:31.232Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
