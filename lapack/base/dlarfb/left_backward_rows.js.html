@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for lapack/base/dlarfb/lib/right-forward-rows.js</title>
+    <title>Code coverage report for lapack/base/dlarfb/lib/left_backward_rows.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">lapack/base/dlarfb/lib</a> right-forward-rows.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">lapack/base/dlarfb/lib</a> left_backward_rows.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.63% </span>
+                <span class="strong">95.26% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>151/163</span>
+                <span class='fraction'>161/169</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">72.72% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.63% </span>
+                <span class="strong">95.26% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>151/163</span>
+                <span class='fraction'>161/169</span>
             </div>
         
             
@@ -226,7 +226,13 @@
 <a name='L161'></a><a href='#L161'>161</a>
 <a name='L162'></a><a href='#L162'>162</a>
 <a name='L163'></a><a href='#L163'>163</a>
-<a name='L164'></a><a href='#L164'>164</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -293,97 +299,103 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">216x</span>
-<span class="cline-any cline-yes">216x</span>
-<span class="cline-any cline-yes">216x</span>
-<span class="cline-any cline-yes">216x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">225x</span>
+<span class="cline-any cline-yes">225x</span>
+<span class="cline-any cline-yes">225x</span>
+<span class="cline-any cline-yes">225x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">75x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -420,7 +432,7 @@ var dtrmm = require( './dtrmm.js' );
 // MAIN //
 &nbsp;
 /**
-* Applies a real block reflector H or its transpose H^T to a real M by N matrix C from the right, with forward direction and row storage.
+* Applies a real block reflector H or its transpose H^T to a real M by N matrix C from the left, with backward direction and row storage.
 *
 * @private
 * @param {NonNegativeInteger} M - number of rows of the matrix C
@@ -453,10 +465,11 @@ var dtrmm = require( './dtrmm.js' );
 * var C = new Float64Array( [ 11.0, 12.0, 13.0, 21.0, 22.0, 23.0, 31.0, 32.0, 33.0 ] );
 * var work = new Float64Array( 9 );
 *
-* var result = rightForwardRows( 3, 3, 3, V, 3, 1, 0, T, 3, 1, 0, C, 3, 1, 0, work, 3, 1, 0, 'no-transpose' );
-* // returns &lt;Float64Array&gt;[ -1390.0, -58132.0, -266416.0, -2490.0, -104142.0, -473736.0, -3590.0, -150152.0, -681056.0 ]
+* var result = leftBackwardRows( 3, 3, 3, V, 3, 1, 0, T, 3, 1, 0, C, 3, 1, 0, work, 3, 1, 0, 'no-transpose' );
+* // returns &lt;Float64Array&gt;[ -155530.0, -164560.0, -173590.0, -292241.0, -308662.0, -325083.0, -4832.0, -5104.0, -5376.0 ]
 */
-function rightForwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans ) { // eslint-disable-line max-params, max-len
+function leftBackwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans ) { // eslint-disable-line max-params, max-len
+	var transt;
 	var da0;
 	var da1;
 	var db0;
@@ -481,43 +494,48 @@ function rightForwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1,
 <span class="cstat-no" title="statement not covered" >		return C;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 &nbsp;
-	/* Let V = ( V1 V2 )    (V1: first K columns)
-	* Where V1 is unit upper triangular.
+	if ( trans === 'no-transpose' ) {
+		transt = 'transpose';
+	} else {
+		transt = 'no-transpose';
+	}
+&nbsp;
+	/* Let V = ( V1 V2 )    (V2: last K columns)
+	* Where V2 is unit lower triangular.
 	*/
-	/* Form C * H or C * H^T where C = ( C1 C2 )
-	* W := C * V**T = (C1*V1**T + C2*V2**T) (stored in WORK)
-	* W := C1
+	/* Form H * C or H^T * C where C = ( C1 )
+	*                                    ( C2 )
+	* W := C**T * V**T = (C1**T * V1**T + C2**T * V2**T) (stored in WORK)
+	* W := C2**T
 	*/
 	ic = offsetC;
 	iw = offsetWork;
 	for ( j = 0; j &lt; K; j++ ) {
-		dcopy( M, C, strideC1, ic, work, strideWork1, iw );
-		ic += strideC2;
+		dcopy( N, C, strideC2, ic, work, strideWork1, iw );
+		ic += strideC1;
 		iw += strideWork2;
 	}
-	// W := W * V1**T
-	dtrmm( 'right', 'upper', 'transpose', 'unit', M, K, 1.0, V, strideV1, strideV2, offsetV, work, strideWork1, strideWork2, offsetWork );
-	if ( N &gt; K ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		// W := W + C2 * V2**T</span>
-<span class="cstat-no" title="statement not covered" >		ic = offsetC + ( K * strideC2 );</span>
-<span class="cstat-no" title="statement not covered" >		iv = offsetV + ( K * strideV2 );</span>
-<span class="cstat-no" title="statement not covered" >		dgemm( 'no-transpose', 'transpose', M, K, N-K, 1.0, C, strideC1, strideC2, ic, V, strideV1, strideV2, iv, 1.0, work, strideWork1, strideWork2, offsetWork );</span>
+	// W := W * V2**T
+	iv = offsetV + ( (M-K) * strideV2 );
+	dtrmm( 'right', 'lower', 'transpose', 'unit', N, K, 1.0, V, strideV1, strideV2, iv, work, strideWork1, strideWork2, offsetWork );
+	if ( M &gt; K ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		// W := W + C1**T * V1**T</span>
+<span class="cstat-no" title="statement not covered" >		dgemm( 'transpose', 'transpose', N, K, M-K, 1.0, C, strideC1, strideC2, offsetC, V, strideV1, strideV2, offsetV, 1.0, work, strideWork1, strideWork2, offsetWork );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	// W := W * T or W * T**T
-	dtrmm( 'right', 'upper', trans, 'non-unit', M, K, 1.0, T, strideT1, strideT2, offsetT, work, strideWork1, strideWork2, offsetWork );
+	// W := W * T**T or W * T
+	dtrmm( 'right', 'lower', transt, 'non-unit', N, K, 1.0, T, strideT1, strideT2, offsetT, work, strideWork1, strideWork2, offsetWork );
 &nbsp;
-	// C := C - W * V
-	if ( N &gt; K ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		// C2 := C2 - W * V2</span>
-<span class="cstat-no" title="statement not covered" >		ic = offsetC + ( K * strideC2 );</span>
-<span class="cstat-no" title="statement not covered" >		iv = offsetV + ( K * strideV2 );</span>
-<span class="cstat-no" title="statement not covered" >		dgemm( 'no-transpose', 'no-transpose', M, N-K, K, -1.0, work, strideWork1, strideWork2, offsetWork, V, strideV1, strideV2, iv, 1.0, C, strideC1, strideC2, ic );</span>
+	// C := C - V**T * W**T
+	if ( M &gt; K ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		// C1 := C1 - V1**T * W**T</span>
+<span class="cstat-no" title="statement not covered" >		dgemm( 'transpose', 'transpose', M-K, N, K, -1.0, V, strideV1, strideV2, offsetV, work, strideWork1, strideWork2, offsetWork, 1.0, C, strideC1, strideC2, offsetC );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	// W := W * V1
-	dtrmm( 'right', 'upper', 'no-transpose', 'unit', M, K, 1.0, V, strideV1, strideV2, offsetV, work, strideWork1, strideWork2, offsetWork );
+	// W := W * V2
+	iv = offsetV + ( (M-K) * strideV2 );
+	dtrmm( 'right', 'lower', 'no-transpose', 'unit', N, K, 1.0, V, strideV1, strideV2, iv, work, strideWork1, strideWork2, offsetWork );
 &nbsp;
-	// C1 := C1 - W
-	o = loopOrder( [ K, M ], [ strideC1, strideC2 ], [ strideWork1, strideWork2 ] ); // eslint-disable-line max-len
+	// C2 := C2 - W**T
+	o = loopOrder( [ K, N ], [ strideC1, strideC2 ], [ strideWork2, strideWork1 ] ); // eslint-disable-line max-len
 	sh = o.sh;
 	sa = o.sx;
 	sb = o.sy;
@@ -531,7 +549,7 @@ function rightForwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1,
 	db1 = sb[ 1 ] - ( S0 * sb[ 0 ] );
 &nbsp;
 	// Set pointers to first indexed elements
-	ia = offsetC;
+	ia = offsetC + ( (M-K) * strideC1 );
 	ib = offsetWork;
 &nbsp;
 	// Iterate over matrix dimensions with optimized loop order
@@ -551,7 +569,7 @@ function rightForwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1,
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = rightForwardRows;
+module.exports = leftBackwardRows;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -559,7 +577,7 @@ module.exports = rightForwardRows;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-27T02:48:34.657Z
+                at 2025-08-27T17:26:37.562Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

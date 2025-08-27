@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for lapack/base/dlarfb/lib/right-forward-columns.js</title>
+    <title>Code coverage report for lapack/base/dlarfb/lib/right_backward_rows.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">lapack/base/dlarfb/lib</a> right-forward-columns.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">lapack/base/dlarfb/lib</a> right_backward_rows.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.72% </span>
+                <span class="strong">95.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>153/165</span>
+                <span class='fraction'>153/161</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.72% </span>
+                <span class="strong">95.03% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>153/165</span>
+                <span class='fraction'>153/161</span>
             </div>
         
             
@@ -224,11 +224,7 @@
 <a name='L159'></a><a href='#L159'>159</a>
 <a name='L160'></a><a href='#L160'>160</a>
 <a name='L161'></a><a href='#L161'>161</a>
-<a name='L162'></a><a href='#L162'>162</a>
-<a name='L163'></a><a href='#L163'>163</a>
-<a name='L164'></a><a href='#L164'>164</a>
-<a name='L165'></a><a href='#L165'>165</a>
-<a name='L166'></a><a href='#L166'>166</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L162'></a><a href='#L162'>162</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -319,8 +315,6 @@
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -339,8 +333,7 @@
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -352,8 +345,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -424,7 +416,7 @@ var dtrmm = require( './dtrmm.js' );
 // MAIN //
 &nbsp;
 /**
-* Applies a real block reflector H or its transpose H^T to a real M by N matrix C from the right, with forward direction and column storage.
+* Applies a real block reflector H or its transpose H^T to a real M by N matrix C from the right, with backward direction and row storage.
 *
 * @private
 * @param {NonNegativeInteger} M - number of rows of the matrix C
@@ -457,10 +449,10 @@ var dtrmm = require( './dtrmm.js' );
 * var C = new Float64Array( [ 11.0, 12.0, 13.0, 21.0, 22.0, 23.0, 31.0, 32.0, 33.0 ] );
 * var work = new Float64Array( 9 );
 *
-* var result = rightForwardColumns( 3, 3, 3, V, 3, 1, 0, T, 3, 1, 0, C, 3, 1, 0, work, 3, 1, 0, 'no-transpose' );
-* // returns &lt;Float64Array&gt;[ -630.0, -14392.0, -114296.0, -1130.0, -25802.0, -202816.0, -1630.0, -37212.0, -291336.0 ]
+* var result = rightBackwardRows( 3, 3, 3, V, 3, 1, 0, T, 3, 1, 0, C, 3, 1, 0, work, 3, 1, 0, 'no-transpose' );
+* // returns &lt;Float64Array&gt;[ -104950.0, -191792.0, -3176.0, -195250.0, -356002.0, -5896.0, -285550.0, -520212.0, -8616.0 ]
 */
-function rightForwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans ) { // eslint-disable-line max-params, max-len
+function rightBackwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans ) { // eslint-disable-line max-params, max-len
 	var da0;
 	var da1;
 	var db0;
@@ -485,45 +477,41 @@ function rightForwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, stride
 <span class="cstat-no" title="statement not covered" >		return C;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 &nbsp;
-	/* Let V = ( V1 )    (first K rows)
-	*          ( V2 )
-	* Where V1 is unit lower triangular.
+	/* Let V = ( V1 V2 )    (V2: last K columns)
+	* Where V2 is unit lower triangular.
 	*/
-&nbsp;
 	/* Form C * H or C * H^T where C = ( C1 C2 )
-	* W := C * V = (C1*V1 + C2*V2) (stored in WORK)
-	* W := C1
+	* W := C * V**T = (C1*V1**T + C2*V2**T) (stored in WORK)
+	* W := C2
 	*/
-	ic = offsetC;
+	ic = offsetC + ( (N-K) * strideC2 );
 	iw = offsetWork;
 	for ( j = 0; j &lt; K; j++ ) {
 		dcopy( M, C, strideC1, ic, work, strideWork1, iw );
-		ic += strideC2;
 		iw += strideWork2;
+		ic += strideC2;
 	}
-	// W := W * V1
-	dtrmm( 'right', 'lower', 'no-transpose', 'unit', M, K, 1.0, V, strideV1, strideV2, offsetV, work, strideWork1, strideWork2, offsetWork );
+	// W := W * V2**T
+	iv = offsetV + ( (N-K) * strideV2 );
+	dtrmm( 'right', 'lower', 'transpose', 'unit', M, K, 1.0, V, strideV1, strideV2, iv, work, strideWork1, strideWork2, offsetWork );
 	if ( N &gt; K ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		// W := W + C2 * V2</span>
-<span class="cstat-no" title="statement not covered" >		ic = offsetC + ( K * strideC2 );</span>
-<span class="cstat-no" title="statement not covered" >		iv = offsetV + ( K * strideV1 );</span>
-<span class="cstat-no" title="statement not covered" >		dgemm( 'no-transpose', 'no-transpose', M, K, N-K, 1.0, C, strideC1, strideC2, ic, V, strideV1, strideV2, iv, 1.0, work, strideWork1, strideWork2, offsetWork );</span>
+<span class="cstat-no" title="statement not covered" >		// W := W + C1 * V1**T</span>
+<span class="cstat-no" title="statement not covered" >		dgemm( 'no-transpose', 'transpose', M, K, N-K, 1.0, C, strideC1, strideC2, offsetC, V, strideV1, strideV2, offsetV, 1.0, work, strideWork1, strideWork2, offsetWork );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 	// W := W * T or W * T**T
-	dtrmm( 'right', 'upper', trans, 'non-unit', M, K, 1.0, T, strideT1, strideT2, offsetT, work, strideWork1, strideWork2, offsetWork );
+	dtrmm( 'right', 'lower', trans, 'non-unit', M, K, 1.0, T, strideT1, strideT2, offsetT, work, strideWork1, strideWork2, offsetWork );
 &nbsp;
-	// C := C - W * V**T
+	// C := C - W * V
 	if ( N &gt; K ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		// C2 := C2 - W * V2**T</span>
-<span class="cstat-no" title="statement not covered" >		ic = offsetC + ( K * strideC2 );</span>
-<span class="cstat-no" title="statement not covered" >		iv = offsetV + ( K * strideV1 );</span>
-<span class="cstat-no" title="statement not covered" >		dgemm( 'no-transpose', 'transpose', M, N-K, K, -1.0, work, strideWork1, strideWork2, offsetWork, V, strideV1, strideV2, iv, 1.0, C, strideC1, strideC2, ic );</span>
+<span class="cstat-no" title="statement not covered" >		// C1 := C1 - W * V1</span>
+<span class="cstat-no" title="statement not covered" >		dgemm( 'no-transpose', 'no-transpose', M, N-K, K, -1.0, work, strideWork1, strideWork2, offsetWork, V, strideV1, strideV2, offsetV, 1.0, C, strideC1, strideC2, offsetC );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	// W := W * V1**T
-	dtrmm( 'right', 'lower', 'transpose', 'unit', M, K, 1.0, V, strideV1, strideV2, offsetV, work, strideWork1, strideWork2, offsetWork );
+	// W := W * V2
+	iv = offsetV + ( (N-K) * strideV2 );
+	dtrmm( 'right', 'lower', 'no-transpose', 'unit', M, K, 1.0, V, strideV1, strideV2, iv, work, strideWork1, strideWork2, offsetWork );
 &nbsp;
 	// C1 := C1 - W
-	o = loopOrder( [ K, M ], [ strideC2, strideC1 ], [ strideWork2, strideWork1 ] ); // eslint-disable-line max-len
+	o = loopOrder( [ K, M ], [ strideC1, strideC2 ], [ strideWork1, strideWork2 ] ); // eslint-disable-line max-len
 	sh = o.sh;
 	sa = o.sx;
 	sb = o.sy;
@@ -557,7 +545,7 @@ function rightForwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, stride
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = rightForwardColumns;
+module.exports = rightBackwardRows;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -565,7 +553,7 @@ module.exports = rightForwardColumns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-27T02:48:34.657Z
+                at 2025-08-27T17:26:37.562Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
