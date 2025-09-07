@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for blas/base/zdscal/lib/zdscal.js</title>
+    <title>Code coverage report for blas/base/zdscal/lib/ndarray.native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/zdscal/lib</a> zdscal.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">blas/base/zdscal/lib</a> ndarray.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>53/53</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>53/53</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
@@ -116,7 +116,10 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -161,9 +164,12 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -191,8 +197,8 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var stride2offset = require( '@stdlib/strided/base/stride2offset' );
-var ndarray = require( './ndarray.js' );
+var reinterpret = require( '@stdlib/strided/base/reinterpret-complex128' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -201,9 +207,10 @@ var ndarray = require( './ndarray.js' );
 * Scales a double-precision complex floating-point vector by a double-precision floating-point constant.
 *
 * @param {PositiveInteger} N - number of indexed elements
-* @param {number} alpha - constant
+* @param {number} alpha - scalar constant
 * @param {Complex128Array} x - input array
 * @param {integer} strideX - `x` stride length
+* @param {NonNegativeInteger} offsetX - starting `x` index
 * @returns {Complex128Array} input array
 *
 * @example
@@ -211,11 +218,13 @@ var ndarray = require( './ndarray.js' );
 *
 * var x = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
 *
-* zdscal( 3, 2.0, x, 1 );
+* zdscal( 3, 2.0, x, 1, 0 );
 * // x =&gt; &lt;Complex128Array&gt;[ 2.0, 4.0, 6.0, 8.0, 10.0, 12.0 ]
 */
-function zdscal( N, alpha, x, strideX ) {
-	return ndarray( N, alpha, x, strideX, stride2offset( N, strideX ) );
+function zdscal( N, alpha, x, strideX, offsetX ) {
+	var viewX = reinterpret( x, 0 );
+	addon.ndarray( N, alpha, viewX, strideX, offsetX );
+	return x;
 }
 &nbsp;
 &nbsp;
