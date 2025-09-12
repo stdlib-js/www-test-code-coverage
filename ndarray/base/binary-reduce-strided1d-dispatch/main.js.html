@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.72% </span>
+                <span class="strong">41.31% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>252/604</span>
+                <span class='fraction'>252/610</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.72% </span>
+                <span class="strong">41.31% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>252/604</span>
+                <span class='fraction'>252/610</span>
             </div>
         
             
@@ -667,7 +667,13 @@
 <a name='L602'></a><a href='#L602'>602</a>
 <a name='L603'></a><a href='#L603'>603</a>
 <a name='L604'></a><a href='#L604'>604</a>
-<a name='L605'></a><a href='#L605'>605</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L605'></a><a href='#L605'>605</a>
+<a name='L606'></a><a href='#L606'>606</a>
+<a name='L607'></a><a href='#L607'>607</a>
+<a name='L608'></a><a href='#L608'>608</a>
+<a name='L609'></a><a href='#L609'>609</a>
+<a name='L610'></a><a href='#L610'>610</a>
+<a name='L611'></a><a href='#L611'>611</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1080,6 +1086,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1141,6 +1150,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1563,6 +1575,8 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >	var xdt;</span>
 <span class="cstat-no" title="statement not covered" >	var ydt;</span>
 <span class="cstat-no" title="statement not covered" >	var zdt;</span>
+<span class="cstat-no" title="statement not covered" >	var dt1;</span>
+<span class="cstat-no" title="statement not covered" >	var dt2;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var f;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
@@ -1653,20 +1667,21 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we need to cast the input ndarray...</span>
-<span class="cstat-no" title="statement not covered" >	dt = binaryInputCastingDataType( xdt, ydt, zdt, this._policies.casting );</span>
-<span class="cstat-no" title="statement not covered" >	if ( xdt !== dt ) {</span>
+<span class="cstat-no" title="statement not covered" >	dt1 = binaryInputCastingDataType( xdt, ydt, zdt, this._policies.casting );</span>
+<span class="cstat-no" title="statement not covered" >	dt2 = binaryInputCastingDataType( ydt, xdt, zdt, this._policies.casting );</span>
+<span class="cstat-no" title="statement not covered" >	if ( xdt !== dt1 ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
-<span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, shx, ordx );</span>
+<span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt1, shx, ordx );</span>
 <span class="cstat-no" title="statement not covered" >		assign( [ x, tmp ] );</span>
 <span class="cstat-no" title="statement not covered" >		args[ 0 ] = tmp;</span>
-<span class="cstat-no" title="statement not covered" >		xdt = dt;</span>
+<span class="cstat-no" title="statement not covered" >		xdt = dt1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( ydt !== dt ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( ydt !== dt2 ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
-<span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, shy, ordy );</span>
+<span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt2, shy, ordy );</span>
 <span class="cstat-no" title="statement not covered" >		assign( [ y, tmp ] );</span>
 <span class="cstat-no" title="statement not covered" >		args[ 1 ] = tmp;</span>
-<span class="cstat-no" title="statement not covered" >		ydt = dt;</span>
+<span class="cstat-no" title="statement not covered" >		ydt = dt2;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input ndarray data type:</span>
 <span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( xdt ), resolveEnum( ydt ) ];</span>
@@ -1758,6 +1773,8 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no"
 <span class="cstat-no" title="statement not covered" >	var xdt;</span>
 <span class="cstat-no" title="statement not covered" >	var ydt;</span>
 <span class="cstat-no" title="statement not covered" >	var tmp;</span>
+<span class="cstat-no" title="statement not covered" >	var dt1;</span>
+<span class="cstat-no" title="statement not covered" >	var dt2;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
 <span class="cstat-no" title="statement not covered" >	var f;</span>
@@ -1842,20 +1859,21 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no"
 <span class="cstat-no" title="statement not covered" >		opts.dims = zeroTo( N );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we need to cast the input ndarray...</span>
-<span class="cstat-no" title="statement not covered" >	dt = binaryInputCastingDataType( xdt, ydt, getDType( z ), this._policies.casting ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >	if ( xdt !== dt ) {</span>
+<span class="cstat-no" title="statement not covered" >	dt1 = binaryInputCastingDataType( xdt, ydt, getDType( z ), this._policies.casting ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	dt2 = binaryInputCastingDataType( ydt, xdt, getDType( z ), this._policies.casting ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	if ( xdt !== dt1 ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
-<span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, shx, getOrder( x ) );</span>
+<span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt1, shx, getOrder( x ) );</span>
 <span class="cstat-no" title="statement not covered" >		assign( [ x, tmp ] );</span>
 <span class="cstat-no" title="statement not covered" >		args[ 0 ] = tmp;</span>
-<span class="cstat-no" title="statement not covered" >		xdt = dt;</span>
+<span class="cstat-no" title="statement not covered" >		xdt = dt1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( ydt !== dt ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( ydt !== dt2 ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
-<span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, shy, getOrder( y ) );</span>
+<span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt2, shy, getOrder( y ) );</span>
 <span class="cstat-no" title="statement not covered" >		assign( [ y, tmp ] );</span>
 <span class="cstat-no" title="statement not covered" >		args[ 1 ] = tmp;</span>
-<span class="cstat-no" title="statement not covered" >		ydt = dt;</span>
+<span class="cstat-no" title="statement not covered" >		ydt = dt2;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the lower-level strided function satisfying the input ndarray data type:</span>
 <span class="cstat-no" title="statement not covered" >	dtypes = [ resolveEnum( xdt ), resolveEnum( ydt ) ];</span>
@@ -1882,7 +1900,7 @@ module.exports = BinaryStrided1dDispatch;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-08T06:51:07.245Z
+                at 2025-09-12T15:52:37.059Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
