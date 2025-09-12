@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>101/101</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>101/101</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
@@ -139,32 +139,7 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -201,31 +176,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -287,46 +237,21 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isTypedArrayLike = require( '@stdlib/assert/is-typed-array-like' );
-var serialize = require( '@stdlib/ndarray/base/serialize-meta-data' );
+var dispatch = require( '@stdlib/ndarray/base/unary-addon-dispatch' );
 var setProps = require( '@stdlib/ndarray/base/meta-data-props' );
-var getData = require( '@stdlib/ndarray/data-buffer' );
 var dtypes = require( '@stdlib/ndarray/dtypes' );
 var ufunc = require( '@stdlib/math/tools/unary' );
 var addon = require( './../src/addon.node' );
 var meta = require( './meta.json' );
 var types = require( './types.json' );
 var policies = require( './policies.json' );
-var js = require( './main.js' );
+var fallback = require( './main.js' ).assign;
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
 var idtypes = dtypes( 'numeric_and_generic' );
 var odtypes = dtypes( 'real_and_generic' );
-&nbsp;
-&nbsp;
-// FUNCTIONS //
-&nbsp;
-/**
-* Applies a unary function to an input ndarray and assigns results to an output ndarray.
-*
-* @private
-* @param {ndarray} x - input array
-* @param {ndarray} y - output array
-* @returns {ndarray} output array
-*/
-function unary( x, y ) { // FIXME: move to separate package
-	var xdata = getData( x );
-	var ydata = getData( y );
-&nbsp;
-	// WARNING: we assume that, if we're provided something which has a data buffer resembling a typed array, we're provided a typed ndarray buffer; however, this can lead to potential unintended errors as the native add-on cannot work with non-typed array objects (e.g., generic arrays)...
-	if ( !( isTypedArrayLike( xdata ) &amp;&amp; isTypedArrayLike( ydata ) ) ) {
-		return js.assign( x, y );
-	}
-	addon( xdata, serialize( x ), ydata, serialize( y ) );
-	return y;
-}
 &nbsp;
 &nbsp;
 // MAIN //
@@ -358,7 +283,7 @@ function unary( x, y ) { // FIXME: move to separate package
 * var arr = ndarray2array( y );
 * // returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ] ]
 */
-var abs = ufunc( unary, [ idtypes ], odtypes, policies ); // eslint-disable-line vars-on-top
+var abs = ufunc( dispatch( addon, fallback ), [ idtypes ], odtypes, policies );
 setProps( meta, types, abs );
 setProps( meta, types, abs.assign );
 &nbsp;
@@ -373,7 +298,7 @@ module.exports = abs;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-12T07:07:16.329Z
+                at 2025-09-12T09:45:51.119Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
