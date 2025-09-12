@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.77% </span>
+                <span class="strong">77.21% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/81</span>
+                <span class='fraction'>61/79</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.77% </span>
+                <span class="strong">77.21% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/81</span>
+                <span class='fraction'>61/79</span>
             </div>
         
             
@@ -142,11 +142,7 @@
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -249,16 +245,11 @@
 &nbsp;
 var isPlainObject = require( '@stdlib/assert/is-plain-object' );
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
-var contains = require( '@stdlib/array/base/assert/contains' ).factory;
+var isOrder = require( '@stdlib/ndarray/base/assert/is-order' );
+var contains = require( '@stdlib/array/base/assert/contains' );
 var orders = require( '@stdlib/ndarray/orders' );
-var dtypes = require( '@stdlib/ndarray/dtypes' );
+var join = require( '@stdlib/array/base/join' );
 var format = require( '@stdlib/string/format' );
-&nbsp;
-&nbsp;
-// VARIABLES //
-&nbsp;
-var isOrder = contains( orders() );
-var isDType = contains( dtypes() );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -268,35 +259,38 @@ var isDType = contains( dtypes() );
 *
 * @private
 * @param {Object} opts - destination object
+* @param {Array} dtypes - list of supported output data types
 * @param {Object} options - options
 * @param {string} [options.dtype] - output array data type
 * @param {string} [options.order] - output array order
 * @returns {(Error|null)} null or an error object
 *
 * @example
+* var dtypes = [ 'float64', 'float32', 'generic' ];
+*
 * var opts = {};
 * var options = {
 *     'order': 'row-major'
 * };
-* var err = validate( opts, options );
+* var err = validate( opts, dtypes, options );
 * if ( err ) {
 *     throw err;
 * }
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function validate( opts, options ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function validate( opts, dtypes, options ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isPlainObject( options ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		return new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', options ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( hasOwnProp( options, 'dtype' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.dtype = options.dtype;</span>
-<span class="cstat-no" title="statement not covered" >		if ( !isDType( opts.dtype ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be a recognized/supported data type. Option: `%s`.', 'dtype', opts.dtype ) );</span>
+<span class="cstat-no" title="statement not covered" >		if ( !contains( dtypes, opts.dtype ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be one of the following: "%s". Option: `%s`.', 'dtype', join( dtypes, '", "' ), opts.dtype ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( hasOwnProp( options, 'order' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.order = options.order;</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isOrder( opts.order ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be a recognized/supported data type. Option: `%s`.', 'order', opts.order ) );</span>
+<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be one of the following: "%s". Option: `%s`.', 'order', join( orders(), '", "' ), opts.order ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return null;</span>
@@ -313,7 +307,7 @@ module.exports = validate;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-30T22:53:18.170Z
+                at 2025-09-12T06:43:38.150Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
