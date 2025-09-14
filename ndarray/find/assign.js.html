@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.25% </span>
+                <span class="strong">52.04% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>86/182</span>
+                <span class='fraction'>89/171</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.25% </span>
+                <span class="strong">52.04% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>86/182</span>
+                <span class='fraction'>89/171</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -234,18 +234,7 @@
 <a name='L169'></a><a href='#L169'>169</a>
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a>
-<a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a>
-<a name='L176'></a><a href='#L176'>176</a>
-<a name='L177'></a><a href='#L177'>177</a>
-<a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -326,20 +315,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -451,7 +429,7 @@
 &nbsp;
 var isFunction = require( '@stdlib/assert/is-function' );
 var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
-var isPlainObject = require( '@stdlib/assert/is-plain-object' );
+var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var unaryReduceSubarrayBy = require( '@stdlib/ndarray/base/unary-reduce-subarray-by' );
 var ndims = require( '@stdlib/ndarray/ndims' );
 var base = require( '@stdlib/ndarray/base/find' );
@@ -474,16 +452,16 @@ var getSentinelValue = require( './sentinel.js' );
 * Finds the first elements which pass a test implemented by a predicate function along one or more ndarray dimensions and assigns results to a provided output ndarray.
 *
 * @param {ndarray} x - input ndarray
-* @param {(*|ndarray)} [sentinelValue] - sentinel value
 * @param {ndarray} out - output ndarray
 * @param {Options} [options] - function options
 * @param {IntegerArray} [options.dims] - list of dimensions over which to perform a reduction
+* @param {*|ndarray} [options.sentinelValue] - sentinel value
 * @param {Function} predicate - predicate function
 * @param {*} [thisArg] - predicate function execution context
 * @throws {TypeError} first argument must be an ndarray-like object
-* @throws {TypeError} third argument must be an ndarray-like object
+* @throws {TypeError} second argument must be an ndarray-like object
 * @throws {TypeError} options argument must be an object
-* @throws {TypeError} callback argument must be a function
+* @throws {TypeError} predicate argument must be a function
 * @throws {Error} must provide valid options
 * @returns {ndarray} output ndarray
 *
@@ -497,111 +475,100 @@ var getSentinelValue = require( './sentinel.js' );
 * // returns &lt;ndarray&gt;
 *
 * // Create an output ndarray:
-* var out = empty( [], {
+* var y = empty( [], {
 *     'dtype': x.dtype
 * });
 *
 * // Perform reduction:
-* var result = assign( x, -1, out, isEven );
+* var out = assign( x, y, isEven );
 * // returns &lt;ndarray&gt;
 *
-* var v = out.get();
+* var bool = ( out === y );
+* // returns true
+*
+* var v = y.get();
 * // returns 2.0
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function assign( x ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function assign( x, out, options, predicate, thisArg ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var sentinelValue;</span>
-<span class="cstat-no" title="statement not covered" >	var predicate;</span>
-<span class="cstat-no" title="statement not covered" >	var thisArg;</span>
-<span class="cstat-no" title="statement not covered" >	var options;</span>
 <span class="cstat-no" title="statement not covered" >	var nargs;</span>
 <span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var err;</span>
-<span class="cstat-no" title="statement not covered" >	var out;</span>
+<span class="cstat-no" title="statement not covered" >	var flg;</span>
+<span class="cstat-no" title="statement not covered" >	var ctx;</span>
 <span class="cstat-no" title="statement not covered" >	var sv;</span>
-<span class="cstat-no" title="statement not covered" >	var pi;</span>
+<span class="cstat-no" title="statement not covered" >	var cb;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
+<span class="cstat-no" title="statement not covered" >	var o;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	nargs = arguments.length;</span>
 <span class="cstat-no" title="statement not covered" >	if ( !isndarrayLike( x ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be an ndarray-like object. Value: `%s`.', x ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	pi = -1;</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 1; i &lt; nargs; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( isFunction( arguments[ i ] ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			pi = i;</span>
-<span class="cstat-no" title="statement not covered" >			break;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( pi === -1 ) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new TypeError( 'invalid arguments. Must provide a predicate function. Value: `%s`.', arguments[ i ] );</span>
-<span class="cstat-no" title="statement not covered" >	} else if ( pi === 2 ) { // assign( x, out, predicate [, thisArg] )</span>
-<span class="cstat-no" title="statement not covered" >		out = arguments[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >		predicate = arguments[ 2 ];</span>
-<span class="cstat-no" title="statement not covered" >		if ( nargs === 4 ) {</span>
-<span class="cstat-no" title="statement not covered" >			thisArg = arguments[ 3 ];</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else if ( pi === 3 ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( isPlainObject( arguments[ 2 ] ) ) { // assign( x, out, options, predicate [, thisArg] )</span>
-<span class="cstat-no" title="statement not covered" >			out = arguments[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >			options = arguments[ 2 ];</span>
-<span class="cstat-no" title="statement not covered" >			predicate = arguments[ 3 ];</span>
-<span class="cstat-no" title="statement not covered" >			if ( nargs === 5 ) {</span>
-<span class="cstat-no" title="statement not covered" >				thisArg = arguments[ 4 ];</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		} else { // assign( x, sentinel, out, predicate [, thisArg] )</span>
-<span class="cstat-no" title="statement not covered" >			sentinelValue = arguments[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >			out = arguments[ 2 ];</span>
-<span class="cstat-no" title="statement not covered" >			predicate = arguments[ 3 ];</span>
-<span class="cstat-no" title="statement not covered" >			if ( nargs === 5 ) {</span>
-<span class="cstat-no" title="statement not covered" >				thisArg = arguments[ 4 ];</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else { // assign( x, sentinel, out, options, predicate [, thisArg] )</span>
-<span class="cstat-no" title="statement not covered" >		sentinelValue = arguments[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >		out = arguments[ 2 ];</span>
-<span class="cstat-no" title="statement not covered" >		options = arguments[ 3 ];</span>
-<span class="cstat-no" title="statement not covered" >		predicate = arguments[ 4 ];</span>
-<span class="cstat-no" title="statement not covered" >		if ( nargs === 6 ) {</span>
-<span class="cstat-no" title="statement not covered" >			thisArg = arguments[ 5 ];</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( !isndarrayLike( out ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Output argument must be an ndarray-like object. Value: `%s`.', out ) );</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an ndarray-like object. Value: `%s`.', out ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( options &amp;&amp; !isPlainObject( options ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Options argument must be a plain object. Value: `%s`.', options ) );</span>
+<span class="cstat-no" title="statement not covered" >	// Case: assign( x, out, predicate )</span>
+<span class="cstat-no" title="statement not covered" >	if ( nargs &lt; 4 ) {</span>
+<span class="cstat-no" title="statement not covered" >		cb = options;</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isFunction( cb ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Predicate argument must be a function. Value: `%s`.', cb ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: assign( x, out, options, predicate, thisArg )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( nargs &gt; 4 ) {</span>
+<span class="cstat-no" title="statement not covered" >		flg = true;</span>
+<span class="cstat-no" title="statement not covered" >		o = options;</span>
+<span class="cstat-no" title="statement not covered" >		cb = predicate;</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isFunction( cb ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Predicate argument must be a function. Value: `%s`.', cb ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		ctx = thisArg;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: assign( x, out, predicate, thisArg )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( isFunction( options ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		cb = options;</span>
+<span class="cstat-no" title="statement not covered" >		ctx = predicate;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: assign( x, out, options, predicate )</span>
+<span class="cstat-no" title="statement not covered" >	else if ( isFunction( predicate ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		flg = true;</span>
+<span class="cstat-no" title="statement not covered" >		o = options;</span>
+<span class="cstat-no" title="statement not covered" >		cb = predicate;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Case: assign( x, out, ???, ??? )</span>
+<span class="cstat-no" title="statement not covered" >	else {</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Predicate argument must be a function. Value: `%s`.', predicate ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	N = ndims( x );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Validate options</span>
 <span class="cstat-no" title="statement not covered" >	opts = objectAssign( {}, DEFAULTS );</span>
-<span class="cstat-no" title="statement not covered" >	if ( options ) {</span>
-<span class="cstat-no" title="statement not covered" >		err = validate( opts, N, options );</span>
+<span class="cstat-no" title="statement not covered" >	if ( flg ) {</span>
+<span class="cstat-no" title="statement not covered" >		err = validate( opts, N, o );</span>
 <span class="cstat-no" title="statement not covered" >		if ( err ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw err;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// When a list of dimensions is not provided, reduce the entire input array across all dimensions...</span>
 <span class="cstat-no" title="statement not covered" >	if ( opts.dims === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.dims = zeroTo( N );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Handle sentinel value:</span>
-<span class="cstat-no" title="statement not covered" >	if ( sentinelValue === void 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >	// If provided, use user-defined sentinelValue</span>
+<span class="cstat-no" title="statement not covered" >	if ( hasOwnProp( opts, 'sentinelValue' ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		sentinelValue = opts.sentinelValue;</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		sentinelValue = getSentinelValue( getDtype( x ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Broadcast sentinel value to match the output array shape:</span>
 <span class="cstat-no" title="statement not covered" >	if ( isndarrayLike( sentinelValue ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		sv = maybeBroadcastArray( sentinelValue, getShape( out ) );</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		sv = broadcastScalar( sentinelValue, getDtype( x ), getShape( out ), getOrder( out ) ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Perform the reduction:</span>
-<span class="cstat-no" title="statement not covered" >	unaryReduceSubarrayBy( base, [ x, out, sv ], opts.dims, predicate, thisArg ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	unaryReduceSubarrayBy( base, [ x, out, sv ], opts.dims, cb, ctx );</span>
 <span class="cstat-no" title="statement not covered" >	return out;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -616,7 +583,7 @@ module.exports = assign;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-14T09:55:08.090Z
+                at 2025-09-14T11:45:30.882Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
