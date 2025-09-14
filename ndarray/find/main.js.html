@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">38.53% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>84/224</span>
+                <span class='fraction'>84/218</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">38.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>84/224</span>
+                <span class='fraction'>84/218</span>
             </div>
         
             
@@ -281,13 +281,7 @@
 <a name='L216'></a><a href='#L216'>216</a>
 <a name='L217'></a><a href='#L217'>217</a>
 <a name='L218'></a><a href='#L218'>218</a>
-<a name='L219'></a><a href='#L219'>219</a>
-<a name='L220'></a><a href='#L220'>220</a>
-<a name='L221'></a><a href='#L221'>221</a>
-<a name='L222'></a><a href='#L222'>222</a>
-<a name='L223'></a><a href='#L223'>223</a>
-<a name='L224'></a><a href='#L224'>224</a>
-<a name='L225'></a><a href='#L225'>225</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L219'></a><a href='#L219'>219</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -366,12 +360,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -611,7 +599,7 @@ var getSentinelValue = require( './sentinel.js' );
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be an ndarray-like object. Value: `%s`.', x ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if ( nargs === 2 ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( nargs &lt;= 2 ) {</span>
 <span class="cstat-no" title="statement not covered" >		// find( x, predicate )</span>
 <span class="cstat-no" title="statement not covered" >		predicate = arguments[ 1 ];</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isFunction( predicate ) ) {</span>
@@ -661,7 +649,7 @@ var getSentinelValue = require( './sentinel.js' );
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Third argument must be a function. Value: `%s`.', predicate ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else if ( nargs === 5 ) {</span>
+<span class="cstat-no" title="statement not covered" >	} else { // nargs &gt;= 5</span>
 <span class="cstat-no" title="statement not covered" >		// find( x, sentinel, options, predicate, thisArg )</span>
 <span class="cstat-no" title="statement not covered" >		sentinelValue = arguments[ 1 ];</span>
 <span class="cstat-no" title="statement not covered" >		options = arguments[ 2 ];</span>
@@ -670,8 +658,6 @@ var getSentinelValue = require( './sentinel.js' );
 <span class="cstat-no" title="statement not covered" >		if ( !isFunction( predicate ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Fourth argument must be a function. Value: `%s`.', predicate ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		throw new Error( 'invalid number of arguments.' );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	shx = getShape( x );</span>
@@ -706,11 +692,7 @@ var getSentinelValue = require( './sentinel.js' );
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( isndarrayLike( sentinelValue ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		try {</span>
-<span class="cstat-no" title="statement not covered" >			sv = maybeBroadcastArray( sentinelValue, shy );</span>
-<span class="cstat-no" title="statement not covered" >		} catch ( err ) { // eslint-disable-line no-unused-vars</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error( 'invalid argument. Sentinel value must be broadcast-compatible with the non-reduced dimensions of the input array.' );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		sv = maybeBroadcastArray( sentinelValue, shy );</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		sv = broadcastScalar( sentinelValue, getDtype( x ), shy, ord );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -742,7 +724,7 @@ module.exports = find;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-10T20:04:35.913Z
+                at 2025-09-14T08:56:44.949Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
