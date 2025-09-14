@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.5% </span>
+                <span class="strong">42.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>255/600</span>
+                <span class='fraction'>247/576</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.5% </span>
+                <span class="strong">42.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>255/600</span>
+                <span class='fraction'>247/576</span>
             </div>
         
             
@@ -639,31 +639,7 @@
 <a name='L574'></a><a href='#L574'>574</a>
 <a name='L575'></a><a href='#L575'>575</a>
 <a name='L576'></a><a href='#L576'>576</a>
-<a name='L577'></a><a href='#L577'>577</a>
-<a name='L578'></a><a href='#L578'>578</a>
-<a name='L579'></a><a href='#L579'>579</a>
-<a name='L580'></a><a href='#L580'>580</a>
-<a name='L581'></a><a href='#L581'>581</a>
-<a name='L582'></a><a href='#L582'>582</a>
-<a name='L583'></a><a href='#L583'>583</a>
-<a name='L584'></a><a href='#L584'>584</a>
-<a name='L585'></a><a href='#L585'>585</a>
-<a name='L586'></a><a href='#L586'>586</a>
-<a name='L587'></a><a href='#L587'>587</a>
-<a name='L588'></a><a href='#L588'>588</a>
-<a name='L589'></a><a href='#L589'>589</a>
-<a name='L590'></a><a href='#L590'>590</a>
-<a name='L591'></a><a href='#L591'>591</a>
-<a name='L592'></a><a href='#L592'>592</a>
-<a name='L593'></a><a href='#L593'>593</a>
-<a name='L594'></a><a href='#L594'>594</a>
-<a name='L595'></a><a href='#L595'>595</a>
-<a name='L596'></a><a href='#L596'>596</a>
-<a name='L597'></a><a href='#L597'>597</a>
-<a name='L598'></a><a href='#L598'>598</a>
-<a name='L599'></a><a href='#L599'>599</a>
-<a name='L600'></a><a href='#L600'>600</a>
-<a name='L601'></a><a href='#L601'>601</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L577'></a><a href='#L577'>577</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -733,31 +709,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1316,6 +1268,7 @@ var takeIndexed = require( '@stdlib/array/base/take-indexed' );
 var zeroTo = require( '@stdlib/array/base/zero-to' );
 var join = require( '@stdlib/array/base/join' );
 var copy = require( '@stdlib/array/base/copy' );
+var insertAt = require( '@stdlib/array/base/insert-at' );
 var everyBy = require( '@stdlib/array/base/every-by' );
 var objectAssign = require( '@stdlib/object/assign' );
 var format = require( '@stdlib/string/format' );
@@ -1340,31 +1293,6 @@ var indexOfTypes = require( './index_of_types.js' );
 <span class="cstat-no" title="statement not covered" >	out = [];</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; types.length; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		out.push( resolveEnum( types[ i ] ) ); // note: we're assuming that `types[i]` is a known data type; otherwise, the resolved enum will be `null`</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return out;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-&nbsp;
-/**
-* Reorders a list of ndarrays such that the output ndarray is the second ndarray argument when passing along to a resolved lower-level strided function.
-*
-* @private
-* @param {Array&lt;ndarray&gt;} arrays - list of input ndarrays
-* @param {ndarray} output - output ndarray
-* @returns {Array&lt;ndarray&gt;} reordered list
-*/
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function reorder( arrays, output ) { // TODO: consider replacing with an `array/base/*` utility which expands an input array by inserting a specified value at a specified index and returns a new array</span></span>
-<span class="cstat-no" title="statement not covered" >	var out;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" >	var j;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	out = [];</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 0, j = 0; i &lt;= arrays.length; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( i === 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >			out.push( output );</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			out.push( arrays[ j ] );</span>
-<span class="cstat-no" title="statement not covered" >			j += 1;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return out;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
@@ -1667,7 +1595,7 @@ setReadOnly( UnaryStrided1dDispatchBy.prototype, 'apply', <span class="fstat-no"
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Perform the reduction:</span>
-<span class="cstat-no" title="statement not covered" >	unaryReduceStrided1dBy( f, reorder( args, y ), opts.dims, clbk, thisArg );</span>
+<span class="cstat-no" title="statement not covered" >	unaryReduceStrided1dBy( f, insertAt( args, 1, y ), opts.dims, clbk, thisArg );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Check whether we need to reinsert singleton dimensions which can be useful for broadcasting the returned output array to the shape of the original input array...</span>
 <span class="cstat-no" title="statement not covered" >	if ( opts.keepdims ) {</span>
@@ -1854,7 +1782,7 @@ setReadOnly( UnaryStrided1dDispatchBy.prototype, 'assign', <span class="fstat-no
 <span class="cstat-no" title="statement not covered" >		f = this._table.default;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Perform the reduction:</span>
-<span class="cstat-no" title="statement not covered" >	unaryReduceStrided1dBy( f, reorder( args, y ), opts.dims, clbk, thisArg ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
+<span class="cstat-no" title="statement not covered" >	unaryReduceStrided1dBy( f, insertAt( args, 1, y ), opts.dims, clbk, thisArg ); // note: we assume that this lower-level function handles further validation of the output ndarray (e.g., expected shape, etc)</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 });
@@ -1870,7 +1798,7 @@ module.exports = UnaryStrided1dDispatchBy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-13T23:32:10.578Z
+                at 2025-09-14T05:22:16.015Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
