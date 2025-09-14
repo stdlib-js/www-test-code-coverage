@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.88% </span>
+                <span class="strong">42.62% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>247/576</span>
+                <span class='fraction'>237/556</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.88% </span>
+                <span class="strong">42.62% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>247/576</span>
+                <span class='fraction'>237/556</span>
             </div>
         
             
@@ -619,27 +619,7 @@
 <a name='L554'></a><a href='#L554'>554</a>
 <a name='L555'></a><a href='#L555'>555</a>
 <a name='L556'></a><a href='#L556'>556</a>
-<a name='L557'></a><a href='#L557'>557</a>
-<a name='L558'></a><a href='#L558'>558</a>
-<a name='L559'></a><a href='#L559'>559</a>
-<a name='L560'></a><a href='#L560'>560</a>
-<a name='L561'></a><a href='#L561'>561</a>
-<a name='L562'></a><a href='#L562'>562</a>
-<a name='L563'></a><a href='#L563'>563</a>
-<a name='L564'></a><a href='#L564'>564</a>
-<a name='L565'></a><a href='#L565'>565</a>
-<a name='L566'></a><a href='#L566'>566</a>
-<a name='L567'></a><a href='#L567'>567</a>
-<a name='L568'></a><a href='#L568'>568</a>
-<a name='L569'></a><a href='#L569'>569</a>
-<a name='L570'></a><a href='#L570'>570</a>
-<a name='L571'></a><a href='#L571'>571</a>
-<a name='L572'></a><a href='#L572'>572</a>
-<a name='L573'></a><a href='#L573'>573</a>
-<a name='L574'></a><a href='#L574'>574</a>
-<a name='L575'></a><a href='#L575'>575</a>
-<a name='L576'></a><a href='#L576'>576</a>
-<a name='L577'></a><a href='#L577'>577</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L557'></a><a href='#L557'>557</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -700,26 +680,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1255,6 +1215,7 @@ var unaryReduceStrided1dBy = require( '@stdlib/ndarray/base/unary-reduce-strided
 var unaryOutputDataType = require( '@stdlib/ndarray/base/unary-output-dtype' );
 var unaryInputCastingDataType = require( '@stdlib/ndarray/base/unary-input-casting-dtype' );
 var resolveEnum = require( '@stdlib/ndarray/base/dtype-resolve-enum' );
+var dtypes2enums = require( '@stdlib/ndarray/base/dtypes2enums' );
 var spreadDimensions = require( '@stdlib/ndarray/base/spread-dimensions' );
 var getShape = require( '@stdlib/ndarray/shape' ); // note: non-base accessor is intentional due to input ndarrays originating in userland
 var ndims = require( '@stdlib/ndarray/ndims' );
@@ -1275,27 +1236,6 @@ var format = require( '@stdlib/string/format' );
 var defaults = require( './defaults.json' );
 var validate = require( './validate.js' );
 var indexOfTypes = require( './index_of_types.js' );
-&nbsp;
-&nbsp;
-// FUNCTIONS //
-&nbsp;
-/**
-* Returns a list of data type enumeration constants.
-*
-* @private
-* @param {Collection} types - list of types
-* @returns {IntegerArray} list of data type enumeration constants
-*/
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function types2enums( types ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var out;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	out = [];</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; types.length; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		out.push( resolveEnum( types[ i ] ) ); // note: we're assuming that `types[i]` is a known data type; otherwise, the resolved enum will be `null`</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return out;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // MAIN //
@@ -1399,7 +1339,7 @@ var indexOfTypes = require( './index_of_types.js' );
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	this._table = {</span>
 <span class="cstat-no" title="statement not covered" >		'default': table.default,</span>
-<span class="cstat-no" title="statement not covered" >		'types': ( table.types ) ? types2enums( table.types ) : [], // note: convert to enums (i.e., integers) to ensure faster comparisons</span>
+<span class="cstat-no" title="statement not covered" >		'types': ( table.types ) ? dtypes2enums( table.types ) : [], // note: convert to enums (i.e., integers) to ensure faster comparisons</span>
 <span class="cstat-no" title="statement not covered" >		'fcns': ( table.fcns ) ? copy( table.fcns ) : []</span>
 <span class="cstat-no" title="statement not covered" >	};</span>
 <span class="cstat-no" title="statement not covered" >	if ( this._table.types.length !== this._table.fcns.length ) {</span>
@@ -1798,7 +1738,7 @@ module.exports = UnaryStrided1dDispatchBy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-14T05:22:16.015Z
+                at 2025-09-14T06:35:28.949Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
