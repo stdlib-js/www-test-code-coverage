@@ -530,6 +530,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -619,7 +620,6 @@
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -787,16 +787,17 @@ var isBoolean = require( '@stdlib/assert/is-boolean' ).isPrimitive;
 var isArray = require( '@stdlib/assert/is-array' );
 var isNonNegativeInteger = require( '@stdlib/assert/is-nonnegative-integer' ).isPrimitive;
 var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
-var shape2strides = require( '@stdlib/ndarray/base/shape2strides' );
-var strides2offset = require( '@stdlib/ndarray/base/strides2offset' );
-var strides2order = require( '@stdlib/ndarray/base/strides2order' );
-var numel = require( '@stdlib/ndarray/base/numel' );
-var ndarray = require( '@stdlib/ndarray/ctor' );
+var isEqualDataType = require( '@stdlib/ndarray/base/assert/is-equal-data-type' );
 var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
 var isOrder = require( '@stdlib/ndarray/base/assert/is-order' );
 var isCastingMode = require( '@stdlib/ndarray/base/assert/is-casting-mode' );
 var isAllowedCast = require( '@stdlib/ndarray/base/assert/is-allowed-data-type-cast' );
+var shape2strides = require( '@stdlib/ndarray/base/shape2strides' );
+var strides2offset = require( '@stdlib/ndarray/base/strides2offset' );
+var strides2order = require( '@stdlib/ndarray/base/strides2order' );
+var numel = require( '@stdlib/ndarray/base/numel' );
+var ndarray = require( '@stdlib/ndarray/ctor' );
 var createBuffer = require( '@stdlib/ndarray/base/buffer' );
 var getBufferDType = require( '@stdlib/ndarray/base/buffer-dtype' );
 var getDType = require( '@stdlib/ndarray/dtype' );
@@ -965,9 +966,8 @@ function array() {
 	if ( hasOwnProp( options, 'dtype' ) ) {
 		dtype = options.dtype;
 		if ( !isDataType( dtype ) ) {
-			throw new TypeError( format( 'invalid option. `%s` option must be a recognized data type. Option: `%s`.', 'dtype', dtype ) );
+			throw new TypeError( format( 'invalid option. `%s` option must be a supported data type. Option: `%s`.', 'dtype', dtype ) );
 		}
-		dtype = String( dtype );
 		if ( btype &amp;&amp; !isAllowedCast( btype, dtype, opts.casting ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >			throw new Error( format( 'invalid option. Data type cast is not allowed. Casting mode: `%s`. From: `%s`. To: `%s`.', opts.casting, btype, dtype ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -975,7 +975,7 @@ function array() {
 <span class="cstat-no" title="statement not covered" >		// TODO: reconcile difference in behavior when provided a generic array and no `dtype` option. Currently, we cast here, but do not allow casting a generic array (by default) when explicitly providing a `dtype` option.</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// Only cast generic array data sources when not provided an ndarray...</span>
-<span class="cstat-no" title="statement not covered" >		if ( !FLG &amp;&amp; btype === 'generic' ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( !FLG &amp;&amp; isEqualDataType( btype, 'generic' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			dtype = defaults.dtype;</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
 <span class="cstat-no" title="statement not covered" >			dtype = btype;</span>
@@ -1071,7 +1071,7 @@ function array() {
 <span class="cstat-no" title="statement not covered" >		if ( numel( buffer.shape ) !== len ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new RangeError( 'invalid arguments. Array shape is incompatible with provided data source. Number of data source elements does not match array shape.' );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		if ( btype !== dtype || opts.copy ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isEqualDataType( btype, dtype ) || opts.copy ) {</span>
 <span class="cstat-no" title="statement not covered" >			buffer = copyView( buffer, dtype );</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
 <span class="cstat-no" title="statement not covered" >			strides = getStrides( buffer );</span>
@@ -1083,13 +1083,13 @@ function array() {
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 	} else if ( buffer ) {
-		if ( btype === 'generic' &amp;&amp; opts.flatten &amp;&amp; isArray( buffer ) ) {
+		if ( isEqualDataType( btype, 'generic' ) &amp;&amp; opts.flatten &amp;&amp; isArray( buffer ) ) {
 			buffer = flatten( buffer, osh || arrayShape( buffer ), isColumnMajor( order ) );
 		}
 		if ( buffer.length !== len ) {
 			throw new RangeError( 'invalid arguments. Array shape is incompatible with provided data source. Number of data source elements does not match array shape.' );
 		}
-<span class="branch-0 cbranch-no" title="branch not covered" >		if ( btype !== dtype || opts.copy </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="branch-0 cbranch-no" title="branch not covered" >		if ( !isEqualDataType( btype, dtype ) || opts.copy </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >			buffer = castBuffer( buffer, len, dtype );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 	}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
@@ -1114,7 +1114,7 @@ module.exports = array;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-18T08:59:28.926Z
+                at 2025-09-19T02:13:38.827Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
