@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/pop/lib/main.js</title>
+    <title>Code coverage report for ndarray/base/slice-dimension/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/pop/lib</a> main.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/slice-dimension/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>95/95</span>
+                <span class='fraction'>105/105</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>95/95</span>
+                <span class='fraction'>105/105</span>
             </div>
         
             
@@ -158,7 +158,17 @@
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -225,29 +235,39 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -256,7 +276,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2025 The Stdlib Authors.
+* Copyright (c) 2023 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -275,25 +295,31 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var args2multislice = require( '@stdlib/slice/base/args2multislice' );
 var ndims = require( '@stdlib/ndarray/base/ndims' );
+var slice = require( '@stdlib/ndarray/base/slice' );
 var normalizeIndex = require( '@stdlib/ndarray/base/normalize-index' );
-var getShape = require( '@stdlib/ndarray/base/shape' );
-var sliceFrom = require( '@stdlib/ndarray/base/slice-from' );
-var sliceTo = require( '@stdlib/ndarray/base/slice-to' );
+var nulls = require( '@stdlib/array/base/nulls' );
+var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns an array containing a truncated view of an input ndarray and the last element along a specified dimension.
+* Returns a view of an input ndarray when sliced along a specified dimension.
 *
 * @param {ndarray} x - input array
-* @param {integer} dim - dimension along which to perform the operation
+* @param {integer} dim - index of dimension to slice
+* @param {(Slice|integer)} s - slice object or an integer
 * @param {boolean} strict - boolean indicating whether to enforce strict bounds checking
-* @param {boolean} writable - boolean indicating whether returned arrays should be writable
-* @returns {Array} a list of ndarrays
+* @param {boolean} writable - boolean indicating whether a returned array should be writable
+* @throws {TypeError} first argument must be an ndarray having one or more dimensions
+* @throws {RangeError} dimension index exceeds the number of dimensions
+* @throws {RangeError} slice exceeds array bounds
+* @returns {ndarray} ndarray view
 *
 * @example
+* var Slice = require( '@stdlib/slice/ctor' );
 * var ndarray = require( '@stdlib/ndarray/ctor' );
 * var ndarray2array = require( '@stdlib/ndarray/to-array' );
 *
@@ -311,43 +337,47 @@ var sliceTo = require( '@stdlib/ndarray/base/slice-to' );
 * var arr = ndarray2array( x );
 * // returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
 *
-* var y = pop( x, 0, false, false );
-* // returns [ &lt;ndarray&gt;, &lt;ndarray&gt; ]
+* var s = new Slice( null, null, -1 );
+* // returns &lt;Slice&gt;
 *
-* arr = ndarray2array( y[ 0 ] );
-* // returns [ [ 1.0, 2.0 ], [ 3.0, 4.0 ] ]
+* var y = sliceDimension( x, 0, s, false, false );
+* // returns &lt;ndarray&gt;
 *
-* arr = ndarray2array( y[ 1 ] );
-* // returns [ [ 5.0, 6.0 ] ]
+* sh = y.shape;
+* // returns [ 3, 2 ]
+*
+* arr = ndarray2array( y );
+* // returns [ [ 5.0, 6.0 ], [ 3.0, 4.0 ], [ 1.0, 2.0 ] ]
 */
-function pop( x, dim, strict, writable ) {
-	var v0;
-	var v1;
-	var sh;
+function sliceDimension( x, dim, s, strict, writable ) {
+	var args;
 	var N;
-	var s;
-	var i;
+	var d;
 &nbsp;
 	// Retrieve array meta data:
-	sh = getShape( x );
 	N = ndims( x );
 &nbsp;
-	// Resolve view slice:
-	s = [];
-	for ( i = 0; i &lt; N; i++ ) {
-		s[ i ] = null;
+	// Check whether we were provided a zero-dimensional array...
+	if ( N === 0 ) {
+		throw new TypeError( format( 'invalid argument. First argument must be an ndarray having one or more dimensions. Number of dimensions: %d.', N ) );
 	}
-	dim = normalizeIndex( dim, N -1 );
-	s[ dim ] = sh[ dim ] - 1;
-	v1 = sliceFrom( x, s, strict, writable );
-	v0 = sliceTo( x, s, strict, writable );
-	return [ v0, v1 ];
+	// Normalize the dimension index:
+	d = normalizeIndex( dim, N-1 );
+	if ( d === -1 ) {
+		throw new RangeError( format( 'invalid argument. Dimension index exceeds the number of dimensions. Number of dimensions: %d. Value: `%d`.', N, dim ) );
+	}
+	// Define a list of MultiSlice constructor arguments:
+	args = nulls( N );
+	args[ d ] = s;
+&nbsp;
+	// Return a new array view:
+	return slice( x, args2multislice( args ), strict, writable );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = pop;
+module.exports = sliceDimension;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -355,7 +385,7 @@ module.exports = pop;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-20T10:14:29.304Z
+                at 2025-09-20T10:14:32.390Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
