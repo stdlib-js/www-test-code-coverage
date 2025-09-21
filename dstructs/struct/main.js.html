@@ -1432,6 +1432,25 @@ var layoutFormat = require( './format_layout.js' );
 <span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
+<span class="cstat-no" title="statement not covered" >	* Returns the underlying byte buffer of a `struct`.</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* @private</span>
+<span class="cstat-no" title="statement not covered" >	* @name bufferOf</span>
+<span class="cstat-no" title="statement not covered" >	* @memberof Struct</span>
+<span class="cstat-no" title="statement not covered" >	* @readonly</span>
+<span class="cstat-no" title="statement not covered" >	* @type {Function}</span>
+<span class="cstat-no" title="statement not covered" >	* @param {Object} obj - struct instance</span>
+<span class="cstat-no" title="statement not covered" >	* @throws {TypeError} must provide a `struct` instance</span>
+<span class="cstat-no" title="statement not covered" >	* @returns {ArrayBuffer} underlying byte buffer</span>
+<span class="cstat-no" title="statement not covered" >	*/</span>
+<span class="cstat-no" title="statement not covered" >	setReadOnly( Struct, 'bufferOf', function bufferOf( obj ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( !isStructInstance( obj ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. First argument must be a `struct` instance. Value: `%s`.', obj ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		return obj[ PRIVATE_BUFFER ].buffer;</span>
+<span class="cstat-no" title="statement not covered" >	});</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	/**</span>
 <span class="cstat-no" title="statement not covered" >	* Returns the length, in bytes, of the value specified by the provided field name.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
 <span class="cstat-no" title="statement not covered" >	* @private</span>
@@ -1495,46 +1514,6 @@ var layoutFormat = require( './format_layout.js' );
 <span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
-<span class="cstat-no" title="statement not covered" >	* Returns the type associated with a provided field name.</span>
-<span class="cstat-no" title="statement not covered" >	*</span>
-<span class="cstat-no" title="statement not covered" >	* @private</span>
-<span class="cstat-no" title="statement not covered" >	* @name typeOf</span>
-<span class="cstat-no" title="statement not covered" >	* @memberof Struct</span>
-<span class="cstat-no" title="statement not covered" >	* @readonly</span>
-<span class="cstat-no" title="statement not covered" >	* @type {Function}</span>
-<span class="cstat-no" title="statement not covered" >	* @param {string} name - field name</span>
-<span class="cstat-no" title="statement not covered" >	* @throws {Error} struct must have at least one field</span>
-<span class="cstat-no" title="statement not covered" >	* @throws {TypeError} must provide a recognized field name</span>
-<span class="cstat-no" title="statement not covered" >	* @returns {(string|Object)} type</span>
-<span class="cstat-no" title="statement not covered" >	*/</span>
-<span class="cstat-no" title="statement not covered" >	setReadOnly( Struct, 'typeOf', function typeOf( name ) {</span>
-<span class="cstat-no" title="statement not covered" >		var idx = fieldIndex( FIELD_NAMES, name );</span>
-<span class="cstat-no" title="statement not covered" >		if ( idx instanceof Error ) {</span>
-<span class="cstat-no" title="statement not covered" >			throw idx;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return FIELDS[ idx ].type;</span>
-<span class="cstat-no" title="statement not covered" >	});</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	/**</span>
-<span class="cstat-no" title="statement not covered" >	* Returns the underlying byte buffer of a `struct`.</span>
-<span class="cstat-no" title="statement not covered" >	*</span>
-<span class="cstat-no" title="statement not covered" >	* @private</span>
-<span class="cstat-no" title="statement not covered" >	* @name bufferOf</span>
-<span class="cstat-no" title="statement not covered" >	* @memberof Struct</span>
-<span class="cstat-no" title="statement not covered" >	* @readonly</span>
-<span class="cstat-no" title="statement not covered" >	* @type {Function}</span>
-<span class="cstat-no" title="statement not covered" >	* @param {Object} obj - struct instance</span>
-<span class="cstat-no" title="statement not covered" >	* @throws {TypeError} must provide a `struct` instance</span>
-<span class="cstat-no" title="statement not covered" >	* @returns {ArrayBuffer} underlying byte buffer</span>
-<span class="cstat-no" title="statement not covered" >	*/</span>
-<span class="cstat-no" title="statement not covered" >	setReadOnly( Struct, 'bufferOf', function bufferOf( obj ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( !isStructInstance( obj ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. First argument must be a `struct` instance. Value: `%s`.', obj ) );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return obj[ PRIVATE_BUFFER ].buffer;</span>
-<span class="cstat-no" title="statement not covered" >	});</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	/**</span>
 <span class="cstat-no" title="statement not covered" >	* Returns a boolean indicating whether a provided value is a `struct` instance.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
 <span class="cstat-no" title="statement not covered" >	* @private</span>
@@ -1553,6 +1532,27 @@ var layoutFormat = require( './format_layout.js' );
 <span class="cstat-no" title="statement not covered" >				isStructConstructorLike( value.constructor )</span>
 <span class="cstat-no" title="statement not covered" >			)</span>
 <span class="cstat-no" title="statement not covered" >		);</span>
+<span class="cstat-no" title="statement not covered" >	});</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	/**</span>
+<span class="cstat-no" title="statement not covered" >	* Returns the type associated with a provided field name.</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* @private</span>
+<span class="cstat-no" title="statement not covered" >	* @name typeOf</span>
+<span class="cstat-no" title="statement not covered" >	* @memberof Struct</span>
+<span class="cstat-no" title="statement not covered" >	* @readonly</span>
+<span class="cstat-no" title="statement not covered" >	* @type {Function}</span>
+<span class="cstat-no" title="statement not covered" >	* @param {string} name - field name</span>
+<span class="cstat-no" title="statement not covered" >	* @throws {Error} struct must have at least one field</span>
+<span class="cstat-no" title="statement not covered" >	* @throws {TypeError} must provide a recognized field name</span>
+<span class="cstat-no" title="statement not covered" >	* @returns {(string|Object)} type</span>
+<span class="cstat-no" title="statement not covered" >	*/</span>
+<span class="cstat-no" title="statement not covered" >	setReadOnly( Struct, 'typeOf', function typeOf( name ) {</span>
+<span class="cstat-no" title="statement not covered" >		var idx = fieldIndex( FIELD_NAMES, name );</span>
+<span class="cstat-no" title="statement not covered" >		if ( idx instanceof Error ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw idx;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		return FIELDS[ idx ].type;</span>
 <span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
@@ -1604,7 +1604,7 @@ var layoutFormat = require( './format_layout.js' );
 <span class="cstat-no" title="statement not covered" >		} else {</span>
 <span class="cstat-no" title="statement not covered" >			opts = {};</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return struct2string( this, FIELDS, opts );</span>
+<span class="cstat-no" title="statement not covered" >		return struct2string( Struct, FIELDS, opts );</span>
 <span class="cstat-no" title="statement not covered" >	});</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
@@ -1639,7 +1639,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-24T01:48:07.731Z
+                at 2025-09-21T09:32:27.482Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
