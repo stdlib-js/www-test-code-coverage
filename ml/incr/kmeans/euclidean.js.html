@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ml/incr/kmeans/lib/euclidean.js</title>
+    <title>Code coverage report for euclidean.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ml/incr/kmeans/lib</a> euclidean.js</h1>
+        <h1><a href="index.html">All files</a> euclidean.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">87.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>45/63</span>
+                <span class='fraction'>54/62</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">87.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>45/63</span>
+                <span class='fraction'>54/62</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -125,8 +125,7 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,16 +165,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -192,7 +190,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2025 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -211,7 +209,16 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var sqrt = require( '@stdlib/math/base/special/sqrt' );
+var dnrm2 = require( '@stdlib/blas/base/dnrm2' );
+var dcopy = require( '@stdlib/blas/base/dcopy' );
+var daxpy = require( '@stdlib/blas/base/daxpy' );
+var Float64Array = require( '@stdlib/array/float64' );
+&nbsp;
+&nbsp;
+// VARIABLES //
+&nbsp;
+// to compute X + (-1)*Y
+var ALPHA = -1;
 &nbsp;
 &nbsp;
 // MAIN //
@@ -229,23 +236,13 @@ var sqrt = require( '@stdlib/math/base/special/sqrt' );
 * @param {NonNegativeInteger} offsetY - index offset
 * @returns {number} Euclidean distance
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function euclidean( N, X, strideX, offsetX, Y, strideY, offsetY ) { // TODO: remove and use BLAS implementation</span></span>
-<span class="cstat-no" title="statement not covered" >	var xi;</span>
-<span class="cstat-no" title="statement not covered" >	var yi;</span>
-<span class="cstat-no" title="statement not covered" >	var d;</span>
-<span class="cstat-no" title="statement not covered" >	var s;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function euclidean( N, X, strideX, offsetX, Y, strideY, offsetY ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var diff;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	xi = offsetX;</span>
-<span class="cstat-no" title="statement not covered" >	yi = offsetY;</span>
-<span class="cstat-no" title="statement not covered" >	s = 0.0;</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; N; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		d = X[ xi ] - Y[ yi ];</span>
-<span class="cstat-no" title="statement not covered" >		s += d * d;</span>
-<span class="cstat-no" title="statement not covered" >		xi += strideX;</span>
-<span class="cstat-no" title="statement not covered" >		yi += strideY;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return sqrt( s );</span>
+<span class="cstat-no" title="statement not covered" >	diff = new Float64Array( N );</span>
+<span class="cstat-no" title="statement not covered" >	dcopy.ndarray( N, X, strideX, offsetX, diff, 1, 0 ); // Magic number `0` for offset since `diff` is contiguous</span>
+<span class="cstat-no" title="statement not covered" >	daxpy.ndarray( N, ALPHA, Y, strideY, offsetY, diff, 1, 0 );</span>
+<span class="cstat-no" title="statement not covered" >	return dnrm2( N, diff, 1 );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -259,16 +256,16 @@ module.exports = euclidean;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-09T01:31:58.585Z
+                at 2025-11-14T06:30:29.045Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     
