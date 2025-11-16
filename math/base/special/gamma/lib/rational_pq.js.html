@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for lib/rational_pq.js</title>
+    <title>Code coverage report for gamma/lib/rational_pq.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../prettify.css" />
-    <link rel="stylesheet" href="../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">lib</a> rational_pq.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">gamma/lib</a> rational_pq.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.06% </span>
+                <span class="strong">65.62% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/64</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>2/5</span>
+                <span class='fraction'>42/64</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
+                <span class="quiet">Branches</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.06% </span>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">65.62% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/64</span>
+                <span class='fraction'>42/64</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -164,28 +164,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">194x</span>
-<span class="cline-any cline-yes">194x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -228,28 +228,28 @@
 * @param {number} x - value at which to evaluate the rational function
 * @returns {number} evaluated rational function
 */
-function evalrational( x ) {
-	var ax;
-	var s1;
-	var s2;
-	if ( x === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function evalrational( x ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var ax;</span>
+<span class="cstat-no" title="statement not covered" >	var s1;</span>
+<span class="cstat-no" title="statement not covered" >	var s2;</span>
+<span class="cstat-no" title="statement not covered" >	if ( x === 0.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return 1.0;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	if ( x &lt; 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >	if ( x &lt; 0.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		ax = -x;</span>
-	} else {
-		ax = x;
-	}
-	if ( ax &lt;= 1.0 ) {
-		s1 = 1.0 + (x * (0.4942148268014971 + (x * (0.20744822764843598 + (x * (0.04763678004571372 + (x * (0.010421379756176158 + (x * (0.0011913514700658638 + (x * (0.00016011952247675185 + (x * 0.0))))))))))))); // eslint-disable-line max-len
-		s2 = 1.0 + (x * (0.0714304917030273 + (x * (-0.23459179571824335 + (x * (0.035823639860549865 + (x * (0.011813978522206043 + (x * (-0.004456419138517973 + (x * (0.0005396055804933034 + (x * -0.000023158187332412014))))))))))))); // eslint-disable-line max-len
-	}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		ax = x;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	if ( ax &lt;= 1.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		s1 = 1.0 + (x * (0.4942148268014971 + (x * (0.20744822764843598 + (x * (0.04763678004571372 + (x * (0.010421379756176158 + (x * (0.0011913514700658638 + (x * (0.00016011952247675185 + (x * 0.0))))))))))))); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >		s2 = 1.0 + (x * (0.0714304917030273 + (x * (-0.23459179571824335 + (x * (0.035823639860549865 + (x * (0.011813978522206043 + (x * (-0.004456419138517973 + (x * (0.0005396055804933034 + (x * -0.000023158187332412014))))))))))))); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		x = 1.0 / x;</span>
 <span class="cstat-no" title="statement not covered" >		s1 = 0.0 + (x * (0.00016011952247675185 + (x * (0.0011913514700658638 + (x * (0.010421379756176158 + (x * (0.04763678004571372 + (x * (0.20744822764843598 + (x * (0.4942148268014971 + (x * 1.0))))))))))))); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		s2 = -0.000023158187332412014 + (x * (0.0005396055804933034 + (x * (-0.004456419138517973 + (x * (0.011813978522206043 + (x * (0.035823639860549865 + (x * (-0.23459179571824335 + (x * (0.0714304917030273 + (x * 1.0))))))))))))); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	return s1 / s2;
-}
+<span class="cstat-no" title="statement not covered" >	return s1 / s2;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -262,16 +262,16 @@ module.exports = evalrational;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-08T22:15:22.692Z
+                at 2025-11-16T01:31:17.984Z
             </div>
-        <script src="../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../sorter.js"></script>
-        <script src="../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
