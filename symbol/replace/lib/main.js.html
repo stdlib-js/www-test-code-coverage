@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for is-concat-spreadable/lib/main.js</title>
+    <title>Code coverage report for replace/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">is-concat-spreadable/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">replace/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>48/48</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>48/48</span>
             </div>
         
             
@@ -111,11 +111,7 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -185,34 +181,32 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var hasIsConcatSpreadableSymbolSupport = require( '@stdlib/assert/has-is-concat-spreadable-symbol-support' ); // eslint-disable-line id-length
+var hasReplaceSymbolSupport = require( '@stdlib/assert/has-replace-symbol-support' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Concat spreadable symbol.
+* Replace symbol.
 *
-* @name IsConcatSpreadableSymbol
+* @name ReplaceSymbol
 * @constant
 * @type {(symbol|null)}
 *
 * @example
-* var x = {
-*     'length': 3,
-*     '0': 1,
-*     '1': 2,
-*     '2': 3
-* };
+* function replace( str, replacement ) {
+*     return replacement;
+* }
 *
-* x[ IsConcatSpreadableSymbol ] = true;
+* var obj = {};
+* obj[ ReplaceSymbol ] = replace;
 */
-var IsConcatSpreadableSymbol = ( hasIsConcatSpreadableSymbolSupport() ) ? Symbol.isConcatSpreadable <span class="branch-0 cbranch-no" title="branch not covered" >: null;</span> // eslint-disable-line max-len
+var ReplaceSymbol = ( hasReplaceSymbolSupport() ) ? Symbol.replace <span class="branch-0 cbranch-no" title="branch not covered" >: null;</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = IsConcatSpreadableSymbol;
+module.exports = ReplaceSymbol;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
