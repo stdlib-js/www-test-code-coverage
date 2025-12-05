@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.3% </span>
+                <span class="strong">97.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>142/143</span>
+                <span class='fraction'>137/141</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>26/28</span>
+                <span class='fraction'>24/27</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.3% </span>
+                <span class="strong">97.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>142/143</span>
+                <span class='fraction'>137/141</span>
             </div>
         
             
@@ -204,9 +204,7 @@
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
 <a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L142'></a><a href='#L142'>142</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -300,11 +298,11 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">17x</span>
@@ -312,7 +310,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">18x</span>
@@ -329,7 +326,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">32x</span>
@@ -374,7 +370,7 @@
 var broadcastScalar = require( '@stdlib/ndarray/base/broadcast-scalar' );
 var concat = require( '@stdlib/ndarray/concat' );
 var ndims = require( '@stdlib/ndarray/base/ndims' );
-var isArray = require( '@stdlib/assert/is-array' );
+var isArrayLikeObject = require( '@stdlib/assert/is-array-like-object' );
 var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
 var broadcastArray = require( '@stdlib/ndarray/broadcast-array' );
 var format = require( '@stdlib/string/format' );
@@ -442,18 +438,17 @@ function assign() {
 		}
 	}
 	if ( nargs === 2 ) {
-		if ( isArray( arguments[ 0 ] ) ) {
+		if ( isArrayLikeObject( arguments[ 0 ] ) ) {
 			args = arguments[ 0 ];
-		} else {
-			args = [];
-			args.push( arguments[ 0 ] );
-		}
+		}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
+<span class="cstat-no" title="statement not covered" >			args = [];</span>
+<span class="cstat-no" title="statement not covered" >			args.push( arguments[ 0 ] );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
 	}
 	out = arguments[ nargs - 1 ];
 	if ( !isndarrayLike( out ) || ndims( out ) !== 1 ) {
 		throw new Error( format( 'invalid argument. Output argument must be a one-dimensional ndarray. Value: `%s`.', out ) );
 	}
-&nbsp;
 	// Resolve the `dtype` and `order` of input ndarrays:
 	arrs = [];
 	for ( i = 0; i &lt; args.length; i++ ) {
@@ -472,7 +467,6 @@ function assign() {
 		dt = DEFAULT_DTYPE;
 		ord = DEFAULT_ORDER;
 	}
-&nbsp;
 	// Broadcast scalar or 0d ndarray inputs:
 	for ( i = 0; i &lt; args.length; i++ ) {
 		if ( isndarrayLike( args[ i ] ) ) {
@@ -499,7 +493,7 @@ module.exports = assign;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-05T12:02:48.837Z
+                at 2025-12-05T12:04:18.361Z
             </div>
         <script src="prettify.js"></script>
         <script>
