@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>67/67</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>67/67</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -125,12 +125,7 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -179,19 +174,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -200,7 +190,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2025 The Stdlib Authors.
+* Copyright (c) 2024 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -219,51 +209,46 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isAlmostEqualF32 = require( '@stdlib/number/float32/base/assert/is-almost-equal' );
+var isSame = require( '@stdlib/number/float32/base/assert/is-same-value-zero' );
 var reimf = require( '@stdlib/complex/float32/reim' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Tests whether two single-precision complex floating-point numbers are approximately equal within a specified number of ULPs (units in the last place).
+* Tests whether two single-precision complex floating-point numbers are the same value.
 *
 * ## Notes
 *
-* -   The function returns `false` if either input value has a `NaN` real or imaginary component.
-* -   The function does not distinguish between `-0` and `+0`, treating them as equal.
+* -   The function implements the SameValueZero Algorithm used by `TypedArray` and `ArrayBuffer` constructors, `Map` and `Set` operations, `String.prototype.includes`, and `Array.prototype.includes` since ES2016.
+* -   In contrast to the strict equality operator `===`, `NaNs` are considered the same value.
 *
 * @param {Complex64} z1 - first complex number
 * @param {Complex64} z2 - second complex number
-* @param {number} maxULP - maximum allowed ULP difference
-* @returns {boolean} boolean indicating whether two single-precision complex floating-point numbers are approximately equal within a specified number of ULPs
+* @returns {boolean} result
 *
 * @example
-* var EPS = require( '@stdlib/constants/float32/eps' );
 * var Complex64 = require( '@stdlib/complex/float32/ctor' );
 *
-* var z1 = new Complex64( 1.0, 3.0 );
-* var z2 = new Complex64( 1.0+EPS, 3.0 );
+* var z1 = new Complex64( 5.0, 3.0 );
+* var z2 = new Complex64( 5.0, 3.0 );
 *
-* var bool = isAlmostEqual( z1, z2, 0 );
-* // returns false
-*
-* bool = isAlmostEqual( z1, z2, 1 );
+* var v = isSameValueZero( z1, z2 );
 * // returns true
 */
-function isAlmostEqual( z1, z2, maxULP ) {
+function isSameValueZero( z1, z2 ) {
 	var parts1 = reimf( z1 );
 	var parts2 = reimf( z2 );
 	return (
-		isAlmostEqualF32( parts1[ 0 ], parts2[ 0 ], maxULP ) &amp;&amp;
-		isAlmostEqualF32( parts1[ 1 ], parts2[ 1 ], maxULP )
+		isSame( parts1[ 0 ], parts2[ 0 ] ) &amp;&amp;
+		isSame( parts1[ 1 ], parts2[ 1 ] )
 	);
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = isAlmostEqual;
+module.exports = isSameValueZero;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -271,7 +256,7 @@ module.exports = isAlmostEqual;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-18T00:20:00.216Z
+                at 2025-12-18T00:20:06.057Z
             </div>
         <script src="prettify.js"></script>
         <script>
