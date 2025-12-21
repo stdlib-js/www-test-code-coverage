@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>72/72</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>72/72</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -131,11 +131,7 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -185,23 +181,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -234,44 +226,40 @@ var strided = require( '@stdlib/blas/ext/base/sapx' ).ndarray;
 var getStride = require( '@stdlib/ndarray/base/stride' );
 var getOffset = require( '@stdlib/ndarray/base/offset' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
+var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Adds a scalar constant to each element in a single-precision floating-point ndarray.
+* Adds a scalar constant to each element in a one-dimensional single-precision floating-point ndarray.
 *
-* @param {float32ndarray} x - input ndarray
-* @param {number} alpha - scalar constant
-* @returns {float32ndarray} input ndarray
+* @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing a one-dimensional input ndarray and a zero-dimensional ndarray containing a scalar constant
+* @returns {ndarray} input ndarray
 *
 * @example
 * var Float32Array = require( '@stdlib/array/float32' );
 * var ndarray = require( '@stdlib/ndarray/ctor' );
+* var scalar2ndarray = require( '@stdlib/ndarray/from-scalar' );
+* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 *
 * var xbuf = new Float32Array( [ 1.0, 2.0, 3.0, 4.0 ] );
 * var x = new ndarray( 'float32', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
 *
-* sapx( x, 5.0 );
+* var alpha = scalar2ndarray( 5.0, {
+*     'dtype': 'float32'
+* });
 *
-* var y = x.data;
-* // returns &lt;Float32Array&gt;[ 6.0, 7.0, 8.0, 9.0 ]
+* var out = sapx( [ x, alpha ] );
+* // returns &lt;ndarray&gt;
+*
+* var arr = ndarray2array( out );
+* // returns [ 6.0, 7.0, 8.0, 9.0 ]
 */
-function sapx( x, alpha ) {
-	var buf;
-	var sx;
-	var ox;
-	var N;
+function sapx( arrays ) {
+	var x = arrays[ 0 ];
 &nbsp;
-	N = numelDimension( x, 0 );
-	if ( N &lt;= 0 ) {
-		return x;
-	}
-	buf = getData( x );
-	sx = getStride( x, 0 );
-	ox = getOffset( x );
-&nbsp;
-	strided( N, alpha, buf, sx, ox );
+	strided( numelDimension( x, 0 ), ndarraylike2scalar( arrays[ 1 ] ), getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
 	return x;
 }
 &nbsp;
@@ -286,7 +274,7 @@ module.exports = sapx;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-19T12:49:57.653Z
+                at 2025-12-21T05:06:15.535Z
             </div>
         <script src="prettify.js"></script>
         <script>
