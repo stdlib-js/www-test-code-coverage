@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.17% </span>
+                <span class="strong">98.24% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2470/2516</span>
+                <span class='fraction'>2468/2512</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.51% </span>
+                <span class="strong">97.73% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>432/443</span>
+                <span class='fraction'>432/442</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.17% </span>
+                <span class="strong">98.24% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2470/2516</span>
+                <span class='fraction'>2468/2512</span>
             </div>
         
             
@@ -2575,11 +2575,7 @@
 <a name='L2510'></a><a href='#L2510'>2510</a>
 <a name='L2511'></a><a href='#L2511'>2511</a>
 <a name='L2512'></a><a href='#L2512'>2512</a>
-<a name='L2513'></a><a href='#L2513'>2513</a>
-<a name='L2514'></a><a href='#L2514'>2514</a>
-<a name='L2515'></a><a href='#L2515'>2515</a>
-<a name='L2516'></a><a href='#L2516'>2516</a>
-<a name='L2517'></a><a href='#L2517'>2517</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">51x</span>
+<a name='L2513'></a><a href='#L2513'>2513</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
@@ -2785,10 +2781,6 @@
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">9x</span>
@@ -3053,7 +3045,7 @@
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">51x</span>
@@ -5137,7 +5129,7 @@ var format = require( '@stdlib/string/format' );
 var Uint16Array = require( '@stdlib/array/uint16' );
 var Float64Array = require( '@stdlib/array/float64' );
 var isnan = require( '@stdlib/assert/is-nan' );
-var float64ToFloat16 = require( '@stdlib/number/float64/base/to-float16' );
+var f16 = require( '@stdlib/number/float64/base/to-float16' );
 var toWord = require( '@stdlib/number/float16/base/to-word' );
 var fromWord = require( '@stdlib/number/float16/base/from-word' );
 var getter = require( '@stdlib/array/base/getter' );
@@ -5179,7 +5171,7 @@ function isFloat16Array( value ) {
 * @param {*} value - value to test
 * @returns {boolean} boolean indicating if a value is a floating-point typed array constructor
 */
-function isFloatingPointArrayConstructor( value ) {
+function isFloatingPointArrayConstructor( value ) { // eslint-disable-line id-length
 	return ( value === Float16Array );
 }
 &nbsp;
@@ -5281,7 +5273,7 @@ function Float16Array() {
 			buf = new Uint16Array( arg );
 		} else if ( isCollection( arg ) ) {
 			if ( isFloat16Array( arg ) ) {
-				buf = new Uint16Array( arg._buffer ); // eslint-disable-line no-underscore-dangle
+				buf = new Uint16Array( arg.buffer );
 			} else {
 				buf = fromArray( new Uint16Array( arg.length ), arg );
 			}
@@ -5301,11 +5293,7 @@ function Float16Array() {
 			if ( !isFunction( buf.next ) ) {
 				throw new TypeError( format( 'invalid argument. Must provide a length, ArrayBuffer, typed array, array-like object, or an iterable. Value: `%s`.', arg ) );
 			}
-			buf = fromIterator( buf );
-			if ( buf instanceof Error ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >				throw buf;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-			buf = new Uint16Array( buf );
+			buf = new Uint16Array( fromIterator( buf ) );
 		} else {
 			throw new TypeError( format( 'invalid argument. Must provide a length, ArrayBuffer, typed array, array-like object, or an iterable. Value: `%s`.', arg ) );
 		}
@@ -5444,7 +5432,7 @@ setReadOnly( Float16Array, 'from', function from( src ) {
 			out = new this( len );
 			buf = out._buffer; // eslint-disable-line no-underscore-dangle
 			for ( i = 0; i &lt; len; i++ ) {
-				buf[ i ] = toWord( float64ToFloat16( clbk.call( thisArg, get( src, i ), i ) ) ); // eslint-disable-line max-len
+				buf[ i ] = toWord( f16( clbk.call( thisArg, get( src, i ), i ) ) ); // eslint-disable-line max-len
 			}
 			return out;
 		}
@@ -7618,7 +7606,7 @@ module.exports = Float16Array;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-19T13:49:26.907Z
+                at 2025-12-22T08:56:43.999Z
             </div>
         <script src="prettify.js"></script>
         <script>
