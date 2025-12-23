@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="index.html">All files</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>76/76</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>76/76</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -131,15 +131,7 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -199,14 +191,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5007x</span>
-<span class="cline-any cline-yes">5007x</span>
-<span class="cline-any cline-yes">5007x</span>
-<span class="cline-any cline-yes">5007x</span>
-<span class="cline-any cline-yes">5007x</span>
-<span class="cline-any cline-yes">5007x</span>
-<span class="cline-any cline-yes">5007x</span>
 <span class="cline-any cline-yes">5007x</span>
 <span class="cline-any cline-yes">5007x</span>
 <span class="cline-any cline-yes">5007x</span>
@@ -237,9 +221,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var getWord = require( '@stdlib/number/float16/base/to-word' );
-var BIAS = require( '@stdlib/constants/float16/exponent-bias' );
-var FLOAT16_EXPONENT_MASK = require( '@stdlib/constants/float16/exponent-mask' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -247,6 +229,7 @@ var FLOAT16_EXPONENT_MASK = require( '@stdlib/constants/float16/exponent-mask' )
 /**
 * Returns an integer corresponding to the unbiased exponent of a half-precision floating-point number.
 *
+* @private
 * @param {number} x - half-precision floating-point number
 * @returns {integer8} unbiased exponent
 *
@@ -277,14 +260,7 @@ var FLOAT16_EXPONENT_MASK = require( '@stdlib/constants/float16/exponent-mask' )
 * // returns 16
 */
 function exponent( x ) {
-	// Convert `x` to an unsigned 16-bit integer corresponding to the IEEE 754 binary representation:
-	var w = getWord( x );
-&nbsp;
-	// Apply a mask to isolate only the exponent bits and then shift off all bits which are part of the fraction:
-	w = ( w &amp; FLOAT16_EXPONENT_MASK ) &gt;&gt;&gt; 10;
-&nbsp;
-	// Remove the bias and return:
-	return w - BIAS;
+	return addon( x );
 }
 &nbsp;
 &nbsp;
