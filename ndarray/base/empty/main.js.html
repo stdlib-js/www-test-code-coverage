@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/empty/lib/main.js</title>
+    <title>Code coverage report for main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/empty/lib</a> main.js</h1>
+        <h1><a href="index.html">All files</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>78/78</span>
+                <span class='fraction'>86/86</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>78/78</span>
+                <span class='fraction'>86/86</span>
             </div>
         
             
@@ -141,7 +141,15 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -192,6 +200,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">46x</span>
@@ -207,11 +220,14 @@
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -243,6 +259,7 @@
 &nbsp;
 var shape2strides = require( '@stdlib/ndarray/base/shape2strides' );
 var strides2offset = require( '@stdlib/ndarray/base/strides2offset' );
+var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var ndarray = require( '@stdlib/ndarray/base/ctor' );
 var numel = require( '@stdlib/ndarray/base/numel' );
 var emptyArray = require( '@stdlib/array/empty' );
@@ -254,20 +271,23 @@ var allocUnsafe = require( '@stdlib/buffer/alloc-unsafe' );
 /**
 * Creates an uninitialized ndarray having a specified shape and data type.
 *
-* @param {string} dtype - data type
+* @param {*} dtype - data type
 * @param {NonNegativeIntegerArray} shape - array shape
 * @param {string} order - array order
 * @throws {TypeError} first argument must be a recognized data type
 * @returns {ndarray} ndarray
 *
 * @example
+* var getShape = require( '@stdlib/ndarray/shape' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+*
 * var arr = empty( 'float32', [ 2, 2 ], 'row-major' );
 * // returns &lt;ndarray&gt;
 *
-* var sh = arr.shape;
+* var sh = getShape( arr );
 * // returns [ 2, 2 ]
 *
-* var dt = arr.dtype;
+* var dt = String( getDType( arr ) );
 * // returns 'float32'
 */
 function empty( dtype, shape, order ) {
@@ -275,6 +295,7 @@ function empty( dtype, shape, order ) {
 	var buf;
 	var len;
 	var st;
+	var dt;
 &nbsp;
 	ndims = shape.length;
 	if ( ndims &gt; 0 ) {
@@ -285,11 +306,14 @@ function empty( dtype, shape, order ) {
 		len = 1;
 		st = [ 0 ];
 	}
-	if ( dtype === 'binary' ) {
+	dt = resolveStr( dtype );
+	if ( dt === 'binary' ) {
 		buf = allocUnsafe( len );
 	} else {
-		buf = emptyArray( len, dtype );
+		buf = emptyArray( len, dt );
 	}
+	// FIXME: add support for struct dtypes. Will need to do something similar to `array/empty` in so far as allocating an uninitialized array buffer, performing byte alignment, and creating a StructArray view atop the buffer.
+&nbsp;
 	return new ndarray( dtype, buf, shape, st, strides2offset( shape, st ), order ); // eslint-disable-line max-len
 }
 &nbsp;
@@ -304,16 +328,16 @@ module.exports = empty;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-13T23:30:37.733Z
+                at 2025-12-29T20:35:33.192Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     
