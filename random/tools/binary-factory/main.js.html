@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.59% </span>
+                <span class="strong">36.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>116/317</span>
+                <span class='fraction'>118/325</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.59% </span>
+                <span class="strong">36.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>116/317</span>
+                <span class='fraction'>118/325</span>
             </div>
         
             
@@ -380,7 +380,15 @@
 <a name='L315'></a><a href='#L315'>315</a>
 <a name='L316'></a><a href='#L316'>316</a>
 <a name='L317'></a><a href='#L317'>317</a>
-<a name='L318'></a><a href='#L318'>318</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L318'></a><a href='#L318'>318</a>
+<a name='L319'></a><a href='#L319'>319</a>
+<a name='L320'></a><a href='#L320'>320</a>
+<a name='L321'></a><a href='#L321'>321</a>
+<a name='L322'></a><a href='#L322'>322</a>
+<a name='L323'></a><a href='#L323'>323</a>
+<a name='L324'></a><a href='#L324'>324</a>
+<a name='L325'></a><a href='#L325'>325</a>
+<a name='L326'></a><a href='#L326'>326</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -491,6 +499,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -732,6 +748,8 @@ var isOutputDataTypePolicy = require( '@stdlib/ndarray/base/assert/is-output-dat
 var isOrder = require( '@stdlib/ndarray/base/assert/is-order' );
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var everyBy = require( '@stdlib/array/base/every-by' );
+var copy = require( '@stdlib/array/base/copy' );
+var dtypes2strings = require( '@stdlib/ndarray/base/dtypes2strings' );
 var constantFunction = require( '@stdlib/utils/constant-function' );
 var noop = require( '@stdlib/utils/noop' );
 var Random = require( '@stdlib/random/tools/binary' );
@@ -745,8 +763,8 @@ var format = require( '@stdlib/string/format' );
 *
 * @param {Function} prng - binary pseudorandom value generator
 * @param {Function} prng.factory - method which returns a new binary pseudorandom value generator
-* @param {ArrayLikeObject&lt;StringArray&gt;} idtypes - list containing a list of supported input data types for each PRNG parameter
-* @param {StringArray} odtypes - list of supported output data types
+* @param {ArrayLikeObject&lt;ArrayLikeObject&gt;} idtypes - list containing a list of supported input data types for each PRNG parameter
+* @param {ArrayLikeObject} odtypes - list of supported output data types
 * @param {Object} policies - policies
 * @param {string} policies.output - output data type policy
 * @param {Object} options - options
@@ -810,6 +828,7 @@ var format = require( '@stdlib/string/format' );
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function createFactory( prng, idtypes, odtypes, policies, options ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var OPTIONS;</span>
+<span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isFunction( prng ) ) {</span>
@@ -821,14 +840,17 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	if ( !isCollection( idtypes ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an array-like object. Value: `%s`.', idtypes ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	idtypes = copy( idtypes );</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; idtypes.length; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >		dt = idtypes[ i ];</span>
 <span class="cstat-no" title="statement not covered" >		if (</span>
-<span class="cstat-no" title="statement not covered" >			!isCollection( idtypes[ i ] ) ||</span>
-<span class="cstat-no" title="statement not covered" >			idtypes[ i ].length &lt; 1 ||</span>
-<span class="cstat-no" title="statement not covered" >			!everyBy( idtypes[ i ], isDataType )</span>
+<span class="cstat-no" title="statement not covered" >			!isCollection( dt ) ||</span>
+<span class="cstat-no" title="statement not covered" >			dt.length &lt; 1 ||</span>
+<span class="cstat-no" title="statement not covered" >			!everyBy( dt, isDataType )</span>
 <span class="cstat-no" title="statement not covered" >		) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Second argument must contain arrays of data types. Value: `%s`.', idtypes ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		idtypes[ i ] = dtypes2strings( dt );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if (</span>
 <span class="cstat-no" title="statement not covered" >		!isCollection( odtypes ) ||</span>
@@ -837,6 +859,8 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Third argument must be an array of data types. Value: `%s`.', odtypes ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	odtypes = dtypes2strings( odtypes );</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isObject( policies ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Fourth argument must be an object. Value: `%s`.', policies ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -912,7 +936,7 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param1 - first PRNG parameter</span>
 <span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param2 - second PRNG parameter</span>
 <span class="cstat-no" title="statement not covered" >		* @param {Options} [options] - function options</span>
-<span class="cstat-no" title="statement not covered" >		* @param {string} [options.dtype] - output data type</span>
+<span class="cstat-no" title="statement not covered" >		* @param {*} [options.dtype] - output data type</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} [options.order] - memory layout (either row-major or column-major)</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} [options.mode] - specifies how to handle indices which exceed ndarray dimensions</span>
 <span class="cstat-no" title="statement not covered" >		* @param {StringArray} [options.submode] - specifies how to handle subscripts which exceed ndarray dimensions on a per dimension basis</span>
@@ -1021,7 +1045,7 @@ module.exports = createFactory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-28T02:14:40.308Z
+                at 2025-12-29T10:01:58.326Z
             </div>
         <script src="prettify.js"></script>
         <script>

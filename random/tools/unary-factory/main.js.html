@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.54% </span>
+                <span class="strong">37.26% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>116/309</span>
+                <span class='fraction'>117/314</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.54% </span>
+                <span class="strong">37.26% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>116/309</span>
+                <span class='fraction'>117/314</span>
             </div>
         
             
@@ -372,7 +372,12 @@
 <a name='L307'></a><a href='#L307'>307</a>
 <a name='L308'></a><a href='#L308'>308</a>
 <a name='L309'></a><a href='#L309'>309</a>
-<a name='L310'></a><a href='#L310'>310</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L310'></a><a href='#L310'>310</a>
+<a name='L311'></a><a href='#L311'>311</a>
+<a name='L312'></a><a href='#L312'>312</a>
+<a name='L313'></a><a href='#L313'>313</a>
+<a name='L314'></a><a href='#L314'>314</a>
+<a name='L315'></a><a href='#L315'>315</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -483,6 +488,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -716,6 +726,7 @@ var isOutputDataTypePolicy = require( '@stdlib/ndarray/base/assert/is-output-dat
 var isOrder = require( '@stdlib/ndarray/base/assert/is-order' );
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var everyBy = require( '@stdlib/array/base/every-by' );
+var dtypes2strings = require( '@stdlib/ndarray/base/dtypes2strings' );
 var constantFunction = require( '@stdlib/utils/constant-function' );
 var noop = require( '@stdlib/utils/noop' );
 var Random = require( '@stdlib/random/tools/unary' );
@@ -729,8 +740,8 @@ var format = require( '@stdlib/string/format' );
 *
 * @param {Function} prng - unary pseudorandom value generator
 * @param {Function} prng.factory - method which returns a new unary pseudorandom value generator
-* @param {StringArray} idtypes - list of supported input data types
-* @param {StringArray} odtypes - list of supported output data types
+* @param {ArrayLikeObject} idtypes - list of supported input data types
+* @param {ArrayLikeObject} odtypes - list of supported output data types
 * @param {Object} policies - policies
 * @param {string} policies.output - output data type policy
 * @param {Object} options - options
@@ -808,6 +819,8 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an array of data types. Value: `%s`.', idtypes ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	idtypes = dtypes2strings( idtypes );</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if (</span>
 <span class="cstat-no" title="statement not covered" >		!isCollection( odtypes ) ||</span>
 <span class="cstat-no" title="statement not covered" >		odtypes.length &lt; 1 ||</span>
@@ -815,6 +828,8 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Third argument must be an array of data types. Value: `%s`.', odtypes ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	odtypes = dtypes2strings( odtypes );</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isObject( policies ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Fourth argument must be an object. Value: `%s`.', policies ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -889,10 +904,10 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >		* @param {NonNegativeIntegerArray} shape - output ndarray shape</span>
 <span class="cstat-no" title="statement not covered" >		* @param {(ndarrayLike|*)} param1 - PRNG parameter</span>
 <span class="cstat-no" title="statement not covered" >		* @param {Options} [options] - function options</span>
-<span class="cstat-no" title="statement not covered" >		* @param {string} [options.dtype] - output data type</span>
+<span class="cstat-no" title="statement not covered" >		* @param {*} [options.dtype] - output data type</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} [options.order] - memory layout (either row-major or column-major)</span>
 <span class="cstat-no" title="statement not covered" >		* @param {string} [options.mode] - specifies how to handle indices which exceed ndarray dimensions</span>
-<span class="cstat-no" title="statement not covered" >		* @param {StringArray} [options.submode] - specifies how to handle subscripts which exceed ndarray dimensions on a per dimension basis</span>
+<span class="cstat-no" title="statement not covered" >		* @param {ArrayLikeObject&lt;string&gt;} [options.submode] - specifies how to handle subscripts which exceed ndarray dimensions on a per dimension basis</span>
 <span class="cstat-no" title="statement not covered" >		* @param {boolean} [options.readonly] - boolean indicating whether an ndarray should be read-only</span>
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} first argument must be a valid shape</span>
 <span class="cstat-no" title="statement not covered" >		* @throws {TypeError} must provide valid PRNG parameters</span>
@@ -997,7 +1012,7 @@ module.exports = createFactory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-28T02:14:45.023Z
+                at 2025-12-29T10:02:03.104Z
             </div>
         <script src="prettify.js"></script>
         <script>
