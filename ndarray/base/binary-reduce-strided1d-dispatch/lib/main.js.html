@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.57% </span>
+                <span class="strong">41.65% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>238/559</span>
+                <span class='fraction'>232/557</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.57% </span>
+                <span class="strong">41.65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>238/559</span>
+                <span class='fraction'>232/557</span>
             </div>
         
             
@@ -620,9 +620,7 @@
 <a name='L555'></a><a href='#L555'>555</a>
 <a name='L556'></a><a href='#L556'>556</a>
 <a name='L557'></a><a href='#L557'>557</a>
-<a name='L558'></a><a href='#L558'>558</a>
-<a name='L559'></a><a href='#L559'>559</a>
-<a name='L560'></a><a href='#L560'>560</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L558'></a><a href='#L558'>558</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -804,9 +802,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -991,9 +990,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1216,11 +1212,14 @@ var isFunctionArray = require( '@stdlib/assert/is-function-array' );
 var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
 var isOutputDataTypePolicy = require( '@stdlib/ndarray/base/assert/is-output-data-type-policy' );
 var isInputCastingPolicy = require( '@stdlib/ndarray/base/assert/is-input-casting-policy' );
+var isEqualDataType = require( '@stdlib/ndarray/base/assert/is-equal-data-type' );
 var contains = require( '@stdlib/array/base/assert/contains' );
 var binaryReduceStrided1d = require( '@stdlib/ndarray/base/binary-reduce-strided1d' );
 var binaryOutputDataType = require( '@stdlib/ndarray/base/binary-output-dtype' );
 var binaryInputCastingDataType = require( '@stdlib/ndarray/base/binary-input-casting-dtype' );
 var dtypes2enums = require( '@stdlib/ndarray/base/dtypes2enums' );
+var dtypes2strings = require( '@stdlib/ndarray/base/dtypes2strings' );
+var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var spreadDimensions = require( '@stdlib/ndarray/base/spread-dimensions' );
 var getShape = require( '@stdlib/ndarray/shape' ); // note: non-base accessor is intentional due to input ndarrays originating in userland
 var ndims = require( '@stdlib/ndarray/ndims' );
@@ -1257,10 +1256,10 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 * @constructor
 * @param {Object} table - dispatch table
 * @param {Function} table.default - default strided reduction function
-* @param {StringArray} [table.types=[]] - one-dimensional list of ndarray data types describing specialized input ndarray argument signatures
+* @param {ArrayLikeObject} [table.types=[]] - one-dimensional list of ndarray data types describing specialized input ndarray argument signatures
 * @param {ArrayLikeObject&lt;Function&gt;} [table.fcns=[]] - list of strided reduction functions which are specific to specialized input ndarray argument signatures
-* @param {ArrayLikeObject&lt;StringArray&gt;} idtypes - list containing lists of supported input data types for each input ndarray argument
-* @param {StringArray} odtypes - list of supported output data types
+* @param {ArrayLikeObject&lt;ArrayLikeObject&gt;} idtypes - list containing lists of supported input data types for each input ndarray argument
+* @param {ArrayLikeObject} odtypes - list of supported output data types
 * @param {Object} policies - policies
 * @param {string} policies.output - output data type policy
 * @param {string} policies.casting - input ndarray casting policy
@@ -1295,10 +1294,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 * var y = new ndarray( 'generic', ybuf, [ ybuf.length ], [ 1 ], 0, 'row-major' );
 *
 * var z = dot.apply( x, y );
-* // returns &lt;ndarray&gt;
-*
-* var v = z.get();
-* // returns -5.0
+* // returns &lt;ndarray&gt;[ -5.0 ]
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function BinaryStrided1dDispatch( table, idtypes, odtypes, policies ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
@@ -1321,6 +1317,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >	if ( !isCollection( idtypes ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an array-like object. Value: `%s`.', idtypes ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	idtypes = copy( idtypes );</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; idtypes.length; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		dt = idtypes[ i ];</span>
 <span class="cstat-no" title="statement not covered" >		if (</span>
@@ -1330,6 +1327,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >		) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Second argument must contain arrays of data types. Value: `%s`.', idtypes ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		idtypes[ i ] = dtypes2strings( dt );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if (</span>
 <span class="cstat-no" title="statement not covered" >		!isCollection( odtypes ) ||</span>
@@ -1338,6 +1336,8 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >	) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Third argument must be an array of data types. Value: `%s`.', odtypes ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	odtypes = dtypes2strings( odtypes );</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isObject( policies ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Fourth argument must be an object. Value: `%s`.', table ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -1409,10 +1409,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 * var y = new ndarray( 'generic', ybuf, [ ybuf.length ], [ 1 ], 0, 'row-major' );
 *
 * var z = dot.apply( x, y );
-* // returns &lt;ndarray&gt;
-*
-* var v = z.get();
-* // returns -5.0
+* // returns &lt;ndarray&gt;[ -5.0 ]
 */
 setReadOnly( BinaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" title="function not covered" >function apply( x, y ) {</span>
 <span class="cstat-no" title="statement not covered" >	var options;</span>
@@ -1447,11 +1444,11 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an ndarray-like object. Value: `%s`.', y ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	xdt = getDType( x );</span>
-<span class="cstat-no" title="statement not covered" >	if ( !contains( this._idtypes[ 0 ], xdt ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( !contains( this._idtypes[ 0 ], resolveStr( xdt ) ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must have one of the following data types: "%s". Data type: `%s`.', join( this._idtypes[ 0 ], '", "' ), xdt ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	ydt = getDType( y );</span>
-<span class="cstat-no" title="statement not covered" >	if ( !contains( this._idtypes[ 1 ], ydt ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( !contains( this._idtypes[ 1 ], resolveStr( ydt ) ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must have one of the following data types: "%s". Data type: `%s`.', join( this._idtypes[ 1 ], '", "' ), ydt ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	args = [ x, y ];</span>
@@ -1461,7 +1458,7 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >			break;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		dt = getDType( arr );</span>
-<span class="cstat-no" title="statement not covered" >		if ( !contains( this._idtypes[ i ], dt ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( !contains( this._idtypes[ i ], resolveStr( dt ) ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Argument %d must have one of the following data types: "%s". Data type: `%s`.', i, join( this._idtypes[ i ], '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Note: we don't type promote additional ndarray arguments, as they are passed as scalars to the underlying strided reduction function...</span>
@@ -1520,7 +1517,7 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we need to cast the input ndarrays...</span>
 <span class="cstat-no" title="statement not covered" >	dt = binaryInputCastingDataType( xdt, ydt, zdt, this._policies.casting );</span>
-<span class="cstat-no" title="statement not covered" >	if ( xdt !== dt ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( !isEqualDataType( xdt, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
 <span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, shx, ordx );</span>
 <span class="cstat-no" title="statement not covered" >		assign( [ x, tmp ] );</span>
@@ -1528,7 +1525,7 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" 
 <span class="cstat-no" title="statement not covered" >		xdt = dt;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	dt = binaryInputCastingDataType( ydt, xdt, zdt, this._policies.casting );</span>
-<span class="cstat-no" title="statement not covered" >	if ( ydt !== dt ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( !isEqualDataType( ydt, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
 <span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, shy, ordy );</span>
 <span class="cstat-no" title="statement not covered" >		assign( [ y, tmp ] );</span>
@@ -1602,10 +1599,7 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'apply', <span class="fstat-no" 
 * var z = new ndarray( 'generic', zbuf, [], [ 0 ], 0, 'row-major' );
 *
 * var out = dot.assign( x, y, z );
-* // returns &lt;ndarray&gt;
-*
-* var v = out.get();
-* // returns -5.0
+* // returns &lt;ndarray&gt;[ -5.0 ]
 *
 * var bool = ( out === z );
 * // returns true
@@ -1640,11 +1634,11 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no"
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Validate the input ndarray data types in order to maintain similar behavior to `apply` above...</span>
 <span class="cstat-no" title="statement not covered" >	xdt = getDType( x );</span>
-<span class="cstat-no" title="statement not covered" >	if ( !contains( this._idtypes[ 0 ], xdt ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( !contains( this._idtypes[ 0 ], resolveStr( xdt ) ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must have one of the following data types: "%s". Data type: `%s`.', join( this._idtypes[ 0 ], '", "' ), xdt ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	ydt = getDType( y );</span>
-<span class="cstat-no" title="statement not covered" >	if ( !contains( this._idtypes[ 1 ], ydt ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( !contains( this._idtypes[ 1 ], resolveStr( ydt ) ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must have one of the following data types: "%s". Data type: `%s`.', join( this._idtypes[ 1 ], '", "' ), ydt ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Verify that both input arrays have the same shape:</span>
@@ -1688,7 +1682,7 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no"
 <span class="cstat-no" title="statement not covered" >	// Verify that additional ndarray arguments have expected dtypes (note: we intentionally don't validate the output ndarray dtype in order to provide an escape hatch for a user wanting to have an output ndarray having a specific dtype that `apply` does not support; note: we don't type promote additional ndarray arguments, as they are passed as scalars to the underlying strided reduction function)...</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 2; i &lt; args.length; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		dt = getDType( args[ i ] );</span>
-<span class="cstat-no" title="statement not covered" >		if ( !contains( this._idtypes[ i ], dt ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( !contains( this._idtypes[ i ], resolveStr( dt ) ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Argument %d must have one of the following data types: "%s". Data type: `%s`.', i, join( this._idtypes[ i ], '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -1708,7 +1702,7 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no"
 <span class="cstat-no" title="statement not covered" >	// Determine whether we need to cast the input ndarrays...</span>
 <span class="cstat-no" title="statement not covered" >	zdt = getDType( z );</span>
 <span class="cstat-no" title="statement not covered" >	dt = binaryInputCastingDataType( xdt, ydt, zdt, this._policies.casting );</span>
-<span class="cstat-no" title="statement not covered" >	if ( xdt !== dt ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( !isEqualDataType( xdt, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
 <span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, shx, getOrder( x ) );</span>
 <span class="cstat-no" title="statement not covered" >		assign( [ x, tmp ] );</span>
@@ -1716,7 +1710,7 @@ setReadOnly( BinaryStrided1dDispatch.prototype, 'assign', <span class="fstat-no"
 <span class="cstat-no" title="statement not covered" >		xdt = dt;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	dt = binaryInputCastingDataType( ydt, xdt, zdt, this._policies.casting );</span>
-<span class="cstat-no" title="statement not covered" >	if ( ydt !== dt ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( !isEqualDataType( ydt, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		// TODO: replace the following logic with a call to `ndarray/base/(?maybe-)(cast|convert|copy)` or similar utility</span>
 <span class="cstat-no" title="statement not covered" >		tmp = baseEmpty( dt, shy, getOrder( y ) );</span>
 <span class="cstat-no" title="statement not covered" >		assign( [ y, tmp ] );</span>
@@ -1747,7 +1741,7 @@ module.exports = BinaryStrided1dDispatch;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-29T05:50:43.313Z
+                at 2025-12-30T07:02:58.748Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

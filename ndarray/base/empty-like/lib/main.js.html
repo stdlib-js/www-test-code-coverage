@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.77% </span>
+                <span class="strong">65.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/90</span>
+                <span class='fraction'>64/98</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.77% </span>
+                <span class="strong">65.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/90</span>
+                <span class='fraction'>64/98</span>
             </div>
         
             
@@ -153,7 +153,15 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -209,6 +217,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -267,6 +283,7 @@
 &nbsp;
 var shape2strides = require( '@stdlib/ndarray/base/shape2strides' );
 var strides2offset = require( '@stdlib/ndarray/base/strides2offset' );
+var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var numel = require( '@stdlib/ndarray/base/numel' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var getShape = require( '@stdlib/ndarray/base/shape' );
@@ -286,6 +303,8 @@ var allocUnsafe = require( '@stdlib/buffer/alloc-unsafe' );
 *
 * @example
 * var zeros = require( '@stdlib/ndarray/base/zeros' );
+* var getShape = require( '@stdlib/ndarray/shape' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
 *
 * var x = zeros( 'float32', [ 2, 2 ], 'row-major' );
 * // returns &lt;ndarray&gt;
@@ -293,10 +312,10 @@ var allocUnsafe = require( '@stdlib/buffer/alloc-unsafe' );
 * var y = emptyLike( x );
 * // returns &lt;ndarray&gt;
 *
-* var sh = y.shape;
+* var sh = getShape( y );
 * // returns [ 2, 2 ]
 *
-* var dt = y.dtype;
+* var dt = String( getDType( y ) );
 * // returns 'float32'
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function emptyLike( x ) {</span></span>
@@ -304,11 +323,14 @@ var allocUnsafe = require( '@stdlib/buffer/alloc-unsafe' );
 <span class="cstat-no" title="statement not covered" >	var len;</span>
 <span class="cstat-no" title="statement not covered" >	var buf;</span>
 <span class="cstat-no" title="statement not covered" >	var ord;</span>
+<span class="cstat-no" title="statement not covered" >	var dts;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" >	var st;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	dt = getDType( x );</span>
+<span class="cstat-no" title="statement not covered" >	dts = resolveStr( dt );</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	sh = getShape( x, true );</span>
 <span class="cstat-no" title="statement not covered" >	ord = getOrder( x );</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -321,11 +343,13 @@ var allocUnsafe = require( '@stdlib/buffer/alloc-unsafe' );
 <span class="cstat-no" title="statement not covered" >		len = 1;</span>
 <span class="cstat-no" title="statement not covered" >		st = [ 0 ];</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( dt === 'binary' ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( dts === 'binary' ) {</span>
 <span class="cstat-no" title="statement not covered" >		buf = allocUnsafe( len );</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		buf = emptyArray( len, dt );</span>
+<span class="cstat-no" title="statement not covered" >		buf = emptyArray( len, dts );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// FIXME: add support for struct dtypes. Will need to do something similar to `array/empty` in so far as allocating an uninitialized array buffer, performing byte alignment, and creating a StructArray view atop the buffer.</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	return new x.constructor( dt, buf, sh, st, strides2offset( sh, st ), ord );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -340,7 +364,7 @@ module.exports = emptyLike;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-29T05:50:43.313Z
+                at 2025-12-30T07:02:58.748Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
