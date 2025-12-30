@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/fill/lib/main.js</title>
+    <title>Code coverage report for main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/fill/lib</a> main.js</h1>
+        <h1><a href="index.html">All files</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>98/98</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>98/98</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
@@ -139,53 +139,7 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -248,6 +202,8 @@
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -283,7 +239,7 @@
 &nbsp;
 var isScalarMostlySafeCompatible = require( '@stdlib/ndarray/base/assert/is-scalar-mostly-safe-compatible' ); // eslint-disable-line id-length
 var broadcastScalar = require( '@stdlib/ndarray/base/broadcast-scalar' );
-var getDtype = require( '@stdlib/ndarray/base/dtype' );
+var getDType = require( '@stdlib/ndarray/base/dtype' );
 var getShape = require( '@stdlib/ndarray/base/shape' );
 var getOrder = require( '@stdlib/ndarray/base/order' );
 var assign = require( '@stdlib/ndarray/base/assign' );
@@ -295,52 +251,28 @@ var format = require( '@stdlib/string/format' );
 /**
 * Fills an input ndarray with a specified value.
 *
-* @param {ndarrayLike} x - ndarray-like object
-* @param {string} x.dtype - data type
-* @param {Collection} x.data - data buffer
-* @param {NonNegativeIntegerArray} x.shape - dimensions
-* @param {IntegerArray} x.strides - stride lengths
-* @param {NonNegativeInteger} x.offset - index offset
-* @param {string} x.order - specifies whether `x` is row-major (C-style) or column-major (Fortran-style)
+* @param {ndarrayLike} x - input ndarray
 * @param {*} value - scalar value
 * @throws {TypeError} second argument cannot be safely cast to the input array data type
-* @returns {void}
+* @returns {ndarrayLike} input ndarray
 *
 * @example
-* var Float64Array = require( '@stdlib/array/float64' );
+* var array = require( '@stdlib/ndarray/array' );
 *
-* // Create a data buffer:
-* var xbuf = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
+* var x = array( [ [ [ 1.0, 2.0 ] ], [ [ 3.0, 4.0 ] ], [ [ 5.0, 6.0 ] ] ] );
+* // returns &lt;ndarray&gt;[ [ [ 1.0, 2.0 ] ], [ [ 3.0, 4.0 ] ], [ [ 5.0, 6.0 ] ] ]
 *
-* // Define the shape of the input array:
-* var shape = [ 3, 1, 2 ];
+* var out = fill( x, 10.0 );
+* // returns &lt;ndarray&gt;[ [ [ 10.0, 10.0 ] ], [ [ 10.0, 10.0 ] ], [ [ 10.0, 10.0 ] ] ]
 *
-* // Define the array strides:
-* var sx = [ 2, 2, 1 ];
-*
-* // Define the index offset:
-* var ox = 0;
-*
-* // Create the input ndarray-like object:
-* var x = {
-*     'dtype': 'float64',
-*     'data': xbuf,
-*     'shape': shape,
-*     'strides': sx,
-*     'offset': ox,
-*     'order': 'row-major'
-* };
-*
-* fill( x, 10.0 );
-*
-* console.log( x.data );
-* // =&gt; &lt;Float64Array&gt;[ 10.0, 10.0, 10.0, 10.0, 10.0, 10.0 ]
+* var bool = ( out === x );
+* // returns true
 */
 function fill( x, value ) {
 	var dt;
 	var v;
 &nbsp;
-	dt = getDtype( x );
+	dt = getDType( x );
 &nbsp;
 	// Safe casts are always allowed and allow same kind casts (i.e., downcasts) only when the output data type is floating-point...
 	if ( !isScalarMostlySafeCompatible( value, dt ) ) {
@@ -351,6 +283,8 @@ function fill( x, value ) {
 &nbsp;
 	// Assign the fill value to each element of the input ndarray:
 	assign( [ v, x ] ); // TODO: consider replacing with ndarray/base/assign-scalar in order to avoid zero-dimensional ndarray creation and subsequent broadcasting
+&nbsp;
+	return x;
 }
 &nbsp;
 &nbsp;
@@ -364,16 +298,16 @@ module.exports = fill;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-24T07:46:48.622Z
+                at 2025-12-30T01:29:20.771Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     

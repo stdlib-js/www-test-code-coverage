@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/base/expand-dimensions/lib/main.js</title>
+    <title>Code coverage report for main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">ndarray/base/expand-dimensions/lib</a> main.js</h1>
+        <h1><a href="index.html">All files</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>149/149</span>
+                <span class='fraction'>147/147</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>149/149</span>
+                <span class='fraction'>147/147</span>
             </div>
         
             
@@ -210,18 +210,7 @@
 <a name='L145'></a><a href='#L145'>145</a>
 <a name='L146'></a><a href='#L146'>146</a>
 <a name='L147'></a><a href='#L147'>147</a>
-<a name='L148'></a><a href='#L148'>148</a>
-<a name='L149'></a><a href='#L149'>149</a>
-<a name='L150'></a><a href='#L150'>150</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L148'></a><a href='#L148'>148</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -303,18 +292,21 @@
 <span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">15x</span>
@@ -329,6 +321,10 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -383,7 +379,9 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major-string' );
 var isReadOnly = require( '@stdlib/ndarray/base/assert/is-read-only' );
+var normalizeIndex = require( '@stdlib/ndarray/base/normalize-index' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var getShape = require( '@stdlib/ndarray/base/shape' );
 var getStrides = require( '@stdlib/ndarray/base/strides' );
@@ -408,68 +406,60 @@ var format = require( '@stdlib/string/format' );
 * @returns {ndarray} output array
 *
 * @example
+* var getShape = require( '@stdlib/ndarray/shape' );
 * var array = require( '@stdlib/ndarray/array' );
 *
 * var x = array( [ [ 1, 2 ], [ 3, 4 ] ] );
-* // returns &lt;ndarray&gt;
+* // returns &lt;ndarray&gt;[ [ 1, 2 ], [ 3, 4 ] ]
 *
-* var shx = x.shape;
+* var shx = getShape( x );
 * // returns [ 2, 2 ]
 *
 * var y = expandDimensions( x, 1 );
-* // returns &lt;ndarray&gt;
+* // returns &lt;ndarray&gt;[ [ [ 1, 2 ] ], [ [ 3, 4 ] ] ]
 *
-* var shy = y.shape;
+* var shy = getShape( y );
 * // returns [ 2, 1, 2 ]
-*
-* var v = y.get( 0, 0, 0 );
-* // returns 1
-*
-* v = y.get( 0, 0, 1 );
-* // returns 2
-*
-* v = y.get( 1, 0, 0 );
-* // returns 3
-*
-* v = y.get( 1, 0, 1 );
-* // returns 4
 */
 function expandDimensions( x, axis ) {
 	var strides;
 	var shape;
+	var isrm;
 	var ord;
 	var sh;
 	var st;
+	var d;
 	var N;
 	var i;
 &nbsp;
 	sh = getShape( x, false );
 	st = getStrides( x, false );
 	ord = getOrder( x );
+&nbsp;
+	isrm = isRowMajor( ord );
 	N = sh.length;
 &nbsp;
 	strides = [];
 	shape = [];
 &nbsp;
-	if ( axis &lt; 0 ) {
-		if ( axis &lt; -N-1 ) {
-			throw new RangeError( format( 'invalid argument. Specified axis is out-of-bounds. Must be on the interval: [-%u-1, %u]. Value: `%d`.', N, N, axis ) );
-		}
-		axis += N + 1;
-	} else if ( axis &gt; N ) {
-		throw new RangeError( format( 'invalid argument. Specified axis is out-of-bounds. Must be on the interval: [-%u-1, %u]. Value: `%d`.', N, N, axis ) );
+	d = normalizeIndex( axis, N );
+	if ( d === -1 ) {
+		throw new RangeError( format( 'invalid argument. Specified axis is out-of-bounds. Must be on the interval: [-%u, %u]. Value: `%d`.', N+1, N, axis ) );
 	}
-	if ( axis === 0 ) {
+	if ( d === 0 ) {
 		// Prepend singleton dimension...
 		shape.push( 1 );
-		strides.push( st[ 0 ] );
-&nbsp;
+		if ( isrm ) {
+			strides.push( sh[ 0 ] * st[ 0 ] );
+		} else {
+			strides.push( st[ 0 ] );
+		}
 		// Copy remaining dimensions...
 		for ( i = 0; i &lt; N; i++ ) {
 			shape.push( sh[ i ] );
 			strides.push( st[ i ] );
 		}
-	} else if ( axis === N ) {
+	} else if ( d === N ) {
 		// Copy dimensions...
 		for ( i = 0; i &lt; N; i++ ) {
 			shape.push( sh[ i ] );
@@ -477,21 +467,25 @@ function expandDimensions( x, axis ) {
 		}
 		// Append singleton dimension...
 		shape.push( 1 );
-		strides.push( st[ N-1 ] );
+		if ( isrm ) {
+			strides.push( st[ N-1 ] );
+		} else {
+			strides.push( sh[ N-1 ] * st[ N-1 ] );
+		}
 	} else {
 		// Insert a singleton dimension...
 		for ( i = 0; i &lt; N+1; i++ ) {
-			if ( i === axis ) {
+			if ( i === d ) {
 				shape.push( 1 );
-				if ( ord === 'row-major' ) {
+				if ( isrm ) {
 					strides.push( st[ i-1 ] );
 				} else { // ord === 'column-major'
 					strides.push( st[ i ] );
 				}
-			} else if ( i &lt; axis ) {
+			} else if ( i &lt; d ) {
 				shape.push( sh[ i ] );
 				strides.push( st[ i ] );
-			} else { // i &gt; axis
+			} else { // i &gt; d
 				shape.push( sh[ i-1 ] );
 				strides.push( st[ i-1 ] );
 			}
@@ -517,16 +511,16 @@ module.exports = expandDimensions;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-29T02:40:36.112Z
+                at 2025-12-30T01:29:18.256Z
             </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     
