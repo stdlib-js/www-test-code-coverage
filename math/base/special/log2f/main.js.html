@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.65% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>147/149</span>
+                <span class='fraction'>163/163</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.3% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/13</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.65% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>147/149</span>
+                <span class='fraction'>163/163</span>
             </div>
         
             
@@ -212,7 +212,28 @@
 <a name='L147'></a><a href='#L147'>147</a>
 <a name='L148'></a><a href='#L148'>148</a>
 <a name='L149'></a><a href='#L149'>149</a>
-<a name='L150'></a><a href='#L150'>150</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -313,19 +334,19 @@
 <span class="cline-any cline-yes">3504x</span>
 <span class="cline-any cline-yes">3504x</span>
 <span class="cline-any cline-yes">3504x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3504x</span>
+<span class="cline-any cline-yes">3504x</span>
 <span class="cline-any cline-yes">3504x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3502x</span>
-<span class="cline-any cline-yes">3502x</span>
-<span class="cline-any cline-yes">3502x</span>
+<span class="cline-any cline-yes">3503x</span>
+<span class="cline-any cline-yes">3503x</span>
+<span class="cline-any cline-yes">3503x</span>
 <span class="cline-any cline-yes">3504x</span>
-<span class="cline-any cline-yes">501x</span>
-<span class="cline-any cline-yes">501x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">502x</span>
+<span class="cline-any cline-yes">502x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">501x</span>
 <span class="cline-any cline-yes">501x</span>
 <span class="cline-any cline-yes">501x</span>
@@ -339,6 +360,13 @@
 <span class="cline-any cline-yes">3504x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3500x</span>
+<span class="cline-any cline-yes">3500x</span>
+<span class="cline-any cline-yes">3500x</span>
+<span class="cline-any cline-yes">3500x</span>
+<span class="cline-any cline-yes">3500x</span>
+<span class="cline-any cline-yes">3500x</span>
+<span class="cline-any cline-yes">3500x</span>
 <span class="cline-any cline-yes">3500x</span>
 <span class="cline-any cline-yes">3500x</span>
 <span class="cline-any cline-yes">3500x</span>
@@ -404,24 +432,31 @@ var fromWordf = require( '@stdlib/number/float32/base/from-word' );
 var ABS_MASK = require( '@stdlib/constants/float32/abs-mask' );
 var FLOAT32_EXPONENT_BIAS = require( '@stdlib/constants/float32/exponent-bias' );
 var FLOAT32_SIGNIFICAND_MASK = require( '@stdlib/constants/float32/significand-mask' );
+var FLOAT32_EXPONENT_MASK = require( '@stdlib/constants/float32/exponent-mask' );
 var NINF = require( '@stdlib/constants/float32/ninf' );
 var kernelLog1pf = require( '@stdlib/math/base/special/kernel-log1pf' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
+// 1.1754943508222875e-38 =&gt; 0 00000001 00000000000000000000000 =&gt; 0x00800000 = 8388608
+var MIN_NORM_WORD = 0x00800000|0; // asm type annotation
+&nbsp;
+// 1 =&gt; 0 01111111 00000000000000000000000 =&gt; 0x3f800000 = 1065353216
+var ONE_WORD = 0x3f800000|0; // asm type annotation
+&nbsp;
+// Mask to clear lower 12 mantissa bits:
+var TRUNC_MASK = 0xfffff000|0; // asm type annotation
+&nbsp;
 var TWO25 = f32( 3.3554432000e+07 );   // 0x4c000000
-var IVLN2HI = f32( 1.4428710938e+00 ); /* 0x3fb8b000 */
-var IVLN2LO = f32( -1.7605285393e-04 ); // 0x3de705fc, 0x2eefa200
-var HIGH_MAX_NORMAL_EXP = 0x7f800000|0; // asm type annotation
-var HIGH_MIN_NORMAL_EXP = 0x00800000|0; // asm type annotation
-var HIGH_BIASED_EXP_0 = 0x3f800000|0; // asm type annotation
+var IVLN2HI = f32( 1.4428710938e+00 ); // 0x3fb8b000
+var IVLN2LO = f32( -1.7605285393e-04 ); // 0xb9389ad4
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates the binary logarithm (base two) for single-precision floating point values.
+* Evaluates the binary logarithm (base two) of a single-precision floating-point number.
 *
 * @param {NonNegativeNumber} x - input value
 * @returns {number} function value
@@ -451,12 +486,15 @@ var HIGH_BIASED_EXP_0 = 0x3f800000|0; // asm type annotation
 * // returns NaN
 */
 function log2f( x ) {
+	var valHi;
+	var valLo;
 	var hfsq;
 	var hi;
 	var hx;
 	var lo;
 	var f;
 	var R;
+	var w;
 	var y;
 	var i;
 	var k;
@@ -464,46 +502,50 @@ function log2f( x ) {
 	if ( isnanf( x ) || x &lt; 0.0 ) {
 		return NaN;
 	}
-	if ( x === 0.0 ) {
-		return NINF;
-	}
 	x = f32( x );
-	hx = toWordf( x ) | 0;
+	hx = toWordf( f32( x ) ) | 0; // asm type annotation
 	k = 0|0; // asm type annotation
-	if ( hx &lt; HIGH_MIN_NORMAL_EXP ) {
+	if ( hx &lt; MIN_NORM_WORD  ) {
 		// Case: x &lt; 2**-126
-		if ( hx&amp;ABS_MASK === 0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >			return NINF;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
+		if ( ( hx &amp; ABS_MASK ) === 0 ) {
+			return NINF;
+		}
 		k -= 25|0; // asm type annotation
 &nbsp;
 		// Subnormal number, scale up x:
 		x = f32( x * TWO25 );
 		hx = toWordf( x ) | 0;
 	}
-	if ( hx &gt;= HIGH_MAX_NORMAL_EXP ) {
+	if ( hx &gt;= FLOAT32_EXPONENT_MASK ) {
 		return f32( x + x );
 	}
 	// Case: log(1) = +0
-	if ( hx === HIGH_BIASED_EXP_0 ) {
+	if ( hx === ONE_WORD  ) {
 		return 0.0;
 	}
-	k = f32( k + f32( ( ( hx &gt;&gt; 23 ) - FLOAT32_EXPONENT_BIAS ) | 0 ) );
+	k += ( ( hx &gt;&gt; 23 ) - FLOAT32_EXPONENT_BIAS ) | 0; // asm type annotation
 	hx &amp;= FLOAT32_SIGNIFICAND_MASK;
-	i = f32( ( ( hx+0x4afb0d ) &amp; HIGH_MIN_NORMAL_EXP )|0 ); // asm type annotation
+	i = ( ( hx+0x4afb0d ) &amp; MIN_NORM_WORD  )|0; // asm type annotation
 &nbsp;
 	// Normalize x or x/2...
-	x = fromWordf( hx | ( i ^ HIGH_BIASED_EXP_0) );
-	k = f32( k + ( ( i &gt;&gt; 23 ) | 0 ) );
-	y = f32( k );
-	f = f32( x - 1.0 );
-	hfsq = f32( 0.5 * f32( f * f ) );
+	x = fromWordf( hx | ( i ^ ONE_WORD ) );
+	k += ( ( i &gt;&gt; 23 ) | 0 ); // asm type annotation
+	y = k;
+	f = f32( x - f32( 1.0 ) );
+	hfsq = f32( f32( 0.5 ) * f32( f * f ) );
 	R = kernelLog1pf( f );
 	hi = f32( f - hfsq );
-	hx = toWordf( hi ) | 0;
-	hi = fromWordf( hx &amp; 0xfffff000);
-	lo = f32( f32( f - hi ) - f32( hfsq ) + f32( R ) );
-	return f32( f32( f32( lo + hi ) * IVLN2LO ) + f32( lo * IVLN2HI ) + f32( hi * IVLN2HI ) + f32( y ) ); // eslint-disable-line max-len
+	hx = toWordf( hi ) | 0; // asm type annotation
+	hi = fromWordf( hx &amp; TRUNC_MASK);
+	lo = f32( f32( f32(f - hi ) - hfsq) + R );
+	valHi = hi * IVLN2HI;
+	valLo = ( ( lo + hi ) * IVLN2LO ) + ( lo * IVLN2HI );
+&nbsp;
+	w = y + valHi;
+	valLo += ( y - w ) + valHi;
+	valHi = w;
+&nbsp;
+	return valLo + valHi;
 }
 &nbsp;
 &nbsp;
@@ -517,7 +559,7 @@ module.exports = log2f;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-24T08:37:25.396Z
+                at 2025-12-31T15:33:09.471Z
             </div>
         <script src="prettify.js"></script>
         <script>
