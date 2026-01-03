@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.57% </span>
+                <span class="strong">57.34% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>84/141</span>
+                <span class='fraction'>82/143</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.57% </span>
+                <span class="strong">57.34% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>84/141</span>
+                <span class='fraction'>82/143</span>
             </div>
         
             
@@ -204,7 +204,9 @@
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
 <a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -281,8 +283,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -369,7 +373,6 @@
 &nbsp;
 var hasEqualValuesIndexed = require( '@stdlib/array/base/assert/has-equal-values-indexed' );
 var isMostlySafeCast = require( '@stdlib/ndarray/base/assert/is-mostly-safe-data-type-cast' );
-var isNegativeInteger = require( '@stdlib/assert/is-negative-integer' ).isPrimitive;
 var isArrayLikeObject = require( '@stdlib/assert/is-array-like-object' );
 var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
 var promoteDataTypes = require( '@stdlib/ndarray/base/promote-dtypes' );
@@ -384,6 +387,7 @@ var normalizeArrays = require( './normalize_arrays.js' );
 var broadcastArrays = require( './broadcast_arrays.js' );
 var resolveDataTypes = require( './resolve_dtypes.js' );
 var resolveShape = require( './resolve_shape.js' );
+var validate = require( './validate.js' );
 var base = require( './base.js' );
 &nbsp;
 &nbsp;
@@ -394,16 +398,17 @@ var base = require( './base.js' );
 *
 * @param {ArrayLikeObject&lt;ndarrayLike&gt;} arrays - array-like object containing input ndarrays
 * @param {ndarrayLike} out - output ndarray
-* @param {NegativeInteger} [dim] - dimension along which to concatenate input ndarrays
+* @param {Options} [options] - function options
+* @param {integer} [options.dim=-1] - dimension along which to concatenate the input ndarrays
 * @throws {TypeError} first argument must be an array of ndarray-like objects
 * @throws {RangeError} first argument must contain one or more ndarrays
 * @throws {TypeError} second argument must be an ndarray-like object
-* @throws {TypeError} third argument must be a negative integer
+* @throws {TypeError} options argument must be an object
+* @throws {TypeError} must provide valid options
 * @throws {Error} must provide ndarrays which can be safely cast to a common data type
 * @returns {ndarrayLike} output ndarray
 *
 * @example
-* var ndarray2array = require( '@stdlib/ndarray/to-array' );
 * var Float64Array = require( '@stdlib/array/float64' );
 * var ndarray = require( '@stdlib/ndarray/ctor' );
 *
@@ -415,18 +420,17 @@ var base = require( './base.js' );
 *
 * var z = new ndarray( 'float64', new Float64Array( 10 ), [ 2, 5 ], [ 5, 1 ], 0, 'row-major' );
 *
-* var out = assign( [ x, y ], z, -1 );
-* // returns &lt;ndarray&gt;
+* var out = assign( [ x, y ], z );
+* // returns &lt;ndarray&gt;[ [ -1.0, 2.0, -5.0, 6.0, -7.0 ], [ -3.0, 4.0, 8.0, -9.0, 10.0 ] ]
 *
 * var bool = ( out === z );
 * // returns true
-*
-* var arr = ndarray2array( z );
-* // returns [ [ -1.0, 2.0, -5.0, 6.0, -7.0 ], [ -3.0, 4.0, 8.0, -9.0, 10.0 ] ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function assign( arrays, out, dim ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function assign( arrays, out ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var arrs;</span>
 <span class="cstat-no" title="statement not covered" >	var view;</span>
+<span class="cstat-no" title="statement not covered" >	var err;</span>
 <span class="cstat-no" title="statement not covered" >	var osh;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
@@ -438,12 +442,14 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	if ( !isndarrayLike( out ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be an ndarray. Value: `%s`.', out ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	opts = {</span>
+<span class="cstat-no" title="statement not covered" >		'dim': -1</span>
+<span class="cstat-no" title="statement not covered" >	};</span>
 <span class="cstat-no" title="statement not covered" >	if ( arguments.length &gt; 2 ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( !isNegativeInteger( dim ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Third argument must be a negative integer. Value: `%s`.', dim ) );</span>
+<span class="cstat-no" title="statement not covered" >		err = validate( opts, arguments[ 2 ] );</span>
+<span class="cstat-no" title="statement not covered" >		if ( err ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw err;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		dim = -1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Normalize the list of input ndarrays:</span>
 <span class="cstat-no" title="statement not covered" >	arrs = normalizeArrays( arrays );</span>
@@ -452,7 +458,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	view = ndarraylike2ndarray( out );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Broadcast the input ndarrays to a common shape:</span>
-<span class="cstat-no" title="statement not covered" >	arrs = broadcastArrays( arrs, dim );</span>
+<span class="cstat-no" title="statement not covered" >	arrs = broadcastArrays( arrs, opts.dim );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Apply type promotion rules to the data types of the input ndarrays:</span>
 <span class="cstat-no" title="statement not covered" >	dt = promoteDataTypes( resolveDataTypes( arrs ) );</span>
@@ -464,7 +470,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		throw new Error( format( 'invalid argument. The list of input ndarrays cannot be safely cast to the data of the output ndarray. Input data types: [%s]. Output data type: %s.', join( resolveDataTypes( arrs ), ', ' ), getDType( view ) ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Normalize the dimension index:</span>
-<span class="cstat-no" title="statement not covered" >	d = normalizeIndex( dim, ndims( arrs[ 0 ] )-1 );</span>
+<span class="cstat-no" title="statement not covered" >	d = normalizeIndex( opts.dim, ndims( arrs[ 0 ] )-1 );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the expected shape of the output ndarray:</span>
 <span class="cstat-no" title="statement not covered" >	sh = resolveShape( arrs, d );</span>
@@ -493,7 +499,7 @@ module.exports = assign;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-28T05:56:40.352Z
+                at 2026-01-03T07:59:19.759Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
