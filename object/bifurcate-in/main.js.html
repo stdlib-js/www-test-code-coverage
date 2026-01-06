@@ -324,36 +324,36 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">70x</span>
-<span class="cline-any cline-yes">70x</span>
-<span class="cline-any cline-yes">70x</span>
-<span class="cline-any cline-yes">70x</span>
-<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">62x</span>
-<span class="cline-any cline-yes">62x</span>
-<span class="cline-any cline-yes">62x</span>
-<span class="cline-any cline-yes">70x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">70x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -393,22 +393,22 @@ var returnPairs = require( './return_pairs.js' );
 // MAIN //
 &nbsp;
 /**
-* Groups an object's own and inherited property values according to an indicator function.
+* Splits an object's own and inherited property values into two groups according to a predicate function.
 *
 * @param {(Object|Array|TypedArray)} obj - input object
 * @param {Options} [options] - function options
 * @param {*} [options.thisArg] - execution context
 * @param {string} [options.returns="values"] - if `values`, values are returned; if `keys`, keys are returned; if `*`, both keys and values are returned
-* @param {Function} indicator - indicator function indicating which group an element in the input object belongs to
+* @param {Function} predicate - predicate function indicating which group an element in the input object belongs to
 * @throws {TypeError} first argument must be an object, array, or typed array
 * @throws {TypeError} options argument must be an object
 * @throws {TypeError} last argument must be a function
 * @throws {TypeError} must provide valid options
-* @returns {Object} group results
+* @returns {(Array&lt;Array&gt;|Array)} group results
 *
 * @example
-* function indicator( v ) {
-*     return v[ 0 ];
+* function predicate( v ) {
+*     return v[ 0 ] === 'b';
 * }
 *
 * function Foo() {
@@ -423,12 +423,12 @@ var returnPairs = require( './return_pairs.js' );
 *
 * var obj = new Foo();
 *
-* var out = groupIn( obj, indicator );
-* // e.g., returns { 'b': [ 'beep', 'boop', 'bar' ], 'f': [ 'foo' ] }
+* var out = bifurcateIn( obj, predicate );
+* // e.g., returns [ [ 'beep', 'boop', 'bar' ], [ 'foo' ] ]
 *
 * @example
-* function indicator( v ) {
-*     return v[ 0 ];
+* function predicate( v ) {
+*     return v[ 0 ] === 'b';
 * }
 *
 * function Foo() {
@@ -446,12 +446,12 @@ var returnPairs = require( './return_pairs.js' );
 * var opts = {
 *     'returns': 'keys'
 * };
-* var out = groupIn( obj, opts, indicator );
-* // e.g., returns { 'b': [ 'a', 'b', 'd' ], 'f': [ 'c' ] }
+* var out = bifurcateIn( obj, opts, predicate );
+* // e.g., returns [ [ 'a', 'b', 'd' ], [ 'c' ] ]
 *
 * @example
-* function indicator( v ) {
-*     return v[ 0 ];
+* function predicate( v ) {
+*     return v[ 0 ] === 'b';
 * }
 *
 * function Foo() {
@@ -469,10 +469,10 @@ var returnPairs = require( './return_pairs.js' );
 * var opts = {
 *     'returns': '*'
 * };
-* var out = groupIn( obj, opts, indicator );
-* // e.g., returns { 'b': [ [ 'a', 'beep' ], [ 'b', 'boop' ], [ 'd', 'bar' ] ], 'f': [ [ 'c', 'foo' ] ] }
+* var out = bifurcateIn( obj, opts, predicate );
+* // e.g., returns [ [ [ 'a', 'beep' ], [ 'b', 'boop' ], [ 'd', 'bar' ] ], [ [ 'c', 'foo' ] ] ]
 */
-function groupIn( obj, options, indicator ) {
+function bifurcateIn( obj, options, predicate ) {
 	var opts;
 	var err;
 	var cb;
@@ -489,7 +489,7 @@ function groupIn( obj, options, indicator ) {
 		if ( err ) {
 			throw err;
 		}
-		cb = indicator;
+		cb = predicate;
 	}
 	if ( !isFunction( cb ) ) {
 		throw new TypeError( format( 'invalid argument. Last argument must be a function. Value: `%s`.', cb ) );
@@ -506,7 +506,7 @@ function groupIn( obj, options, indicator ) {
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = groupIn;
+module.exports = bifurcateIn;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -514,7 +514,7 @@ module.exports = groupIn;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-06T16:19:25.839Z
+                at 2026-01-06T16:18:45.705Z
             </div>
         <script src="prettify.js"></script>
         <script>
