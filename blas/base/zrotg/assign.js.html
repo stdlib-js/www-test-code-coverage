@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.71% </span>
+                <span class="strong">96.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>147/152</span>
+                <span class='fraction'>148/153</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.71% </span>
+                <span class="strong">96.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>147/152</span>
+                <span class='fraction'>148/153</span>
             </div>
         
             
@@ -215,7 +215,8 @@
 <a name='L150'></a><a href='#L150'>150</a>
 <a name='L151'></a><a href='#L151'>151</a>
 <a name='L152'></a><a href='#L152'>152</a>
-<a name='L153'></a><a href='#L153'>153</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -337,6 +338,7 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -426,7 +428,7 @@ var isnan = require( '@stdlib/math/base/assert/is-nan' );
 * var out = zrotg( za, zb, new Float64Array( 5 ), 1, 0 );
 * // returns &lt;Float64Array&gt;[ 5.0, 6.0, 1.0, 0.0, 0.0 ]
 */
-function zrotg( za, zb, out, stride, offset ) {
+function zrotg(za, zb, out, stride, offset) {
 	var scalar;
 	var scale;
 	var temp;
@@ -439,79 +441,80 @@ function zrotg( za, zb, out, stride, offset ) {
 	var d;
 &nbsp;
 	// Handle NaN inputs - if either input is NaN (not a Complex128), return array of NaNs
-	if ( typeof za === 'number' &amp;&amp; isnan( za ) ) {
-		out[ 0 ] = NaN;
-		out[ 1 ] = NaN;
-		out[ 2 ] = NaN;
-		out[ 3 ] = NaN;
-		out[ 4 ] = NaN;
+	if (typeof za === 'number' &amp;&amp; isnan(za)) {
+		out[0] = NaN;
+		out[1] = NaN;
+		out[2] = NaN;
+		out[3] = NaN;
+		out[4] = NaN;
 		return out;
 	}
-	if ( typeof zb === 'number' &amp;&amp; isnan( zb ) ) {
-		out[ 0 ] = NaN;
-		out[ 1 ] = NaN;
-		out[ 2 ] = NaN;
-		out[ 3 ] = NaN;
-		out[ 4 ] = NaN;
+	if (typeof zb === 'number' &amp;&amp; isnan(zb)) {
+		out[0] = NaN;
+		out[1] = NaN;
+		out[2] = NaN;
+		out[3] = NaN;
+		out[4] = NaN;
 		return out;
 	}
 &nbsp;
-	s = new Complex128( 0.0, 0.0 );
-	r = new Complex128( 0.0, 0.0 );
-	if ( real( zb ) === 0.0 &amp;&amp; imag( zb ) === 0.0 ) {
+	s = new Complex128(0.0, 0.0);
+	r = new Complex128(0.0, 0.0);
+	if (real(zb) === 0.0 &amp;&amp; imag(zb) === 0.0) {
 		c = 1.0;
 		r = za;
-	} else if ( real( za ) === 0.0 &amp;&amp; imag( za ) === 0.0 ) {
+	} else if (real(za) === 0.0 &amp;&amp; imag(za) === 0.0) {
 		c = 0;
-		if ( real( zb ) === 0 ) {
-			d = abs( imag( zb ) );
-			r = new Complex128( d, 0.0 );
-			s = cdiv( conj( zb ), new Complex128( d, 0.0 ) );
-		} else if ( imag( zb ) === 0 ) {
-			d = abs( real( zb ) );
-			r = new Complex128( d, 0.0 );
-			s = cdiv( conj( zb ), new Complex128( d, 0.0 ) );
+		if (real(zb) === 0) {
+			d = abs(imag(zb));
+			r = new Complex128(d, 0.0);
+			s = cdiv(conj(zb), new Complex128(d, 0.0));
+		} else if (imag(zb) === 0) {
+			d = abs(real(zb));
+			r = new Complex128(d, 0.0);
+			s = cdiv(conj(zb), new Complex128(d, 0.0));
 		} else {
-			zb2 = cabs2( zb );
-			d = sqrt( zb2 );
-			r = new Complex128( d, 0.0 );
-			s = cdiv( conj( zb ), new Complex128( d, 0.0 ) );
+			zb2 = cabs2(zb);
+			d = sqrt(zb2);
+			r = new Complex128(d, 0.0);
+			s = cdiv(conj(zb), new Complex128(d, 0.0));
 		}
 	} else {
-		za2 = cabs2( za );
-		zb2 = cabs2( zb );
+		za2 = cabs2(za);
+		zb2 = cabs2(zb);
 		c2 = za2 + zb2;
 &nbsp;
-		if ( za2 &gt;= c2 * EPS ) {
-			c = sqrt( za2 / c2);
-			r = new Complex128( real( za ) / c, imag( za ) / c );
-			scale = 1 / sqrt( c2 );
-			temp = new Complex128( real( za ) / sqrt( za2 ), imag( za ) / sqrt( za2 ) );
-			temp = new Complex128( real( temp ) * scale, imag( temp ) * scale );
-			s = cmul( conj( zb ), temp );
+		if (za2 &gt;= c2 * EPS) {
+			c = sqrt(za2 / c2);
+			r = new Complex128(real(za) / c, imag(za) / c);
+			scale = 1 / sqrt(c2);
+&nbsp;
+			temp = new Complex128(real(za) / sqrt(za2), imag(za) / sqrt(za2));
+			temp = new Complex128(real(temp) * scale, imag(temp) * scale);
+			s = cmul(conj(zb), temp);
 		} else {
-			d = sqrt( za2 * c2 );
+			d = sqrt(za2 * c2);
 			c = za2 / d;
-			while ( c &lt; EPS ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+			while (c &lt; EPS) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >				d *= 2;</span>
 <span class="cstat-no" title="statement not covered" >				c = za2 / d;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-			while ( c === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+			while (c === 0.0) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >				c = 1;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-			r = new Complex128( real( za ) / c, imag( za ) / c );
-			scalar = new Complex128( 1 / d, 0.0 );
-			s = cmul( conj( zb ), cmul( za, scalar ) );
+			r = new Complex128(real(za) / c, imag(za) / c);
+			scalar = new Complex128(1 / d, 0.0);
+			s = cmul(conj(zb), cmul(za, scalar));
 		}
 	}
 &nbsp;
 	za = r;
 &nbsp;
-	out[ offset ] = real( za );
-	out[ offset + stride ] = imag( za );
-	out[ offset + ( 2 * stride ) ] = c;
-	out[ offset + ( 3 * stride ) ] = real( s );
-	out[ offset + ( 4 * stride ) ] = imag( s );
+	out[offset] = real(za);
+	out[offset + stride] = imag(za);
+	out[offset + (2 * stride)] = c;
+	out[offset + (3 * stride)] = real(s);
+	out[offset + (4 * stride)] = imag(s);
 	return out;
 }
 &nbsp;
@@ -526,7 +529,7 @@ module.exports = zrotg;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-09T15:35:56.299Z
+                at 2026-01-10T13:11:46.785Z
             </div>
         <script src="prettify.js"></script>
         <script>
