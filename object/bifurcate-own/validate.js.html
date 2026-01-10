@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for drssbl.js</title>
+    <title>Code coverage report for validate.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> drssbl.js</h1>
+        <h1><a href="index.html">All files</a> validate.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
@@ -120,7 +120,26 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -167,11 +186,30 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">87x</span>
+<span class="cline-any cline-yes">87x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">87x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">87x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">33x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">87x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -180,7 +218,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2026 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -199,41 +237,60 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var stride2offset = require( '@stdlib/strided/base/stride2offset' );
-var ndarray = require( './../lib/ndarray.js' );
+var isObject = require( '@stdlib/assert/is-plain-object' );
+var hasOwnProp = require( '@stdlib/assert/has-own-property' );
+var indexOf = require( '@stdlib/utils/index-of' );
+var format = require( '@stdlib/string/format' );
+&nbsp;
+&nbsp;
+// VARIABLES //
+&nbsp;
+var returns = [ 'values', 'keys', '*' ];
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Computes the residual sum of squares of two double-precision floating-point strided arrays using Blue's algorithm.
+* Validates function options.
 *
-* @param {PositiveInteger} N - number of indexed elements
-* @param {Float64Array} x - first input array
-* @param {integer} strideX - stride length of `x`
-* @param {Float64Array} y - second input array
-* @param {integer} strideY - stride length of `y`
-* @returns {number} residual sum of squares
+* @private
+* @param {Object} opts - destination object
+* @param {Options} options - function options
+* @param {*} [options.thisArg] - execution context
+* @param {string} [options.returns] - output format
+* @returns {(Error|null)} null or an error object
 *
 * @example
-* var Float64Array = require( '@stdlib/array/float64' );
-*
-* var x = new Float64Array( [ 1.0, 2.0, 2.0, -7.0, -2.0, 3.0, 4.0, 2.0 ] );
-* var y = new Float64Array( [ 2.0, 1.0, 2.0, 1.0, -2.0, 2.0, 3.0, 4.0 ] );
-*
-* var z = drssbl( x.length, x, 1, y, 1 );
-* // returns 72.0
+* var opts = {};
+* var options = {
+*     'returns': '*',
+*     'thisArg': {}
+* };
+* var err = validate( opts, options );
+* if ( err ) {
+*     throw err;
+* }
 */
-function drssbl( N, x, strideX, y, strideY ) {
-	var ox = stride2offset( N, strideX );
-	var oy = stride2offset( N, strideY );
-	return ndarray( N, x, strideX, ox, y, strideY, oy );
+function validate( opts, options ) {
+	if ( !isObject( options ) ) {
+		return new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', options ) );
+	}
+	if ( hasOwnProp( options, 'thisArg' ) ) {
+		opts.thisArg = options.thisArg;
+	}
+	if ( hasOwnProp( options, 'returns' ) ) {
+		opts.returns = options.returns;
+		if ( indexOf( returns, opts.returns ) === -1 ) {
+			return new TypeError( format( 'invalid option. `%s` option must be one of the following: "%s". Option: `%s`.', 'returns', returns.join( '", "' ), opts.returns ) );
+		}
+	}
+	return null;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = drssbl;
+module.exports = validate;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -241,7 +298,7 @@ module.exports = drssbl;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-10T01:47:29.926Z
+                at 2026-01-10T01:47:32.367Z
             </div>
         <script src="prettify.js"></script>
         <script>
