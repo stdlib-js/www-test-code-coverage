@@ -922,16 +922,16 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 <span class="cstat-no" title="statement not covered" >	var dw2;</span>
 <span class="cstat-no" title="statement not covered" >	var dw3;</span>
 <span class="cstat-no" title="statement not covered" >	var ox1;</span>
-<span class="cstat-no" title="statement not covered" >	var oy1;</span>
-<span class="cstat-no" title="statement not covered" >	var oz1;</span>
-<span class="cstat-no" title="statement not covered" >	var ow1;</span>
 <span class="cstat-no" title="statement not covered" >	var ox2;</span>
-<span class="cstat-no" title="statement not covered" >	var oy2;</span>
-<span class="cstat-no" title="statement not covered" >	var oz2;</span>
-<span class="cstat-no" title="statement not covered" >	var ow2;</span>
 <span class="cstat-no" title="statement not covered" >	var ox3;</span>
+<span class="cstat-no" title="statement not covered" >	var oy1;</span>
+<span class="cstat-no" title="statement not covered" >	var oy2;</span>
 <span class="cstat-no" title="statement not covered" >	var oy3;</span>
+<span class="cstat-no" title="statement not covered" >	var oz1;</span>
+<span class="cstat-no" title="statement not covered" >	var oz2;</span>
 <span class="cstat-no" title="statement not covered" >	var oz3;</span>
+<span class="cstat-no" title="statement not covered" >	var ow1;</span>
+<span class="cstat-no" title="statement not covered" >	var ow2;</span>
 <span class="cstat-no" title="statement not covered" >	var ow3;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" >	var s0;</span>
@@ -1018,6 +1018,10 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 <span class="cstat-no" title="statement not covered" >				s2 = bsize;</span>
 <span class="cstat-no" title="statement not covered" >				j2 -= bsize;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			dx3 = sx[3] - ( s2*sx[2] );</span>
+<span class="cstat-no" title="statement not covered" >			dy3 = sy[3] - ( s2*sy[2] );</span>
+<span class="cstat-no" title="statement not covered" >			dz3 = sz[3] - ( s2*sz[2] );</span>
+<span class="cstat-no" title="statement not covered" >			dw3 = sw[3] - ( s2*sw[2] );</span>
 <span class="cstat-no" title="statement not covered" >			ox2 = ox3 + ( j2*sx[2] );</span>
 <span class="cstat-no" title="statement not covered" >			oy2 = oy3 + ( j2*sy[2] );</span>
 <span class="cstat-no" title="statement not covered" >			oz2 = oz3 + ( j2*sz[2] );</span>
@@ -1030,6 +1034,10 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 <span class="cstat-no" title="statement not covered" >					s1 = bsize;</span>
 <span class="cstat-no" title="statement not covered" >					j1 -= bsize;</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
+<span class="cstat-no" title="statement not covered" >				dx2 = sx[2] - ( s1*sx[1] );</span>
+<span class="cstat-no" title="statement not covered" >				dy2 = sy[2] - ( s1*sy[1] );</span>
+<span class="cstat-no" title="statement not covered" >				dz2 = sz[2] - ( s1*sz[1] );</span>
+<span class="cstat-no" title="statement not covered" >				dw2 = sw[2] - ( s1*sw[1] );</span>
 <span class="cstat-no" title="statement not covered" >				ox1 = ox2 + ( j1*sx[1] );</span>
 <span class="cstat-no" title="statement not covered" >				oy1 = oy2 + ( j1*sy[1] );</span>
 <span class="cstat-no" title="statement not covered" >				oz1 = oz2 + ( j1*sz[1] );</span>
@@ -1053,14 +1061,6 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 <span class="cstat-no" title="statement not covered" >					dy1 = sy[1] - ( s0*sy[0] );</span>
 <span class="cstat-no" title="statement not covered" >					dz1 = sz[1] - ( s0*sz[0] );</span>
 <span class="cstat-no" title="statement not covered" >					dw1 = sw[1] - ( s0*sw[0] );</span>
-<span class="cstat-no" title="statement not covered" >					dx2 = sx[2] - ( s1*sx[1] );</span>
-<span class="cstat-no" title="statement not covered" >					dy2 = sy[2] - ( s1*sy[1] );</span>
-<span class="cstat-no" title="statement not covered" >					dz2 = sz[2] - ( s1*sz[1] );</span>
-<span class="cstat-no" title="statement not covered" >					dw2 = sw[2] - ( s1*sw[1] );</span>
-<span class="cstat-no" title="statement not covered" >					dx3 = sx[3] - ( s2*sx[2] );</span>
-<span class="cstat-no" title="statement not covered" >					dy3 = sy[3] - ( s2*sy[2] );</span>
-<span class="cstat-no" title="statement not covered" >					dz3 = sz[3] - ( s2*sz[2] );</span>
-<span class="cstat-no" title="statement not covered" >					dw3 = sw[3] - ( s2*sw[2] );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >					// Iterate over the ndarray dimensions...</span>
 <span class="cstat-no" title="statement not covered" >					for ( i3 = 0; i3 &lt; s3; i3++ ) {</span>
@@ -1105,7 +1105,7 @@ module.exports = blockedternary4d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-10T21:57:29.689Z
+                at 2026-01-11T09:56:22.314Z
             </div>
         <script src="prettify.js"></script>
         <script>
