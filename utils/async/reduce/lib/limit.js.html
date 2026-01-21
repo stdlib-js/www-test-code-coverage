@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">34.72% </span>
+                <span class="strong">34.24% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/144</span>
+                <span class='fraction'>50/146</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">34.72% </span>
+                <span class="strong">34.24% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/144</span>
+                <span class='fraction'>50/146</span>
             </div>
         
             
@@ -207,7 +207,9 @@
 <a name='L142'></a><a href='#L142'>142</a>
 <a name='L143'></a><a href='#L143'>143</a>
 <a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -252,6 +254,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -429,6 +433,29 @@ var debug = logger( 'reduce-async:limit' );
 <span class="cstat-no" title="statement not covered" >			next(); // eslint-disable-line node/callback-return</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	/**</span>
+<span class="cstat-no" title="statement not covered" >	* Callback invoked once a provided function finishes processing a collection element.</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* @private</span>
+<span class="cstat-no" title="statement not covered" >	* @param {*} [error] - error</span>
+<span class="cstat-no" title="statement not covered" >	* @param {*} [result] - accumulation result</span>
+<span class="cstat-no" title="statement not covered" >	* @returns {void}</span>
+<span class="cstat-no" title="statement not covered" >	*/</span>
+<span class="cstat-no" title="statement not covered" >	function cb( error, result ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( flg ) {</span>
+<span class="cstat-no" title="statement not covered" >			// Prevent further processing of collection elements:</span>
+<span class="cstat-no" title="statement not covered" >			return;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		if ( error ) {</span>
+<span class="cstat-no" title="statement not covered" >			flg = true;</span>
+<span class="cstat-no" title="statement not covered" >			return clbk( error );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		debug( 'Accumulator: %s', JSON.stringify( result ) );</span>
+<span class="cstat-no" title="statement not covered" >		acc = result;</span>
+<span class="cstat-no" title="statement not covered" >		clbk();</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	/**</span>
 <span class="cstat-no" title="statement not covered" >	* Callback to invoke a provided function for the next element in a collection.</span>
 <span class="cstat-no" title="statement not covered" >	*</span>
@@ -443,27 +470,6 @@ var debug = logger( 'reduce-async:limit' );
 <span class="cstat-no" title="statement not covered" >			fcn.call( opts.thisArg, acc, collection[ idx ], idx, cb );</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
 <span class="cstat-no" title="statement not covered" >			fcn.call( opts.thisArg, acc, collection[ idx ], idx, collection, cb ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		/**</span>
-<span class="cstat-no" title="statement not covered" >		* Callback invoked once a provided function finishes processing a collection element.</span>
-<span class="cstat-no" title="statement not covered" >		*</span>
-<span class="cstat-no" title="statement not covered" >		* @private</span>
-<span class="cstat-no" title="statement not covered" >		* @param {*} [error] - error</span>
-<span class="cstat-no" title="statement not covered" >		* @param {*} [result] - accumulation result</span>
-<span class="cstat-no" title="statement not covered" >		* @returns {void}</span>
-<span class="cstat-no" title="statement not covered" >		*/</span>
-<span class="cstat-no" title="statement not covered" >		function cb( error, result ) {</span>
-<span class="cstat-no" title="statement not covered" >			if ( flg ) {</span>
-<span class="cstat-no" title="statement not covered" >				// Prevent further processing of collection elements:</span>
-<span class="cstat-no" title="statement not covered" >				return;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			if ( error ) {</span>
-<span class="cstat-no" title="statement not covered" >				flg = true;</span>
-<span class="cstat-no" title="statement not covered" >				return clbk( error );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			debug( 'Accumulator: %s', JSON.stringify( result ) );</span>
-<span class="cstat-no" title="statement not covered" >			acc = result;</span>
-<span class="cstat-no" title="statement not covered" >			clbk();</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -502,7 +508,7 @@ module.exports = limit;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-14T05:00:01.621Z
+                at 2026-01-21T18:42:28.856Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
