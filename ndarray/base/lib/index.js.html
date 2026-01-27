@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1567/1567</span>
+                <span class='fraction'>1594/1594</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1567/1567</span>
+                <span class='fraction'>1594/1594</span>
             </div>
         
             
@@ -1630,7 +1630,61 @@
 <a name='L1565'></a><a href='#L1565'>1565</a>
 <a name='L1566'></a><a href='#L1566'>1566</a>
 <a name='L1567'></a><a href='#L1567'>1567</a>
-<a name='L1568'></a><a href='#L1568'>1568</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L1568'></a><a href='#L1568'>1568</a>
+<a name='L1569'></a><a href='#L1569'>1569</a>
+<a name='L1570'></a><a href='#L1570'>1570</a>
+<a name='L1571'></a><a href='#L1571'>1571</a>
+<a name='L1572'></a><a href='#L1572'>1572</a>
+<a name='L1573'></a><a href='#L1573'>1573</a>
+<a name='L1574'></a><a href='#L1574'>1574</a>
+<a name='L1575'></a><a href='#L1575'>1575</a>
+<a name='L1576'></a><a href='#L1576'>1576</a>
+<a name='L1577'></a><a href='#L1577'>1577</a>
+<a name='L1578'></a><a href='#L1578'>1578</a>
+<a name='L1579'></a><a href='#L1579'>1579</a>
+<a name='L1580'></a><a href='#L1580'>1580</a>
+<a name='L1581'></a><a href='#L1581'>1581</a>
+<a name='L1582'></a><a href='#L1582'>1582</a>
+<a name='L1583'></a><a href='#L1583'>1583</a>
+<a name='L1584'></a><a href='#L1584'>1584</a>
+<a name='L1585'></a><a href='#L1585'>1585</a>
+<a name='L1586'></a><a href='#L1586'>1586</a>
+<a name='L1587'></a><a href='#L1587'>1587</a>
+<a name='L1588'></a><a href='#L1588'>1588</a>
+<a name='L1589'></a><a href='#L1589'>1589</a>
+<a name='L1590'></a><a href='#L1590'>1590</a>
+<a name='L1591'></a><a href='#L1591'>1591</a>
+<a name='L1592'></a><a href='#L1592'>1592</a>
+<a name='L1593'></a><a href='#L1593'>1593</a>
+<a name='L1594'></a><a href='#L1594'>1594</a>
+<a name='L1595'></a><a href='#L1595'>1595</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -4212,6 +4266,15 @@ setReadOnly( ns, 'promoteDataTypes', require( '@stdlib/ndarray/base/promote-dtyp
 setReadOnly( ns, 'quaternaryLoopOrder', require( '@stdlib/ndarray/base/quaternary-loop-interchange-order' ) );
 &nbsp;
 /**
+* @name quaternaryBlockSize
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/ndarray/base/quaternary-tiling-block-size}
+*/
+setReadOnly( ns, 'quaternaryBlockSize', require( '@stdlib/ndarray/base/quaternary-tiling-block-size' ) );
+&nbsp;
+/**
 * @name quinaryLoopOrder
 * @memberof ns
 * @readonly
@@ -4219,6 +4282,15 @@ setReadOnly( ns, 'quaternaryLoopOrder', require( '@stdlib/ndarray/base/quaternar
 * @see {@link module:@stdlib/ndarray/base/quinary-loop-interchange-order}
 */
 setReadOnly( ns, 'quinaryLoopOrder', require( '@stdlib/ndarray/base/quinary-loop-interchange-order' ) );
+&nbsp;
+/**
+* @name quinaryBlockSize
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/ndarray/base/quinary-tiling-block-size}
+*/
+setReadOnly( ns, 'quinaryBlockSize', require( '@stdlib/ndarray/base/quinary-tiling-block-size' ) );
 &nbsp;
 /**
 * @name removeSingletonDimensions
@@ -4462,6 +4534,15 @@ setReadOnly( ns, 'ternaryOutputDataType', require( '@stdlib/ndarray/base/ternary
 * @see {@link module:@stdlib/ndarray/base/ternary-tiling-block-size}
 */
 setReadOnly( ns, 'ternaryBlockSize', require( '@stdlib/ndarray/base/ternary-tiling-block-size' ) );
+&nbsp;
+/**
+* @name blockSize
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/ndarray/base/tiling-block-size}
+*/
+setReadOnly( ns, 'blockSize', require( '@stdlib/ndarray/base/tiling-block-size' ) );
 &nbsp;
 /**
 * @name ndarray2array
@@ -4771,7 +4852,7 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-27T03:37:36.155Z
+                at 2026-01-27T07:01:34.885Z
             </div>
         <script src="../prettify.js"></script>
         <script>
