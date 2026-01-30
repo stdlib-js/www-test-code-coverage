@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.72% </span>
+                <span class="strong">39.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/167</span>
+                <span class='fraction'>63/161</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.72% </span>
+                <span class="strong">39.13% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/167</span>
+                <span class='fraction'>63/161</span>
             </div>
         
             
@@ -224,13 +224,7 @@
 <a name='L159'></a><a href='#L159'>159</a>
 <a name='L160'></a><a href='#L160'>160</a>
 <a name='L161'></a><a href='#L161'>161</a>
-<a name='L162'></a><a href='#L162'>162</a>
-<a name='L163'></a><a href='#L163'>163</a>
-<a name='L164'></a><a href='#L164'>164</a>
-<a name='L165'></a><a href='#L165'>165</a>
-<a name='L166'></a><a href='#L166'>166</a>
-<a name='L167'></a><a href='#L167'>167</a>
-<a name='L168'></a><a href='#L168'>168</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L162'></a><a href='#L162'>162</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -288,12 +282,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -430,7 +418,7 @@ var qtrngo = require( './qtrngo.js' );
 &nbsp;
 // VARIABLES //
 &nbsp;
-var PCUT = 1e-8;
+var PCUT = 1.0e-8;
 var JMAX = 28;
 &nbsp;
 &nbsp;
@@ -456,19 +444,13 @@ var JMAX = 28;
 * // returns Infinity
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function factory( r, v, nranges ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	if (</span>
-<span class="cstat-no" title="statement not covered" >		isnan( r ) ||</span>
-<span class="cstat-no" title="statement not covered" >		isnan( v ) ||</span>
-<span class="cstat-no" title="statement not covered" >		r &lt; 2.0 ||</span>
-<span class="cstat-no" title="statement not covered" >		v &lt; 2.0</span>
-<span class="cstat-no" title="statement not covered" >	) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( isnan( r ) || isnan( v ) || r &lt; 2.0 || v &lt; 2.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return constantFunction( NaN );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( nranges === void 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( arguments.length &lt; 3 ) {</span>
 <span class="cstat-no" title="statement not covered" >		nranges = 1;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	else if ( !isPositiveInteger( nranges ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		return NaN;</span>
+<span class="cstat-no" title="statement not covered" >	} else if ( !isPositiveInteger( nranges ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		return constantFunction( NaN );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return quantile;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -516,7 +498,7 @@ var JMAX = 28;
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		aux = q1;</span>
-<span class="cstat-no" title="statement not covered" >		if ( abs( p1 - p ) &lt; PCUT ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( abs( p1-p ) &lt; PCUT ) {</span>
 <span class="cstat-no" title="statement not covered" >			return NaN;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		q2 = q1 + 0.5;</span>
@@ -541,10 +523,10 @@ var JMAX = 28;
 <span class="cstat-no" title="statement not covered" >			e1 = p1 - p;</span>
 <span class="cstat-no" title="statement not covered" >			e2 = p2 - p;</span>
 <span class="cstat-no" title="statement not covered" >			if ( e2 - e1 !== 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				aux = ( ( e2 * q1 ) - ( e1 * q2 ) ) / ( e2 - e1 );</span>
+<span class="cstat-no" title="statement not covered" >				aux = ( ( e2*q1 ) - ( e1*q2 ) ) / ( e2-e1 );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			if ( abs( e1 ) &lt; abs( e2 ) ) {</span>
-<span class="cstat-no" title="statement not covered" >				if ( abs( p1 - p ) &lt; PCUT * 5.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >				if ( abs( p1-p ) &lt; ( PCUT*5.0 ) ) {</span>
 <span class="cstat-no" title="statement not covered" >					j = JMAX + 2;</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >				q1 = aux;</span>
@@ -571,7 +553,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-20T03:17:00.574Z
+                at 2026-01-30T04:41:44.815Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

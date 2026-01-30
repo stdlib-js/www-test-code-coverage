@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">43.31% </span>
+                <span class="strong">45.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/157</span>
+                <span class='fraction'>68/151</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">43.31% </span>
+                <span class="strong">45.03% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>68/157</span>
+                <span class='fraction'>68/151</span>
             </div>
         
             
@@ -214,13 +214,7 @@
 <a name='L149'></a><a href='#L149'>149</a>
 <a name='L150'></a><a href='#L150'>150</a>
 <a name='L151'></a><a href='#L151'>151</a>
-<a name='L152'></a><a href='#L152'>152</a>
-<a name='L153'></a><a href='#L153'>153</a>
-<a name='L154'></a><a href='#L154'>154</a>
-<a name='L155'></a><a href='#L155'>155</a>
-<a name='L156'></a><a href='#L156'>156</a>
-<a name='L157'></a><a href='#L157'>157</a>
-<a name='L158'></a><a href='#L158'>158</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L152'></a><a href='#L152'>152</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -283,12 +277,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -409,7 +397,7 @@ var qtrngo = require( './qtrngo.js' );
 &nbsp;
 // VARIABLES //
 &nbsp;
-var PCUT = 1e-8;
+var PCUT = 1.0e-8;
 var JMAX = 28;
 &nbsp;
 &nbsp;
@@ -450,12 +438,7 @@ var JMAX = 28;
 <span class="cstat-no" title="statement not covered" >	var p2;</span>
 <span class="cstat-no" title="statement not covered" >	var j;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if (</span>
-<span class="cstat-no" title="statement not covered" >		isnan( r ) ||</span>
-<span class="cstat-no" title="statement not covered" >		isnan( v ) ||</span>
-<span class="cstat-no" title="statement not covered" >		r &lt; 2.0 ||</span>
-<span class="cstat-no" title="statement not covered" >		v &lt; 2.0</span>
-<span class="cstat-no" title="statement not covered" >	) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( isnan( r ) || isnan( v ) || r &lt; 2.0 || v &lt; 2.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return NaN;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( isnan( p ) || p &lt; 0.0 || p &gt; 1.0 ) {</span>
@@ -467,10 +450,9 @@ var JMAX = 28;
 <span class="cstat-no" title="statement not covered" >	if ( p === 1.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return PINF;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( nranges === void 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( arguments.length &lt; 4 ) {</span>
 <span class="cstat-no" title="statement not covered" >		nranges = 1;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	else if ( !isPositiveInteger( nranges ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	} else if ( !isPositiveInteger( nranges ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		return NaN;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	q1 = qtrngo( p, v, r );</span>
@@ -487,7 +469,7 @@ var JMAX = 28;
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	aux = q1;</span>
-<span class="cstat-no" title="statement not covered" >	if ( abs( p1 - p ) &lt; PCUT ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( abs( p1-p ) &lt; PCUT ) {</span>
 <span class="cstat-no" title="statement not covered" >		return NaN;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	q2 = q1 + 0.5;</span>
@@ -512,10 +494,10 @@ var JMAX = 28;
 <span class="cstat-no" title="statement not covered" >		e1 = p1 - p;</span>
 <span class="cstat-no" title="statement not covered" >		e2 = p2 - p;</span>
 <span class="cstat-no" title="statement not covered" >		if ( e2 - e1 !== 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >			aux = ( ( e2 * q1 ) - ( e1 * q2 ) ) / ( e2 - e1 );</span>
+<span class="cstat-no" title="statement not covered" >			aux = ( ( e2*q1 ) - ( e1*q2 ) ) / ( e2-e1 );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( abs( e1 ) &lt; abs( e2 ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			if ( abs( p1 - p ) &lt; PCUT * 5.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >			if ( abs( p1-p ) &lt; ( PCUT*5.0 ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				j = JMAX + 2;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			q1 = aux;</span>
@@ -541,7 +523,7 @@ module.exports = qrange;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-20T03:17:00.574Z
+                at 2026-01-30T04:41:44.815Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
