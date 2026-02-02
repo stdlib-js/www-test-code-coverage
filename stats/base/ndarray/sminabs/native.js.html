@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="index.html">All files</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>55/55</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>55/55</span>
             </div>
         
             
@@ -118,9 +118,7 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -178,7 +176,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2025 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -197,11 +195,9 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
-var getStride = require( '@stdlib/ndarray/base/stride' );
-var getOffset = require( '@stdlib/ndarray/base/offset' );
+var serialize = require( '@stdlib/ndarray/base/serialize-meta-data' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var strided = require( '@stdlib/stats/strided/sminabs' ).ndarray;
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -209,8 +205,9 @@ var strided = require( '@stdlib/stats/strided/sminabs' ).ndarray;
 /**
 * Computes the minimum absolute value of a one-dimensional single-precision floating-point ndarray.
 *
+* @private
 * @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing an input ndarray
-* @returns {number} minimum value
+* @returns {number} minimum absolute value
 *
 * @example
 * var Float32Array = require( '@stdlib/array/float32' );
@@ -224,7 +221,7 @@ var strided = require( '@stdlib/stats/strided/sminabs' ).ndarray;
 */
 function sminabs( arrays ) {
 	var x = arrays[ 0 ];
-	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
+	return addon( getData( x ), serialize( x ) );
 }
 &nbsp;
 &nbsp;
