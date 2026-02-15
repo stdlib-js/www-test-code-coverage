@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.36% </span>
+                <span class="strong">36.47% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>88/242</span>
+                <span class='fraction'>89/244</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.36% </span>
+                <span class="strong">36.47% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>88/242</span>
+                <span class='fraction'>89/244</span>
             </div>
         
             
@@ -305,7 +305,9 @@
 <a name='L240'></a><a href='#L240'>240</a>
 <a name='L241'></a><a href='#L241'>241</a>
 <a name='L242'></a><a href='#L242'>242</a>
-<a name='L243'></a><a href='#L243'>243</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -388,6 +390,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -582,6 +586,7 @@ var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
 var isOrder = require( '@stdlib/ndarray/base/assert/is-order' );
 var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
 var nonCoreShape = require( '@stdlib/ndarray/base/complement-shape' );
+var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var empty = require( '@stdlib/ndarray/empty' );
 var contains = require( '@stdlib/array/base/assert/contains' );
@@ -610,11 +615,11 @@ var base = require( './base.js' );
 * @param {*} [options.dtype] - output ndarray data type
 * @param {string} [options.order] - ndarray order
 * @param {string} [options.mode="throw"] - specifies how to handle indices which exceed ndarray dimensions
-* @param {StringArray} [options.submode=["throw"]] - specifies how to handle subscripts which exceed ndarray dimensions on a per dimension basis
+* @param {ArrayLikeObject&lt;string&gt;} [options.submode=["throw"]] - specifies how to handle subscripts which exceed ndarray dimensions on a per dimension basis
 * @throws {TypeError} first argument must be either a nonnegative integer or an array of nonnegative integers
-* @throws {TypeError} second argument must be an ndarray-like object
-* @throws {TypeError} third argument must be an ndarray-like object
-* @throws {TypeError} fourth argument must be an ndarray-like object
+* @throws {TypeError} second argument must be either a number, complex number, or an ndarray-like object
+* @throws {TypeError} third argument must be either a number, complex number, or an ndarray-like object
+* @throws {TypeError} fourth argument must be either a boolean or an ndarray-like object
 * @throws {TypeError} options argument must be an object
 * @throws {RangeError} dimension indices must not exceed input ndarray bounds
 * @throws {RangeError} number of dimension indices must not exceed the number of input ndarray dimensions
@@ -658,7 +663,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		types[ 0 ] = ENUMS.COMPLEX;</span>
 <span class="cstat-no" title="statement not covered" >	} else if ( isndarrayLike( start ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		types[ 0 ] = ENUMS.NDARRAY;</span>
-<span class="cstat-no" title="statement not covered" >		dt = String( getDType( start ) );</span>
+<span class="cstat-no" title="statement not covered" >		dt = resolveStr( getDType( start ) );</span>
 <span class="cstat-no" title="statement not covered" >		if ( !contains( DTYPES.idtypes0, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Second argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes0, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -671,7 +676,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		types[ 1 ] = ENUMS.COMPLEX;</span>
 <span class="cstat-no" title="statement not covered" >	} else if ( isndarrayLike( stop ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		types[ 1 ] = ENUMS.NDARRAY;</span>
-<span class="cstat-no" title="statement not covered" >		dt = String( getDType( stop ) );</span>
+<span class="cstat-no" title="statement not covered" >		dt = resolveStr( getDType( stop ) );</span>
 <span class="cstat-no" title="statement not covered" >		if ( !contains( DTYPES.idtypes1, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Third argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes1, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -698,7 +703,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		// Case: linspace( shape, start, stop, endpoint_ndarray )</span>
 <span class="cstat-no" title="statement not covered" >		else if ( isndarrayLike( o ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			endpoint = o;</span>
-<span class="cstat-no" title="statement not covered" >			dt = String( getDType( endpoint ) );</span>
+<span class="cstat-no" title="statement not covered" >			dt = resolveStr( getDType( endpoint ) );</span>
 <span class="cstat-no" title="statement not covered" >			if ( !contains( DTYPES.idtypes2, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Fourth argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes2, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
@@ -721,7 +726,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >			types[ 2 ] = ENUMS.BOOLEAN;</span>
 <span class="cstat-no" title="statement not covered" >		} else if ( isndarrayLike( endpoint ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			types[ 2 ] = ENUMS.NDARRAY;</span>
-<span class="cstat-no" title="statement not covered" >			dt = String( getDType( endpoint ) );</span>
+<span class="cstat-no" title="statement not covered" >			dt = resolveStr( getDType( endpoint ) );</span>
 <span class="cstat-no" title="statement not covered" >			if ( !contains( DTYPES.idtypes2, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Fourth argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes2, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
@@ -736,10 +741,11 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	// Resolve options...</span>
 <span class="cstat-no" title="statement not covered" >	if ( opts ) {</span>
 <span class="cstat-no" title="statement not covered" >		if ( hasOwnProp( opts, 'dtype' ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			if ( !isDataType( opts.dtype ) || !contains( DTYPES.odtypes, String( opts.dtype ) ) ) { // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >			dt = resolveStr( opts.dtype );</span>
+<span class="cstat-no" title="statement not covered" >			if ( !isDataType( opts.dtype ) || !contains( DTYPES.odtypes, dt ) ) { // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid option. `%s` option must be one of the following: "%s". Option: `%s`.', 'dtype', join( DTYPES.odtypes, '", "' ), opts.dtype ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			options.dtype = opts.dtype;</span>
+<span class="cstat-no" title="statement not covered" >			options.dtype = dt;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( hasOwnProp( opts, 'order' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			if ( !isOrder( opts.order ) ) {</span>
@@ -796,7 +802,7 @@ module.exports = linspace;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-04T05:20:40.648Z
+                at 2026-02-15T03:43:56.758Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

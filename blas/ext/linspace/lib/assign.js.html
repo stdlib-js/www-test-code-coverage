@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.09% </span>
+                <span class="strong">40.36% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>87/217</span>
+                <span class='fraction'>88/218</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.09% </span>
+                <span class="strong">40.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>87/217</span>
+                <span class='fraction'>88/218</span>
             </div>
         
             
@@ -280,7 +280,9 @@
 <a name='L215'></a><a href='#L215'>215</a>
 <a name='L216'></a><a href='#L216'>216</a>
 <a name='L217'></a><a href='#L217'>217</a>
-<a name='L218'></a><a href='#L218'>218</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -528,6 +530,7 @@ var isNumber = require( '@stdlib/assert/is-number' ).isPrimitive;
 var isComplexLike = require( '@stdlib/assert/is-complex-like' );
 var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
 var nonCoreShape = require( '@stdlib/ndarray/base/complement-shape' );
+var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var getDType = require( '@stdlib/ndarray/dtype' );
 var getOrder = require( '@stdlib/ndarray/order' );
 var getShape = require( '@stdlib/ndarray/shape' );
@@ -554,9 +557,9 @@ var base = require( './base.js' );
 * @param {Options} [options] - function options
 * @param {IntegerArray} [options.dims=[-1]] - list of dimensions over which to perform operation
 * @throws {TypeError} first argument must be an ndarray-like object having at least one dimension
-* @throws {TypeError} second argument must be an ndarray-like object
-* @throws {TypeError} third argument must be an ndarray-like object
-* @throws {TypeError} fourth argument must be an ndarray-like object
+* @throws {TypeError} second argument must be either a number, complex number, or an ndarray-like object
+* @throws {TypeError} third argument must be either a number, complex number, or an ndarray-like object
+* @throws {TypeError} fourth argument must be either a boolean or an ndarray-like object
 * @throws {TypeError} options argument must be an object
 * @throws {RangeError} dimension indices must not exceed input ndarray bounds
 * @throws {RangeError} number of dimension indices must not exceed the number of input ndarray dimensions
@@ -599,7 +602,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	if ( sh.length &lt; 1 ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( 'invalid argument. First argument must be an ndarray having at least one dimension.' );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	dt = String( getDType( x ) );</span>
+<span class="cstat-no" title="statement not covered" >	dt = resolveStr( getDType( x ) );</span>
 <span class="cstat-no" title="statement not covered" >	if ( !contains( DTYPES.odtypes, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.odtypes, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -610,7 +613,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		types[ 0 ] = ENUMS.COMPLEX;</span>
 <span class="cstat-no" title="statement not covered" >	} else if ( isndarrayLike( start ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		types[ 0 ] = ENUMS.NDARRAY;</span>
-<span class="cstat-no" title="statement not covered" >		dt = String( getDType( start ) );</span>
+<span class="cstat-no" title="statement not covered" >		dt = resolveStr( getDType( start ) );</span>
 <span class="cstat-no" title="statement not covered" >		if ( !contains( DTYPES.idtypes0, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Second argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes0, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -623,7 +626,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		types[ 1 ] = ENUMS.COMPLEX;</span>
 <span class="cstat-no" title="statement not covered" >	} else if ( isndarrayLike( stop ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		types[ 1 ] = ENUMS.NDARRAY;</span>
-<span class="cstat-no" title="statement not covered" >		dt = String( getDType( stop ) );</span>
+<span class="cstat-no" title="statement not covered" >		dt = resolveStr( getDType( stop ) );</span>
 <span class="cstat-no" title="statement not covered" >		if ( !contains( DTYPES.idtypes1, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Third argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes1, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -650,7 +653,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		// Case: assign( x, start, stop, endpoint_ndarray )</span>
 <span class="cstat-no" title="statement not covered" >		else if ( isndarrayLike( o ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			endpoint = o;</span>
-<span class="cstat-no" title="statement not covered" >			dt = String( getDType( endpoint ) );</span>
+<span class="cstat-no" title="statement not covered" >			dt = resolveStr( getDType( endpoint ) );</span>
 <span class="cstat-no" title="statement not covered" >			if ( !contains( DTYPES.idtypes2, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Fourth argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes2, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
@@ -673,7 +676,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >			types[ 2 ] = ENUMS.BOOLEAN;</span>
 <span class="cstat-no" title="statement not covered" >		} else if ( isndarrayLike( endpoint ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			types[ 2 ] = ENUMS.NDARRAY;</span>
-<span class="cstat-no" title="statement not covered" >			dt = String( getDType( endpoint ) );</span>
+<span class="cstat-no" title="statement not covered" >			dt = resolveStr( getDType( endpoint ) );</span>
 <span class="cstat-no" title="statement not covered" >			if ( !contains( DTYPES.idtypes2, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Fourth argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes2, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
@@ -698,7 +701,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve argument data types:</span>
 <span class="cstat-no" title="statement not covered" >	dtypes = resolveDataTypes( args.slice( 0, 2 ), types );</span>
-<span class="cstat-no" title="statement not covered" >	dtypes[ 3 ] = getDType( x );</span>
+<span class="cstat-no" title="statement not covered" >	dtypes[ 3 ] = resolveStr( getDType( x ) );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the complement of the operation dimensions:</span>
 <span class="cstat-no" title="statement not covered" >	ncsh = nonCoreShape( sh, options.dims );</span>
@@ -721,7 +724,7 @@ module.exports = assign;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-04T05:20:40.648Z
+                at 2026-02-15T03:43:56.758Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
