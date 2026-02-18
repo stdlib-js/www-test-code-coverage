@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">63.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>70/140</span>
+                <span class='fraction'>89/140</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">40% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">63.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>70/140</span>
+                <span class='fraction'>89/140</span>
             </div>
         
             
@@ -268,9 +268,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
+<span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -319,25 +337,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4918x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -408,27 +408,27 @@ var E = require( '@stdlib/constants/float64/e' );
 * @param {number} z - input value
 * @returns {number} function value
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function regularizedGammaPrefix( a, z ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var prefix;</span>
-<span class="cstat-no" title="statement not covered" >	var amza;</span>
-<span class="cstat-no" title="statement not covered" >	var agh;</span>
-<span class="cstat-no" title="statement not covered" >	var alz;</span>
-<span class="cstat-no" title="statement not covered" >	var amz;</span>
-<span class="cstat-no" title="statement not covered" >	var sq;</span>
-<span class="cstat-no" title="statement not covered" >	var d;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	agh = a + G - 0.5;</span>
-<span class="cstat-no" title="statement not covered" >	d = ( (z - a) - G + 0.5 ) / agh;</span>
-<span class="cstat-no" title="statement not covered" >	if ( a &lt; 1.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		// Treat a &lt; 1 as a special case because our Lanczos approximations are optimized against the factorials with a &gt; 1, and for high precision types very small values of `a` can give rather erroneous results for gamma:</span>
-<span class="cstat-no" title="statement not covered" >		if ( z &lt;= MIN_LN ) {</span>
+function regularizedGammaPrefix( a, z ) {
+	var prefix;
+	var amza;
+	var agh;
+	var alz;
+	var amz;
+	var sq;
+	var d;
+&nbsp;
+	agh = a + G - 0.5;
+	d = ( (z - a) - G + 0.5 ) / agh;
+	if ( a &lt; 1.0 ) {
+		// Treat a &lt; 1 as a special case because our Lanczos approximations are optimized against the factorials with a &gt; 1, and for high precision types very small values of `a` can give rather erroneous results for gamma:
+		if ( z &lt;= MIN_LN ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >			// Use logs, so should be free of cancellation errors:</span>
 <span class="cstat-no" title="statement not covered" >			return exp( ( a * ln(z) ) - z - gammaln( a ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		// No danger of overflow as gamma(a) &lt; 1/a for small a, so direct calculation:</span>
-<span class="cstat-no" title="statement not covered" >		return pow( z, a ) * exp( -z ) / gamma( a );</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( abs(d*d*a) &lt;= 100.0 &amp;&amp; a &gt; 150.0 ) {</span>
+		// No danger of overflow as gamma(a) &lt; 1/a for small a, so direct calculation:
+		return pow( z, a ) * exp( -z ) / gamma( a );
+	}
+<span class="branch-0 cbranch-no" title="branch not covered" >	if ( abs(d*d*a) &lt;= 100.0 &amp;&amp; a &gt; 150.0 </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		// Special case for large a and a ~ z:</span>
 <span class="cstat-no" title="statement not covered" >		prefix = ( a * ( log1p( d ) - d ) ) + ( z * ( 0.5-G ) / agh );</span>
 <span class="cstat-no" title="statement not covered" >		prefix = exp( prefix );</span>
@@ -477,7 +477,7 @@ var E = require( '@stdlib/constants/float64/e' );
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	prefix *= sqrt( agh/E ) / lanczosSumExpGScaled( a );</span>
 <span class="cstat-no" title="statement not covered" >	return prefix;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -490,7 +490,7 @@ module.exports = regularizedGammaPrefix;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-17T18:00:47.619Z
+                at 2026-02-18T17:55:08.005Z
             </div>
         <script src="prettify.js"></script>
         <script>

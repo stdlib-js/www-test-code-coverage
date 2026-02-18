@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.23% </span>
+                <span class="strong">82.35% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/85</span>
+                <span class='fraction'>70/85</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">50% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">68.23% </span>
+                <span class="strong">82.35% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/85</span>
+                <span class='fraction'>70/85</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -201,6 +201,22 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1418x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -210,24 +226,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1418x</span>
+<span class="cline-any cline-yes">1418x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -286,23 +286,23 @@ var MIN_LN = require( '@stdlib/constants/float64/min-ln' );
 * @param {number} z - function parameter
 * @returns {number} power term prefix
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function fullIGammaPrefix( a, z ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var prefix;</span>
-<span class="cstat-no" title="statement not covered" >	var alz;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	alz = a * ln( z );</span>
-<span class="cstat-no" title="statement not covered" >	if ( z &gt;= 1.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( ( alz &lt; MAX_LN ) &amp;&amp; ( -z &gt; MIN_LN ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			prefix = pow( z, a ) * exp( -z );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		else if ( a &gt;= 1.0 ) {</span>
+function fullIGammaPrefix( a, z ) {
+	var prefix;
+	var alz;
+&nbsp;
+	alz = a * ln( z );
+	if ( z &gt;= 1.0 ) {
+		if ( ( alz &lt; MAX_LN ) &amp;&amp; ( -z &gt; MIN_LN ) ) {
+			prefix = pow( z, a ) * exp( -z );
+		}
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >		else if ( a &gt;= 1.0 ) {</span></span>
 <span class="cstat-no" title="statement not covered" >			prefix = pow( z / exp(z/a), a );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		else {</span>
 <span class="cstat-no" title="statement not covered" >			prefix = exp( alz - z );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	else if ( alz &gt; MIN_LN ) {</span>
+	}
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	else if ( alz &gt; MIN_LN ) {</span></span>
 <span class="cstat-no" title="statement not covered" >		prefix = pow( z, a ) * exp( -z );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	else if ( z/a &lt; MAX_LN ) {</span>
@@ -311,8 +311,8 @@ var MIN_LN = require( '@stdlib/constants/float64/min-ln' );
 <span class="cstat-no" title="statement not covered" >	else {</span>
 <span class="cstat-no" title="statement not covered" >		prefix = exp( alz - z );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return prefix;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+	return prefix;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -325,7 +325,7 @@ module.exports = fullIGammaPrefix;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-17T18:00:47.619Z
+                at 2026-02-18T17:55:08.005Z
             </div>
         <script src="prettify.js"></script>
         <script>

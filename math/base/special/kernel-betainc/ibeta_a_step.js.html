@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.87% </span>
+                <span class="strong">95.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>58/83</span>
+                <span class='fraction'>79/83</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">60% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>3/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">69.87% </span>
+                <span class="strong">95.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>58/83</span>
+                <span class='fraction'>79/83</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -199,31 +199,31 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">94136x</span>
+<span class="cline-any cline-yes">94136x</span>
+<span class="cline-any cline-yes">94136x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
+<span class="cline-any cline-yes">5582x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -282,31 +282,31 @@ var ibetaPowerTerms = require( './ibeta_power_terms.js' );
 * @param {(Array|TypedArray|Object)} out - output array holding the derivative as the second element
 * @returns {number} difference between ibeta(a,b,x) and ibeta(a+k,b,x)
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function ibetaAStep( a, b, x, y, k, normalized, out ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var prefix;</span>
-<span class="cstat-no" title="statement not covered" >	var term;</span>
-<span class="cstat-no" title="statement not covered" >	var sum;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	prefix = ibetaPowerTerms( a, b, x, y, normalized );</span>
-<span class="cstat-no" title="statement not covered" >	if ( out ) {</span>
+function ibetaAStep( a, b, x, y, k, normalized, out ) {
+	var prefix;
+	var term;
+	var sum;
+	var i;
+&nbsp;
+	prefix = ibetaPowerTerms( a, b, x, y, normalized );
+	if ( out ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		out[ 1 ] = prefix;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	prefix /= a;</span>
-<span class="cstat-no" title="statement not covered" >	if ( prefix === 0.0 ) {</span>
+	prefix /= a;
+	if ( prefix === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		return prefix;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	sum = 1.0;</span>
-<span class="cstat-no" title="statement not covered" >	term = 1.0;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Series summation from 0 to k-1:</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; k-1; ++i ) {</span>
-<span class="cstat-no" title="statement not covered" >		term *= (a+b+i) * x / (a+i+1.0);</span>
-<span class="cstat-no" title="statement not covered" >		sum += term;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	prefix *= sum;</span>
-<span class="cstat-no" title="statement not covered" >	return prefix;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+	sum = 1.0;
+	term = 1.0;
+&nbsp;
+	// Series summation from 0 to k-1:
+	for ( i = 0; i &lt; k-1; ++i ) {
+		term *= (a+b+i) * x / (a+i+1.0);
+		sum += term;
+	}
+	prefix *= sum;
+	return prefix;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -319,7 +319,7 @@ module.exports = ibetaAStep;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-17T18:00:47.619Z
+                at 2026-02-18T17:55:08.005Z
             </div>
         <script src="prettify.js"></script>
         <script>
