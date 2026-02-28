@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>89/89</span>
+                <span class='fraction'>83/83</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>89/89</span>
+                <span class='fraction'>83/83</span>
             </div>
         
             
@@ -146,13 +146,7 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -205,37 +199,31 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">41x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -263,10 +251,10 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var strides2offset = require( '@stdlib/ndarray/base/strides2offset' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var getShape = require( '@stdlib/ndarray/base/shape' );
 var getStrides = require( '@stdlib/ndarray/base/strides' );
+var getOffset = require( '@stdlib/ndarray/base/offset' );
 var getOrder = require( '@stdlib/ndarray/base/order' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
 &nbsp;
@@ -277,31 +265,24 @@ var getData = require( '@stdlib/ndarray/base/data-buffer' );
 * Transpose a matrix (or a stack of matrices).
 *
 * @param {ndarray} x - input array
+* @param {boolean} writable - boolean indicating whether the returned ndarray should be writable
 * @throws {Error} must provide an array with two or more dimensions
 * @returns {ndarray} ndarray
 *
 * @example
+* var getData = require( '@stdlib/ndarray/data-buffer' );
 * var array = require( '@stdlib/ndarray/array' );
 *
 * var x = array( [ [ 1, 2, 3 ], [ 4, 5, 6 ] ] );
-* // returns &lt;ndarray&gt;
+* // returns &lt;ndarray&gt;[ [ 1, 2, 3 ], [ 4, 5, 6 ] ]
 *
-* var sh = x.shape;
-* // returns [ 2, 3 ]
+* var y = transpose( x, false );
+* // returns &lt;ndarray&gt;[ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ]
 *
-* var y = transpose( x );
-* // returns &lt;ndarray&gt;
-*
-* sh = y.shape;
-* // returns [ 3, 2 ]
-*
-* var bool = ( x.data === y.data );
-* // returns true
-*
-* bool = ( x.get( 0, 1 ) === y.get( 1, 0 ) );
+* var bool = ( getData( x ) === getData( y ) );
 * // returns true
 */
-function transpose( x ) {
+function transpose( x, writable ) {
 	var tmp;
 	var sh;
 	var st;
@@ -322,8 +303,9 @@ function transpose( x ) {
 	st[ N-2 ] = st[ N-1 ];
 	st[ N-1 ] = tmp;
 &nbsp;
-	// FIXME: handling of offset seems incorrect. Should also handle READ-ONLY arrays.
-	return new x.constructor( getDType( x ), getData( x ), sh, st, strides2offset( sh, st ), getOrder( x ) ); // eslint-disable-line max-len
+	return new x.constructor( getDType( x ), getData( x ), sh, st, getOffset( x ), getOrder( x ), { // eslint-disable-line max-len
+		'readonly': !writable
+	});
 }
 &nbsp;
 &nbsp;
@@ -337,7 +319,7 @@ module.exports = transpose;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-04T05:21:05.885Z
+                at 2026-02-28T03:18:30.552Z
             </div>
         <script src="prettify.js"></script>
         <script>
