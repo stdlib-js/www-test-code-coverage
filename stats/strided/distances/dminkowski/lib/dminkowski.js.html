@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dcityblock/lib/index.js</title>
+    <title>Code coverage report for dminkowski/lib/dminkowski.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">dcityblock/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">dminkowski/lib</a> dminkowski.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.14% </span>
+                <span class="strong">91.37% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/70</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>53/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.14% </span>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">91.37% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>68/70</span>
+                <span class='fraction'>53/58</span>
             </div>
         
             
@@ -121,32 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -196,8 +171,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -223,56 +199,44 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute the city block (Manhattan) distance between two double-precision floating-point strided arrays.
-*
-* @module @stdlib/stats/strided/distances/dcityblock
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var dcityblock = require( '@stdlib/stats/strided/distances/dcityblock' );
-*
-* var x = new Float64Array( [ 4.0, 2.0, -3.0, 5.0, -1.0 ] );
-* var y = new Float64Array( [ 2.0, 6.0, -1.0, -4.0, 8.0 ] );
-*
-* var z = dcityblock( x.length, x, 1, y, 1 );
-* // returns 26.0
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var dcityblock = require( '@stdlib/stats/strided/distances/dcityblock' );
-*
-* var x = new Float64Array( [ 4.0, 2.0, -3.0, 5.0, -1.0 ] );
-* var y = new Float64Array( [ 2.0, 6.0, -1.0, -4.0, 8.0 ] );
-*
-* var z = dcityblock.ndarray( x.length, x, 1, 0, y, 1, 0 );
-* // returns 26.0
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var join = require( 'path' ).join;
-var tryRequire = require( '@stdlib/utils/try-require' );
-var isError = require( '@stdlib/assert/is-error' );
-var main = require( './main.js' );
+var stride2offset = require( '@stdlib/strided/base/stride2offset' );
+var ndarray = require( './ndarray.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-var dcityblock;
-var tmp = tryRequire( join( __dirname, './native.js' ) );
-if ( isError( tmp ) ) {
-	dcityblock = main;
-}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
-<span class="cstat-no" title="statement not covered" >	dcityblock = tmp;</span>
+/**
+* Computes the Minkowski distance between two double-precision floating-point strided arrays.
+*
+* @param {NonNegativeInteger} N - number of indexed elements
+* @param {number} p - order of the Minkowski norm
+* @param {Float64Array} x - first input array
+* @param {integer} strideX - stride length of `x`
+* @param {Float64Array} y - second input array
+* @param {integer} strideY - stride length of `y`
+* @returns {number} Minkowski distance
+*
+* @example
+* var Float64Array = require( '@stdlib/array/float64' );
+*
+* var x = new Float64Array( [ 4.0, 2.0, -3.0, 5.0, -1.0 ] );
+* var y = new Float64Array( [ 2.0, 6.0, -1.0, -4.0, 8.0 ] );
+*
+* var z = dminkowski( x.length, 3, x, 1, y, 1 );
+* // returns ~11.543
+*/
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dminkowski( N, p, x, strideX, y, strideY ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var ox = stride2offset( N, strideX );</span>
+<span class="cstat-no" title="statement not covered" >	var oy = stride2offset( N, strideY );</span>
+<span class="cstat-no" title="statement not covered" >	return ndarray( N, p, x, strideX, ox, y, strideY, oy );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = dcityblock;
-&nbsp;
-// exports: { "ndarray": "dcityblock.ndarray" }
+module.exports = dminkowski;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

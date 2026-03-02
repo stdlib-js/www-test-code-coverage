@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dcityblock/lib/index.js</title>
+    <title>Code coverage report for dchebyshev/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">dcityblock/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">dchebyshev/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -224,29 +224,29 @@
 'use strict';
 &nbsp;
 /**
-* Compute the city block (Manhattan) distance between two double-precision floating-point strided arrays.
+* Compute the Chebyshev distance between two double-precision floating-point strided arrays.
 *
-* @module @stdlib/stats/strided/distances/dcityblock
+* @module @stdlib/stats/strided/distances/dchebyshev
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
-* var dcityblock = require( '@stdlib/stats/strided/distances/dcityblock' );
+* var dchebyshev = require( '@stdlib/stats/strided/distances/dchebyshev' );
 *
 * var x = new Float64Array( [ 4.0, 2.0, -3.0, 5.0, -1.0 ] );
 * var y = new Float64Array( [ 2.0, 6.0, -1.0, -4.0, 8.0 ] );
 *
-* var z = dcityblock( x.length, x, 1, y, 1 );
-* // returns 26.0
+* var z = dchebyshev( x.length, x, 1, y, 1 );
+* // returns 9.0
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
-* var dcityblock = require( '@stdlib/stats/strided/distances/dcityblock' );
+* var dchebyshev = require( '@stdlib/stats/strided/distances/dchebyshev' );
 *
 * var x = new Float64Array( [ 4.0, 2.0, -3.0, 5.0, -1.0 ] );
 * var y = new Float64Array( [ 2.0, 6.0, -1.0, -4.0, 8.0 ] );
 *
-* var z = dcityblock.ndarray( x.length, x, 1, 0, y, 1, 0 );
-* // returns 26.0
+* var z = dchebyshev.ndarray( x.length, x, 1, 0, y, 1, 0 );
+* // returns 9.0
 */
 &nbsp;
 // MODULES //
@@ -259,20 +259,20 @@ var main = require( './main.js' );
 &nbsp;
 // MAIN //
 &nbsp;
-var dcityblock;
+var dchebyshev;
 var tmp = tryRequire( join( __dirname, './native.js' ) );
 if ( isError( tmp ) ) {
-	dcityblock = main;
+	dchebyshev = main;
 }<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
-<span class="cstat-no" title="statement not covered" >	dcityblock = tmp;</span>
+<span class="cstat-no" title="statement not covered" >	dchebyshev = tmp;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = dcityblock;
+module.exports = dchebyshev;
 &nbsp;
-// exports: { "ndarray": "dcityblock.ndarray" }
+// exports: { "ndarray": "dchebyshev.ndarray" }
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
