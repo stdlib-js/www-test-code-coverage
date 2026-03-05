@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>60/60</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>60/60</span>
             </div>
         
             
@@ -120,7 +120,10 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -162,16 +165,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -199,41 +205,44 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var enum2str = require( '@stdlib/ml/cluster/base/kmeans/metric-enum2str' );
-var str2enum = require( '@stdlib/ml/cluster/base/kmeans/metric-str2enum' );
+var isString = require( '@stdlib/assert/is-string' ).isPrimitive;
+var objectInverse = require( '@stdlib/object/inverse' );
+var enumeration = require( '@stdlib/ml/base/cluster/kmeans/metrics' ).enum;
+&nbsp;
+&nbsp;
+// VARIABLES //
+&nbsp;
+var hash = objectInverse( enumeration(), {
+	'duplicates': false
+});
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns the enumeration constant associated with a supported KMeans clustering distance metric value.
+* Returns the KMeans distance metric string associated with a KMeans distance metric enumeration constant.
 *
-* ## Notes
-*
-* -   Downstream consumers of this function should **not** rely on specific integer values (e.g., `EUCLIDEAN == 0`). Instead, the function should be used in an opaque manner.
-*
-* @param {*} value - distance metric value
-* @returns {(integer|null)} enumeration constant or null
+* @param {integer} value - distance metric enumeration constant
+* @returns {(string|null)} distance metric string or null
 *
 * @example
-* var v = resolve( 'euclidean' );
+* var str2enum = require( '@stdlib/ml/base/cluster/kmeans/metric-str2enum' );
+*
+* var v = str2enum( 'euclidean' );
 * // returns &lt;number&gt;
+*
+* var s = enum2str( v );
+* // returns 'euclidean'
 */
-function resolve( value ) {
-	var t = ( typeof value );
-	if ( t === 'number' ) {
-		return ( enum2str( value ) ) ? value : null;
-	}
-	if ( t === 'string' ) {
-		return str2enum( value );
-	}
-	return null;
+function enum2str( value ) {
+	var v = hash[ value ];
+	return ( isString( v ) ) ? v : null; // note: we include this guard to prevent walking the prototype chain
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = resolve;
+module.exports = enum2str;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -241,7 +250,7 @@ module.exports = resolve;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-05T06:23:59.737Z
+                at 2026-03-05T10:44:25.092Z
             </div>
         <script src="prettify.js"></script>
         <script>

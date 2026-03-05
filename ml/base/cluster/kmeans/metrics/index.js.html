@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="index.html">All files</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>47/47</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>47/47</span>
             </div>
         
             
@@ -110,16 +110,7 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -161,15 +152,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -195,42 +177,33 @@
 &nbsp;
 'use strict';
 &nbsp;
+/**
+* Return a list of KMeans distance metrics.
+*
+* @module @stdlib/ml/base/cluster/kmeans/metrics
+*
+* @example
+* var metrics = require( '@stdlib/ml/base/cluster/kmeans/metrics' );
+*
+* var list = metrics();
+* // e.g., returns [ 'euclidean', 'cosine', 'cityblock' ]
+*/
+&nbsp;
 // MODULES //
 &nbsp;
-var isNumber = require( '@stdlib/assert/is-number' ).isPrimitive;
-var enumeration = require( '@stdlib/ml/cluster/base/kmeans/metrics' ).enum;
-&nbsp;
-&nbsp;
-// VARIABLES //
-&nbsp;
-var ENUM = enumeration();
+var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
+var main = require( './main.js' );
+var enumeration = require( './enum.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-/**
-* Returns the enumeration constant associated with a KMeans distance metric string.
-*
-* ## Notes
-*
-* -   Downstream consumers of this function should **not** rely on specific integer values (e.g., `EUCLIDEAN == 0`). Instead, the function should be used in an opaque manner.
-*
-* @param {string} metric - distance metric string
-* @returns {(integer|null)} integer value or null
-*
-* @example
-* var v = str2enum( 'cosine' );
-* // returns &lt;number&gt;
-*/
-function str2enum( metric ) {
-	var v = ENUM[ metric ];
-	return ( isNumber( v ) ) ? v : null; // note: we include this guard to prevent walking the prototype chain
-}
+setReadOnly( main, 'enum', enumeration );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = str2enum;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -238,7 +211,7 @@ module.exports = str2enum;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-05T06:24:04.211Z
+                at 2026-03-05T10:44:35.349Z
             </div>
         <script src="prettify.js"></script>
         <script>
