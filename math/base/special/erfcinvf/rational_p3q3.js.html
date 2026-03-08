@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.31% </span>
+                <span class="strong">95.65% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/64</span>
+                <span class='fraction'>66/69</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.31% </span>
+                <span class="strong">95.65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/64</span>
+                <span class='fraction'>66/69</span>
             </div>
         
             
@@ -127,7 +127,17 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -212,10 +222,15 @@
 /* This is a generated file. Do not edit directly. */
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var float64ToFloat32 = require( '@stdlib/number/float64/base/to-float32' );
+&nbsp;
+&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates a rational function (i.e., the ratio of two polynomials described by the coefficients stored in \\(P\\) and \\(Q\\)) (single-precision).
+* Evaluates a rational function (i.e., the ratio of two polynomials described by the coefficients stored in \\(P\\) and \\(Q\\)).
 *
 * ## Notes
 *
@@ -233,7 +248,7 @@ function evalrational( x ) {
 	var s1;
 	var s2;
 	if ( x === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		return -0.1311027816799519;</span>
+<span class="cstat-no" title="statement not covered" >		return -0.1311028003692627;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 	if ( x &lt; 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		ax = -x;</span>
@@ -241,14 +256,14 @@ function evalrational( x ) {
 		ax = x;
 	}
 	if ( ax &lt;= 1.0 ) {
-		s1 = -0.1311027816799519 + (x * (-0.16379404719331705 + (x * (0.11703015634199525 + (x * (0.38707973897260434 + (x * (0.3377855389120359 + (x * (0.14286953440815717 + (x * (0.029015791000532906 + (x * (0.0021455899538880526 + (x * (-6.794655751811263e-7 + (x * (2.8522533178221704e-8 + (x * -6.81149956853777e-10))))))))))))))))))); // eslint-disable-line max-len
-		s2 = 1.0 + (x * (3.4662540724256723 + (x * (5.381683457070069 + (x * (4.778465929458438 + (x * (2.5930192162362027 + (x * (0.848854343457902 + (x * (0.15226433829533179 + (x * (0.011059242293464892 + (x * (0.0 + (x * (0.0 + (x * 0.0))))))))))))))))))); // eslint-disable-line max-len
+		s1 = float64ToFloat32(-0.1311028003692627 + float64ToFloat32(x * float64ToFloat32(-0.16379399597644806 + float64ToFloat32(x * float64ToFloat32(0.11703020334243774 + float64ToFloat32(x * float64ToFloat32(0.3870796859264374 + float64ToFloat32(x * float64ToFloat32(0.3377855122089386 + float64ToFloat32(x * float64ToFloat32(0.1428695023059845 + float64ToFloat32(x * float64ToFloat32(0.029015790671110153 + float64ToFloat32(x * float64ToFloat32(0.002145590027794242 + float64ToFloat32(x * float64ToFloat32(-6.794655860176135e-7 + float64ToFloat32(x * float64ToFloat32(2.8522530115537847e-8 + float64ToFloat32(x * -6.81150025272359e-10)))))))))))))))))))); // eslint-disable-line max-len
+		s2 = float64ToFloat32(1.0 + float64ToFloat32(x * float64ToFloat32(3.4662539958953857 + float64ToFloat32(x * float64ToFloat32(5.381682872772217 + float64ToFloat32(x * float64ToFloat32(4.77846622467041 + float64ToFloat32(x * float64ToFloat32(2.5930190086364746 + float64ToFloat32(x * float64ToFloat32(0.8488543033599854 + float64ToFloat32(x * float64ToFloat32(0.1522642970085144 + float64ToFloat32(x * float64ToFloat32(0.011059240438044071 + float64ToFloat32(x * float64ToFloat32(0.0 + float64ToFloat32(x * float64ToFloat32(0.0 + float64ToFloat32(x * 0.0)))))))))))))))))))); // eslint-disable-line max-len
 	} else {
-		x = 1.0 / x;
-		s1 = -6.81149956853777e-10 + (x * (2.8522533178221704e-8 + (x * (-6.794655751811263e-7 + (x * (0.0021455899538880526 + (x * (0.029015791000532906 + (x * (0.14286953440815717 + (x * (0.3377855389120359 + (x * (0.38707973897260434 + (x * (0.11703015634199525 + (x * (-0.16379404719331705 + (x * -0.1311027816799519))))))))))))))))))); // eslint-disable-line max-len
-		s2 = 0.0 + (x * (0.0 + (x * (0.0 + (x * (0.011059242293464892 + (x * (0.15226433829533179 + (x * (0.848854343457902 + (x * (2.5930192162362027 + (x * (4.778465929458438 + (x * (5.381683457070069 + (x * (3.4662540724256723 + (x * 1.0))))))))))))))))))); // eslint-disable-line max-len
+		x = float64ToFloat32( 1.0 / x );
+		s1 = float64ToFloat32(-6.81150025272359e-10 + float64ToFloat32(x * float64ToFloat32(2.8522530115537847e-8 + float64ToFloat32(x * float64ToFloat32(-6.794655860176135e-7 + float64ToFloat32(x * float64ToFloat32(0.002145590027794242 + float64ToFloat32(x * float64ToFloat32(0.029015790671110153 + float64ToFloat32(x * float64ToFloat32(0.1428695023059845 + float64ToFloat32(x * float64ToFloat32(0.3377855122089386 + float64ToFloat32(x * float64ToFloat32(0.3870796859264374 + float64ToFloat32(x * float64ToFloat32(0.11703020334243774 + float64ToFloat32(x * float64ToFloat32(-0.16379399597644806 + float64ToFloat32(x * -0.1311028003692627)))))))))))))))))))); // eslint-disable-line max-len
+		s2 = float64ToFloat32(0.0 + float64ToFloat32(x * float64ToFloat32(0.0 + float64ToFloat32(x * float64ToFloat32(0.0 + float64ToFloat32(x * float64ToFloat32(0.011059240438044071 + float64ToFloat32(x * float64ToFloat32(0.1522642970085144 + float64ToFloat32(x * float64ToFloat32(0.8488543033599854 + float64ToFloat32(x * float64ToFloat32(2.5930190086364746 + float64ToFloat32(x * float64ToFloat32(4.77846622467041 + float64ToFloat32(x * float64ToFloat32(5.381682872772217 + float64ToFloat32(x * float64ToFloat32(3.4662539958953857 + float64ToFloat32(x * 1.0)))))))))))))))))))); // eslint-disable-line max-len
 	}
-	return s1 / s2;
+	return float64ToFloat32( s1 / s2 );
 }
 &nbsp;
 &nbsp;
@@ -262,7 +277,7 @@ module.exports = evalrational;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-03T11:48:06.284Z
+                at 2026-03-08T08:53:08.720Z
             </div>
         <script src="prettify.js"></script>
         <script>

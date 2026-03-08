@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.06% </span>
+                <span class="strong">89.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/64</span>
+                <span class='fraction'>62/69</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.06% </span>
+                <span class="strong">89.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/64</span>
+                <span class='fraction'>62/69</span>
             </div>
         
             
@@ -127,7 +127,17 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -212,10 +222,15 @@
 /* This is a generated file. Do not edit directly. */
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var float64ToFloat32 = require( '@stdlib/number/float64/base/to-float32' );
+&nbsp;
+&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates a rational function (i.e., the ratio of two polynomials described by the coefficients stored in \(P\) and \(Q\)) (single-precision).
+* Evaluates a rational function (i.e., the ratio of two polynomials described by the coefficients stored in \\(P\\) and \\(Q\\)).
 *
 * ## Notes
 *
@@ -233,7 +248,7 @@ function evalrational( x ) {
 	var s1;
 	var s2;
 	if ( x === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		return -0.0350353787183178;</span>
+<span class="cstat-no" title="statement not covered" >		return -0.035035375505685806;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 	if ( x &lt; 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		ax = -x;</span>
@@ -241,14 +256,14 @@ function evalrational( x ) {
 		ax = x;
 	}
 	if ( ax &lt;= 1.0 ) {
-		s1 = -0.0350353787183178 + (x * (-0.0022242652921344794 + (x * (0.018557330651423107 + (x * (0.009508047013259196 + (x * (0.0018712349281955923 + (x * (0.00015754461742496055 + (x * (0.00000460469890584318 + (x * (-2.304047769118826e-10 + (x * 2.6633922742578204e-12))))))))))))))); // eslint-disable-line max-len
-		s2 = 1.0 + (x * (1.3653349817554064 + (x * (0.7620591645536234 + (x * (0.22009110576413124 + (x * (0.03415891436709477 + (x * (0.00263861676657016 + (x * (0.00007646752923027944 + (x * (0.0 + (x * 0.0))))))))))))))); // eslint-disable-line max-len
+		s1 = float64ToFloat32(-0.035035375505685806 + float64ToFloat32(x * float64ToFloat32(-0.0022242648992687464 + float64ToFloat32(x * float64ToFloat32(0.01855733059346676 + float64ToFloat32(x * float64ToFloat32(0.009508047252893448 + float64ToFloat32(x * float64ToFloat32(0.0018712349701672792 + float64ToFloat32(x * float64ToFloat32(0.00015754459309391677 + float64ToFloat32(x * float64ToFloat32(4.6046991220016764e-10 + float64ToFloat32(x * 2.663392076329707e-12)))))))))))))); // eslint-disable-line max-len
+		s2 = float64ToFloat32(1.0 + float64ToFloat32(x * float64ToFloat32(1.3653349876403809 + float64ToFloat32(x * float64ToFloat32(0.762059211730957 + float64ToFloat32(x * float64ToFloat32(0.2200911045074463 + float64ToFloat32(x * float64ToFloat32(0.03415891155600548 + float64ToFloat32(x * float64ToFloat32(0.0026386170648038387 + float64ToFloat32(x * float64ToFloat32(0.0 + float64ToFloat32(x * 0.0)))))))))))))); // eslint-disable-line max-len
 	}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
-<span class="cstat-no" title="statement not covered" >		x = 1.0 / x;</span>
-<span class="cstat-no" title="statement not covered" >		s1 = 2.6633922742578204e-12 + (x * (-2.304047769118826e-10 + (x * (0.00000460469890584318 + (x * (0.00015754461742496055 + (x * (0.0018712349281955923 + (x * (0.009508047013259196 + (x * (0.018557330651423107 + (x * (-0.0022242652921344794 + (x * -0.0350353787183178))))))))))))))); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >		s2 = 0.0 + (x * (0.0 + (x * (0.00007646752923027944 + (x * (0.00263861676657016 + (x * (0.03415891436709477 + (x * (0.22009110576413124 + (x * (0.7620591645536234 + (x * (1.3653349817554064 + (x * 1.0))))))))))))))); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >		x = float64ToFloat32( 1.0 / x );</span>
+<span class="cstat-no" title="statement not covered" >		s1 = float64ToFloat32(2.663392076329707e-12 + float64ToFloat32(x * float64ToFloat32(4.6046991220016764e-10 + float64ToFloat32(x * float64ToFloat32(0.00015754459309391677 + float64ToFloat32(x * float64ToFloat32(0.0018712349701672792 + float64ToFloat32(x * float64ToFloat32(0.009508047252893448 + float64ToFloat32(x * float64ToFloat32(0.01855733059346676 + float64ToFloat32(x * float64ToFloat32(-0.0022242648992687464 + float64ToFloat32(x * -0.035035375505685806)))))))))))))); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >		s2 = float64ToFloat32(0.0 + float64ToFloat32(x * float64ToFloat32(0.0 + float64ToFloat32(x * float64ToFloat32(0.0026386170648038387 + float64ToFloat32(x * float64ToFloat32(0.03415891155600548 + float64ToFloat32(x * float64ToFloat32(0.2200911045074463 + float64ToFloat32(x * float64ToFloat32(0.762059211730957 + float64ToFloat32(x * float64ToFloat32(1.3653349876403809 + float64ToFloat32(x * 1.0)))))))))))))); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	return s1 / s2;
+	return float64ToFloat32( s1 / s2 );
 }
 &nbsp;
 &nbsp;
@@ -262,7 +277,7 @@ module.exports = evalrational;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-03T11:48:06.284Z
+                at 2026-03-08T08:53:08.720Z
             </div>
         <script src="prettify.js"></script>
         <script>
