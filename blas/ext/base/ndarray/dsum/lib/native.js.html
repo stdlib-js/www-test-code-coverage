@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ssum/lib/index.js</title>
+    <title>Code coverage report for dsum/lib/native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">ssum/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">dsum/lib</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.61% </span>
+                <span class="strong">92.72% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/59</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>51/55</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.61% </span>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">92.72% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/59</span>
+                <span class='fraction'>51/55</span>
             </div>
         
             
@@ -118,11 +118,7 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -168,12 +164,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -201,45 +193,41 @@
 &nbsp;
 'use strict';
 &nbsp;
-/**
-* Compute the sum of all elements in a one-dimensional single-precision floating-point ndarray.
-*
-* @module @stdlib/blas/ext/base/ndarray/ssum
-*
-* @example
-* var Float32Array = require( '@stdlib/array/float32' );
-* var ndarray = require( '@stdlib/ndarray/ctor' );
-* var ssum = require( '@stdlib/blas/ext/base/ndarray/ssum' );
-*
-* var buffer = new Float32Array( [ 1.0, -2.0, 2.0 ] );
-* var x = ndarray( 'float32', buffer, [ 3 ], [ 1 ], 0, 'row-major' );
-*
-* var out = ssum( [ x ] );
-* // returns 1.0
-*/
-&nbsp;
 // MODULES //
 &nbsp;
-var join = require( 'path' ).join;
-var tryRequire = require( '@stdlib/utils/try-require' );
-var isError = require( '@stdlib/assert/is-error' );
-var main = require( './main.js' );
+var serialize = require( '@stdlib/ndarray/base/serialize-meta-data' );
+var getData = require( '@stdlib/ndarray/base/data-buffer' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-var ssum;
-var tmp = tryRequire( join( __dirname, './native.js' ) );
-if ( isError( tmp ) ) {
-	ssum = main;
-}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
-<span class="cstat-no" title="statement not covered" >	ssum = tmp;</span>
+/**
+* Computes the sum of all elements in a one-dimensional double-precision floating-point ndarray.
+*
+* @private
+* @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing an input ndarray
+* @returns {number} sum
+*
+* @example
+* var Float64Array = require( '@stdlib/array/float64' );
+* var ndarray = require( '@stdlib/ndarray/base/ctor' );
+*
+* var xbuf = new Float64Array( [ 1.0, 3.0, 4.0, 2.0 ] );
+* var x = new ndarray( 'float64', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
+*
+* var v = dsum( [ x ] );
+* // returns 10.0
+*/
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dsum( arrays ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var x = arrays[ 0 ];</span>
+<span class="cstat-no" title="statement not covered" >	return addon( getData( x ), serialize( x ) );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = ssum;
+module.exports = dsum;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
