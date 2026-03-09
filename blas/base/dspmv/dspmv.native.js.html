@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dspmv.js</title>
+    <title>Code coverage report for dspmv.native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> dspmv.js</h1>
+        <h1><a href="index.html">All files</a> dspmv.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>89/89</span>
+                <span class='fraction'>87/87</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>89/89</span>
+                <span class='fraction'>87/87</span>
             </div>
         
             
@@ -150,9 +150,7 @@
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -213,9 +211,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -244,7 +240,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -265,9 +261,10 @@
 &nbsp;
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
 var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
-var stride2offset = require( '@stdlib/strided/base/stride2offset' );
+var resolveOrder = require( '@stdlib/blas/base/layout-resolve-enum' );
+var resolveUplo = require( '@stdlib/blas/base/matrix-triangle-resolve-enum' );
 var format = require( '@stdlib/string/format' );
-var base = require( './base.js' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -303,9 +300,6 @@ var base = require( './base.js' );
 * // y =&gt; &lt;Float64Array&gt;[ ~7.0, ~12.0, ~15.0 ]
 */
 function dspmv( order, uplo, N, alpha, AP, x, strideX, beta, y, strideY ) {
-	var offsetX;
-	var offsetY;
-&nbsp;
 	if ( !isLayout( order ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
 	}
@@ -321,9 +315,9 @@ function dspmv( order, uplo, N, alpha, AP, x, strideX, beta, y, strideY ) {
 	if ( strideY === 0 ) {
 		throw new RangeError( format( 'invalid argument. Tenth argument must be non-zero. Value: `%d`.', strideY ) );
 	}
-	offsetX = stride2offset( N, strideX );
-	offsetY = stride2offset( N, strideY );
-	return base( order, uplo, N, alpha, AP, 0, x, strideX, offsetX, beta, y, strideY, offsetY ); // eslint-disable-line max-len
+&nbsp;
+	addon( resolveOrder( order ), resolveUplo( uplo ), N, alpha, AP, x, strideX, beta, y, strideY ); // eslint-disable-line max-len
+	return y;
 }
 &nbsp;
 &nbsp;

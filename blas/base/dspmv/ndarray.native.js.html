@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dspmv.js</title>
+    <title>Code coverage report for ndarray.native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> dspmv.js</h1>
+        <h1><a href="index.html">All files</a> ndarray.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -213,9 +213,10 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -232,7 +233,6 @@
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">36x</span>
@@ -244,7 +244,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -265,9 +265,10 @@
 &nbsp;
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
 var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
-var stride2offset = require( '@stdlib/strided/base/stride2offset' );
+var resolveOrder = require( '@stdlib/blas/base/layout-resolve-enum' );
+var resolveUplo = require( '@stdlib/blas/base/matrix-triangle-resolve-enum' );
 var format = require( '@stdlib/string/format' );
-var base = require( './base.js' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -280,16 +281,19 @@ var base = require( './base.js' );
 * @param {NonNegativeInteger} N - number of elements along each dimension of `A`
 * @param {number} alpha - scalar constant
 * @param {Float64Array} AP - packed form of a symmetric matrix `A`
+* @param {NonNegativeInteger} offsetAP - starting `AP` index
 * @param {Float64Array} x - first input array
 * @param {integer} strideX - `x` stride length
+* @param {NonNegativeInteger} offsetX - starting `x` index
 * @param {number} beta - scalar constant
 * @param {Float64Array} y - second input array
 * @param {integer} strideY - `y` stride length
+* @param {NonNegativeInteger} offsetY - starting `y` index
 * @throws {TypeError} first argument must be a valid order
 * @throws {TypeError} second argument must specify whether the lower or upper triangular matrix is supplied
 * @throws {RangeError} third argument must be a nonnegative integer
-* @throws {RangeError} seventh argument must be non-zero
-* @throws {RangeError} tenth argument must be non-zero
+* @throws {RangeError} eighth argument must be non-zero
+* @throws {RangeError} twelfth argument must be non-zero
 * @returns {Float64Array} `y`
 *
 * @example
@@ -299,13 +303,10 @@ var base = require( './base.js' );
 * var x = new Float64Array( [ 1.0, 1.0, 1.0 ] );
 * var y = new Float64Array( [ 1.0, 1.0, 1.0 ] );
 *
-* dspmv( 'column-major', 'lower', 3, 1.0, AP, x, 1, 1.0, y, 1 );
+* dspmv( 'column-major', 'lower', 3, 1.0, AP, 0, x, 1, 0, 1.0, y, 1, 0 );
 * // y =&gt; &lt;Float64Array&gt;[ ~7.0, ~12.0, ~15.0 ]
 */
-function dspmv( order, uplo, N, alpha, AP, x, strideX, beta, y, strideY ) {
-	var offsetX;
-	var offsetY;
-&nbsp;
+function dspmv( order, uplo, N, alpha, AP, offsetAP, x, strideX, offsetX, beta, y, strideY, offsetY ) { // eslint-disable-line max-params, max-len
 	if ( !isLayout( order ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
 	}
@@ -316,14 +317,13 @@ function dspmv( order, uplo, N, alpha, AP, x, strideX, beta, y, strideY ) {
 		throw new RangeError( format( 'invalid argument. Third argument must be a nonnegative integer. Value: `%d`.', N ) );
 	}
 	if ( strideX === 0 ) {
-		throw new RangeError( format( 'invalid argument. Seventh argument must be non-zero. Value: `%d`.', strideX ) );
+		throw new RangeError( format( 'invalid argument. Eighth argument must be non-zero. Value: `%d`.', strideX ) );
 	}
 	if ( strideY === 0 ) {
-		throw new RangeError( format( 'invalid argument. Tenth argument must be non-zero. Value: `%d`.', strideY ) );
+		throw new RangeError( format( 'invalid argument. Twelfth argument must be non-zero. Value: `%d`.', strideY ) );
 	}
-	offsetX = stride2offset( N, strideX );
-	offsetY = stride2offset( N, strideY );
-	return base( order, uplo, N, alpha, AP, 0, x, strideX, offsetX, beta, y, strideY, offsetY ); // eslint-disable-line max-len
+	addon.ndarray( resolveOrder( order ), resolveUplo( uplo ), N, alpha, AP, offsetAP, x, strideX, offsetX, beta, y, strideY, offsetY ); // eslint-disable-line max-len
+	return y;
 }
 &nbsp;
 &nbsp;
