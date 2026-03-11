@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>55/55</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>55/55</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -118,7 +118,20 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -164,10 +177,23 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -195,6 +221,10 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
+var max = require( '@stdlib/math/base/special/fast/max' );
+var resolveOrder = require( '@stdlib/blas/base/layout-resolve-enum' );
+var format = require( '@stdlib/string/format' );
 var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
@@ -203,11 +233,14 @@ var addon = require( './../src/addon.node' );
 /**
 * Computes the Cartesian square for a double-precision floating-point strided array.
 *
+* @param {string} order - storage layout
 * @param {NonNegativeInteger} N - number of indexed elements
 * @param {Float64Array} x - input array
 * @param {integer} strideX - stride length for `x`
 * @param {Float64Array} out - output array
 * @param {integer} LDO - stride length for the leading dimension of `out`
+* @throws {TypeError} first argument must be a valid order
+* @throws {RangeError} sixth argument must be greater than or equal to max(1,N)
 * @returns {Float64Array} output array
 *
 * @example
@@ -216,11 +249,17 @@ var addon = require( './../src/addon.node' );
 * var x = new Float64Array( [ 1.0, 2.0 ] );
 * var out = new Float64Array( 8 );
 *
-* dcartesianSquare( x.length, x, 1, out, 2 );
+* dcartesianSquare( 'row-major', x.length, x, 1, out, 2 );
 * // out =&gt; &lt;Float64Array&gt;[ 1.0, 1.0, 1.0, 2.0, 2.0, 1.0, 2.0, 2.0 ]
 */
-function dcartesianSquare( N, x, strideX, out, LDO ) {
-	addon( N, x, strideX, out, LDO );
+function dcartesianSquare( order, N, x, strideX, out, LDO ) {
+	if ( !isLayout( order ) ) {
+		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
+	}
+	if ( LDO &lt; max( 1, N ) ) {
+		throw new RangeError( format( 'invalid argument. Sixth argument must be greater than or equal to max(1,%d). Value: `%d`.', N, LDO ) );
+	}
+	addon( resolveOrder( order ), N, x, strideX, out, LDO );
 	return out;
 }
 &nbsp;
@@ -235,7 +274,7 @@ module.exports = dcartesianSquare;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-09T21:07:13.878Z
+                at 2026-03-11T09:41:47.059Z
             </div>
         <script src="prettify.js"></script>
         <script>
