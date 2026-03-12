@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>89/89</span>
+                <span class='fraction'>78/78</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>89/89</span>
+                <span class='fraction'>78/78</span>
             </div>
         
             
@@ -141,18 +141,7 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -198,21 +187,10 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3014x</span>
-<span class="cline-any cline-yes">3014x</span>
-<span class="cline-any cline-yes">3014x</span>
-<span class="cline-any cline-yes">3014x</span>
-<span class="cline-any cline-yes">3014x</span>
-<span class="cline-any cline-yes">3014x</span>
-<span class="cline-any cline-yes">3014x</span>
-<span class="cline-any cline-yes">3009x</span>
-<span class="cline-any cline-yes">3014x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">3004x</span>
-<span class="cline-any cline-yes">3004x</span>
-<span class="cline-any cline-yes">3004x</span>
+<span class="cline-any cline-yes">3013x</span>
+<span class="cline-any cline-yes">3013x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">3004x</span>
 <span class="cline-any cline-yes">3004x</span>
 <span class="cline-any cline-yes">3004x</span>
@@ -235,7 +213,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3001x</span>
 <span class="cline-any cline-yes">3003x</span>
-<span class="cline-any cline-yes">3014x</span>
+<span class="cline-any cline-yes">3013x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -264,65 +242,54 @@
 // MODULES //
 &nbsp;
 var constantFunction = require( '@stdlib/utils/constant-function' );
+var normalCDF = require( '@stdlib/stats/base/dists/normal/cdf' );
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var pow = require( '@stdlib/math/base/special/pow' );
 var ln = require( '@stdlib/math/base/special/ln' );
-var NINF = require( '@stdlib/constants/float64/ninf' );
-var PI = require( '@stdlib/constants/float64/pi' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a function for evaluating the natural logarithm of the probability density function (PDF) for a lognormal distribution with location parameter `mu` and scale parameter `sigma`.
+* Returns a function for evaluating the cumulative distribution function (CDF) for a lognormal distribution with location parameter `mu` and scale parameter `sigma`.
 *
 * @param {number} mu - location parameter
 * @param {PositiveNumber} sigma - scale parameter
-* @returns {Function} logPDF
+* @returns {Function} CDF
 *
 * @example
-* var logpdf = factory( 4.0, 2.0 );
-* var y = logpdf( 10.0 );
-* // returns ~-4.275
+* var cdf = factory( 3.0, 1.5 );
 *
-* y = logpdf( 2.0 );
-* // returns ~-3.672
+* var y = cdf( 1.0 );
+* // returns ~0.023
+*
+* y = cdf( 4.0 );
+* // returns ~0.141
 */
 function factory( mu, sigma ) {
-	var s2;
-	var A;
-	var B;
-	if (
-		isnan( mu ) ||
-		isnan( sigma ) ||
-		sigma &lt;= 0.0
-	) {
+	if ( isnan( mu ) || isnan( sigma ) || sigma &lt;= 0.0 ) {
 		return constantFunction( NaN );
 	}
-	s2 = pow( sigma, 2.0 );
-	A = -0.5 * ln( 2.0 * s2 * PI );
-	B = -1.0 / ( 2.0 * s2 );
-	return logpdf;
+	return cdf;
 &nbsp;
 	/**
-	* Evaluates the natural logarithm of the probability density function (PDF) for a lognormal distribution.
+	* Evaluates the cumulative distribution function (CDF) for a lognormal distribution.
 	*
 	* @private
 	* @param {number} x - input value
-	* @returns {number} evaluated logPDF
+	* @returns {Probability} evaluated CDF
 	*
 	* @example
-	* var y = logpdf( 2.5 );
+	* var y = cdf( 2.0 );
 	* // returns &lt;number&gt;
 	*/
-	function logpdf( x ) {
+	function cdf( x ) {
 		if ( isnan( x ) ) {
 			return NaN;
 		}
 		if ( x &lt;= 0.0 ) {
-			return NINF;
+			return 0.0;
 		}
-		return A - ln( x ) + ( B * pow( ln(x) - mu, 2.0 ) );
+		return normalCDF( ln(x), mu, sigma );
 	}
 }
 &nbsp;
@@ -337,7 +304,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-12T00:14:19.250Z
+                at 2026-03-12T00:13:34.025Z
             </div>
         <script src="prettify.js"></script>
         <script>
