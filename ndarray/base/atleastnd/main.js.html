@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>131/131</span>
+                <span class='fraction'>114/114</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>131/131</span>
+                <span class='fraction'>114/114</span>
             </div>
         
             
@@ -177,30 +177,7 @@
 <a name='L112'></a><a href='#L112'>112</a>
 <a name='L113'></a><a href='#L113'>113</a>
 <a name='L114'></a><a href='#L114'>114</a>
-<a name='L115'></a><a href='#L115'>115</a>
-<a name='L116'></a><a href='#L116'>116</a>
-<a name='L117'></a><a href='#L117'>117</a>
-<a name='L118'></a><a href='#L118'>118</a>
-<a name='L119'></a><a href='#L119'>119</a>
-<a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a>
-<a name='L132'></a><a href='#L132'>132</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L115'></a><a href='#L115'>115</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -304,18 +281,7 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -348,10 +314,6 @@
 // MODULES //
 &nbsp;
 var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
-var isNumber = require( '@stdlib/assert/is-number' ).isPrimitive;
-var isComplexLike = require( '@stdlib/assert/is-complex-like' );
-var isBoolean = require( '@stdlib/assert/is-boolean' ).isPrimitive;
-var complexDataType = require( '@stdlib/complex/dtype' );
 var broadcastScalar = require( '@stdlib/ndarray/base/broadcast-scalar' );
 var dims = require( '@stdlib/ndarray/base/ndims' );
 var defaults = require( '@stdlib/ndarray/defaults' );
@@ -361,15 +323,13 @@ var getStrides = require( '@stdlib/ndarray/base/strides' );
 var getOffset = require( '@stdlib/ndarray/base/offset' );
 var getOrder = require( '@stdlib/ndarray/base/order' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
+var scalarDType = require( '@stdlib/ndarray/base/scalar-dtype' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
 var ones = require( '@stdlib/array/base/ones' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
-var DEFAULT_REAL = defaults.get( 'dtypes.real_floating_point' );
-var DEFAULT_CMPLX = defaults.get( 'dtypes.complex_floating_point' );
-var DEFAULT_BOOL = defaults.get( 'dtypes.boolean' );
 var ORDER = defaults.get( 'order' );
 &nbsp;
 &nbsp;
@@ -435,18 +395,7 @@ function atleastnd( ndims, arrays ) {
 			continue;
 		}
 		// For scalar values, resolve a corresponding ndarray data type...
-		if ( isNumber( v ) ) { // TODO: consider abstracting this logic to an `ndarray/base/scalar-dtype` (???) package, as this logic is found elsewhere (e.g., `ndarray/from-scalar`) and it would be good to avoid duplication, especially as we add support for more ndarray data types
-			dt = DEFAULT_REAL;
-		} else if ( isBoolean( v ) ) {
-			dt = DEFAULT_BOOL;
-		} else if ( isComplexLike( v ) ) {
-			dt = complexDataType( v );
-			if ( dt === null ) {
-				dt = DEFAULT_CMPLX;
-			}
-		} else {
-			dt = 'generic';
-		}
+		dt = scalarDType(v);
 		out.push( broadcastScalar( v, dt, ones( ndims ), ORDER ) );
 	}
 	return out;
@@ -463,7 +412,7 @@ module.exports = atleastnd;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-01T06:06:28.872Z
+                at 2026-03-16T18:24:59.777Z
             </div>
         <script src="prettify.js"></script>
         <script>
