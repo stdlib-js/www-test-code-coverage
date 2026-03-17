@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dstructs/named-typed-tuple/lib/main.js</title>
+    <title>Code coverage report for main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">dstructs/named-typed-tuple/lib</a> main.js</h1>
+        <h1><a href="index.html">All files</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.11% </span>
+                <span class="strong">52.96% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>767/1444</span>
+                <span class='fraction'>768/1450</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.11% </span>
+                <span class="strong">52.96% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>767/1444</span>
+                <span class='fraction'>768/1450</span>
             </div>
         
             
@@ -1507,7 +1507,14 @@
 <a name='L1442'></a><a href='#L1442'>1442</a>
 <a name='L1443'></a><a href='#L1443'>1443</a>
 <a name='L1444'></a><a href='#L1444'>1444</a>
-<a name='L1445'></a><a href='#L1445'>1445</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
+<a name='L1445'></a><a href='#L1445'>1445</a>
+<a name='L1446'></a><a href='#L1446'>1446</a>
+<a name='L1447'></a><a href='#L1447'>1447</a>
+<a name='L1448'></a><a href='#L1448'>1448</a>
+<a name='L1449'></a><a href='#L1449'>1449</a>
+<a name='L1450'></a><a href='#L1450'>1450</a>
+<a name='L1451'></a><a href='#L1451'>1451</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -2605,6 +2612,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
@@ -2986,9 +2998,10 @@ var isCollection = require( '@stdlib/assert/is-collection' );
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var hasIteratorSymbolSupport = require( '@stdlib/assert/has-iterator-symbol-support' );
 var propertiesIn = require( '@stdlib/utils/properties-in' );
+var copy = require( '@stdlib/array/base/copy' );
 var typedarray = require( '@stdlib/array/typed' );
 var Int8Array = require( '@stdlib/array/int8' );
-var getDtype = require( '@stdlib/array/dtype' );
+var getDType = require( '@stdlib/array/dtype' );
 var defineProperty = require( '@stdlib/utils/define-property' );
 var setNonEnumerableProperty = require( '@stdlib/utils/define-nonenumerable-property' );
 var setNonEnumerableReadOnlyAccessor = require( '@stdlib/utils/define-nonenumerable-read-only-accessor' ); // eslint-disable-line id-length
@@ -3055,7 +3068,7 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 	if ( !hasDistinctElements( names ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Field names must be distinct. Value: `%s`.', names ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	fields = names.slice();
+	fields = copy( names );
 	nfields = fields.length;
 	for ( i = 0; i &lt; nfields; i++ ) {
 		if ( contains( RESERVED_PROPS, fields[ i ] ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
@@ -3125,7 +3138,7 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 		if ( tuple.length !== nfields ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >			throw new RangeError( format( 'invalid arguments. Arguments are incompatible with the number of tuple fields. Number of fields: `%u`. Number of data elements: `%u`.', nfields, tuple.length ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-		dtype = getDtype( tuple );
+		dtype = getDType( tuple );
 &nbsp;
 		indices = []; // indirect index look-up table
 		for ( i = 0; i &lt; nfields; i++ ) {
@@ -3180,7 +3193,7 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 			* @returns {number} tuple value
 			*/
 			function get() {
-				return tuple[ indices[ i ] ];
+				return tuple[ indices.indexOf( i ) ];
 			}
 		}
 &nbsp;
@@ -3201,7 +3214,7 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 			* @param {number} v - value to set
 			*/
 <span class="fstat-no" title="function not covered" >			function set( v ) {</span>
-<span class="cstat-no" title="statement not covered" >				tuple[ indices[ i ] ] = v;</span>
+<span class="cstat-no" title="statement not covered" >				tuple[ indices.indexOf( i ) ] = v;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 		}
 &nbsp;
@@ -3993,6 +4006,7 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 		*/
 <span class="fstat-no" title="function not covered" >		function sort( compareFunction ) {</span>
 <span class="cstat-no" title="statement not covered" >			var clbk;</span>
+<span class="cstat-no" title="statement not covered" >			var idx;</span>
 <span class="cstat-no" title="statement not covered" >			var tmp;</span>
 <span class="cstat-no" title="statement not covered" >			var i;</span>
 <span class="cstat-no" title="statement not covered" >			var j;</span>
@@ -4009,6 +4023,10 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 <span class="cstat-no" title="statement not covered" >			} else {</span>
 <span class="cstat-no" title="statement not covered" >				clbk = ascending;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			// Create a copy of the list of indices so that we can access the original sort order when invoking the comparison function:</span>
+<span class="cstat-no" title="statement not covered" >			idx = indices.slice();</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >			// Sort the list of indices:</span>
 <span class="cstat-no" title="statement not covered" >			indices.sort( wrapper );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >			// Create a temporary indices array which we'll reorder as we rearrange the tuple elements:</span>
@@ -4044,8 +4062,8 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 <span class="cstat-no" title="statement not covered" >			* @returns {*} value specifying the sort order</span>
 <span class="cstat-no" title="statement not covered" >			*/</span>
 <span class="cstat-no" title="statement not covered" >			function wrapper( ia, ib ) {</span>
-<span class="cstat-no" title="statement not covered" >				var a = tuple[ indices[ ia ] ];</span>
-<span class="cstat-no" title="statement not covered" >				var b = tuple[ indices[ ib ] ];</span>
+<span class="cstat-no" title="statement not covered" >				var a = tuple[ idx[ ia ] ];</span>
+<span class="cstat-no" title="statement not covered" >				var b = tuple[ idx[ ib ] ];</span>
 <span class="cstat-no" title="statement not covered" >				return clbk( a, b );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -4402,16 +4420,16 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-17T21:55:32.311Z
+                at 2026-03-17T06:14:24.254Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     
