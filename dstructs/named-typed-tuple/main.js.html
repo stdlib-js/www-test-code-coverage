@@ -2270,6 +2270,39 @@
 <span class="cline-any cline-yes">132x</span>
 <span class="cline-any cline-yes">132x</span>
 <span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">132x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -2354,39 +2387,6 @@
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-yes">132x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">132x</span>
 <span class="cline-any cline-yes">132x</span>
 <span class="cline-any cline-yes">132x</span>
@@ -3522,8 +3522,8 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 		setNonEnumerableProperty( tuple, 'fieldOf', fieldOf );
 		setNonEnumerableProperty( tuple, 'filter', filter );
 		setNonEnumerableProperty( tuple, 'find', find );
-		setNonEnumerableProperty( tuple, 'findIndex', findIndex );
 		setNonEnumerableProperty( tuple, 'findField', findField );
+		setNonEnumerableProperty( tuple, 'findIndex', findIndex );
 		setNonEnumerableProperty( tuple, 'findLast', findLast );
 		setNonEnumerableProperty( tuple, 'findLastField', findLastField );
 		setNonEnumerableProperty( tuple, 'findLastIndex', findLastIndex );
@@ -3888,6 +3888,39 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 <span class="cstat-no" title="statement not covered" >		}</span>
 &nbsp;
 		/**
+		* Returns the index of the first tuple element for which a provided predicate function returns a truthy value.
+		*
+		* ## Notes
+		*
+		* -   If the predicate function never returns a truthy value, the function returns `-1`.
+		*
+		* @private
+		* @memberof tuple
+		* @param {Function} predicate - predicate function
+		* @param {*} [thisArg] - execution context
+		* @throws {TypeError} `this` must be the host tuple
+		* @throws {TypeError} first argument must be a function
+		* @returns {integer} tuple index or `-1`
+		*/
+<span class="fstat-no" title="function not covered" >		function findIndex( predicate, thisArg ) {</span>
+<span class="cstat-no" title="statement not covered" >			var bool;</span>
+<span class="cstat-no" title="statement not covered" >			var i;</span>
+<span class="cstat-no" title="statement not covered" >			if ( this !== tuple ) { // eslint-disable-line no-invalid-this</span>
+<span class="cstat-no" title="statement not covered" >				throw new TypeError( 'invalid invocation. `this` is not host tuple.' );</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			if ( !isFunction( predicate ) ) {</span>
+<span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. First argument must be a function. Value: `%s`.', predicate ) );</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			for ( i = 0; i &lt; nfields; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >				bool = predicate.call( thisArg, tuple[ i ], i, fields[ indices[i] ], tuple );</span>
+<span class="cstat-no" title="statement not covered" >				if ( bool ) {</span>
+<span class="cstat-no" title="statement not covered" >					return i;</span>
+<span class="cstat-no" title="statement not covered" >				}</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			return -1;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+&nbsp;
+		/**
 		* Returns the last tuple element for which a provided predicate function returns a truthy value.
 		*
 		* ## Notes
@@ -3987,39 +4020,6 @@ function factory( names, options ) { // eslint-disable-line max-lines-per-functi
 			}
 			return -1;
 		}
-&nbsp;
-		/**
-		* Returns the index of the first tuple element for which a provided predicate function returns a truthy value.
-		*
-		* ## Notes
-		*
-		* -   If the predicate function never returns a truthy value, the function returns `-1`.
-		*
-		* @private
-		* @memberof tuple
-		* @param {Function} predicate - predicate function
-		* @param {*} [thisArg] - execution context
-		* @throws {TypeError} `this` must be the host tuple
-		* @throws {TypeError} first argument must be a function
-		* @returns {integer} tuple index or `-1`
-		*/
-<span class="fstat-no" title="function not covered" >		function findIndex( predicate, thisArg ) {</span>
-<span class="cstat-no" title="statement not covered" >			var bool;</span>
-<span class="cstat-no" title="statement not covered" >			var i;</span>
-<span class="cstat-no" title="statement not covered" >			if ( this !== tuple ) { // eslint-disable-line no-invalid-this</span>
-<span class="cstat-no" title="statement not covered" >				throw new TypeError( 'invalid invocation. `this` is not host tuple.' );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			if ( !isFunction( predicate ) ) {</span>
-<span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. First argument must be a function. Value: `%s`.', predicate ) );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			for ( i = 0; i &lt; nfields; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >				bool = predicate.call( thisArg, tuple[ i ], i, fields[ indices[i] ], tuple );</span>
-<span class="cstat-no" title="statement not covered" >				if ( bool ) {</span>
-<span class="cstat-no" title="statement not covered" >					return i;</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			return -1;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
 &nbsp;
 		/**
 		* Invokes a callback for each tuple element.
@@ -4969,7 +4969,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-20T19:31:55.875Z
+                at 2026-03-20T19:45:58.421Z
             </div>
         <script src="prettify.js"></script>
         <script>
