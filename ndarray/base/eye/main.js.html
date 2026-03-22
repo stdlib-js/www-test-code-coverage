@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.38% </span>
+                <span class="strong">57.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>72/130</span>
+                <span class='fraction'>73/128</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.38% </span>
+                <span class="strong">57.03% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>72/130</span>
+                <span class='fraction'>73/128</span>
             </div>
         
             
@@ -191,9 +191,8 @@
 <a name='L126'></a><a href='#L126'>126</a>
 <a name='L127'></a><a href='#L127'>127</a>
 <a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L129'></a><a href='#L129'>129</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -266,9 +265,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -345,9 +341,10 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var ndarray2object = require( '@stdlib/ndarray/base/ndarraylike2object' );
+var isAccessorArray = require( '@stdlib/array/base/assert/is-accessor-array' );
+var accessorSetter = require( '@stdlib/array/base/accessor-setter' );
 var isComplexDataType = require( '@stdlib/ndarray/base/assert/is-complex-floating-point-data-type' );
-var ctorComplex = require( '@stdlib/complex/ctors' );
+var ctors = require( '@stdlib/complex/ctors' );
 var max = require( '@stdlib/math/base/special/max' );
 var min = require( '@stdlib/math/base/special/min' );
 var zeros = require( '@stdlib/ndarray/base/zeros' );
@@ -398,7 +395,6 @@ var zeros = require( '@stdlib/ndarray/base/zeros' );
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function eye( dtype, rows, cols, k, order ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var ctor;</span>
-<span class="cstat-no" title="statement not covered" >	var tmp;</span>
 <span class="cstat-no" title="statement not covered" >	var len;</span>
 <span class="cstat-no" title="statement not covered" >	var buf;</span>
 <span class="cstat-no" title="statement not covered" >	var set;</span>
@@ -412,23 +408,6 @@ var zeros = require( '@stdlib/ndarray/base/zeros' );
 <span class="cstat-no" title="statement not covered" >	var c;</span>
 <span class="cstat-no" title="statement not covered" >	var x;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	x = zeros( dtype, [ rows, cols ], order );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if ( isComplexDataType( x.dtype ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		ctor = ctorComplex( x.dtype );</span>
-<span class="cstat-no" title="statement not covered" >		v = new ctor( 1.0, 0.0 );</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		v = 1.0;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// TODO: Use better approach instead of allocating a new object</span>
-<span class="cstat-no" title="statement not covered" >	tmp = ndarray2object( x );</span>
-<span class="cstat-no" title="statement not covered" >	if ( tmp.accessorProtocol === true ) {</span>
-<span class="cstat-no" title="statement not covered" >		set = tmp.accessors[1];</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		set = setter;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( k &lt; 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		r = -k;</span>
 <span class="cstat-no" title="statement not covered" >		c = 0;</span>
@@ -436,14 +415,29 @@ var zeros = require( '@stdlib/ndarray/base/zeros' );
 <span class="cstat-no" title="statement not covered" >		r = 0;</span>
 <span class="cstat-no" title="statement not covered" >		c = k;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	len = max( 0, min( rows - r, cols - c ) );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	x = zeros( dtype, [ rows, cols ], order );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	sr = x.strides[ 0 ];</span>
 <span class="cstat-no" title="statement not covered" >	sc = x.strides[ 1 ];</span>
 <span class="cstat-no" title="statement not covered" >	ix = x.offset + (r * sr) + (c * sc); // offset + (row * row_stride) + (col * col_stride)</span>
 <span class="cstat-no" title="statement not covered" >	dx = sr + sc;</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	if ( isAccessorArray( x.data ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		set = accessorSetter( dtype );</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		set = setter;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	buf = x.data;</span>
+<span class="cstat-no" title="statement not covered" >	len = max( 0, min( rows - r, cols - c ) );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	if ( isComplexDataType( dtype ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		ctor = ctors( dtype );</span>
+<span class="cstat-no" title="statement not covered" >		v = new ctor( 1.0, 0.0 );</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		v = 1.0;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; len; i++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		set( buf, ix, v );</span>
 <span class="cstat-no" title="statement not covered" >		ix += dx;</span>
@@ -460,7 +454,7 @@ module.exports = eye;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-21T11:17:58.103Z
+                at 2026-03-22T21:11:58.546Z
             </div>
         <script src="prettify.js"></script>
         <script>
