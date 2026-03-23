@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.36% </span>
+                <span class="strong">98.29% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>542/551</span>
+                <span class='fraction'>520/529</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.54% </span>
+                <span class="strong">94.44% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>52/55</span>
+                <span class='fraction'>51/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.36% </span>
+                <span class="strong">98.29% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>542/551</span>
+                <span class='fraction'>520/529</span>
             </div>
         
             
@@ -592,29 +592,7 @@
 <a name='L527'></a><a href='#L527'>527</a>
 <a name='L528'></a><a href='#L528'>528</a>
 <a name='L529'></a><a href='#L529'>529</a>
-<a name='L530'></a><a href='#L530'>530</a>
-<a name='L531'></a><a href='#L531'>531</a>
-<a name='L532'></a><a href='#L532'>532</a>
-<a name='L533'></a><a href='#L533'>533</a>
-<a name='L534'></a><a href='#L534'>534</a>
-<a name='L535'></a><a href='#L535'>535</a>
-<a name='L536'></a><a href='#L536'>536</a>
-<a name='L537'></a><a href='#L537'>537</a>
-<a name='L538'></a><a href='#L538'>538</a>
-<a name='L539'></a><a href='#L539'>539</a>
-<a name='L540'></a><a href='#L540'>540</a>
-<a name='L541'></a><a href='#L541'>541</a>
-<a name='L542'></a><a href='#L542'>542</a>
-<a name='L543'></a><a href='#L543'>543</a>
-<a name='L544'></a><a href='#L544'>544</a>
-<a name='L545'></a><a href='#L545'>545</a>
-<a name='L546'></a><a href='#L546'>546</a>
-<a name='L547'></a><a href='#L547'>547</a>
-<a name='L548'></a><a href='#L548'>548</a>
-<a name='L549'></a><a href='#L549'>549</a>
-<a name='L550'></a><a href='#L550'>550</a>
-<a name='L551'></a><a href='#L551'>551</a>
-<a name='L552'></a><a href='#L552'>552</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L530'></a><a href='#L530'>530</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -650,28 +628,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">191x</span>
-<span class="cline-any cline-yes">191x</span>
-<span class="cline-any cline-yes">191x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -1190,6 +1146,7 @@
 // MODULES //
 &nbsp;
 var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major' );
+var isTransposed = require( '@stdlib/blas/base/assert/is-transposed' );
 var gdot = require( '@stdlib/blas/base/gdot' ).ndarray;
 var blockSize = require( '@stdlib/ndarray/base/unary-tiling-block-size' );
 &nbsp;
@@ -1200,29 +1157,6 @@ var bsize = blockSize( 'float64', 'float64' ); // TODO: consider using a larger 
 &nbsp;
 &nbsp;
 // FUNCTIONS //
-&nbsp;
-/**
-* Tests whether a provided string indicates to transpose a matrix.
-*
-* @private
-* @param {string} str - input string
-* @returns {boolean} boolean indicating whether to transpose a matrix
-*
-* @example
-* var bool = isTransposed( 'transpose' );
-* // returns true
-*
-* @example
-* var bool = isTransposed( 'conjugate-transpose' );
-* // returns true
-*
-* @example
-* var bool = isTransposed( 'no-transpose' );
-* // returns false
-*/
-function isTransposed( str ) { // TODO: consider moving to a separate helper utility package
-	return ( str !== 'no-transpose' );
-}
 &nbsp;
 /**
 * Fills a matrix with zeros.
@@ -1723,7 +1657,7 @@ module.exports = ggemm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-22T11:12:09.050Z
+                at 2026-03-23T22:55:33.233Z
             </div>
         <script src="prettify.js"></script>
         <script>
