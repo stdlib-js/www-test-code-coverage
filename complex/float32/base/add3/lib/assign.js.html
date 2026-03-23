@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for add/lib/main.js</title>
+    <title>Code coverage report for add3/lib/assign.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">add/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">add3/lib</a> assign.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">91.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/55</span>
+                <span class='fraction'>52/57</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">91.22% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/55</span>
+                <span class='fraction'>52/57</span>
             </div>
         
             
@@ -118,7 +118,11 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -176,7 +180,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2021 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -196,38 +200,40 @@
 // MODULES //
 &nbsp;
 var f32 = require( '@stdlib/number/float64/base/to-float32' );
-var Complex64 = require( '@stdlib/complex/float32/ctor' );
-var realf = require( '@stdlib/complex/float32/real' );
-var imagf = require( '@stdlib/complex/float32/imag' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Adds two single-precision complex floating-point numbers.
+* Computes the sum of three single-precision complex floating-point numbers and assigns results to a provided output array.
 *
-* @param {Complex64} z1 - complex number
-* @param {Complex64} z2 - complex number
-* @returns {Complex64} result
+* @param {number} re1 - real component of the first complex number
+* @param {number} im1 - imaginary component of the first complex number
+* @param {number} re2 - real component of the second complex number
+* @param {number} im2 - imaginary component of the second complex number
+* @param {number} re3 - real component of the third complex number
+* @param {number} im3 - imaginary component of the third complex number
+* @param {Collection} out - output array
+* @param {integer} strideOut - stride length
+* @param {NonNegativeInteger} offsetOut - starting index
+* @returns {Collection} output array
 *
 * @example
-* var Complex64 = require( '@stdlib/complex/float32/ctor' );
+* var Float32Array = require( '@stdlib/array/float32' );
 *
-* var z = new Complex64( 5.0, 3.0 );
-*
-* var out = add( z, z );
-* // returns &lt;Complex64&gt;[ 10.0, 6.0 ]
+* var out = assign( 5.0, 3.0, -2.0, 1.0, 5.0, 3.0, new Float32Array( 2 ), 1, 0 );
+* // returns &lt;Float32Array&gt;[ 8.0, 7.0 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function add( z1, z2 ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var re = f32( realf( z1 ) + realf( z2 ) );</span>
-<span class="cstat-no" title="statement not covered" >	var im = f32( imagf( z1 ) + imagf( z2 ) );</span>
-<span class="cstat-no" title="statement not covered" >	return new Complex64( re, im );</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function assign( re1, im1, re2, im2, re3, im3, out, strideOut, offsetOut ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	out[ offsetOut ] = f32( re1 + f32( re2 + re3 ) );</span>
+<span class="cstat-no" title="statement not covered" >	out[ offsetOut+strideOut ] = f32( im1 + f32( im2 + im3 ) );</span>
+<span class="cstat-no" title="statement not covered" >	return out;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = add;
+module.exports = assign;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
