@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>142/142</span>
+                <span class='fraction'>139/139</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>142/142</span>
+                <span class='fraction'>139/139</span>
             </div>
         
             
@@ -202,10 +202,7 @@
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
 <a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L140'></a><a href='#L140'>140</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -282,9 +279,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
@@ -300,13 +294,13 @@
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
-<span class="cline-any cline-yes">56x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">9x</span>
@@ -399,7 +393,7 @@ function setter( buf, idx, v ) {
 // MAIN //
 &nbsp;
 /**
-* Creates a two-dimensional array with ones on the kth diagonal and zeros elsewhere.
+* Returns a two-dimensional ndarray with ones on the kth diagonal and zeros elsewhere.
 *
 * @param {*} dtype - output array data type
 * @param {NonNegativeInteger} rows - output array number of rows
@@ -407,28 +401,26 @@ function setter( buf, idx, v ) {
 * @param {IntegerNumber} k - diagonal index. positive refers to upper diagonal, and negative refers to lower diagonal
 * @param {string} order - memory layout (either row-major or column-major)
 * @throws {TypeError} first argument must be a recognized data type
-* @throws {TypeError} fourth argument must be an integer
 * @throws {TypeError} second and third arguments must be non-negative integers
+* @throws {TypeError} fourth argument must be an integer
 * @returns {ndarray} ndarray
 *
 * @example
 * var getShape = require( '@stdlib/ndarray/shape' );
 * var getDType = require( '@stdlib/ndarray/dtype' );
 *
-* var x = eye( 'float64', 3, 3, 0, 'row-major');
-* // returns &lt;ndarray&gt;
+* var arr = eye( 'float64', 3, 3, 0, 'row-major');
+* // returns &lt;ndarray&gt;[ [ 1.0, 0.0, 0.0 ], [ 0.0, 1.0, 0.0 ], [ 0.0, 0.0, 1.0 ] ]
 *
-* var sh = getShape( x );
+* var sh = getShape( arr );
 * // returns [ 3, 3 ]
 *
-* var dt = String( getDType( x ) );
+* var dt = String( getDType( arr ) );
 * // returns 'float64'
-*
-* var v = x.get( 0, 0 );
-* // returns 1.0
 */
 function eye( dtype, rows, cols, k, order ) {
 	var ctor;
+	var out;
 	var len;
 	var buf;
 	var set;
@@ -440,14 +432,13 @@ function eye( dtype, rows, cols, k, order ) {
 	var v;
 	var r;
 	var c;
-	var x;
-&nbsp;
-	if ( !isInteger( k ) ) {
-		throw new TypeError( format('invalid arguments. Diagonal index must be an integer. Value: %s.', k) );
-	}
 &nbsp;
 	if ( !isNonNegativeInteger( rows ) || !isNonNegativeInteger( cols ) ) {
-		throw new TypeError( format('invalid arguments. Rows and columns must be non-negative integers. Value: %s, %s.', rows, cols) );
+		throw new TypeError( format('invalid arguments. Second and third arguments must be non-negative integers. Rows: %s, Columns: %s.', rows, cols) );
+	}
+&nbsp;
+	if ( !isInteger( k ) ) {
+		throw new TypeError( format('invalid arguments. The fourth argument must be an integer. Diagonal index: %s.', k) );
 	}
 &nbsp;
 	if ( k &lt; 0 ) {
@@ -458,19 +449,19 @@ function eye( dtype, rows, cols, k, order ) {
 		c = k;
 	}
 &nbsp;
-	x = zeros( dtype, [ rows, cols ], order );
+	out = zeros( dtype, [ rows, cols ], order );
 &nbsp;
-	sr = x.strides[ 0 ];
-	sc = x.strides[ 1 ];
-	ix = x.offset + (r * sr) + (c * sc); // offset + (row * row_stride) + (col * col_stride)
+	sr = out.strides[ 0 ];
+	sc = out.strides[ 1 ];
+	ix = out.offset + (r * sr) + (c * sc); // offset + (row * row_stride) + (col * col_stride)
 	dx = sr + sc;
 &nbsp;
-	if ( isAccessorArray( x.data ) ) {
+	if ( isAccessorArray( out.data ) ) {
 		set = accessorSetter( dtype );
 	} else {
 		set = setter;
 	}
-	buf = x.data;
+	buf = out.data;
 	len = max( 0, min( rows - r, cols - c ) );
 &nbsp;
 	if ( isComplexDataType( dtype ) ) {
@@ -485,7 +476,7 @@ function eye( dtype, rows, cols, k, order ) {
 		ix += dx;
 	}
 &nbsp;
-	return x;
+	return out;
 }
 &nbsp;
 module.exports = eye;
@@ -496,7 +487,7 @@ module.exports = eye;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-23T03:07:17.333Z
+                at 2026-03-24T05:05:18.431Z
             </div>
         <script src="prettify.js"></script>
         <script>
