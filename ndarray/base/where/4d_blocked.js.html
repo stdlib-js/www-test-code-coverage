@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.53% </span>
+                <span class="strong">41.35% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>135/325</span>
+                <span class='fraction'>134/324</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.53% </span>
+                <span class="strong">41.35% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>135/325</span>
+                <span class='fraction'>134/324</span>
             </div>
         
             
@@ -387,9 +387,7 @@
 <a name='L322'></a><a href='#L322'>322</a>
 <a name='L323'></a><a href='#L323'>323</a>
 <a name='L324'></a><a href='#L324'>324</a>
-<a name='L325'></a><a href='#L325'>325</a>
-<a name='L326'></a><a href='#L326'>326</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<a name='L325'></a><a href='#L325'>325</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -754,14 +752,14 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 * @param {IntegerArray} condition.strides - stride lengths
 * @param {NonNegativeInteger} condition.offset - index offset
 * @param {string} condition.order - specifies whether `condition` is row-major (C-style) or column-major (Fortran-style)
-* @param {Object} x - object containing input ndarray meta data
+* @param {Object} x - object containing first input ndarray meta data
 * @param {*} x.dtype - data type
 * @param {Collection} x.data - data buffer
 * @param {NonNegativeIntegerArray} x.shape - dimensions
 * @param {IntegerArray} x.strides - stride lengths
 * @param {NonNegativeInteger} x.offset - index offset
 * @param {string} x.order - specifies whether `x` is row-major (C-style) or column-major (Fortran-style)
-* @param {Object} y - object containing input ndarray meta data
+* @param {Object} y - object containing second input ndarray meta data
 * @param {*} y.dtype - data type
 * @param {Collection} y.data - data buffer
 * @param {NonNegativeIntegerArray} y.shape - dimensions
@@ -775,7 +773,6 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 * @param {IntegerArray} out.strides - stride lengths
 * @param {NonNegativeInteger} out.offset - index offset
 * @param {string} out.order - specifies whether `out` is row-major (C-style) or column-major (Fortran-style)
-* @param {boolean} isRowMajor - boolean indicating if provided arrays are in row-major order
 * @returns {void}
 *
 * @example
@@ -843,7 +840,7 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 * console.log( out.data );
 * // =&gt; &lt;Float64Array&gt;[ -2.0, -3.0, 6.0, 7.0, -10.0, -11.0 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function blockedwhere4d( condition, x, y, out ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function blockedwhere4d( condition, x, y, out ) { // eslint-disable-line max-statements</span></span>
 <span class="cstat-no" title="statement not covered" >	var bsize;</span>
 <span class="cstat-no" title="statement not covered" >	var cbuf;</span>
 <span class="cstat-no" title="statement not covered" >	var xbuf;</span>
@@ -907,7 +904,7 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 <span class="cstat-no" title="statement not covered" >	// Note on variable naming convention: s#, dc#, dx#, dy#, do#, i#, j# where # corresponds to the loop number, with `0` being the innermost loop...</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the loop interchange order:</span>
-<span class="cstat-no" title="statement not covered" >	o = loopOrder( condition.shape, condition.strides, x.strides, y.strides, out.strides );</span>
+<span class="cstat-no" title="statement not covered" >	o = loopOrder( condition.shape, condition.strides, x.strides, y.strides, out.strides ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Strides output as follows: sx, sy, sz, sw. According to arguments order respectively..</span>
 <span class="cstat-no" title="statement not covered" >	sh = o.sh;</span>
@@ -1007,7 +1004,7 @@ var blockSize = require( '@stdlib/ndarray/base/ternary-tiling-block-size' );
 <span class="cstat-no" title="statement not covered" >						for ( i2 = 0; i2 &lt; s2; i2++ ) {</span>
 <span class="cstat-no" title="statement not covered" >							for ( i1 = 0; i1 &lt; s1; i1++ ) {</span>
 <span class="cstat-no" title="statement not covered" >								for ( i0 = 0; i0 &lt; s0; i0++ ) {</span>
-<span class="cstat-no" title="statement not covered" >									obuf[ io ] = ( cbuf[ ic ] ) ? xbuf[ ix ] : ybuf[ iy ];</span>
+<span class="cstat-no" title="statement not covered" >									obuf[ io ] = ( cbuf[ ic ] ) ? xbuf[ ix ] : ybuf[ iy ]; // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >									ic += dc0;</span>
 <span class="cstat-no" title="statement not covered" >									ix += dx0;</span>
 <span class="cstat-no" title="statement not covered" >									iy += dy0;</span>
@@ -1045,7 +1042,7 @@ module.exports = blockedwhere4d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-25T16:21:09.281Z
+                at 2026-03-25T18:05:10.279Z
             </div>
         <script src="prettify.js"></script>
         <script>

@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>244/244</span>
+                <span class='fraction'>248/248</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>244/244</span>
+                <span class='fraction'>248/248</span>
             </div>
         
             
@@ -307,7 +307,15 @@
 <a name='L242'></a><a href='#L242'>242</a>
 <a name='L243'></a><a href='#L243'>243</a>
 <a name='L244'></a><a href='#L244'>244</a>
-<a name='L245'></a><a href='#L245'>245</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -584,20 +592,23 @@
 * @param {IntegerArray} condition.strides - stride lengths
 * @param {NonNegativeInteger} condition.offset - index offset
 * @param {string} condition.order - specifies whether `condition` is row-major (C-style) or column-major (Fortran-style)
-* @param {Object} x - object containing input ndarray meta data
+* @param {Array&lt;Function&gt;} condition.accessors - data buffer accessors
+* @param {Object} x - object containing first input ndarray meta data
 * @param {*} x.dtype - data type
 * @param {Collection} x.data - data buffer
 * @param {NonNegativeIntegerArray} x.shape - dimensions
 * @param {IntegerArray} x.strides - stride lengths
 * @param {NonNegativeInteger} x.offset - index offset
 * @param {string} x.order - specifies whether `x` is row-major (C-style) or column-major (Fortran-style)
-* @param {Object} y - object containing input ndarray meta data
+* @param {Array&lt;Function&gt;} x.accessors - data buffer accessors
+* @param {Object} y - object containing second input ndarray meta data
 * @param {*} y.dtype - data type
 * @param {Collection} y.data - data buffer
 * @param {NonNegativeIntegerArray} y.shape - dimensions
 * @param {IntegerArray} y.strides - stride lengths
 * @param {NonNegativeInteger} y.offset - index offset
 * @param {string} y.order - specifies whether `y` is row-major (C-style) or column-major (Fortran-style)
+* @param {Array&lt;Function&gt;} y.accessors - data buffer accessors
 * @param {Object} out - object containing output ndarray meta data
 * @param {*} out.dtype - data type
 * @param {Collection} out.data - data buffer
@@ -605,6 +616,7 @@
 * @param {IntegerArray} out.strides - stride lengths
 * @param {NonNegativeInteger} out.offset - index offset
 * @param {string} out.order - specifies whether `out` is row-major (C-style) or column-major (Fortran-style)
+* @param {Array&lt;Function&gt;} out.accessors - data buffer accessors
 * @param {boolean} isRowMajor - boolean indicating if provided arrays are in row-major order
 * @returns {void}
 *
@@ -736,8 +748,8 @@ function where2d( condition, x, y, out, isRowMajor ) {
 		// For row-major ndarrays, the last dimensions have the fastest changing indices...
 		S0 = sh[ 1 ];
 		S1 = sh[ 0 ];
-		dc0 = sc[ 1 ];                 // offset increment for innermost loop
-		dc1 = sc[ 0 ] - ( S0*sc[1] );  // offset increment for outermost loop
+		dc0 = sc[ 1 ];                // offset increment for innermost loop
+		dc1 = sc[ 0 ] - ( S0*sc[1] ); // offset increment for outermost loop
 		dx0 = sx[ 1 ];
 		dx1 = sx[ 0 ] - ( S0*sx[1] );
 		dy0 = sy[ 1 ];
@@ -748,8 +760,8 @@ function where2d( condition, x, y, out, isRowMajor ) {
 		// For column-major ndarrays, the first dimensions have the fastest changing indices...
 		S0 = sh[ 0 ];
 		S1 = sh[ 1 ];
-		dc0 = sc[ 0 ];                 // offset increment for innermost loop
-		dc1 = sc[ 1 ] - ( S0*sc[0] );  // offset increment for outermost loop
+		dc0 = sc[ 0 ];                // offset increment for innermost loop
+		dc1 = sc[ 1 ] - ( S0*sc[0] ); // offset increment for outermost loop
 		dx0 = sx[ 0 ];
 		dx1 = sx[ 1 ] - ( S0*sx[0] );
 		dy0 = sy[ 0 ];
@@ -769,7 +781,7 @@ function where2d( condition, x, y, out, isRowMajor ) {
 	ybuf = y.data;
 	obuf = out.data;
 &nbsp;
-	// Cache accessors
+	// Cache accessors:
 	getc = condition.accessors[ 0 ];
 	getx = x.accessors[ 0 ];
 	gety = y.accessors[ 0 ];
@@ -802,7 +814,7 @@ module.exports = where2d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-25T16:21:09.281Z
+                at 2026-03-25T18:05:10.279Z
             </div>
         <script src="prettify.js"></script>
         <script>
