@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.95% </span>
+                <span class="strong">56.37% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>75/139</span>
+                <span class='fraction'>84/149</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.95% </span>
+                <span class="strong">56.37% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>75/139</span>
+                <span class='fraction'>84/149</span>
             </div>
         
             
@@ -202,7 +202,17 @@
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
 <a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -272,6 +282,16 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -363,24 +383,28 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isNumber = require( '@stdlib/assert/is-number' ).isPrimitive;
+var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
+var isNonNegativeInteger = require( '@stdlib/assert/is-nonnegative-integer' ).isPrimitive;
 var isPlainObject = require( '@stdlib/assert/is-plain-object' );
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
-var isArrayLike = require( '@stdlib/assert/is-array-like' );
+var isNonNegativeIntegerArray = require( '@stdlib/assert/is-nonnegative-integer-array' ).primitives;
+var isEmptyCollection = require( '@stdlib/assert/is-empty-collection' );
 var shape2strides = require( '@stdlib/ndarray/base/shape2strides' );
-var strides2offset = require( '@stdlib/ndarray/base/strides2offset' );
 var emptyArray = require( '@stdlib/array/empty' );
 var allocUnsafe = require( '@stdlib/buffer/alloc-unsafe' );
+var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var numel = require( '@stdlib/ndarray/base/numel' );
 var ndarray = require( '@stdlib/ndarray/ctor' );
 var defaults = require( '@stdlib/ndarray/defaults' );
+var dtypes = require( '@stdlib/ndarray/dtypes' );
+var join = require( '@stdlib/array/base/join' );
 var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
-var DTYPE = defaults.get( 'dtypes.default' );
-var ORDER = defaults.get( 'order' );
+var DEFAULT_DTYPE = defaults.get( 'dtypes.default' );
+var DEFAULT_ORDER = defaults.get( 'order' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -390,7 +414,7 @@ var ORDER = defaults.get( 'order' );
 *
 * @param {(NonNegativeIntegerArray|NonNegativeInteger)} shape - array shape
 * @param {Options} [options] - options
-* @param {string} [options.dtype='float64'] - data type
+* @param {*} [options.dtype='float64'] - data type
 * @param {string} [options.order='row-major'] - array order
 * @param {string} [options.mode="throw"] - specifies how to handle indices which exceed array dimensions
 * @param {StringArray} [options.submode=["throw"]] - specifies how to handle subscripts which exceed array dimensions on a per dimension basis
@@ -402,14 +426,19 @@ var ORDER = defaults.get( 'order' );
 * @returns {ndarray} ndarray
 *
 * @example
-* var arr = empty( [ 2, 2 ] );
+* var getShape = require( '@stdlib/ndarray/shape' );
+* var getDType = require( '@stdlib/ndarray/dtype' );
+*
+* var arr = empty( [ 2, 2 ], {
+*     'dtype': 'float32'
+* });
 * // returns &lt;ndarray&gt;
 *
-* var sh = arr.shape;
+* var sh = getShape( arr );
 * // returns [ 2, 2 ]
 *
-* var dt = arr.dtype;
-* // returns 'float64'
+* var dt = String( getDType( arr ) );
+* // returns 'float32'
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function empty( shape ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var options;</span>
@@ -419,6 +448,7 @@ var ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var buf;</span>
 <span class="cstat-no" title="statement not covered" >	var len;</span>
+<span class="cstat-no" title="statement not covered" >	var dt;</span>
 <span class="cstat-no" title="statement not covered" >	var st;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -430,13 +460,16 @@ var ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( hasOwnProp( options, 'dtype' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			dtype = options.dtype;</span>
+<span class="cstat-no" title="statement not covered" >			if ( !isDataType( dtype ) ) {</span>
+<span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid option. `%s` option must be one of the following: "%s". Option: `%s`.', 'dtype', join( dtypes(), '", "' ), dtype ) );</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			dtype = DTYPE;</span>
+<span class="cstat-no" title="statement not covered" >			dtype = DEFAULT_DTYPE;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( hasOwnProp( options, 'order' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			order = options.order;</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			order = ORDER;</span>
+<span class="cstat-no" title="statement not covered" >			order = DEFAULT_ORDER;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( hasOwnProp( options, 'mode' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			opts.mode = options.mode;</span>
@@ -445,12 +478,12 @@ var ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >			opts.submode = options.submode;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		dtype = DTYPE;</span>
-<span class="cstat-no" title="statement not covered" >		order = ORDER;</span>
+<span class="cstat-no" title="statement not covered" >		dtype = DEFAULT_DTYPE;</span>
+<span class="cstat-no" title="statement not covered" >		order = DEFAULT_ORDER;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( isNumber( shape ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( isNonNegativeInteger( shape ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		sh = [ shape ];</span>
-<span class="cstat-no" title="statement not covered" >	} else if ( isArrayLike( shape ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	} else if ( isNonNegativeIntegerArray( shape ) || isEmptyCollection( shape ) ) { // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		sh = shape;</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be either a nonnegative integer or an array of nonnegative integers. Value: `%s`.', shape ) );</span>
@@ -458,22 +491,19 @@ var ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >	ndims = sh.length;</span>
 <span class="cstat-no" title="statement not covered" >	if ( ndims &gt; 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		len = numel( sh );</span>
-<span class="cstat-no" title="statement not covered" >		if ( len !== len || len &lt; 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >			// We should only get here if we've been provided an invalid shape (e.g., an array containing negative integers, etc)...</span>
-<span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. First argument must be either a nonnegative integer or an array of nonnegative integers. Value: `%s`.', shape ) );</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		st = shape2strides( sh, order );</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		// For 0-dimensional arrays, the buffer should contain a single element...</span>
 <span class="cstat-no" title="statement not covered" >		len = 1;</span>
 <span class="cstat-no" title="statement not covered" >		st = [ 0 ];</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( dtype === 'binary' ) {</span>
+<span class="cstat-no" title="statement not covered" >	dt = resolveStr( dtype );</span>
+<span class="cstat-no" title="statement not covered" >	if ( dt === 'binary' ) {</span>
 <span class="cstat-no" title="statement not covered" >		buf = allocUnsafe( len );</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		buf = emptyArray( len, dtype );</span>
+<span class="cstat-no" title="statement not covered" >		buf = emptyArray( len, dt );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return new ndarray( dtype, buf, sh, st, strides2offset( sh, st ), order, opts ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	return new ndarray( dtype, buf, sh, st, 0, order, opts );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -487,7 +517,7 @@ module.exports = empty;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-25T07:05:38.266Z
+                at 2026-03-25T10:58:32.169Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
