@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>191/191</span>
+                <span class='fraction'>198/198</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>25/25</span>
+                <span class='fraction'>24/24</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>191/191</span>
+                <span class='fraction'>198/198</span>
             </div>
         
             
@@ -254,7 +254,14 @@
 <a name='L189'></a><a href='#L189'>189</a>
 <a name='L190'></a><a href='#L190'>190</a>
 <a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -371,31 +378,38 @@
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">125x</span>
-<span class="cline-any cline-yes">325x</span>
-<span class="cline-any cline-yes">203x</span>
-<span class="cline-any cline-yes">203x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">156x</span>
 <span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-yes">96x</span>
-<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">96x</span>
+<span class="cline-any cline-yes">96x</span>
+<span class="cline-any cline-yes">156x</span>
+<span class="cline-any cline-yes">156x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">169x</span>
 <span class="cline-any cline-yes">107x</span>
 <span class="cline-any cline-yes">107x</span>
 <span class="cline-any cline-yes">107x</span>
-<span class="cline-any cline-yes">203x</span>
-<span class="cline-any cline-yes">325x</span>
-<span class="cline-any cline-yes">325x</span>
-<span class="cline-any cline-yes">125x</span>
-<span class="cline-any cline-yes">125x</span>
+<span class="cline-any cline-yes">107x</span>
+<span class="cline-any cline-yes">169x</span>
+<span class="cline-any cline-yes">169x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">25x</span>
@@ -561,31 +575,38 @@ function dgetc2( N, A, strideA1, strideA2, offsetA, IPIV, strideIPIV, offsetIPIV
 		// Find max element in matrix A
 		xmax = 0.0;
 &nbsp;
+		ix1 = offsetA + ( i*( strideA1 + strideA2 ) ); // Index of `A( i, i )`
+&nbsp;
 		if ( isRowMajor( [ strideA1, strideA2 ] ) ) {
 			dx0 = strideA2;
 			dx1 = strideA1 - ( N*strideA2 ) + ( i*dx0 );
+&nbsp;
+			for ( i1 = i; i1 &lt; N; i1++ ) {
+				for ( i0 = i; i0 &lt; N; i0++ ) {
+					if ( abs( A[ ix1 ] ) &gt;= xmax ) {
+						xmax = abs( A[ ix1 ] );
+						ipv = i1;
+						jpv = i0;
+					}
+					ix1 += dx0;
+				}
+				ix1 += dx1;
+			}
 		} else { // column-major
 			dx0 = strideA1;
 			dx1 = strideA2 - ( N*strideA1 ) + ( i*dx0 );
-		}
 &nbsp;
-		ix1 = offsetA + ( i*( strideA1 + strideA2 ) ); // Index of `A( i, i )`
-&nbsp;
-		for ( i1 = i; i1 &lt; N; i1++ ) {
-			for ( i0 = i; i0 &lt; N; i0++ ) {
-				if ( abs( A[ ix1 ] ) &gt;= xmax ) {
-					xmax = abs( A[ ix1 ] );
-					if ( isRowMajor( [ strideA1, strideA2 ] ) ) {
-						ipv = i1;
-						jpv = i0;
-					} else { // column-major
+			for ( i1 = i; i1 &lt; N; i1++ ) {
+				for ( i0 = i; i0 &lt; N; i0++ ) {
+					if ( abs( A[ ix1 ] ) &gt;= xmax ) {
+						xmax = abs( A[ ix1 ] );
 						ipv = i0;
 						jpv = i1;
 					}
+					ix1 += dx0;
 				}
-				ix1 += dx0;
+				ix1 += dx1;
 			}
-			ix1 += dx1;
 		}
 &nbsp;
 		if ( i === 0 ) {
@@ -643,7 +664,7 @@ module.exports = dgetc2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-03T15:34:47.199Z
+                at 2026-03-25T06:18:45.455Z
             </div>
         <script src="prettify.js"></script>
         <script>
