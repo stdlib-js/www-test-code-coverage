@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">97.75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>79/79</span>
+                <span class='fraction'>87/89</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">97.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>79/79</span>
+                <span class='fraction'>87/89</span>
             </div>
         
             
@@ -142,7 +142,22 @@
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -207,14 +222,19 @@
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -243,10 +263,13 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var contains = require( '@stdlib/array/base/assert/contains' ).factory;
 var dtype = require( '@stdlib/array/dtype' );
 var full = require( '@stdlib/array/full' );
 var Complex128 = require( '@stdlib/complex/float64/ctor' );
 var Complex64 = require( '@stdlib/complex/float32/ctor' );
+var dtypes = require( '@stdlib/array/dtypes' );
+var join = require( '@stdlib/array/base/join' );
 var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
@@ -254,6 +277,8 @@ var format = require( '@stdlib/string/format' );
 &nbsp;
 var Z128 = new Complex128( 1.0, 0.0 );
 var Z64 = new Complex64( 1.0, 0.0 );
+var DTYPES = dtypes( 'numeric_and_generic' );
+var isValidDType = contains( DTYPES );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -285,7 +310,12 @@ function onesLike( x ) {
 	}
 	if ( arguments.length &gt; 1 ) {
 		dt = arguments[ 1 ];
-	}
+		if ( !isValidDType( dt ) ) {
+			throw new TypeError( format( 'invalid argument. Second argument must be one of the following: "%s". Value: `%s`.', join( DTYPES, '", "' ), dt ) );
+		}
+	} else if ( !isValidDType( dt ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must have one of the following data types: "%s". Value: `%s`.', join( DTYPES, '", "' ), dt ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	if ( dt === 'complex128' ) {
 		v = Z128;
 	} else if ( dt === 'complex64' ) {
@@ -307,7 +337,7 @@ module.exports = onesLike;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-30T04:56:57.130Z
+                at 2026-03-30T00:36:39.607Z
             </div>
         <script src="prettify.js"></script>
         <script>

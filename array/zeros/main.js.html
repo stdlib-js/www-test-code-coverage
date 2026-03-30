@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">97.67% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>78/78</span>
+                <span class='fraction'>84/86</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">91.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>11/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">97.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>78/78</span>
+                <span class='fraction'>84/86</span>
             </div>
         
             
@@ -141,7 +141,20 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -202,16 +215,19 @@
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">51x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -241,16 +257,21 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var contains = require( '@stdlib/array/base/assert/contains' ).factory;
 var isNonNegativeInteger = require( '@stdlib/assert/is-nonnegative-integer' ).isPrimitive;
 var ctors = require( '@stdlib/array/ctors' );
 var gzeros = require( '@stdlib/array/base/zeros' );
+var dtypes = require( '@stdlib/array/dtypes' );
 var defaults = require( '@stdlib/array/defaults' );
+var join = require( '@stdlib/array/base/join' );
 var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
 var DEFAULT_DTYPE = defaults.get( 'dtypes.default' );
+var DTYPES = dtypes( 'numeric_and_generic' );
+var isValidDType = contains( DTYPES );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -280,6 +301,9 @@ function zeros( length ) {
 	}
 	if ( arguments.length &gt; 1 ) {
 		dtype = arguments[ 1 ];
+		if ( !isValidDType( dtype ) ) {
+			throw new TypeError( format( 'invalid argument. Second argument must be one of the following: "%s". Value: `%s`.', join( DTYPES, '", "' ), dtype ) );
+		}
 	} else {
 		dtype = DEFAULT_DTYPE;
 	}
@@ -287,9 +311,9 @@ function zeros( length ) {
 		return gzeros( length );
 	}
 	ctor = ctors( dtype );
-	if ( ctor === null ) {
-		throw new TypeError( format( 'invalid argument. Second argument must be a recognized data type. Value: `%s`.', dtype ) );
-	}
+	if ( ctor === null ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be a recognized data type. Value: `%s`.', dtype ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 	return new ctor( length ); // WARNING: we assume that, apart from 'generic', the constructors for supported array data types are zero-filled by default
 }
 &nbsp;
@@ -304,7 +328,7 @@ module.exports = zeros;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-15T05:05:32.893Z
+                at 2026-03-30T00:36:46.002Z
             </div>
         <script src="prettify.js"></script>
         <script>
