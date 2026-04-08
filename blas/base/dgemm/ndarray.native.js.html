@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray.js</title>
+    <title>Code coverage report for ndarray.native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> ndarray.js</h1>
+        <h1><a href="index.html">All files</a> ndarray.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -231,7 +231,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -254,6 +253,7 @@
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">57x</span>
 <span class="cline-any cline-yes">57x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -284,20 +284,21 @@
 // MODULES //
 &nbsp;
 var isMatrixTranspose = require( '@stdlib/blas/base/assert/is-transpose-operation' );
+var resolveTrans = require( '@stdlib/blas/base/transpose-operation-resolve-enum' );
 var format = require( '@stdlib/string/format' );
-var base = require( './base.js' );
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Performs the matrix-matrix operation `C = α*op(A)*op(B) + β*C` where `op(X)` is either `op(X) = X` or `op(X) = X^T`, `α` and `β` are scalars, `A`, `B`, and `C` are matrices, with `op(A)` an `M` by `K` matrix, `op(B)` a `K` by `N` matrix, and `C` an `M` by `N` matrix.
+* Performs the matrix-matrix operation `C = α*op(A)*op(B) + β*C`, using alternative indexing semantics and where `op(X)` is either `op(X) = X` or `op(X) = X^T`, `α` and `β` are scalars, and `A`, `B`, and `C` are matrices, with `op(A)` an `M` by `K` matrix, `op(B)` a `K` by `N` matrix, and `C` an `M` by `N` matrix.
 *
 * @param {string} transA - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
 * @param {string} transB - specifies whether `B` should be transposed, conjugate-transposed, or not transposed
-* @param {NonNegativeInteger} M - number of rows in the matrix `op(A)` and in the matrix `C`
-* @param {NonNegativeInteger} N - number of columns in the matrix `op(B)` and in the matrix `C`
-* @param {NonNegativeInteger} K - number of columns in the matrix `op(A)` and number of rows in the matrix `op(B)`
+* @param {NonNegativeInteger} M - number of rows in `op(A)` and `C`
+* @param {NonNegativeInteger} N - number of columns in `op(B)` and `C`
+* @param {NonNegativeInteger} K - number of columns in `op(A)` and rows in `op(B)`
 * @param {number} alpha - scalar constant
 * @param {Float64Array} A - first matrix
 * @param {integer} strideA1 - stride of the first dimension of `A`
@@ -308,7 +309,7 @@ var base = require( './base.js' );
 * @param {integer} strideB2 - stride of the second dimension of `B`
 * @param {NonNegativeInteger} offsetB - starting index for `B`
 * @param {number} beta - scalar constant
-* @param {Float64Array} C - third matrix
+* @param {Float64Array} C - result matrix
 * @param {integer} strideC1 - stride of the first dimension of `C`
 * @param {integer} strideC2 - stride of the second dimension of `C`
 * @param {NonNegativeInteger} offsetC - starting index for `C`
@@ -317,8 +318,6 @@ var base = require( './base.js' );
 * @throws {RangeError} third argument must be a nonnegative integer
 * @throws {RangeError} fourth argument must be a nonnegative integer
 * @throws {RangeError} fifth argument must be a nonnegative integer
-* @throws {RangeError} seventeenth argument must be non-zero
-* @throws {RangeError} eighteenth argument must be non-zero
 * @returns {Float64Array} `C`
 *
 * @example
@@ -342,18 +341,19 @@ function dgemm( transA, transB, M, N, K, alpha, A, strideA1, strideA2, offsetA, 
 		throw new RangeError( format( 'invalid argument. Third argument must be a nonnegative integer. Value: `%d`.', M ) );
 	}
 	if ( N &lt; 0 ) {
-		throw new RangeError( format( 'invalid argument. Fourth argument must be a nonnegative integer. Value: `%d`.', M ) );
+		throw new RangeError( format( 'invalid argument. Fourth argument must be a nonnegative integer. Value: `%d`.', N ) );
 	}
 	if ( K &lt; 0 ) {
 		throw new RangeError( format( 'invalid argument. Fifth argument must be a nonnegative integer. Value: `%d`.', K ) );
 	}
 	if ( strideC1 === 0 ) {
-		throw new RangeError( format( 'invalid argument. Seventeenth argument must be non-zero. Value: `%d`.', strideC1 ) );
+		throw new RangeError( format( 'invalid argument. Seventeenth argument must be nonzero. Value: `%d`.', strideC1 ) );
 	}
 	if ( strideC2 === 0 ) {
-		throw new RangeError( format( 'invalid argument. Eighteenth argument must be non-zero. Value: `%d`.', strideC2 ) );
+		throw new RangeError( format( 'invalid argument. Eighteenth argument must be nonzero. Value: `%d`.', strideC2 ) );
 	}
-	return base( transA, transB, M, N, K, alpha, A, strideA1, strideA2, offsetA, B, strideB1, strideB2, offsetB, beta, C, strideC1, strideC2, offsetC ); // eslint-disable-line max-len
+	addon.ndarray( resolveTrans( transA ), resolveTrans( transB ), M, N, K, alpha, A, strideA1, strideA2, offsetA, B, strideB1, strideB2, offsetB, beta, C, strideC1, strideC2, offsetC ); // eslint-disable-line max-len
+	return C;
 }
 &nbsp;
 &nbsp;
