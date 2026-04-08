@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.54% </span>
+                <span class="strong">62.77% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>312/491</span>
+                <span class='fraction'>312/497</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.54% </span>
+                <span class="strong">62.77% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>312/491</span>
+                <span class='fraction'>312/497</span>
             </div>
         
             
@@ -554,7 +554,13 @@
 <a name='L489'></a><a href='#L489'>489</a>
 <a name='L490'></a><a href='#L490'>490</a>
 <a name='L491'></a><a href='#L491'>491</a>
-<a name='L492'></a><a href='#L492'>492</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L492'></a><a href='#L492'>492</a>
+<a name='L493'></a><a href='#L493'>493</a>
+<a name='L494'></a><a href='#L494'>494</a>
+<a name='L495'></a><a href='#L495'>495</a>
+<a name='L496'></a><a href='#L496'>496</a>
+<a name='L497'></a><a href='#L497'>497</a>
+<a name='L498'></a><a href='#L498'>498</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -861,6 +867,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1439,10 +1451,16 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" >	if ( M &gt; ndims ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new RangeError( format( 'invalid argument. Number of specified dimensions cannot exceed the number of dimensions in the input array. Number of dimensions: %d. Value: [%s].', ndims, join( dims, ',' ) ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Verify that provided ndarrays have the expected number of dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	// Compute the number of non-reduced dimensions:</span>
 <span class="cstat-no" title="statement not covered" >	K = ndims - M;</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 1; i &lt; N; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		if ( arr[ i ].shape.length !== K ) {</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Verify that the output ndarray has the expected number of dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	if ( arr[ 1 ].shape.length !== K ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new Error( format( 'invalid argument. Arrays which are not being reduced must have the same number of non-reduced dimensions. Input array shape: [%s]. Number of non-reduced dimensions: %d. Array shape: [%s] (index: %d).', join( shx, ',' ), K, join( arr[ 1 ].shape, ',' ), 1 ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Verify that any ancillary ndarrays have at least the number of non-reduced dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	for ( i = 2; i &lt; N; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( arr[ i ].shape.length &lt; K ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new Error( format( 'invalid argument. Arrays which are not being reduced must have the same number of non-reduced dimensions. Input array shape: [%s]. Number of non-reduced dimensions: %d. Array shape: [%s] (index: %d).', join( shx, ',' ), K, join( arr[ i ].shape, ',' ), i ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -1494,7 +1512,7 @@ var MAX_DIMS = UNARY.length - 1;
 <span class="cstat-no" title="statement not covered" >			'order': x.order</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	];</span>
-<span class="cstat-no" title="statement not covered" >	initializeViews( arr, views );</span>
+<span class="cstat-no" title="statement not covered" >	initializeViews( arr, K, views );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether we only have one loop dimension and can thus readily perform one-dimensional iteration...</span>
 <span class="cstat-no" title="statement not covered" >	if ( K === 1 ) {</span>
@@ -1543,7 +1561,7 @@ module.exports = unaryReduceSubarrayBy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-04T05:21:07.960Z
+                at 2026-04-08T09:32:24.019Z
             </div>
         <script src="prettify.js"></script>
         <script>
