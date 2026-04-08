@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for index.js</title>
+    <title>Code coverage report for recurse.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> index.js</h1>
+        <h1><a href="index.html">All files</a> recurse.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>56/56</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -119,7 +119,14 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -155,21 +162,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">98x</span>
+<span class="cline-any cline-yes">98x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">146x</span>
+<span class="cline-any cline-yes">146x</span>
+<span class="cline-any cline-yes">146x</span>
+<span class="cline-any cline-yes">146x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">162x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -178,7 +192,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2025 The Stdlib Authors.
+* Copyright (c) 2018 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -195,42 +209,49 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MAIN //
+&nbsp;
 /**
-* Return a new ndarray where the order of elements along the last dimension of an input ndarray is reversed.
+* Recursively converts an ndarray to a generic array.
 *
-* @module @stdlib/ndarray/base/to-flippedlr
-*
-* @example
-* var ndarray = require( '@stdlib/ndarray/ctor' );
-* var getShape = require( '@stdlib/ndarray/shape' );
-* var toFlippedlr = require( '@stdlib/ndarray/base/to-flippedlr' );
-*
-* var buffer = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
-* var shape = [ 3, 2 ];
-* var strides = [ 2, 1 ];
-* var offset = 0;
-*
-* var x = ndarray( 'generic', buffer, shape, strides, offset, 'row-major' );
-* // returns &lt;ndarray&gt;[ [ 1.0, 2.0 ], [ 3.0, 4.0 ], [ 5.0, 6.0 ] ]
-*
-* var sh = getShape( x );
-* // returns [ 3, 2 ]
-*
-* var y = toFlippedlr( x );
-* // returns &lt;ndarray&gt;[ [ 2.0, 1.0 ], [ 4.0, 3.0 ], [ 6.0, 5.0 ] ]
-*
-* sh = getShape( y );
-* // returns [ 3, 2 ]
+* @private
+* @param {Object} obj - array object
+* @param {(ArrayLikeObject|TypedArray|Buffer)} obj.data - data buffer
+* @param {Array&lt;Function&gt;} obj.accessors - element accessors
+* @param {NonNegativeIntegerArray} shape - array shape
+* @param {IntegerArray} strides - array strides
+* @param {NonNegativeInteger} offset - index offset
+* @param {string} order - specifies whether an array is row-major (C-style) or column-major (Fortran-style)
+* @param {NonNegativeInteger} dim - dimension
+* @returns {(Array|Array&lt;Array&gt;)} output array
 */
+function recurse( obj, shape, strides, offset, order, dim ) {
+	var stride;
+	var item;
+	var out;
+	var n;
+	var i;
 &nbsp;
-// MODULES //
+	if ( dim &gt;= shape.length ) {
+		return obj.accessors[ 0 ]( obj.data, offset );
+	}
+	out = [];
 &nbsp;
-var main = require( './main.js' );
+	n = shape[ dim ];
+	stride = strides[ dim ];
+&nbsp;
+	for ( i = 0; i &lt; n; i++ ) {
+		item = recurse( obj, shape, strides, offset, order, dim+1 );
+		out.push( item );
+		offset += stride;
+	}
+	return out;
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = recurse;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -238,7 +259,7 @@ module.exports = main;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-08T09:49:59.752Z
+                at 2026-04-08T09:49:57.481Z
             </div>
         <script src="prettify.js"></script>
         <script>
