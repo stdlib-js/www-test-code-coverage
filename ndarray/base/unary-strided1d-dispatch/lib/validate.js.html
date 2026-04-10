@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for base/unary-strided1d-dispatch/lib/validate.js</title>
+    <title>Code coverage report for unary-strided1d-dispatch/lib/validate.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/unary-strided1d-dispatch/lib</a> validate.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">unary-strided1d-dispatch/lib</a> validate.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">70.65% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/90</span>
+                <span class='fraction'>65/92</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">70.65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/90</span>
+                <span class='fraction'>65/92</span>
             </div>
         
             
@@ -153,7 +153,11 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -270,6 +274,8 @@ var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var isIntegerArray = require( '@stdlib/assert/is-integer-array' ).primitives;
 var isEmptyCollection = require( '@stdlib/assert/is-empty-collection' );
 var normalizeIndices = require( '@stdlib/ndarray/base/to-unique-normalized-indices' );
+var resolveEnum = require( '@stdlib/ndarray/base/dtype-resolve-enum' );
+var dtypes2strings = require( '@stdlib/ndarray/base/dtypes2strings' );
 var join = require( '@stdlib/array/base/join' );
 var contains = require( '@stdlib/array/base/assert/contains' );
 var format = require( '@stdlib/string/format' );
@@ -286,7 +292,7 @@ var format = require( '@stdlib/string/format' );
 * @param {Array} dtypes - list of supported output data types
 * @param {Options} options - function options
 * @param {IntegerArray} [options.dims] - list of dimensions over which to perform an operation
-* @param {string} [options.dtype] - output ndarray data type
+* @param {*} [options.dtype] - output ndarray data type
 * @returns {(Error|null)} null or an error object
 *
 * @example
@@ -322,8 +328,8 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( hasOwnProp( options, 'dtype' ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		opts.dtype = options.dtype;</span>
-<span class="cstat-no" title="statement not covered" >		if ( !contains( dtypes, opts.dtype ) ) {</span>
-<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be one of the following: "%s". Option: `%s`.', 'dtype', join( dtypes, '", "' ), opts.dtype ) );</span>
+<span class="cstat-no" title="statement not covered" >		if ( !contains( dtypes, resolveEnum( opts.dtype ) ) ) {</span>
+<span class="cstat-no" title="statement not covered" >			return new TypeError( format( 'invalid option. `%s` option must be one of the following: "%s". Option: `%s`.', 'dtype', join( dtypes2strings( dtypes ), '", "' ), options.dtype ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return null;</span>
@@ -340,16 +346,16 @@ module.exports = validate;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-07T09:01:36.052Z
+                at 2026-04-10T09:30:01.005Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

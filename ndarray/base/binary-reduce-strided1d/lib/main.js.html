@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for base/binary-reduce-strided1d/lib/main.js</title>
+    <title>Code coverage report for binary-reduce-strided1d/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/binary-reduce-strided1d/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">binary-reduce-strided1d/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.78% </span>
+                <span class="strong">61.24% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>354/573</span>
+                <span class='fraction'>354/578</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.78% </span>
+                <span class="strong">61.24% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>354/573</span>
+                <span class='fraction'>354/578</span>
             </div>
         
             
@@ -636,7 +636,12 @@
 <a name='L571'></a><a href='#L571'>571</a>
 <a name='L572'></a><a href='#L572'>572</a>
 <a name='L573'></a><a href='#L573'>573</a>
-<a name='L574'></a><a href='#L574'>574</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L574'></a><a href='#L574'>574</a>
+<a name='L575'></a><a href='#L575'>575</a>
+<a name='L576'></a><a href='#L576'>576</a>
+<a name='L577'></a><a href='#L577'>577</a>
+<a name='L578'></a><a href='#L578'>578</a>
+<a name='L579'></a><a href='#L579'>579</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -988,6 +993,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1629,7 +1639,6 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" >			throw new Error( format( 'invalid argument. Input arrays must have the same shape. First array shape: [%s]. Second array shape: [%s].', join( shx, ',' ), join( shy, ',' ) ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Verify that we've been provided a list of unique dimension indices...</span>
 <span class="cstat-no" title="statement not covered" >	M = dims.length;</span>
 <span class="cstat-no" title="statement not covered" >	d = normalizeIndices( dims, ndims-1 );</span>
@@ -1644,12 +1653,19 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" >	if ( M &gt; ndims ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new RangeError( format( 'invalid argument. Number of specified dimensions cannot exceed the number of dimensions in the input array. Number of dimensions: %d. Value: [%s].', ndims, join( dims, ',' ) ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Verify that provided ndarrays have the expected number of dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	// Compute the number of non-reduced dimensions:</span>
 <span class="cstat-no" title="statement not covered" >	K = ndims - M;</span>
-<span class="cstat-no" title="statement not covered" >	if ( z.shape.length !== K ) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new Error( format( 'invalid argument. Output array must have the same number of non-reduced dimensions as input arrays. Input array shape: [%s]. Number of non-reduced dimensions: %d. Output array shape: [%s].', join( shx, ',' ), K, join( z.shape, ',' ) ) );</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Verify that the output ndarray has the expected number of dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	if ( z.shape.length !== K ) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new Error( format( 'invalid argument. Arrays which are not being reduced must have the same number of non-reduced dimensions. Input array shape: [%s]. Number of non-reduced dimensions: %d. Array shape: [%s] (index: %d).', join( shx, ',' ), K, join( z.shape, ',' ), 2 ) );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Verify that any ancillary ndarrays have at least the number of non-reduced dimensions...</span>
+<span class="cstat-no" title="statement not covered" >	for ( i = 3; i &lt; N; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( arr[ i ].shape.length &lt; K ) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new Error( format( 'invalid argument. Arrays which are not being reduced must have the same number of non-reduced dimensions. Input array shape: [%s]. Number of non-reduced dimensions: %d. Array shape: [%s] (index: %d).', join( shx, ',' ), K, join( arr[ i ].shape, ',' ), i ) );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the non-reduced ("loop") dimensions and associated strides:</span>
 <span class="cstat-no" title="statement not covered" >	ldims = indicesComplement( shx.length, d );</span>
 <span class="cstat-no" title="statement not covered" >	tmpx = takeIndexed2( shx, x.strides, ldims );</span>
@@ -1706,7 +1722,7 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" >			'order': y.order</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	];</span>
-<span class="cstat-no" title="statement not covered" >	initializeViews( arr, views );</span>
+<span class="cstat-no" title="statement not covered" >	initializeViews( arr, K, views );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine the strategy for reshaping sub-array views of the input arrays prior to performing a reduction:</span>
 <span class="cstat-no" title="statement not covered" >	strategyX = reshapeStrategy( views[ 0 ] );</span>
@@ -1726,8 +1742,6 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return BINARY[ K ]( fcn, arr, views, slx, sly, strategyX, strategyY, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	sz = z.strides;</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Determine whether the loop dimensions have only **one** non-singleton dimension (e.g., shape=[10,1,1,1]) so that we can treat loop iteration as being equivalent to one-dimensional iteration...</span>
 <span class="cstat-no" title="statement not covered" >	if ( ns === K-1 ) {</span>
 <span class="cstat-no" title="statement not covered" >		// Get the index of the non-singleton dimension...</span>
@@ -1747,6 +1761,7 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return BINARY[ 1 ]( fcn, arr, views, slx, sly, strategyX, strategyY, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	sz = z.strides;</span>
 <span class="cstat-no" title="statement not covered" >	iox = iterationOrder( slx ); // +/-1</span>
 <span class="cstat-no" title="statement not covered" >	ioy = iterationOrder( sly ); // +/-1</span>
 <span class="cstat-no" title="statement not covered" >	ioz = iterationOrder( sz ); // +/-1</span>
@@ -1789,16 +1804,16 @@ module.exports = binaryReduceStrided1d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-07T09:01:36.052Z
+                at 2026-04-10T09:30:01.005Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
