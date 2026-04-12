@@ -401,8 +401,8 @@ var floor = require( '@stdlib/math/base/special/floor' );
 * @param {PositiveInteger} N - number of indexed elements
 * @param {number} order - sort order
 * @param {Float32Array} x - input array
-* @param {integer} stride - index increment
-* @param {NonNegativeInteger} offset - starting index
+* @param {integer} strideX - stride length
+* @param {NonNegativeInteger} offsetX - starting index
 * @returns {Float32Array} input array
 *
 * @example
@@ -413,7 +413,7 @@ var floor = require( '@stdlib/math/base/special/floor' );
 * ssorthp( x.length, 1.0, x, 1, 0 );
 * // x =&gt; &lt;Float32Array&gt;[ -4.0, -2.0, 1.0, 3.0 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function ssorthp( N, order, x, stride, offset ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function ssorthp( N, order, x, strideX, offsetX ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var parent;</span>
 <span class="cstat-no" title="statement not covered" >	var child;</span>
 <span class="cstat-no" title="statement not covered" >	var v1;</span>
@@ -429,8 +429,8 @@ var floor = require( '@stdlib/math/base/special/floor' );
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// For a positive stride, sorting in decreasing order is equivalent to providing a negative stride and sorting in increasing order, and, for a negative stride, sorting in decreasing order is equivalent to providing a positive stride and sorting in increasing order...</span>
 <span class="cstat-no" title="statement not covered" >	if ( order &lt; 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		stride *= -1;</span>
-<span class="cstat-no" title="statement not covered" >		offset -= (N-1) * stride;</span>
+<span class="cstat-no" title="statement not covered" >		strideX *= -1;</span>
+<span class="cstat-no" title="statement not covered" >		offsetX -= (N-1) * strideX;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Set the initial heap size:</span>
 <span class="cstat-no" title="statement not covered" >	n = N;</span>
@@ -443,7 +443,7 @@ var floor = require( '@stdlib/math/base/special/floor' );
 <span class="cstat-no" title="statement not covered" >		if ( parent &gt; 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >			// We need to build the heap...</span>
 <span class="cstat-no" title="statement not covered" >			parent -= 1;</span>
-<span class="cstat-no" title="statement not covered" >			t = x[ offset+(parent*stride) ];</span>
+<span class="cstat-no" title="statement not covered" >			t = x[ offsetX+(parent*strideX) ];</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
 <span class="cstat-no" title="statement not covered" >			// Reduce the heap size:</span>
 <span class="cstat-no" title="statement not covered" >			n -= 1;</span>
@@ -453,11 +453,11 @@ var floor = require( '@stdlib/math/base/special/floor' );
 <span class="cstat-no" title="statement not covered" >				return x;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			// Store the last heap value in a temporary variable in order to make room for the heap root being placed into its sorted position:</span>
-<span class="cstat-no" title="statement not covered" >			i = offset + (n*stride);</span>
+<span class="cstat-no" title="statement not covered" >			i = offsetX + (n*strideX);</span>
 <span class="cstat-no" title="statement not covered" >			t = x[ i ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >			// Move the heap root to its sorted position:</span>
-<span class="cstat-no" title="statement not covered" >			x[ i ] = x[ offset ];</span>
+<span class="cstat-no" title="statement not covered" >			x[ i ] = x[ offsetX ];</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// We need to "sift down", pushing `t` down the heap to in order to replace the parent and satisfy the heap property...</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -471,8 +471,8 @@ var floor = require( '@stdlib/math/base/special/floor' );
 <span class="cstat-no" title="statement not covered" >			// Find the largest child...</span>
 <span class="cstat-no" title="statement not covered" >			k = child + 1;</span>
 <span class="cstat-no" title="statement not covered" >			if ( k &lt; n ) {</span>
-<span class="cstat-no" title="statement not covered" >				v1 = x[ offset+(k*stride) ];</span>
-<span class="cstat-no" title="statement not covered" >				v2 = x[ offset+(child*stride) ];</span>
+<span class="cstat-no" title="statement not covered" >				v1 = x[ offsetX+(k*strideX) ];</span>
+<span class="cstat-no" title="statement not covered" >				v2 = x[ offsetX+(child*strideX) ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >				// Check if a "right" child exists and is "bigger"...</span>
 <span class="cstat-no" title="statement not covered" >				if ( v1 &gt; v2 || isnanf( v1 ) || (v1 === v2 &amp;&amp; isPositiveZerof( v1 ) ) ) { // eslint-disable-line max-len</span>
@@ -480,10 +480,10 @@ var floor = require( '@stdlib/math/base/special/floor' );
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			// Check if the largest child is bigger than `t`...</span>
-<span class="cstat-no" title="statement not covered" >			v1 = x[ offset+(child*stride) ];</span>
+<span class="cstat-no" title="statement not covered" >			v1 = x[ offsetX+(child*strideX) ];</span>
 <span class="cstat-no" title="statement not covered" >			if ( v1 &gt; t || isnanf( v1 ) || ( v1 === t &amp;&amp; isPositiveZerof( v1 ) ) ) { // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >				// Insert the larger child value:</span>
-<span class="cstat-no" title="statement not covered" >				x[ offset+(j*stride) ] = v1;</span>
+<span class="cstat-no" title="statement not covered" >				x[ offsetX+(j*strideX) ] = v1;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >				// Update `j` to point to the child index:</span>
 <span class="cstat-no" title="statement not covered" >				j = child;</span>
@@ -496,7 +496,7 @@ var floor = require( '@stdlib/math/base/special/floor' );
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Insert `t` into the heap:</span>
-<span class="cstat-no" title="statement not covered" >		x[ offset+(j*stride) ] = t;</span>
+<span class="cstat-no" title="statement not covered" >		x[ offsetX+(j*strideX) ] = t;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -511,7 +511,7 @@ module.exports = ssorthp;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-11T03:52:46.743Z
+                at 2026-04-12T10:11:38.812Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
