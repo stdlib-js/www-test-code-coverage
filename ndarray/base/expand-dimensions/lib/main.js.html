@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for base/expand-dimensions/lib/main.js</title>
+    <title>Code coverage report for expand-dimensions/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/expand-dimensions/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">expand-dimensions/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.58% </span>
+                <span class="strong">43.75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>62/136</span>
+                <span class='fraction'>63/144</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.58% </span>
+                <span class="strong">43.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>62/136</span>
+                <span class='fraction'>63/144</span>
             </div>
         
             
@@ -199,7 +199,15 @@
 <a name='L134'></a><a href='#L134'>134</a>
 <a name='L135'></a><a href='#L135'>135</a>
 <a name='L136'></a><a href='#L136'>136</a>
-<a name='L137'></a><a href='#L137'>137</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -256,6 +264,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -357,8 +373,9 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major-string' );
+var isRowMajorString = require( '@stdlib/ndarray/base/assert/is-row-major-string' );
 var normalizeIndex = require( '@stdlib/ndarray/base/normalize-index' );
+var strides2order = require( '@stdlib/ndarray/base/strides2order' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var getShape = require( '@stdlib/ndarray/base/shape' );
 var getStrides = require( '@stdlib/ndarray/base/strides' );
@@ -400,6 +417,7 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" >	var st;</span>
 <span class="cstat-no" title="statement not covered" >	var d;</span>
+<span class="cstat-no" title="statement not covered" >	var o;</span>
 <span class="cstat-no" title="statement not covered" >	var N;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -407,7 +425,13 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	st = getStrides( x, false );</span>
 <span class="cstat-no" title="statement not covered" >	ord = getOrder( x );</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	isrm = isRowMajor( ord );</span>
+<span class="cstat-no" title="statement not covered" >	o = strides2order( st );</span>
+<span class="cstat-no" title="statement not covered" >	if ( o === 0 || o === 3 ) {</span>
+<span class="cstat-no" title="statement not covered" >		// Fallback to stated layout when unable to infer the underlying physical layout:</span>
+<span class="cstat-no" title="statement not covered" >		isrm = isRowMajorString( ord );</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		isrm = ( o === 1 );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	N = sh.length;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	strides = [];</span>
@@ -478,16 +502,16 @@ module.exports = expandDimensions;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-13T04:13:42.493Z
+                at 2026-04-13T06:32:43.305Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
