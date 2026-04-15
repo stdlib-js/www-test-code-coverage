@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>232/232</span>
+                <span class='fraction'>241/241</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>232/232</span>
+                <span class='fraction'>241/241</span>
             </div>
         
             
@@ -295,7 +295,16 @@
 <a name='L230'></a><a href='#L230'>230</a>
 <a name='L231'></a><a href='#L231'>231</a>
 <a name='L232'></a><a href='#L232'>232</a>
-<a name='L233'></a><a href='#L233'>233</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -365,6 +374,8 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
@@ -452,6 +463,10 @@
 <span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">80x</span>
@@ -469,19 +484,20 @@
 <span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-yes">80x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-yes">80x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
-<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-yes">80x</span>
@@ -513,6 +529,8 @@
 <span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">80x</span>
+<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-yes">80x</span>
@@ -600,12 +618,14 @@ var min = require( '@stdlib/math/base/special/min' );
 function chbmv( uplo, N, K, alpha, A, strideA1, strideA2, offsetA, x, strideX, offsetX, beta, y, strideY, offsetY ) { // eslint-disable-line max-params, max-len
 	var realpha;
 	var imalpha;
+	var i0start;
 	var rebeta;
 	var imbeta;
 	var retmp1;
 	var imtmp1;
 	var retmp2;
 	var imtmp2;
+	var i0end;
 	var viewA;
 	var viewX;
 	var viewY;
@@ -615,13 +635,14 @@ function chbmv( uplo, N, K, alpha, A, strideA1, strideA2, offsetA, x, strideX, o
 	var sa0;
 	var sa1;
 	var oa2;
-	var oa3;
 	var rea;
 	var ima;
 	var rex;
 	var imx;
-	var ix;
-	var iy;
+	var ix0;
+	var ix1;
+	var iy0;
+	var iy1;
 	var oa;
 	var ox;
 	var oy;
@@ -630,7 +651,6 @@ function chbmv( uplo, N, K, alpha, A, strideA1, strideA2, offsetA, x, strideX, o
 	var i0;
 	var i1;
 	var ia;
-	var m;
 &nbsp;
 	// Layout
 	isrm = isRowMajor( [ strideA1, strideA2 ] );
@@ -684,73 +704,80 @@ function chbmv( uplo, N, K, alpha, A, strideA1, strideA2, offsetA, x, strideX, o
 	sx = strideX * 2;
 	sy = strideY * 2;
 &nbsp;
+	oa2 = oa;
+	ix1 = ox;
+	iy1 = oy;
+&nbsp;
 	if ( ( isrm &amp;&amp; uplo === 'upper' ) || ( !isrm &amp;&amp; uplo === 'lower' ) ) {
 		for ( i1 = 0; i1 &lt; N; i1++ ) {
-			ix = ox + ( i1 * sx );
-			rex = viewX[ ix ];
-			imx = viewX[ ix + 1 ];
+			rex = viewX[ ix1 ];
+			imx = viewX[ ix1 + 1 ];
 			retmp1 = f32( ( realpha * rex ) - ( imalpha * imx ) );
 			imtmp1 = f32( ( realpha * imx ) + ( imalpha * rex ) );
 			retmp2 = 0.0;
 			imtmp2 = 0.0;
-			oa3 = oa + ( i1 * sa1 );
-			ia = oa3;
+			ia = oa2;
 			rea = viewA[ ia ];
-			iy = oy + ( i1 * sy );
-			viewY[ iy ] += f32( retmp1 * rea );
-			viewY[ iy + 1 ] += f32( imtmp1 * rea );
-			m = -i1;
-			oa2 = oa3 + ( m * sa0 );
-			for ( i0 = i1 + 1; i0 &lt; min( N, i1 + K + 1 ); i0++ ) {
-				ia = oa2 + ( i0 * sa0 );
+			viewY[ iy1 ] = f32( viewY[ iy1 ] + ( retmp1 * rea ) );
+			viewY[ iy1 + 1 ] = f32( viewY[ iy1 + 1 ] + ( imtmp1 * rea ) );
+			ia = oa2 + sa0;
+			ix0 = ix1 + sx;
+			iy0 = iy1 + sy;
+			i0end = min( N, i1 + K + 1 );
+			for ( i0 = i1 + 1; i0 &lt; i0end; i0++ ) {
 				rea = viewA[ ia ];
 				ima = viewA[ ia + 1 ];
 				cima = sign * ima;
-				iy = oy + ( i0 * sy );
-				muladd( retmp1, imtmp1, rea, cima, viewY[ iy ], viewY[ iy + 1 ], viewY, 1, iy ); // eslint-disable-line max-len
-				ix = ox + ( i0 * sx );
-				rex = viewX[ ix ];
-				imx = viewX[ ix + 1 ];
-				retmp2 += f32( ( rea * rex ) + ( cima * imx ) );
-				imtmp2 += f32( ( rea * imx ) - ( cima * rex ) );
+				muladd( retmp1, imtmp1, rea, cima, viewY[ iy0 ], viewY[ iy0 + 1 ], viewY, 1, iy0 ); // eslint-disable-line max-len
+				rex = viewX[ ix0 ];
+				imx = viewX[ ix0 + 1 ];
+				retmp2 = f32( retmp2 + f32( ( rea * rex ) + ( cima * imx ) ) );
+				imtmp2 = f32( imtmp2 + f32( ( rea * imx ) - ( cima * rex ) ) );
+				ia += sa0;
+				ix0 += sx;
+				iy0 += sy;
 			}
-			iy = oy + ( i1 * sy );
-			muladd( realpha, imalpha, retmp2, imtmp2, viewY[ iy ], viewY[ iy + 1 ], viewY, 1, iy ); // eslint-disable-line max-len
+			muladd( realpha, imalpha, retmp2, imtmp2, viewY[ iy1 ], viewY[ iy1 + 1 ], viewY, 1, iy1 ); // eslint-disable-line max-len
+			ix1 += sx;
+			iy1 += sy;
+			oa2 += sa1;
 		}
 		return y;
 	}
 &nbsp;
 	// ( isrm &amp;&amp; uplo === 'lower' ) || ( !isrm &amp;&amp; uplo === 'upper' )
 	for ( i1 = 0; i1 &lt; N; i1++ ) {
-		ix = ox + ( i1 * sx );
-		rex = viewX[ ix ];
-		imx = viewX[ ix + 1 ];
+		rex = viewX[ ix1 ];
+		imx = viewX[ ix1 + 1 ];
 		retmp1 = f32( ( realpha * rex ) - ( imalpha * imx ) );
 		imtmp1 = f32( ( realpha * imx ) + ( imalpha * rex ) );
 		retmp2 = 0.0;
 		imtmp2 = 0.0;
-		oa3 = oa + ( i1 * sa1 );
-		m = K - i1;
-		oa2 = oa3 + ( m * sa0 );
-		for ( i0 = max( 0, i1 - K ); i0 &lt; i1; i0++ ) {
-			ia = oa2 + ( i0 * sa0 );
+		i0start = max( 0, i1 - K );
+		ia = oa2 + ( ( K - i1 + i0start ) * sa0 );
+		ix0 = ox + ( i0start * sx );
+		iy0 = oy + ( i0start * sy );
+		for ( i0 = i0start; i0 &lt; i1; i0++ ) {
 			rea = viewA[ ia ];
 			ima = viewA[ ia + 1 ];
 			cima = sign * ima;
-			iy = oy + ( i0 * sy );
-			muladd( retmp1, imtmp1, rea, cima, viewY[ iy ], viewY[ iy + 1 ], viewY, 1, iy ); // eslint-disable-line max-len
-			ix = ox + ( i0 * sx );
-			rex = viewX[ ix ];
-			imx = viewX[ ix + 1 ];
-			retmp2 += f32( ( rea * rex ) + ( cima * imx ) );
-			imtmp2 += f32( ( rea * imx ) - ( cima * rex ) );
+			muladd( retmp1, imtmp1, rea, cima, viewY[ iy0 ], viewY[ iy0 + 1 ], viewY, 1, iy0 ); // eslint-disable-line max-len
+			rex = viewX[ ix0 ];
+			imx = viewX[ ix0 + 1 ];
+			retmp2 = f32( retmp2 + f32( ( rea * rex ) + ( cima * imx ) ) );
+			imtmp2 = f32( imtmp2 + f32( ( rea * imx ) - ( cima * rex ) ) );
+			ia += sa0;
+			ix0 += sx;
+			iy0 += sy;
 		}
-		ia = oa3 + ( K * sa0 );
+		ia = oa2 + ( K * sa0 );
 		rea = viewA[ ia ];
-		iy = oy + ( i1 * sy );
-		viewY[ iy ] += f32( retmp1 * rea );
-		viewY[ iy + 1 ] += f32( imtmp1 * rea );
-		muladd( realpha, imalpha, retmp2, imtmp2, viewY[ iy ], viewY[ iy + 1 ], viewY, 1, iy ); // eslint-disable-line max-len
+		viewY[ iy1 ] = f32( viewY[ iy1 ] + ( retmp1 * rea ) );
+		viewY[ iy1 + 1 ] = f32( viewY[ iy1 + 1 ] + ( imtmp1 * rea ) );
+		muladd( realpha, imalpha, retmp2, imtmp2, viewY[ iy1 ], viewY[ iy1 + 1 ], viewY, 1, iy1 ); // eslint-disable-line max-len
+		ix1 += sx;
+		iy1 += sy;
+		oa2 += sa1;
 	}
 	return y;
 }
@@ -766,7 +793,7 @@ module.exports = chbmv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-09T14:16:09.424Z
+                at 2026-04-15T19:15:01.962Z
             </div>
         <script src="prettify.js"></script>
         <script>
