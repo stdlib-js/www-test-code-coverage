@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>220/220</span>
+                <span class='fraction'>222/222</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>220/220</span>
+                <span class='fraction'>222/222</span>
             </div>
         
             
@@ -283,7 +283,9 @@
 <a name='L218'></a><a href='#L218'>218</a>
 <a name='L219'></a><a href='#L219'>219</a>
 <a name='L220'></a><a href='#L220'>220</a>
-<a name='L221'></a><a href='#L221'>221</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -350,6 +352,7 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">56x</span>
@@ -415,6 +418,7 @@
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">48x</span>
 <span class="cline-any cline-yes">48x</span>
@@ -591,17 +595,18 @@ function chpmv( order, uplo, N, alpha, AP, strideAP, offsetAP, x, strideX, offse
 	var sap;
 	var rex;
 	var imx;
-	var ix;
-	var jx;
-	var kx;
-	var iy;
-	var jy;
-	var ky;
+	var ix0;
+	var ix1;
+	var iy0;
+	var iy1;
+	var i0;
+	var i1;
+	var oa;
+	var ox;
+	var oy;
 	var sx;
 	var sy;
 	var kk;
-	var k;
-	var j;
 &nbsp;
 	// Layout
 	isrm = isRowMajor( order );
@@ -637,84 +642,85 @@ function chpmv( order, uplo, N, alpha, AP, strideAP, offsetAP, x, strideX, offse
 	}
 &nbsp;
 	// Vector indexing base
-	kk = offsetAP * 2;
-	kx = offsetX * 2;
-	ky = offsetY * 2;
+	oa = offsetAP * 2;
+	ox = offsetX * 2;
+	oy = offsetY * 2;
 &nbsp;
 	// Vector strides
 	sx = strideX * 2;
 	sy = strideY * 2;
 	sap = strideAP * 2;
 &nbsp;
-	jx = kx;
-	jy = ky;
+	kk = oa;
+	ix1 = ox;
+	iy1 = oy;
 &nbsp;
 	if ( ( isrm &amp;&amp; uplo === 'upper' ) || ( !isrm &amp;&amp; uplo === 'lower' ) ) {
-		for ( j = 0; j &lt; N; j++ ) {
-			rex = viewX[ jx ];
-			imx = viewX[ jx + 1 ];
+		for ( i1 = 0; i1 &lt; N; i1++ ) {
+			rex = viewX[ ix1 ];
+			imx = viewX[ ix1 + 1 ];
 			retmp1 = f32( ( realpha * rex ) - ( imalpha * imx ) );
 			imtmp1 = f32( ( realpha * imx ) + ( imalpha * rex ) );
 			retmp2 = 0.0;
 			imtmp2 = 0.0;
 			reap = viewAP[ kk ];
-			viewY[ jy ] += f32( retmp1 * reap );
-			viewY[ jy + 1 ] += f32( imtmp1 * reap );
-			ix = jx + sx;
-			iy = jy + sy;
+			viewY[ iy1 ] = f32( viewY[ iy1 ] + ( retmp1 * reap ) );
+			viewY[ iy1 + 1 ] = f32( viewY[ iy1 + 1 ] + ( imtmp1 * reap ) );
+			ix0 = ix1 + sx;
+			iy0 = iy1 + sy;
 			iap = kk + sap;
-			for ( k = j + 1; k &lt; N; k++ ) {
+			for ( i0 = i1 + 1; i0 &lt; N; i0++ ) {
 				reap = viewAP[ iap ];
 				imap = viewAP[ iap + 1 ];
 				cimap = sign * imap;
-				muladd( retmp1, imtmp1, reap, cimap, viewY[ iy ], viewY[ iy + 1 ], viewY, 1, iy ); // eslint-disable-line max-len
-				rex = viewX[ ix ];
-				imx = viewX[ ix + 1 ];
-				retmp2 += f32( ( reap * rex ) + ( cimap * imx ) );
-				imtmp2 += f32( ( reap * imx ) - ( cimap * rex ) );
-				ix += sx;
-				iy += sy;
+				muladd( retmp1, imtmp1, reap, cimap, viewY[ iy0 ], viewY[ iy0 + 1 ], viewY, 1, iy0 ); // eslint-disable-line max-len
+				rex = viewX[ ix0 ];
+				imx = viewX[ ix0 + 1 ];
+				retmp2 = f32( retmp2 + f32( ( reap * rex ) + ( cimap * imx ) ) );
+				imtmp2 = f32( imtmp2 + f32( ( reap * imx ) - ( cimap * rex ) ) );
+				ix0 += sx;
+				iy0 += sy;
 				iap += sap;
 			}
-			muladd( realpha, imalpha, retmp2, imtmp2, viewY[ jy ], viewY[ jy + 1 ], viewY, 1, jy ); // eslint-disable-line max-len
-			jx += sx;
-			jy += sy;
-			kk += ( N - j ) * sap;
+			muladd( realpha, imalpha, retmp2, imtmp2, viewY[ iy1 ], viewY[ iy1 + 1 ], viewY, 1, iy1 ); // eslint-disable-line max-len
+			ix1 += sx;
+			iy1 += sy;
+			kk += ( N - i1 ) * sap;
 		}
 		return y;
 	}
 &nbsp;
 	// ( isrm &amp;&amp; uplo === 'lower' ) || ( !isrm &amp;&amp; uplo === 'upper' )
-	for ( j = 0; j &lt; N; j++ ) {
-		rex = viewX[ jx ];
-		imx = viewX[ jx + 1 ];
+	for ( i1 = 0; i1 &lt; N; i1++ ) {
+		rex = viewX[ ix1 ];
+		imx = viewX[ ix1 + 1 ];
 		retmp1 = f32( ( realpha * rex ) - ( imalpha * imx ) );
 		imtmp1 = f32( ( realpha * imx ) + ( imalpha * rex ) );
 		retmp2 = 0.0;
 		imtmp2 = 0.0;
-		ix = kx;
-		iy = ky;
+		ix0 = ox;
+		iy0 = oy;
 		iap = kk;
-		for ( k = 0; k &lt; j; k++ ) {
+		for ( i0 = 0; i0 &lt; i1; i0++ ) {
 			reap = viewAP[ iap ];
 			imap = viewAP[ iap + 1 ];
 			cimap = sign * imap;
-			muladd( retmp1, imtmp1, reap, cimap, viewY[ iy ], viewY[ iy + 1 ], viewY, 1, iy ); // eslint-disable-line max-len
-			rex = viewX[ ix ];
-			imx = viewX[ ix + 1 ];
-			retmp2 += f32( ( reap * rex ) + ( cimap * imx ) );
-			imtmp2 += f32( ( reap * imx ) - ( cimap * rex ) );
-			ix += sx;
-			iy += sy;
+			muladd( retmp1, imtmp1, reap, cimap, viewY[ iy0 ], viewY[ iy0 + 1 ], viewY, 1, iy0 ); // eslint-disable-line max-len
+			rex = viewX[ ix0 ];
+			imx = viewX[ ix0 + 1 ];
+			retmp2 = f32( retmp2 + f32( ( reap * rex ) + ( cimap * imx ) ) );
+			imtmp2 = f32( imtmp2 + f32( ( reap * imx ) - ( cimap * rex ) ) );
+			ix0 += sx;
+			iy0 += sy;
 			iap += sap;
 		}
 		reap = viewAP[ iap ];
-		viewY[ jy ] += f32( retmp1 * reap );
-		viewY[ jy + 1 ] += f32( imtmp1 * reap );
-		muladd( realpha, imalpha, retmp2, imtmp2, viewY[ jy ], viewY[ jy + 1 ], viewY, 1, jy ); // eslint-disable-line max-len
-		jx += sx;
-		jy += sy;
-		kk += ( j + 1 ) * sap;
+		viewY[ iy1 ] = f32( viewY[ iy1 ] + ( retmp1 * reap ) );
+		viewY[ iy1 + 1 ] = f32( viewY[ iy1 + 1 ] + ( imtmp1 * reap ) );
+		muladd( realpha, imalpha, retmp2, imtmp2, viewY[ iy1 ], viewY[ iy1 + 1 ], viewY, 1, iy1 ); // eslint-disable-line max-len
+		ix1 += sx;
+		iy1 += sy;
+		kk += ( i1 + 1 ) * sap;
 	}
 	return y;
 }
@@ -730,7 +736,7 @@ module.exports = chpmv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-15T06:36:33.199Z
+                at 2026-04-15T19:35:28.814Z
             </div>
         <script src="prettify.js"></script>
         <script>
