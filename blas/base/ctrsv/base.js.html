@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>287/287</span>
+                <span class='fraction'>278/278</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>287/287</span>
+                <span class='fraction'>278/278</span>
             </div>
         
             
@@ -341,16 +341,7 @@
 <a name='L276'></a><a href='#L276'>276</a>
 <a name='L277'></a><a href='#L277'>277</a>
 <a name='L278'></a><a href='#L278'>278</a>
-<a name='L279'></a><a href='#L279'>279</a>
-<a name='L280'></a><a href='#L280'>280</a>
-<a name='L281'></a><a href='#L281'>281</a>
-<a name='L282'></a><a href='#L282'>282</a>
-<a name='L283'></a><a href='#L283'>283</a>
-<a name='L284'></a><a href='#L284'>284</a>
-<a name='L285'></a><a href='#L285'>285</a>
-<a name='L286'></a><a href='#L286'>286</a>
-<a name='L287'></a><a href='#L287'>287</a>
-<a name='L288'></a><a href='#L288'>288</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L279'></a><a href='#L279'>279</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -438,18 +429,6 @@
 <span class="cline-any cline-yes">61x</span>
 <span class="cline-any cline-yes">61x</span>
 <span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">57x</span>
-<span class="cline-any cline-yes">57x</span>
 <span class="cline-any cline-yes">61x</span>
 <span class="cline-any cline-yes">61x</span>
 <span class="cline-any cline-yes">31x</span>
@@ -464,7 +443,10 @@
 <span class="cline-any cline-yes">61x</span>
 <span class="cline-any cline-yes">61x</span>
 <span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">57x</span>
 <span class="cline-any cline-yes">61x</span>
 <span class="cline-any cline-yes">61x</span>
 <span class="cline-any cline-yes">61x</span>
@@ -667,7 +649,7 @@ var f32 = require( '@stdlib/number/float64/base/to-float32' );
 // MAIN //
 &nbsp;
 /**
-* Solves one of the systems of equations `A*x = b` or `A^T*x = b` or `A^H*x = b` where `b` and `x` are `N` element complex vectors and `A` is an `N` by `N` unit, or non-unit, upper or lower triangular complex matrix.
+* Solves one of the systems of equations `A*x = b` or `A^T*x = b` or `A^H*x = b` where `b` and `x` are `N` element vectors and `A` is an `N` by `N` unit, or non-unit, upper or lower triangular matrix.
 *
 * @private
 * @param {string} uplo - specifies whether `A` is an upper or lower triangular matrix
@@ -721,61 +703,52 @@ function ctrsv( uplo, trans, diag, N, A, strideA1, strideA2, offsetA, x, strideX
 	var i1;
 	var ia;
 &nbsp;
-	// Layout
-	isrm = isRowMajor( [ strideA1, strideA2 ] );
+	// Note on variable naming convention: sa#, ix#, i# where # corresponds to the loop number, with `0` being the innermost loop...
 &nbsp;
-	// Diagonal
+	isrm = isRowMajor( [ strideA1, strideA2 ] );
 	nonunit = ( diag === 'non-unit' );
 &nbsp;
-	// Reinterpret arrays to raw numeric views
+	if ( isrm ) {
+		// For row-major matrices, the last dimension has the fastest changing index...
+		sa0 = strideA2 * 2; // stride increment for innermost loop
+		sa1 = strideA1 * 2; // stride increment for outermost loop
+	} else { // isColMajor
+		// For column-major matrices, the first dimension has the fastest changing index...
+		sa0 = strideA1 * 2; // stride increment for innermost loop
+		sa1 = strideA2 * 2; // stride increment for outermost loop
+	}
+	// Reinterpret arrays to real-valued views
 	viewA = reinterpret( A, 0 );
 	viewX = reinterpret( x, 0 );
-&nbsp;
-	// Set sign to handle conjugation: flip the imaginary part for conjugate-transpose
 	if ( trans === 'conjugate-transpose' ) {
 		sign = -1;
 	} else {
 		sign = 1;
 	}
-&nbsp;
-	if ( isrm ) {
-		// For row-major matrices, the last dimension has the fastest changing index...
-		sa0 = strideA2 * 2;                     // offset increment for innermost loop
-		sa1 = strideA1 * 2;                     // offset increment for outermost loop
-	} else { // isColMajor
-		// For column-major matrices, the first dimension has the fastest changing index...
-		sa0 = strideA1 * 2;                     // offset increment for innermost loop
-		sa1 = strideA2 * 2;                     // offset increment for outermost loop
-	}
-&nbsp;
-	// Vector indexing base
 	oa = offsetA * 2;
 	ox = offsetX * 2;
-&nbsp;
-	// Vector strides
 	sx = strideX * 2;
-&nbsp;
 	doa2 = sa1 + sa0;
 &nbsp;
 	if (
 		( !isrm &amp;&amp; uplo === 'upper' &amp;&amp; trans === 'no-transpose' ) ||
 		( isrm &amp;&amp; uplo === 'lower' &amp;&amp; trans !== 'no-transpose' )
 	) {
-		ix1 = ox + ( ( N - 1 ) * sx );
-		oa2 = oa + ( doa2 * ( N - 1 ) );
+		ix1 = ox + ((N-1)*sx);
+		oa2 = oa + (doa2*(N-1));
 		for ( i1 = N - 1; i1 &gt;= 0; i1-- ) {
 			rex = viewX[ ix1 ];
-			imx = viewX[ ix1 + 1 ];
+			imx = viewX[ ix1+1 ];
 			if ( rex !== 0.0 || imx !== 0.0 ) {
 				if ( nonunit ) {
 					ia = oa2;
 					rea = viewA[ ia ];
-					ima = sign * viewA[ ia + 1 ];
-					magsq = f32( ( rea * rea ) + ( ima * ima ) );
-					retmp = f32( f32( ( rex * rea ) + ( imx * ima ) ) / magsq );
-					imtmp = f32( f32( ( imx * rea ) - ( rex * ima ) ) / magsq );
+					ima = sign * viewA[ ia+1 ];
+					magsq = f32(f32(rea*rea) + f32(ima*ima));
+					retmp = f32((f32(rex*rea) + f32(imx*ima)) / magsq );
+					imtmp = f32((f32(imx*rea) - f32(rex*ima)) / magsq );
 					viewX[ ix1 ] = retmp;
-					viewX[ ix1 + 1 ] = imtmp;
+					viewX[ ix1+1 ] = imtmp;
 				} else {
 					retmp = rex;
 					imtmp = imx;
@@ -784,13 +757,13 @@ function ctrsv( uplo, trans, diag, N, A, strideA1, strideA2, offsetA, x, strideX
 				ix0 = ix1 - sx;
 				for ( i0 = i1 - 1; i0 &gt;= 0; i0-- ) {
 					rea = viewA[ ia ];
-					ima = sign * viewA[ ia + 1 ];
+					ima = sign * viewA[ ia+1 ];
 					rex = viewX[ ix0 ];
-					imx = viewX[ ix0 + 1 ];
-					remul = f32( ( retmp * rea ) - ( imtmp * ima ) );
-					immul = f32( ( retmp * ima ) + ( imtmp * rea ) );
-					viewX[ ix0 ] = f32( rex - remul );
-					viewX[ ix0 + 1 ] = f32( imx - immul );
+					imx = viewX[ ix0+1 ];
+					remul = f32(f32(retmp*rea) - f32(imtmp*ima));
+					immul = f32(f32(retmp*ima) + f32(imtmp*rea));
+					viewX[ ix0 ] = f32(rex - remul);
+					viewX[ ix0+1 ] = f32(imx - immul);
 					ix0 -= sx;
 					ia -= sa0;
 				}
@@ -808,17 +781,17 @@ function ctrsv( uplo, trans, diag, N, A, strideA1, strideA2, offsetA, x, strideX
 		oa2 = oa;
 		for ( i1 = 0; i1 &lt; N; i1++ ) {
 			rex = viewX[ ix1 ];
-			imx = viewX[ ix1 + 1 ];
+			imx = viewX[ ix1+1 ];
 			if ( rex !== 0.0 || imx !== 0.0 ) {
 				if ( nonunit ) {
 					ia = oa2;
 					rea = viewA[ ia ];
-					ima = sign * viewA[ ia + 1 ];
-					magsq = f32( ( rea * rea ) + ( ima * ima ) );
-					retmp = f32( f32( ( rex * rea ) + ( imx * ima ) ) / magsq );
-					imtmp = f32( f32( ( imx * rea ) - ( rex * ima ) ) / magsq );
+					ima = sign * viewA[ ia+1 ];
+					magsq = f32(f32(rea*rea) + f32(ima*ima));
+					retmp = f32(f32(f32(rex*rea) + f32(imx*ima)) / magsq );
+					imtmp = f32(f32(f32(imx*rea) - f32(rex*ima)) / magsq );
 					viewX[ ix1 ] = retmp;
-					viewX[ ix1 + 1 ] = imtmp;
+					viewX[ ix1+1 ] = imtmp;
 				} else {
 					retmp = rex;
 					imtmp = imx;
@@ -827,13 +800,13 @@ function ctrsv( uplo, trans, diag, N, A, strideA1, strideA2, offsetA, x, strideX
 				ix0 = ix1 + sx;
 				for ( i0 = i1 + 1; i0 &lt; N; i0++ ) {
 					rea = viewA[ ia ];
-					ima = sign * viewA[ ia + 1 ];
+					ima = sign * viewA[ ia+1 ];
 					rex = viewX[ ix0 ];
-					imx = viewX[ ix0 + 1 ];
-					remul = f32( ( retmp * rea ) - ( imtmp * ima ) );
-					immul = f32( ( retmp * ima ) + ( imtmp * rea ) );
-					viewX[ ix0 ] = f32( rex - remul );
-					viewX[ ix0 + 1 ] = f32( imx - immul );
+					imx = viewX[ ix0+1 ];
+					remul = f32(f32(retmp*rea) - f32(imtmp*ima));
+					immul = f32(f32(retmp*ima) + f32(imtmp*rea));
+					viewX[ ix0 ] = f32(rex - remul);
+					viewX[ ix0+1 ] = f32(imx - immul);
 					ia += sa0;
 					ix0 += sx;
 				}
@@ -851,69 +824,69 @@ function ctrsv( uplo, trans, diag, N, A, strideA1, strideA2, offsetA, x, strideX
 		oa2 = oa;
 		for ( i1 = 0; i1 &lt; N; i1++ ) {
 			rex = viewX[ ix1 ];
-			imx = viewX[ ix1 + 1 ];
+			imx = viewX[ ix1+1 ];
 			retmp = rex;
 			imtmp = imx;
 			ix0 = ox;
 			ia = oa2;
 			for ( i0 = 0; i0 &lt; i1; i0++ ) {
 				rea = viewA[ ia ];
-				ima = sign * viewA[ ia + 1 ];
+				ima = sign * viewA[ ia+1 ];
 				rex = viewX[ ix0 ];
-				imx = viewX[ ix0 + 1 ];
-				retmp = f32( retmp - f32( ( rex * rea ) - ( imx * ima ) ) );
-				imtmp = f32( imtmp - f32( ( rex * ima ) + ( imx * rea ) ) );
+				imx = viewX[ ix0+1 ];
+				retmp = f32(retmp - f32(f32(rex*rea) - f32(imx*ima)));
+				imtmp = f32(imtmp - f32(f32(rex*ima) + f32(imx*rea)));
 				ix0 += sx;
 				ia += sa0;
 			}
 			if ( nonunit ) {
 				rea = viewA[ ia ];
-				ima = sign * viewA[ ia + 1 ];
-				magsq = f32( ( rea * rea ) + ( ima * ima ) );
-				remul = f32( ( retmp * rea ) + ( imtmp * ima ) );
-				immul = f32( ( imtmp * rea ) - ( retmp * ima ) );
-				retmp = f32( remul / magsq );
-				imtmp = f32( immul / magsq );
+				ima = sign * viewA[ ia+1 ];
+				magsq = f32(f32(rea*rea) + f32(ima*ima));
+				remul = f32(f32(retmp*rea) + f32(imtmp*ima));
+				immul = f32(f32(imtmp*rea) - f32(retmp*ima));
+				retmp = f32(remul / magsq);
+				imtmp = f32(immul / magsq);
 			}
 			viewX[ ix1 ] = retmp;
-			viewX[ ix1 + 1 ] = imtmp;
+			viewX[ ix1+1 ] = imtmp;
 			ix1 += sx;
 			oa2 += sa1;
 		}
 		return x;
 	}
 	// ( !isrm &amp;&amp; uplo === 'lower' &amp;&amp; trans !== 'no-transpose' ) || ( isrm &amp;&amp; uplo === 'upper' &amp;&amp; trans === 'no-transpose' )
-	ix1 = ox + ( ( N - 1 ) * sx );
+	ix1 = ox + ((N-1)*sx);
 	ixend = ix1;
-	oa2 = oa + ( doa2 * ( N - 1 ) );
+	oa2 = oa + (doa2*(N-1));
 	for ( i1 = N - 1; i1 &gt;= 0; i1-- ) {
 		rex = viewX[ ix1 ];
-		imx = viewX[ ix1 + 1 ];
+		imx = viewX[ ix1+1 ];
 		retmp = rex;
 		imtmp = imx;
 		ix0 = ixend;
 		ia = oa2;
 		for ( i0 = N - 1; i0 &gt; i1; i0-- ) {
 			rea = viewA[ ia ];
-			ima = sign * viewA[ ia + 1 ];
+			ima = sign * viewA[ ia+1 ];
 			rex = viewX[ ix0 ];
-			imx = viewX[ ix0 + 1 ];
-			retmp = f32( retmp - f32( ( rex * rea ) - ( imx * ima ) ) );
-			imtmp = f32( imtmp - f32( ( rex * ima ) + ( imx * rea ) ) );
+			imx = viewX[ ix0+1 ];
+			retmp = f32(retmp - f32(f32(rex*rea) - f32(imx*ima)));
+			imtmp = f32(imtmp - f32(f32(rex*ima) + f32(imx*rea)));
 			ia -= sa0;
 			ix0 -= sx;
 		}
 		if ( nonunit ) {
 			rea = viewA[ ia ];
-			ima = sign * viewA[ ia + 1 ];
-			magsq = f32( ( rea * rea ) + ( ima * ima ) );
-			remul = f32( ( retmp * rea ) + ( imtmp * ima ) );
-			immul = f32( ( imtmp * rea ) - ( retmp * ima ) );
-			retmp = f32( remul / magsq );
-			imtmp = f32( immul / magsq );
+			ima = sign * viewA[ ia+1 ];
+			magsq = f32(f32(rea*rea) + f32(ima*ima));
+			remul = f32(f32(retmp*rea) + f32(imtmp*ima));
+			immul = f32(f32(imtmp*rea) - f32(retmp*ima));
+			retmp = f32(remul / magsq);
+			imtmp = f32(immul / magsq);
 		}
 		viewX[ ix1 ] = retmp;
-		viewX[ ix1 + 1 ] = imtmp;
+		viewX[ ix1+1 ] = imtmp;
 		ix1 -= sx;
 		oa2 -= sa1;
 	}
@@ -931,7 +904,7 @@ module.exports = ctrsv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-18T18:34:02.767Z
+                at 2026-04-18T19:02:06.743Z
             </div>
         <script src="prettify.js"></script>
         <script>
