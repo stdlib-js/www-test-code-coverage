@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>244/244</span>
+                <span class='fraction'>237/237</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>244/244</span>
+                <span class='fraction'>237/237</span>
             </div>
         
             
@@ -300,14 +300,7 @@
 <a name='L235'></a><a href='#L235'>235</a>
 <a name='L236'></a><a href='#L236'>236</a>
 <a name='L237'></a><a href='#L237'>237</a>
-<a name='L238'></a><a href='#L238'>238</a>
-<a name='L239'></a><a href='#L239'>239</a>
-<a name='L240'></a><a href='#L240'>240</a>
-<a name='L241'></a><a href='#L241'>241</a>
-<a name='L242'></a><a href='#L242'>242</a>
-<a name='L243'></a><a href='#L243'>243</a>
-<a name='L244'></a><a href='#L244'>244</a>
-<a name='L245'></a><a href='#L245'>245</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L238'></a><a href='#L238'>238</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -363,9 +356,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">58x</span>
-<span class="cline-any cline-yes">58x</span>
-<span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-yes">58x</span>
@@ -401,10 +391,6 @@
 <span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
-<span class="cline-any cline-yes">58x</span>
-<span class="cline-any cline-yes">58x</span>
-<span class="cline-any cline-yes">58x</span>
-<span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-yes">58x</span>
@@ -582,7 +568,7 @@ var muladd = require( '@stdlib/complex/float32/base/mul-add' ).assign;
 // MAIN //
 &nbsp;
 /**
-* Performs one of the matrix-vector operations `x = A*x`, or `x = A**T*x`, or `x = A**H*x`, where `x` is an `N` element complex vector and `A` is an `N` by `N` unit, or non-unit, upper or lower triangular complex matrix, supplied in packed form.
+* Performs one of the matrix-vector operations `x = A*x` or `x = A**T*x` or `x = A**H*x`, where `x` is an `N` element vector and `A` is an `N` by `N` unit, or non-unit, upper or lower triangular matrix, supplied in packed form.
 *
 * @private
 * @param {string} order - storage layout
@@ -629,28 +615,21 @@ function ctpmv( order, uplo, trans, diag, N, AP, strideAP, offsetAP, x, strideX,
 	var i1;
 	var i0;
 &nbsp;
-	// Layout
-	isrm = isRowMajor( order );
+	// Note on variable naming convention: sa#, ix#, i# where # corresponds to the loop number, with `0` being the innermost loop...
 &nbsp;
-	// Diagonal
+	isrm = isRowMajor( order );
 	nonunit = ( diag === 'non-unit' );
 &nbsp;
-	// Reinterpret arrays to raw numeric views
+	// Reinterpret arrays to real-valued views
 	viewAP = reinterpret( AP, 0 );
 	viewX = reinterpret( x, 0 );
-&nbsp;
-	// Adjust sign to account for conjugation
 	if ( trans === 'conjugate-transpose' ) {
 		sign = -1;
 	} else {
 		sign = 1;
 	}
-&nbsp;
-	// Vector indexing base
 	ox = offsetX * 2;
 	kk = offsetAP * 2;
-&nbsp;
-	// Vector strides
 	sx = strideX * 2;
 	sap = strideAP * 2;
 &nbsp;
@@ -661,28 +640,28 @@ function ctpmv( order, uplo, trans, diag, N, AP, strideAP, offsetAP, x, strideX,
 		ix1 = ox;
 		for ( i1 = 0; i1 &lt; N; i1++ ) {
 			retmp = viewX[ ix1 ];
-			imtmp = viewX[ ix1 + 1 ];
+			imtmp = viewX[ ix1+1 ];
 			iap = kk;
 			ix0 = ox;
 			for ( i0 = 0; i0 &lt; i1; i0++ ) {
 				rea = viewAP[ iap ];
-				ima = sign * viewAP[ iap + 1 ];
+				ima = sign * viewAP[ iap+1 ];
 				rex = viewX[ ix0 ];
-				imx = viewX[ ix0 + 1 ];
+				imx = viewX[ ix0+1 ];
 				muladd( rea, ima, retmp, imtmp, rex, imx, viewX, 1, ix0 );
 				iap += sap;
 				ix0 += sx;
 			}
 			if ( nonunit ) {
 				rea = viewAP[ iap ];
-				ima = sign * viewAP[ iap + 1 ];
+				ima = sign * viewAP[ iap+1 ];
 				rex = viewX[ ix0 ];
-				imx = viewX[ ix0 + 1 ];
-				viewX[ ix0 ] = f32( ( rea * rex ) - ( ima * imx ) );
-				viewX[ ix0 + 1 ] = f32( ( rea * imx ) + ( ima * rex ) );
+				imx = viewX[ ix0+1 ];
+				viewX[ ix0 ] = f32(f32(rea*rex) - f32(ima*imx));
+				viewX[ ix0+1 ] = f32(f32(rea*imx) + f32(ima*rex));
 			}
 			ix1 += sx;
-			kk += ( i1 + 1 ) * sap;
+			kk += (i1+1) * sap;
 		}
 		return x;
 	}
@@ -690,33 +669,33 @@ function ctpmv( order, uplo, trans, diag, N, AP, strideAP, offsetAP, x, strideX,
 		( !isrm &amp;&amp; uplo === 'lower' &amp;&amp; trans === 'no-transpose' ) ||
 		( isrm &amp;&amp; uplo === 'upper' &amp;&amp; trans !== 'no-transpose' )
 	) {
-		kk += ( ( N * ( N + 1 ) / 2 ) - 1 ) * sap;
-		ox += ( N - 1 ) * sx;
+		kk += ((N*(N+1)/2)-1) * sap;
+		ox += (N-1) * sx;
 		ix1 = ox;
 		for ( i1 = N - 1; i1 &gt;= 0; i1-- ) {
 			retmp = viewX[ ix1 ];
-			imtmp = viewX[ ix1 + 1 ];
+			imtmp = viewX[ ix1+1 ];
 			iap = kk;
 			ix0 = ox;
 			for ( i0 = N - 1; i0 &gt; i1; i0-- ) {
 				rea = viewAP[ iap ];
-				ima = sign * viewAP[ iap + 1 ];
+				ima = sign * viewAP[ iap+1 ];
 				rex = viewX[ ix0 ];
-				imx = viewX[ ix0 + 1 ];
+				imx = viewX[ ix0+1 ];
 				muladd( rea, ima, retmp, imtmp, rex, imx, viewX, 1, ix0 );
 				iap -= sap;
 				ix0 -= sx;
 			}
 			if ( nonunit ) {
 				rea = viewAP[ iap ];
-				ima = sign * viewAP[ iap + 1 ];
+				ima = sign * viewAP[ iap+1 ];
 				rex = viewX[ ix0 ];
-				imx = viewX[ ix0 + 1 ];
-				viewX[ ix0 ] = f32( ( rea * rex ) - ( ima * imx ) );
-				viewX[ ix0 + 1 ] = f32( ( rea * imx ) + ( ima * rex ) );
+				imx = viewX[ ix0+1 ];
+				viewX[ ix0 ] = f32(f32(rea*rex) - f32(ima*imx));
+				viewX[ ix0+1 ] = f32(f32(rea*imx) + f32(ima*rex));
 			}
 			ix1 -= sx;
-			kk -= ( N - i1 ) * sap;
+			kk -= (N-i1) * sap;
 		}
 		return x;
 	}
@@ -724,18 +703,18 @@ function ctpmv( order, uplo, trans, diag, N, AP, strideAP, offsetAP, x, strideX,
 		( !isrm &amp;&amp; uplo === 'upper' &amp;&amp; trans !== 'no-transpose' ) ||
 		( isrm &amp;&amp; uplo === 'lower' &amp;&amp; trans === 'no-transpose' )
 	) {
-		kk += ( ( N * ( N + 1 ) / 2 ) - 1 ) * sap;
-		ix1 = ox + ( ( N - 1 ) * sx );
+		kk += ((N*(N+1)/2)-1) * sap;
+		ix1 = ox + ((N-1)*sx);
 		for ( i1 = N - 1; i1 &gt;= 0; i1-- ) {
 			rex = viewX[ ix1 ];
-			imx = viewX[ ix1 + 1 ];
+			imx = viewX[ ix1+1 ];
 			iap = kk;
 			ix0 = ix1;
 			if ( nonunit ) {
 				rea = viewAP[ iap ];
-				ima = sign * viewAP[ iap + 1 ];
-				retmp = f32( ( rea * rex ) - ( ima * imx ) );
-				imtmp = f32( ( rea * imx ) + ( ima * rex ) );
+				ima = sign * viewAP[ iap+1 ];
+				retmp = f32(f32(rea*rex) - f32(ima*imx));
+				imtmp = f32(f32(rea*imx) + f32(ima*rex));
 			} else {
 				retmp = rex;
 				imtmp = imx;
@@ -744,16 +723,16 @@ function ctpmv( order, uplo, trans, diag, N, AP, strideAP, offsetAP, x, strideX,
 				ix0 -= sx;
 				iap -= sap;
 				rea = viewAP[ iap ];
-				ima = sign * viewAP[ iap + 1 ];
+				ima = sign * viewAP[ iap+1 ];
 				rex = viewX[ ix0 ];
-				imx = viewX[ ix0 + 1 ];
-				retmp = f32( retmp + f32( ( rea * rex ) - ( ima * imx ) ) );
-				imtmp = f32( imtmp + f32( ( rea * imx ) + ( ima * rex ) ) );
+				imx = viewX[ ix0+1 ];
+				retmp = f32(retmp + f32(rea*rex) - f32(ima*imx));
+				imtmp = f32(imtmp + f32(rea*imx) + f32(ima*rex));
 			}
 			viewX[ ix1 ] = retmp;
-			viewX[ ix1 + 1 ] = imtmp;
+			viewX[ ix1+1 ] = imtmp;
 			ix1 -= sx;
-			kk -= ( i1 + 1 ) * sap;
+			kk -= (i1+1) * sap;
 		}
 		return x;
 	}
@@ -761,14 +740,14 @@ function ctpmv( order, uplo, trans, diag, N, AP, strideAP, offsetAP, x, strideX,
 	ix1 = ox;
 	for ( i1 = 0; i1 &lt; N; i1++ ) {
 		rex = viewX[ ix1 ];
-		imx = viewX[ ix1 + 1 ];
+		imx = viewX[ ix1+1 ];
 		iap = kk;
 		ix0 = ix1;
 		if ( nonunit ) {
 			rea = viewAP[ iap ];
-			ima = sign * viewAP[ iap + 1 ];
-			retmp = f32( ( rea * rex ) - ( ima * imx ) );
-			imtmp = f32( ( rea * imx ) + ( ima * rex ) );
+			ima = sign * viewAP[ iap+1 ];
+			retmp = f32(f32(rea*rex) - (ima*imx));
+			imtmp = f32(f32(rea*imx) + (ima*rex));
 		} else {
 			retmp = rex;
 			imtmp = imx;
@@ -777,16 +756,16 @@ function ctpmv( order, uplo, trans, diag, N, AP, strideAP, offsetAP, x, strideX,
 			ix0 += sx;
 			iap += sap;
 			rea = viewAP[ iap ];
-			ima = sign * viewAP[ iap + 1 ];
+			ima = sign * viewAP[ iap+1 ];
 			rex = viewX[ ix0 ];
-			imx = viewX[ ix0 + 1 ];
-			retmp = f32( retmp + f32( ( rea * rex ) - ( ima * imx ) ) );
-			imtmp = f32( imtmp + f32( ( rea * imx ) + ( ima * rex ) ) );
+			imx = viewX[ ix0+1 ];
+			retmp = f32(retmp + f32(rea*rex) - f32(ima*imx));
+			imtmp = f32(imtmp + f32(rea*imx) + f32(ima*rex));
 		}
 		viewX[ ix1 ] = retmp;
-		viewX[ ix1 + 1 ] = imtmp;
+		viewX[ ix1+1 ] = imtmp;
 		ix1 += sx;
-		kk += ( N - i1 ) * sap;
+		kk += (N-i1) * sap;
 	}
 	return x;
 }
@@ -802,7 +781,7 @@ module.exports = ctpmv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-18T18:04:50.903Z
+                at 2026-04-18T18:14:33.969Z
             </div>
         <script src="prettify.js"></script>
         <script>
