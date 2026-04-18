@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>105/105</span>
+                <span class='fraction'>94/94</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>105/105</span>
+                <span class='fraction'>94/94</span>
             </div>
         
             
@@ -157,18 +157,7 @@
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -235,12 +224,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -258,15 +241,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -297,15 +275,13 @@
 &nbsp;
 var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
 var format = require( '@stdlib/string/format' );
-var realf = require( '@stdlib/complex/float32/real' );
-var imagf = require( '@stdlib/complex/float32/imag' );
 var base = require( './base.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Performs the matrix-vector operation `y = α*A*x + β*y`, where `α` and `β` are complex scalars, `x` and `y` are complex vectors, and `A` is an `N` by `N` Hermitian band matrix with `K` sub-diagonals or super-diagonals.
+* Performs the matrix-vector operation `y = α*A*x + β*y`, where `α` and `β` are scalars, `x` and `y` are vectors, and `A` is an `N` by `N` Hermitian band matrix with `K` super-diagonals.
 *
 * @param {string} uplo - specifies whether `A` is an upper or lower triangular part of matrix is supplied.
 * @param {NonNegativeInteger} N - number of elements along each dimension of `A`
@@ -343,10 +319,6 @@ var base = require( './base.js' );
 * // y =&gt; &lt;Complex64Array&gt;[ -1.0, 5.0, -8.0, 20.0, 9.0, 23.0 ]
 */
 function chbmv( uplo, N, K, alpha, A, strideA1, strideA2, offsetA, x, strideX, offsetX, beta, y, strideY, offsetY ) { // eslint-disable-line max-params, max-len
-	var realpha;
-	var imalpha;
-	var rebeta;
-	var imbeta;
 	if ( !isMatrixTriangle( uplo ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must specify whether to reference the lower or upper triangular matrix. Value: `%s`.', uplo ) );
 	}
@@ -362,13 +334,8 @@ function chbmv( uplo, N, K, alpha, A, strideA1, strideA2, offsetA, x, strideX, o
 	if ( strideY === 0 ) {
 		throw new RangeError( format( 'invalid argument. Fourteenth argument must be non-zero. Value: `%d`.', strideY ) );
 	}
-	rebeta = realf( beta );
-	imbeta = imagf( beta );
-	realpha = realf( alpha );
-	imalpha = imagf( alpha );
-&nbsp;
 	// Check if we can early return...
-	if ( N === 0 || ( realpha === 0.0 &amp;&amp; imalpha === 0.0 &amp;&amp; rebeta === 1.0 &amp;&amp; imbeta === 0.0 ) ) { // eslint-disable-line max-len
+	if ( N === 0 ) {
 		return y;
 	}
 	return base( uplo, N, K, alpha, A, strideA1, strideA2, offsetA, x, strideX, offsetX, beta, y, strideY, offsetY );
@@ -385,7 +352,7 @@ module.exports = chbmv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-18T06:25:45.729Z
+                at 2026-04-18T06:44:01.991Z
             </div>
         <script src="prettify.js"></script>
         <script>
