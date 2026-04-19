@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>44/44</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>44/44</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -107,7 +107,31 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -146,6 +170,30 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -171,30 +219,54 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var isFunction = require( '@stdlib/assert/is-function' );
+var format = require( '@stdlib/string/format' );
+&nbsp;
+&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Returns a Function object.
+* Returns a thunk.
 *
-* @name Function
-* @constructor
-* @type {Function}
-* @param {...*} [argNames] - parameters names
-* @param {string} body - function body
-* @returns {Function} function
+* @param {Function} fcn - function to convert to a thunk
+* @param {...*} [args] - function arguments
+* @throws {TypeError} first argument must be a function
+* @returns {Function} thunk
 *
 * @example
-* var add = new Fcn( 'x', 'y', 'return x + y' );
+* var add = require( '@stdlib/number/float64/base/add' );
 *
-* var v = add( 1, 2 );
-* // returns 3
+* var f = thunk( add, 2, 3 );
+* // returns &lt;Function&gt;
+*
+* // ...
+*
+* // Evaluate the thunk:
+* var v = f();
+* // returns 5
 */
-var Fcn = Function; // eslint-disable-line stdlib/require-globals
+function thunk( fcn ) {
+	var args;
+	var i;
+	if ( !isFunction( fcn ) ) {
+		throw new TypeError( format( 'invalid argument. First argument must be a function. Value: `%s`.', fcn ) );
+	}
+	args = [];
+	for ( i = 1; i &lt; arguments.length; i++ ) {
+		args.push( arguments[ i ] );
+	}
+	// NOTE: we return an anonymous function to satisfy the definition of a thunk (i.e., an anonymous function which has no parameters of its own and wraps another function)...
+	return function () { // eslint-disable-line no-restricted-syntax, func-names
+		return fcn.apply( null, args );
+	};
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = Fcn;
+module.exports = thunk;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -202,7 +274,7 @@ module.exports = Fcn;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-19T21:03:07.789Z
+                at 2026-04-19T21:03:09.941Z
             </div>
         <script src="prettify.js"></script>
         <script>
