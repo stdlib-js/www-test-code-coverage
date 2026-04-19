@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for hermitepoly/lib/main.js</title>
+    <title>Code coverage report for chebyshev-seriesf/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">hermitepoly/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">chebyshev-seriesf/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.31% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/64</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.31% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/64</span>
+                <span class='fraction'>58/58</span>
             </div>
         
             
@@ -121,13 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -180,12 +174,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -194,7 +182,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -211,50 +199,44 @@
 &nbsp;
 'use strict';
 &nbsp;
+/**
+* Evaluate a Chebyshev series using single-precision floating-point arithmetic.
+*
+* @module @stdlib/math/base/tools/chebyshev-seriesf
+*
+* @example
+* var chebyshevSeriesf = require( '@stdlib/math/base/tools/chebyshev-seriesf' );
+*
+* var v = chebyshevSeriesf( 1.0, new Float32Array( [ 1.0, 0.5 ] ) ); // 1*T_0(1/2) + 0.5*T_1(1/2)
+* // returns 0.75
+*
+* @example
+* var chebyshevSeriesf = require( '@stdlib/math/base/tools/chebyshev-seriesf' );
+*
+* var polyval = chebyshevSeriesf.factory( new Float32Array( [ 1.0, 0.5 ] ) );
+*
+* var v = polyval( 1.0 ); // 1*T_0(1/2) + 0.5*T_1(1/2)
+* // returns 0.75
+*
+* v = polyval( 0.0 ); // 1*T_0(0) + 0.5*T_1(0)
+* // returns 0.5
+*/
+&nbsp;
 // MODULES //
 &nbsp;
-var SQRT2 = require( '@stdlib/constants/float64/sqrt-two' );
-var pow = require( '@stdlib/math/base/special/pow' );
-var normhermitepoly = require( '@stdlib/math/base/tools/normhermitepoly' );
+var setReadOnly = require( '@stdlib/utils/define-nonenumerable-read-only-property' );
+var main = require( './main.js' );
+var factory = require( './factory.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-/**
-* Evaluates a physicist's Hermite polynomial.
-*
-* @param {NonNegativeInteger} n - nonnegative polynomial degree
-* @param {number} x - evaluation point
-* @returns {number} function value
-*
-* @example
-* var v = hermitepoly( 1, 1.0 );
-* // returns 2.0
-*
-* @example
-* var v = hermitepoly( 1, 0.5 );
-* // returns 1.0
-*
-* @example
-* var v = hermitepoly( -1, 0.5 );
-* // returns NaN
-*
-* @example
-* var v = hermitepoly( 0, 0.5 );
-* // returns 1.0
-*
-* @example
-* var v = hermitepoly( 2, 0.5 );
-* // returns -1.0
-*/
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function hermitepoly( n, x ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	return pow( 2.0, 0.5*n ) * normhermitepoly( n, SQRT2*x );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+setReadOnly( main, 'factory', factory );
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = hermitepoly;
+module.exports = main;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
