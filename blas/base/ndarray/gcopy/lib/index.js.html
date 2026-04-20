@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for daxpy/lib/index.js</title>
+    <title>Code coverage report for gcopy/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">daxpy/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">gcopy/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>50/50</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>50/50</span>
             </div>
         
             
@@ -113,15 +113,7 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -192,26 +184,22 @@
 'use strict';
 &nbsp;
 /**
-* BLAS level 1 routine to multiply a one-dimensional double-precision floating-point ndarray `x` by a constant `alpha` and add the result to a one-dimensional double-precision floating-point ndarray `y`.
+* BLAS level 1 routine to copy values from a one-dimensional ndarray `x` into a one-dimensional ndarray `y`.
 *
-* @module @stdlib/blas/base/ndarray/daxpy
+* @module @stdlib/blas/base/ndarray/gcopy
 *
 * @example
-* var Float64Array = require( '@stdlib/array/float64' );
-* var scalar2ndarray = require( '@stdlib/ndarray/base/from-scalar' );
 * var ndarray = require( '@stdlib/ndarray/base/ctor' );
-* var daxpy = require( '@stdlib/blas/base/ndarray/daxpy' );
+* var gcopy = require( '@stdlib/blas/base/ndarray/gcopy' );
 *
-* var xbuf = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
-* var x = new ndarray( 'float64', xbuf, [ 5 ], [ 1 ], 0, 'row-major' );
+* var xbuf = [ 1.0, 2.0, 3.0, 4.0, 5.0 ];
+* var x = new ndarray( 'generic', xbuf, [ 5 ], [ 1 ], 0, 'row-major' );
 *
-* var ybuf = new Float64Array( [ 1.0, 1.0, 1.0, 1.0, 1.0 ] );
-* var y = new ndarray( 'float64', ybuf, [ 5 ], [ 1 ], 0, 'row-major' );
+* var ybuf = [ 0.0, 0.0, 0.0, 0.0, 0.0 ];
+* var y = new ndarray( 'generic', ybuf, [ 5 ], [ 1 ], 0, 'row-major' );
 *
-* var alpha = scalar2ndarray( 5.0, 'float64', 'row-major' );
-*
-* var z = daxpy( [ x, y, alpha ] );
-* // returns &lt;ndarray&gt;[ 6.0, 11.0, 16.0, 21.0, 26.0 ]
+* var z = gcopy( [ x, y ] );
+* // returns &lt;ndarray&gt;[ 1.0, 2.0, 3.0, 4.0, 5.0 ]
 *
 * var bool = ( z === y );
 * // returns true
