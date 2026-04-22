@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>94/94</span>
+                <span class='fraction'>87/87</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>94/94</span>
+                <span class='fraction'>87/87</span>
             </div>
         
             
@@ -150,14 +150,7 @@
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -205,22 +198,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">10010x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">10004x</span>
 <span class="cline-any cline-yes">10004x</span>
 <span class="cline-any cline-yes">10004x</span>
@@ -245,7 +222,16 @@
 <span class="cline-any cline-yes">10004x</span>
 <span class="cline-any cline-yes">10004x</span>
 <span class="cline-any cline-yes">10004x</span>
-<span class="cline-any cline-yes">10010x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
+<span class="cline-any cline-yes">10004x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -273,7 +259,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var umul = require( '@stdlib/number/uint32/base/mul' );
 &nbsp;
 &nbsp;
 // VARIABLES //
@@ -302,7 +288,6 @@ var LOW_WORD_MASK = 0x0000ffff&gt;&gt;&gt;0; // asm type annotation
 function umuldw(a, b, out, stride, offset ) {
 	var w1;
 	var w2;
-	var w3;
 	var ha;
 	var hb;
 	var la;
@@ -310,11 +295,6 @@ function umuldw(a, b, out, stride, offset ) {
 	var t;
 	var k;
 &nbsp;
-	if ( isnan( a ) || isnan( b ) ) {
-		out[ offset ] = NaN;
-		out[ offset + stride ] = NaN;
-		return out;
-	}
 	a &gt;&gt;&gt;= 0; // asm type annotation
 	b &gt;&gt;&gt;= 0; // asm type annotation
 &nbsp;
@@ -325,7 +305,6 @@ function umuldw(a, b, out, stride, offset ) {
 	lb = ( b &amp; LOW_WORD_MASK ) &gt;&gt;&gt; 0;
 &nbsp;
 	t = ( la*lb ) &gt;&gt;&gt; 0;
-	w3 = ( t &amp; LOW_WORD_MASK ) &gt;&gt;&gt; 0;
 	k = ( t &gt;&gt;&gt; 16 ) &gt;&gt;&gt; 0;
 &nbsp;
 	t = ( ( ha*lb ) + k ) &gt;&gt;&gt; 0;
@@ -336,7 +315,7 @@ function umuldw(a, b, out, stride, offset ) {
 	k = ( t &gt;&gt;&gt; 16 ) &gt;&gt;&gt; 0;
 &nbsp;
 	out[ offset ] = ( ( ha*hb ) + w1 + k ) &gt;&gt;&gt; 0; // compute the higher 32 bits and cast to an unsigned 32-bit integer
-	out[ offset + stride ] = ( ( t &lt;&lt; 16 ) + w3) &gt;&gt;&gt; 0; // compute the lower 32 bits and cast to an unsigned 32-bit integer
+	out[ offset + stride ] = umul( a, b ) &gt;&gt;&gt; 0; // compute the lower 32 bits and cast to an unsigned 32-bit integer
 &nbsp;
 	return out;
 }
@@ -352,7 +331,7 @@ module.exports = umuldw;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-20T01:07:29.390Z
+                at 2026-04-22T11:01:39.019Z
             </div>
         <script src="prettify.js"></script>
         <script>
