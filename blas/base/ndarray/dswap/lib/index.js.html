@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for gcopy/lib/index.js</title>
+    <title>Code coverage report for dswap/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">gcopy/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">dswap/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>52/52</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>52/52</span>
             </div>
         
             
@@ -110,7 +110,17 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -178,19 +188,24 @@
 'use strict';
 &nbsp;
 /**
-* BLAS level 1 routine to copy values from a one-dimensional ndarray `x` into a one-dimensional ndarray `y`.
+* BLAS level 1 routine to interchange two one-dimensional double-precision floating-point ndarrays.
 *
-* @module @stdlib/blas/base/ndarray/gcopy
+* @module @stdlib/blas/base/ndarray/dswap
 *
 * @example
-* var vector = require( '@stdlib/ndarray/vector/ctor' );
-* var gcopy = require( '@stdlib/blas/base/ndarray/gcopy' );
+* var Float64Array = require( '@stdlib/array/float64' );
+* var ndarray = require( '@stdlib/ndarray/base/ctor' );
+* var dswap = require( '@stdlib/blas/base/ndarray/dswap' );
 *
-* var x = vector( [ 1.0, 2.0, 3.0, 4.0, 5.0 ], 'generic' );
-* var y = vector( [ 0.0, 0.0, 0.0, 0.0, 0.0 ], 'generic' );
+* var xbuf = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var x = new ndarray( 'float64', xbuf, [ 5 ], [ 1 ], 0, 'row-major' );
 *
-* var z = gcopy( [ x, y ] );
-* // returns &lt;ndarray&gt;[ 1.0, 2.0, 3.0, 4.0, 5.0 ]
+* var ybuf = new Float64Array( [ 6.0, 7.0, 8.0, 9.0, 10.0 ] );
+* var y = new ndarray( 'float64', ybuf, [ 5 ], [ 1 ], 0, 'row-major' );
+*
+* var z = dswap( [ x, y ] );
+* // x =&gt; &lt;ndarray&gt;[ 6.0, 7.0, 8.0, 9.0, 10.0 ]
+* // y =&gt; &lt;ndarray&gt;[ 1.0, 2.0, 3.0, 4.0, 5.0 ]
 *
 * var bool = ( z === y );
 * // returns true

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for gcopy/lib/index.js</title>
+    <title>Code coverage report for dswap/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">gcopy/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">dswap/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">90.76% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>59/65</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">90.76% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>47/47</span>
+                <span class='fraction'>59/65</span>
             </div>
         
             
@@ -110,7 +110,25 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -152,6 +170,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -177,33 +213,51 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
+var getStride = require( '@stdlib/ndarray/base/stride' );
+var getOffset = require( '@stdlib/ndarray/base/offset' );
+var getData = require( '@stdlib/ndarray/base/data-buffer' );
+var strided = require( '@stdlib/blas/base/dswap' ).ndarray;
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
 /**
-* BLAS level 1 routine to copy values from a one-dimensional ndarray `x` into a one-dimensional ndarray `y`.
+* Interchanges two one-dimensional double-precision floating-point ndarrays.
 *
-* @module @stdlib/blas/base/ndarray/gcopy
+* @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing two input ndarrays
+* @returns {Object} second input ndarray
 *
 * @example
-* var vector = require( '@stdlib/ndarray/vector/ctor' );
-* var gcopy = require( '@stdlib/blas/base/ndarray/gcopy' );
+* var Float64Array = require( '@stdlib/array/float64' );
+* var ndarray = require( '@stdlib/ndarray/base/ctor' );
 *
-* var x = vector( [ 1.0, 2.0, 3.0, 4.0, 5.0 ], 'generic' );
-* var y = vector( [ 0.0, 0.0, 0.0, 0.0, 0.0 ], 'generic' );
+* var xbuf = new Float64Array( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
+* var x = new ndarray( 'float64', xbuf, [ 5 ], [ 1 ], 0, 'row-major' );
 *
-* var z = gcopy( [ x, y ] );
-* // returns &lt;ndarray&gt;[ 1.0, 2.0, 3.0, 4.0, 5.0 ]
+* var ybuf = new Float64Array( [ 6.0, 7.0, 8.0, 9.0, 10.0 ] );
+* var y = new ndarray( 'float64', ybuf, [ 5 ], [ 1 ], 0, 'row-major' );
+*
+* var z = dswap( [ x, y ] );
+* // x =&gt; &lt;ndarray&gt;[ 6.0, 7.0, 8.0, 9.0, 10.0 ]
+* // y =&gt; &lt;ndarray&gt;[ 1.0, 2.0, 3.0, 4.0, 5.0 ]
 *
 * var bool = ( z === y );
 * // returns true
 */
-&nbsp;
-// MODULES //
-&nbsp;
-var main = require( './main.js' );
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dswap( arrays ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var x = arrays[ 0 ];</span>
+<span class="cstat-no" title="statement not covered" >	var y = arrays[ 1 ];</span>
+<span class="cstat-no" title="statement not covered" >	strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ), getData( y ), getStride( y, 0 ), getOffset( y ) ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	return y;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = dswap;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
