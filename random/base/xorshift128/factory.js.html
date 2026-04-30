@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.78% </span>
+                <span class="strong">94.64% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>454/479</span>
+                <span class='fraction'>442/467</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.78% </span>
+                <span class="strong">94.64% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>454/479</span>
+                <span class='fraction'>442/467</span>
             </div>
         
             
@@ -530,21 +530,7 @@
 <a name='L465'></a><a href='#L465'>465</a>
 <a name='L466'></a><a href='#L466'>466</a>
 <a name='L467'></a><a href='#L467'>467</a>
-<a name='L468'></a><a href='#L468'>468</a>
-<a name='L469'></a><a href='#L469'>469</a>
-<a name='L470'></a><a href='#L470'>470</a>
-<a name='L471'></a><a href='#L471'>471</a>
-<a name='L472'></a><a href='#L472'>472</a>
-<a name='L473'></a><a href='#L473'>473</a>
-<a name='L474'></a><a href='#L474'>474</a>
-<a name='L475'></a><a href='#L475'>475</a>
-<a name='L476'></a><a href='#L476'>476</a>
-<a name='L477'></a><a href='#L477'>477</a>
-<a name='L478'></a><a href='#L478'>478</a>
-<a name='L479'></a><a href='#L479'>479</a>
-<a name='L480'></a><a href='#L480'>480</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L468'></a><a href='#L468'>468</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -673,9 +659,6 @@
 <span class="cline-any cline-yes">13321x</span>
 <span class="cline-any cline-yes">13321x</span>
 <span class="cline-any cline-yes">13321x</span>
-<span class="cline-any cline-yes">13321x</span>
-<span class="cline-any cline-yes">13321x</span>
-<span class="cline-any cline-yes">13321x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -735,10 +718,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">50x</span>
@@ -838,9 +817,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">50x</span>
 <span class="cline-any cline-yes">81x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">60x</span>
@@ -1085,8 +1061,6 @@ var randu = require( '@stdlib/random/base/randu' );
 &nbsp;
 // VARIABLES //
 &nbsp;
-/* eslint-disable no-magic-numbers */
-&nbsp;
 /**
 * State array length (4 × 32-bit values = 2 × 64-bit values).
 *
@@ -1148,11 +1122,8 @@ function shift64Left( hi, lo, shift ) {
 	if ( shift &gt;= 32 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >		return [ (lo &lt;&lt; (shift - 32)) &gt;&gt;&gt; 0, 0 ];</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	/* eslint-disable no-bitwise */
 	newHi = ((hi &lt;&lt; shift) | (lo &gt;&gt;&gt; (32 - shift))) &gt;&gt;&gt; 0;
 	newLo = (lo &lt;&lt; shift) &gt;&gt;&gt; 0;
-&nbsp;
-	/* eslint-enable no-bitwise */
 	return [ newHi, newLo ];
 }
 &nbsp;
@@ -1215,8 +1186,6 @@ function add64( hi1, lo1, hi2, lo2 ) {
 * @returns {Uint32Array} initialized state
 */
 function initState( state, seed ) {
-	/* eslint-disable no-magic-numbers */
-&nbsp;
 	// Use seed to initialize s0 and s1
 	// Based on SplitMix64 constants for good distribution
 	var s0 = seed &gt;&gt;&gt; 0;
@@ -1231,8 +1200,6 @@ function initState( state, seed ) {
 	state[ S0_LO_INDEX ] = (s1 * 1103515245) &gt;&gt;&gt; 0;
 	state[ S1_HI_INDEX ] = (s0 + 12345) &gt;&gt;&gt; 0;
 	state[ S1_LO_INDEX ] = (s1 + 12345) &gt;&gt;&gt; 0;
-&nbsp;
-	/* eslint-enable no-magic-numbers */
 &nbsp;
 	return state;
 }
@@ -1317,10 +1284,7 @@ function factory( options ) {
 <span class="cstat-no" title="statement not covered" >			}</span>
 		}
 	} else {
-		/* eslint-disable no-magic-numbers */
 		seed = floor( randu() * 0x100000000 );
-&nbsp;
-		/* eslint-enable no-magic-numbers */
 	}
 &nbsp;
 	if ( STATE === void 0 ) {
@@ -1507,7 +1471,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-30T08:18:21.274Z
+                at 2026-04-30T09:25:16.393Z
             </div>
         <script src="prettify.js"></script>
         <script>
