@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for base/lib/index.js</title>
+    <title>Code coverage report for lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">base/lib</a> index.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1882/1882</span>
+                <span class='fraction'>1900/1900</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1882/1882</span>
+                <span class='fraction'>1900/1900</span>
             </div>
         
             
@@ -1945,7 +1945,43 @@
 <a name='L1880'></a><a href='#L1880'>1880</a>
 <a name='L1881'></a><a href='#L1881'>1881</a>
 <a name='L1882'></a><a href='#L1882'>1882</a>
-<a name='L1883'></a><a href='#L1883'>1883</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L1883'></a><a href='#L1883'>1883</a>
+<a name='L1884'></a><a href='#L1884'>1884</a>
+<a name='L1885'></a><a href='#L1885'>1885</a>
+<a name='L1886'></a><a href='#L1886'>1886</a>
+<a name='L1887'></a><a href='#L1887'>1887</a>
+<a name='L1888'></a><a href='#L1888'>1888</a>
+<a name='L1889'></a><a href='#L1889'>1889</a>
+<a name='L1890'></a><a href='#L1890'>1890</a>
+<a name='L1891'></a><a href='#L1891'>1891</a>
+<a name='L1892'></a><a href='#L1892'>1892</a>
+<a name='L1893'></a><a href='#L1893'>1893</a>
+<a name='L1894'></a><a href='#L1894'>1894</a>
+<a name='L1895'></a><a href='#L1895'>1895</a>
+<a name='L1896'></a><a href='#L1896'>1896</a>
+<a name='L1897'></a><a href='#L1897'>1897</a>
+<a name='L1898'></a><a href='#L1898'>1898</a>
+<a name='L1899'></a><a href='#L1899'>1899</a>
+<a name='L1900'></a><a href='#L1900'>1900</a>
+<a name='L1901'></a><a href='#L1901'>1901</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -4221,6 +4257,15 @@ setReadOnly( ns, 'ndarray', require( '@stdlib/ndarray/base/ctor' ) );
 setReadOnly( ns, 'data', require( '@stdlib/ndarray/base/data-buffer' ) );
 &nbsp;
 /**
+* @name diagonal
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/ndarray/base/diagonal}
+*/
+setReadOnly( ns, 'diagonal', require( '@stdlib/ndarray/base/diagonal' ) );
+&nbsp;
+/**
 * @name dtype
 * @memberof ns
 * @readonly
@@ -5058,6 +5103,15 @@ setReadOnly( ns, 'reverse', require( '@stdlib/ndarray/base/reverse' ) );
 setReadOnly( ns, 'reverseDimension', require( '@stdlib/ndarray/base/reverse-dimension' ) );
 &nbsp;
 /**
+* @name reverseDimensions
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/ndarray/base/reverse-dimensions}
+*/
+setReadOnly( ns, 'reverseDimensions', require( '@stdlib/ndarray/base/reverse-dimensions' ) );
+&nbsp;
+/**
 * @name rot90
 * @memberof ns
 * @readonly
@@ -5716,16 +5770,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-03T08:00:49.428Z
+                at 2026-05-03T10:03:45.111Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     
