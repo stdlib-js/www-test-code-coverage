@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.16% </span>
+                <span class="strong">99.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>237/239</span>
+                <span class='fraction'>243/245</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.72% </span>
+                <span class="strong">96.82% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>59/61</span>
+                <span class='fraction'>61/63</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.16% </span>
+                <span class="strong">99.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>237/239</span>
+                <span class='fraction'>243/245</span>
             </div>
         
             
@@ -302,7 +302,13 @@
 <a name='L237'></a><a href='#L237'>237</a>
 <a name='L238'></a><a href='#L238'>238</a>
 <a name='L239'></a><a href='#L239'>239</a>
-<a name='L240'></a><a href='#L240'>240</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -381,6 +387,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">345x</span>
 <span class="cline-any cline-yes">345x</span>
 <span class="cline-any cline-yes">345x</span>
 <span class="cline-any cline-yes">345x</span>
@@ -403,6 +410,7 @@
 <span class="cline-any cline-yes">110x</span>
 <span class="cline-any cline-yes">110x</span>
 <span class="cline-any cline-yes">235x</span>
+<span class="cline-any cline-yes">235x</span>
 <span class="cline-any cline-yes">345x</span>
 <span class="cline-any cline-yes">168x</span>
 <span class="cline-any cline-yes">345x</span>
@@ -413,6 +421,7 @@
 <span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">67x</span>
 <span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">40x</span>
@@ -426,6 +435,7 @@
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">40x</span>
@@ -453,6 +463,7 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">62x</span>
@@ -474,6 +485,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -576,6 +588,7 @@ var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
 var isOrder = require( '@stdlib/ndarray/base/assert/is-order' );
 var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
 var nonCoreShape = require( '@stdlib/ndarray/base/complement-shape' );
+var resolveOrder = require( '@stdlib/ndarray/base/output-order' );
 var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var empty = require( '@stdlib/ndarray/empty' );
@@ -585,7 +598,6 @@ var format = require( '@stdlib/string/format' );
 var DTYPES = require( './dtypes.js' );
 var ENUMS = require( './type_enums.js' );
 var resolveDataTypes = require( './resolve_data_types.js' );
-var resolveOrder = require( './resolve_order.js' );
 var normalizeArguments = require( './normalize_arguments.js' );
 var defaults = require( './defaults.js' );
 var base = require( './base.js' );
@@ -629,6 +641,7 @@ function linspace( shape, start, stop ) {
 	var opts;
 	var args;
 	var ncsh;
+	var arrs;
 	var out;
 	var sh;
 	var dt;
@@ -642,6 +655,7 @@ function linspace( shape, start, stop ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a nonnegative integer or an array of nonnegative integers. Value: `%s`.', shape ) );
 	}
 	types = [ 0, 0, 0 ]; // [ start, stop, endpoint ]
+	arrs = [];
 	if ( isNumber( start ) ) {
 		types[ 0 ] = ENUMS.NUMBER;
 	} else if ( isComplexLike( start ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
@@ -652,6 +666,7 @@ function linspace( shape, start, stop ) {
 		if ( !contains( DTYPES.idtypes0, dt ) ) {
 			throw new TypeError( format( 'invalid argument. Second argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes0, '", "' ), dt ) );
 		}
+		arrs.push( start );
 	} else {
 		throw new TypeError( format( 'invalid argument. Second argument must be either a number, complex number, or an ndarray. Value: `%s`.', start ) );
 	}
@@ -665,6 +680,7 @@ function linspace( shape, start, stop ) {
 		if ( !contains( DTYPES.idtypes1, dt ) ) {
 			throw new TypeError( format( 'invalid argument. Third argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes1, '", "' ), dt ) );
 		}
+		arrs.push( stop );
 	} else {
 		throw new TypeError( format( 'invalid argument. Third argument must be either a number, complex number, or an ndarray. Value: `%s`.', stop ) );
 	}
@@ -693,6 +709,7 @@ function linspace( shape, start, stop ) {
 				throw new TypeError( format( 'invalid argument. Fourth argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes2, '", "' ), dt ) );
 			}
 			types[ 2 ] = ENUMS.NDARRAY;
+			arrs.push( endpoint );
 		}
 		// Case: linspace( shape, start, stop, options )
 		else {
@@ -715,6 +732,7 @@ function linspace( shape, start, stop ) {
 			if ( !contains( DTYPES.idtypes2, dt ) ) {
 				throw new TypeError( format( 'invalid argument. Fourth argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes2, '", "' ), dt ) );
 			}
+			arrs.push( endpoint );
 		} else {
 			throw new TypeError( format( 'invalid argument. Fourth argument must be either a boolean or an ndarray. Value: `%s`.', endpoint ) );
 		}
@@ -761,7 +779,7 @@ function linspace( shape, start, stop ) {
 	dtypes[ 3 ] = options.dtype;
 &nbsp;
 	// Resolve the output array order:
-	options.order = options.order || resolveOrder( args, types );
+	options.order = options.order || resolveOrder( arrs );
 &nbsp;
 	// Resolve the complement of the operation dimensions:
 	ncsh = nonCoreShape( sh, options.dims );
@@ -787,7 +805,7 @@ module.exports = linspace;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-26T22:10:56.583Z
+                at 2026-05-06T08:06:19.028Z
             </div>
         <script src="prettify.js"></script>
         <script>
