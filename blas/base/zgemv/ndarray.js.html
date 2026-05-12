@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -224,28 +224,28 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">34x</span>
-<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -274,8 +274,6 @@
 // MODULES //
 &nbsp;
 var isMatrixTranspose = require( '@stdlib/blas/base/assert/is-transpose-operation' );
-var real = require( '@stdlib/complex/float64/real' );
-var imag = require( '@stdlib/complex/float64/imag' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
@@ -283,7 +281,7 @@ var base = require( './base.js' );
 // MAIN //
 &nbsp;
 /**
-* Performs one of the matrix-vector operations `y = α*A*x + β*y`, `y = α*A^T*x + β*y`, or `y = α*A^H*x + β*y`, where `α` and `β` are scalars, `x` and `y` are vectors, and `A` is an `M` by `N` matrix.
+* Performs one of the matrix-vector operations `y = α*A*x + β*y` or `y = α*A^T*x + β*y` or `y = α*A^H*x + β*y`, where `α` and `β` are scalars, `x` and `y` are vectors, and `A` is an `M` by `N` matrix.
 *
 * @param {string} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
 * @param {NonNegativeInteger} M - number of rows in the matrix `A`
@@ -311,12 +309,14 @@ var base = require( './base.js' );
 * var Complex128Array = require( '@stdlib/array/complex128' );
 * var Complex128 = require( '@stdlib/complex/float64/ctor' );
 *
-* var A = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0 ] );
-* var x = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
-* var y = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0 ] );
+* var A = new Complex128Array( [ 1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0, 5.0, 6.0, 6.0, 7.0, 7.0, 8.0, 8.0 ] );
+* var x = new Complex128Array( [ 1.0, 1.0, 2.0, 2.0 ] );
+* var y = new Complex128Array( [ 1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0 ] );
+* var alpha = new Complex128( 0.5, 0.5 );
+* var beta = new Complex128( 0.5, -0.5 );
 *
-* zgemv( 'no-transpose', 2, 3, new Complex128( 1.0, 0.0 ), A, 3, 1, 0, x, 1, 0, new Complex128( 1.0, 0.0 ), y, 1, 0 );
-* // y =&gt; &lt;Complex128Array&gt;
+* zgemv( 'no-transpose', 4, 2, alpha, A, 1, 4, 0, x, 1, 0, beta, y, 1, 0 );
+* // y =&gt; &lt;Complex128Array&gt;[ -10.0, 11.0, -12.0, 14.0, -14.0, 17.0, -16.0, 20.0 ]
 */
 function zgemv( trans, M, N, alpha, A, strideA1, strideA2, offsetA, x, strideX, offsetX, beta, y, strideY, offsetY ) { // eslint-disable-line max-params, max-len
 	if ( !isMatrixTranspose( trans ) ) {
@@ -335,7 +335,7 @@ function zgemv( trans, M, N, alpha, A, strideA1, strideA2, offsetA, x, strideX, 
 		throw new RangeError( format( 'invalid argument. Fourteenth argument must be non-zero. Value: `%d`.', strideY ) );
 	}
 	// Check if we can early return...
-	if ( M === 0 || N === 0 || ( real( alpha ) === 0.0 &amp;&amp; imag( alpha ) === 0.0 &amp;&amp; real( beta ) === 1.0 &amp;&amp; imag( beta ) === 0.0 ) ) {
+	if ( M === 0 || N === 0 ) {
 		return y;
 	}
 	return base( trans, M, N, alpha, A, strideA1, strideA2, offsetA, x, strideX, offsetX, beta, y, strideY, offsetY ); // eslint-disable-line max-len
@@ -352,7 +352,7 @@ module.exports = zgemv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-13T11:52:40.495Z
+                at 2026-05-12T07:30:09.247Z
             </div>
         <script src="prettify.js"></script>
         <script>
