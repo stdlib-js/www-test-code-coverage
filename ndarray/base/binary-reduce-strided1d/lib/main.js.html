@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.24% </span>
+                <span class="strong">62.83% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>354/578</span>
+                <span class='fraction'>355/565</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.24% </span>
+                <span class="strong">62.83% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>354/578</span>
+                <span class='fraction'>355/565</span>
             </div>
         
             
@@ -628,20 +628,8 @@
 <a name='L563'></a><a href='#L563'>563</a>
 <a name='L564'></a><a href='#L564'>564</a>
 <a name='L565'></a><a href='#L565'>565</a>
-<a name='L566'></a><a href='#L566'>566</a>
-<a name='L567'></a><a href='#L567'>567</a>
-<a name='L568'></a><a href='#L568'>568</a>
-<a name='L569'></a><a href='#L569'>569</a>
-<a name='L570'></a><a href='#L570'>570</a>
-<a name='L571'></a><a href='#L571'>571</a>
-<a name='L572'></a><a href='#L572'>572</a>
-<a name='L573'></a><a href='#L573'>573</a>
-<a name='L574'></a><a href='#L574'>574</a>
-<a name='L575'></a><a href='#L575'>575</a>
-<a name='L576'></a><a href='#L576'>576</a>
-<a name='L577'></a><a href='#L577'>577</a>
-<a name='L578'></a><a href='#L578'>578</a>
-<a name='L579'></a><a href='#L579'>579</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L566'></a><a href='#L566'>566</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -993,20 +981,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1242,6 +1216,7 @@
 // MODULES //
 &nbsp;
 var ndarray2object = require( '@stdlib/ndarray/base/ndarraylike2object' );
+var descriptor = require( '@stdlib/ndarray/base/descriptor' );
 var normalizeIndices = require( '@stdlib/ndarray/base/to-unique-normalized-indices' );
 var indicesComplement = require( '@stdlib/array/base/indices-complement' );
 var takeIndexed2 = require( '@stdlib/array/base/take-indexed2' );
@@ -1705,22 +1680,8 @@ var MAX_DIMS = BINARY.length - 1;
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Initialize ndarray-like objects for representing sub-array views...</span>
 <span class="cstat-no" title="statement not covered" >	views = [</span>
-<span class="cstat-no" title="statement not covered" >		{</span>
-<span class="cstat-no" title="statement not covered" >			'dtype': x.dtype,</span>
-<span class="cstat-no" title="statement not covered" >			'data': x.data,</span>
-<span class="cstat-no" title="statement not covered" >			'shape': shc,</span>
-<span class="cstat-no" title="statement not covered" >			'strides': scx,</span>
-<span class="cstat-no" title="statement not covered" >			'offset': x.offset,</span>
-<span class="cstat-no" title="statement not covered" >			'order': x.order</span>
-<span class="cstat-no" title="statement not covered" >		},</span>
-<span class="cstat-no" title="statement not covered" >		{</span>
-<span class="cstat-no" title="statement not covered" >			'dtype': y.dtype,</span>
-<span class="cstat-no" title="statement not covered" >			'data': y.data,</span>
-<span class="cstat-no" title="statement not covered" >			'shape': shc,</span>
-<span class="cstat-no" title="statement not covered" >			'strides': scy,</span>
-<span class="cstat-no" title="statement not covered" >			'offset': y.offset,</span>
-<span class="cstat-no" title="statement not covered" >			'order': y.order</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		descriptor( x.dtype, x.data, shc, scx, x.offset, x.order ),</span>
+<span class="cstat-no" title="statement not covered" >		descriptor( y.dtype, y.data, shc, scy, y.offset, y.order )</span>
 <span class="cstat-no" title="statement not covered" >	];</span>
 <span class="cstat-no" title="statement not covered" >	initializeViews( arr, K, views );</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -1804,7 +1765,7 @@ module.exports = binaryReduceStrided1d;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-20T02:24:23.552Z
+                at 2026-05-20T05:11:45.592Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
