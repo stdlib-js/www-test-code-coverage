@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for zaxpy/lib/main.js</title>
+    <title>Code coverage report for gnrm2/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">zaxpy/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">gnrm2/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.78% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>69/76</span>
+                <span class='fraction'>56/60</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.78% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>69/76</span>
+                <span class='fraction'>56/60</span>
             </div>
         
             
@@ -123,23 +123,7 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -190,22 +174,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -241,56 +209,40 @@ var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
 var getStride = require( '@stdlib/ndarray/base/stride' );
 var getOffset = require( '@stdlib/ndarray/base/offset' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
-var strided = require( '@stdlib/blas/base/zaxpy' ).ndarray;
+var strided = require( '@stdlib/blas/base/gnrm2' ).ndarray;
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Multiplies a one-dimensional double-precision complex floating-point ndarray `x` by a constant `alpha` and adds the result to a one-dimensional double-precision complex floating-point ndarray `y`.
+* Computes the L2-norm of a one-dimensional ndarray.
 *
 * ## Notes
 *
 * -   The function expects the following ndarrays:
 *
 *     -   a one-dimensional input ndarray.
-*     -   a one-dimensional output ndarray.
-*     -   a zero-dimensional ndarray containing a scalar constant.
 *
 * @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing ndarrays
-* @returns {Object} output ndarray
+* @returns {number} L2-norm
 *
 * @example
-* var Complex128Vector = require( '@stdlib/ndarray/vector/complex128' );
-* var Complex128 = require( '@stdlib/complex/float64/ctor' );
-* var scalar2ndarray = require( '@stdlib/ndarray/from-scalar' );
+* var vector = require( '@stdlib/ndarray/vector/ctor' );
 *
-* var x = new Complex128Vector( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 ] );
-* var y = new Complex128Vector( [ 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 ] );
+* var x = vector( [ 1.0, -2.0, 2.0 ], 'generic' );
 *
-* var alpha = scalar2ndarray( new Complex128( 1.0, 2.0 ), {
-*     'dtype': 'complex128'
-* });
-*
-* var z = zaxpy( [ x, y, alpha ] );
-* // returns &lt;ndarray&gt;[ &lt;Complex128&gt;[ -2.0, 5.0 ], &lt;Complex128&gt;[ -4.0, 11.0 ], &lt;Complex128&gt;[ -6.0, 17.0 ], &lt;Complex128&gt;[ -8.0, 23.0 ], &lt;Complex128&gt;[ -10.0, 29.0 ] ]
-*
-* var bool = ( z === y );
-* // returns true
+* var y = gnrm2( [ x ] );
+* // returns 3.0
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function zaxpy( arrays ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var alpha = ndarraylike2scalar( arrays[ 2 ] );</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function gnrm2( arrays ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var x = arrays[ 0 ];</span>
-<span class="cstat-no" title="statement not covered" >	var y = arrays[ 1 ];</span>
-<span class="cstat-no" title="statement not covered" >	strided( numelDimension( x, 0 ), alpha, getData( x ), getStride( x, 0 ), getOffset( x ), getData( y ), getStride( y, 0 ), getOffset( y ) ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >	return y;</span>
+<span class="cstat-no" title="statement not covered" >	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = zaxpy;
+module.exports = gnrm2;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
