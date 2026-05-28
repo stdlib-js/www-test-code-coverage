@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.71% </span>
+                <span class="strong">47.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>76/156</span>
+                <span class='fraction'>76/160</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.71% </span>
+                <span class="strong">47.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>76/156</span>
+                <span class='fraction'>76/160</span>
             </div>
         
             
@@ -219,7 +219,11 @@
 <a name='L154'></a><a href='#L154'>154</a>
 <a name='L155'></a><a href='#L155'>155</a>
 <a name='L156'></a><a href='#L156'>156</a>
-<a name='L157'></a><a href='#L157'>157</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -290,6 +294,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -399,7 +407,7 @@
 &nbsp;
 var max = require( '@stdlib/math/base/special/fast/max' );
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
-var isMatrixTranspose = require( '@stdlib/blas/base/assert/is-transpose-operation' );
+var resolveStr = require( '@stdlib/blas/base/transpose-operation-resolve-str' );
 var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major-string' );
 var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var format = require( '@stdlib/string/format' );
@@ -412,8 +420,8 @@ var base = require( './base.js' );
 * Performs the matrix-matrix operation `C = α*op(A)*op(B) + β*C` where `op(X)` is either `op(X) = X` or `op(X) = X^T`, `α` and `β` are scalars, `A`, `B`, and `C` are matrices, with `op(A)` an `M` by `K` matrix, `op(B)` a `K` by `N` matrix, and `C` an `M` by `N` matrix.
 *
 * @param {string} order - storage layout
-* @param {string} transA - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
-* @param {string} transB - specifies whether `B` should be transposed, conjugate-transposed, or not transposed
+* @param {(integer|string)} transA - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
+* @param {(integer|string)} transB - specifies whether `B` should be transposed, conjugate-transposed, or not transposed
 * @param {NonNegativeInteger} M - number of rows in the matrix `op(A)` and in the matrix `C`
 * @param {NonNegativeInteger} N - number of columns in the matrix `op(B)` and in the matrix `C`
 * @param {NonNegativeInteger} K - number of columns in the matrix `op(A)` and number of rows in the matrix `op(B)`
@@ -458,14 +466,18 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	var sb2;</span>
 <span class="cstat-no" title="statement not covered" >	var sc1;</span>
 <span class="cstat-no" title="statement not covered" >	var sc2;</span>
+<span class="cstat-no" title="statement not covered" >	var ta;</span>
+<span class="cstat-no" title="statement not covered" >	var tb;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isLayout( order ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( !isMatrixTranspose( transA ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	ta = resolveStr( transA );</span>
+<span class="cstat-no" title="statement not covered" >	if ( ta === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be a valid transpose operation. Value: `%s`.', transA ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( !isMatrixTranspose( transB ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	tb = resolveStr( transB );</span>
+<span class="cstat-no" title="statement not covered" >	if ( tb === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Third argument must be a valid transpose operation. Value: `%s`.', transB ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( M &lt; 0 ) {</span>
@@ -524,7 +536,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		sc1 = LDC;</span>
 <span class="cstat-no" title="statement not covered" >		sc2 = 1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return base( transA, transB, M, N, K, alpha, A, sa1, sa2, 0, B, sb1, sb2, 0, beta, C, sc1, sc2, 0 ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	return base( ta, tb, M, N, K, alpha, A, sa1, sa2, 0, B, sb1, sb2, 0, beta, C, sc1, sc2, 0 ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -538,7 +550,7 @@ module.exports = dgemm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-05T10:04:01.823Z
+                at 2026-05-28T08:18:48.549Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
