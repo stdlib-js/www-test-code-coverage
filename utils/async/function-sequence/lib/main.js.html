@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.95% </span>
+                <span class="strong">52.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>75/139</span>
+                <span class='fraction'>75/142</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.95% </span>
+                <span class="strong">52.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>75/139</span>
+                <span class='fraction'>75/142</span>
             </div>
         
             
@@ -202,7 +202,10 @@
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
 <a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -272,6 +275,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -419,9 +425,9 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	if ( nFuncs &lt; 2 ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new Error( 'insufficient arguments. Must provide multiple functions to execute sequentially.' );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	f = new Array( nFuncs );</span>
+<span class="cstat-no" title="statement not covered" >	f = [];</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; nFuncs; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		f[ i ] = arguments[ i ];</span>
+<span class="cstat-no" title="statement not covered" >		f.push( arguments[ i ] );</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isFunction( f[ i ] ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. All arguments must be functions. Value: `%s`.', f[ i ] ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -436,17 +442,20 @@ var format = require( '@stdlib/string/format' );
 <span class="cstat-no" title="statement not covered" >	* @param {Callback} done - callback to invoke after invoking all functions</span>
 <span class="cstat-no" title="statement not covered" >	*/</span>
 <span class="cstat-no" title="statement not covered" >	function pipeline() {</span>
+<span class="cstat-no" title="statement not covered" >		var nargs;</span>
 <span class="cstat-no" title="statement not covered" >		var done;</span>
 <span class="cstat-no" title="statement not covered" >		var args;</span>
 <span class="cstat-no" title="statement not covered" >		var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		nargs = arguments.length - 1;</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// Cache the callback function:</span>
-<span class="cstat-no" title="statement not covered" >		done = arguments[ arguments.length-1 ];</span>
+<span class="cstat-no" title="statement not covered" >		done = arguments[ nargs ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// Copy arguments which should be provided to the first invoked function...</span>
-<span class="cstat-no" title="statement not covered" >		args = new Array( arguments.length-1 );</span>
-<span class="cstat-no" title="statement not covered" >		for ( i = 0; i &lt; args.length; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >			args[ i ] = arguments[ i ];</span>
+<span class="cstat-no" title="statement not covered" >		args = [];</span>
+<span class="cstat-no" title="statement not covered" >		for ( i = 0; i &lt; nargs; i++ ) {</span>
+<span class="cstat-no" title="statement not covered" >			args.push( arguments[ i ] );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Append the callback an invoked function should call upon completion:</span>
 <span class="cstat-no" title="statement not covered" >		args.push( next );</span>
@@ -487,7 +496,7 @@ module.exports = funseqAsync;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-21T18:42:28.856Z
+                at 2026-05-31T09:13:11.866Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
