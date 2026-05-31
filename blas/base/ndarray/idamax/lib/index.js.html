@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for scnrm2/lib/index.js</title>
+    <title>Code coverage report for idamax/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">scnrm2/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">idamax/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -170,18 +170,18 @@
 'use strict';
 &nbsp;
 /**
-* BLAS level 1 routine to compute the L2-norm of a one-dimensional single-precision complex floating-point ndarray.
+* BLAS level 1 routine to find the index of the first element having the maximum absolute value for all elements in a one-dimensional double-precision floating-point ndarray.
 *
-* @module @stdlib/blas/base/ndarray/scnrm2
+* @module @stdlib/blas/base/ndarray/idamax
 *
 * @example
-* var Complex64Vector = require( '@stdlib/ndarray/vector/complex64' );
-* var scnrm2 = require( '@stdlib/blas/base/ndarray/scnrm2' );
+* var Float64Vector = require( '@stdlib/ndarray/vector/float64' );
+* var idamax = require( '@stdlib/blas/base/ndarray/idamax' );
 *
-* var x = new Complex64Vector( [ 1.0, 2.0, 2.0, 4.0 ] );
+* var x = new Float64Vector( [ 1.0, -2.0, 3.0, -4.0, 5.0 ] );
 *
-* var y = scnrm2( [ x ] );
-* // returns 5.0
+* var y = idamax( [ x ] );
+* // returns 4
 */
 &nbsp;
 // MODULES //
