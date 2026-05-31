@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for gnrm2/lib/index.js</title>
+    <title>Code coverage report for dzasum/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">gnrm2/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">dzasum/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -170,18 +170,18 @@
 'use strict';
 &nbsp;
 /**
-* BLAS level 1 routine to compute the L2-norm of a one-dimensional ndarray.
+* BLAS level 1 routine to compute the sum of absolute values for all elements in a one-dimensional double-precision complex floating-point ndarray.
 *
-* @module @stdlib/blas/base/ndarray/gnrm2
+* @module @stdlib/blas/base/ndarray/dzasum
 *
 * @example
-* var vector = require( '@stdlib/ndarray/vector/ctor' );
-* var gnrm2 = require( '@stdlib/blas/base/ndarray/gnrm2' );
+* var Complex128Vector = require( '@stdlib/ndarray/vector/complex128' );
+* var dzasum = require( '@stdlib/blas/base/ndarray/dzasum' );
 *
-* var x = vector( [ 1.0, -2.0, 2.0 ], 'generic' );
+* var x = new Complex128Vector( [ 1.0, -2.0, 3.0, -4.0 ] );
 *
-* var y = gnrm2( [ x ] );
-* // returns 3.0
+* var y = dzasum( [ x ] );
+* // returns 10.0
 */
 &nbsp;
 // MODULES //
