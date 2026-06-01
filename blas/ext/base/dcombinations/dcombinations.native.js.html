@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>76/76</span>
+                <span class='fraction'>95/95</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>76/76</span>
+                <span class='fraction'>95/95</span>
             </div>
         
             
@@ -139,7 +139,26 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -194,22 +213,41 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">39x</span>
-<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -233,12 +271,16 @@
 * limitations under the License.
 */
 &nbsp;
+/* eslint-disable max-len */
+&nbsp;
 'use strict';
 &nbsp;
 // MODULES //
 &nbsp;
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
+var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var resolveOrder = require( '@stdlib/blas/base/layout-resolve-enum' );
+var binomcoef = require( '@stdlib/math/base/special/binomcoef' );
 var max = require( '@stdlib/math/base/special/fast/max' );
 var format = require( '@stdlib/string/format' );
 var addon = require( './../src/addon.node' );
@@ -256,9 +298,11 @@ var addon = require( './../src/addon.node' );
 * @param {Float64Array} x - input array
 * @param {integer} strideX - stride length for `x`
 * @param {Float64Array} out - output array
-* @param {integer} LDO - stride length for the leading dimension of `out`
+* @param {integer} LDO - stride length between successive contiguous vectors of the matrix `out` (a.k.a., leading dimension of `out`)
+* @param {Float64Array} workspace - workspace array
+* @param {integer} strideW - stride length for `workspace`
 * @throws {TypeError} first argument must be a valid order
-* @throws {RangeError} eighth argument must be greater than or equal to max(1,k)
+* @throws {RangeError} eighth argument must be a valid stride length
 * @returns {Float64Array} output array
 *
 * @example
@@ -266,15 +310,28 @@ var addon = require( './../src/addon.node' );
 *
 * var x = new Float64Array( [ 1.0, 2.0, 3.0, 4.0 ] );
 * var out = new Float64Array( 12 );
+* var workspace = new Float64Array( 2 );
 *
-* dcombinations( 'row-major', 4, 2, false, x, 1, out, 2 );
+* dcombinations( 'row-major', 4, 2, false, x, 1, out, 2, workspace, 1 );
 * // out =&gt; &lt;Float64Array&gt;[ 1.0, 2.0, 1.0, 3.0, 1.0, 4.0, 2.0, 3.0, 2.0, 4.0, 3.0, 4.0 ]
 */
-function dcombinations( order, N, k, replacement, x, strideX, out, LDO ) {
+function dcombinations( order, N, k, replacement, x, strideX, out, LDO, workspace, strideW ) {
+	var C;
+&nbsp;
 	if ( !isLayout( order ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
 	}
-	if ( LDO &lt; max( 1, k ) ) {
+	if ( isColumnMajor( order ) ) {
+		// For column-major order, the leading dimension is the stride between successive combinations (i.e., the columns of the output matrix), and, thus, must be large enough to avoid overlapping combinations...
+		if ( replacement ) {
+			C = binomcoef( N + k - 1, k );
+		} else {
+			C = binomcoef( N, k );
+		}
+		if ( LDO &lt; max( 1, C ) ) {
+			throw new RangeError( format( 'invalid argument. Eighth argument must be greater than or equal to max(1,%d). Value: `%d`.', C, LDO ) );
+		}
+	} else if ( LDO &lt; max( 1, k ) ) { // order === 'row-major'
 		throw new RangeError( format( 'invalid argument. Eighth argument must be greater than or equal to max(1,%d). Value: `%d`.', k, LDO ) );
 	}
 	if ( N &lt;= 0 || k &lt;= 0 ) {
@@ -283,7 +340,7 @@ function dcombinations( order, N, k, replacement, x, strideX, out, LDO ) {
 	if ( !replacement &amp;&amp; k &gt; N ) {
 		return out;
 	}
-	addon( resolveOrder( order ), N, k, replacement, x, strideX, out, LDO );
+	addon( resolveOrder( order ), N, k, replacement, x, strideX, out, LDO, workspace, strideW );
 	return out;
 }
 &nbsp;
@@ -298,7 +355,7 @@ module.exports = dcombinations;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-29T17:36:16.042Z
+                at 2026-06-01T18:18:06.363Z
             </div>
         <script src="prettify.js"></script>
         <script>
