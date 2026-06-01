@@ -330,81 +330,81 @@ var M = 5;
 // MAIN //
 &nbsp;
 /**
-* Subtracts a scalar constant from each element in a strided array `x` and assigns the results to elements in a strided array `y` using alternative indexing semantics.
+* Subtracts a scalar constant from each element in a strided array `x` and assigns the results to elements in a strided array `w` using alternative indexing semantics.
 *
 * @param {PositiveInteger} N - number of indexed elements
 * @param {number} alpha - scalar constant
 * @param {NumericArray} x - input array
 * @param {integer} strideX - `x` stride length
 * @param {NonNegativeInteger} offsetX - starting `x` index
-* @param {NumericArray} y - output array
-* @param {integer} strideY - `y` stride length
-* @param {NonNegativeInteger} offsetY - starting `y` index
+* @param {NumericArray} w - output array
+* @param {integer} strideW - `w` stride length
+* @param {NonNegativeInteger} offsetW - starting `w` index
 * @returns {NumericArray} output array
 *
 * @example
 * var x = [ 1.0, 2.0, 3.0, 4.0, 5.0 ];
-* var y = [ 0.0, 0.0, 0.0, 0.0, 0.0 ];
+* var w = [ 0.0, 0.0, 0.0, 0.0, 0.0 ];
 *
-* gwxsa( x.length, 5.0, x, 1, 0, y, 1, 0 );
-* // y =&gt; [ -4.0, -3.0, -2.0, -1.0, 0.0 ]
+* gwxsa( x.length, 5.0, x, 1, 0, w, 1, 0 );
+* // w =&gt; [ -4.0, -3.0, -2.0, -1.0, 0.0 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function gwxsa( N, alpha, x, strideX, offsetX, y, strideY, offsetY ) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function gwxsa( N, alpha, x, strideX, offsetX, w, strideW, offsetW ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var ix;</span>
-<span class="cstat-no" title="statement not covered" >	var iy;</span>
+<span class="cstat-no" title="statement not covered" >	var iw;</span>
 <span class="cstat-no" title="statement not covered" >	var ox;</span>
-<span class="cstat-no" title="statement not covered" >	var oy;</span>
+<span class="cstat-no" title="statement not covered" >	var ow;</span>
 <span class="cstat-no" title="statement not covered" >	var m;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( N &lt;= 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		return y;</span>
+<span class="cstat-no" title="statement not covered" >		return w;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Fast path: when alpha = 0.0, delegate to gcopy (y = x)</span>
+<span class="cstat-no" title="statement not covered" >	// Fast path: when alpha = 0.0, delegate to gcopy (w = x)</span>
 <span class="cstat-no" title="statement not covered" >	if ( alpha === 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		return gcopy( N, x, strideX, offsetX, y, strideY, offsetY );</span>
+<span class="cstat-no" title="statement not covered" >		return gcopy( N, x, strideX, offsetX, w, strideW, offsetW );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	ox = arraylike2object( x );</span>
-<span class="cstat-no" title="statement not covered" >	oy = arraylike2object( y );</span>
-<span class="cstat-no" title="statement not covered" >	if ( ox.accessorProtocol || oy.accessorProtocol ) {</span>
-<span class="cstat-no" title="statement not covered" >		accessors( N, alpha, ox, strideX, offsetX, oy, strideY, offsetY );</span>
-<span class="cstat-no" title="statement not covered" >		return y;</span>
+<span class="cstat-no" title="statement not covered" >	ow = arraylike2object( w );</span>
+<span class="cstat-no" title="statement not covered" >	if ( ox.accessorProtocol || ow.accessorProtocol ) {</span>
+<span class="cstat-no" title="statement not covered" >		accessors( N, alpha, ox, strideX, offsetX, ow, strideW, offsetW );</span>
+<span class="cstat-no" title="statement not covered" >		return w;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	ix = offsetX;</span>
-<span class="cstat-no" title="statement not covered" >	iy = offsetY;</span>
+<span class="cstat-no" title="statement not covered" >	iw = offsetW;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Use loop unrolling if both strides are equal to `1`...</span>
-<span class="cstat-no" title="statement not covered" >	if ( strideX === 1 &amp;&amp; strideY === 1 ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( strideX === 1 &amp;&amp; strideW === 1 ) {</span>
 <span class="cstat-no" title="statement not covered" >		m = N % M;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// If we have a remainder, run a clean-up loop...</span>
 <span class="cstat-no" title="statement not covered" >		if ( m &gt; 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >			for ( i = 0; i &lt; m; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >				y[ iy ] = x[ ix ] - alpha;</span>
+<span class="cstat-no" title="statement not covered" >				w[ iw ] = x[ ix ] - alpha;</span>
 <span class="cstat-no" title="statement not covered" >				ix += strideX;</span>
-<span class="cstat-no" title="statement not covered" >				iy += strideY;</span>
+<span class="cstat-no" title="statement not covered" >				iw += strideW;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( N &lt; M ) {</span>
-<span class="cstat-no" title="statement not covered" >			return y;</span>
+<span class="cstat-no" title="statement not covered" >			return w;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		for ( i = m; i &lt; N; i += M ) {</span>
-<span class="cstat-no" title="statement not covered" >			y[ iy ] = x[ ix ] - alpha;</span>
-<span class="cstat-no" title="statement not covered" >			y[ iy+1 ] = x[ ix+1 ] - alpha;</span>
-<span class="cstat-no" title="statement not covered" >			y[ iy+2 ] = x[ ix+2 ] - alpha;</span>
-<span class="cstat-no" title="statement not covered" >			y[ iy+3 ] = x[ ix+3 ] - alpha;</span>
-<span class="cstat-no" title="statement not covered" >			y[ iy+4 ] = x[ ix+4 ] - alpha;</span>
+<span class="cstat-no" title="statement not covered" >			w[ iw ] = x[ ix ] - alpha;</span>
+<span class="cstat-no" title="statement not covered" >			w[ iw+1 ] = x[ ix+1 ] - alpha;</span>
+<span class="cstat-no" title="statement not covered" >			w[ iw+2 ] = x[ ix+2 ] - alpha;</span>
+<span class="cstat-no" title="statement not covered" >			w[ iw+3 ] = x[ ix+3 ] - alpha;</span>
+<span class="cstat-no" title="statement not covered" >			w[ iw+4 ] = x[ ix+4 ] - alpha;</span>
 <span class="cstat-no" title="statement not covered" >			ix += M;</span>
-<span class="cstat-no" title="statement not covered" >			iy += M;</span>
+<span class="cstat-no" title="statement not covered" >			iw += M;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return y;</span>
+<span class="cstat-no" title="statement not covered" >		return w;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; N; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		y[ iy ] = x[ ix ] - alpha;</span>
+<span class="cstat-no" title="statement not covered" >		w[ iw ] = x[ ix ] - alpha;</span>
 <span class="cstat-no" title="statement not covered" >		ix += strideX;</span>
-<span class="cstat-no" title="statement not covered" >		iy += strideY;</span>
+<span class="cstat-no" title="statement not covered" >		iw += strideW;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return y;</span>
+<span class="cstat-no" title="statement not covered" >	return w;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -418,7 +418,7 @@ module.exports = gwxsa;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-01T03:54:36.568Z
+                at 2026-06-01T05:52:37.102Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
