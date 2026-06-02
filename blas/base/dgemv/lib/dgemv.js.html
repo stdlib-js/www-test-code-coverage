@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.96% </span>
+                <span class="strong">54.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>72/131</span>
+                <span class='fraction'>72/133</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.96% </span>
+                <span class="strong">54.13% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>72/131</span>
+                <span class='fraction'>72/133</span>
             </div>
         
             
@@ -194,7 +194,9 @@
 <a name='L129'></a><a href='#L129'>129</a>
 <a name='L130'></a><a href='#L130'>130</a>
 <a name='L131'></a><a href='#L131'>131</a>
-<a name='L132'></a><a href='#L132'>132</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -261,6 +263,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -348,7 +352,7 @@
 // MODULES //
 &nbsp;
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
-var isMatrixTranspose = require( '@stdlib/blas/base/assert/is-transpose-operation' );
+var resolveStr = require( '@stdlib/blas/base/transpose-operation-resolve-str' );
 var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var stride2offset = require( '@stdlib/strided/base/stride2offset' );
 var max = require( '@stdlib/math/base/special/fast/max' );
@@ -362,7 +366,7 @@ var base = require( './base.js' );
 * Performs one of the matrix-vector operations `y = α*A*x + β*y` or `y = α*A^T*x + β*y`, where `α` and `β` are scalars, `x` and `y` are vectors, and `A` is an `M` by `N` matrix.
 *
 * @param {string} order - storage layout
-* @param {string} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
+* @param {(integer|string)} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
 * @param {NonNegativeInteger} M - number of rows in the matrix `A`
 * @param {NonNegativeInteger} N - number of columns in the matrix `A`
 * @param {number} alpha - scalar constant
@@ -401,11 +405,13 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	var sa2;</span>
 <span class="cstat-no" title="statement not covered" >	var ox;</span>
 <span class="cstat-no" title="statement not covered" >	var oy;</span>
+<span class="cstat-no" title="statement not covered" >	var t;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isLayout( order ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( !isMatrixTranspose( trans ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	t = resolveStr( trans );</span>
+<span class="cstat-no" title="statement not covered" >	if ( t === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be a valid transpose operation. Value: `%s`.', trans ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( M &lt; 0 ) {</span>
@@ -433,7 +439,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	if ( M === 0 || N === 0 || ( alpha === 0.0 &amp;&amp; beta === 1.0 ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		return y;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( trans === 'no-transpose' ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( t === 'no-transpose' ) {</span>
 <span class="cstat-no" title="statement not covered" >		xlen = N;</span>
 <span class="cstat-no" title="statement not covered" >		ylen = M;</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
@@ -449,7 +455,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		sa1 = LDA;</span>
 <span class="cstat-no" title="statement not covered" >		sa2 = 1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return base( trans, M, N, alpha, A, sa1, sa2, 0, x, strideX, ox, beta, y, strideY, oy ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	return base( t, M, N, alpha, A, sa1, sa2, 0, x, strideX, ox, beta, y, strideY, oy ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -463,7 +469,7 @@ module.exports = dgemv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-29T07:34:27.823Z
+                at 2026-06-02T09:56:06.178Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
