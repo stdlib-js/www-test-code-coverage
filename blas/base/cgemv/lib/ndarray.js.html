@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">76.59% </span>
+                <span class="strong">74.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>72/94</span>
+                <span class='fraction'>72/97</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">76.59% </span>
+                <span class="strong">74.22% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>72/94</span>
+                <span class='fraction'>72/97</span>
             </div>
         
             
@@ -157,7 +157,10 @@
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -224,6 +227,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -273,7 +279,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isMatrixTranspose = require( '@stdlib/blas/base/assert/is-transpose-operation' );
+var resolveStr = require( '@stdlib/blas/base/transpose-operation-resolve-str' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
@@ -283,7 +289,7 @@ var base = require( './base.js' );
 /**
 * Performs one of the matrix-vector operations `y = α*A*x + β*y` or `y = α*A^T*x + β*y` or `y = α*A^H*x + β*y`, where `α` and `β` are scalars, `x` and `y` are vectors, and `A` is an `M` by `N` matrix.
 *
-* @param {string} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
+* @param {(integer|string)} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
 * @param {NonNegativeInteger} M - number of rows in the matrix `A`
 * @param {NonNegativeInteger} N - number of columns in the matrix `A`
 * @param {Complex64} alpha - scalar constant
@@ -319,7 +325,10 @@ var base = require( './base.js' );
 * // y =&gt; &lt;Complex64Array&gt;[ -10.0, 11.0, -12.0, 14.0, -14.0, 17.0, -16.0, 20.0 ]
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function cgemv( trans, M, N, alpha, A, strideA1, strideA2, offsetA, x, strideX, offsetX, beta, y, strideY, offsetY ) { // eslint-disable-line max-params, max-len</span></span>
-<span class="cstat-no" title="statement not covered" >	if ( !isMatrixTranspose( trans ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	var t;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	t = resolveStr( trans );</span>
+<span class="cstat-no" title="statement not covered" >	if ( t === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid transpose operation. Value: `%s`.', trans ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( M &lt; 0 ) {</span>
@@ -338,7 +347,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	if ( M === 0 || N === 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return y;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return base( trans, M, N, alpha, A, strideA1, strideA2, offsetA, x, strideX, offsetX, beta, y, strideY, offsetY ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	return base( t, M, N, alpha, A, strideA1, strideA2, offsetA, x, strideX, offsetX, beta, y, strideY, offsetY ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -352,7 +361,7 @@ module.exports = cgemv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-02T09:56:06.178Z
+                at 2026-06-06T04:19:27.602Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
