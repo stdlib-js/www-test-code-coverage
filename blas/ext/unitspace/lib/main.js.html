@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.19% </span>
+                <span class="strong">47.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>80/166</span>
+                <span class='fraction'>80/169</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.19% </span>
+                <span class="strong">47.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>80/166</span>
+                <span class='fraction'>80/169</span>
             </div>
         
             
@@ -229,7 +229,10 @@
 <a name='L164'></a><a href='#L164'>164</a>
 <a name='L165'></a><a href='#L165'>165</a>
 <a name='L166'></a><a href='#L166'>166</a>
-<a name='L167'></a><a href='#L167'>167</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -304,6 +307,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -429,6 +435,7 @@ var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
 var isOrder = require( '@stdlib/ndarray/base/assert/is-order' );
 var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
 var nonCoreShape = require( '@stdlib/ndarray/base/complement-shape' );
+var resolveOrder = require( '@stdlib/ndarray/base/output-order' );
 var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var empty = require( '@stdlib/ndarray/empty' );
@@ -438,7 +445,6 @@ var format = require( '@stdlib/string/format' );
 var DTYPES = require( './dtypes.js' );
 var ENUMS = require( './type_enums.js' );
 var resolveDataType = require( './resolve_data_type.js' );
-var resolveOrder = require( './resolve_order.js' );
 var normalizeArgument = require( './normalize_argument.js' );
 var defaults = require( './defaults.js' );
 var base = require( './base.js' );
@@ -476,6 +482,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	var type;</span>
 <span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var ncsh;</span>
+<span class="cstat-no" title="statement not covered" >	var arrs;</span>
 <span class="cstat-no" title="statement not covered" >	var arg;</span>
 <span class="cstat-no" title="statement not covered" >	var out;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
@@ -488,6 +495,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a nonnegative integer or an array of nonnegative integers. Value: `%s`.', shape ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	arrs = [];</span>
 <span class="cstat-no" title="statement not covered" >	if ( isNumber( start ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		type = ENUMS.NUMBER;</span>
 <span class="cstat-no" title="statement not covered" >	} else if ( isComplexLike( start ) ) {</span>
@@ -498,6 +506,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		if ( !contains( DTYPES.idtypes0, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Second argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes0, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		arrs.push( start );</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be either a number, complex number, or an ndarray. Value: `%s`.', start ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -542,7 +551,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	dtypes[ 1 ] = options.dtype;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the output array order:</span>
-<span class="cstat-no" title="statement not covered" >	options.order = options.order || resolveOrder( start, type );</span>
+<span class="cstat-no" title="statement not covered" >	options.order = options.order || resolveOrder( arrs );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the complement of the operation dimensions:</span>
 <span class="cstat-no" title="statement not covered" >	ncsh = nonCoreShape( sh, options.dims );</span>
@@ -568,7 +577,7 @@ module.exports = unitspace;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-29T03:58:14.521Z
+                at 2026-06-06T04:20:24.510Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

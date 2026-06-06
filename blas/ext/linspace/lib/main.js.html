@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.14% </span>
+                <span class="strong">34.28% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>84/239</span>
+                <span class='fraction'>84/245</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.14% </span>
+                <span class="strong">34.28% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>84/239</span>
+                <span class='fraction'>84/245</span>
             </div>
         
             
@@ -302,7 +302,13 @@
 <a name='L237'></a><a href='#L237'>237</a>
 <a name='L238'></a><a href='#L238'>238</a>
 <a name='L239'></a><a href='#L239'>239</a>
-<a name='L240'></a><a href='#L240'>240</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -381,6 +387,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -576,6 +588,7 @@ var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
 var isOrder = require( '@stdlib/ndarray/base/assert/is-order' );
 var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
 var nonCoreShape = require( '@stdlib/ndarray/base/complement-shape' );
+var resolveOrder = require( '@stdlib/ndarray/base/output-order' );
 var resolveStr = require( '@stdlib/ndarray/base/dtype-resolve-str' );
 var getDType = require( '@stdlib/ndarray/base/dtype' );
 var empty = require( '@stdlib/ndarray/empty' );
@@ -585,7 +598,6 @@ var format = require( '@stdlib/string/format' );
 var DTYPES = require( './dtypes.js' );
 var ENUMS = require( './type_enums.js' );
 var resolveDataTypes = require( './resolve_data_types.js' );
-var resolveOrder = require( './resolve_order.js' );
 var normalizeArguments = require( './normalize_arguments.js' );
 var defaults = require( './defaults.js' );
 var base = require( './base.js' );
@@ -629,6 +641,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	var opts;</span>
 <span class="cstat-no" title="statement not covered" >	var args;</span>
 <span class="cstat-no" title="statement not covered" >	var ncsh;</span>
+<span class="cstat-no" title="statement not covered" >	var arrs;</span>
 <span class="cstat-no" title="statement not covered" >	var out;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" >	var dt;</span>
@@ -642,6 +655,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a nonnegative integer or an array of nonnegative integers. Value: `%s`.', shape ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	types = [ 0, 0, 0 ]; // [ start, stop, endpoint ]</span>
+<span class="cstat-no" title="statement not covered" >	arrs = [];</span>
 <span class="cstat-no" title="statement not covered" >	if ( isNumber( start ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		types[ 0 ] = ENUMS.NUMBER;</span>
 <span class="cstat-no" title="statement not covered" >	} else if ( isComplexLike( start ) ) {</span>
@@ -652,6 +666,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		if ( !contains( DTYPES.idtypes0, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Second argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes0, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		arrs.push( start );</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be either a number, complex number, or an ndarray. Value: `%s`.', start ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -665,6 +680,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >		if ( !contains( DTYPES.idtypes1, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Third argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes1, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		arrs.push( stop );</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Third argument must be either a number, complex number, or an ndarray. Value: `%s`.', stop ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -693,6 +709,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Fourth argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes2, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			types[ 2 ] = ENUMS.NDARRAY;</span>
+<span class="cstat-no" title="statement not covered" >			arrs.push( endpoint );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Case: linspace( shape, start, stop, options )</span>
 <span class="cstat-no" title="statement not covered" >		else {</span>
@@ -715,6 +732,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >			if ( !contains( DTYPES.idtypes2, dt ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Fourth argument must have one of the following data types: "%s". Data type: `%s`.', join( DTYPES.idtypes2, '", "' ), dt ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			arrs.push( endpoint );</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Fourth argument must be either a boolean or an ndarray. Value: `%s`.', endpoint ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -761,7 +779,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	dtypes[ 3 ] = options.dtype;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the output array order:</span>
-<span class="cstat-no" title="statement not covered" >	options.order = options.order || resolveOrder( args, types );</span>
+<span class="cstat-no" title="statement not covered" >	options.order = options.order || resolveOrder( arrs );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Resolve the complement of the operation dimensions:</span>
 <span class="cstat-no" title="statement not covered" >	ncsh = nonCoreShape( sh, options.dims );</span>
@@ -787,7 +805,7 @@ module.exports = linspace;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-29T03:58:14.521Z
+                at 2026-06-06T04:20:24.510Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
