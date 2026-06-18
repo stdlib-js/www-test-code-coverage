@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>136/136</span>
+                <span class='fraction'>147/147</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>136/136</span>
+                <span class='fraction'>147/147</span>
             </div>
         
             
@@ -199,7 +199,18 @@
 <a name='L134'></a><a href='#L134'>134</a>
 <a name='L135'></a><a href='#L135'>135</a>
 <a name='L136'></a><a href='#L136'>136</a>
-<a name='L137'></a><a href='#L137'>137</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -251,6 +262,8 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">24x</span>
@@ -276,13 +289,16 @@
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
-<span class="cline-any cline-yes">120x</span>
-<span class="cline-any cline-yes">120x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">108x</span>
-<span class="cline-any cline-yes">120x</span>
 <span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">120x</span>
+<span class="cline-any cline-yes">120x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">108x</span>
+<span class="cline-any cline-yes">120x</span>
+<span class="cline-any cline-yes">120x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">54x</span>
@@ -292,6 +308,8 @@
 <span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">116x</span>
@@ -308,8 +326,10 @@
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">54x</span>
@@ -318,6 +338,8 @@
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">110x</span>
 <span class="cline-any cline-yes">110x</span>
@@ -395,10 +417,12 @@ function dgetf2( M, N, A, strideA1, strideA2, offsetA, IPIV, strideIPIV, offsetI
 	var val;
 	var jp;
 	var ip;
+	var ia;
+	var ij;
+	var ic;
 	var r;
 	var c;
 	var j;
-	var o;
 &nbsp;
 	if ( M === 0 || N === 0 ) {
 		return 0;
@@ -408,45 +432,52 @@ function dgetf2( M, N, A, strideA1, strideA2, offsetA, IPIV, strideIPIV, offsetI
 	info = 0;
 &nbsp;
 	for ( j = 0; j &lt; minMN; j++ ) {
+		ij = offsetA + ( j * strideA1 ) + ( j * strideA2 );
+&nbsp;
 		// Find pivot (maximum absolute value in column j from row j to M-1):
 		maxVal = -1.0;
 		jp = j;
+		ia = ij;
 		for ( r = j; r &lt; M; r++ ) {
-			val = abs( A[ offsetA + ( r * strideA1 ) + ( j * strideA2 ) ] );
+			val = abs( A[ ia ] );
 			if ( val &gt; maxVal ) {
 				maxVal = val;
 				jp = r;
 			}
+			ia += strideA1;
 		}
 &nbsp;
-		// Store pivot row index in IPIV (using custom indexing/offset/stride for IPIV):
+		// Store pivot row index in IPIV:
 		ip = offsetIPIV + ( j * strideIPIV );
 		IPIV[ ip ] = jp;
 &nbsp;
 		// Check for singularity:
-		temp = A[ offsetA + ( jp * strideA1 ) + ( j * strideA2 ) ];
-		if ( temp !== 0.0 ) {
+		if ( A[ offsetA + ( jp * strideA1 ) + ( j * strideA2 ) ] !== 0.0 ) {
 			// Swap row j and row jp if they are not the same row:
 			if ( jp !== j ) {
+				ia = offsetA + ( j * strideA1 );
+				ic = offsetA + ( jp * strideA1 );
 				for ( c = 0; c &lt; N; c++ ) {
-					o = c * strideA2;
-					val = A[ offsetA + ( j * strideA1 ) + o ];
-					A[ offsetA + ( j * strideA1 ) + o ] =
-						A[ offsetA + ( jp * strideA1 ) + o ];
-					A[ offsetA + ( jp * strideA1 ) + o ] = val;
+					val = A[ ia ];
+					A[ ia ] = A[ ic ];
+					A[ ic ] = val;
+					ia += strideA2;
+					ic += strideA2;
 				}
 			}
 &nbsp;
 			// Scale elements below the diagonal in column j:
 			if ( j &lt; M - 1 ) {
-				// Divide A[r, j] by A[j, j] for r = j+1 to M-1
-				temp = A[ offsetA + ( j * strideA1 ) + ( j * strideA2 ) ];
+				temp = A[ ij ];
+				ia = ij + strideA1;
 				for ( r = j + 1; r &lt; M; r++ ) {
-					A[ offsetA + ( r * strideA1 ) + ( j * strideA2 ) ] /= temp;
+					A[ ia ] /= temp;
+					ia += strideA1;
 				}
 			}
 		} else if ( info === 0 ) {
-			info = j + 1; // 1-based index
+			// Status code is 1-based: a value of k means U(k-1,k-1) is zero in 0-based indexing...
+			info = j + 1;
 		}
 &nbsp;
 		// Update trailing submatrix (rows j+1 to M-1, columns j+1 to N-1):
@@ -454,10 +485,12 @@ function dgetf2( M, N, A, strideA1, strideA2, offsetA, IPIV, strideIPIV, offsetI
 			for ( c = j + 1; c &lt; N; c++ ) {
 				temp = A[ offsetA + ( j * strideA1 ) + ( c * strideA2 ) ];
 				if ( temp !== 0.0 ) {
+					ia = offsetA + ( ( j + 1 ) * strideA1 ) + ( c * strideA2 );
+					ic = offsetA + ( ( j + 1 ) * strideA1 ) + ( j * strideA2 );
 					for ( r = j + 1; r &lt; M; r++ ) {
-						A[ offsetA + ( r * strideA1 ) + ( c * strideA2 ) ] -=
-							A[ offsetA + ( r * strideA1 ) + ( j * strideA2 ) ] *
-							temp;
+						A[ ia ] -= A[ ic ] * temp;
+						ia += strideA1;
+						ic += strideA1;
 					}
 				}
 			}
@@ -478,7 +511,7 @@ module.exports = dgetf2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-15T10:43:12.627Z
+                at 2026-06-18T19:21:36.430Z
             </div>
         <script src="prettify.js"></script>
         <script>
