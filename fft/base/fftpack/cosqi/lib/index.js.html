@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for cffti/lib/index.js</title>
+    <title>Code coverage report for cosqi/lib/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">cffti/lib</a> index.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">cosqi/lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>53/53</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>53/53</span>
+                <span class='fraction'>56/56</span>
             </div>
         
             
@@ -116,7 +116,13 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -190,27 +196,30 @@
 'use strict';
 &nbsp;
 /**
-* Initialize a workspace array for performing a complex-valued Fourier transform.
+* Initialize a workspace array for performing a quarter-wave cosine transform.
 *
-* @module @stdlib/fft/base/fftpack/cffti
+* @module @stdlib/fft/base/fftpack/cosqi
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
-* var cffti = require( '@stdlib/fft/base/fftpack/cffti' );
+* var cosqi = require( '@stdlib/fft/base/fftpack/cosqi' );
 *
 * var N = 8;
-* var workspace = new Float64Array( ( 4*N ) + 34 );
+* var workspace = new Float64Array( ( 3*N ) + 34 );
 *
-* var out = cffti( N, workspace, 1, 0 );
+* var out = cosqi( N, workspace, 1, 0 );
 * // returns &lt;Float64Array&gt;
 *
 * var bool = ( out === workspace );
 * // returns true
 *
-* var twiddleFactors = workspace.slice( 2*N, 4*N );
-* // returns &lt;Float64Array&gt;[ 1, 0, ~0.707, ~0.707, ~0, 1, ~-0.707, ~0.707, 1, 0, 1, 0, 1, 0, ~0, -1 ]
+* var cosineTable = workspace.slice( 0, N );
+* // returns &lt;Float64Array&gt;[ ~0.98, ~0.92, ~0.83, ~0.7, ~0.56, ~0.38, ~0.2, ~0.0 ]
 *
-* var factors = workspace.slice( 4*N, ( 4*N ) + 4 );
+* var twiddleFactors = workspace.slice( 2*N, 3*N );
+* // returns &lt;Float64Array&gt;[ 0, ~0.707, ~0.707, 0, 0, 0, 0, 0 ]
+*
+* var factors = workspace.slice( 3*N, ( 3*N ) + 4 );
 * // returns &lt;Float64Array&gt;[ 8, 2, 2, 4 ]
 */
 &nbsp;
