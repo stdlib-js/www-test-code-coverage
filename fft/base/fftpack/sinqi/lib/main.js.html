@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for cosqi/lib/main.js</title>
+    <title>Code coverage report for sinqi/lib/main.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">cosqi/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">sinqi/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.38% </span>
+                <span class="strong">98.19% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>165/191</span>
+                <span class='fraction'>163/166</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.38% </span>
+                <span class="strong">98.19% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>165/191</span>
+                <span class='fraction'>163/166</span>
             </div>
         
             
@@ -229,32 +229,7 @@
 <a name='L164'></a><a href='#L164'>164</a>
 <a name='L165'></a><a href='#L165'>165</a>
 <a name='L166'></a><a href='#L166'>166</a>
-<a name='L167'></a><a href='#L167'>167</a>
-<a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a>
-<a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a>
-<a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a>
-<a name='L176'></a><a href='#L176'>176</a>
-<a name='L177'></a><a href='#L177'>177</a>
-<a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a>
-<a name='L188'></a><a href='#L188'>188</a>
-<a name='L189'></a><a href='#L189'>189</a>
-<a name='L190'></a><a href='#L190'>190</a>
-<a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L167'></a><a href='#L167'>167</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -412,31 +387,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -507,15 +457,13 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var cos = require( '@stdlib/math/base/special/cos' );
-var HALF_PI = require( '@stdlib/constants/float64/half-pi' );
-var rffti = require( '@stdlib/fft/base/fftpack/rffti' );
+var cosqi = require( '@stdlib/fft/base/fftpack/cosqi' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Initializes a workspace array for performing a quarter-wave cosine transform.
+* Initializes a workspace array for performing a quarter-wave sine transform.
 *
 * ## Notes
 *
@@ -531,7 +479,7 @@ var rffti = require( '@stdlib/fft/base/fftpack/rffti' );
 *
 * where
 *
-* -   **cosine table**: a table of precomputed cosine coefficients used by quarter-wave cosine transforms.
+* -   **cosine table**: a table of precomputed cosine coefficients used by quarter-wave sine transforms.
 * -   **scratch/workspace**: used as a scratch space when performing transforms. This section is not updated during initialization.
 * -   **twiddle factors**: a table of reusable complex-exponential constants stored as cosine/sine pairs.
 * -   **radix factor table**: a table containing the radix factorization of `N`.
@@ -566,7 +514,7 @@ var rffti = require( '@stdlib/fft/base/fftpack/rffti' );
 * W_N^k = e^{+2\pi ik/N}
 * ```
 *
-* As may be observed, `W_N^k` for forward and backward FFTs is the same, except the sign of the exponent is flipped. As a consequence, both forward and backward FFT callers can reuse the same set of twiddle factors, with those performing a forward transform (e.g., `cosqf`) multiplying with `(cos,-sin)` and those performing a backward transform (e.g., `cosqb`) multiplying with `(cos,+sin)`.
+* As may be observed, `W_N^k` for forward and backward FFTs is the same, except the sign of the exponent is flipped. As a consequence, both forward and backward FFT callers can reuse the same set of twiddle factors, with those performing a forward transform (e.g., `sinqf`) multiplying with `(cos,-sin)` and those performing a backward transform (e.g., `sinqb`) multiplying with `(cos,+sin)`.
 *
 * Because these constants only depend on the transform length `N` (and **not** on the input data), we can pre-compute and store them once, then "twiddle" them (i.e., reuse them with different indices) as we proceed through the factorization.
 *
@@ -576,7 +524,7 @@ var rffti = require( '@stdlib/fft/base/fftpack/rffti' );
 *
 * In short, twiddle factors are cached roots of unity that allow each stage of the algorithm to rotate data quickly and predictably.
 *
-* During initialization, `cosqi` first writes the cosine table, and then initializes the remaining three sections using `rffti`.
+* During initialization, `sinqi` first writes the cosine table, and then initializes the remaining three sections using `rffti`.
 *
 * @param {PositiveInteger} N - length of the sequence to transform
 * @param {Collection} workspace - workspace array
@@ -590,7 +538,7 @@ var rffti = require( '@stdlib/fft/base/fftpack/rffti' );
 * var N = 8;
 * var workspace = new Float64Array( ( 3*N ) + 34 );
 *
-* var out = cosqi( N, workspace, 1, 0 );
+* var out = sinqi( N, workspace, 1, 0 );
 * // returns &lt;Float64Array&gt;
 *
 * var bool = ( out === workspace );
@@ -605,37 +553,14 @@ var rffti = require( '@stdlib/fft/base/fftpack/rffti' );
 * var factors = workspace.slice( 3*N, ( 3*N ) + 4 );
 * // returns &lt;Float64Array&gt;[ 8, 2, 2, 4 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function cosqi( N, workspace, strideW, offsetW ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var offsetR;</span>
-<span class="cstat-no" title="statement not covered" >	var dt;</span>
-<span class="cstat-no" title="statement not covered" >	var iw;</span>
-<span class="cstat-no" title="statement not covered" >	var fk;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Compute the angular increment:</span>
-<span class="cstat-no" title="statement not covered" >	dt = HALF_PI / N;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Compute and store the cosine table:</span>
-<span class="cstat-no" title="statement not covered" >	fk = 0.0;</span>
-<span class="cstat-no" title="statement not covered" >	iw = offsetW;</span>
-<span class="cstat-no" title="statement not covered" >	for ( i = 0; i &lt; N; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		fk += 1.0;</span>
-<span class="cstat-no" title="statement not covered" >		workspace[ iw ] = cos( fk*dt );</span>
-<span class="cstat-no" title="statement not covered" >		iw += strideW;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the starting index for the `rffti` workspace:</span>
-<span class="cstat-no" title="statement not covered" >	offsetR = offsetW + ( N*strideW );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Initialize the real FFT workspace:</span>
-<span class="cstat-no" title="statement not covered" >	rffti( N, workspace, strideW, offsetR );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	return workspace;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function sinqi( N, workspace, strideW, offsetW ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	return cosqi( N, workspace, strideW, offsetW );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = cosqi;
+module.exports = sinqi;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
