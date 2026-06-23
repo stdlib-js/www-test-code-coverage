@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for regexp.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="index.html">All files</a> regexp.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>72/72</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>72/72</span>
             </div>
         
             
@@ -123,7 +123,19 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,18 +178,30 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -186,7 +210,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2024 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -203,46 +227,58 @@
 &nbsp;
 'use strict';
 &nbsp;
-// MODULES //
-&nbsp;
-var isString = require( '@stdlib/assert/is-string' ).isPrimitive;
-var parse = require( '@stdlib/complex/base/parse' );
-var Complex128 = require( '@stdlib/complex/float64/ctor' );
-var format = require( '@stdlib/string/format' );
-&nbsp;
-&nbsp;
 // MAIN //
 &nbsp;
 /**
-* Parse a string representation of a complex number and returns a Complex128 instance.
+* Returns a regular expression that matches and captures a complex number, supporting standard notation, scientific notation, Infinity, and NaN (e.g., "3+4i", "-1.5e10", "NaN-i").
 *
-* @param {string} str - string representation of a complex number
-* @throws {TypeError} must provide a string
-* @throws {Error} must provide a valid string representation of a complex number
-* @returns {Complex128} 128-bit complex number
+* Regular expression: `/^(?:\s*([+-]?)\s*((?:(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)|Infinity|NaN)\s*(?=$|[+-]))?(?:\s*([+-]?)\s*((?:(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)|Infinity|NaN)?\s*(i)\s*)?$/`
 *
-* @example
-* var str = '1 + 2i';
-* var z = parseComplex128( str );
-* // returns &lt;Complex128&gt;
+* -   `^`
+*     -   start of input
+*
+* -   `(?:\s*([+-]?)\s*`
+*     -   open an optional non-capturing group for the real part and capture an optional `+` or `-` literal for its sign, ignoring surrounding whitespace
+*
+* -   `((?:(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)|Infinity|NaN)`
+*     -   capture the real magnitude, matching standard decimals, scientific notation, `Infinity`, or `NaN`
+*
+* -   `\s*(?=$|[+-]))?`
+*     -   match optional trailing whitespace, assert via positive lookahead that the real part is followed by either the end of input or the sign for the imaginary part, and close the real part group
+*
+* -   `(?:\s*([+-]?)\s*`
+*     -   open an optional non-capturing group for the imaginary part and capture an optional `+` or `-` literal for its sign, ignoring surrounding whitespace
+*
+* -   `((?:(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)|Infinity|NaN)?`
+*     -   capture the optional imaginary magnitude, matching standard decimals, scientific notation, `Infinity`, or `NaN`
+*
+* -   `\s*(i)\s*)?`
+*     -   capture the literal character `i` for the imaginary unit, ignoring surrounding whitespace, and close the imaginary part group
+*
+* -   `$`
+*     -   end of input
+*
+* ## Notes
+*
+* -   The regular expression has the following capture groups:
+*
+*     1.  Sign of real part
+*     2.  Value of real part
+*     3.  Sign of imaginary part
+*     4.  Value of imaginary part
+*     5.  Imaginary suffix 'i'
+*
+* @private
+* @returns {RegExp} regular expression
 */
-function parseComplex128( str ) {
-	var v;
-&nbsp;
-	if ( !isString( str ) ) {
-		throw new TypeError( format( 'invalid argument. First argument must be a string. Value: `%s`.', str ) );
-	}
-	v = parse( str );
-	if ( v === null ) {
-		throw new Error( format( 'invalid argument. Unable to parse input string as a complex number. Value: `%s`.', str ) );
-	}
-	return new Complex128( v.re, v.im );
+function regexp() {
+	return /^(?:\s*([+-]?)\s*((?:(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)|Infinity|NaN)\s*(?=$|[+-]))?(?:\s*([+-]?)\s*((?:(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)|Infinity|NaN)?\s*(i)\s*)?$/;
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = parseComplex128;
+module.exports = regexp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -250,7 +286,7 @@ module.exports = parseComplex128;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-23T06:19:25.496Z
+                at 2026-06-23T06:19:21.227Z
             </div>
         <script src="prettify.js"></script>
         <script>
