@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>93/93</span>
+                <span class='fraction'>96/96</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>93/93</span>
+                <span class='fraction'>96/96</span>
             </div>
         
             
@@ -156,7 +156,10 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">34x</span>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">34x</span>
@@ -210,6 +213,8 @@
 <span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">520x</span>
 <span class="cline-any cline-yes">520x</span>
 <span class="cline-any cline-yes">520x</span>
 <span class="cline-any cline-yes">520x</span>
@@ -223,17 +228,18 @@
 <span class="cline-any cline-yes">406x</span>
 <span class="cline-any cline-yes">501x</span>
 <span class="cline-any cline-yes">116x</span>
-<span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">95x</span>
 <span class="cline-any cline-yes">116x</span>
 <span class="cline-any cline-yes">192x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">192x</span>
+<span class="cline-any cline-yes">191x</span>
+<span class="cline-any cline-yes">191x</span>
 <span class="cline-any cline-yes">94x</span>
 <span class="cline-any cline-yes">94x</span>
 <span class="cline-any cline-yes">501x</span>
@@ -276,6 +282,7 @@ var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var isArrayLikeObject = require( '@stdlib/assert/is-array-like-object' );
 var isIndexMode = require( '@stdlib/ndarray/base/assert/is-index-mode' );
 var isBoolean = require( '@stdlib/assert/is-boolean' ).isPrimitive;
+var join = require( '@stdlib/array/base/join' );
 var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
@@ -304,6 +311,7 @@ var format = require( '@stdlib/string/format' );
 * }
 */
 function validate( opts, options ) {
+	var tmp;
 	var i;
 	if ( !isObject( options ) ) {
 		return new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', options ) );
@@ -315,19 +323,20 @@ function validate( opts, options ) {
 		}
 	}
 	if ( hasOwnProp( options, 'submode' ) ) {
-		opts.submode = options.submode;
-		if ( !isArrayLikeObject( opts.submode ) ) {
-			return new TypeError( format( 'invalid option. `%s` option must be an array containing recognized modes. Option: `%s`.', 'submode', opts.submode ) );
+		if ( !isArrayLikeObject( options.submode ) ) {
+			return new TypeError( format( 'invalid option. `%s` option must be an array containing recognized modes. Option: `%s`.', 'submode', options.submode ) );
 		}
-		if ( opts.submode.length === 0 ) {
-			return new TypeError( format( 'invalid option. `%s` option must be an array containing recognized modes. Option: `%s`.', 'submode', opts.submode.join( ',' ) ) );
+		if ( options.submode.length === 0 ) {
+			return new TypeError( format( 'invalid option. `%s` option must be an array containing recognized modes. Option: `%s`.', 'submode', join( options.submode, ',' ) ) );
 		}
-		for ( i = 0; i &lt; opts.submode.length; i++ ) {
-			if ( !isIndexMode( opts.submode[ i ] ) ) {
-				return new TypeError( format( 'invalid option. Each submode must be a recognized mode. Option: `%s`.', opts.submode[ i ] ) );
+		tmp = [];
+		for ( i = 0; i &lt; options.submode.length; i++ ) {
+			if ( !isIndexMode( options.submode[ i ] ) ) {
+				return new TypeError( format( 'invalid option. Each submode must be a recognized mode. Option: `%s`.', options.submode[ i ] ) );
 			}
+			tmp.push( options.submode[ i ] );
 		}
-		opts.submode = opts.submode.slice();
+		opts.submode = tmp;
 	}
 	if ( hasOwnProp( options, 'readonly' ) ) {
 		opts.readonly = options.readonly;
@@ -349,7 +358,7 @@ module.exports = validate;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-04T22:49:27.867Z
+                at 2026-06-24T11:11:46.567Z
             </div>
         <script src="prettify.js"></script>
         <script>
