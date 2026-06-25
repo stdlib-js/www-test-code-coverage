@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>95/95</span>
+                <span class='fraction'>102/102</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>95/95</span>
+                <span class='fraction'>102/102</span>
             </div>
         
             
@@ -158,7 +158,14 @@
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -223,11 +230,18 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">55x</span>
 <span class="cline-any cline-yes">55x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">55x</span>
 <span class="cline-any cline-yes">55x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-yes">55x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -275,9 +289,9 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
-var isTransposeOperation = require( '@stdlib/blas/base/assert/is-transpose-operation' );
-var isDiagonal = require( '@stdlib/blas/base/assert/is-diagonal-type' );
+var resolveTriangle = require( '@stdlib/blas/base/matrix-triangle-resolve-str' );
+var resolveTranspose = require( '@stdlib/blas/base/transpose-operation-resolve-str' );
+var resolveDiagonal = require( '@stdlib/blas/base/diagonal-type-resolve-str' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
@@ -287,9 +301,9 @@ var base = require( './base.js' );
 /**
 * Performs one of the matrix-vector operations `x = A*x` or `x = A^T*x`, where `x` is an `N` element vector and `A` is an `N` by `N` unit, or non-unit, upper or lower triangular matrix.
 *
-* @param {string} uplo - specifies whether `A` is an upper or lower triangular matrix
-* @param {string} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
-* @param {string} diag - specifies whether `A` has a unit diagonal
+* @param {(integer|string)} uplo - specifies whether `A` is an upper or lower triangular matrix
+* @param {(integer|string)} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
+* @param {(integer|string)} diag - specifies whether `A` has a unit diagonal
 * @param {NonNegativeInteger} N - number of elements along each dimension of `A`
 * @param {Float64Array} A - input matrix
 * @param {integer} strideA1 - stride of the first dimension of `A`
@@ -317,13 +331,20 @@ var base = require( './base.js' );
 * // x =&gt; &lt;Float64Array&gt;[ 14.0, 8.0, 3.0 ]
 */
 function dtrmv( uplo, trans, diag, N, A, strideA1, strideA2, offsetA, x, strideX, offsetX ) { // eslint-disable-line max-params, max-len
-	if ( !isMatrixTriangle( uplo ) ) {
+	var u;
+	var t;
+	var d;
+&nbsp;
+	u = resolveTriangle( uplo );
+	if ( u === null ) {
 		throw new TypeError( format( 'invalid argument. First argument must specify whether the lower or upper triangular matrix is supplied. Value: `%s`.', uplo ) );
 	}
-	if ( !isTransposeOperation( trans ) ) {
+	t = resolveTranspose( trans );
+	if ( t === null ) {
 		throw new TypeError( format( 'invalid argument. Second argument must be a valid transpose operation. Value: `%s`.', trans ) );
 	}
-	if ( !isDiagonal( diag ) ) {
+	d = resolveDiagonal( diag );
+	if ( d === null ) {
 		throw new TypeError( format( 'invalid argument. Third argument must be a valid diagonal type. Value: `%s`.', diag ) );
 	}
 	if ( N &lt; 0 ) {
@@ -341,7 +362,7 @@ function dtrmv( uplo, trans, diag, N, A, strideA1, strideA2, offsetA, x, strideX
 	if ( N === 0 ) {
 		return x;
 	}
-	return base( uplo, trans, diag, N, A, strideA1, strideA2, offsetA, x, strideX, offsetX ); // eslint-disable-line max-len
+	return base( u, t, d, N, A, strideA1, strideA2, offsetA, x, strideX, offsetX ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
@@ -355,7 +376,7 @@ module.exports = dtrmv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-28T21:29:04.815Z
+                at 2026-06-25T07:21:56.579Z
             </div>
         <script src="prettify.js"></script>
         <script>
