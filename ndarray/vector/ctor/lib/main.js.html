@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.39% </span>
+                <span class="strong">55.93% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>344/610</span>
+                <span class='fraction'>330/590</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.39% </span>
+                <span class="strong">55.93% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>344/610</span>
+                <span class='fraction'>330/590</span>
             </div>
         
             
@@ -653,27 +653,7 @@
 <a name='L588'></a><a href='#L588'>588</a>
 <a name='L589'></a><a href='#L589'>589</a>
 <a name='L590'></a><a href='#L590'>590</a>
-<a name='L591'></a><a href='#L591'>591</a>
-<a name='L592'></a><a href='#L592'>592</a>
-<a name='L593'></a><a href='#L593'>593</a>
-<a name='L594'></a><a href='#L594'>594</a>
-<a name='L595'></a><a href='#L595'>595</a>
-<a name='L596'></a><a href='#L596'>596</a>
-<a name='L597'></a><a href='#L597'>597</a>
-<a name='L598'></a><a href='#L598'>598</a>
-<a name='L599'></a><a href='#L599'>599</a>
-<a name='L600'></a><a href='#L600'>600</a>
-<a name='L601'></a><a href='#L601'>601</a>
-<a name='L602'></a><a href='#L602'>602</a>
-<a name='L603'></a><a href='#L603'>603</a>
-<a name='L604'></a><a href='#L604'>604</a>
-<a name='L605'></a><a href='#L605'>605</a>
-<a name='L606'></a><a href='#L606'>606</a>
-<a name='L607'></a><a href='#L607'>607</a>
-<a name='L608'></a><a href='#L608'>608</a>
-<a name='L609'></a><a href='#L609'>609</a>
-<a name='L610'></a><a href='#L610'>610</a>
-<a name='L611'></a><a href='#L611'>611</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L591'></a><a href='#L591'>591</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -729,26 +709,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1313,6 +1273,8 @@ var isCollection = require( '@stdlib/assert/is-collection' );
 var isArrayBuffer = require( '@stdlib/assert/is-arraybuffer' );
 var isPlainObject = require( '@stdlib/assert/is-plain-object' );
 var isBuffer = require( '@stdlib/assert/is-buffer' );
+var isGenericDataType = require( '@stdlib/ndarray/base/assert/is-generic-data-type' );
+var isBinaryDataType = require( '@stdlib/ndarray/base/assert/is-binary-data-type' );
 var isDataType = require( '@stdlib/ndarray/base/assert/is-data-type' );
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var buffer = require( '@stdlib/ndarray/base/buffer' );
@@ -1337,28 +1299,6 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 &nbsp;
 &nbsp;
 // FUNCTIONS //
-&nbsp;
-/**
-* Tests whether a data type is a "generic" data type.
-*
-* @private
-* @param {string} dtype - data type
-* @returns {boolean} result
-*/
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function isGenericDataType( dtype ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	return ( dtype === 'generic' );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-&nbsp;
-/**
-* Tests whether a data type is a binary data type.
-*
-* @private
-* @param {string} dtype - data type
-* @returns {boolean} result
-*/
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function isBinaryDataType( dtype ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	return ( dtype === 'binary' );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 /**
 * Resolves the order of the output vector.
@@ -1434,7 +1374,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 * var len = numel( v );
 * // returns 2
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function arraybuffer2vector( dtype, buffer, length, stride, byteOffset, order, options ) { // TODO: consider moving to `@stdlib/ndarray/from-arraybuffer` and generalize to n-dimensions such that `length` becomes `shape` and `stride` becomes `strides`</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function arraybuffer2vector( dtype, buffer, length, stride, byteOffset, order, options ) { // TODO: replace with `@stdlib/ndarray/from-arraybuffer`</span></span>
 <span class="cstat-no" title="statement not covered" >	var buf;</span>
 <span class="cstat-no" title="statement not covered" >	var sh;</span>
 <span class="cstat-no" title="statement not covered" >	var st;</span>
@@ -1452,7 +1392,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >	// Adjust the byte offset to point to the element marking the beginning of the view:</span>
 <span class="cstat-no" title="statement not covered" >	if ( stride &lt; 0 ) { // TODO: the following is effectively unreachable code, as provided strides are never anything other than unity; however, we keep this around in the event that we want to extract this function to a separate package and would like to maintain generality</span>
 <span class="cstat-no" title="statement not covered" >		N *= -1;</span>
-<span class="cstat-no" title="statement not covered" >		o -= N * bytesPerElement( dtype );</span>
+<span class="cstat-no" title="statement not covered" >		o -= N * bytesPerElement( dtype ); // FIXME: this is incorrect for the general case</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Create the underlying ndarray buffer:</span>
 <span class="cstat-no" title="statement not covered" >	if ( isBinaryDataType( dtype ) ) {</span>
@@ -1900,7 +1840,7 @@ module.exports = vector;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-15T20:30:16.966Z
+                at 2026-06-25T19:47:46.634Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
