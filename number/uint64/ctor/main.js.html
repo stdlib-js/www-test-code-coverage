@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.48% </span>
+                <span class="strong">99.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>385/387</span>
+                <span class='fraction'>385/388</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.48% </span>
+                <span class="strong">99.22% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>385/387</span>
+                <span class='fraction'>385/388</span>
             </div>
         
             
@@ -450,7 +450,8 @@
 <a name='L385'></a><a href='#L385'>385</a>
 <a name='L386'></a><a href='#L386'>386</a>
 <a name='L387'></a><a href='#L387'>387</a>
-<a name='L388'></a><a href='#L388'>388</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L388'></a><a href='#L388'>388</a>
+<a name='L389'></a><a href='#L389'>389</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -617,11 +618,11 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -691,6 +692,7 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">551x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -708,8 +710,7 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">551x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -745,6 +746,7 @@
 <span class="cline-any cline-yes">528x</span>
 <span class="cline-any cline-yes">528x</span>
 <span class="cline-any cline-yes">528x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -993,8 +995,8 @@ setReadOnly( Uint64, 'from', function fromWords( words ) {
 * @name of
 * @memberof Uint64
 * @type {Function}
-* @param {uinteger} high - high word (32-bit unsigned integer)
-* @param {uinteger} low - low word (32-bit unsigned integer)
+* @param {uinteger32} high - high word (32-bit unsigned integer)
+* @param {uinteger32} low - low word (32-bit unsigned integer)
 * @throws {TypeError} first argument must be a nonnegative integer
 * @throws {TypeError} second argument must be a nonnegative integer
 * @returns {Uint64} 64-bit unsigned integer
@@ -1068,8 +1070,8 @@ setReadOnly( Uint64.prototype, 'byteLength', 8 );
 *
 * @name hi
 * @memberof Uint64.prototype
-* @type {uinteger}
-* @returns {uinteger} high word (32-bit unsigned integer)
+* @type {uinteger32}
+* @returns {uinteger32} high word (32-bit unsigned integer)
 *
 * @example
 * var x = Uint64.from( [ 1234, 5678 ] );
@@ -1086,8 +1088,8 @@ setReadOnlyAccessor( Uint64.prototype, 'hi', function getHighWord() {
 *
 * @name lo
 * @memberof Uint64.prototype
-* @type {uinteger}
-* @returns {uinteger} low word (32-bit unsigned integer)
+* @type {uinteger32}
+* @returns {uinteger32} low word (32-bit unsigned integer)
 *
 * @example
 * var x = Uint64.from( [ 1234, 5678 ] );
@@ -1132,7 +1134,8 @@ setReadOnly( Uint64.prototype, 'toString', function toString( radix ) {
 	if ( HAS_BIGINT ) {
 		return BigInt( this.valueOf() ).toString( rad );
 	}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	return int2str( [ this.hi, this.lo ], rad );</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	// TODO: Refactor to use `uint64/base/words2string` later</span></span>
+<span class="cstat-no" title="statement not covered" >	return int2str( [ this.hi, this.lo ], rad );</span>
 });
 &nbsp;
 /**
@@ -1176,9 +1179,9 @@ setReadOnly( Uint64.prototype, 'toJSON', function toJSON() {
 */
 setReadOnly( Uint64.prototype, 'valueOf', function valueOf() {
 	if ( HAS_BIGINT ) {
-		return ( BigInt( this._buffer[ indices.HIGH ] ) &lt;&lt; BigInt( 32 ) ) | BigInt( this._buffer[ indices.LOW ] );
+		return ( BigInt( this.hi ) &lt;&lt; BigInt( 32 ) ) | BigInt( this.lo );
 	}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	return ( this._buffer[ indices.HIGH ] * TWO_32 ) + this._buffer[ indices.LOW ];</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	return ( this.hi * TWO_32 ) + this.lo;</span></span>
 });
 &nbsp;
 /**
@@ -1211,7 +1214,7 @@ setReadOnly( Uint64.prototype, 'valueOf', function valueOf() {
 if ( hasToPrimitiveSymbolSupport() ) {
 	setReadOnly( Uint64.prototype, ToPrimitiveSymbol, function toPrimitive( hint ) {
 		if ( hint === 'number' ) {
-			return ( this._buffer[ indices.HIGH ] * TWO_32 ) + this._buffer[ indices.LOW ];
+			return ( this.hi * TWO_32 ) + this.lo;
 		}
 		if ( hint === 'string' ) {
 			return this.toString();
@@ -1231,7 +1234,7 @@ module.exports = Uint64;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-26T18:31:28.790Z
+                at 2026-07-05T19:55:04.639Z
             </div>
         <script src="prettify.js"></script>
         <script>
