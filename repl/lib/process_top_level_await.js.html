@@ -453,30 +453,7 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">880x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">880x</span>
 <span class="cline-any cline-yes">880x</span>
 <span class="cline-any cline-yes">880x</span>
@@ -498,6 +475,29 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">880x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">880x</span>
+<span class="cline-any cline-yes">880x</span>
+<span class="cline-any cline-yes">880x</span>
+<span class="cline-any cline-yes">880x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -784,6 +784,36 @@ var VISITORS = createVisitors({
 // FUNCTIONS //
 &nbsp;
 /**
+* Returns a visitor callback which tracks ancestor nodes.
+*
+* @private
+* @param {Function} clbk - callback function
+* @returns {Function} visitor callback
+*/
+function wrapVisitor( clbk ) {
+	return visitor;
+&nbsp;
+	/**
+	* Callback invoked upon encountering an AST node.
+	*
+	* @private
+	* @param {Node} node - AST node
+	* @param {Object} state - state
+	* @param {Function} c - callback
+	*/
+<span class="fstat-no" title="function not covered" >	function visitor( node, state, c ) {</span>
+<span class="cstat-no" title="statement not covered" >		var FLG = ( node !== state.ancestors[ state.ancestors.length-1 ] );</span>
+<span class="cstat-no" title="statement not covered" >		if ( FLG ) {</span>
+<span class="cstat-no" title="statement not covered" >			state.ancestors.push( node );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		clbk( node, state, c ); // eslint-disable-line n/callback-return</span>
+<span class="cstat-no" title="statement not covered" >		if ( FLG ) {</span>
+<span class="cstat-no" title="statement not covered" >			state.ancestors.pop();</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+}
+&nbsp;
+/**
 * Returns an object containing visitor callbacks for recursively walking an abstract syntax tree (AST).
 *
 * @private
@@ -805,36 +835,6 @@ function createVisitors( visitors ) {
 		out[ type ] = wrapVisitor( clbk );
 	}
 	return out;
-&nbsp;
-	/**
-	* Returns a visitor callback which tracks ancestor nodes.
-	*
-	* @private
-	* @param {Function} clbk - callback function
-	* @returns {Function} visitor callback
-	*/
-	function wrapVisitor( clbk ) {
-		return visitor;
-&nbsp;
-		/**
-		* Callback invoked upon encountering an AST node.
-		*
-		* @private
-		* @param {Node} node - AST node
-		* @param {Object} state - state
-		* @param {Function} c - callback
-		*/
-<span class="fstat-no" title="function not covered" >		function visitor( node, state, c ) {</span>
-<span class="cstat-no" title="statement not covered" >			var FLG = ( node !== state.ancestors[ state.ancestors.length-1 ] );</span>
-<span class="cstat-no" title="statement not covered" >			if ( FLG ) {</span>
-<span class="cstat-no" title="statement not covered" >				state.ancestors.push( node );</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			clbk( node, state, c ); // eslint-disable-line node/callback-return</span>
-<span class="cstat-no" title="statement not covered" >			if ( FLG ) {</span>
-<span class="cstat-no" title="statement not covered" >				state.ancestors.pop();</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-	}
 }
 &nbsp;
 /**
@@ -1081,7 +1081,7 @@ module.exports = processAwait;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-20T00:29:39.284Z
+                at 2026-07-06T22:54:51.851Z
             </div>
         <script src="../prettify.js"></script>
         <script>
