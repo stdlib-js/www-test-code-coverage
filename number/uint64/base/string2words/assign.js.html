@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.07% </span>
+                <span class="strong">95.54% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>196/204</span>
+                <span class='fraction'>193/202</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.07% </span>
+                <span class="strong">95.54% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>196/204</span>
+                <span class='fraction'>193/202</span>
             </div>
         
             
@@ -265,9 +265,7 @@
 <a name='L200'></a><a href='#L200'>200</a>
 <a name='L201'></a><a href='#L201'>201</a>
 <a name='L202'></a><a href='#L202'>202</a>
-<a name='L203'></a><a href='#L203'>203</a>
-<a name='L204'></a><a href='#L204'>204</a>
-<a name='L205'></a><a href='#L205'>205</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L203'></a><a href='#L203'>203</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -402,7 +400,6 @@
 <span class="cline-any cline-yes">1032x</span>
 <span class="cline-any cline-yes">1032x</span>
 <span class="cline-any cline-yes">1032x</span>
-<span class="cline-any cline-yes">1032x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -440,6 +437,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1128x</span>
 <span class="cline-any cline-yes">1128x</span>
 <span class="cline-any cline-yes">1128x</span>
@@ -454,7 +452,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1128x</span>
 <span class="cline-any cline-yes">1128x</span>
 <span class="cline-any cline-yes">1128x</span>
 <span class="cline-any cline-yes">96x</span>
@@ -462,7 +459,6 @@
 <span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-yes">96x</span>
-<span class="cline-any cline-yes">1032x</span>
 <span class="cline-any cline-yes">1032x</span>
 <span class="cline-any cline-yes">1032x</span>
 <span class="cline-any cline-yes">1128x</span>
@@ -550,7 +546,7 @@ var CHUNKMAP = [
 /* eslint-enable array-element-newline */
 &nbsp;
 /**
-* Parses a string representation of a 64-bit unsigned integer into high and low 32-bit words using two-step chunking..
+* Parses a string representation of a 64-bit unsigned integer into high and low 32-bit words using two-step chunking.
 *
 * @private
 * @param {string} str - string representation of a 64-bit unsigned integer
@@ -584,25 +580,24 @@ function chunkedParse( str, radix, len1, len2, mult, out, stride, offset ) {
 		chunk1 = parseInt( str, radix );
 	} else {
 		// Otherwise use a big chunk1 (start-aligned) and a small chunk2 (end-aligned)
-		chunk1 = parseInt( str.slice( 0, -len2 ), radix ); // Everything until last `len2` digits
+		chunk1 = parseInt( str.slice( 0, -len2 ), radix ); // everything until last `len2` digits
 		chunk2 = parseInt( str.slice( -len2 ), radix ); // `len2` digits from the end
 	}
 &nbsp;
-	hi = ( chunk1 / TWO_32 ) &gt;&gt;&gt; 0; // Integer division by 2^32
+	hi = ( chunk1 / TWO_32 ) &gt;&gt;&gt; 0; // integer division by 2^32
 	lo = chunk1 &gt;&gt;&gt; 0; // 32-bit truncation
 &nbsp;
-	// Process chunk2 if applicable
+	// Process chunk2 if applicable...
 	if ( str.length &gt; len1 ) {
 		lo = ( lo * mult ) + chunk2;
 		hi = ( hi * mult ) + ( ( lo / TWO_32 ) &gt;&gt;&gt; 0 );
 		lo &gt;&gt;&gt;= 0; // 32-bit truncation
 &nbsp;
-		// Check if too big for uint64
+		// Check if too big for uint64...
 		if ( hi &gt;= TWO_32 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >			hi = lo = 0;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 	}
-&nbsp;
 	out[ offset ] = hi;
 	out[ offset + stride ] = lo;
 	return out;
@@ -639,9 +634,10 @@ function assign( str, radix, out, stride, offset ) {
 	var mult;
 	var idx;
 &nbsp;
-	// Invalid radix
+	// Check for an invalid radix...
 	if ( !( radix &gt;= 2 &amp;&amp; radix &lt;= 36 ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		out[ offset ] = out[ offset + stride ] = 0;</span>
+<span class="cstat-no" title="statement not covered" >		out[ offset ] = 0;</span>
+<span class="cstat-no" title="statement not covered" >		out[ offset + stride ] = 0;</span>
 <span class="cstat-no" title="statement not covered" >		return out;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 &nbsp;
@@ -658,16 +654,14 @@ function assign( str, radix, out, stride, offset ) {
 <span class="cstat-no" title="statement not covered" >		out[ offset ] = out[ offset + stride ] = 0;</span>
 <span class="cstat-no" title="statement not covered" >		return out;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-&nbsp;
-	// Fast path for bases 2, 4, and 16, thanks to evenly splittable 32-bit halves
+	// Fast path for bases 2, 4, and 16, thanks to evenly splittable 32-bit halves:
 	if ( radix === 2 || radix === 4 || radix === 16 ) {
 		len1 = ( len1 + len2 ) / 2;
-		out[ offset ] = parseInt( '0' + str.slice( 0, -len1 ), radix ); // Adding leading zero in case the higher slice is empty
+		out[ offset ] = parseInt( '0' + str.slice( 0, -len1 ), radix ); // add leading zero in case the higher slice is empty
 		out[ offset + stride ] = parseInt( str.slice( -len1 ), radix );
 		return out;
 	}
-&nbsp;
-	// General path for other bases
+	// General path for other bases:
 	return chunkedParse( str, radix, len1, len2, mult, out, stride, offset );
 }
 &nbsp;
@@ -682,7 +676,7 @@ module.exports = assign;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-07T08:55:49.598Z
+                at 2026-07-07T09:00:30.745Z
             </div>
         <script src="prettify.js"></script>
         <script>
