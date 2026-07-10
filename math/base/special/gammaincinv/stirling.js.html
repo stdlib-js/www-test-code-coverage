@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for math/base/special/gammaincinv/lib/stirling.js</title>
+    <title>Code coverage report for stirling.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">math/base/special/gammaincinv/lib</a> stirling.js</h1>
+        <h1><a href="index.html">All files</a> stirling.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.54% </span>
+                <span class="strong">88.6% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>66/79</span>
+                <span class='fraction'>70/79</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/7</span>
+                <span class='fraction'>4/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.54% </span>
+                <span class="strong">88.6% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>66/79</span>
+                <span class='fraction'>70/79</span>
             </div>
         
             
@@ -192,30 +192,30 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1232x</span>
-<span class="cline-any cline-yes">1232x</span>
-<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">2212x</span>
+<span class="cline-any cline-yes">2212x</span>
+<span class="cline-any cline-yes">2212x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">2212x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">2212x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">2212x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1232x</span>
-<span class="cline-any cline-yes">1232x</span>
-<span class="cline-any cline-yes">1232x</span>
-<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">2212x</span>
+<span class="cline-any cline-yes">1238x</span>
+<span class="cline-any cline-yes">1238x</span>
+<span class="cline-any cline-yes">1238x</span>
+<span class="cline-any cline-yes">974x</span>
+<span class="cline-any cline-yes">974x</span>
+<span class="cline-any cline-yes">974x</span>
+<span class="cline-any cline-yes">974x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1232x</span>
+<span class="cline-any cline-yes">2212x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -289,11 +289,11 @@ function stirling( x ) {
 		z = ( 18.0/( x*x ) ) - 1.0;
 		return chepolsum( 17, z ) / ( 12.0*x );
 	}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	z = 1.0 / ( x * x );</span></span>
-<span class="cstat-no" title="statement not covered" >	if ( x &lt; 1000.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		return polyvalC( z ) / ( C6+z ) / x;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return polyvalD( z ) / x;</span>
+	z = 1.0 / ( x * x );
+	if ( x &lt; 1000.0 ) {
+		return polyvalC( z ) / ( C6+z ) / x;
+	}
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	return polyvalD( z ) / x;</span></span>
 }
 &nbsp;
 &nbsp;
@@ -307,16 +307,16 @@ module.exports = stirling;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-27T17:25:22.107Z
+                at 2026-07-10T21:57:53.693Z
             </div>
-        <script src="../../../../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../../sorter.js"></script>
-        <script src="../../../../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     
