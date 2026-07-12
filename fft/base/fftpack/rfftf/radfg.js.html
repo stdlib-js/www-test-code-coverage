@@ -2096,16 +2096,16 @@ function radfg( M, R, L, ML, cc, sc, oc, c1, sc1, oc1, c2, sc2, oc2, ch, sch, oc
 				for ( k = 0; k &lt; L; k++ ) {
 					for ( i = 2; i &lt; M; i += 2 ) {
 						// Resolve ch indices for component j:
-						ih1 = optr( i-1, k, j, L, M, sch, och );  // Re(ch[j])
-						ih2 = optr( i, k, j, L, M, sch, och );    // Im(ch[j])
+						ih1 = optr( i-1, k, j, L, M, sch, och ); // Re(ch[j])
+						ih2 = optr( i, k, j, L, M, sch, och );   // Im(ch[j])
 &nbsp;
 						// Resolve ch indices for conjugate component jc:
 						ih3 = optr( i-1, k, jc, L, M, sch, och ); // Re(ch[jc])
 						ih4 = optr( i, k, jc, L, M, sch, och );   // Im(ch[jc])
 &nbsp;
 						// Resolve input-workspace indices for component j:
-						ic1 = iptr( i-1, k, j, L, M, sc1, oc1 );  // Re(component j)
-						ic2 = iptr( i, k, j, L, M, sc1, oc1 );    // Im(component j)
+						ic1 = iptr( i-1, k, j, L, M, sc1, oc1 ); // Re(component j)
+						ic2 = iptr( i, k, j, L, M, sc1, oc1 );   // Im(component j)
 &nbsp;
 						// Resolve input-workspace indices for component jc:
 						ic3 = iptr( i-1, k, jc, L, M, sc1, oc1 ); // Re(component jc)
@@ -2126,16 +2126,16 @@ function radfg( M, R, L, ML, cc, sc, oc, c1, sc1, oc1, c2, sc2, oc2, ch, sch, oc
 <span class="cstat-no" title="statement not covered" >				for ( i = 2; i &lt; M; i += 2 ) {</span>
 <span class="cstat-no" title="statement not covered" >					for ( k = 0; k &lt; L; k++ ) {</span>
 <span class="cstat-no" title="statement not covered" >						// Resolve ch indices for component j:</span>
-<span class="cstat-no" title="statement not covered" >						ih1 = optr( i-1, k, j, L, M, sch, och );  // Re(ch[j])</span>
-<span class="cstat-no" title="statement not covered" >						ih2 = optr( i, k, j, L, M, sch, och );    // Im(ch[j])</span>
+<span class="cstat-no" title="statement not covered" >						ih1 = optr( i-1, k, j, L, M, sch, och ); // Re(ch[j])</span>
+<span class="cstat-no" title="statement not covered" >						ih2 = optr( i, k, j, L, M, sch, och );   // Im(ch[j])</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >						// Resolve ch indices for conjugate component jc:</span>
 <span class="cstat-no" title="statement not covered" >						ih3 = optr( i-1, k, jc, L, M, sch, och ); // Re(ch[jc])</span>
 <span class="cstat-no" title="statement not covered" >						ih4 = optr( i, k, jc, L, M, sch, och );   // Im(ch[jc])</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >						// Resolve input-workspace indices for component j:</span>
-<span class="cstat-no" title="statement not covered" >						ic1 = iptr( i-1, k, j, L, M, sc1, oc1 );  // Re(component j)</span>
-<span class="cstat-no" title="statement not covered" >						ic2 = iptr( i, k, j, L, M, sc1, oc1 );    // Im(component j)</span>
+<span class="cstat-no" title="statement not covered" >						ic1 = iptr( i-1, k, j, L, M, sc1, oc1 ); // Re(component j)</span>
+<span class="cstat-no" title="statement not covered" >						ic2 = iptr( i, k, j, L, M, sc1, oc1 );   // Im(component j)</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >						// Resolve input-workspace indices for component jc:</span>
 <span class="cstat-no" title="statement not covered" >						ic3 = iptr( i-1, k, jc, L, M, sc1, oc1 ); // Re(component jc)</span>
@@ -2186,7 +2186,7 @@ function radfg( M, R, L, ML, cc, sc, oc, c1, sc1, oc1, c2, sc2, oc2, ch, sch, oc
 &nbsp;
 		// Advance the rotation factor by one step: W_l = W_{l-1} ⋅ W_1
 		ar1h = ( dcp * ar1 ) - ( dsp * ai1 ); // Re(W_l)
-		ai1 = ( dcp * ai1 ) + ( dsp * ar1 );   // Im(W_l)
+		ai1 = ( dcp * ai1 ) + ( dsp * ar1 );  // Im(W_l)
 		ar1 = ar1h;
 &nbsp;
 		// Accumulate the contributions from components 1 and R-1:
@@ -2216,7 +2216,7 @@ function radfg( M, R, L, ML, cc, sc, oc, c1, sc1, oc1, c2, sc2, oc2, ch, sch, oc
 &nbsp;
 			// Advance the nested rotation factor by one step: W_{l*j} = W_{l*(j-1)} ⋅ W_l
 			ar2h = ( dc2 * ar2 ) - ( ds2 * ai2 ); // Re(W_{l*j})
-			ai2 = ( dc2 * ai2 ) + ( ds2 * ar2 );   // Im(W_{l*j})
+			ai2 = ( dc2 * ai2 ) + ( ds2 * ar2 );  // Im(W_{l*j})
 			ar2 = ar2h;
 &nbsp;
 			// Accumulate the contributions from components j and jc:
@@ -2300,8 +2300,8 @@ function radfg( M, R, L, ML, cc, sc, oc, c1, sc1, oc1, c2, sc2, oc2, ch, sch, oc
 					im = M - i; // "mirror" harmonic index
 &nbsp;
 					// Resolve ch indices for component j:
-					ih1 = optr( i-1, k, j, L, M, sch, och );  // Re(ch[j])
-					ih2 = optr( i, k, j, L, M, sch, och );    // Im(ch[j])
+					ih1 = optr( i-1, k, j, L, M, sch, och ); // Re(ch[j])
+					ih2 = optr( i, k, j, L, M, sch, och );   // Im(ch[j])
 &nbsp;
 					// Resolve ch indices for conjugate component jc:
 					ih3 = optr( i-1, k, jc, L, M, sch, och ); // Re(ch[jc])
@@ -2330,8 +2330,8 @@ function radfg( M, R, L, ML, cc, sc, oc, c1, sc1, oc1, c2, sc2, oc2, ch, sch, oc
 <span class="cstat-no" title="statement not covered" >				im = M - i; // "mirror" harmonic index</span>
 <span class="cstat-no" title="statement not covered" >				for ( k = 0; k &lt; L; k++ ) {</span>
 <span class="cstat-no" title="statement not covered" >					// Resolve ch indices for component j:</span>
-<span class="cstat-no" title="statement not covered" >					ih1 = optr( i-1, k, j, L, M, sch, och );  // Re(ch[j])</span>
-<span class="cstat-no" title="statement not covered" >					ih2 = optr( i, k, j, L, M, sch, och );    // Im(ch[j])</span>
+<span class="cstat-no" title="statement not covered" >					ih1 = optr( i-1, k, j, L, M, sch, och ); // Re(ch[j])</span>
+<span class="cstat-no" title="statement not covered" >					ih2 = optr( i, k, j, L, M, sch, och );   // Im(ch[j])</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >					// Resolve ch indices for conjugate component jc:</span>
 <span class="cstat-no" title="statement not covered" >					ih3 = optr( i-1, k, jc, L, M, sch, och ); // Re(ch[jc])</span>
@@ -2365,7 +2365,7 @@ module.exports = radfg;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-12T15:34:21.951Z
+                at 2026-07-12T18:20:20.478Z
             </div>
         <script src="prettify.js"></script>
         <script>
