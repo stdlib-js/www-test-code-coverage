@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>207/207</span>
+                <span class='fraction'>211/211</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>207/207</span>
+                <span class='fraction'>211/211</span>
             </div>
         
             
@@ -270,7 +270,18 @@
 <a name='L205'></a><a href='#L205'>205</a>
 <a name='L206'></a><a href='#L206'>206</a>
 <a name='L207'></a><a href='#L207'>207</a>
-<a name='L208'></a><a href='#L208'>208</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -404,12 +415,13 @@
 <span class="cline-any cline-yes">582x</span>
 <span class="cline-any cline-yes">100x</span>
 <span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">100x</span>
 <span class="cline-any cline-yes">582x</span>
+<span class="cline-any cline-yes">1032x</span>
+<span class="cline-any cline-yes">1032x</span>
+<span class="cline-any cline-yes">1032x</span>
 <span class="cline-any cline-yes">1132x</span>
-<span class="cline-any cline-yes">1132x</span>
-<span class="cline-any cline-yes">1132x</span>
-<span class="cline-any cline-yes">1132x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -446,8 +458,6 @@
 <span class="cline-any cline-yes">1343x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1338x</span>
 <span class="cline-any cline-yes">1338x</span>
 <span class="cline-any cline-yes">1338x</span>
@@ -458,8 +468,6 @@
 <span class="cline-any cline-yes">1338x</span>
 <span class="cline-any cline-yes">1338x</span>
 <span class="cline-any cline-yes">1343x</span>
-<span class="cline-any cline-yes">110x</span>
-<span class="cline-any cline-yes">110x</span>
 <span class="cline-any cline-yes">110x</span>
 <span class="cline-any cline-yes">110x</span>
 <span class="cline-any cline-yes">1228x</span>
@@ -496,6 +504,12 @@
 */
 &nbsp;
 'use strict';
+&nbsp;
+// MODULES //
+&nbsp;
+var slice = require( '@stdlib/string/base/slice' );
+var format = require( '@stdlib/string/format' );
+&nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
@@ -571,6 +585,7 @@ var CHUNKMAP = [
 * @param {Collection} out - output array
 * @param {integer} stride - stride length
 * @param {NonNegativeInteger} offset - starting index
+* @throws {RangeError} first argument must be a string encoding a nonnegative integer smaller than 2^64
 * @returns {Collection} output array
 *
 * @example
@@ -594,8 +609,8 @@ function chunkedParse( str, radix, len1, len2, mult, out, stride, offset ) {
 		chunk1 = parseInt( str, radix );
 	} else {
 		// Otherwise use a big chunk1 (start-aligned) and a small chunk2 (end-aligned):
-		chunk1 = parseInt( str.slice( 0, -len2 ), radix ); // everything until last `len2` digits
-		chunk2 = parseInt( str.slice( -len2 ), radix ); // `len2` digits from the end
+		chunk1 = parseInt( slice( str, 0, -len2 ), radix ); // everything until last `len2` digits
+		chunk2 = parseInt( slice( str, -len2 ), radix ); // `len2` digits from the end
 	}
 &nbsp;
 	hi = ( chunk1 / TWO_32 ) &gt;&gt;&gt; 0; // integer division by 2^32
@@ -609,8 +624,7 @@ function chunkedParse( str, radix, len1, len2, mult, out, stride, offset ) {
 &nbsp;
 		// Check if too big for uint64...
 		if ( hi &gt;= TWO_32 ) {
-			hi = 0;
-			lo = 0;
+			throw new RangeError( format( 'invalid argument. First argument must be a string encoding a nonnegative integer smaller than 2^64. Value: `%s`.', str ) );
 		}
 	}
 	out[ offset ] = hi;
@@ -629,6 +643,8 @@ function chunkedParse( str, radix, len1, len2, mult, out, stride, offset ) {
 * @param {Collection} out - output array
 * @param {integer} stride - stride length
 * @param {NonNegativeInteger} offset - starting index
+* @throws {RangeError} first argument must be a string encoding a nonnegative integer smaller than 2^64
+* @throws {RangeError} second argument must be an integer on the interval [2, 36]
 * @returns {Collection} output array
 *
 * @example
@@ -651,9 +667,7 @@ function assign( str, radix, out, stride, offset ) {
 &nbsp;
 	// Check for an invalid radix...
 	if ( radix &lt; 2 || radix &gt; 36 ) {
-		out[ offset ] = 0;
-		out[ offset + stride ] = 0;
-		return out;
+		throw new RangeError( format( 'invalid argument. Second argument must be an integer on the interval [2, 36]. Value: `%s`.', radix ) );
 	}
 	// Compute the index into a pre-computed strided table:
 	idx = 3 * ( radix-2 );
@@ -665,15 +679,13 @@ function assign( str, radix, out, stride, offset ) {
 &nbsp;
 	// Check if too big for uint64...
 	if ( str.length &gt; len1+len2 ) {
-		out[ offset ] = 0;
-		out[ offset + stride ] = 0;
-		return out;
+		throw new RangeError( format( 'invalid argument. First argument must be a string encoding a nonnegative integer smaller than 2^64. Value: `%s`.', str ) );
 	}
 	// Fast path for bases 2, 4, and 16, thanks to evenly splittable 32-bit halves...
 	if ( radix === 2 || radix === 4 || radix === 16 ) {
 		len1 = ( len1 + len2 ) / 2;
-		out[ offset ] = parseInt( '0' + str.slice( 0, -len1 ), radix ); // add leading zero in case the higher slice is empty
-		out[ offset + stride ] = parseInt( str.slice( -len1 ), radix );
+		out[ offset ] = parseInt( '0' + slice( str, 0, -len1 ), radix ); // add leading zero in case the higher slice is empty
+		out[ offset + stride ] = parseInt( slice( str, -len1 ), radix );
 		return out;
 	}
 	// General path for other bases:
@@ -691,7 +703,7 @@ module.exports = assign;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-07T11:04:24.928Z
+                at 2026-07-12T20:19:42.913Z
             </div>
         <script src="prettify.js"></script>
         <script>
