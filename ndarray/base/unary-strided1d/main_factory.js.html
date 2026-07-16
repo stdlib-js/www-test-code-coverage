@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.45% </span>
+                <span class="strong">65.7% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>341/521</span>
+                <span class='fraction'>341/519</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.45% </span>
+                <span class="strong">65.7% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>341/521</span>
+                <span class='fraction'>341/519</span>
             </div>
         
             
@@ -582,9 +582,7 @@
 <a name='L517'></a><a href='#L517'>517</a>
 <a name='L518'></a><a href='#L518'>518</a>
 <a name='L519'></a><a href='#L519'>519</a>
-<a name='L520'></a><a href='#L520'>520</a>
-<a name='L521'></a><a href='#L521'>521</a>
-<a name='L522'></a><a href='#L522'>522</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L520'></a><a href='#L520'>520</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -924,8 +922,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1606,15 +1602,13 @@ function factory( options ) {
 <span class="cstat-no" title="statement not covered" >			// So long as iteration for each respective array always moves in the same direction (i.e., no mixed sign strides) and the memory layouts are the same, we can leverage cache-optimal (i.e., normal) nested loops without resorting to blocked iteration...</span>
 <span class="cstat-no" title="statement not covered" >			return UNARY[ K ]( fcn, arr, views, shl, slx, sly, ord === 1, strategyX, strategyY, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		// Check whether blocked iteration is prohibited due to a requirement that the order of element traversal match the memory layout of a provided input ndarray...</span>
-<span class="cstat-no" title="statement not covered" >		if ( OPTS.strictTraversalOrder &amp;&amp; K &lt;= MAX_DIMS ) {</span>
-<span class="cstat-no" title="statement not covered" >			// We have two choices here: (1) we could copy to contiguous memory or (2) we can perform normal nested loop iteration, even though this is not cache-optimal based on the assumption that, while this may hurt performance, for many cases (i.e., smaller ndarrays), this should be fine and likely better than performing a complete copy...</span>
-<span class="cstat-no" title="statement not covered" >			return UNARY[ K ]( fcn, arr, views, shl, slx, sly, ord === 1, strategyX, strategyY, opts ); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// At this point, we're either dealing with non-contiguous n-dimensional arrays, high dimensional n-dimensional arrays, and/or arrays having differing memory layouts, so our only hope is that we can still perform blocked iteration...</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		// Determine whether we can perform blocked iteration...</span>
 <span class="cstat-no" title="statement not covered" >		if ( K &lt;= MAX_DIMS ) {</span>
+<span class="cstat-no" title="statement not covered" >			// Check whether blocked iteration is prohibited due to a requirement that the order of element traversal match the memory layout of a provided input ndarray...</span>
+<span class="cstat-no" title="statement not covered" >			if ( OPTS.strictTraversalOrder ) {</span>
+<span class="cstat-no" title="statement not covered" >				// We have two choices here: (1) we could copy to contiguous memory or (2) we can perform normal nested loop iteration, even though this is not cache-optimal based on the assumption that, while this may hurt performance, for many cases (i.e., smaller ndarrays), this should be fine and likely better than performing a complete copy...</span>
+<span class="cstat-no" title="statement not covered" >				return UNARY[ K ]( fcn, arr, views, shl, slx, sly, ord === 1, strategyX, strategyY, opts ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			return BLOCKED_UNARY[ K-2 ]( fcn, arr, views, shl, slx, sly, strategyX, strategyY, opts ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Perform linear view iteration without regard for how data is stored in memory (i.e., take the slow path)...</span>
@@ -1633,7 +1627,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-20T05:54:44.377Z
+                at 2026-07-16T05:08:43.498Z
             </div>
         <script src="prettify.js"></script>
         <script>
