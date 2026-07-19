@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.91% </span>
+                <span class="strong">98.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>364/368</span>
+                <span class='fraction'>378/382</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.91% </span>
+                <span class="strong">98.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>364/368</span>
+                <span class='fraction'>378/382</span>
             </div>
         
             
@@ -431,7 +431,21 @@
 <a name='L366'></a><a href='#L366'>366</a>
 <a name='L367'></a><a href='#L367'>367</a>
 <a name='L368'></a><a href='#L368'>368</a>
-<a name='L369'></a><a href='#L369'>369</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L369'></a><a href='#L369'>369</a>
+<a name='L370'></a><a href='#L370'>370</a>
+<a name='L371'></a><a href='#L371'>371</a>
+<a name='L372'></a><a href='#L372'>372</a>
+<a name='L373'></a><a href='#L373'>373</a>
+<a name='L374'></a><a href='#L374'>374</a>
+<a name='L375'></a><a href='#L375'>375</a>
+<a name='L376'></a><a href='#L376'>376</a>
+<a name='L377'></a><a href='#L377'>377</a>
+<a name='L378'></a><a href='#L378'>378</a>
+<a name='L379'></a><a href='#L379'>379</a>
+<a name='L380'></a><a href='#L380'>380</a>
+<a name='L381'></a><a href='#L381'>381</a>
+<a name='L382'></a><a href='#L382'>382</a>
+<a name='L383'></a><a href='#L383'>383</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -504,6 +518,11 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">60x</span>
@@ -631,6 +650,9 @@
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
@@ -659,6 +681,12 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -852,7 +880,7 @@ var TOL2 = pow( TOL, 2 );
 * @private
 * @param {integer} I0 - first index
 * @param {integer} N0 - last index
-* @param {Float64Array} Z - qd array
+* @param {Float64Array} Z - QD array
 * @param {integer} strideZ - stride length for `Z`
 * @param {NonNegativeInteger} offsetZ - starting index of `Z`
 * @param {integer} PP - ping-pong flag (0 or 1)
@@ -895,6 +923,9 @@ function dlasq3( I0, N0, Z, strideZ, offsetZ, PP, IEEE, out, strideOut, offsetOu
 	var dn1;
 	var dn2;
 	var idx;
+	var inc;
+	var ix1;
+	var ix2;
 	var tau;
 	var dn;
 	var j4;
@@ -938,6 +969,8 @@ function dlasq3( I0, N0, Z, strideZ, offsetZ, PP, IEEE, out, strideOut, offsetOu
 	n0in = N0;
 	idx3 = offsetZ + ( strideZ * ( 4 * N0 ) );
 	idx4 = offsetZ + ( strideZ * ( 4 * I0 ) );
+&nbsp;
+	inc = 4 * strideZ;
 &nbsp;
 	// Check for deflation
 	while ( true ) {
@@ -998,9 +1031,12 @@ function dlasq3( I0, N0, Z, strideZ, offsetZ, PP, IEEE, out, strideOut, offsetOu
 	if ( dmin &lt;= 0.0 || N0 &lt; n0in ) {
 		if ( CBIAS * Z[ idx4 + ( strideZ * PP ) ] &lt; Z[ idx3 + ( strideZ * PP ) ] ) {
 			ipn4 = ( 4 * ( I0 + N0 ) ) + 7;
+&nbsp;
+			ix1 = offsetZ + ( strideZ * ( 4 * I0 ) );
+			ix2 = offsetZ + ( strideZ * ( ipn4 - ( 4 * I0 ) - 7 ) );
 			for ( j4 = ( 4 * I0 ) + 3; j4 &lt;= ( 2 * ( I0 + N0 ) ) + 1; j4 += 4 ) {
-				idx1 = offsetZ + ( strideZ * ( j4 - 3 ) );
-				idx2 = offsetZ + ( strideZ * ( ipn4 - j4 - 4 ) );
+				idx1 = ix1;
+				idx2 = ix2;
 &nbsp;
 				temp = Z[ idx1 ];
 				Z[ idx1 ] = Z[ idx2 ];
@@ -1026,14 +1062,20 @@ function dlasq3( I0, N0, Z, strideZ, offsetZ, PP, IEEE, out, strideOut, offsetOu
 				temp = Z[ idx1 ];
 				Z[ idx1 ] = Z[ idx2 ];
 				Z[ idx2 ] = temp;
+&nbsp;
+				ix1 += inc;
+				ix2 -= inc;
 			}
+&nbsp;
+			ix1 = strideZ * ( PP + 2 );
+			ix2 = strideZ * ( 3 - PP );
 			if ( ( N0 - I0 ) &lt;= 4 ) {
-				Z[ idx3 + ( strideZ * ( PP + 2 ) ) ] = Z[ idx4 + ( strideZ * ( PP + 2 ) ) ];
-				Z[ idx3 + ( strideZ * ( 3 - PP ) ) ] = Z[ idx4 + ( strideZ * ( 3 - PP ) ) ];
+				Z[ idx3 + ix1 ] = Z[ idx4 + ix1 ];
+				Z[ idx3 + ix2 ] = Z[ idx4 + ix2 ];
 			}
 			dmin2 = min( dmin2, Z[ idx3 + ( strideZ * ( PP + 2 ) ) ] );
-			Z[ idx3 + ( strideZ * ( PP + 2 ) ) ] = min(	Z[ idx3 + ( strideZ * ( PP + 2 ) ) ],	min( Z[ idx4 + ( strideZ * ( PP + 2 ) ) ],	Z[ idx4 + ( strideZ * ( PP + 6 ) ) ] ) );
-			Z[ idx3 + ( strideZ * ( 3 - PP ) ) ] = min(	Z[ idx3 + ( strideZ * ( 3 - PP ) ) ], min( Z[ idx4 + ( strideZ * ( 3 - PP ) ) ],	Z[ idx4 + ( strideZ * ( 7 - PP ) ) ] ) );
+			Z[ idx3 + ix1 ] = min(	Z[ idx3 + ix1 ],	min( Z[ idx4 + ix1 ],	Z[ idx4 + ( strideZ * ( PP + 6 ) ) ] ) );
+			Z[ idx3 + ix2 ] = min(	Z[ idx3 + ix2 ], min( Z[ idx4 + ix2 ],	Z[ idx4 + ( strideZ * ( 7 - PP ) ) ] ) );
 			qmax = max( qmax, Z[ idx4 + ( strideZ * ( PP ) ) ], Z[ idx4 + ( strideZ * ( PP + 4 ) ) ] );
 			dmin = -0.0;
 		}
@@ -1174,7 +1216,7 @@ module.exports = dlasq3;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-02T18:12:24.553Z
+                at 2026-07-19T16:45:17.512Z
             </div>
         <script src="prettify.js"></script>
         <script>
