@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for gsyr/lib/ndarray.js</title>
+    <title>Code coverage report for base/gsyr/lib/ndarray.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">gsyr/lib</a> ndarray.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/gsyr/lib</a> ndarray.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.49% </span>
+                <span class="strong">72.61% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/83</span>
+                <span class='fraction'>61/84</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.49% </span>
+                <span class="strong">72.61% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/83</span>
+                <span class='fraction'>61/84</span>
             </div>
         
             
@@ -146,7 +146,8 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -202,6 +203,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -251,7 +253,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
+var resolveStr = require( '@stdlib/blas/base/matrix-triangle-resolve-str' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
@@ -261,7 +263,7 @@ var base = require( './base.js' );
 /**
 * Performs the symmetric rank 1 operation `A = α*x*x^T + A` where `α` is a scalar, `x` is an `N` element vector, and `A` is an `N` by `N` symmetric matrix.
 *
-* @param {string} uplo - specifies whether the upper or lower triangular part of the symmetric matrix `A` should be referenced
+* @param {(integer|string)} uplo - specifies whether the upper or lower triangular part of the symmetric matrix `A` should be referenced
 * @param {NonNegativeInteger} N - number of elements along each dimension of `A`
 * @param {number} alpha - scalar constant
 * @param {NumericArray} x - input vector
@@ -286,7 +288,8 @@ var base = require( './base.js' );
 * // A =&gt; [ 2.0, 4.0, 6.0, 2.0, 5.0, 8.0, 3.0, 2.0, 10.0 ]
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function gsyr( uplo, N, alpha, x, strideX, offsetX, A, strideA1, strideA2, offsetA ) { // eslint-disable-line max-len</span></span>
-<span class="cstat-no" title="statement not covered" >	if ( !isMatrixTriangle( uplo ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	var u = resolveStr( uplo );</span>
+<span class="cstat-no" title="statement not covered" >	if ( u === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must specify whether to reference the lower or upper triangular matrix. Value: `%s`.', uplo ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( N &lt; 0 ) {</span>
@@ -305,7 +308,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	if ( N === 0 || alpha === 0.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return A;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return base( uplo, N, alpha, x, strideX, offsetX, A, strideA1, strideA2, offsetA ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	return base( u, N, alpha, x, strideX, offsetX, A, strideA1, strideA2, offsetA ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -319,16 +322,16 @@ module.exports = gsyr;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-06T04:19:27.602Z
+                at 2026-07-21T02:11:18.067Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     

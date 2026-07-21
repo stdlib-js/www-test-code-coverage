@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for sgemv/lib/sgemv.native.js</title>
+    <title>Code coverage report for base/sgemv/lib/sgemv.native.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">sgemv/lib</a> sgemv.native.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/sgemv/lib</a> sgemv.native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.59% </span>
+                <span class="strong">65.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>73/108</span>
+                <span class='fraction'>72/110</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.59% </span>
+                <span class="strong">65.45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>73/108</span>
+                <span class='fraction'>72/110</span>
             </div>
         
             
@@ -171,7 +171,9 @@
 <a name='L106'></a><a href='#L106'>106</a>
 <a name='L107'></a><a href='#L107'>107</a>
 <a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -238,7 +240,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -302,7 +306,6 @@
 // MODULES //
 &nbsp;
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
-var isMatrixTranspose = require( '@stdlib/blas/base/assert/is-transpose-operation' );
 var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var max = require( '@stdlib/math/base/special/fast/max' );
 var resolveOrder = require( '@stdlib/blas/base/layout-resolve-enum' );
@@ -317,7 +320,7 @@ var addon = require( './../src/addon.node' );
 * Performs one of the matrix-vector operations `y = α*A*x + β*y` or `y = α*A^T*x + β*y`, where `α` and `β` are scalars, `x` and `y` are vectors, and `A` is an `M` by `N` matrix.
 *
 * @param {string} order - storage layout
-* @param {string} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
+* @param {(integer|string)} trans - specifies whether `A` should be transposed, conjugate-transposed, or not transposed
 * @param {NonNegativeInteger} M - number of rows in the matrix `A`
 * @param {NonNegativeInteger} N - number of columns in the matrix `A`
 * @param {number} alpha - scalar constant
@@ -349,10 +352,13 @@ var addon = require( './../src/addon.node' );
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function sgemv( order, trans, M, N, alpha, A, LDA, x, strideX, beta, y, strideY ) { // eslint-disable-line max-params, max-len</span></span>
 <span class="cstat-no" title="statement not covered" >	var vala;</span>
+<span class="cstat-no" title="statement not covered" >	var t;</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isLayout( order ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( !isMatrixTranspose( trans ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	t = resolveTrans( trans );</span>
+<span class="cstat-no" title="statement not covered" >	if ( t === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must be a valid transpose operation. Value: `%s`.', trans ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( M &lt; 0 ) {</span>
@@ -379,7 +385,7 @@ var addon = require( './../src/addon.node' );
 <span class="cstat-no" title="statement not covered" >	if ( M === 0 || N === 0 || ( alpha === 0.0 &amp;&amp; beta === 1.0 ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		return y;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	addon( resolveOrder( order ), resolveTrans( trans ), M, N, alpha, A, LDA, x, strideX, beta, y, strideY ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	addon( resolveOrder( order ), t, M, N, alpha, A, LDA, x, strideX, beta, y, strideY ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >	return y;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -394,16 +400,16 @@ module.exports = sgemv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-06T04:19:27.602Z
+                at 2026-07-21T02:11:18.067Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     

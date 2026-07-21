@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dspmv/lib/dspmv.js</title>
+    <title>Code coverage report for base/dspmv/lib/dspmv.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">dspmv/lib</a> dspmv.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/dspmv/lib</a> dspmv.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">74.15% </span>
+                <span class="strong">72.52% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>66/89</span>
+                <span class='fraction'>66/91</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">74.15% </span>
+                <span class="strong">72.52% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>66/89</span>
+                <span class='fraction'>66/91</span>
             </div>
         
             
@@ -152,7 +152,9 @@
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -213,6 +215,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -264,7 +268,7 @@
 // MODULES //
 &nbsp;
 var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
-var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
+var resolveStr = require( '@stdlib/blas/base/matrix-triangle-resolve-str' );
 var stride2offset = require( '@stdlib/strided/base/stride2offset' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
@@ -276,7 +280,7 @@ var base = require( './base.js' );
 * Performs the matrix-vector operation `y = alpha*A*x + beta*y` where `alpha` and `beta` are scalars, `x` and `y` are `N` element vectors, and `A` is an `N` by `N` symmetric matrix supplied in packed form.
 *
 * @param {string} order - storage layout
-* @param {string} uplo - specifies whether the upper or lower triangular part of the symmetric matrix `A` is supplied
+* @param {(integer|string)} uplo - specifies whether the upper or lower triangular part of the symmetric matrix `A` is supplied
 * @param {NonNegativeInteger} N - number of elements along each dimension of `A`
 * @param {number} alpha - scalar constant
 * @param {Float64Array} AP - packed form of a symmetric matrix `A`
@@ -305,11 +309,13 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dspmv( order, uplo, N, alpha, AP, x, strideX, beta, y, strideY ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var offsetX;</span>
 <span class="cstat-no" title="statement not covered" >	var offsetY;</span>
+<span class="cstat-no" title="statement not covered" >	var u;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( !isLayout( order ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( !isMatrixTriangle( uplo ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	u = resolveStr( uplo );</span>
+<span class="cstat-no" title="statement not covered" >	if ( u === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. Second argument must specify whether the lower or upper triangular matrix is supplied. Value: `%s`.', uplo ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( N &lt; 0 ) {</span>
@@ -323,7 +329,7 @@ var base = require( './base.js' );
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	offsetX = stride2offset( N, strideX );</span>
 <span class="cstat-no" title="statement not covered" >	offsetY = stride2offset( N, strideY );</span>
-<span class="cstat-no" title="statement not covered" >	return base( order, uplo, N, alpha, AP, 0, x, strideX, offsetX, beta, y, strideY, offsetY ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >	return base( order, u, N, alpha, AP, 0, x, strideX, offsetX, beta, y, strideY, offsetY ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -337,16 +343,16 @@ module.exports = dspmv;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-06T04:19:27.602Z
+                at 2026-07-21T02:11:18.067Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     
