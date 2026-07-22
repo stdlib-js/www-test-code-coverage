@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>172/172</span>
+                <span class='fraction'>170/170</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>36/36</span>
+                <span class='fraction'>35/35</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>172/172</span>
+                <span class='fraction'>170/170</span>
             </div>
         
             
@@ -233,9 +233,7 @@
 <a name='L168'></a><a href='#L168'>168</a>
 <a name='L169'></a><a href='#L169'>169</a>
 <a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L171'></a><a href='#L171'>171</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -311,6 +309,7 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-yes">81x</span>
@@ -357,6 +356,14 @@
 <span class="cline-any cline-yes">43x</span>
 <span class="cline-any cline-yes">43x</span>
 <span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -365,11 +372,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">81x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">33x</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">40x</span>
@@ -382,21 +384,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">81x</span>
-<span class="cline-any cline-yes">37x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">37x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">39x</span>
 <span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">81x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">39x</span>
 <span class="cline-any cline-yes">39x</span>
 <span class="cline-any cline-yes">39x</span>
 <span class="cline-any cline-yes">39x</span>
@@ -489,7 +485,8 @@ function joinBetween( x, separators, options ) {
 	var opts;
 	var sep;
 	var shx;
-	var sh;
+	var shc;
+	var flg;
 	var M;
 	var p;
 	var s;
@@ -527,51 +524,48 @@ function joinBetween( x, separators, options ) {
 	}
 	shx = getShape( x );
 &nbsp;
+	// Resolve the complement shape...
+	if ( hasOwnProp( opts, 'dims' ) ) {
+		shc = nonCoreShape( shx, opts.dims );
+		flg = true;
+	} else {
+		shc = [];
+		flg = false;
+	}
 	// Broadcast prefix to the complement shape...
 	if ( isndarrayLike( p ) ) {
-		if ( hasOwnProp( opts, 'dims' ) ) {
-			prefix = maybeBroadcastArray( p, nonCoreShape( shx, opts.dims ) );
+		if ( flg ) {
+			prefix = maybeBroadcastArray( p, shc );
 		} else if ( ndims( p ) === 0 ) {
 			prefix = p;
 		} else {
 			throw new TypeError( format( 'invalid option. `%s` option must be a zero-dimensional ndarray when not specifying dimensions. Value: `%s`.', 'prefix', p ) );
 		}
 	} else {
-		if ( hasOwnProp( opts, 'dims' ) ) {
-			sh = nonCoreShape( shx, opts.dims );
-		} else {
-			sh = [];
-		}
-		prefix = broadcastScalar( p, 'generic', sh, getOrder( x ) );
+		prefix = broadcastScalar( p, 'generic', shc, getOrder( x ) );
 	}
 	// Broadcast suffix to the complement shape...
 	if ( isndarrayLike( s ) ) {
-		if ( hasOwnProp( opts, 'dims' ) ) {
-			suffix = maybeBroadcastArray( s, nonCoreShape( shx, opts.dims ) );
+		if ( flg ) {
+			suffix = maybeBroadcastArray( s, shc );
 		} else if ( ndims( s ) === 0 ) {
 			suffix = s;
 		} else {
 			throw new TypeError( format( 'invalid option. `%s` option must be a zero-dimensional ndarray when not specifying dimensions. Value: `%s`.', 'suffix', s ) );
 		}
 	} else {
-		if ( hasOwnProp( opts, 'dims' ) ) {
-			sh = nonCoreShape( shx, opts.dims );
-		} else {
-			sh = [];
-		}
-		suffix = broadcastScalar( s, 'generic', sh, getOrder( x ) );
+		suffix = broadcastScalar( s, 'generic', shc, getOrder( x ) );
 	}
 	// Broadcast separators to [ ...complementShape, M-1 ] where M is the number of elements along the reduced dimensions...
-	if ( hasOwnProp( opts, 'dims' ) ) {
-		sh = nonCoreShape( shx, opts.dims );
-		M = numel( shx ) / numel( sh );
+	if ( flg ) {
+		M = numel( shx ) / numel( shc );
 	} else {
-		sh = [];
 		M = numel( shx );
 	}
-	sh.push( M - 1 );
-	sep = maybeBroadcastArray( separators, sh );
-&nbsp;
+	// Copy the complement shape before appending, as the array is referenced by the broadcasted prefix and suffix ndarrays...
+	shc = shc.slice();
+	shc.push( M - 1 );
+	sep = maybeBroadcastArray( separators, shc );
 	return base( x, prefix, suffix, sep, opts );
 }
 &nbsp;
@@ -586,7 +580,7 @@ module.exports = joinBetween;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-15T05:29:07.426Z
+                at 2026-07-22T19:29:09.456Z
             </div>
         <script src="prettify.js"></script>
         <script>
