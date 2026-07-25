@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>110/110</span>
+                <span class='fraction'>108/108</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>110/110</span>
+                <span class='fraction'>108/108</span>
             </div>
         
             
@@ -171,9 +171,7 @@
 <a name='L106'></a><a href='#L106'>106</a>
 <a name='L107'></a><a href='#L107'>107</a>
 <a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -216,7 +214,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
@@ -237,11 +234,12 @@
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -275,8 +273,6 @@
 <span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -330,7 +326,6 @@ function dlaqsp( isUpper, N, AP, strideAP, offsetAP, S, strideS, offsetS, scond,
 	var thresh;
 	var small;
 	var large;
-	var equed;
 	var iap;
 	var cj;
 	var jc;
@@ -347,46 +342,45 @@ function dlaqsp( isUpper, N, AP, strideAP, offsetAP, S, strideS, offsetS, scond,
 	small = dlamch( 'Safe minimum' ) / dlamch( 'Precision' );
 	large = 1.0 / small;
 &nbsp;
+	// If the matrix is already well-conditioned (`scond` above threshold) and its largest entry is within safe bounds, no equilibration is needed...
 	if ( scond &gt;= thresh &amp;&amp; amax &gt;= small &amp;&amp; amax &lt;= large ) {
-		equed = 'N';
-	} else {
-		// Replace A by diag(S) * A * diag(S):
-		if ( isUpper ) {
-			// Upper triangle of A is stored:
-			jc = 0;
-			js = offsetS;
-			for ( j = 0; j &lt; N; j++ ) {
-				cj = S[ js ];
-				iap = offsetAP + ( jc * strideAP );
-				is = offsetS;
-				for ( i = 0; i &lt;= j; i++ ) {
-					AP[ iap ] *= cj * S[ is ];
-					iap += strideAP;
-					is += strideS;
-				}
-				jc += j + 1;
-				js += strideS;
-			}
-		} else {
-			// Lower triangle of A is stored:
-			jc = 0;
-			js = offsetS;
-			for ( j = 0; j &lt; N; j++ ) {
-				cj = S[ js ];
-				iap = offsetAP + ( jc * strideAP );
-				is = js;
-				for ( i = j; i &lt; N; i++ ) {
-					AP[ iap ] *= cj * S[ is ];
-					iap += strideAP;
-					is += strideS;
-				}
-				jc += N - j;
-				js += strideS;
-			}
-		}
-		equed = 'Y';
+		return 'N';
 	}
-	return equed;
+	// Replace A by diag(S) * A * diag(S):
+	if ( isUpper ) {
+		// Upper triangle of A is stored:
+		jc = 0;
+		js = offsetS;
+		for ( j = 0; j &lt; N; j++ ) {
+			cj = S[ js ];
+			iap = offsetAP + ( jc * strideAP );
+			is = offsetS;
+			for ( i = 0; i &lt;= j; i++ ) {
+				AP[ iap ] *= cj * S[ is ];
+				iap += strideAP;
+				is += strideS;
+			}
+			jc += j + 1;
+			js += strideS;
+		}
+	} else {
+		// Lower triangle of A is stored:
+		jc = 0;
+		js = offsetS;
+		for ( j = 0; j &lt; N; j++ ) {
+			cj = S[ js ];
+			iap = offsetAP + ( jc * strideAP );
+			is = js;
+			for ( i = j; i &lt; N; i++ ) {
+				AP[ iap ] *= cj * S[ is ];
+				iap += strideAP;
+				is += strideS;
+			}
+			jc += N - j;
+			js += strideS;
+		}
+	}
+	return 'Y';
 }
 &nbsp;
 &nbsp;
@@ -400,7 +394,7 @@ module.exports = dlaqsp;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-18T10:08:36.747Z
+                at 2026-07-25T15:42:59.821Z
             </div>
         <script src="prettify.js"></script>
         <script>
