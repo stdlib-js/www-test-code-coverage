@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.36% </span>
+                <span class="strong">98.02% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>148/152</span>
+                <span class='fraction'>149/152</span>
             </div>
         
             
@@ -1280,9 +1280,9 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">33x</span>
@@ -1420,8 +1420,8 @@
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">152x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">152x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -1508,8 +1508,8 @@
 <span class="cline-any cline-yes">149x</span>
 <span class="cline-any cline-yes">149x</span>
 <span class="cline-any cline-yes">149x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">140x</span>
 <span class="cline-any cline-yes">149x</span>
 <span class="cline-any cline-yes">103x</span>
@@ -1614,9 +1614,9 @@
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
@@ -1691,10 +1691,10 @@ function isUint64Array( value ) {
 	return (
 		value instanceof Uint64Array ||
 		(
+			typeof value === 'object' &amp;&amp;
 			value !== null &amp;&amp;
 			value.constructor.name === 'Uint64Array' <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp;</span>
 			value.BYTES_PER_ELEMENT === BYTES_PER_ELEMENT <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp;</span>
-			typeof value === 'object' <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp;</span>
 			typeof value._length === 'number' <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; // eslint-disable-line no-underscore-dangle</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >			// NOTE: we don't perform a more rigorous test here for a typed array for performance reasons, as robustly checking for a typed array instance could require walking the prototype tree and performing relatively expensive constructor checks...</span>
@@ -1950,7 +1950,7 @@ setReadOnly( Uint64Array, 'name', 'Uint64Array' );
 * @throws {TypeError} second argument must be a function
 * @throws {TypeError} an array element must be either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer
 * @throws {TypeError} an iterator must return either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer
-8 @throws {TypeError} when provided an iterator, a callback must return either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer
+* @throws {TypeError} when provided an iterator, a callback must return either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer
 * @returns {Uint64Array} 64-bit unsigned integer array
 *
 * @example
@@ -2059,7 +2059,7 @@ setReadOnly( Uint64Array, 'from', function from( src ) {
 		len = tmp.length / 2;
 		out = new this( len );
 		buf = out._buffer; // eslint-disable-line no-underscore-dangle
-		for ( i = 0; i &lt; len; i += 2 ) {
+		for ( i = 0; i &lt; tmp.length; i += 2 ) {
 			buf[ i+indices.HIGH ] = tmp[ i ];
 			buf[ i+indices.LOW ] = tmp[ i+1 ];
 		}
@@ -2121,7 +2121,7 @@ setReadOnlyAccessor( Uint64Array.prototype, 'buffer', function get() {
 });
 &nbsp;
 /**
- * Size (in bytes) of the array.
+* Size (in bytes) of the array.
 *
 * @name byteLength
 * @memberof Uint64Array.prototype
@@ -2139,7 +2139,7 @@ setReadOnlyAccessor( Uint64Array.prototype, 'byteLength', function get() {
 });
 &nbsp;
 /**
- * Offset (in bytes) of the array from the start of its underlying `ArrayBuffer`.
+* Offset (in bytes) of the array from the start of its underlying `ArrayBuffer`.
 *
 * @name byteOffset
 * @memberof Uint64Array.prototype
@@ -2410,7 +2410,7 @@ module.exports = Uint64Array;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-28T11:17:10.213Z
+                at 2026-07-28T20:43:57.338Z
             </div>
         <script src="prettify.js"></script>
         <script>
