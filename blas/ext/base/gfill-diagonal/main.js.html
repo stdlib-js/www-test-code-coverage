@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>84/84</span>
+                <span class='fraction'>80/80</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>84/84</span>
+                <span class='fraction'>80/80</span>
             </div>
         
             
@@ -143,11 +143,7 @@
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -198,34 +194,30 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -268,7 +260,7 @@ var ndarray = require( './ndarray.js' );
 * @param {string} order - storage layout
 * @param {integer} M - number of rows in `A`
 * @param {integer} N - number of columns in `A`
-* @param {integer} k - diagonal offset
+* @param {integer} k - starting index for the diagonal
 * @param {*} alpha - scalar constant
 * @param {Collection} A - input matrix
 * @param {integer} LDA - stride of the first dimension of `A` (a.k.a., leading dimension of the matrix `A`)
@@ -277,10 +269,10 @@ var ndarray = require( './ndarray.js' );
 * @returns {Collection} input matrix
 *
 * @example
-* var x = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
+* var A = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ];
 *
-* gfillDiagonal( 'row-major', 2, 3, 0, 5.0, x, 3 );
-* // x =&gt; [ 5.0, 2.0, 3.0, 4.0, 5.0, 6.0 ]
+* gfillDiagonal( 'row-major', 2, 3, 0, 7.0, A, 3 );
+* // A =&gt; [ 7.0, 2.0, 3.0, 4.0, 7.0, 6.0 ]
 */
 function gfillDiagonal( order, M, N, k, alpha, A, LDA ) {
 	var strideA1;
@@ -293,19 +285,15 @@ function gfillDiagonal( order, M, N, k, alpha, A, LDA ) {
 &nbsp;
 	if ( isColumnMajor( order ) ) {
 		s = M;
-	} else {
-		s = N;
-	}
-	if ( LDA &lt; max( 1, s ) ) {
-		throw new RangeError( format( 'invalid argument. Seventh argument must be greater than or equal to max(1,%d). Value: `%d`.', s, LDA ) );
-	}
-&nbsp;
-	if ( isColumnMajor( order ) ) {
 		strideA1 = 1;
 		strideA2 = LDA;
 	} else { // order === 'row-major'
+		s = N;
 		strideA1 = LDA;
 		strideA2 = 1;
+	}
+	if ( LDA &lt; max( 1, s ) ) {
+		throw new RangeError( format( 'invalid argument. Seventh argument must be greater than or equal to max(1,%d). Value: `%d`.', s, LDA ) );
 	}
 &nbsp;
 	return ndarray( M, N, k, alpha, A, strideA1, strideA2, 0 );
@@ -322,7 +310,7 @@ module.exports = gfillDiagonal;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-31T08:42:44.057Z
+                at 2026-07-31T10:25:03.089Z
             </div>
         <script src="prettify.js"></script>
         <script>
