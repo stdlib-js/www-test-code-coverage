@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ndarray/lib/index.js</title>
+    <title>Code coverage report for lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">ndarray/lib</a> index.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1338/1338</span>
+                <span class='fraction'>1356/1356</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1338/1338</span>
+                <span class='fraction'>1356/1356</span>
             </div>
         
             
@@ -1401,7 +1401,43 @@
 <a name='L1336'></a><a href='#L1336'>1336</a>
 <a name='L1337'></a><a href='#L1337'>1337</a>
 <a name='L1338'></a><a href='#L1338'>1338</a>
-<a name='L1339'></a><a href='#L1339'>1339</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L1339'></a><a href='#L1339'>1339</a>
+<a name='L1340'></a><a href='#L1340'>1340</a>
+<a name='L1341'></a><a href='#L1341'>1341</a>
+<a name='L1342'></a><a href='#L1342'>1342</a>
+<a name='L1343'></a><a href='#L1343'>1343</a>
+<a name='L1344'></a><a href='#L1344'>1344</a>
+<a name='L1345'></a><a href='#L1345'>1345</a>
+<a name='L1346'></a><a href='#L1346'>1346</a>
+<a name='L1347'></a><a href='#L1347'>1347</a>
+<a name='L1348'></a><a href='#L1348'>1348</a>
+<a name='L1349'></a><a href='#L1349'>1349</a>
+<a name='L1350'></a><a href='#L1350'>1350</a>
+<a name='L1351'></a><a href='#L1351'>1351</a>
+<a name='L1352'></a><a href='#L1352'>1352</a>
+<a name='L1353'></a><a href='#L1353'>1353</a>
+<a name='L1354'></a><a href='#L1354'>1354</a>
+<a name='L1355'></a><a href='#L1355'>1355</a>
+<a name='L1356'></a><a href='#L1356'>1356</a>
+<a name='L1357'></a><a href='#L1357'>1357</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -3345,6 +3381,15 @@ setReadOnly( ns, 'gcusumors', require( '@stdlib/blas/ext/base/ndarray/gcusumors'
 setReadOnly( ns, 'gcusumpw', require( '@stdlib/blas/ext/base/ndarray/gcusumpw' ) );
 &nbsp;
 /**
+* @name gfillEqual
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/blas/ext/base/ndarray/gfill-equal}
+*/
+setReadOnly( ns, 'gfillEqual', require( '@stdlib/blas/ext/base/ndarray/gfill-equal' ) );
+&nbsp;
+/**
 * @name gfillNotEqual
 * @memberof ns
 * @readonly
@@ -3741,6 +3786,15 @@ setReadOnly( ns, 'sfillNotEqual', require( '@stdlib/blas/ext/base/ndarray/sfill-
 setReadOnly( ns, 'sindexOf', require( '@stdlib/blas/ext/base/ndarray/sindex-of' ) );
 &nbsp;
 /**
+* @name sindexOfNotEqual
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/blas/ext/base/ndarray/sindex-of-not-equal}
+*/
+setReadOnly( ns, 'sindexOfNotEqual', require( '@stdlib/blas/ext/base/ndarray/sindex-of-not-equal' ) );
+&nbsp;
+/**
 * @name slastIndexOf
 * @memberof ns
 * @readonly
@@ -4084,16 +4138,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-31T07:01:49.740Z
+                at 2026-08-01T01:07:34.194Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     
