@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>74/74</span>
+                <span class='fraction'>98/98</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>74/74</span>
+                <span class='fraction'>98/98</span>
             </div>
         
             
@@ -137,7 +137,31 @@
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -203,9 +227,33 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">46x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -233,6 +281,8 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isTransposeOperation = require( '@stdlib/blas/base/assert/is-transpose-operation' );
+var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
 &nbsp;
@@ -240,6 +290,16 @@ var base = require( './base.js' );
 &nbsp;
 /**
 * Performs a matrix-matrix product of the form `B := alpha * A * X + beta * B` where `A` is a tridiagonal matrix, `B` and `X` are N by NRHS matrices, and `alpha` and `beta` are real scalars, each of which may be `0`, `1`, or `-1`, using alternative indexing semantics.
+*
+* ## Notes
+*
+* -   `DL` should have `N-1` indexed elements representing the sub-diagonal of `A`.
+* -   `D` should have `N` indexed elements representing the diagonal of `A`.
+* -   `DU` should have `N-1` indexed elements representing the super-diagonal of `A`.
+* -   As `A` is a real matrix, a conjugate transpose is equivalent to a transpose.
+* -   `alpha` must be `0`, `1`, or `-1`; otherwise, it is assumed to be `0`.
+* -   `beta` must be `0`, `1`, or `-1`; otherwise, it is assumed to be `1`.
+* -   `B` is overwritten and returned; `DL`, `D`, `DU`, and `X` are left unchanged.
 *
 * @param {string} trans - specifies the operation applied to `A`
 * @param {NonNegativeInteger} N - order of the matrix `A`
@@ -263,6 +323,9 @@ var base = require( './base.js' );
 * @param {integer} strideB1 - stride of the first dimension of `B`
 * @param {integer} strideB2 - stride of the second dimension of `B`
 * @param {NonNegativeInteger} offsetB - starting index of `B`
+* @throws {TypeError} first argument must be a valid transpose operation
+* @throws {RangeError} second argument must be a nonnegative integer
+* @throws {RangeError} third argument must be a nonnegative integer
 * @returns {Float64Array} `B`
 *
 * @example
@@ -278,6 +341,15 @@ var base = require( './base.js' );
 * // B =&gt; &lt;Float64Array&gt;[ 3.0, 5.0, 5.0 ]
 */
 function dlagtm( trans, N, NRHS, alpha, DL, strideDL, offsetDL, D, strideD, offsetD, DU, strideDU, offsetDU, X, strideX1, strideX2, offsetX, beta, B, strideB1, strideB2, offsetB ) { // eslint-disable-line max-len, max-params
+	if ( !isTransposeOperation( trans ) ) {
+		throw new TypeError( format( 'invalid argument. First argument must be a valid transpose operation. Value: `%s`.', trans ) );
+	}
+	if ( N &lt; 0 ) {
+		throw new RangeError( format( 'invalid argument. Second argument must be a nonnegative integer. Value: `%d`.', N ) );
+	}
+	if ( NRHS &lt; 0 ) {
+		throw new RangeError( format( 'invalid argument. Third argument must be a nonnegative integer. Value: `%d`.', NRHS ) );
+	}
 	return base( trans, N, NRHS, alpha, DL, strideDL, offsetDL, D, strideD, offsetD, DU, strideDU, offsetDU, X, strideX1, strideX2, offsetX, beta, B, strideB1, strideB2, offsetB ); // eslint-disable-line max-len
 }
 &nbsp;
@@ -292,7 +364,7 @@ module.exports = dlagtm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-01T22:55:43.940Z
+                at 2026-08-02T01:58:29.817Z
             </div>
         <script src="prettify.js"></script>
         <script>
