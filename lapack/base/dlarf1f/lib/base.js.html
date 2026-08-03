@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.08% </span>
+                <span class="strong">50.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>94/184</span>
+                <span class='fraction'>94/185</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.08% </span>
+                <span class="strong">50.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>94/184</span>
+                <span class='fraction'>94/185</span>
             </div>
         
             
@@ -247,7 +247,8 @@
 <a name='L182'></a><a href='#L182'>182</a>
 <a name='L183'></a><a href='#L183'>183</a>
 <a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -339,6 +340,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -541,16 +543,17 @@ var dscal = require( '@stdlib/blas/base/dscal' ).ndarray;
 <span class="cstat-no" title="statement not covered" >	i = offsetV + ( ( lastv-1 ) * strideV );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Move `i` to the last non-zero element in `V`, where we assume that V[0] = 1, and it is not stored, so we shouldn't access it...</span>
-<span class="cstat-no" title="statement not covered" >	while ( lastv &gt; 0 &amp;&amp; V[ i ] === 0.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >	while ( lastv &gt; 1 &amp;&amp; V[ i ] === 0.0 ) { // `lastv` should be greater than 1 as it represents the last one-based index with a zero value</span>
 <span class="cstat-no" title="statement not covered" >		lastv -= 1;</span>
 <span class="cstat-no" title="statement not covered" >		i -= strideV;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( isLeftSide( side ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		// Scan for the last non-zero column in `C`:</span>
-<span class="cstat-no" title="statement not covered" >		lastc = iladlc( lastv + 1, N, C, strideC1, strideC2, offsetC ) + 1; // adjust by `+1` to account for the difference between zero-based and one-based indexing</span>
+<span class="cstat-no" title="statement not covered" >		lastc = iladlc( lastv, N, C, strideC1, strideC2, offsetC ) + 1; // adjust by `+1` to account for the difference between zero-based and one-based indexing</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		// Scan for the last non-zero row in `C`:</span>
-<span class="cstat-no" title="statement not covered" >		lastc = iladlr( M, lastv + 1, C, strideC1, strideC2, offsetC ) + 1; // // adjust by `+1` to account for the difference between zero-based and one-based indexing</span>
+<span class="cstat-no" title="statement not covered" >		lastc = iladlr( M, lastv, C, strideC1, strideC2, offsetC ) + 1; // adjust by `+1` to account for the difference between zero-based and one-based indexing</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Return `C` unchanged if all elements in `C` are zero...</span>
 <span class="cstat-no" title="statement not covered" >	if ( lastc === 0 ) {</span>
@@ -560,7 +563,7 @@ var dscal = require( '@stdlib/blas/base/dscal' ).ndarray;
 <span class="cstat-no" title="statement not covered" >		// Form: H*C</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// If `lastv = 1`, this means `V = 1`, so we just need to compute `C = H*C = (1-tau)*C`...</span>
-<span class="cstat-no" title="statement not covered" >		if ( lastv === 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( lastv === 1 ) {</span>
 <span class="cstat-no" title="statement not covered" >			// C[0,0:lastc] = (1-tau)*C[0,0:lastc]</span>
 <span class="cstat-no" title="statement not covered" >			dscal( lastc, 1.0-tau, C, strideC2, offsetC ); // scale the first row</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
@@ -587,7 +590,7 @@ var dscal = require( '@stdlib/blas/base/dscal' ).ndarray;
 <span class="cstat-no" title="statement not covered" >	// Form: C*H</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// If `N = 1`, then `V = 1`, so we just need to compute `C = CH = C*(1-tau)`...</span>
-<span class="cstat-no" title="statement not covered" >	if ( lastv === 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( lastv === 1 ) {</span>
 <span class="cstat-no" title="statement not covered" >		// C[0:lastc,0] = ( 1-tau ) * C[0:lastc,0]</span>
 <span class="cstat-no" title="statement not covered" >		dscal( lastc, 1.0-tau, C, strideC1, offsetC ); // scale the first column</span>
 <span class="cstat-no" title="statement not covered" >		return C;</span>
@@ -622,7 +625,7 @@ module.exports = dlarf1f;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-22T04:09:59.121Z
+                at 2026-08-03T02:05:49.613Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
