@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for rational_pq.js</title>
+    <title>Code coverage report for asymptotic_expansion.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> rational_pq.js</h1>
+        <h1><a href="index.html">All files</a> asymptotic_expansion.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>64/69</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>64/69</span>
+                <span class='fraction'>64/64</span>
             </div>
         
             
@@ -127,12 +127,7 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,28 +169,23 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-yes">1192x</span>
-<span class="cline-any cline-yes">1192x</span>
-<span class="cline-any cline-yes">1192x</span>
-<span class="cline-any cline-yes">1192x</span>
-<span class="cline-any cline-yes">1192x</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1192x</span>
-<span class="cline-any cline-yes">1196x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
+<span class="cline-any cline-yes">315x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -217,59 +207,54 @@
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
+*
+*
+* ## Notice
+*
+* The original C++ code and copyright notice are from the [Boost library]{@link https://www.boost.org/doc/libs/1_88_0/boost/math/special_functions/digamma.hpp}. The implementation follows the original, but has been modified for JavaScript.
+*
+* ```text
+* (C) Copyright John Maddock 2006.
+*
+* Use, modification and distribution are subject to the
+* Boost Software License, Version 1.0. (See accompanying file
+* LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
+* ```
 */
 &nbsp;
-/* This is a generated file. Do not edit directly. */
 'use strict';
 &nbsp;
 // MODULES //
 &nbsp;
-var float64ToFloat32 = require( '@stdlib/number/float64/base/to-float32' );
+var f32 = require( '@stdlib/number/float64/base/to-float32' );
+var lnf = require( '@stdlib/math/base/special/lnf' );
+var polyval = require( './polyval_p.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates a rational function (i.e., the ratio of two polynomials described by the coefficients stored in \\(P\\) and \\(Q\\)).
-*
-* ## Notes
-*
-* -   Coefficients should be sorted in ascending degree.
-* -   The implementation uses [Horner's rule][horners-method] for efficient computation.
-*
-* [horners-method]: https://en.wikipedia.org/wiki/Horner%27s_method
+* Evaluates the digamma function via asymptotic expansion.
 *
 * @private
-* @param {number} x - value at which to evaluate the rational function
-* @returns {number} evaluated rational function
+* @param {number} x - input value
+* @returns {number} function value
 */
-function evalrational( x ) {
-	var ax;
-	var s1;
-	var s2;
-	if ( x === 0.0 ) {
-		return 0.2547985017299652;
-	}
-	if ( x &lt; 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		ax = -x;</span>
-	} else {
-		ax = x;
-	}
-	if ( ax &lt;= 1.0 ) {
-		s1 = float64ToFloat32(0.2547985017299652 + float64ToFloat32(x * float64ToFloat32(-0.4498133063316345 + float64ToFloat32(x * float64ToFloat32(-0.43916937708854675 + float64ToFloat32(x * -0.06104176491498947)))))); // eslint-disable-line max-len
-		s2 = float64ToFloat32(1.0 + float64ToFloat32(x * float64ToFloat32(1.5890202522277832 + float64ToFloat32(x * float64ToFloat32(0.6534125208854675 + float64ToFloat32(x * 0.06385169178247452)))))); // eslint-disable-line max-len
-	}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
-<span class="cstat-no" title="statement not covered" >		x = float64ToFloat32( 1.0 / x );</span>
-<span class="cstat-no" title="statement not covered" >		s1 = float64ToFloat32(-0.06104176491498947 + float64ToFloat32(x * float64ToFloat32(-0.43916937708854675 + float64ToFloat32(x * float64ToFloat32(-0.4498133063316345 + float64ToFloat32(x * 0.2547985017299652)))))); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >		s2 = float64ToFloat32(0.06385169178247452 + float64ToFloat32(x * float64ToFloat32(0.6534125208854675 + float64ToFloat32(x * float64ToFloat32(1.5890202522277832 + float64ToFloat32(x * 1.0)))))); // eslint-disable-line max-len</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-	return float64ToFloat32( s1 / s2 );
+function digammaf( x ) {
+	var xc;
+	var y;
+	var z;
+&nbsp;
+	xc = f32( x - 1.0 );
+	y = f32( lnf( xc ) + f32( 1.0 / f32( 2.0 * xc ) ) );
+	z = f32( 1.0 / f32( xc * xc ) );
+	return f32( y - f32( z * polyval( z ) ) );
 }
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = evalrational;
+module.exports = digammaf;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
