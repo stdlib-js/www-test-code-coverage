@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.28% </span>
+                <span class="strong">75.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>103/118</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>89/118</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
+                <span class="quiet">Branches</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.28% </span>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">75.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>103/118</span>
+                <span class='fraction'>89/118</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -265,17 +265,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -283,17 +272,28 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -383,35 +383,35 @@ var rightBackwardRows = require( './right_backward_rows.js' );
 *
 * // C =&gt; &lt;Float64Array&gt;[ -1350.00, -1400.00, -1450.00, -30961.00, -32102.00, -33243.00, -266612.00, -275464.00, -284316.00 ]
 */
-function dlarfb( side, trans, direct, storev, M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork ) {
-	// Quick return if possible
-	if ( M &lt;= 0 || N &lt;= 0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dlarfb( side, trans, direct, storev, M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	// Quick return if possible</span>
+<span class="cstat-no" title="statement not covered" >	if ( M &lt;= 0 || N &lt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return C;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-&nbsp;
-	if ( side === 'left' ) {
-		if ( storev === 'columns' ) {
-			if ( direct === 'forward' ) {
-				return leftForwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );
-			}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >			return leftBackwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	if ( side === 'left' ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( storev === 'columns' ) {</span>
+<span class="cstat-no" title="statement not covered" >			if ( direct === 'forward' ) {</span>
+<span class="cstat-no" title="statement not covered" >				return leftForwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			return leftBackwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		if ( direct === 'forward' ) {</span>
 <span class="cstat-no" title="statement not covered" >			return leftForwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		return leftBackwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	if ( storev === 'columns' ) {
-		if ( direct === 'forward' ) {
-			return rightForwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );
-		}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >		return rightBackwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span></span>
+<span class="cstat-no" title="statement not covered" >	if ( storev === 'columns' ) {</span>
+<span class="cstat-no" title="statement not covered" >		if ( direct === 'forward' ) {</span>
+<span class="cstat-no" title="statement not covered" >			return rightForwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		return rightBackwardColumns( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >	if ( direct === 'forward' ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	if ( direct === 'forward' ) {</span>
 <span class="cstat-no" title="statement not covered" >		return rightForwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return rightBackwardRows( M, N, K, V, strideV1, strideV2, offsetV, T, strideT1, strideT2, offsetT, C, strideC1, strideC2, offsetC, work, strideWork1, strideWork2, offsetWork, trans );</span>
-}
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -424,7 +424,7 @@ module.exports = dlarfb;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-18T13:36:19.309Z
+                at 2026-08-18T14:16:52.154Z
             </div>
         <script src="prettify.js"></script>
         <script>
