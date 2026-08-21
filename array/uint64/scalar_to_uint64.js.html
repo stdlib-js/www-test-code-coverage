@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for indices.js</title>
+    <title>Code coverage report for scalar_to_uint64.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> indices.js</h1>
+        <h1><a href="index.html">All files</a> scalar_to_uint64.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.61% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>44/47</span>
+                <span class='fraction'>51/51</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.61% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>44/47</span>
+                <span class='fraction'>51/51</span>
             </div>
         
             
@@ -110,7 +110,11 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -145,13 +149,17 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">211x</span>
+<span class="cline-any cline-yes">211x</span>
+<span class="cline-any cline-yes">88x</span>
+<span class="cline-any cline-yes">88x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">171x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">211x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -179,31 +187,35 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isLittleEndian = require( '@stdlib/assert/is-little-endian' );
+var isUint64 = require( '@stdlib/assert/is-uint64' );
+var Uint64 = require( '@stdlib/number/uint64/ctor' );
+var format = require( '@stdlib/string/format' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
-var indices;
-var HIGH;
-var LOW;
-&nbsp;
-if ( isLittleEndian === true ) {
-	HIGH = 1; // second index
-	LOW = 0;  // first index
-}<span class="branch-0 cbranch-no" title="branch not covered" > else {</span>
-<span class="cstat-no" title="statement not covered" >	HIGH = 0; // first index</span>
-<span class="cstat-no" title="statement not covered" >	LOW = 1;  // second index</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-indices = {
-	'HIGH': HIGH,
-	'LOW': LOW
-};
+/**
+* Converts a value to a 64-bit unsigned integer.
+*
+* @private
+* @param {*} value - value to convert
+* @returns {(Uint64|TypeError)} 64-bit unsigned integer or an error
+*/
+function scalarToUint64( value ) {
+	if ( isUint64( value ) ) {
+		return value;
+	}
+	try {
+		return new Uint64( value );
+	} catch ( err ) { // eslint-disable-line no-unused-vars
+		return new TypeError( format( 'invalid argument. Value must be either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer. Value: `%s`.', value ) );
+	}
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = indices;
+module.exports = scalarToUint64;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
