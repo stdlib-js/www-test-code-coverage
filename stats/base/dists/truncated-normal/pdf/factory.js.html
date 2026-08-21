@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.86% </span>
+                <span class="strong">66.98% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>72/111</span>
+                <span class='fraction'>71/106</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.86% </span>
+                <span class="strong">66.98% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>72/111</span>
+                <span class='fraction'>71/106</span>
             </div>
         
             
@@ -169,12 +169,7 @@
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a>
-<a name='L112'></a><a href='#L112'>112</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -240,11 +235,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -309,11 +299,10 @@
 &nbsp;
 var constantFunction = require( '@stdlib/utils/constant-function' );
 var exp = require( '@stdlib/math/base/special/exp' );
-var pow = require( '@stdlib/math/base/special/pow' );
+var abs2 = require( '@stdlib/math/base/special/abs2' );
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var sqrt = require( '@stdlib/math/base/special/sqrt' );
 var normal = require( '@stdlib/stats/base/dists/normal/cdf' ).factory;
-var PI = require( '@stdlib/constants/float64/pi' );
+var SQRT_TWO_PI = require( '@stdlib/constants/float64/sqrt-two-pi' );
 &nbsp;
 &nbsp;
 // VARIABLES //
@@ -353,9 +342,7 @@ var normalCDF = normal( 0.0, 1.0 );
 * // returns 0.0
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function factory( a, b, mu, sigma ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var s2x2;</span>
 <span class="cstat-no" title="statement not covered" >	var A;</span>
-<span class="cstat-no" title="statement not covered" >	var B;</span>
 <span class="cstat-no" title="statement not covered" >	var C;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if (</span>
@@ -368,9 +355,7 @@ var normalCDF = normal( 0.0, 1.0 );
 <span class="cstat-no" title="statement not covered" >	) {</span>
 <span class="cstat-no" title="statement not covered" >		return constantFunction( NaN );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	s2x2 = 2.0 * pow( sigma, 2.0 );</span>
-<span class="cstat-no" title="statement not covered" >	A = 1.0 / ( sqrt( s2x2 * PI ) );</span>
-<span class="cstat-no" title="statement not covered" >	B = -1.0 / ( s2x2 );</span>
+<span class="cstat-no" title="statement not covered" >	A = 1.0 / ( sigma * SQRT_TWO_PI );</span>
 <span class="cstat-no" title="statement not covered" >	C = normalCDF( (b-mu)/sigma ) - normalCDF( (a-mu)/sigma );</span>
 <span class="cstat-no" title="statement not covered" >	return pdf;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -388,7 +373,7 @@ var normalCDF = normal( 0.0, 1.0 );
 <span class="cstat-no" title="statement not covered" >		if ( x &lt; a || x &gt; b ) {</span>
 <span class="cstat-no" title="statement not covered" >			return 0.0;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return A * exp( B * pow( x - mu, 2.0 ) ) / C;</span>
+<span class="cstat-no" title="statement not covered" >		return A * exp( -0.5 * abs2( ( x - mu ) / sigma ) ) / C;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -403,7 +388,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-21T22:52:04.324Z
+                at 2026-08-21T00:30:09.868Z
             </div>
         <script src="prettify.js"></script>
         <script>
