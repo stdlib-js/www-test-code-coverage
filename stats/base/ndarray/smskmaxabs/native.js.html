@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="index.html">All files</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.06% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>64/64</span>
+                <span class='fraction'>58/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">92.06% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>64/64</span>
+                <span class='fraction'>58/63</span>
             </div>
         
             
@@ -126,8 +126,7 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -180,12 +179,11 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -213,11 +211,9 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
-var getStride = require( '@stdlib/ndarray/base/stride' );
-var getOffset = require( '@stdlib/ndarray/base/offset' );
+var serialize = require( '@stdlib/ndarray/base/serialize-meta-data' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var strided = require( '@stdlib/stats/strided/smskmaxabs' ).ndarray;
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -230,8 +226,9 @@ var strided = require( '@stdlib/stats/strided/smskmaxabs' ).ndarray;
 * -   The function expects the following ndarrays:
 *
 *     -   a one-dimensional input ndarray.
-*     -   a one-dimensional mask ndarray.
+*     -   a mask ndarray.
 *
+* @private
 * @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing ndarrays
 * @returns {number} maximum absolute value
 *
@@ -245,11 +242,11 @@ var strided = require( '@stdlib/stats/strided/smskmaxabs' ).ndarray;
 * var v = smskmaxabs( [ x, mask ] );
 * // returns 5.0
 */
-function smskmaxabs( arrays ) {
-	var mask = arrays[ 1 ];
-	var x = arrays[ 0 ];
-	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ), getData( mask ), getStride( mask, 0 ), getOffset( mask ) ); // eslint-disable-line max-len
-}
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function smskmaxabs( arrays ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var mask = arrays[ 1 ];</span>
+<span class="cstat-no" title="statement not covered" >	var x = arrays[ 0 ];</span>
+<span class="cstat-no" title="statement not covered" >	return addon( getData( x ), serialize( x ), getData( mask ), serialize( mask ) ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
