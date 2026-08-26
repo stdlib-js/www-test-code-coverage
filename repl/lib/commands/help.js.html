@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.35% </span>
+                <span class="strong">68.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>108/158</span>
+                <span class='fraction'>109/159</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.35% </span>
+                <span class="strong">68.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>108/158</span>
+                <span class='fraction'>109/159</span>
             </div>
         
             
@@ -221,7 +221,9 @@
 <a name='L156'></a><a href='#L156'>156</a>
 <a name='L157'></a><a href='#L157'>157</a>
 <a name='L158'></a><a href='#L158'>158</a>
-<a name='L159'></a><a href='#L159'>159</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -407,7 +409,8 @@ var isString = require( '@stdlib/assert/is-string' ).isPrimitive;
 var isFunction = require( '@stdlib/assert/is-function' );
 var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var alias2help = require( '@stdlib/repl/help' );
-var indexOf = require( './../index_of.js' );
+var indexOf = require( '@stdlib/blas/ext/base/gindex-of' ).ndarray;
+var format = require( '@stdlib/string/format' );
 var findUniqueEntry = require( './../find_unique_entry.js' );
 var alias2string = require( './../alias_to_string.js' );
 var HELP_TEXT = require( './../help_text.js' );
@@ -455,7 +458,7 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >				}</span>
 			}
 			if ( !out ) {
-				i = indexOf( repl._contextVars.length, repl._contextVars, 2, 0, alias ); // eslint-disable-line max-len
+				i = indexOf( repl._contextVars.length, alias, repl._contextVars, 2, 0 ); // eslint-disable-line max-len
 				if ( i &gt;= 0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >					out = DOCS.help[ alias ];</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
@@ -465,7 +468,7 @@ function command( repl, cmds ) {
 				out = alias2help( alias );
 			}
 			if ( !out ) {
-				i = indexOf( repl._userdocs.length/3, repl._userdocs, 3, 0, alias ); // eslint-disable-line max-len
+				i = indexOf( repl._userdocs.length/3, alias, repl._userdocs, 3, 0 ); // eslint-disable-line max-len
 				if ( i &gt;= 0 ) {
 					out = repl._userdocs[ i+2 ].text;
 				}
@@ -488,9 +491,9 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >				hasOwnProp( alias, 'global' ) &amp;&amp;</span>
 <span class="cstat-no" title="statement not covered" >				alias.global === alias</span>
 <span class="cstat-no" title="statement not covered" >			) {</span>
-<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, repl._contextVars, 2, 1, repl._context.global ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, repl._context.global, repl._contextVars, 2, 1 ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >			} else {</span>
-<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, repl._contextVars, 2, 1, alias ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, alias, repl._contextVars, 2, 1 ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >				out = DOCS.help[ repl._contextVars[ i-1 ] ];</span>
@@ -498,21 +501,21 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >		}</span>
 		// If provided an `alias` which is not a string or we failed to resolve a help text based on the provided string value, we try to resolve a string alias (and subsequently a corresponding help text) by searching the list of cached references of global variables/properties...
 		if ( !out ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >			i = indexOf( N/2, aliases, 2, 1, alias );</span>
+<span class="cstat-no" title="statement not covered" >			i = indexOf( N/2, alias, aliases, 2, 1 );</span>
 <span class="cstat-no" title="statement not covered" >			if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >				out = alias2help( aliases[ i-1 ] );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 		// Try searching user-defined documentation for a matching object reference...
 		if ( !out ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >			i = indexOf( repl._userdocs.length/3, repl._userdocs, 3, 1, alias );</span>
+<span class="cstat-no" title="statement not covered" >			i = indexOf( repl._userdocs.length/3, alias, repl._userdocs, 3, 1 );</span>
 <span class="cstat-no" title="statement not covered" >			if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >				out = repl._userdocs[ i+1 ].text;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 		// If we failed to resolve help text and the provided value is an object, try finding a provided value's constructor (e.g., if provided a `Uint32Array`, try finding the documentation for `Uint32Array`)...
 		if ( !out <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp; typeof alias === 'object' <span class="branch-0 cbranch-no" title="branch not covered" ></span>&amp;&amp; alias !== null <span class="branch-0 cbranch-no" title="branch not covered" ></span>&amp;&amp; alias.constructor </span>) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >			i = indexOf( N/2, aliases, 2, 1, alias.constructor );</span>
+<span class="cstat-no" title="statement not covered" >			i = indexOf( N/2, alias.constructor, aliases, 2, 1 );</span>
 <span class="cstat-no" title="statement not covered" >			if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >				out = alias2help( aliases[ i-1 ] );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
@@ -529,7 +532,7 @@ function command( repl, cmds ) {
 			repl._ostream.write( out+'\n' );
 			return;
 		}
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >		repl._ostream.write( 'Error: no help information available. Alias: `'+alias2string( alias )+'`.\n' );</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >		repl._ostream.write( format( 'Error: no help information available. Alias: `%s`.\n', alias2string( alias ) ) );</span></span>
 	}
 }
 &nbsp;
@@ -544,7 +547,7 @@ module.exports = command;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-06T22:54:51.851Z
+                at 2026-08-26T08:16:20.115Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

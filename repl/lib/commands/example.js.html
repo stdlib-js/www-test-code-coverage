@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.68% </span>
+                <span class="strong">34.04% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/187</span>
+                <span class='fraction'>64/188</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.68% </span>
+                <span class="strong">34.04% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/187</span>
+                <span class='fraction'>64/188</span>
             </div>
         
             
@@ -250,7 +250,9 @@
 <a name='L185'></a><a href='#L185'>185</a>
 <a name='L186'></a><a href='#L186'>186</a>
 <a name='L187'></a><a href='#L187'>187</a>
-<a name='L188'></a><a href='#L188'>188</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -467,7 +469,8 @@ var hasOwnProp = require( '@stdlib/assert/has-own-property' );
 var alias2example = require( '@stdlib/repl/code-blocks' );
 var RE_EOL = require( '@stdlib/regexp/eol' ).REGEXP;
 var nextTick = require( '@stdlib/utils/next-tick' );
-var indexOf = require( './../index_of.js' );
+var indexOf = require( '@stdlib/blas/ext/base/gindex-of' ).ndarray;
+var format = require( '@stdlib/string/format' );
 var findUniqueEntry = require( './../find_unique_entry.js' );
 var alias2string = require( './../alias_to_string.js' );
 var DOCS = require( './../repl_docs.js' );
@@ -513,7 +516,7 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			if ( !out ) {</span>
-<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, repl._contextVars, 2, 0, alias ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, alias, repl._contextVars, 2, 0 ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >				if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >					out = DOCS.example[ alias ];</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
@@ -540,9 +543,9 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >				hasOwnProp( alias, 'global' ) &amp;&amp;</span>
 <span class="cstat-no" title="statement not covered" >				alias.global === alias</span>
 <span class="cstat-no" title="statement not covered" >			) {</span>
-<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, repl._contextVars, 2, 1, repl._context.global ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, repl._context.global, repl._contextVars, 2, 1 ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >			} else {</span>
-<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, repl._contextVars, 2, 1, alias ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" >				i = indexOf( repl._contextVars.length, alias, repl._contextVars, 2, 1 ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >				out = DOCS.example[ repl._contextVars[ i-1 ] ];</span>
@@ -550,7 +553,7 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// If provided an `alias` which is not a string or we failed to resolve an associated example based on the provided value, we try to resolve a string alias (and subsequently a corresponding example) by searching the list of cached references of global variables/properties...</span>
 <span class="cstat-no" title="statement not covered" >		if ( !out ) {</span>
-<span class="cstat-no" title="statement not covered" >			i = indexOf( N/2, aliases, 2, 1, alias );</span>
+<span class="cstat-no" title="statement not covered" >			i = indexOf( N/2, alias, aliases, 2, 1 );</span>
 <span class="cstat-no" title="statement not covered" >			if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >				out = alias2example( aliases[ i-1 ] );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
@@ -559,7 +562,7 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// If we failed to resolve an associated example and the provided value is an object, try finding a provided value's constructor (e.g., if provided a `Uint32Array`, try finding examples for `Uint32Array`)...</span>
 <span class="cstat-no" title="statement not covered" >		if ( !out &amp;&amp; typeof alias === 'object' &amp;&amp; alias !== null &amp;&amp; alias.constructor ) {</span>
-<span class="cstat-no" title="statement not covered" >			i = indexOf( N/2, aliases, 2, 1, alias.constructor );</span>
+<span class="cstat-no" title="statement not covered" >			i = indexOf( N/2, alias.constructor, aliases, 2, 1 );</span>
 <span class="cstat-no" title="statement not covered" >			if ( i &gt;= 0 ) {</span>
 <span class="cstat-no" title="statement not covered" >				out = alias2example( aliases[ i-1 ] );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
@@ -582,7 +585,7 @@ function command( repl, cmds ) {
 <span class="cstat-no" title="statement not covered" >			repl.once( 'drain', next );</span>
 <span class="cstat-no" title="statement not covered" >			return;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		repl._ostream.write( 'Error: no example available. Alias: `'+alias2string( alias )+'`.\n' );</span>
+<span class="cstat-no" title="statement not covered" >		repl._ostream.write( format( 'Error: no example available. Alias: `%s`.\n', alias2string( alias ) ) );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		/**</span>
 <span class="cstat-no" title="statement not covered" >		* Callback invoked after draining the command queue.</span>
@@ -631,7 +634,7 @@ module.exports = command;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-06T22:54:51.851Z
+                at 2026-08-26T08:16:20.115Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
