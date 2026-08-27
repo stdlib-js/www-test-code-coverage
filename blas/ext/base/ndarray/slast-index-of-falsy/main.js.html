@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>79/79</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>79/79</span>
             </div>
         
             
@@ -123,7 +123,26 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,10 +193,29 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -205,7 +243,9 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
 var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
+var clipUpperIndex = require( '@stdlib/ndarray/base/clip-upper-index' );
 var getStride = require( '@stdlib/ndarray/base/stride' );
 var getOffset = require( '@stdlib/ndarray/base/offset' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
@@ -222,21 +262,38 @@ var strided = require( '@stdlib/blas/ext/base/slast-index-of-falsy' ).ndarray;
 * -   The function expects the following ndarrays:
 *
 *     -   a one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray containing the index from which to begin searching.
 *
 * @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing ndarrays
 * @returns {integer} index
 *
 * @example
 * var Float32Vector = require( '@stdlib/ndarray/vector/float32' );
+* var scalar2ndarray = require( '@stdlib/ndarray/from-scalar' );
 *
 * var x = new Float32Vector( [ 1.0, 0.0, 3.0, 0.0 ] );
 *
-* var v = slastIndexOfFalsy( [ x ] );
+* var fromIndex = scalar2ndarray( 3, {
+*     'dtype': 'generic'
+* });
+*
+* var v = slastIndexOfFalsy( [ x, fromIndex ] );
 * // returns 3
 */
 function slastIndexOfFalsy( arrays ) {
-	var x = arrays[ 0 ];
-	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ) );
+	var fromIndex;
+	var N;
+	var x;
+&nbsp;
+	x = arrays[ 0 ];
+	fromIndex = ndarraylike2scalar( arrays[ 1 ] );
+&nbsp;
+	N = numelDimension( x, 0 );
+	fromIndex = clipUpperIndex( fromIndex, ( fromIndex &lt; 0 ) ? N : N-1 );
+	if ( fromIndex &lt; 0 ) {
+		return -1;
+	}
+	return strided( fromIndex+1, getData( x ), getStride( x, 0 ), getOffset( x ) );
 }
 &nbsp;
 &nbsp;
@@ -250,7 +307,7 @@ module.exports = slastIndexOfFalsy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-13T05:37:51.106Z
+                at 2026-08-27T08:53:01.432Z
             </div>
         <script src="prettify.js"></script>
         <script>
