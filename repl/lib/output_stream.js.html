@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.8% </span>
+                <span class="strong">91.72% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>482/525</span>
+                <span class='fraction'>499/544</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">88.37% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>35/40</span>
+                <span class='fraction'>38/43</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>18/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.8% </span>
+                <span class="strong">91.72% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>482/525</span>
+                <span class='fraction'>499/544</span>
             </div>
         
             
@@ -588,7 +588,26 @@
 <a name='L523'></a><a href='#L523'>523</a>
 <a name='L524'></a><a href='#L524'>524</a>
 <a name='L525'></a><a href='#L525'>525</a>
-<a name='L526'></a><a href='#L526'>526</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<a name='L526'></a><a href='#L526'>526</a>
+<a name='L527'></a><a href='#L527'>527</a>
+<a name='L528'></a><a href='#L528'>528</a>
+<a name='L529'></a><a href='#L529'>529</a>
+<a name='L530'></a><a href='#L530'>530</a>
+<a name='L531'></a><a href='#L531'>531</a>
+<a name='L532'></a><a href='#L532'>532</a>
+<a name='L533'></a><a href='#L533'>533</a>
+<a name='L534'></a><a href='#L534'>534</a>
+<a name='L535'></a><a href='#L535'>535</a>
+<a name='L536'></a><a href='#L536'>536</a>
+<a name='L537'></a><a href='#L537'>537</a>
+<a name='L538'></a><a href='#L538'>538</a>
+<a name='L539'></a><a href='#L539'>539</a>
+<a name='L540'></a><a href='#L540'>540</a>
+<a name='L541'></a><a href='#L541'>541</a>
+<a name='L542'></a><a href='#L542'>542</a>
+<a name='L543'></a><a href='#L543'>543</a>
+<a name='L544'></a><a href='#L544'>544</a>
+<a name='L545'></a><a href='#L545'>545</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -1073,6 +1092,23 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">1204x</span>
+<span class="cline-any cline-yes">1204x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">358x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1099,6 +1135,8 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1589,6 +1627,23 @@ setNonEnumerableReadOnlyAccessor( OutputStream.prototype, 'isPaging', function i
 });
 &nbsp;
 /**
+* Number of columns (i.e., the viewport width).
+*
+* ## Notes
+*
+* -   A readline interface resolves the terminal width from its output stream in order to determine when a line wraps. As this stream sits between a readline interface and the underlying output stream, we must forward the viewport width; otherwise, a readline interface assumes an infinitely wide terminal and fails to account for wrapped lines when rendering.
+* -   We resolve `undefined` when a viewport width is unavailable (e.g., when not a TTY), as a readline interface only falls back to assuming an infinitely wide terminal for falsy values.
+*
+* @name columns
+* @memberof OutputStream.prototype
+* @type {(integer|void)}
+*/
+setNonEnumerableReadOnlyAccessor( OutputStream.prototype, 'columns', function columns() {
+	var w = this._repl.viewportWidth();
+	return ( w &gt; 0 ) ? w : void 0;
+});
+&nbsp;
+/**
 * Callback which should be invoked **before** a "keypress" event is processed by a readline interface.
 *
 * @name beforeKeypress
@@ -1625,6 +1680,8 @@ setNonEnumerableReadOnly( OutputStream.prototype, 'beforeKeypress', function bef
 */
 setNonEnumerableReadOnly( OutputStream.prototype, 'onResize', <span class="fstat-no" title="function not covered" >function onResize() {</span>
 <span class="cstat-no" title="statement not covered" >	if ( !this._isPaging ) {</span>
+<span class="cstat-no" title="statement not covered" >		// Notify the readline interface in order to allow it to re-render (possibly wrapped) input according to the new viewport width:</span>
+<span class="cstat-no" title="statement not covered" >		this.emit( 'resize' );</span>
 <span class="cstat-no" title="statement not covered" >		return;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( !this._isScrollable( this._indices.length ) ) {</span>
@@ -1645,7 +1702,7 @@ module.exports = OutputStream;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-26T08:16:20.115Z
+                at 2026-08-27T09:56:07.737Z
             </div>
         <script src="../prettify.js"></script>
         <script>
