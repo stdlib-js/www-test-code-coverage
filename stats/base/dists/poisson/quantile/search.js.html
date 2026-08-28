@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>94/94</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>94/94</span>
             </div>
         
             
@@ -143,7 +143,21 @@
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -184,14 +198,21 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5950x</span>
+<span class="cline-any cline-yes">5950x</span>
+<span class="cline-any cline-yes">5950x</span>
+<span class="cline-any cline-yes">6012x</span>
 <span class="cline-any cline-yes">5948x</span>
 <span class="cline-any cline-yes">5948x</span>
-<span class="cline-any cline-yes">6010x</span>
-<span class="cline-any cline-yes">5948x</span>
-<span class="cline-any cline-yes">5948x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">6012x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-yes">62x</span>
-<span class="cline-any cline-yes">5948x</span>
+<span class="cline-any cline-yes">5950x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -202,14 +223,21 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">52x</span>
-<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -265,11 +293,18 @@ var methods;
 * @returns {NonNegativeInteger} `p` quantile of the specified distribution
 */
 function searchLeft( x, p, lambda ) {
+	var xp;
 	while ( true ) {
 		if ( x === 0 || cdf( x - 1.0, lambda ) &lt; p ) {
 			return x;
 		}
-		x -= 1;
+		xp = x - 1.0;
+&nbsp;
+		// Guard against non-advancing updates (e.g., when `x` is `NaN` or is so large that decrementing does not change its value) in order to avoid an infinite loop:
+		if ( !( xp &lt; x ) ) {
+			return x;
+		}
+		x = xp;
 	}
 }
 &nbsp;
@@ -283,8 +318,15 @@ function searchLeft( x, p, lambda ) {
 * @returns {NonNegativeInteger} `p` quantile of the specified distribution
 */
 function searchRight( x, p, lambda ) {
+	var xn;
 	while ( true ) {
-		x += 1;
+		xn = x + 1.0;
+&nbsp;
+		// Guard against non-advancing updates (e.g., when `x` is `NaN` or is so large that incrementing does not change its value) in order to avoid an infinite loop:
+		if ( !( xn &gt; x ) ) {
+			return x;
+		}
+		x = xn;
 		if ( cdf( x, lambda ) &gt;= p ) {
 			return x;
 		}
@@ -310,7 +352,7 @@ module.exports = methods;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-28T04:03:35.039Z
+                at 2026-08-28T10:27:56.121Z
             </div>
         <script src="prettify.js"></script>
         <script>
