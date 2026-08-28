@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">81.01% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>56/60</span>
+                <span class='fraction'>64/79</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">81.01% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>56/60</span>
+                <span class='fraction'>64/79</span>
             </div>
         
             
@@ -123,7 +123,26 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,6 +193,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -205,7 +243,9 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
 var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
+var clipUpperIndex = require( '@stdlib/ndarray/base/clip-upper-index' );
 var getStride = require( '@stdlib/ndarray/base/stride' );
 var getOffset = require( '@stdlib/ndarray/base/offset' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
@@ -222,21 +262,38 @@ var strided = require( '@stdlib/blas/ext/base/slast-index-of-truthy' ).ndarray;
 * -   The function expects the following ndarrays:
 *
 *     -   a one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray containing the index from which to begin searching.
 *
 * @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing ndarrays
 * @returns {integer} index
 *
 * @example
 * var Float32Vector = require( '@stdlib/ndarray/vector/float32' );
+* var scalar2ndarray = require( '@stdlib/ndarray/from-scalar' );
 *
 * var x = new Float32Vector( [ 0.0, 1.0, 0.0, 2.0 ] );
 *
-* var v = slastIndexOfTruthy( [ x ] );
+* var fromIndex = scalar2ndarray( 3, {
+*     'dtype': 'generic'
+* });
+*
+* var v = slastIndexOfTruthy( [ x, fromIndex ] );
 * // returns 3
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function slastIndexOfTruthy( arrays ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var x = arrays[ 0 ];</span>
-<span class="cstat-no" title="statement not covered" >	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ) );</span>
+<span class="cstat-no" title="statement not covered" >	var fromIndex;</span>
+<span class="cstat-no" title="statement not covered" >	var N;</span>
+<span class="cstat-no" title="statement not covered" >	var x;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	x = arrays[ 0 ];</span>
+<span class="cstat-no" title="statement not covered" >	fromIndex = ndarraylike2scalar( arrays[ 1 ] );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	N = numelDimension( x, 0 );</span>
+<span class="cstat-no" title="statement not covered" >	fromIndex = clipUpperIndex( fromIndex, ( fromIndex &lt; 0 ) ? N : N-1 );</span>
+<span class="cstat-no" title="statement not covered" >	if ( fromIndex &lt; 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		return -1;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	return strided( fromIndex+1, getData( x ), getStride( x, 0 ), getOffset( x ) );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -250,7 +307,7 @@ module.exports = slastIndexOfTruthy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-27T05:37:57.663Z
+                at 2026-08-28T10:35:40.687Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
