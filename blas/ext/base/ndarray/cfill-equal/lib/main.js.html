@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.58% </span>
+                <span class="strong">75.92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>71/82</span>
+                <span class='fraction'>82/108</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.58% </span>
+                <span class="strong">75.92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>71/82</span>
+                <span class='fraction'>82/108</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -145,7 +145,33 @@
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -211,6 +237,32 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -250,11 +302,12 @@
 // MODULES //
 &nbsp;
 var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
+var clipIndex = require( '@stdlib/ndarray/base/clip-index' );
 var getStride = require( '@stdlib/ndarray/base/stride' );
 var getOffset = require( '@stdlib/ndarray/base/offset' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var strided = require( '@stdlib/blas/ext/base/cfill-equal' ).ndarray;
 var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
+var strided = require( '@stdlib/blas/ext/base/cfill-equal' ).ndarray;
 &nbsp;
 &nbsp;
 // MAIN //
@@ -269,6 +322,8 @@ var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
 *     -   a one-dimensional input ndarray.
 *     -   a zero-dimensional ndarray containing the search element.
 *     -   a zero-dimensional ndarray containing the scalar constant.
+*     -   a zero-dimensional ndarray containing the starting index (inclusive).
+*     -   a zero-dimensional ndarray containing the ending index (exclusive).
 *
 * -   When comparing elements, the function checks for equality of real and imaginary components using the strict equality operator `===`. As a consequence, `NaN` components are considered distinct (i.e., as `NaN === NaN` always evaluates to `false`, elements having one or more `NaN` components are never replaced), and `-0` and `+0` are considered the same.
 *
@@ -290,18 +345,41 @@ var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
 *     'dtype': 'complex64'
 * });
 *
-* var out = cfillEqual( [ x, searchElement, alpha ] );
-* // returns &lt;ndarray&gt;[ &lt;Complex64&gt;[ 5.0, 5.0 ], &lt;Complex64&gt;[ -2.0, 3.0 ], &lt;Complex64&gt;[ 5.0, 5.0 ], &lt;Complex64&gt;[ 4.0, -6.0 ] ]
+* var start = scalar2ndarray( 0, {
+*     'dtype': 'generic'
+* });
+*
+* var end = scalar2ndarray( 2, {
+*     'dtype': 'generic'
+* });
+*
+* var out = cfillEqual( [ x, searchElement, alpha, start, end ] );
+* // returns &lt;ndarray&gt;[ &lt;Complex64&gt;[ 5.0, 5.0 ], &lt;Complex64&gt;[ -2.0, 3.0 ], &lt;Complex64&gt;[ 0.0, 0.0 ], &lt;Complex64&gt;[ 4.0, -6.0 ] ]
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function cfillEqual( arrays ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var searchElement;</span>
+<span class="cstat-no" title="statement not covered" >	var stride;</span>
+<span class="cstat-no" title="statement not covered" >	var offset;</span>
 <span class="cstat-no" title="statement not covered" >	var alpha;</span>
+<span class="cstat-no" title="statement not covered" >	var start;</span>
+<span class="cstat-no" title="statement not covered" >	var end;</span>
+<span class="cstat-no" title="statement not covered" >	var N;</span>
 <span class="cstat-no" title="statement not covered" >	var x;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	x = arrays[ 0 ];</span>
 <span class="cstat-no" title="statement not covered" >	searchElement = ndarraylike2scalar( arrays[ 1 ] );</span>
 <span class="cstat-no" title="statement not covered" >	alpha = ndarraylike2scalar( arrays[ 2 ] );</span>
-<span class="cstat-no" title="statement not covered" >	strided( numelDimension( x, 0 ), searchElement, alpha, getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	N = numelDimension( x, 0 );</span>
+<span class="cstat-no" title="statement not covered" >	start = clipIndex( ndarraylike2scalar( arrays[ 3 ] ), N );</span>
+<span class="cstat-no" title="statement not covered" >	end = clipIndex( ndarraylike2scalar( arrays[ 4 ] ), N );</span>
+<span class="cstat-no" title="statement not covered" >	if ( start &gt;= end ) {</span>
+<span class="cstat-no" title="statement not covered" >		return x;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	stride = getStride( x, 0 );</span>
+<span class="cstat-no" title="statement not covered" >	offset = getOffset( x ) + ( stride*start );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	strided( end-start, searchElement, alpha, getData( x ), stride, offset );</span>
 <span class="cstat-no" title="statement not covered" >	return x;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -316,7 +394,7 @@ module.exports = cfillEqual;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-28T10:35:40.687Z
+                at 2026-08-29T04:01:29.329Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
