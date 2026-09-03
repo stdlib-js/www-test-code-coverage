@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>76/76</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>76/76</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
@@ -138,8 +138,7 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -190,26 +189,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">33x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">29x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">35x</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -239,23 +237,17 @@
 &nbsp;
 var isnanf = require( '@stdlib/math/base/assert/is-nanf' );
 var isInfinitef = require( '@stdlib/math/base/assert/is-infinitef' );
-var powf = require( '@stdlib/math/base/special/powf' );
 var floorf = require( '@stdlib/math/base/special/floorf' );
+var log10f = require( '@stdlib/math/base/special/log10f' );
+var absf = require( '@stdlib/math/base/special/absf' );
+var pow = require( '@stdlib/math/base/special/pow' );
 var f32 = require( '@stdlib/number/float64/base/to-float32' );
-var log10 = require( '@stdlib/math/base/special/log10' );
-&nbsp;
-&nbsp;
-// VARIABLES //
-&nbsp;
-var ZERO = f32( 0.0 );
-var ONE = f32( 1.0 );
-var TEN = f32( 10.0 );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Rounds a single-precision floating point number to the nearest power of `10` toward zero.
+* Rounds a single-precision floating-point number to the nearest power of `10` toward zero.
 *
 * @param {number} x - input value
 * @returns {number} rounded value
@@ -267,24 +259,29 @@ var TEN = f32( 10.0 );
 * @example
 * var v = trunc10f( 13.0 );
 * // returns 10.0
+*
+* @example
+* var v = trunc10f( -0.314 );
+* // returns -0.10000000149011612
 */
 function trunc10f( x ) {
-	var sign;
+	var ax;
+	var e;
+	var y;
+&nbsp;
 	x = f32( x );
-	if (
-		isnanf( x ) ||
-		isInfinitef( x ) ||
-		x === ZERO
-	) {
+	if ( isnanf( x ) || isInfinitef( x ) || x === 0.0 ) {
 		return x;
 	}
-	if ( x &lt; ZERO ) {
-		x = -x;
-		sign = -ONE;
-	} else {
-		sign = ONE;
-	}
-	return f32( sign * powf( TEN, floorf( f32( log10( x ) ) ) ) );
+	ax = absf( x );
+&nbsp;
+	// Solve the equation `10^e = ax` for `e` and find the exponent of the previous integer power of ten:
+	e = floorf( log10f( ax ) );
+&nbsp;
+	// Compute the integer power of ten (note that the power of ten is computed in double-precision and then rounded to single-precision, as this yields the correctly rounded single-precision power of ten for every exponent in the single-precision range, which is not true for `powf`):
+	y = f32( pow( 10.0, e ) );
+&nbsp;
+	return ( x &lt; 0.0 ) ? f32( -y ) : y;
 }
 &nbsp;
 &nbsp;
@@ -298,7 +295,7 @@ module.exports = trunc10f;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-03T18:00:52.971Z
+                at 2026-09-03T18:21:10.014Z
             </div>
         <script src="prettify.js"></script>
         <script>
