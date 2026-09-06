@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for index.js</title>
+    <title>Code coverage report for native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> index.js</h1>
+        <h1><a href="index.html">All files</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -32,14 +32,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -173,9 +173,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -184,7 +184,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2025 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -201,45 +201,45 @@
 &nbsp;
 'use strict';
 &nbsp;
+// MODULES //
+&nbsp;
+var Boolean = require( '@stdlib/boolean/ctor' );
+var addon = require( './../src/addon.node' );
+&nbsp;
+&nbsp;
+// MAIN //
+&nbsp;
 /**
-* Test if two single-precision floating-point numbers are approximately the same value within a specified number of ULPs (units in the last place).
+* Tests if two single-precision floating-point numbers are approximately the same value within a specified number of ULPs (units in the last place).
 *
-* @module @stdlib/number/float32/base/assert/is-almost-same-value
+* @private
+* @param {number} a - first input value
+* @param {number} b - second input value
+* @param {number} maxULP - maximum allowed ULP difference
+* @returns {boolean} boolean indicating whether two single-precision floating-point numbers are approximately the same value within a specified number of ULPs
 *
 * @example
 * var EPS = require( '@stdlib/constants/float32/eps' );
-* var isAlmostSameValue = require( '@stdlib/number/float32/base/assert/is-almost-same-value' );
 *
 * var bool = isAlmostSameValue( 1.0, 1.0+EPS, 1 );
 * // returns true
 *
-* bool = isAlmostSameValue( 1.0+EPS, 1.0, 1 );
-* // returns true
-*
-* bool = isAlmostSameValue( 1.0, 1.0+EPS+EPS, 1 );
+* @example
+* var bool = isAlmostSameValue( 0.0, -0.0, 0 );
 * // returns false
 *
-* bool = isAlmostSameValue( 1.0, 1.0+EPS, 0 );
-* // returns false
-*
-* bool = isAlmostSameValue( 0.0, -0.0, 0 );
-* // returns false
-*
-* bool = isAlmostSameValue( 1.0, NaN, 1 );
-* // returns false
-*
-* bool = isAlmostSameValue( NaN, NaN, 1 );
+* @example
+* var bool = isAlmostSameValue( NaN, NaN, 1 );
 * // returns true
 */
-&nbsp;
-// MODULES //
-&nbsp;
-var main = require( './main.js' );
+function isAlmostSameValue( a, b, maxULP ) {
+	return Boolean( addon( a, b, maxULP ) );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = main;
+module.exports = isAlmostSameValue;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
