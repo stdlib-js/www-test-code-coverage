@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.86% </span>
+                <span class="strong">57.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>114/197</span>
+                <span class='fraction'>116/201</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.86% </span>
+                <span class="strong">57.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>114/197</span>
+                <span class='fraction'>116/201</span>
             </div>
         
             
@@ -260,7 +260,11 @@
 <a name='L195'></a><a href='#L195'>195</a>
 <a name='L196'></a><a href='#L196'>196</a>
 <a name='L197'></a><a href='#L197'>197</a>
-<a name='L198'></a><a href='#L198'>198</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -369,6 +373,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -484,13 +492,15 @@ var realf = require( '@stdlib/complex/float32/real' );
 var imagf = require( '@stdlib/complex/float32/imag' );
 var powf = require( '@stdlib/math/base/special/powf' );
 var lnf = require( '@stdlib/math/base/special/lnf' );
+var f32 = require( '@stdlib/number/float64/base/to-float32' );
+var Float32Array = require( '@stdlib/array/float32' );
 var sincosf = require( '@stdlib/math/base/special/sincosf' ).assign;
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
 // Workspace for storing computed sines and cosines:
-var WORKSPACE = [ 0.0, 0.0 ];
+var WORKSPACE = new Float32Array( [ 0.0, 0.0 ] );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -580,6 +590,7 @@ var WORKSPACE = [ 0.0, 0.0 ];
 <span class="cstat-no" title="statement not covered" >	var dim;</span>
 <span class="cstat-no" title="statement not covered" >	var sx;</span>
 <span class="cstat-no" title="statement not covered" >	var ix;</span>
+<span class="cstat-no" title="statement not covered" >	var M;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if ( N &lt;= 0 ) {</span>
@@ -627,13 +638,14 @@ var WORKSPACE = [ 0.0, 0.0 ];
 <span class="cstat-no" title="statement not covered" >	if ( endpoint ) {</span>
 <span class="cstat-no" title="statement not covered" >		N -= 1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	dre = ( stopRe - startRe ) / N;</span>
-<span class="cstat-no" title="statement not covered" >	dim = ( stopIm - startIm ) / N;</span>
+<span class="cstat-no" title="statement not covered" >	M = f32( N );</span>
+<span class="cstat-no" title="statement not covered" >	dre = f32( f32( stopRe - startRe ) / M );</span>
+<span class="cstat-no" title="statement not covered" >	dim = f32( f32( stopIm - startIm ) / M );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Generate logarithmically spaced values:</span>
 <span class="cstat-no" title="statement not covered" >	for ( i = 1; i &lt; N; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >		expRe = startRe + ( dre * i );</span>
-<span class="cstat-no" title="statement not covered" >		expIm = startIm + ( dim * i );</span>
+<span class="cstat-no" title="statement not covered" >		expRe = f32( startRe + f32( dre * i ) );</span>
+<span class="cstat-no" title="statement not covered" >		expIm = f32( startIm + f32( dim * i ) );</span>
 <span class="cstat-no" title="statement not covered" >		scale = powf( base, expRe );</span>
 <span class="cstat-no" title="statement not covered" >		sincosf( expIm * lnb, WORKSPACE, 1, 0 );</span>
 <span class="cstat-no" title="statement not covered" >		view[ ix ] = scale * WORKSPACE[ 1 ];</span>
@@ -661,7 +673,7 @@ module.exports = clogspace;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-30T03:33:38.797Z
+                at 2026-09-06T07:12:16.604Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
