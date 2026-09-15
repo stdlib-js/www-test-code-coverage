@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>95/95</span>
+                <span class='fraction'>94/94</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>95/95</span>
+                <span class='fraction'>94/94</span>
             </div>
         
             
@@ -157,8 +157,7 @@
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -223,7 +222,9 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
@@ -233,17 +234,14 @@
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -275,9 +273,8 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
+var resolveLayout = require( '@stdlib/blas/base/layout-resolve-str' );
 var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major-string' );
-var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var stride2offset = require( '@stdlib/strided/base/stride2offset' );
 var max = require( '@stdlib/math/base/special/fast/max' );
 var format = require( '@stdlib/string/format' );
@@ -294,7 +291,7 @@ var ndarray = require( './ndarray.js' );
 * -   If the function is provided an empty matrix or if the function is unable to find a matching row, the function returns `-1` (i.e., an invalid index).
 * -   The `workspace` array is only applicable when an input matrix is stored in column-major order. When the matrix is stored in row-major order, the workspace array is ignored.
 *
-* @param {string} order - storage layout
+* @param {(integer|string)} order - storage layout
 * @param {PositiveInteger} M - number of rows in `A`
 * @param {PositiveInteger} N - number of columns in `A`
 * @param {Complex64Array} A - input matrix
@@ -323,23 +320,23 @@ function clastIndexOfRow( order, M, N, A, LDA, x, strideX, workspace, strideW ) 
 	var sa1;
 	var sa2;
 	var s;
-	if ( !isLayout( order ) ) {
+	var l;
+&nbsp;
+	l = resolveLayout( order );
+	if ( l === null ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
 	}
-	if ( isRowMajor( order ) ) {
+	if ( isRowMajor( l ) ) {
 		s = N;
+		sa1 = LDA;
+		sa2 = 1;
 	} else {
 		s = M;
+		sa1 = 1;
+		sa2 = LDA;
 	}
 	if ( LDA &lt; max( 1, s ) ) {
 		throw new RangeError( format( 'invalid argument. Fifth argument must be greater than or equal to max(1,%d). Value: `%d`.', s, LDA ) );
-	}
-	if ( isColumnMajor( order ) ) {
-		sa1 = 1;
-		sa2 = LDA;
-	} else { // order === 'row-major'
-		sa1 = LDA;
-		sa2 = 1;
 	}
 	return ndarray( M, N, A, sa1, sa2, 0, x, strideX, stride2offset( N, strideX ), workspace, strideW, stride2offset( M, strideW ) ); // eslint-disable-line max-len
 }
@@ -355,7 +352,7 @@ module.exports = clastIndexOfRow;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-31T22:43:34.622Z
+                at 2026-09-15T07:43:49.578Z
             </div>
         <script src="prettify.js"></script>
         <script>
