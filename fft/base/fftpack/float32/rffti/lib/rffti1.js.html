@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.89% </span>
+                <span class="strong">50.53% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>96/185</span>
+                <span class='fraction'>95/188</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">51.89% </span>
+                <span class="strong">50.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>96/185</span>
+                <span class='fraction'>95/188</span>
             </div>
         
             
@@ -248,7 +248,10 @@
 <a name='L183'></a><a href='#L183'>183</a>
 <a name='L184'></a><a href='#L184'>184</a>
 <a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -338,7 +341,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -497,16 +503,15 @@
 &nbsp;
 var sincosf = require( '@stdlib/math/base/special/sincosf' ).assign;
 var TWO_PI = require( '@stdlib/constants/float32/two-pi' );
-var floor = require( '@stdlib/math/base/special/floor' );
 var f32 = require( '@stdlib/number/float64/base/to-float32' );
-var Float32Array = require( '@stdlib/array/float32' );
+var Uint32Array = require( '@stdlib/array/uint32' );
 var decompose = require( '@stdlib/fft/base/fftpack/float32/decompose' );
 &nbsp;
 &nbsp;
 // VARIABLES //
 &nbsp;
 // Define a list of initial trial factors for FFT factorization:
-var TRIAL_FACTORS = new Float32Array( [ 4.0, 2.0, 3.0, 5.0 ] );
+var TRIAL_FACTORS = new Uint32Array( [ 4, 2, 3, 5 ] );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -527,6 +532,7 @@ var TRIAL_FACTORS = new Float32Array( [ 4.0, 2.0, 3.0, 5.0 ] );
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function rffti1( N, twiddles, strideT, offsetT, factors, strideF, offsetF ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var factor;</span>
 <span class="cstat-no" title="statement not covered" >	var argld;</span>
+<span class="cstat-no" title="statement not covered" >	var fview;</span>
 <span class="cstat-no" title="statement not covered" >	var argh;</span>
 <span class="cstat-no" title="statement not covered" >	var fidx;</span>
 <span class="cstat-no" title="statement not covered" >	var nf;</span>
@@ -542,8 +548,11 @@ var TRIAL_FACTORS = new Float32Array( [ 4.0, 2.0, 3.0, 5.0 ] );
 <span class="cstat-no" title="statement not covered" >	var k;</span>
 <span class="cstat-no" title="statement not covered" >	var j;</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Create a 32-bit unsigned integer view over the factors region of the workspace for storing integer factorization results:</span>
+<span class="cstat-no" title="statement not covered" >	fview = new Uint32Array( factors.buffer, factors.byteOffset, factors.length ); // eslint-disable-line max-len</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// Decompose the sequence length into its radix factors:</span>
-<span class="cstat-no" title="statement not covered" >	nf = decompose( N, 4, TRIAL_FACTORS, 1, 0, factors, strideF, offsetF );</span>
+<span class="cstat-no" title="statement not covered" >	nf = decompose( N, 4, TRIAL_FACTORS, 1, 0, fview, strideF, offsetF );</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// If the number of radix factors is `1`, the only twiddle factor we need is `W_N^0 = 1`, which the main transform kernels already hard-code, so nothing to pre-compute...</span>
 <span class="cstat-no" title="statement not covered" >	if ( nf-1 === 0 ) {</span>
@@ -567,13 +576,13 @@ var TRIAL_FACTORS = new Float32Array( [ 4.0, 2.0, 3.0, 5.0 ] );
 <span class="cstat-no" title="statement not covered" >	// Generate twiddle factors...</span>
 <span class="cstat-no" title="statement not covered" >	for ( k = 0; k &lt; nf-1; k++ ) {</span>
 <span class="cstat-no" title="statement not covered" >		// Resolve the next radix factor:</span>
-<span class="cstat-no" title="statement not covered" >		factor = factors[ fidx ];</span>
+<span class="cstat-no" title="statement not covered" >		factor = fview[ fidx ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// Compute the length of the transform after including the current radix:</span>
 <span class="cstat-no" title="statement not covered" >		l2 = factor * l1;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// Compute the number of the "butterfly wings" (at this stage, the data is viewed as a `factor`-point transform of sub-vectors of length `l1`; `M` describes how many such vectors fit in the full array of length `N`):</span>
-<span class="cstat-no" title="statement not covered" >		M = floor( N / l2 );</span>
+<span class="cstat-no" title="statement not covered" >		M = ( N / l2 ) &gt;&gt;&gt; 0; // asm type annotation</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >		// Initialize a running offset used to step the angle:</span>
 <span class="cstat-no" title="statement not covered" >		ld = 0;</span>
@@ -625,7 +634,7 @@ module.exports = rffti1;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-26T03:48:39.545Z
+                at 2026-09-16T04:00:30.803Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
