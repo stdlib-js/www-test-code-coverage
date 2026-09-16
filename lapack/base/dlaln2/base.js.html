@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.17% </span>
+                <span class="strong">99.19% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>482/486</span>
+                <span class='fraction'>493/497</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.17% </span>
+                <span class="strong">99.19% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>482/486</span>
+                <span class='fraction'>493/497</span>
             </div>
         
             
@@ -549,7 +549,18 @@
 <a name='L484'></a><a href='#L484'>484</a>
 <a name='L485'></a><a href='#L485'>485</a>
 <a name='L486'></a><a href='#L486'>486</a>
-<a name='L487'></a><a href='#L487'>487</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L487'></a><a href='#L487'>487</a>
+<a name='L488'></a><a href='#L488'>488</a>
+<a name='L489'></a><a href='#L489'>489</a>
+<a name='L490'></a><a href='#L490'>490</a>
+<a name='L491'></a><a href='#L491'>491</a>
+<a name='L492'></a><a href='#L492'>492</a>
+<a name='L493'></a><a href='#L493'>493</a>
+<a name='L494'></a><a href='#L494'>494</a>
+<a name='L495'></a><a href='#L495'>495</a>
+<a name='L496'></a><a href='#L496'>496</a>
+<a name='L497'></a><a href='#L497'>497</a>
+<a name='L498'></a><a href='#L498'>498</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -671,6 +682,11 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">86x</span>
 <span class="cline-any cline-yes">86x</span>
 <span class="cline-any cline-yes">86x</span>
@@ -767,6 +783,7 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -788,6 +805,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -828,6 +846,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -892,6 +911,7 @@
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-yes">34x</span>
@@ -915,6 +935,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -1029,6 +1050,7 @@
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
 <span class="cline-any cline-yes">86x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -1112,8 +1134,7 @@ function isTransposed( str ) {
 *
 * -   If `w` is complex (`NW = 2`), `X` and `B` are `NA` by `2` matrices whose first column contains the real part and whose second column contains the imaginary part.
 * -   `s` is a scaling factor (`&lt;= 1`) chosen so that `X` can be computed without overflow. `X` is further scaled if necessary to assure that `norm(ca*A - w*D) * norm(X)` is less than overflow.
-* -   The function writes the scaling factor `s` and the infinity-norm of `X` to the first and second elements of `out`, respectively.
-* -   The function returns `1` if `ca*A - w*D` had to be perturbed to make its smallest (or only) singular value greater than `smin` and `0` otherwise.
+* -   The function writes the scaling factor `s` to `scale`, the infinity-norm of `X` to `xnorm`, and a status code to `info`. The status code is `1` if `ca*A - w*D` had to be perturbed to make its smallest (or only) singular value greater than `smin` and `0` otherwise.
 * -   In the interests of speed, the function does not validate input arguments.
 *
 * @private
@@ -1138,33 +1159,37 @@ function isTransposed( str ) {
 * @param {integer} strideX1 - stride of the first dimension of `X`
 * @param {integer} strideX2 - stride of the second dimension of `X`
 * @param {NonNegativeInteger} offsetX - starting index for `X`
-* @param {Float64Array} out - output array containing the scaling factor and the infinity-norm of `X`
-* @param {integer} strideOut - stride length for `out`
-* @param {NonNegativeInteger} offsetOut - starting index for `out`
-* @returns {integer} status code
+* @param {Float64Array} scale - array containing an element which is overwritten by the scaling factor
+* @param {NonNegativeInteger} offsetScale - index of the element in `scale`
+* @param {Float64Array} xnorm - array containing an element which is overwritten by the infinity-norm of `X`
+* @param {NonNegativeInteger} offsetXnorm - index of the element in `xnorm`
+* @param {Int32Array} info - array containing an element which is overwritten by the status code
+* @param {NonNegativeInteger} offsetInfo - index of the element in `info`
+* @returns {Float64Array} `X`
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
+* var Int32Array = require( '@stdlib/array/int32' );
 *
 * var A = new Float64Array( [ 5.0, 1.0, 1.0, 2.0 ] );
 * var B = new Float64Array( [ 1.0, 2.0 ] );
 * var X = new Float64Array( 2 );
-* var out = new Float64Array( 2 );
+* var scale = new Float64Array( 1 );
+* var xnorm = new Float64Array( 1 );
+* var info = new Int32Array( 1 );
 *
-* var info = dlaln2( 'no-transpose', 2, 1, 1.0e-3, 1.0, A, 1, 2, 0, 1.0, 1.0, B, 1, 2, 0, 0.5, 0.0, X, 1, 2, 0, out, 1, 0 );
-* // returns 0
-*
+* dlaln2( 'no-transpose', 2, 1, 1.0e-3, 1.0, A, 1, 2, 0, 1.0, 1.0, B, 1, 2, 0, 0.5, 0.0, X, 1, 2, 0, scale, 0, xnorm, 0, info, 0 );
 * // X =&gt; &lt;Float64Array&gt;[ ~-0.087, ~1.391 ]
-* // out =&gt; &lt;Float64Array&gt;[ 1.0, ~1.391 ]
+* // scale =&gt; &lt;Float64Array&gt;[ 1.0 ]
+* // xnorm =&gt; &lt;Float64Array&gt;[ ~1.391 ]
+* // info =&gt; &lt;Int32Array&gt;[ 0 ]
 */
-function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2, B, strideB1, strideB2, offsetB, wr, wi, X, strideX1, strideX2, offsetX, out, strideOut, offsetOut ) { // eslint-disable-line max-len, max-params
+function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2, B, strideB1, strideB2, offsetB, wr, wi, X, strideX1, strideX2, offsetX, scale, offsetScale, xnorm, offsetXnorm, info, offsetInfo ) { // eslint-disable-line max-len, max-params
 	var u22abs;
 	var icmax;
 	var smini;
 	var bnorm;
 	var cnorm;
-	var xnorm;
-	var scale;
 	var ur11r;
 	var ui11r;
 	var ur12s;
@@ -1184,7 +1209,6 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 	var ci22;
 	var lr21;
 	var li21;
-	var info;
 	var csr;
 	var csi;
 	var br1;
@@ -1204,12 +1228,15 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 	var ix3;
 	var ix4;
 	var piv;
+	var xn;
+	var st;
+	var s;
 	var v;
 	var j;
 &nbsp;
 	smini = max( smin, SMLNUM );
-	info = 0;
-	scale = 1.0;
+	st = 0;
+	s = 1.0;
 &nbsp;
 	// Indices of `B(1,1)`, `B(2,1)`, `B(1,2)`, and `B(2,2)`:
 	ib1 = offsetB;
@@ -1236,22 +1263,23 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 			if ( cnorm &lt; smini ) {
 				csr = smini;
 				cnorm = smini;
-				info = 1;
+				st = 1;
 			}
 			// Check scaling for X = B / C...
 			bnorm = abs( B[ ib1 ] );
 			if ( cnorm &lt; 1.0 &amp;&amp; bnorm &gt; 1.0 ) {
 				if ( bnorm &gt; BIGNUM*cnorm ) {
-					scale = 1.0 / bnorm;
+					s = 1.0 / bnorm;
 				}
 			}
 			// Compute X...
-			X[ ix1 ] = ( B[ ib1 ]*scale ) / csr;
-			xnorm = abs( X[ ix1 ] );
+			X[ ix1 ] = ( B[ ib1 ]*s ) / csr;
+			xn = abs( X[ ix1 ] );
 &nbsp;
-			out[ offsetOut ] = scale;
-			out[ offsetOut+strideOut ] = xnorm;
-			return info;
+			scale[ offsetScale ] = s;
+			xnorm[ offsetXnorm ] = xn;
+			info[ offsetInfo ] = st;
+			return X;
 		}
 		// Complex 1x1 system (w is complex)...
 &nbsp;
@@ -1265,22 +1293,23 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 			csr = smini;
 			csi = 0.0;
 			cnorm = smini;
-			info = 1;
+			st = 1;
 		}
 		// Check scaling for X = B / C...
 		bnorm = abs( B[ ib1 ] ) + abs( B[ ib3 ] );
 		if ( cnorm &lt; 1.0 &amp;&amp; bnorm &gt; 1.0 ) {
 			if ( bnorm &gt; BIGNUM*cnorm ) {
-				scale = 1.0 / bnorm;
+				s = 1.0 / bnorm;
 			}
 		}
 		// Compute X...
-		dladiv( scale*B[ ib1 ], scale*B[ ib3 ], csr, csi, X, ix1, X, ix3 );
-		xnorm = abs( X[ ix1 ] ) + abs( X[ ix3 ] );
+		dladiv( s*B[ ib1 ], s*B[ ib3 ], csr, csi, X, ix1, X, ix3 );
+		xn = abs( X[ ix1 ] ) + abs( X[ ix3 ] );
 &nbsp;
-		out[ offsetOut ] = scale;
-		out[ offsetOut+strideOut ] = xnorm;
-		return info;
+		scale[ offsetScale ] = s;
+		xnorm[ offsetXnorm ] = xn;
+		info[ offsetInfo ] = st;
+		return X;
 	}
 	// 2x2 system...
 &nbsp;
@@ -1312,17 +1341,18 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 			bnorm = max( abs( B[ ib1 ] ), abs( B[ ib2 ] ) );
 			if ( smini &lt; 1.0 &amp;&amp; bnorm &gt; 1.0 ) {
 				if ( bnorm &gt; BIGNUM*smini ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >					scale = 1.0 / bnorm;</span>
+<span class="cstat-no" title="statement not covered" >					s = 1.0 / bnorm;</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 			}
-			temp = scale / smini;
+			temp = s / smini;
 			X[ ix1 ] = temp * B[ ib1 ];
 			X[ ix2 ] = temp * B[ ib2 ];
-			xnorm = temp * bnorm;
+			xn = temp * bnorm;
 &nbsp;
-			out[ offsetOut ] = scale;
-			out[ offsetOut+strideOut ] = xnorm;
-			return 1;
+			scale[ offsetScale ] = s;
+			xnorm[ offsetXnorm ] = xn;
+			info[ offsetInfo ] = 1;
+			return X;
 		}
 		// Gaussian elimination with complete pivoting...
 		piv = IPIVOT[ icmax ];
@@ -1337,7 +1367,7 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 		// If smaller pivot &lt; SMINI, use SMINI...
 		if ( abs( ur22 ) &lt; smini ) {
 			ur22 = smini;
-			info = 1;
+			st = 1;
 		}
 		if ( RSWAP[ icmax ] ) {
 			br1 = B[ ib2 ];
@@ -1350,11 +1380,11 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 		bbnd = max( abs( br1*( ur22*ur11r ) ), abs( br2 ) );
 		if ( bbnd &gt; 1.0 &amp;&amp; abs( ur22 ) &lt; 1.0 ) {
 			if ( bbnd &gt;= BIGNUM*abs( ur22 ) ) {
-				scale = 1.0 / bbnd;
+				s = 1.0 / bbnd;
 			}
 		}
-		xr2 = ( br2*scale ) / ur22;
-		xr1 = ( ( scale*br1 )*ur11r ) - ( xr2*( ur11r*ur12 ) );
+		xr2 = ( br2*s ) / ur22;
+		xr1 = ( ( s*br1 )*ur11r ) - ( xr2*( ur11r*ur12 ) );
 		if ( ZSWAP[ icmax ] ) {
 			X[ ix1 ] = xr2;
 			X[ ix2 ] = xr1;
@@ -1362,21 +1392,22 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 			X[ ix1 ] = xr1;
 			X[ ix2 ] = xr2;
 		}
-		xnorm = max( abs( xr1 ), abs( xr2 ) );
+		xn = max( abs( xr1 ), abs( xr2 ) );
 &nbsp;
 		// Further scaling if norm(A) norm(X) &gt; overflow...
-		if ( xnorm &gt; 1.0 &amp;&amp; cmax &gt; 1.0 ) {
-			if ( xnorm &gt; BIGNUM/cmax ) {
+		if ( xn &gt; 1.0 &amp;&amp; cmax &gt; 1.0 ) {
+			if ( xn &gt; BIGNUM/cmax ) {
 				temp = cmax / BIGNUM;
 				X[ ix1 ] *= temp;
 				X[ ix2 ] *= temp;
-				xnorm *= temp;
-				scale *= temp;
+				xn *= temp;
+				s *= temp;
 			}
 		}
-		out[ offsetOut ] = scale;
-		out[ offsetOut+strideOut ] = xnorm;
-		return info;
+		scale[ offsetScale ] = s;
+		xnorm[ offsetXnorm ] = xn;
+		info[ offsetInfo ] = st;
+		return X;
 	}
 	// Complex 2x2 system (w is complex)...
 &nbsp;
@@ -1399,19 +1430,20 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 		bnorm = max( abs( B[ ib1 ] )+abs( B[ ib3 ] ), abs( B[ ib2 ] )+abs( B[ ib4 ] ) ); // eslint-disable-line max-len
 		if ( smini &lt; 1.0 &amp;&amp; bnorm &gt; 1.0 ) {
 			if ( bnorm &gt; BIGNUM*smini ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >				scale = 1.0 / bnorm;</span>
+<span class="cstat-no" title="statement not covered" >				s = 1.0 / bnorm;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 		}
-		temp = scale / smini;
+		temp = s / smini;
 		X[ ix1 ] = temp * B[ ib1 ];
 		X[ ix2 ] = temp * B[ ib2 ];
 		X[ ix3 ] = temp * B[ ib3 ];
 		X[ ix4 ] = temp * B[ ib4 ];
-		xnorm = temp * bnorm;
+		xn = temp * bnorm;
 &nbsp;
-		out[ offsetOut ] = scale;
-		out[ offsetOut+strideOut ] = xnorm;
-		return 1;
+		scale[ offsetScale ] = s;
+		xnorm[ offsetXnorm ] = xn;
+		info[ offsetInfo ] = 1;
+		return X;
 	}
 	// Gaussian elimination with complete pivoting...
 	piv = IPIVOT[ icmax ];
@@ -1457,7 +1489,7 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 	if ( u22abs &lt; smini ) {
 		ur22 = smini;
 		ui22 = 0.0;
-		info = 1;
+		st = 1;
 	}
 	if ( RSWAP[ icmax ] ) {
 		br2 = B[ ib1 ];
@@ -1475,11 +1507,11 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 	bbnd = max( ( abs( br1 )+abs( bi1 ) ) * ( u22abs*( abs( ur11r )+abs( ui11r ) ) ), abs( br2 )+abs( bi2 ) ); // eslint-disable-line max-len
 	if ( bbnd &gt; 1.0 &amp;&amp; u22abs &lt; 1.0 ) {
 		if ( bbnd &gt;= BIGNUM*u22abs ) {
-			scale = 1.0 / bbnd;
-			br1 *= scale;
-			bi1 *= scale;
-			br2 *= scale;
-			bi2 *= scale;
+			s = 1.0 / bbnd;
+			br1 *= s;
+			bi1 *= s;
+			br2 *= s;
+			bi2 *= s;
 		}
 	}
 	dladiv( br2, bi2, ur22, ui22, TMP, 0, TMP, 1 );
@@ -1498,23 +1530,24 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 		X[ ix3 ] = xi1;
 		X[ ix4 ] = xi2;
 	}
-	xnorm = max( abs( xr1 )+abs( xi1 ), abs( xr2 )+abs( xi2 ) );
+	xn = max( abs( xr1 )+abs( xi1 ), abs( xr2 )+abs( xi2 ) );
 &nbsp;
 	// Further scaling if norm(A) norm(X) &gt; overflow...
-	if ( xnorm &gt; 1.0 &amp;&amp; cmax &gt; 1.0 ) {
-		if ( xnorm &gt; BIGNUM/cmax ) {
+	if ( xn &gt; 1.0 &amp;&amp; cmax &gt; 1.0 ) {
+		if ( xn &gt; BIGNUM/cmax ) {
 			temp = cmax / BIGNUM;
 			X[ ix1 ] *= temp;
 			X[ ix2 ] *= temp;
 			X[ ix3 ] *= temp;
 			X[ ix4 ] *= temp;
-			xnorm *= temp;
-			scale *= temp;
+			xn *= temp;
+			s *= temp;
 		}
 	}
-	out[ offsetOut ] = scale;
-	out[ offsetOut+strideOut ] = xnorm;
-	return info;
+	scale[ offsetScale ] = s;
+	xnorm[ offsetXnorm ] = xn;
+	info[ offsetInfo ] = st;
+	return X;
 }
 &nbsp;
 &nbsp;
@@ -1528,7 +1561,7 @@ module.exports = dlaln2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-14T15:18:38.058Z
+                at 2026-09-16T04:23:59.266Z
             </div>
         <script src="prettify.js"></script>
         <script>

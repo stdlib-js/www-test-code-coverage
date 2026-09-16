@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>103/103</span>
+                <span class='fraction'>108/108</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>103/103</span>
+                <span class='fraction'>108/108</span>
             </div>
         
             
@@ -166,7 +166,17 @@
 <a name='L101'></a><a href='#L101'>101</a>
 <a name='L102'></a><a href='#L102'>102</a>
 <a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -309,8 +319,7 @@ var base = require( './base.js' );
 *
 * -   If `w` is complex (`NW = 2`), `X` and `B` are `NA` by `2` matrices whose first column contains the real part and whose second column contains the imaginary part.
 * -   `s` is a scaling factor (`&lt;= 1`) chosen so that `X` can be computed without overflow. `X` is further scaled if necessary to assure that `norm(ca*A - w*D) * norm(X)` is less than overflow.
-* -   The function writes the scaling factor `s` and the infinity-norm of `X` to the first and second elements of `out`, respectively.
-* -   The function returns `1` if `ca*A - w*D` had to be perturbed to make its smallest (or only) singular value greater than `smin` and `0` otherwise.
+* -   The function writes the scaling factor `s` to `scale`, the infinity-norm of `X` to `xnorm`, and a status code to `info`. The status code is `1` if `ca*A - w*D` had to be perturbed to make its smallest (or only) singular value greater than `smin` and `0` otherwise.
 *
 * @param {string} trans - specifies whether `A` should be transposed
 * @param {PositiveInteger} NA - size of the matrix `A` (either `1` or `2`)
@@ -333,29 +342,35 @@ var base = require( './base.js' );
 * @param {integer} strideX1 - stride of the first dimension of `X`
 * @param {integer} strideX2 - stride of the second dimension of `X`
 * @param {NonNegativeInteger} offsetX - starting index for `X`
-* @param {Float64Array} out - output array containing the scaling factor and the infinity-norm of `X`
-* @param {integer} strideOut - stride length for `out`
-* @param {NonNegativeInteger} offsetOut - starting index for `out`
+* @param {Float64Array} scale - array containing an element which is overwritten by the scaling factor
+* @param {NonNegativeInteger} offsetScale - index of the element in `scale`
+* @param {Float64Array} xnorm - array containing an element which is overwritten by the infinity-norm of `X`
+* @param {NonNegativeInteger} offsetXnorm - index of the element in `xnorm`
+* @param {Int32Array} info - array containing an element which is overwritten by the status code
+* @param {NonNegativeInteger} offsetInfo - index of the element in `info`
 * @throws {TypeError} first argument must be a valid transpose operation
 * @throws {RangeError} second argument must be either `1` or `2`
 * @throws {RangeError} third argument must be either `1` or `2`
-* @returns {integer} status code
+* @returns {Float64Array} `X`
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
+* var Int32Array = require( '@stdlib/array/int32' );
 *
 * var A = new Float64Array( [ 5.0, 1.0, 1.0, 2.0 ] );
 * var B = new Float64Array( [ 1.0, 2.0 ] );
 * var X = new Float64Array( 2 );
-* var out = new Float64Array( 2 );
+* var scale = new Float64Array( 1 );
+* var xnorm = new Float64Array( 1 );
+* var info = new Int32Array( 1 );
 *
-* var info = dlaln2( 'no-transpose', 2, 1, 1.0e-3, 1.0, A, 1, 2, 0, 1.0, 1.0, B, 1, 2, 0, 0.5, 0.0, X, 1, 2, 0, out, 1, 0 );
-* // returns 0
-*
+* dlaln2( 'no-transpose', 2, 1, 1.0e-3, 1.0, A, 1, 2, 0, 1.0, 1.0, B, 1, 2, 0, 0.5, 0.0, X, 1, 2, 0, scale, 0, xnorm, 0, info, 0 );
 * // X =&gt; &lt;Float64Array&gt;[ ~-0.087, ~1.391 ]
-* // out =&gt; &lt;Float64Array&gt;[ 1.0, ~1.391 ]
+* // scale =&gt; &lt;Float64Array&gt;[ 1.0 ]
+* // xnorm =&gt; &lt;Float64Array&gt;[ ~1.391 ]
+* // info =&gt; &lt;Int32Array&gt;[ 0 ]
 */
-function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2, B, strideB1, strideB2, offsetB, wr, wi, X, strideX1, strideX2, offsetX, out, strideOut, offsetOut ) { // eslint-disable-line max-params
+function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2, B, strideB1, strideB2, offsetB, wr, wi, X, strideX1, strideX2, offsetX, scale, offsetScale, xnorm, offsetXnorm, info, offsetInfo ) { // eslint-disable-line max-params
 	if ( !isTransposeOperation( trans ) ) {
 		throw new TypeError( format( 'invalid argument. First argument must be one of the following: "%s". Value: `%s`.', join( transposeOperations(), '", "' ), trans ) );
 	}
@@ -365,7 +380,7 @@ function dlaln2( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2
 	if ( NW !== 1 &amp;&amp; NW !== 2 ) {
 		throw new RangeError( format( 'invalid argument. Third argument must be either 1 or 2. Value: `%d`.', NW ) );
 	}
-	return base( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2, B, strideB1, strideB2, offsetB, wr, wi, X, strideX1, strideX2, offsetX, out, strideOut, offsetOut );
+	return base( trans, NA, NW, smin, ca, A, strideA1, strideA2, offsetA, d1, d2, B, strideB1, strideB2, offsetB, wr, wi, X, strideX1, strideX2, offsetX, scale, offsetScale, xnorm, offsetXnorm, info, offsetInfo );
 }
 &nbsp;
 &nbsp;
@@ -379,7 +394,7 @@ module.exports = dlaln2;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-14T15:18:38.058Z
+                at 2026-09-16T04:23:59.266Z
             </div>
         <script src="prettify.js"></script>
         <script>
