@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>122/122</span>
+                <span class='fraction'>128/128</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>122/122</span>
+                <span class='fraction'>128/128</span>
             </div>
         
             
@@ -185,7 +185,14 @@
 <a name='L120'></a><a href='#L120'>120</a>
 <a name='L121'></a><a href='#L121'>121</a>
 <a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -274,7 +281,10 @@
 <span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">108x</span>
@@ -295,12 +305,14 @@
 <span class="cline-any cline-yes">49x</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">57x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">86x</span>
+<span class="cline-any cline-yes">83x</span>
 <span class="cline-any cline-yes">150x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -335,6 +347,7 @@ var isndarrayLike = require( '@stdlib/assert/is-ndarray-like' );
 var broadcastScalar = require( '@stdlib/ndarray/base/broadcast-scalar' );
 var maybeBroadcastArray = require( '@stdlib/ndarray/base/maybe-broadcast-array' );
 var nonCoreShape = require( '@stdlib/ndarray/base/complement-shape' );
+var ndims = require( '@stdlib/ndarray/base/ndims' );
 var getShape = require( '@stdlib/ndarray/shape' );
 var getOrder = require( '@stdlib/ndarray/order' );
 var defaults = require( '@stdlib/ndarray/defaults' );
@@ -394,7 +407,10 @@ function circshift( x, k ) {
 		}
 		// Case: circshift( x, k_ndarray )
 		if ( isndarrayLike( k ) ) {
-			// As the operation is performed across all dimensions, `k` is assumed to be a zero-dimensional ndarray...
+			// As the operation is performed across all dimensions, `k` must be a zero-dimensional ndarray...
+			if ( ndims( k ) !== 0 ) {
+				throw new TypeError( 'invalid argument. Second argument must be a zero-dimensional ndarray.' );
+			}
 			return base( x, k );
 		}
 		throw new TypeError( format( 'invalid argument. Second argument must be either an ndarray or an integer. Value: `%s`.', k ) );
@@ -413,9 +429,11 @@ function circshift( x, k ) {
 	}
 	// Case: circshift( x, k_ndarray, opts )
 	else if ( isndarrayLike( k ) ) {
-		// When not provided `dims`, the operation is performed across all dimensions and `k` is assumed to be a zero-dimensional ndarray; when `dims` is provided, we need to broadcast `k` to match the shape of the non-core dimensions...
+		// When not provided `dims`, the operation is performed across all dimensions and `k` must be a zero-dimensional ndarray; when `dims` is provided, we need to broadcast `k` to match the shape of the non-core dimensions...
 		if ( hasOwnProp( opts, 'dims' ) ) {
 			ka = maybeBroadcastArray( k, nonCoreShape( getShape( x ), opts.dims ) ); // eslint-disable-line max-len
+		} else if ( ndims( k ) !== 0 ) {
+			throw new TypeError( 'invalid argument. Second argument must be a zero-dimensional ndarray.' );
 		} else {
 			ka = k;
 		}
@@ -436,7 +454,7 @@ module.exports = circshift;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-15T09:24:37.918Z
+                at 2026-09-18T14:27:37.376Z
             </div>
         <script src="prettify.js"></script>
         <script>
