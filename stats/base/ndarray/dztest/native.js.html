@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="index.html">All files</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>113/113</span>
+                <span class='fraction'>115/115</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>113/113</span>
+                <span class='fraction'>115/115</span>
             </div>
         
             
@@ -176,7 +176,9 @@
 <a name='L111'></a><a href='#L111'>111</a>
 <a name='L112'></a><a href='#L112'>112</a>
 <a name='L113'></a><a href='#L113'>113</a>
-<a name='L114'></a><a href='#L114'>114</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -263,7 +265,9 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">11x</span>
@@ -292,7 +296,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2025 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -311,12 +315,10 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
-var getStride = require( '@stdlib/ndarray/base/stride' );
-var getOffset = require( '@stdlib/ndarray/base/offset' );
+var serialize = require( '@stdlib/ndarray/base/serialize-meta-data' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
 var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
-var strided = require( '@stdlib/stats/strided/dztest' ).ndarray;
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -335,6 +337,7 @@ var strided = require( '@stdlib/stats/strided/dztest' ).ndarray;
 *     -   a zero-dimensional ndarray specifying the mean under the null hypothesis.
 *     -   a zero-dimensional ndarray specifying the known standard deviation.
 *
+* @private
 * @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing ndarrays
 * @returns {ndarrayLike} output ndarray
 *
@@ -378,24 +381,27 @@ var strided = require( '@stdlib/stats/strided/dztest' ).ndarray;
 * console.log( v.get().toString() );
 */
 function dztest( arrays ) {
+	var results;
 	var alpha;
 	var sigma;
 	var alt;
+	var out;
 	var mu;
 	var x;
-	var y;
 &nbsp;
 	x = arrays[ 0 ];
-	y = ndarraylike2scalar( arrays[ 1 ] );
+	out = arrays[ 1 ];
+	alt = arrays[ 2 ];
+	alpha = arrays[ 3 ];
+	mu = arrays[ 4 ];
+	sigma = arrays[ 5 ];
 &nbsp;
-	alt = ndarraylike2scalar( arrays[ 2 ] );
-	alpha = ndarraylike2scalar( arrays[ 3 ] );
-	mu = ndarraylike2scalar( arrays[ 4 ] );
-	sigma = ndarraylike2scalar( arrays[ 5 ] );
+	// Resolve the results object stored in the output ndarray:
+	results = ndarraylike2scalar( out );
 &nbsp;
-	strided( numelDimension( x, 0 ), alt, alpha, mu, sigma, getData( x ), getStride( x, 0 ), getOffset( x ), y ); // eslint-disable-line max-len
+	addon( getData( x ), serialize( x ), getData( alt ), serialize( alt ), getData( alpha ), serialize( alpha ), getData( mu ), serialize( mu ), getData( sigma ), serialize( sigma ), results.toDataView() ); // eslint-disable-line max-len
 &nbsp;
-	return arrays[ 1 ];
+	return out;
 }
 &nbsp;
 &nbsp;
