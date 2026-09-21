@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>93/93</span>
+                <span class='fraction'>86/86</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>93/93</span>
+                <span class='fraction'>86/86</span>
             </div>
         
             
@@ -149,14 +149,7 @@
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -221,29 +214,22 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">3001x</span>
-<span class="cline-any cline-yes">3019x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-yes">3000x</span>
-<span class="cline-any cline-yes">3000x</span>
-<span class="cline-any cline-yes">3019x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2010x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -273,69 +259,62 @@
 &nbsp;
 var kernelBetaincinv = require( '@stdlib/math/base/special/kernel-betaincinv' );
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var sign = require( '@stdlib/math/base/special/signum' );
+var sqrt = require( '@stdlib/math/base/special/sqrt' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates the quantile function for an F distribution with numerator degrees of freedom `d1` and denominator degrees of freedom `d2` at a probability `p`.
+* Evaluates the quantile function for a Student's t distribution with degrees of freedom `v` at a probability `p`.
 *
 * @param {Probability} p - input value
-* @param {PositiveNumber} d1 - numerator degrees of freedom
-* @param {PositiveNumber} d2 - denominator degrees of freedom
+* @param {PositiveNumber} v - degrees of freedom
 * @returns {number} evaluated quantile function
 *
 * @example
-* var y = quantile( 0.8, 1.0, 1.0 );
-* // returns ~9.472
+* var y = quantile( 0.8, 1.0 );
+* // returns ~1.376
 *
 * @example
-* var y = quantile( 0.5, 4.0, 2.0 );
-* // returns ~1.207
+* var y = quantile( 0.1, 1.0 );
+* // returns ~-3.078
 *
 * @example
-* var y = quantile( 1.1, 1.0, 1.0 );
+* var y = quantile( 0.5, 0.1 );
+* // returns 0.0
+*
+* @example
+* var y = quantile( -0.2, 0.1 );
 * // returns NaN
 *
 * @example
-* var y = quantile( -0.2, 1.0, 1.0 );
+* var y = quantile( NaN, 1.0 );
 * // returns NaN
 *
 * @example
-* var y = quantile( NaN, 1.0, 1.0 );
+* var y = quantile( 0.0, NaN );
 * // returns NaN
 *
 * @example
-* var y = quantile( 0.5, NaN, 1.0 );
-* // returns NaN
-*
-* @example
-* var y = quantile( 0.5, 1.0, NaN );
-* // returns NaN
-*
-* @example
-* var y = quantile( 0.5, -1.0, 1.0 );
-* // returns NaN
-*
-* @example
-* var y = quantile( 0.5, 1.0, -1.0 );
+* var y = quantile( 0.5, -1.0 );
 * // returns NaN
 */
-function quantile( p, d1, d2 ) {
+function quantile( p, v ) {
+	var prob;
 	var xs;
 	if (
+		isnan( v ) ||
 		isnan( p ) ||
-		isnan( d1 ) ||
-		isnan( d2 ) ||
-		d1 &lt;= 0.0 ||
-		d2 &lt;= 0.0 ||
+		v &lt;= 0.0 ||
 		p &lt; 0.0 ||
 		p &gt; 1.0
 	) {
 		return NaN;
 	}
-	xs = kernelBetaincinv( d1/2.0, d2/2.0, p, 1.0 - p );
-	return d2 * xs[ 0 ] / ( d1 * xs[ 1 ] );
+	prob = ( p &gt; 0.5 ) ? 1.0 - p : p;
+	xs = kernelBetaincinv( v / 2.0, 0.5, 2.0 * prob, 1.0 - (2.0 * prob) );
+	return sign( p - 0.5 ) * sqrt( v * xs[ 1 ] / xs[ 0 ] );
 }
 &nbsp;
 &nbsp;
@@ -349,7 +328,7 @@ module.exports = quantile;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-21T20:28:14.668Z
+                at 2026-09-21T20:28:18.395Z
             </div>
         <script src="prettify.js"></script>
         <script>
