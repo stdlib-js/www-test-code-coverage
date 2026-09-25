@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for decompose/lib/main.js</title>
+    <title>Code coverage report for rfftf/lib/rfftf1.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">decompose/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">rfftf/lib</a> rfftf1.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.5% </span>
+                <span class="strong">54.69% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>119/200</span>
+                <span class='fraction'>99/181</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.5% </span>
+                <span class="strong">54.69% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>119/200</span>
+                <span class='fraction'>99/181</span>
             </div>
         
             
@@ -244,26 +244,7 @@
 <a name='L179'></a><a href='#L179'>179</a>
 <a name='L180'></a><a href='#L180'>180</a>
 <a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a>
-<a name='L188'></a><a href='#L188'>188</a>
-<a name='L189'></a><a href='#L189'>189</a>
-<a name='L190'></a><a href='#L190'>190</a>
-<a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a>
-<a name='L193'></a><a href='#L193'>193</a>
-<a name='L194'></a><a href='#L194'>194</a>
-<a name='L195'></a><a href='#L195'>195</a>
-<a name='L196'></a><a href='#L196'>196</a>
-<a name='L197'></a><a href='#L197'>197</a>
-<a name='L198'></a><a href='#L198'>198</a>
-<a name='L199'></a><a href='#L199'>199</a>
-<a name='L200'></a><a href='#L200'>200</a>
-<a name='L201'></a><a href='#L201'>201</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L182'></a><a href='#L182'>182</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -357,26 +338,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -521,148 +483,129 @@
 * ```
 */
 &nbsp;
+/* eslint-disable max-len */
+&nbsp;
 'use strict';
 &nbsp;
 // MODULES //
 &nbsp;
 var floor = require( '@stdlib/math/base/special/floor' );
+var dcopy = require( '@stdlib/blas/base/dcopy' ).ndarray;
+var radf2 = require( './radf2.js' );
+var radf3 = require( './radf3.js' );
+var radf4 = require( './radf4.js' );
+var radf5 = require( './radf5.js' );
+var radfg = require( './radfg.js' );
 &nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Factorizes a sequence length into a product of integers and stores the results in a double-precision floating-point array.
+* Performs the forward Fourier transform.
 *
-* ## Notes
-*
-* -   Factorization results are stored in the output array as follows:
-*
-*     ```text
-*     [ sequence_length | number_of_factors | integer_factors | unused_storage ]
-*     ```
-*
-* @param {NonNegativeInteger} N - length of the sequence
-* @param {NonNegativeInteger} M - number of trial divisors
-* @param {Float64Array} initial - strided array of initial trial divisors
-* @param {integer} si - stride length for `initial`
-* @param {NonNegativeInteger} oi - starting index for `initial`
-* @param {Float64Array} out - output array for storing factorization results
-* @param {integer} so - stride length for `out`
-* @param {NonNegativeInteger} oo - starting index for `out`
-* @returns {NonNegativeInteger} number of factors into which `N` was decomposed
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-*
-* var N = 630;
-* var initial = new Float64Array( [ 3.0, 4.0, 2.0, 5.0 ] ); // as found in FFTPACK
-* var factors = new Float64Array( 7 );
-*
-* var numFactors = decompose( N, 4, initial, 1, 0, factors, 1, 0 );
-* // returns 5
-*
-* var f = factors.slice();
-* // returns &lt;Float64Array&gt;[ 630, 5, 2, 3, 3, 5, 7 ]
-*
-* @example
-* var Float64Array = require( '@stdlib/array/float64' );
-*
-* var N = 8;
-* var initial = new Float64Array( [ 3.0, 4.0, 2.0, 5.0 ] ); // as found in FFTPACK
-* var factors = new Float64Array( 4 );
-*
-* var numFactors = decompose( N, 4, initial, 1, 0, factors, 1, 0 );
-* // returns 2
-*
-* var f = factors.slice();
-* // returns &lt;Float64Array&gt;[ 8, 2, 2, 4 ]
+* @private
+* @param {NonNegativeInteger} N - length of the sequence to transform
+* @param {Float64Array} c - input array containing the sequence to be transformed
+* @param {integer} sc - stride length for `c`
+* @param {NonNegativeInteger} oc - starting index for `c`
+* @param {Float64Array} ch - working array for intermediate results
+* @param {integer} sch - stride length for `ch`
+* @param {NonNegativeInteger} och - starting index for `ch`
+* @param {Float64Array} wa - workspace array for storing twiddle factors
+* @param {integer} swa - stride length for `wa`
+* @param {NonNegativeInteger} owa - starting index for `wa`
+* @param {Float64Array} ifac - workspace array for storing factorization results
+* @param {integer} si - stride length for `ifac`
+* @param {NonNegativeInteger} oi - starting index for `ifac`
+* @returns {void}
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function decompose( N, M, initial, si, oi, out, so, oo ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var divisor;</span>
-<span class="cstat-no" title="statement not covered" >	var ntrials;</span>
-<span class="cstat-no" title="statement not covered" >	var nl;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function rfftf1( N, c, sc, oc, ch, sch, och, wa, swa, owa, ifac, si, oi ) { // eslint-disable-line max-params</span></span>
+<span class="cstat-no" title="statement not covered" >	var factor;</span>
+<span class="cstat-no" title="statement not covered" >	var idl1;</span>
+<span class="cstat-no" title="statement not covered" >	var FLG;</span>
+<span class="cstat-no" title="statement not covered" >	var ido;</span>
+<span class="cstat-no" title="statement not covered" >	var ix4;</span>
+<span class="cstat-no" title="statement not covered" >	var ix3;</span>
+<span class="cstat-no" title="statement not covered" >	var ix2;</span>
 <span class="cstat-no" title="statement not covered" >	var nf;</span>
-<span class="cstat-no" title="statement not covered" >	var nq;</span>
-<span class="cstat-no" title="statement not covered" >	var nr;</span>
-<span class="cstat-no" title="statement not covered" >	var ib;</span>
-<span class="cstat-no" title="statement not covered" >	var i;</span>
-<span class="cstat-no" title="statement not covered" >	var j;</span>
+<span class="cstat-no" title="statement not covered" >	var l2;</span>
+<span class="cstat-no" title="statement not covered" >	var l1;</span>
+<span class="cstat-no" title="statement not covered" >	var kh;</span>
+<span class="cstat-no" title="statement not covered" >	var iw;</span>
+<span class="cstat-no" title="statement not covered" >	var k1;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if ( N === 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		out[ oo ] = N;</span>
-<span class="cstat-no" title="statement not covered" >		out[ oo+so ] = 0;</span>
-<span class="cstat-no" title="statement not covered" >		return 0;</span>
+<span class="cstat-no" title="statement not covered" >	// Resolve the number of factors:</span>
+<span class="cstat-no" title="statement not covered" >	nf = ifac[ oi+si ];</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	FLG = 1; // flag to track whether the latest stage output resides in `c` or `ch`</span>
+<span class="cstat-no" title="statement not covered" >	l2 = N;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// Initialize an index offset to the last element in each workspace:</span>
+<span class="cstat-no" title="statement not covered" >	iw = N - 1;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	for ( k1 = 1; k1 &lt;= nf; k1++ ) {</span>
+<span class="cstat-no" title="statement not covered" >		kh = nf - k1;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		// Resolve the next factor:</span>
+<span class="cstat-no" title="statement not covered" >		factor = ifac[ oi+((kh+2)*si) ];</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		// Compute a sub-transform length:</span>
+<span class="cstat-no" title="statement not covered" >		l1 = floor( l2 / factor );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		ido = floor( N / l2 );</span>
+<span class="cstat-no" title="statement not covered" >		idl1 = ido * l1;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		// Adjust the index offset</span>
+<span class="cstat-no" title="statement not covered" >		iw -= ( ( factor - 1 ) * ido );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		// Toggle the flag to swap the input and output work buffers for the next stage:</span>
+<span class="cstat-no" title="statement not covered" >		FLG = 1 - FLG;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		switch ( factor ) {</span>
+<span class="cstat-no" title="statement not covered" >		case 4:</span>
+<span class="cstat-no" title="statement not covered" >			ix2 = iw + ido;</span>
+<span class="cstat-no" title="statement not covered" >			ix3 = ix2 + ido;</span>
+<span class="cstat-no" title="statement not covered" >			radf4( ido, l1, ( FLG ) ? ch : c, ( FLG ) ? sch : sc, ( FLG ) ? och : oc, ( FLG ) ? c : ch, ( FLG ) ? sc : sch, ( FLG ) ? oc : och, wa, swa, owa+(iw*swa), wa, swa, owa+(ix2*swa), wa, swa, owa+(ix3*swa) );</span>
+<span class="cstat-no" title="statement not covered" >			break;</span>
+<span class="cstat-no" title="statement not covered" >		case 2:</span>
+<span class="cstat-no" title="statement not covered" >			radf2( ido, l1, ( FLG ) ? ch : c, ( FLG ) ? sch : sc, ( FLG ) ? och : oc, ( FLG ) ? c : ch, ( FLG ) ? sc : sch, ( FLG ) ? oc : och, wa, swa, owa+(iw*swa) );</span>
+<span class="cstat-no" title="statement not covered" >			break;</span>
+<span class="cstat-no" title="statement not covered" >		case 3:</span>
+<span class="cstat-no" title="statement not covered" >			ix2 = iw + ido;</span>
+<span class="cstat-no" title="statement not covered" >			radf3( ido, l1, ( FLG ) ? ch : c, ( FLG ) ? sch : sc, ( FLG ) ? och : oc, ( FLG ) ? c : ch, ( FLG ) ? sc : sch, ( FLG ) ? oc : och, wa, swa, owa+(iw*swa), wa, swa, owa+(ix2*swa) );</span>
+<span class="cstat-no" title="statement not covered" >			break;</span>
+<span class="cstat-no" title="statement not covered" >		case 5:</span>
+<span class="cstat-no" title="statement not covered" >			ix2 = iw + ido;</span>
+<span class="cstat-no" title="statement not covered" >			ix3 = ix2 + ido;</span>
+<span class="cstat-no" title="statement not covered" >			ix4 = ix3 + ido;</span>
+<span class="cstat-no" title="statement not covered" >			radf5( ido, l1, ( FLG ) ? ch : c, ( FLG ) ? sch : sc, ( FLG ) ? och : oc, ( FLG ) ? c : ch, ( FLG ) ? sc : sch, ( FLG ) ? oc : och, wa, swa, owa+(iw*swa), wa, swa, owa+(ix2*swa ), wa, swa, owa+(ix3*swa), wa, swa, owa+(ix4*swa) );</span>
+<span class="cstat-no" title="statement not covered" >			break;</span>
+<span class="cstat-no" title="statement not covered" >		default:</span>
+<span class="cstat-no" title="statement not covered" >			if ( ido === 1 ) {</span>
+<span class="cstat-no" title="statement not covered" >				FLG = 1 - FLG;</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			if ( FLG === 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >				radfg( ido, factor, l1, idl1, c, sc, oc, c, sc, oc, c, sc, oc, ch, sch, och, ch, sch, och, wa, swa, owa+(iw*swa) );</span>
+<span class="cstat-no" title="statement not covered" >				FLG = 1;</span>
+<span class="cstat-no" title="statement not covered" >			} else {</span>
+<span class="cstat-no" title="statement not covered" >				radfg( ido, factor, l1, idl1, ch, sch, och, ch, sch, och, ch, sch, och, c, sc, oc, c, sc, oc, wa, swa, owa+(iw*swa) );</span>
+<span class="cstat-no" title="statement not covered" >				FLG = 0;</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			break;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >		l2 = l1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Resolve the number of trial divisors:</span>
-<span class="cstat-no" title="statement not covered" >	ntrials = M;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Initialize a variable for storing a trial divisor:</span>
-<span class="cstat-no" title="statement not covered" >	divisor = 0;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Initialize a variable for storing a sub-sequence length:</span>
-<span class="cstat-no" title="statement not covered" >	nl = N;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Initialize a variable for keeping track of the number of factors into which `N` decomposes:</span>
-<span class="cstat-no" title="statement not covered" >	nf = 0;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	j = 0;</span>
-<span class="cstat-no" title="statement not covered" >	do {</span>
-<span class="cstat-no" title="statement not covered" >		if ( j &lt; ntrials ) {</span>
-<span class="cstat-no" title="statement not covered" >			divisor = initial[ oi + (j * si) ];</span>
-<span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			divisor += 2;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		j += 1;</span>
-<span class="cstat-no" title="statement not covered" >		while ( true ) {</span>
-<span class="cstat-no" title="statement not covered" >			// Compute the integer quotient:</span>
-<span class="cstat-no" title="statement not covered" >			nq = floor( nl / divisor );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			// Compute the remainder:</span>
-<span class="cstat-no" title="statement not covered" >			nr = nl - ( divisor * nq );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			// If the divisor did not evenly divide the current sub-sequence length, try a new divisor...</span>
-<span class="cstat-no" title="statement not covered" >			if ( nr !== 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				break;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			// We found a new factor:</span>
-<span class="cstat-no" title="statement not covered" >			nf += 1;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			// Update the sub-sequence length:</span>
-<span class="cstat-no" title="statement not covered" >			nl = nq;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			// Store the factor in the output array:</span>
-<span class="cstat-no" title="statement not covered" >			out[ oo+((nf+1)*so) ] = divisor;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >			// When the divisor is `2` and we've already found other factors, shift the other factors right to make room for the most recent `2` factor...</span>
-<span class="cstat-no" title="statement not covered" >			if ( divisor === 2 &amp;&amp; nf !== 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >				for ( i = 2; i &lt;= nf; i++ ) {</span>
-<span class="cstat-no" title="statement not covered" >					ib = nf - i + 2;</span>
-<span class="cstat-no" title="statement not covered" >					out[ oo+((ib+1)*so) ] = out[ oo + (ib*so) ];</span>
-<span class="cstat-no" title="statement not covered" >				}</span>
-<span class="cstat-no" title="statement not covered" >				out[ oo+(2*so) ] = 2;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			// If we cannot further divide the sequence length into smaller sub-sequences, we're done...</span>
-<span class="cstat-no" title="statement not covered" >			if ( nl === 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >				break;</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >	} while ( nl !== 1 );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Store the sequence length:</span>
-<span class="cstat-no" title="statement not covered" >	out[ oo ] = N;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Store the number of factors:</span>
-<span class="cstat-no" title="statement not covered" >	out[ oo+so ] = nf;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Return the number of factors:</span>
-<span class="cstat-no" title="statement not covered" >	return nf;</span>
+<span class="cstat-no" title="statement not covered" >	if ( FLG === 1 ) {</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >	// Now that we've finished computing the transforms, copy over the final results to the input array...</span>
+<span class="cstat-no" title="statement not covered" >	dcopy( N, ch, sch, och, c, sc, oc );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = decompose;
+module.exports = rfftf1;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
