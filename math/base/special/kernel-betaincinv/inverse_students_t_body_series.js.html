@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>78/100</span>
+                <span class='fraction'>100/100</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">78% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>78/100</span>
+                <span class='fraction'>100/100</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -236,28 +236,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -283,10 +283,10 @@
 *
 * ## Notice
 *
-* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_62_0/boost/math/special_functions/detail/t_distribution_inv.hpp}. The implementation has been modified for JavaScript.
+* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_92_0/boost/math/special_functions/detail/t_distribution_inv.hpp}. The implementation has been modified for JavaScript.
 *
 * ```text
-* Copyright John Maddock 2006.
+* Copyright John Maddock 2007.
 * Copyright Paul A. Bristow 2007.
 *
 * Use, modification and distribution are subject to the
@@ -336,28 +336,28 @@ var c = [ 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]; // WARNING: not th
 * @param {Probability} u - input probability
 * @returns {number} function value
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function inverseStudentsTBodySeries( df, u ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var idf;</span>
-<span class="cstat-no" title="statement not covered" >	var v;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Body series for small N, start with Eq 56 of Shaw:</span>
-<span class="cstat-no" title="statement not covered" >	v = gammaDeltaRatio( df/2, 0.5 ) * sqrt( df*PI ) * ( u-0.5 );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Figure out what the coefficients are. They depend only on the degrees of freedom (Eq 57 of Shaw):</span>
-<span class="cstat-no" title="statement not covered" >	idf = 1.0 / df;</span>
-<span class="cstat-no" title="statement not covered" >	c[ 1 ] = polyval1( idf );</span>
-<span class="cstat-no" title="statement not covered" >	c[ 2 ] = polyval2( idf );</span>
-<span class="cstat-no" title="statement not covered" >	c[ 3 ] = polyval3( idf );</span>
-<span class="cstat-no" title="statement not covered" >	c[ 4 ] = polyval4( idf );</span>
-<span class="cstat-no" title="statement not covered" >	c[ 5 ] = polyval5( idf );</span>
-<span class="cstat-no" title="statement not covered" >	c[ 6 ] = polyval6( idf );</span>
-<span class="cstat-no" title="statement not covered" >	c[ 7 ] = polyval7( idf );</span>
-<span class="cstat-no" title="statement not covered" >	c[ 8 ] = polyval8( idf );</span>
-<span class="cstat-no" title="statement not covered" >	c[ 9 ] = polyval9( idf );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	// Result is then an odd polynomial in v (see Eq 56 of Shaw)...</span>
-<span class="cstat-no" title="statement not covered" >	return c0 + ( v*evalpoly( c, v*v ) );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+function inverseStudentsTBodySeries( df, u ) {
+	var idf;
+	var v;
+&nbsp;
+	// Body series for small N, start with Eq 56 of Shaw:
+	v = gammaDeltaRatio( df/2, 0.5 ) * sqrt( df*PI ) * ( u-0.5 );
+&nbsp;
+	// Figure out what the coefficients are. They depend only on the degrees of freedom (Eq 57 of Shaw):
+	idf = 1.0 / df;
+	c[ 1 ] = polyval1( idf );
+	c[ 2 ] = polyval2( idf );
+	c[ 3 ] = polyval3( idf );
+	c[ 4 ] = polyval4( idf );
+	c[ 5 ] = polyval5( idf );
+	c[ 6 ] = polyval6( idf );
+	c[ 7 ] = polyval7( idf );
+	c[ 8 ] = polyval8( idf );
+	c[ 9 ] = polyval9( idf );
+&nbsp;
+	// Result is then an odd polynomial in v (see Eq 56 of Shaw)...
+	return c0 + ( v*evalpoly( c, v*v ) );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -370,7 +370,7 @@ module.exports = inverseStudentsTBodySeries;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-23T01:32:12.143Z
+                at 2026-09-26T23:24:57.826Z
             </div>
         <script src="prettify.js"></script>
         <script>

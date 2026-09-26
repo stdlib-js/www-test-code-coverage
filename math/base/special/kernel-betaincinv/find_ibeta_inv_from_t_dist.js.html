@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.57% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>55/70</span>
+                <span class='fraction'>70/70</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">78.57% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>55/70</span>
+                <span class='fraction'>70/70</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -183,21 +183,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
+<span class="cline-any cline-yes">452x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -223,10 +223,10 @@
 *
 * ## Notice
 *
-* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_62_0/boost/math/special_functions/detail/t_distribution_inv.hpp}. The implementation has been modified for JavaScript.
+* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_92_0/boost/math/special_functions/detail/t_distribution_inv.hpp}. The implementation has been modified for JavaScript.
 *
 * ```text
-* Copyright John Maddock 2006.
+* Copyright John Maddock 2007.
 * Copyright Paul A. Bristow 2007.
 *
 * Use, modification and distribution are subject to the
@@ -253,21 +253,21 @@ var inverseStudentsT = require( './inverse_students_t.js' );
 * @param {Object} py - placeholder object holding one minus the returned value
 * @returns {number} function value
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function findIBetaInvFromTDist( a, p, py ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var df;</span>
-<span class="cstat-no" title="statement not covered" >	var u;</span>
-<span class="cstat-no" title="statement not covered" >	var v;</span>
-<span class="cstat-no" title="statement not covered" >	var t;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	u = p / 2.0;</span>
-<span class="cstat-no" title="statement not covered" >	v = 1.0 - u;</span>
-<span class="cstat-no" title="statement not covered" >	df = a * 2.0;</span>
-<span class="cstat-no" title="statement not covered" >	t = inverseStudentsT( df, u, v );</span>
-<span class="cstat-no" title="statement not covered" >	if ( py ) {</span>
-<span class="cstat-no" title="statement not covered" >		py.value = t * t / ( df + ( t*t ) );</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	return df / ( df + ( t*t ) );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+function findIBetaInvFromTDist( a, p, py ) {
+	var df;
+	var u;
+	var v;
+	var t;
+&nbsp;
+	u = p / 2.0;
+	v = 1.0 - u;
+	df = a * 2.0;
+	t = inverseStudentsT( df, u, v );
+	if ( py ) {
+		py.value = t * t / ( df + ( t*t ) );
+	}
+	return df / ( df + ( t*t ) );
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -280,7 +280,7 @@ module.exports = findIBetaInvFromTDist;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-23T01:32:12.143Z
+                at 2026-09-26T23:24:57.826Z
             </div>
         <script src="prettify.js"></script>
         <script>
