@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for dlast-index-of-row/lib/dlast_index_of_row.js</title>
+    <title>Code coverage report for base/dlast-index-of-row/lib/dlast_index_of_row.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">dlast-index-of-row/lib</a> dlast_index_of_row.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/dlast-index-of-row/lib</a> dlast_index_of_row.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">74.46% </span>
+                <span class="strong">74.19% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>70/94</span>
+                <span class='fraction'>69/93</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">74.46% </span>
+                <span class="strong">74.19% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>70/94</span>
+                <span class='fraction'>69/93</span>
             </div>
         
             
@@ -156,9 +156,7 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -273,9 +271,8 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
+var resolveLayout = require( '@stdlib/blas/base/layout-resolve-str' );
 var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major-string' );
-var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var stride2offset = require( '@stdlib/strided/base/stride2offset' );
 var max = require( '@stdlib/math/base/special/fast/max' );
 var format = require( '@stdlib/string/format' );
@@ -292,7 +289,7 @@ var ndarray = require( './ndarray.js' );
 * -   If the function is provided an empty matrix or if the function is unable to find a matching row, the function returns `-1` (i.e., an invalid index).
 * -   The `workspace` array is only applicable when an input matrix is stored in column-major order. When the matrix is stored in row-major order, the workspace array is ignored.
 *
-* @param {string} order - storage layout
+* @param {(integer|string)} order - storage layout
 * @param {PositiveInteger} M - number of rows in `A`
 * @param {PositiveInteger} N - number of columns in `A`
 * @param {Float64Array} A - input matrix
@@ -320,23 +317,23 @@ var ndarray = require( './ndarray.js' );
 <span class="cstat-no" title="statement not covered" >	var sa1;</span>
 <span class="cstat-no" title="statement not covered" >	var sa2;</span>
 <span class="cstat-no" title="statement not covered" >	var s;</span>
-<span class="cstat-no" title="statement not covered" >	if ( !isLayout( order ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	var l;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	l = resolveLayout( order );</span>
+<span class="cstat-no" title="statement not covered" >	if ( l === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( isRowMajor( order ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( isRowMajor( l ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		s = N;</span>
+<span class="cstat-no" title="statement not covered" >		sa1 = LDA;</span>
+<span class="cstat-no" title="statement not covered" >		sa2 = 1;</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
 <span class="cstat-no" title="statement not covered" >		s = M;</span>
+<span class="cstat-no" title="statement not covered" >		sa1 = 1;</span>
+<span class="cstat-no" title="statement not covered" >		sa2 = LDA;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( LDA &lt; max( 1, s ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new RangeError( format( 'invalid argument. Fifth argument must be greater than or equal to max(1,%d). Value: `%d`.', max( 1, s ), LDA ) );</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( isColumnMajor( order ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		sa1 = 1;</span>
-<span class="cstat-no" title="statement not covered" >		sa2 = LDA;</span>
-<span class="cstat-no" title="statement not covered" >	} else { // order === 'row-major'</span>
-<span class="cstat-no" title="statement not covered" >		sa1 = LDA;</span>
-<span class="cstat-no" title="statement not covered" >		sa2 = 1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	return ndarray( M, N, A, sa1, sa2, 0, x, strideX, stride2offset( N, strideX ), workspace, strideW, stride2offset( M, strideW ) ); // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >}</span>
@@ -352,16 +349,16 @@ module.exports = dlastIndexOfRow;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-07T10:17:58.153Z
+                at 2026-09-26T04:33:59.252Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     

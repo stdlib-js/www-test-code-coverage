@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for zcartesian-product/lib/zcartesian_product.js</title>
+    <title>Code coverage report for base/zcartesian-product/lib/zcartesian_product.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">zcartesian-product/lib</a> zcartesian_product.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/zcartesian-product/lib</a> zcartesian_product.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.04% </span>
+                <span class="strong">70.52% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>67/93</span>
+                <span class='fraction'>67/95</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.04% </span>
+                <span class="strong">70.52% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>67/93</span>
+                <span class='fraction'>67/95</span>
             </div>
         
             
@@ -156,7 +156,9 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -218,6 +220,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -271,7 +275,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
+var resolveLayout = require( '@stdlib/blas/base/layout-resolve-str' );
 var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var stride2offset = require( '@stdlib/strided/base/stride2offset' );
 var max = require( '@stdlib/math/base/special/fast/max' );
@@ -288,7 +292,7 @@ var ndarray = require( './ndarray.js' );
 *
 * -   Pairs are stored as rows in the output matrix, where the first column contains the first element of each pair and the second column contains the second element.
 *
-* @param {string} order - storage layout
+* @param {(integer|string)} order - storage layout
 * @param {NonNegativeInteger} M - number of indexed elements in `x`
 * @param {NonNegativeInteger} N - number of indexed elements in `y`
 * @param {Complex128Array} x - first input array
@@ -316,11 +320,13 @@ var ndarray = require( './ndarray.js' );
 <span class="cstat-no" title="statement not covered" >	var sa2;</span>
 <span class="cstat-no" title="statement not covered" >	var ox;</span>
 <span class="cstat-no" title="statement not covered" >	var oy;</span>
+<span class="cstat-no" title="statement not covered" >	var l;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if ( !isLayout( order ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	l = resolveLayout( order );</span>
+<span class="cstat-no" title="statement not covered" >	if ( l === null ) {</span>
 <span class="cstat-no" title="statement not covered" >		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( isColumnMajor( order ) ) {</span>
+<span class="cstat-no" title="statement not covered" >	if ( isColumnMajor( l ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		if ( LDO &lt; max( 1, M*N ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			throw new RangeError( format( 'invalid argument. Ninth argument must be greater than or equal to max(1,%d). Value: `%d`.', M*N, LDO ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
@@ -349,16 +355,16 @@ module.exports = zcartesianProduct;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-07T10:17:58.153Z
+                at 2026-09-26T04:33:59.252Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     
