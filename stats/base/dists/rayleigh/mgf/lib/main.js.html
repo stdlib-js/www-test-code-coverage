@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for rayleigh/mgf/lib/main.js</title>
+    <title>Code coverage report for mgf/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">rayleigh/mgf/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">mgf/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.7% </span>
+                <span class="strong">82.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>67/82</span>
+                <span class='fraction'>66/80</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.7% </span>
+                <span class="strong">82.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>67/82</span>
+                <span class='fraction'>66/80</span>
             </div>
         
             
@@ -143,9 +143,7 @@
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -206,8 +204,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -250,8 +246,7 @@
 // MODULES //
 &nbsp;
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var exp = require( '@stdlib/math/base/special/exp' );
-var erf = require( '@stdlib/math/base/special/erf' );
+var erfcx = require( '@stdlib/math/base/special/erfcx' );
 var SQRT_HALF_PI = require( '@stdlib/constants/float64/sqrt-half-pi' );
 var SQRT2 = require( '@stdlib/constants/float64/sqrt-two' );
 &nbsp;
@@ -266,16 +261,16 @@ var SQRT2 = require( '@stdlib/constants/float64/sqrt-two' );
 * @returns {number} evaluated MGF
 *
 * @example
-* var y = mgf( 1.0, 3.0 );
-* // returns ~678.508
+ * var y = mgf( 1.0, 3.0 );
+ * // returns ~677.005
 *
 * @example
-* var y = mgf( 1.0, 2.0 );
-* // returns ~38.65
+ * var y = mgf( 1.0, 2.0 );
+ * // returns ~37.2
 *
 * @example
-* var y = mgf( -1.0, 4.0 );
-* // returns ~-0.947
+ * var y = mgf( -1.0, 4.0 );
+ * // returns ~0.053
 *
 * @example
 * var y = mgf( NaN, 1.0 );
@@ -291,7 +286,6 @@ var SQRT2 = require( '@stdlib/constants/float64/sqrt-two' );
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function mgf( t, sigma ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var sigmat;</span>
-<span class="cstat-no" title="statement not covered" >	var out;</span>
 <span class="cstat-no" title="statement not covered" >	if (</span>
 <span class="cstat-no" title="statement not covered" >		isnan( t ) ||</span>
 <span class="cstat-no" title="statement not covered" >		isnan( sigma ) ||</span>
@@ -300,9 +294,9 @@ var SQRT2 = require( '@stdlib/constants/float64/sqrt-two' );
 <span class="cstat-no" title="statement not covered" >		return NaN;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	sigmat = t * sigma;</span>
-<span class="cstat-no" title="statement not covered" >	out = 1.0 + (sigmat * exp( sigmat*sigmat / 2.0 ));</span>
-<span class="cstat-no" title="statement not covered" >	out *= SQRT_HALF_PI * ( erf( sigmat / SQRT2 ) + 1.0 );</span>
-<span class="cstat-no" title="statement not covered" >	return out;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	// exp( σ²t²/2 ) * ( 1 + erf( σt/√2 ) ) = exp( σ²t²/2 ) * erfc( -σt/√2 ) = erfcx( -σt/√2 ); computing via `erfcx` avoids overflow of the exponential term and catastrophic cancellation in `1 + erf` for negative `t`:</span>
+<span class="cstat-no" title="statement not covered" >	return 1.0 + ( sigmat * SQRT_HALF_PI * erfcx( -sigmat / SQRT2 ) );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -316,16 +310,16 @@ module.exports = mgf;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-13T04:58:58.350Z
+                at 2026-09-27T07:30:04.484Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
