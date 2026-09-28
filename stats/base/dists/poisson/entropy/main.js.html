@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>146/146</span>
+                <span class='fraction'>156/156</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>146/146</span>
+                <span class='fraction'>156/156</span>
             </div>
         
             
@@ -209,7 +209,17 @@
 <a name='L144'></a><a href='#L144'>144</a>
 <a name='L145'></a><a href='#L145'>145</a>
 <a name='L146'></a><a href='#L146'>146</a>
-<a name='L147'></a><a href='#L147'>147</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -296,6 +306,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">804x</span>
 <span class="cline-any cline-yes">804x</span>
 <span class="cline-any cline-yes">804x</span>
@@ -314,14 +342,6 @@
 <span class="cline-any cline-yes">100x</span>
 <span class="cline-any cline-yes">100x</span>
 <span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">700x</span>
-<span class="cline-any cline-yes">700x</span>
-<span class="cline-any cline-yes">700x</span>
-<span class="cline-any cline-yes">700x</span>
-<span class="cline-any cline-yes">700x</span>
-<span class="cline-any cline-yes">700x</span>
-<span class="cline-any cline-yes">700x</span>
 <span class="cline-any cline-yes">700x</span>
 <span class="cline-any cline-yes">700x</span>
 <span class="cline-any cline-yes">700x</span>
@@ -423,6 +443,24 @@ function lnratio( a, b ) {
 /**
 * Returns the entropy of a Poisson distribution.
 *
+* ## Method
+*
+* For \\(\lambda &lt; 5000\\), the function evaluates the definition \\(H = -\sum_k p_k \ln p_k\\) using weights relative to the mode \\(m = \lfloor \lambda \rfloor\\), \\(w_k = p_k / p_m\\). As the probabilities sum to one, \\(p_m = 1/W\\), where \\(W = \sum_k w_k\\), and thus
+*
+* ```tex
+* H = \ln W - \frac{1}{W} \sum_k w_k \ln w_k
+* ```
+*
+* The logarithms \\(\ln w_k\\) are accumulated using the recurrences \\(w_{k+1} = w_k \lambda/(k+1)\\) and \\(w_{k-1} = w_k k/\lambda\\). This avoids evaluating \\(\lambda^k/k!\\), which overflows for large \\(k\\), and avoids the cancellation between \\(k \ln \lambda\\), \\(\lambda\\), and \\(\ln k!\\), each of which is much larger than the entropy.
+*
+* For \\(\lambda \geq 5000\\), the function uses the asymptotic expansion
+*
+* ```tex
+* H = \frac{1}{2} \ln(2 \pi e \lambda) - \frac{1}{12\lambda} - \frac{1}{24\lambda^2} - \frac{19}{360\lambda^3} + O\left(\lambda^{-4}\right)
+* ```
+*
+* whose truncation error is less than \\(10^{-16}\\) relative to the result.
+*
 * @param {NonNegativeNumber} lambda - mean parameter
 * @returns {PositiveNumber} entropy
 *
@@ -457,17 +495,9 @@ function entropy( lambda ) {
 		return 0.0;
 	}
 	if ( lambda &gt;= THRESHOLD ) {
-		// Asymptotic expansion: H = ln(2πeλ)/2 - 1/(12λ) - 1/(24λ²) - 19/(360λ³) + O(1/λ⁴)
 		l2 = lambda * lambda;
 		return ( 0.5 * ( LN_TWO_PI + 1.0 + ln( lambda ) ) ) - ( 1.0 / ( 12.0*lambda ) ) - ( 1.0 / ( 24.0*l2 ) ) - ( 19.0 / ( 360.0*l2*lambda ) ); // eslint-disable-line max-len
 	}
-	/*
-	* Evaluate H = -Σ p_k ln(p_k) using weights relative to the mode, w_k = p_k/p_m. As Σ p_k = 1, we have p_m = 1/W, where W = Σ w_k, and thus
-	*
-	*   H = ln(W) - Σ w_k ln(w_k) / W
-	*
-	* Computing `ln(w_k)` by recurrence avoids evaluating `λ^k/k!`, which overflows for large `k`, and avoids the cancellation between `k*ln(λ)`, `λ`, and `ln(k!)`, each of which is much larger than the entropy.
-	*/
 	m = floor( lambda );
 	wm1 = 0.0; // W - 1
 	sum = 0.0; // Σ w_k ln(w_k)
@@ -508,7 +538,7 @@ module.exports = entropy;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-27T22:45:11.000Z
+                at 2026-09-28T04:09:08.651Z
             </div>
         <script src="prettify.js"></script>
         <script>
