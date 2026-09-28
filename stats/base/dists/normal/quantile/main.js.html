@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>96/96</span>
+                <span class='fraction'>106/106</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>96/96</span>
+                <span class='fraction'>106/106</span>
             </div>
         
             
@@ -159,7 +159,17 @@
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -229,27 +239,37 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1015x</span>
-<span class="cline-any cline-yes">1004x</span>
-<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2015x</span>
+<span class="cline-any cline-yes">2004x</span>
+<span class="cline-any cline-yes">2015x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">2015x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1000x</span>
-<span class="cline-any cline-yes">1000x</span>
-<span class="cline-any cline-yes">1000x</span>
-<span class="cline-any cline-yes">1015x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2015x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -277,7 +297,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var erfinv = require( '@stdlib/math/base/special/erfinv' );
+var erfcinv = require( '@stdlib/math/base/special/erfcinv' );
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
 var sqrt = require( '@stdlib/math/base/special/sqrt' );
 &nbsp;
@@ -286,6 +306,16 @@ var sqrt = require( '@stdlib/math/base/special/sqrt' );
 &nbsp;
 /**
 * Evaluates the quantile function for a normal distribution with mean `mu` and standard deviation `sigma` at a probability `p`.
+*
+* ## Method
+*
+* The quantile function is
+*
+* ```tex
+* Q(p) = \mu + \sigma \sqrt{2} \operatorname{erf}^{-1}(2p-1) = \mu - \sigma \sqrt{2} \operatorname{erfc}^{-1}(2p)
+* ```
+*
+* The function evaluates the second form. In the first, \\(2p-1\\) loses the low-order digits of small \\(p\\) and rounds to \\(-1\\) for \\(p &lt; 2^{-54}\\), which returns \\(-\infty\\).
 *
 * @param {Probability} p - input value
 * @param {number} mu - mean
@@ -344,7 +374,7 @@ function quantile( p, mu, sigma ) {
 	}
 	A = mu;
 	B = sigma * sqrt( 2.0 );
-	return A + (B * erfinv( (2.0*p) - 1.0 ));
+	return A - ( B * erfcinv( 2.0*p ) );
 }
 &nbsp;
 &nbsp;
@@ -358,7 +388,7 @@ module.exports = quantile;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-09T06:22:37.071Z
+                at 2026-09-28T04:16:31.306Z
             </div>
         <script src="prettify.js"></script>
         <script>
