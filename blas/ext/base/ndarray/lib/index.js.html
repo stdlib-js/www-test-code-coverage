@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for base/ndarray/lib/index.js</title>
+    <title>Code coverage report for lib/index.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/ndarray/lib</a> index.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">lib</a> index.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2247/2247</span>
+                <span class='fraction'>2265/2265</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2247/2247</span>
+                <span class='fraction'>2265/2265</span>
             </div>
         
             
@@ -2310,7 +2310,43 @@
 <a name='L2245'></a><a href='#L2245'>2245</a>
 <a name='L2246'></a><a href='#L2246'>2246</a>
 <a name='L2247'></a><a href='#L2247'>2247</a>
-<a name='L2248'></a><a href='#L2248'>2248</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L2248'></a><a href='#L2248'>2248</a>
+<a name='L2249'></a><a href='#L2249'>2249</a>
+<a name='L2250'></a><a href='#L2250'>2250</a>
+<a name='L2251'></a><a href='#L2251'>2251</a>
+<a name='L2252'></a><a href='#L2252'>2252</a>
+<a name='L2253'></a><a href='#L2253'>2253</a>
+<a name='L2254'></a><a href='#L2254'>2254</a>
+<a name='L2255'></a><a href='#L2255'>2255</a>
+<a name='L2256'></a><a href='#L2256'>2256</a>
+<a name='L2257'></a><a href='#L2257'>2257</a>
+<a name='L2258'></a><a href='#L2258'>2258</a>
+<a name='L2259'></a><a href='#L2259'>2259</a>
+<a name='L2260'></a><a href='#L2260'>2260</a>
+<a name='L2261'></a><a href='#L2261'>2261</a>
+<a name='L2262'></a><a href='#L2262'>2262</a>
+<a name='L2263'></a><a href='#L2263'>2263</a>
+<a name='L2264'></a><a href='#L2264'>2264</a>
+<a name='L2265'></a><a href='#L2265'>2265</a>
+<a name='L2266'></a><a href='#L2266'>2266</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -5469,6 +5505,15 @@ setReadOnly( ns, 'gcuevery', require( '@stdlib/blas/ext/base/ndarray/gcuevery' )
 setReadOnly( ns, 'gcunone', require( '@stdlib/blas/ext/base/ndarray/gcunone' ) );
 &nbsp;
 /**
+* @name gcusome
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/blas/ext/base/ndarray/gcusome}
+*/
+setReadOnly( ns, 'gcusome', require( '@stdlib/blas/ext/base/ndarray/gcusome' ) );
+&nbsp;
+/**
 * @name gcusum
 * @memberof ns
 * @readonly
@@ -5602,6 +5647,15 @@ setReadOnly( ns, 'gfillNotEqual', require( '@stdlib/blas/ext/base/ndarray/gfill-
 * @see {@link module:@stdlib/blas/ext/base/ndarray/gfind-index}
 */
 setReadOnly( ns, 'gfindIndex', require( '@stdlib/blas/ext/base/ndarray/gfind-index' ) );
+&nbsp;
+/**
+* @name gfindIndexBetween
+* @memberof ns
+* @readonly
+* @type {Function}
+* @see {@link module:@stdlib/blas/ext/base/ndarray/gfind-index-between}
+*/
+setReadOnly( ns, 'gfindIndexBetween', require( '@stdlib/blas/ext/base/ndarray/gfind-index-between' ) );
 &nbsp;
 /**
 * @name gfindLastIndex
@@ -6811,16 +6865,16 @@ module.exports = ns;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-29T03:23:53.650Z
+                at 2026-09-29T03:27:24.942Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     
