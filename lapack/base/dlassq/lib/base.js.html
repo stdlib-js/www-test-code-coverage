@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.02% </span>
+                <span class="strong">35.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>67/186</span>
+                <span class='fraction'>68/190</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.02% </span>
+                <span class="strong">35.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>67/186</span>
+                <span class='fraction'>68/190</span>
             </div>
         
             
@@ -249,7 +249,11 @@
 <a name='L184'></a><a href='#L184'>184</a>
 <a name='L185'></a><a href='#L185'>185</a>
 <a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -311,6 +315,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -481,23 +489,24 @@ var TSML = 1.49166814624004135e-154;
 * @param {Float64Array} X - input array
 * @param {integer} strideX - stride length for `X`
 * @param {NonNegativeInteger} offsetX - starting index for `X`
-* @param {number} scale - scaling factor
-* @param {number} sumsq - basic sum of squares from which output is factored out
-* @param {Float64Array} out - output array
-* @param {integer} strideOut - stride length for `out`
-* @param {NonNegativeInteger} offsetOut - starting index for `out`
-* @returns {Float64Array} output array
+* @param {Float64Array} scale - array containing an element which specifies the scaling factor and is overwritten by the updated scaling factor
+* @param {NonNegativeInteger} offsetScale - index of the element in `scale`
+* @param {Float64Array} sumsq - array containing an element which specifies the basic sum of squares from which output is factored out and is overwritten by the updated sum of squares
+* @param {NonNegativeInteger} offsetSumsq - index of the element in `sumsq`
+* @returns {void}
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
 *
 * var X = new Float64Array( [ 1.0, 2.0, 3.0, 4.0 ] );
-* var out = new Float64Array( [ 0.0, 0.0 ] );
+* var scale = new Float64Array( [ 1.0 ] );
+* var sumsq = new Float64Array( [ 0.0 ] );
 *
-* dlassq( 4, X, 1, 0, 1.0, 0.0, out, 1, 0 );
-* // out =&gt; &lt;Float64Array&gt;[ 1.0, 30.0 ]
+* dlassq( 4, X, 1, 0, scale, 0, sumsq, 0 );
+* // scale =&gt; &lt;Float64Array&gt;[ 1.0 ]
+* // sumsq =&gt; &lt;Float64Array&gt;[ 30.0 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dlassq( N, X, strideX, offsetX, scale, sumsq, out, strideOut, offsetOut ) { // eslint-disable-line max-len</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function dlassq( N, X, strideX, offsetX, scale, offsetScale, sumsq, offsetSumsq ) { // eslint-disable-line max-len</span></span>
 <span class="cstat-no" title="statement not covered" >	var notbig;</span>
 <span class="cstat-no" title="statement not covered" >	var abig;</span>
 <span class="cstat-no" title="statement not covered" >	var asml;</span>
@@ -506,22 +515,26 @@ var TSML = 1.49166814624004135e-154;
 <span class="cstat-no" title="statement not covered" >	var ymax;</span>
 <span class="cstat-no" title="statement not covered" >	var ax;</span>
 <span class="cstat-no" title="statement not covered" >	var ox;</span>
+<span class="cstat-no" title="statement not covered" >	var ss;</span>
+<span class="cstat-no" title="statement not covered" >	var s;</span>
 <span class="cstat-no" title="statement not covered" >	var i;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if ( isnan( scale ) || isnan( sumsq ) ) {</span>
-<span class="cstat-no" title="statement not covered" >		return out;</span>
+<span class="cstat-no" title="statement not covered" >	s = scale[ offsetScale ];</span>
+<span class="cstat-no" title="statement not covered" >	ss = sumsq[ offsetSumsq ];</span>
+<span class="cstat-no" title="statement not covered" >	if ( isnan( s ) || isnan( ss ) ) {</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( sumsq === 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		scale = 1.0;</span>
+<span class="cstat-no" title="statement not covered" >	if ( ss === 0.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		s = 1.0;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	if ( scale === 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		scale = 1.0;</span>
-<span class="cstat-no" title="statement not covered" >		sumsq = 0.0;</span>
+<span class="cstat-no" title="statement not covered" >	if ( s === 0.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		s = 1.0;</span>
+<span class="cstat-no" title="statement not covered" >		ss = 0.0;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( N &lt;= 0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		out[ offsetOut ] = scale;</span>
-<span class="cstat-no" title="statement not covered" >		out[ offsetOut + strideOut ] = sumsq;</span>
-<span class="cstat-no" title="statement not covered" >		return out;</span>
+<span class="cstat-no" title="statement not covered" >		scale[ offsetScale ] = s;</span>
+<span class="cstat-no" title="statement not covered" >		sumsq[ offsetSumsq ] = ss;</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	/*</span>
 <span class="cstat-no" title="statement not covered" >	* Compute the sum of squares in 3 accumulators:</span>
@@ -555,28 +568,28 @@ var TSML = 1.49166814624004135e-154;
 <span class="cstat-no" title="statement not covered" >		ox += strideX;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Put the existing sum of squares into one of the accumulators...</span>
-<span class="cstat-no" title="statement not covered" >	if ( sumsq &gt; 0.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >		ax = scale * sqrt( sumsq );</span>
+<span class="cstat-no" title="statement not covered" >	if ( ss &gt; 0.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		ax = s * sqrt( ss );</span>
 <span class="cstat-no" title="statement not covered" >		if ( ax &gt; TBIG ) {</span>
-<span class="cstat-no" title="statement not covered" >			if ( scale &gt; 1.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >				scale *= SBIG;</span>
-<span class="cstat-no" title="statement not covered" >				abig += scale * ( scale * sumsq );</span>
+<span class="cstat-no" title="statement not covered" >			if ( s &gt; 1.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >				s *= SBIG;</span>
+<span class="cstat-no" title="statement not covered" >				abig += s * ( s * ss );</span>
 <span class="cstat-no" title="statement not covered" >			} else {</span>
 <span class="cstat-no" title="statement not covered" >				// `sumsq &gt; tbig^2` =&gt; `(sbig * (sbig * sumsq))` is representable</span>
-<span class="cstat-no" title="statement not covered" >				abig += scale * ( scale * ( SBIG * ( SBIG*sumsq ) ) );</span>
+<span class="cstat-no" title="statement not covered" >				abig += s * ( s * ( SBIG * ( SBIG*ss ) ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		} else if ( ax &lt; TSML ) {</span>
 <span class="cstat-no" title="statement not covered" >			if ( notbig ) {</span>
-<span class="cstat-no" title="statement not covered" >				if ( scale &lt; 1.0 ) {</span>
-<span class="cstat-no" title="statement not covered" >					scale *= SSML;</span>
-<span class="cstat-no" title="statement not covered" >					asml += scale * ( scale*sumsq );</span>
+<span class="cstat-no" title="statement not covered" >				if ( s &lt; 1.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >					s *= SSML;</span>
+<span class="cstat-no" title="statement not covered" >					asml += s * ( s*ss );</span>
 <span class="cstat-no" title="statement not covered" >				} else {</span>
 <span class="cstat-no" title="statement not covered" >					// `sumsq &lt; tsml^2` =&gt; `(ssml * (ssml * sumsq))` is representable</span>
-<span class="cstat-no" title="statement not covered" >					asml += scale * ( scale * ( SSML * ( SSML*sumsq ) ) );</span>
+<span class="cstat-no" title="statement not covered" >					asml += s * ( s * ( SSML * ( SSML*ss ) ) );</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			amed += scale * ( scale*sumsq );</span>
+<span class="cstat-no" title="statement not covered" >			amed += s * ( s*ss );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Combine `abig` and `amed` or `amed` and `asml` if more than one accumulator was used...</span>
@@ -585,9 +598,9 @@ var TSML = 1.49166814624004135e-154;
 <span class="cstat-no" title="statement not covered" >		if ( amed &gt; 0.0 || isnan( amed ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			abig += ( amed*SBIG ) * SBIG;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		out[ offsetOut ] = 1.0 / SBIG;</span>
-<span class="cstat-no" title="statement not covered" >		out[ offsetOut + strideOut ] = abig;</span>
-<span class="cstat-no" title="statement not covered" >		return out;</span>
+<span class="cstat-no" title="statement not covered" >		scale[ offsetScale ] = 1.0 / SBIG;</span>
+<span class="cstat-no" title="statement not covered" >		sumsq[ offsetSumsq ] = abig;</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	if ( asml &gt; 0.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		// Combine `amed` and `asml` if `asml &gt; 0`...</span>
@@ -601,20 +614,19 @@ var TSML = 1.49166814624004135e-154;
 <span class="cstat-no" title="statement not covered" >				ymin = asml;</span>
 <span class="cstat-no" title="statement not covered" >				ymax = amed;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			scale = 1.0;</span>
-<span class="cstat-no" title="statement not covered" >			sumsq = abs2( ymax ) * ( 1.0 + abs2( ymin/ymax ) );</span>
+<span class="cstat-no" title="statement not covered" >			s = 1.0;</span>
+<span class="cstat-no" title="statement not covered" >			ss = abs2( ymax ) * ( 1.0 + abs2( ymin/ymax ) );</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
-<span class="cstat-no" title="statement not covered" >			scale = 1.0 / SSML;</span>
-<span class="cstat-no" title="statement not covered" >			sumsq = asml;</span>
+<span class="cstat-no" title="statement not covered" >			s = 1.0 / SSML;</span>
+<span class="cstat-no" title="statement not covered" >			ss = asml;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		out[ offsetOut ] = scale;</span>
-<span class="cstat-no" title="statement not covered" >		out[ offsetOut + strideOut ] = sumsq;</span>
-<span class="cstat-no" title="statement not covered" >		return out;</span>
+<span class="cstat-no" title="statement not covered" >		scale[ offsetScale ] = s;</span>
+<span class="cstat-no" title="statement not covered" >		sumsq[ offsetSumsq ] = ss;</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Otherwise all values are mid-range or zero...</span>
-<span class="cstat-no" title="statement not covered" >	out[ offsetOut ] = 1.0;</span>
-<span class="cstat-no" title="statement not covered" >	out[ offsetOut + strideOut ] = amed;</span>
-<span class="cstat-no" title="statement not covered" >	return out;</span>
+<span class="cstat-no" title="statement not covered" >	scale[ offsetScale ] = 1.0;</span>
+<span class="cstat-no" title="statement not covered" >	sumsq[ offsetSumsq ] = amed;</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -628,7 +640,7 @@ module.exports = dlassq;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-03T03:49:51.716Z
+                at 2026-09-29T19:53:41.527Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

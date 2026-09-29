@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.92% </span>
+                <span class="strong">98.94% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>184/186</span>
+                <span class='fraction'>188/190</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.92% </span>
+                <span class="strong">98.94% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>184/186</span>
+                <span class='fraction'>188/190</span>
             </div>
         
             
@@ -249,7 +249,11 @@
 <a name='L184'></a><a href='#L184'>184</a>
 <a name='L185'></a><a href='#L185'>185</a>
 <a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -311,6 +315,11 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">28x</span>
@@ -326,8 +335,8 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -370,8 +379,8 @@
 <span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">28x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -379,7 +388,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -389,10 +398,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -425,7 +434,6 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
@@ -481,23 +489,24 @@ var TSML = 1.49166814624004135e-154;
 * @param {Float64Array} X - input array
 * @param {integer} strideX - stride length for `X`
 * @param {NonNegativeInteger} offsetX - starting index for `X`
-* @param {number} scale - scaling factor
-* @param {number} sumsq - basic sum of squares from which output is factored out
-* @param {Float64Array} out - output array
-* @param {integer} strideOut - stride length for `out`
-* @param {NonNegativeInteger} offsetOut - starting index for `out`
-* @returns {Float64Array} output array
+* @param {Float64Array} scale - array containing an element which specifies the scaling factor and is overwritten by the updated scaling factor
+* @param {NonNegativeInteger} offsetScale - index of the element in `scale`
+* @param {Float64Array} sumsq - array containing an element which specifies the basic sum of squares from which output is factored out and is overwritten by the updated sum of squares
+* @param {NonNegativeInteger} offsetSumsq - index of the element in `sumsq`
+* @returns {void}
 *
 * @example
 * var Float64Array = require( '@stdlib/array/float64' );
 *
 * var X = new Float64Array( [ 1.0, 2.0, 3.0, 4.0 ] );
-* var out = new Float64Array( [ 0.0, 0.0 ] );
+* var scale = new Float64Array( [ 1.0 ] );
+* var sumsq = new Float64Array( [ 0.0 ] );
 *
-* dlassq( 4, X, 1, 0, 1.0, 0.0, out, 1, 0 );
-* // out =&gt; &lt;Float64Array&gt;[ 1.0, 30.0 ]
+* dlassq( 4, X, 1, 0, scale, 0, sumsq, 0 );
+* // scale =&gt; &lt;Float64Array&gt;[ 1.0 ]
+* // sumsq =&gt; &lt;Float64Array&gt;[ 30.0 ]
 */
-function dlassq( N, X, strideX, offsetX, scale, sumsq, out, strideOut, offsetOut ) { // eslint-disable-line max-len
+function dlassq( N, X, strideX, offsetX, scale, offsetScale, sumsq, offsetSumsq ) { // eslint-disable-line max-len
 	var notbig;
 	var abig;
 	var asml;
@@ -506,22 +515,26 @@ function dlassq( N, X, strideX, offsetX, scale, sumsq, out, strideOut, offsetOut
 	var ymax;
 	var ax;
 	var ox;
+	var ss;
+	var s;
 	var i;
 &nbsp;
-	if ( isnan( scale ) || isnan( sumsq ) ) {
-		return out;
+	s = scale[ offsetScale ];
+	ss = sumsq[ offsetSumsq ];
+	if ( isnan( s ) || isnan( ss ) ) {
+		return;
 	}
-	if ( sumsq === 0.0 ) {
-		scale = 1.0;
+	if ( ss === 0.0 ) {
+		s = 1.0;
 	}
-	if ( scale === 0.0 ) {
-		scale = 1.0;
-		sumsq = 0.0;
+	if ( s === 0.0 ) {
+		s = 1.0;
+		ss = 0.0;
 	}
 	if ( N &lt;= 0 ) {
-		out[ offsetOut ] = scale;
-		out[ offsetOut + strideOut ] = sumsq;
-		return out;
+		scale[ offsetScale ] = s;
+		sumsq[ offsetSumsq ] = ss;
+		return;
 	}
 	/*
 	* Compute the sum of squares in 3 accumulators:
@@ -555,28 +568,28 @@ function dlassq( N, X, strideX, offsetX, scale, sumsq, out, strideOut, offsetOut
 		ox += strideX;
 	}
 	// Put the existing sum of squares into one of the accumulators...
-	if ( sumsq &gt; 0.0 ) {
-		ax = scale * sqrt( sumsq );
+	if ( ss &gt; 0.0 ) {
+		ax = s * sqrt( ss );
 		if ( ax &gt; TBIG ) {
-			if ( scale &gt; 1.0 ) {
-				scale *= SBIG;
-				abig += scale * ( scale * sumsq );
+			if ( s &gt; 1.0 ) {
+				s *= SBIG;
+				abig += s * ( s * ss );
 			} else {
 				// `sumsq &gt; tbig^2` =&gt; `(sbig * (sbig * sumsq))` is representable
-				abig += scale * ( scale * ( SBIG * ( SBIG*sumsq ) ) );
+				abig += s * ( s * ( SBIG * ( SBIG*ss ) ) );
 			}
 		} else if ( ax &lt; TSML ) {
 			if ( notbig ) {
-				if ( scale &lt; 1.0 ) {
-					scale *= SSML;
-					asml += scale * ( scale*sumsq );
+				if ( s &lt; 1.0 ) {
+					s *= SSML;
+					asml += s * ( s*ss );
 				} else {
 					// `sumsq &lt; tsml^2` =&gt; `(ssml * (ssml * sumsq))` is representable
-					asml += scale * ( scale * ( SSML * ( SSML*sumsq ) ) );
+					asml += s * ( s * ( SSML * ( SSML*ss ) ) );
 				}
 			}
 		} else {
-			amed += scale * ( scale*sumsq );
+			amed += s * ( s*ss );
 		}
 	}
 	// Combine `abig` and `amed` or `amed` and `asml` if more than one accumulator was used...
@@ -585,9 +598,9 @@ function dlassq( N, X, strideX, offsetX, scale, sumsq, out, strideOut, offsetOut
 		if ( amed &gt; 0.0 || isnan( amed ) ) {
 			abig += ( amed*SBIG ) * SBIG;
 		}
-		out[ offsetOut ] = 1.0 / SBIG;
-		out[ offsetOut + strideOut ] = abig;
-		return out;
+		scale[ offsetScale ] = 1.0 / SBIG;
+		sumsq[ offsetSumsq ] = abig;
+		return;
 	}
 	if ( asml &gt; 0.0 ) {
 		// Combine `amed` and `asml` if `asml &gt; 0`...
@@ -601,20 +614,19 @@ function dlassq( N, X, strideX, offsetX, scale, sumsq, out, strideOut, offsetOut
 				ymin = asml;
 				ymax = amed;
 			}
-			scale = 1.0;
-			sumsq = abs2( ymax ) * ( 1.0 + abs2( ymin/ymax ) );
+			s = 1.0;
+			ss = abs2( ymax ) * ( 1.0 + abs2( ymin/ymax ) );
 		} else {
-			scale = 1.0 / SSML;
-			sumsq = asml;
+			s = 1.0 / SSML;
+			ss = asml;
 		}
-		out[ offsetOut ] = scale;
-		out[ offsetOut + strideOut ] = sumsq;
-		return out;
+		scale[ offsetScale ] = s;
+		sumsq[ offsetSumsq ] = ss;
+		return;
 	}
 	// Otherwise all values are mid-range or zero...
-	out[ offsetOut ] = 1.0;
-	out[ offsetOut + strideOut ] = amed;
-	return out;
+	scale[ offsetScale ] = 1.0;
+	sumsq[ offsetSumsq ] = amed;
 }
 &nbsp;
 &nbsp;
@@ -628,7 +640,7 @@ module.exports = dlassq;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-07T06:23:52.107Z
+                at 2026-09-29T19:53:43.921Z
             </div>
         <script src="prettify.js"></script>
         <script>
