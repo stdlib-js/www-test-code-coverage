@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for lognormal/pdf/lib/main.js</title>
+    <title>Code coverage report for base/dists/lognormal/pdf/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">lognormal/pdf/lib</a> main.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">base/dists/lognormal/pdf/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">79.59% </span>
+                <span class="strong">82.79% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>78/98</span>
+                <span class='fraction'>77/93</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">79.59% </span>
+                <span class="strong">82.79% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>78/98</span>
+                <span class='fraction'>77/93</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -156,12 +156,7 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -233,11 +228,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -282,11 +272,10 @@
 // MODULES //
 &nbsp;
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
-var sqrt = require( '@stdlib/math/base/special/sqrt' );
 var exp = require( '@stdlib/math/base/special/exp' );
-var pow = require( '@stdlib/math/base/special/pow' );
+var abs2 = require( '@stdlib/math/base/special/abs2' );
 var ln = require( '@stdlib/math/base/special/ln' );
-var PI = require( '@stdlib/constants/float64/pi' );
+var SQRT_TWO_PI = require( '@stdlib/constants/float64/sqrt-two-pi' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -333,9 +322,7 @@ var PI = require( '@stdlib/constants/float64/pi' );
 * // returns NaN
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function pdf( x, mu, sigma ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var s2;</span>
 <span class="cstat-no" title="statement not covered" >	var A;</span>
-<span class="cstat-no" title="statement not covered" >	var B;</span>
 <span class="cstat-no" title="statement not covered" >	if (</span>
 <span class="cstat-no" title="statement not covered" >		isnan( x ) ||</span>
 <span class="cstat-no" title="statement not covered" >		isnan( mu ) ||</span>
@@ -347,10 +334,8 @@ var PI = require( '@stdlib/constants/float64/pi' );
 <span class="cstat-no" title="statement not covered" >	if ( x &lt;= 0.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >		return 0.0;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >	s2 = pow( sigma, 2.0 );</span>
-<span class="cstat-no" title="statement not covered" >	A = 1.0 / ( sqrt( 2.0 * s2 * PI ) );</span>
-<span class="cstat-no" title="statement not covered" >	B = -1.0 / ( 2.0 * s2 );</span>
-<span class="cstat-no" title="statement not covered" >	return (1.0/x) * A * exp( B * pow( ln(x) - mu, 2.0 ) );</span>
+<span class="cstat-no" title="statement not covered" >	A = 1.0 / ( sigma * SQRT_TWO_PI );</span>
+<span class="cstat-no" title="statement not covered" >	return (1.0/x) * A * exp( -0.5 * abs2( ( ln(x) - mu ) / sigma ) );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -364,16 +349,16 @@ module.exports = pdf;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-13T04:58:58.350Z
+                at 2026-09-30T05:47:59.946Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     
