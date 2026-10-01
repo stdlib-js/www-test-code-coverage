@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>85/85</span>
+                <span class='fraction'>87/87</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>85/85</span>
+                <span class='fraction'>87/87</span>
             </div>
         
             
@@ -148,7 +148,9 @@
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -193,41 +195,43 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2020x</span>
+<span class="cline-any cline-yes">2020x</span>
+<span class="cline-any cline-yes">2020x</span>
+<span class="cline-any cline-yes">2020x</span>
+<span class="cline-any cline-yes">2020x</span>
+<span class="cline-any cline-yes">2007x</span>
+<span class="cline-any cline-yes">2020x</span>
 <span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">110x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2003x</span>
+<span class="cline-any cline-yes">2010x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">110x</span>
+<span class="cline-any cline-yes">2010x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">110x</span>
+<span class="cline-any cline-yes">2010x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">100x</span>
-<span class="cline-any cline-yes">110x</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">2000x</span>
+<span class="cline-any cline-yes">2010x</span>
+<span class="cline-any cline-yes">2020x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -257,6 +261,8 @@
 &nbsp;
 var constantFunction = require( '@stdlib/utils/constant-function' );
 var isnan = require( '@stdlib/math/base/assert/is-nan' );
+var expm1 = require( '@stdlib/math/base/special/expm1' );
+var log1p = require( '@stdlib/math/base/special/log1p' );
 var pow = require( '@stdlib/math/base/special/pow' );
 &nbsp;
 &nbsp;
@@ -310,7 +316,7 @@ function factory( a, b ) {
 		if ( x &gt;= 1.0 ) {
 			return 1.0;
 		}
-		return 1.0 - pow( 1.0 - pow( x, a ), b );
+		return -expm1( b * log1p( -pow( x, a ) ) );
 	}
 }
 &nbsp;
@@ -325,7 +331,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-05T21:11:01.576Z
+                at 2026-10-01T23:30:01.431Z
             </div>
         <script src="prettify.js"></script>
         <script>
