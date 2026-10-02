@@ -1244,7 +1244,7 @@ function halleyIterate( fun, guess, minimum, maximum, digits, maxIter ) {
 		} else {
 			denom = 2.0 * f0;
 			num = ( 2.0 * f1 ) - ( f0 * ( f2 / f1 ) );
-			if ( abs(num) &lt; 1.0 &amp;&amp; ( abs(denom) &gt;= abs(num) * MAX_VALUE ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+			if ( abs( num ) &lt; 1.0 &amp;&amp; ( abs( denom ) &gt;= abs( num ) * MAX_VALUE ) ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >				// Possible overflow, use Newton step:</span>
 <span class="cstat-no" title="statement not covered" >				delta = f0 / f1;</span>
 			} else {
@@ -1253,13 +1253,13 @@ function halleyIterate( fun, guess, minimum, maximum, digits, maxIter ) {
 			if ( delta * f1 / f0 &lt; 0.0 ) {
 				// Probably cancellation error, try a Newton step instead:
 				delta = f0 / f1;
-				if ( abs(delta) &gt; 2.0 * abs(result) ) {
+				if ( abs( delta ) &gt; 2.0 * abs( result ) ) {
 					delta = ( ( delta &lt; 0.0 ) ? -2.0 <span class="branch-0 cbranch-no" title="branch not covered" >: 2.0 </span>) * abs( result );
 				}
 			}
 		}
 		// We need to avoid delta/delta2 overflowing here:
-		if ( abs(delta2) &gt; 1.0 || abs( MAX_VALUE*delta2 ) &gt; abs( delta ) ) {
+		if ( abs( delta2 ) &gt; 1.0 || abs( MAX_VALUE*delta2 ) &gt; abs( delta ) ) {
 			convergence = abs( delta / delta2 );
 		} else {
 			convergence = MAX_VALUE;
@@ -1285,7 +1285,7 @@ function halleyIterate( fun, guess, minimum, maximum, digits, maxIter ) {
 				count = STATE[ 2 ];
 			} else {
 				delta = ( delta &gt; 0.0 ) ? ( result-minimum )/2.0 : ( result-maximum )/2.0; // eslint-disable-line max-len
-				if ( result !== 0.0 &amp;&amp; abs(delta) &gt; result ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+				if ( result !== 0.0 &amp;&amp; abs( delta ) &gt; result ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >					delta = sign( delta ) * abs( result ) * 0.9; // Protect against huge jumps!</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 			}
@@ -1299,20 +1299,20 @@ function halleyIterate( fun, guess, minimum, maximum, digits, maxIter ) {
 		// Check for out of bounds step:
 		if ( result &lt; minimum ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >			if (</span>
-<span class="cstat-no" title="statement not covered" >				abs(minimum) &lt; 1.0 &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >				abs(result) &gt; 1.0 &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >				( MAX_VALUE / abs(result) &lt; abs(minimum) )</span>
+<span class="cstat-no" title="statement not covered" >				abs( minimum ) &lt; 1.0 &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >				abs( result ) &gt; 1.0 &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >				( MAX_VALUE / abs( result ) &lt; abs( minimum ) )</span>
 <span class="cstat-no" title="statement not covered" >			) {</span>
 <span class="cstat-no" title="statement not covered" >				diff = 1000.0;</span>
 <span class="cstat-no" title="statement not covered" >			} else if (</span>
-<span class="cstat-no" title="statement not covered" >				abs(minimum) &lt; 1.0 &amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >				( abs( MAX_VALUE*minimum ) &lt; abs(result) )</span>
+<span class="cstat-no" title="statement not covered" >				abs( minimum ) &lt; 1.0 &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >				( abs( MAX_VALUE*minimum ) &lt; abs( result ) )</span>
 <span class="cstat-no" title="statement not covered" >			) {</span>
 <span class="cstat-no" title="statement not covered" >				diff = ( ( minimum &lt; 0.0 ) === ( result &lt; 0.0 ) ) ? MAX_VALUE : -MAX_VALUE; // eslint-disable-line max-len</span>
 <span class="cstat-no" title="statement not covered" >			} else {</span>
 <span class="cstat-no" title="statement not covered" >				diff = result / minimum;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
-<span class="cstat-no" title="statement not covered" >			if ( abs(diff) &lt; 1.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >			if ( abs( diff ) &lt; 1.0 ) {</span>
 <span class="cstat-no" title="statement not covered" >				diff = 1.0 / diff;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			if ( !outOfBounds &amp;&amp; diff &gt; 0.0 &amp;&amp; diff &lt; 3.0 ) {</span>
@@ -1321,7 +1321,7 @@ function halleyIterate( fun, guess, minimum, maximum, digits, maxIter ) {
 <span class="cstat-no" title="statement not covered" >				result = guess - delta;</span>
 <span class="cstat-no" title="statement not covered" >				outOfBounds = true; // Only take this branch once!</span>
 <span class="cstat-no" title="statement not covered" >			} else {</span>
-<span class="cstat-no" title="statement not covered" >				if ( ulpDifference( minimum, maximum ) &lt; 2.0 ) {</span>
+<span class="cstat-no" title="statement not covered" >				if ( ulpDifference( minimum, maximum ) &lt; 2 ) {</span>
 <span class="cstat-no" title="statement not covered" >					result = ( minimum + maximum ) / 2.0;</span>
 <span class="cstat-no" title="statement not covered" >					guess = result;</span>
 <span class="cstat-no" title="statement not covered" >					break;</span>
@@ -1345,15 +1345,15 @@ function halleyIterate( fun, guess, minimum, maximum, digits, maxIter ) {
 <span class="cstat-no" title="statement not covered" >			}</span>
 		} else if ( result &gt; maximum ) {
 			if (
-				abs(maximum) &lt; 1.0 &amp;&amp;
-				abs(result) &gt; 1.0 <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp;</span>
-<span class="cstat-no" title="statement not covered" >				MAX_VALUE / abs(result) &lt; abs(maximum)</span>
+				abs( maximum ) &lt; 1.0 &amp;&amp;
+				abs( result ) &gt; 1.0 <span class="branch-0 cbranch-no" title="branch not covered" >&amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >				MAX_VALUE / abs( result ) &lt; abs( maximum )</span>
 			) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >				diff = 1000.0;</span>
 			} else {
 				diff = result / maximum;
 			}
-			if ( abs(diff) &lt; 1.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+			if ( abs( diff ) &lt; 1.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >				diff = 1.0 / diff;</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 			if ( !outOfBounds &amp;&amp; diff &gt; 0.0 &amp;&amp; diff &lt; 3.0 ) {
@@ -1398,7 +1398,7 @@ function halleyIterate( fun, guess, minimum, maximum, digits, maxIter ) {
 <span class="cstat-no" title="statement not covered" >			// There appears to be no root to be found (the original C++ implementation raises an evaluation error; we instead return the current best guess):</span>
 <span class="cstat-no" title="statement not covered" >			return guess;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-	} while ( count &amp;&amp; ( abs(result * factor) &lt; abs(delta) ) );
+	} while ( count &amp;&amp; ( abs( result * factor ) &lt; abs( delta ) ) );
 &nbsp;
 	return result;
 }
@@ -1414,7 +1414,7 @@ module.exports = halleyIterate;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-02T04:31:37.025Z
+                at 2026-10-02T09:24:07.469Z
             </div>
         <script src="prettify.js"></script>
         <script>
