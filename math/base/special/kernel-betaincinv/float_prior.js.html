@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for polyval_co21.js</title>
+    <title>Code coverage report for float_prior.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> polyval_co21.js</h1>
+        <h1><a href="index.html">All files</a> float_prior.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.74% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>45/47</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>44/56</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
+                <span class="quiet">Branches</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.74% </span>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>45/47</span>
+                <span class='fraction'>44/56</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,7 +110,16 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -146,12 +155,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,7 +178,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2022 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -175,35 +193,44 @@
 * limitations under the License.
 */
 &nbsp;
-/* This is a generated file. Do not edit directly. */
 'use strict';
+&nbsp;
+// MODULES //
+&nbsp;
+var fromWords = require( '@stdlib/number/float64/base/from-words' );
+var toWords = require( '@stdlib/number/float64/base/to-words' );
+&nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
 /**
-* Evaluates a polynomial.
+* Returns the next representable double-precision floating-point number less than the input value.
 *
 * ## Notes
 *
-* -   The implementation uses [Horner's rule][horners-method] for efficient computation.
-*
-* [horners-method]: https://en.wikipedia.org/wiki/Horner%27s_method
+* -   The input value is assumed to be a positive finite number, as these are the only values arising in the root-finding brackets of this package.
 *
 * @private
-* @param {number} x - value at which to evaluate the polynomial
-* @returns {number} evaluated polynomial
+* @param {PositiveNumber} x - input value
+* @returns {number} next representable value toward negative infinity
 */
-function evalpoly( x ) {
-	if ( x === 0.0 ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >		return 0.0009647274732138864;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function floatPrior( x ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	var w;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	w = toWords( x );</span>
+<span class="cstat-no" title="statement not covered" >	if ( w[ 1 ] === 0 ) {</span>
+<span class="cstat-no" title="statement not covered" >		w[ 0 ] -= 1;</span>
+<span class="cstat-no" title="statement not covered" >		w[ 1 ] = 0xffffffff;</span>
+<span class="cstat-no" title="statement not covered" >	} else {</span>
+<span class="cstat-no" title="statement not covered" >		w[ 1 ] -= 1;</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-	return 0.0009647274732138864 + (x * (-0.0003110108632631878 + (x * (-0.00036307660358786886 + (x * (0.0005140660578834113 + (x * (-0.00029133414466938067 + (x * (0.00009086710793521991 + (x * (-0.000015303004486655377 + (x * (0.0000010914179173496788 + (x * 2.8114572543455206e-15))))))))))))))); // eslint-disable-line max-len
-}
+<span class="cstat-no" title="statement not covered" >	return fromWords( w[ 0 ], w[ 1 ] );</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
 // EXPORTS //
 &nbsp;
-module.exports = evalpoly;
+module.exports = floatPrior;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
