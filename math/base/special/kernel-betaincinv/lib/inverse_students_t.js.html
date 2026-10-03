@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.28% </span>
+                <span class="strong">38.38% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>77/196</span>
+                <span class='fraction'>76/198</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.28% </span>
+                <span class="strong">38.38% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>77/196</span>
+                <span class='fraction'>76/198</span>
             </div>
         
             
@@ -259,7 +259,9 @@
 <a name='L194'></a><a href='#L194'>194</a>
 <a name='L195'></a><a href='#L195'>195</a>
 <a name='L196'></a><a href='#L196'>196</a>
-<a name='L197'></a><a href='#L197'>197</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -330,7 +332,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -475,10 +479,10 @@
 *
 * ## Notice
 *
-* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_62_0/boost/math/special_functions/detail/t_distribution_inv.hpp}. The implementation has been modified for JavaScript.
+* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_92_0/boost/math/special_functions/detail/t_distribution_inv.hpp}. The implementation has been modified for JavaScript.
 *
 * ```text
-* Copyright John Maddock 2006.
+* Copyright John Maddock 2007.
 * Copyright Paul A. Bristow 2007.
 *
 * Use, modification and distribution are subject to the
@@ -494,12 +498,12 @@
 var erfcinv = require( '@stdlib/math/base/special/erfcinv' );
 var floor = require( '@stdlib/math/base/special/floor' );
 var ldexp = require( '@stdlib/math/base/special/ldexp' );
-var round = require( '@stdlib/math/base/special/round' );
+var frexp = require( '@stdlib/math/base/special/frexp' );
 var acos = require( '@stdlib/math/base/special/acos' );
 var sqrt = require( '@stdlib/math/base/special/sqrt' );
 var abs = require( '@stdlib/math/base/special/abs' );
 var cos = require( '@stdlib/math/base/special/cos' );
-var pow = require( '@stdlib/math/base/special/pow' );
+var cbrt = require( '@stdlib/math/base/special/cbrt' );
 var sin = require( '@stdlib/math/base/special/sin' );
 var SQRT2 = require( '@stdlib/constants/float64/sqrt-two' );
 var PI = require( '@stdlib/constants/float64/pi' );
@@ -511,7 +515,6 @@ var inverseStudentsTHill = require( './inverse_students_t_hill.js' );
 // VARIABLES //
 &nbsp;
 var DF_THRESHOLD = 0x10000000; // 2^28
-var ONE_THIRD = 1.0 / 3.0;
 var EXP = ( 2.0 * 53.0 ) / 3.0;
 var C = 0.85498797333834849467655443627193;
 &nbsp;
@@ -535,6 +538,7 @@ var C = 0.85498797333834849467655443627193;
 <span class="cstat-no" title="statement not covered" >	var result;</span>
 <span class="cstat-no" title="statement not covered" >	var alpha;</span>
 <span class="cstat-no" title="statement not covered" >	var tmp;</span>
+<span class="cstat-no" title="statement not covered" >	var fe;</span>
 <span class="cstat-no" title="statement not covered" >	var p0;</span>
 <span class="cstat-no" title="statement not covered" >	var p2;</span>
 <span class="cstat-no" title="statement not covered" >	var p4;</span>
@@ -587,7 +591,7 @@ var C = 0.85498797333834849467655443627193;
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			// Newton-Raphson iteration of a polynomial case, choice of seed value is taken from Shaw's online supplement:</span>
 <span class="cstat-no" title="statement not covered" >			a = 4.0 * ( u - (u*u) ); // 1 - 4 * (u - 0.5f) * (u - 0.5f);</span>
-<span class="cstat-no" title="statement not covered" >			b = pow( a, ONE_THIRD );</span>
+<span class="cstat-no" title="statement not covered" >			b = cbrt( a );</span>
 <span class="cstat-no" title="statement not covered" >			p = 6.0 * ( 1.0 + ( C * ( (1.0/b) - 1.0 ) ) );</span>
 <span class="cstat-no" title="statement not covered" >			do {</span>
 <span class="cstat-no" title="statement not covered" >				p2 = p * p;</span>
@@ -606,7 +610,7 @@ var C = 0.85498797333834849467655443627193;
 <span class="cstat-no" title="statement not covered" >			break;</span>
 <span class="cstat-no" title="statement not covered" >		default:</span>
 <span class="cstat-no" title="statement not covered" >			if ( df &gt; DF_THRESHOLD ) { // 2^28</span>
-<span class="cstat-no" title="statement not covered" >				result = erfcinv( 2.0 * u ) * SQRT2;</span>
+<span class="cstat-no" title="statement not covered" >				result = -erfcinv( 2.0 * u ) * SQRT2;</span>
 <span class="cstat-no" title="statement not covered" >			} else if ( df &lt; 3 ) {</span>
 <span class="cstat-no" title="statement not covered" >				// Use a roughly linear scheme to choose between Shaw's tail series and body series:</span>
 <span class="cstat-no" title="statement not covered" >				crossover = 0.2742 - ( df * 0.0242143 );</span>
@@ -616,9 +620,10 @@ var C = 0.85498797333834849467655443627193;
 <span class="cstat-no" title="statement not covered" >					result = inverseStudentsTTailSeries( df, u );</span>
 <span class="cstat-no" title="statement not covered" >				}</span>
 <span class="cstat-no" title="statement not covered" >			} else {</span>
-<span class="cstat-no" title="statement not covered" >				// Use Hill's method except in the extreme tails where we use Shaw's tail series. The crossover point is roughly exponential in -df:</span>
-<span class="cstat-no" title="statement not covered" >				crossover = ldexp( 1.0, round( df / -0.654 ) );</span>
-<span class="cstat-no" title="statement not covered" >				if ( u &gt; crossover ) {</span>
+<span class="cstat-no" title="statement not covered" >				// Use Hill's method except in the extreme tails where we use Shaw's tail series. The crossover point is roughly exponential in -df (i.e., use Hill's method when `u &gt; 2^(-df/0.654)`), which we evaluate via the binary exponent of `u` in order to avoid underflow for large `df`.</span>
+<span class="cstat-no" title="statement not covered" >				// NOTE: the Boost implementation tests `u_exp &lt; df / 0.654`, which contradicts the stated intent (the tail series would never be selected); we implement the stated intent, which reproduces the behavior of earlier Boost versions:</span>
+<span class="cstat-no" title="statement not covered" >				fe = frexp( u );</span>
+<span class="cstat-no" title="statement not covered" >				if ( fe[ 0 ] &gt; 0.0 &amp;&amp; fe[ 1 ] &gt; df / -0.654 ) {</span>
 <span class="cstat-no" title="statement not covered" >					result = inverseStudentsTHill( df, u );</span>
 <span class="cstat-no" title="statement not covered" >				} else {</span>
 <span class="cstat-no" title="statement not covered" >					result = inverseStudentsTTailSeries( df, u );</span>
@@ -636,9 +641,10 @@ var C = 0.85498797333834849467655443627193;
 <span class="cstat-no" title="statement not covered" >			result = inverseStudentsTTailSeries( df, u );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		// Use Hill's method except in the extreme tails where we use Shaw's tail series. The crossover point is roughly exponential in -df:</span>
-<span class="cstat-no" title="statement not covered" >		crossover = ldexp( 1.0, round( df / -0.654 ) );</span>
-<span class="cstat-no" title="statement not covered" >		if ( u &gt; crossover ) {</span>
+<span class="cstat-no" title="statement not covered" >		// Use Hill's method except in the extreme tails where we use Shaw's tail series. The crossover point is roughly exponential in -df (i.e., use Hill's method when `u &gt; 2^(-df/0.654)`), which we evaluate via the binary exponent of `u` in order to avoid underflow for large `df`.</span>
+<span class="cstat-no" title="statement not covered" >		// NOTE: the Boost implementation tests `u_exp &lt; df / 0.654`, which contradicts the stated intent (the tail series would never be selected); we implement the stated intent, which reproduces the behavior of earlier Boost versions:</span>
+<span class="cstat-no" title="statement not covered" >		fe = frexp( u );</span>
+<span class="cstat-no" title="statement not covered" >		if ( fe[ 0 ] &gt; 0.0 &amp;&amp; fe[ 1 ] &gt; df / -0.654 ) {</span>
 <span class="cstat-no" title="statement not covered" >			result = inverseStudentsTHill( df, u );</span>
 <span class="cstat-no" title="statement not covered" >		} else {</span>
 <span class="cstat-no" title="statement not covered" >			result = inverseStudentsTTailSeries( df, u );</span>
@@ -658,7 +664,7 @@ module.exports = inverseStudentsT;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-16T05:34:17.968Z
+                at 2026-10-03T02:28:24.161Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.89% </span>
+                <span class="strong">57.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>77/133</span>
+                <span class='fraction'>74/128</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.89% </span>
+                <span class="strong">57.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>77/133</span>
+                <span class='fraction'>74/128</span>
             </div>
         
             
@@ -191,12 +191,7 @@
 <a name='L126'></a><a href='#L126'>126</a>
 <a name='L127'></a><a href='#L127'>127</a>
 <a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a>
-<a name='L132'></a><a href='#L132'>132</a>
-<a name='L133'></a><a href='#L133'>133</a>
-<a name='L134'></a><a href='#L134'>134</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L129'></a><a href='#L129'>129</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -265,11 +260,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -349,7 +339,7 @@
 *
 * ## Notice
 *
-* The original C++ code and copyright notice are from the [Boost library]{@link http://www.boost.org/doc/libs/1_65_0/boost/math/special_functions/detail/polygamma.hpp}. The implementation follows the original but has been modified for JavaScript.
+* The original C++ code and copyright notice are from the [Boost library]{@link https://www.boost.org/doc/libs/1_92_0/boost/math/special_functions/detail/polygamma.hpp}. The implementation follows the original but has been modified for JavaScript.
 *
 * ```text
 * (C) Copyright Nikhar Agrawal 2013.
@@ -367,12 +357,10 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var logger = require( 'debug' );
 var factorial = require( '@stdlib/math/base/special/factorial' );
 var zeta = require( '@stdlib/math/base/special/riemann-zeta' );
 var abs = require( '@stdlib/math/base/special/abs' );
 var pow = require( '@stdlib/math/base/special/pow' );
-var NINF = require( '@stdlib/constants/float64/ninf' );
 var PINF = require( '@stdlib/constants/float64/pinf' );
 var EPS = require( '@stdlib/constants/float64/eps' );
 var MAX = require( '@stdlib/constants/float64/max' );
@@ -380,7 +368,6 @@ var MAX = require( '@stdlib/constants/float64/max' );
 &nbsp;
 // VARIABLES //
 &nbsp;
-var debug = logger( 'polygamma' );
 var MAX_SERIES_ITERATIONS = 1000000;
 &nbsp;
 &nbsp;
@@ -407,7 +394,6 @@ var MAX_SERIES_ITERATIONS = 1000000;
 <span class="cstat-no" title="statement not covered" >	var scale;</span>
 <span class="cstat-no" title="statement not covered" >	var term;</span>
 <span class="cstat-no" title="statement not covered" >	var sum;</span>
-<span class="cstat-no" title="statement not covered" >	var AX;</span>
 <span class="cstat-no" title="statement not covered" >	var k;</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	// In order to avoid spurious overflow, save the `n!` term for later, and rescale at the end:</span>
@@ -426,9 +412,9 @@ var MAX_SERIES_ITERATIONS = 1000000;
 <span class="cstat-no" title="statement not covered" >	// First term in the series is necessarily `&lt; zeta(2) &lt; 2`, so ignore the sum if it will have no effect on the result:</span>
 <span class="cstat-no" title="statement not covered" >	if ( prefix &gt; 2.0/EPS ) {</span>
 <span class="cstat-no" title="statement not covered" >		if ( n &amp; 1 ) {</span>
-<span class="cstat-no" title="statement not covered" >			return ( AX/prefix &lt; scale ) ? PINF : prefix * scale;</span>
+<span class="cstat-no" title="statement not covered" >			return prefix * scale;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return ( AX/prefix &lt; scale ) ? NINF : -prefix * scale;</span>
+<span class="cstat-no" title="statement not covered" >		return -( prefix * scale );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	sum = prefix;</span>
 <span class="cstat-no" title="statement not covered" >	for ( k = 0; ; ) {</span>
@@ -444,9 +430,8 @@ var MAX_SERIES_ITERATIONS = 1000000;
 <span class="cstat-no" title="statement not covered" >		k += 1;</span>
 <span class="cstat-no" title="statement not covered" >		factorialPart *= (-x * (n+k)) / k;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		// Last chance exit:</span>
+<span class="cstat-no" title="statement not covered" >		// Last chance exit; series failed to converge:</span>
 <span class="cstat-no" title="statement not covered" >		if ( k &gt; MAX_SERIES_ITERATIONS ) {</span>
-<span class="cstat-no" title="statement not covered" >			debug( 'Series did not converge, best value is %d.', sum );</span>
 <span class="cstat-no" title="statement not covered" >			return NaN;</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
@@ -469,7 +454,7 @@ module.exports = nearzero;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-16T05:34:17.968Z
+                at 2026-10-03T02:28:24.161Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
