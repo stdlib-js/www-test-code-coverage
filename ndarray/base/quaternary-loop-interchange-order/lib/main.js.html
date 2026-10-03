@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for base/quaternary-loop-interchange-order/lib/main.js</title>
+    <title>Code coverage report for quaternary-loop-interchange-order/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/quaternary-loop-interchange-order/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">quaternary-loop-interchange-order/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.42% </span>
+                <span class="strong">88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>84/95</span>
+                <span class='fraction'>88/100</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.42% </span>
+                <span class="strong">88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>84/95</span>
+                <span class='fraction'>88/100</span>
             </div>
         
             
@@ -158,7 +158,12 @@
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -237,6 +242,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -293,6 +303,7 @@ var loopOrder = require( '@stdlib/ndarray/base/loop-interchange-order' );
 *     -   **sz**: third input ndarray strides sorted in loop order.
 *     -   **sw**: fourth input ndarray strides sorted in loop order.
 *     -   **su**: output ndarray strides sorted in loop order.
+*     -   **idx**: dimension indices sorted in loop order.
 *
 * @param {NonNegativeIntegerArray} sh - array dimensions
 * @param {IntegerArray} sx - first input array stride lengths
@@ -331,6 +342,9 @@ var loopOrder = require( '@stdlib/ndarray/base/loop-interchange-order' );
 *
 * var ssu = o.su;
 * // returns [ 1, -2, 6 ]
+*
+* var idx = o.idx;
+* // returns [ 0, 1, 2 ]
 */
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function quaternaryLoopOrder( sh, sx, sy, sz, sw, su ) {</span></span>
 <span class="cstat-no" title="statement not covered" >	var tmp = loopOrder( sh, [ sx, sy, sz, sw, su ] );</span>
@@ -340,7 +354,8 @@ var loopOrder = require( '@stdlib/ndarray/base/loop-interchange-order' );
 <span class="cstat-no" title="statement not covered" >		'sy': tmp[ 2 ],</span>
 <span class="cstat-no" title="statement not covered" >		'sz': tmp[ 3 ],</span>
 <span class="cstat-no" title="statement not covered" >		'sw': tmp[ 4 ],</span>
-<span class="cstat-no" title="statement not covered" >		'su': tmp[ 5 ]</span>
+<span class="cstat-no" title="statement not covered" >		'su': tmp[ 5 ],</span>
+<span class="cstat-no" title="statement not covered" >		'idx': tmp[ 6 ]</span>
 <span class="cstat-no" title="statement not covered" >	};</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
@@ -355,16 +370,16 @@ module.exports = quaternaryLoopOrder;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-19T23:17:52.242Z
+                at 2026-10-03T02:29:37.782Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
