@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="index.html">All files</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>75/75</span>
+                <span class='fraction'>73/73</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>75/75</span>
+                <span class='fraction'>73/73</span>
             </div>
         
             
@@ -136,11 +136,7 @@
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -216,7 +212,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
 * @license Apache-2.0
 *
-* Copyright (c) 2025 The Stdlib Authors.
+* Copyright (c) 2026 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -235,12 +231,9 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
-var getStride = require( '@stdlib/ndarray/base/stride' );
-var getOffset = require( '@stdlib/ndarray/base/offset' );
+var serialize = require( '@stdlib/ndarray/base/serialize-meta-data' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
-var strided = require( '@stdlib/blas/ext/base/dcusumkbn2' ).ndarray;
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -256,6 +249,7 @@ var strided = require( '@stdlib/blas/ext/base/dcusumkbn2' ).ndarray;
 *     -   a one-dimensional output ndarray.
 *     -   a zero-dimensional ndarray containing the initial sum.
 *
+* @private
 * @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing ndarrays
 * @returns {Object} output ndarray
 *
@@ -277,10 +271,10 @@ var strided = require( '@stdlib/blas/ext/base/dcusumkbn2' ).ndarray;
 * // returns true
 */
 function dcusumkbn2( arrays ) {
+	var initial = arrays[ 2 ];
 	var x = arrays[ 0 ];
 	var y = arrays[ 1 ];
-	var v = ndarraylike2scalar( arrays[ 2 ] );
-	strided( numelDimension( x, 0 ), v, getData( x ), getStride( x, 0 ), getOffset( x ), getData( y ), getStride( y, 0 ), getOffset( y ) ); // eslint-disable-line max-len
+	addon( getData( x ), serialize( x ), getData( y ), serialize( y ), getData( initial ), serialize( initial ) ); // eslint-disable-line max-len
 	return y;
 }
 &nbsp;
