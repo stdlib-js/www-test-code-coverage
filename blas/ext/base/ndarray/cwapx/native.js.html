@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for main.js</title>
+    <title>Code coverage report for native.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> main.js</h1>
+        <h1><a href="index.html">All files</a> native.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>75/75</span>
             </div>
         
             
@@ -138,12 +138,7 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -206,11 +201,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
@@ -245,12 +235,10 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var numelDimension = require( '@stdlib/ndarray/base/numel-dimension' );
-var getStride = require( '@stdlib/ndarray/base/stride' );
-var getOffset = require( '@stdlib/ndarray/base/offset' );
+var reinterpret = require( '@stdlib/strided/base/reinterpret-complex64' );
+var serialize = require( '@stdlib/ndarray/base/serialize-meta-data' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
-var strided = require( '@stdlib/blas/ext/base/cwapx' ).ndarray;
+var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -266,6 +254,7 @@ var strided = require( '@stdlib/blas/ext/base/cwapx' ).ndarray;
 *     -   a one-dimensional output ndarray.
 *     -   a zero-dimensional ndarray containing the scalar constant to add.
 *
+* @private
 * @param {ArrayLikeObject&lt;Object&gt;} arrays - array-like object containing ndarrays
 * @returns {ndarray} output ndarray
 *
@@ -288,14 +277,10 @@ var strided = require( '@stdlib/blas/ext/base/cwapx' ).ndarray;
 * // returns true
 */
 function cwapx( arrays ) {
-	var alpha;
-	var x;
-	var w;
-&nbsp;
-	x = arrays[ 0 ];
-	w = arrays[ 1 ];
-	alpha = ndarraylike2scalar( arrays[ 2 ] );
-	strided( numelDimension( x, 0 ), alpha, getData( x ), getStride( x, 0 ), getOffset( x ), getData( w ), getStride( w, 0 ), getOffset( w ) ); // eslint-disable-line max-len
+	var alpha = arrays[ 2 ];
+	var x = arrays[ 0 ];
+	var w = arrays[ 1 ];
+	addon( reinterpret( getData( x ), 0 ), serialize( x ), reinterpret( getData( w ), 0 ), serialize( w ), reinterpret( getData( alpha ), 0 ), serialize( alpha ) ); // eslint-disable-line max-len
 	return w;
 }
 &nbsp;
