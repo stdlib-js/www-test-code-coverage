@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">98.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>99/99</span>
+                <span class='fraction'>107/109</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.23% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>20/21</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">98.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>99/99</span>
+                <span class='fraction'>107/109</span>
             </div>
         
             
@@ -162,7 +162,18 @@
 <a name='L97'></a><a href='#L97'>97</a>
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -238,6 +249,7 @@
 <span class="cline-any cline-yes">3010x</span>
 <span class="cline-any cline-yes">3010x</span>
 <span class="cline-any cline-yes">3010x</span>
+<span class="cline-any cline-yes">3010x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3010x</span>
@@ -249,11 +261,19 @@
 <span class="cline-any cline-yes">3000x</span>
 <span class="cline-any cline-yes">3000x</span>
 <span class="cline-any cline-yes">3010x</span>
-<span class="cline-any cline-yes">1745x</span>
+<span class="cline-any cline-yes">527x</span>
+<span class="cline-any cline-yes">527x</span>
+<span class="cline-any cline-yes">527x</span>
+<span class="cline-any cline-yes">3010x</span>
+<span class="cline-any cline-yes">1218x</span>
 <span class="cline-any cline-yes">3010x</span>
 <span class="cline-any cline-yes">1255x</span>
 <span class="cline-any cline-yes">1255x</span>
-<span class="cline-any cline-yes">3000x</span>
+<span class="cline-any cline-yes">2473x</span>
+<span class="cline-any cline-yes">3010x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2473x</span>
 <span class="cline-any cline-yes">3010x</span>
 <span class="cline-any cline-yes">3020x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -291,6 +311,7 @@ var log1p = require( '@stdlib/math/base/special/log1p' );
 var expm1 = require( '@stdlib/math/base/special/expm1' );
 var ln = require( '@stdlib/math/base/special/ln' );
 var NINF = require( '@stdlib/constants/float64/ninf' );
+var FLOAT64_SMALLEST_NORMAL = require( '@stdlib/constants/float64/smallest-normal' );
 &nbsp;
 &nbsp;
 // MAIN //
@@ -336,6 +357,7 @@ function factory( a, b ) {
 	function logcdf( x ) {
 		var u;
 		var v;
+		var t;
 		if ( isnan( x ) ) {
 			return NaN;
 		}
@@ -347,12 +369,20 @@ function factory( a, b ) {
 		}
 		// Evaluate `v = ln(1-x^a)` without forming `1-x^a`, which rounds away the low-order bits of a small `x^a` and, for `x^a` close to `1`, of `1-x^a` itself:
 		u = pow( x, a );
+		if ( u &lt; FLOAT64_SMALLEST_NORMAL ) {
+			// `x^a` is subnormal or underflows, so `ln(1-(1-x^a)^b) = ln(b) + a*ln(x)`:
+			return ln( b ) + ( a * ln( x ) );
+		}
 		if ( u &lt; 0.5 ) {
 			v = log1p( -u );
 		} else {
 			v = ln( -expm1( a * ln( x ) ) );
 		}
-		return log1mexp( b * v );
+		t = b * v;
+		if ( t &gt; -FLOAT64_SMALLEST_NORMAL ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			return ln( b ) + ln( -v );</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
+		return log1mexp( t );
 	}
 }
 &nbsp;
@@ -367,7 +397,7 @@ module.exports = factory;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-01T23:33:17.154Z
+                at 2026-10-08T22:27:19.200Z
             </div>
         <script src="prettify.js"></script>
         <script>
