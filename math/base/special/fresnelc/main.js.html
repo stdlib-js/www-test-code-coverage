@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>140/140</span>
+                <span class='fraction'>149/149</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>140/140</span>
+                <span class='fraction'>149/149</span>
             </div>
         
             
@@ -203,7 +203,16 @@
 <a name='L138'></a><a href='#L138'>138</a>
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -304,6 +313,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5003x</span>
+<span class="cline-any cline-yes">5003x</span>
 <span class="cline-any cline-yes">5003x</span>
 <span class="cline-any cline-yes">5003x</span>
 <span class="cline-any cline-yes">5003x</span>
@@ -319,20 +331,26 @@
 <span class="cline-any cline-yes">161x</span>
 <span class="cline-any cline-yes">161x</span>
 <span class="cline-any cline-yes">5003x</span>
-<span class="cline-any cline-yes">2002x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">4842x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
-<span class="cline-any cline-yes">2840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
+<span class="cline-any cline-yes">4840x</span>
 <span class="cline-any cline-yes">5003x</span>
 <span class="cline-any cline-yes">501x</span>
 <span class="cline-any cline-yes">501x</span>
@@ -381,6 +399,7 @@
 &nbsp;
 var sincos = require( '@stdlib/math/base/special/sincos' ).assign;
 var abs = require( '@stdlib/math/base/special/abs' );
+var fmod = require( '@stdlib/math/base/special/fmod' );
 var HALF_PI = require( '@stdlib/constants/float64/half-pi' );
 var PI = require( '@stdlib/constants/float64/pi' );
 var polyC = require( './rational_pcqc.js' );
@@ -446,6 +465,8 @@ var sc = [ 0.0, 0.0 ];
 */
 function fresnelc( x ) {
 	var x2;
+	var hi;
+	var lo;
 	var xa;
 	var C;
 	var f;
@@ -458,7 +479,8 @@ function fresnelc( x ) {
 	if ( x2 &lt; 2.5625 ) {
 		t = x2 * x2;
 		C = xa * polyC( t );
-	} else if ( xa &gt; 36974.0 ) {
+	} else if ( xa &gt; 1.0e16 ) {
+		// Above `1e16`, the oscillating terms, which are at most `1/(πx)`, are below half an ulp of `0.5`:
 		C = 0.5;
 	} else {
 		// Asymptotic power series auxiliary functions for large arguments...
@@ -468,8 +490,13 @@ function fresnelc( x ) {
 		t = 1.0 / t;
 		f = 1.0 - ( u * polyF( u ) );
 		g = t * polyG( u );
-		t = HALF_PI * x2;
-		sincos( t, sc, 1, 0 );
+&nbsp;
+		// `sin( π x^2 / 2 )` and `cos( π x^2 / 2 )` have period 4 in `x^2`, and forming `x*x` rounds away bits that the large argument turns into whole radians. Reduce `x^2` modulo 4 exactly instead: split `x = hi + lo` (Veltkamp, with `134217729 = 2^27+1`) so that `hi*hi`, `2*hi*lo` and `lo*lo` are exact, and reduce each term:
+		t = 134217729.0 * xa;
+		hi = t - ( t - xa );
+		lo = xa - hi;
+		t = fmod( hi*hi, 4.0 ) + fmod( 2.0*hi*lo, 4.0 ) + ( lo*lo );
+		sincos( HALF_PI * t, sc, 1, 0 );
 		t = PI * xa;
 		C = 0.5 + ( ( (f*sc[0]) - (g*sc[1]) ) / t );
 	}
@@ -490,7 +517,7 @@ module.exports = fresnelc;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-15T22:35:09.671Z
+                at 2026-10-13T13:58:02.621Z
             </div>
         <script src="prettify.js"></script>
         <script>
