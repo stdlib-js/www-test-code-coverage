@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">99.79% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>988/990</span>
+                <span class='fraction'>975/977</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.36% </span>
+                <span class="strong">98.34% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>180/183</span>
+                <span class='fraction'>178/181</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">99.79% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>988/990</span>
+                <span class='fraction'>975/977</span>
             </div>
         
             
@@ -1040,20 +1040,8 @@
 <a name='L975'></a><a href='#L975'>975</a>
 <a name='L976'></a><a href='#L976'>976</a>
 <a name='L977'></a><a href='#L977'>977</a>
-<a name='L978'></a><a href='#L978'>978</a>
-<a name='L979'></a><a href='#L979'>979</a>
-<a name='L980'></a><a href='#L980'>980</a>
-<a name='L981'></a><a href='#L981'>981</a>
-<a name='L982'></a><a href='#L982'>982</a>
-<a name='L983'></a><a href='#L983'>983</a>
-<a name='L984'></a><a href='#L984'>984</a>
-<a name='L985'></a><a href='#L985'>985</a>
-<a name='L986'></a><a href='#L986'>986</a>
-<a name='L987'></a><a href='#L987'>987</a>
-<a name='L988'></a><a href='#L988'>988</a>
-<a name='L989'></a><a href='#L989'>989</a>
-<a name='L990'></a><a href='#L990'>990</a>
-<a name='L991'></a><a href='#L991'>991</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">23x</span>
+<a name='L978'></a><a href='#L978'>978</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
@@ -1460,12 +1448,9 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
@@ -1635,13 +1620,6 @@
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
-<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">23x</span>
@@ -2021,12 +1999,8 @@
 <span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-yes">58x</span>
-<span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-yes">42x</span>
-<span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
@@ -2092,6 +2066,7 @@ var indices = require( './indices.js' );
 var fromIterator = require( './from_iterator.js' );
 var fromIteratorMap = require( './from_iterator_map.js' );
 var fromArray = require( './from_array.js' );
+var scalarToUint64 = require( './scalar_to_uint64.js' );
 &nbsp;
 &nbsp;
 // VARIABLES //
@@ -2448,13 +2423,10 @@ setReadOnly( Uint64Array, 'from', function from( src ) {
 			words = [ 0, 0 ];
 			j = 0;
 			for ( i = 0; i &lt; len; i++ ) {
-				v = clbk.call( thisArg, get( src, i ), i );
-				if ( !isUint64( v ) ) {
-					try {
-						v = new Uint64( v );
-					} catch ( err ) { // eslint-disable-line no-unused-vars
-						throw new TypeError( format( 'invalid argument. A callback must return either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer. Value: `%s`.', v ) );
-					}
+				tmp = clbk.call( thisArg, get( src, i ), i );
+				v = scalarToUint64( tmp );
+				if ( v instanceof Error ) {
+					throw new TypeError( format( 'invalid argument. A callback must return either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer. Value: `%s`.', tmp ) );
 				}
 				toWords( v, words, 1, 0 );
 				buf[ j+indices.HIGH ] = words[ 0 ];
@@ -2654,14 +2626,7 @@ setReadOnly( Uint64Array.prototype, 'BYTES_PER_ELEMENT', Uint64Array.BYTES_PER_E
 * @returns {Iterator} iterator
 *
 * @example
-* var Uint64 = require( '@stdlib/number/uint64/ctor' );
-*
-* var arr = [
-*     new Uint64( 1 ),
-*     new Uint64( 2 ),
-*     new Uint64( 3 )
-* ];
-* arr = new Uint64Array( arr );
+* var arr = new Uint64Array( [ 1, 2, 3 ] );
 *
 * // Create an iterator:
 * var it = arr.entries();
@@ -2770,15 +2735,15 @@ setReadOnly( Uint64Array.prototype, 'entries', function entries() {
 * @example
 * var arr = new Uint64Array( 10 );
 *
-* var z = arr.get( 0 );
+* var u = arr.get( 0 );
 * // returns &lt;Uint64&gt;[ 0n ]
 *
 * arr.set( [ 1 ], 0 );
 *
-* z = arr.get( 0 );
+* u = arr.get( 0 );
 * // returns &lt;Uint64&gt;[ 1n ]
 *
-* z = arr.get( 100 );
+* u = arr.get( 100 );
 * // returns undefined
 */
 setReadOnly( Uint64Array.prototype, 'get', function get( idx ) {
@@ -2903,12 +2868,12 @@ setReadOnly( Uint64Array.prototype, 'reduce', function reduce( reducer, initialV
 * @example
 * var arr = new Uint64Array( 10 );
 *
-* var z = arr.get( 0 );
+* var u = arr.get( 0 );
 * // returns &lt;Uint64&gt;[ 0n ]
 *
 * arr.set( 1n, 0 );
 *
-* z = arr.get( 0 );
+* u = arr.get( 0 );
 * // returns &lt;Uint64&gt;[ 1n ]
 */
 setReadOnly( Uint64Array.prototype, 'set', function set( value ) {
@@ -3009,13 +2974,9 @@ setReadOnly( Uint64Array.prototype, 'set', function set( value ) {
 		}
 		idx *= 2;
 		for ( i = 0; i &lt; N; i++ ) {
-			v = sbuf[ i ];
-			if ( !isUint64( v ) ) {
-				try {
-					v = new Uint64( v );
-				} catch ( err ) { // eslint-disable-line no-unused-vars
-					throw new TypeError( format( 'invalid argument. An array element must be either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer. Value: `%s`.', v ) );
-				}
+			v = scalarToUint64( sbuf[ i ] );
+			if ( v instanceof Error ) {
+				throw new TypeError( format( 'invalid argument. An array element must be either a 64-bit unsigned integer or a value which can be converted to a 64-bit unsigned integer. Value: `%s`.', sbuf[ i ] ) );
 			}
 			toWords( v, words, 1, 0 );
 			buf[ idx+indices.HIGH ] = words[ 0 ];
@@ -3040,7 +3001,7 @@ module.exports = Uint64Array;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-06T04:11:00.830Z
+                at 2026-10-14T20:31:46.501Z
             </div>
         <script src="prettify.js"></script>
         <script>
