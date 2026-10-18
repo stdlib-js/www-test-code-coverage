@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>91/91</span>
+                <span class='fraction'>102/102</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>91/91</span>
+                <span class='fraction'>102/102</span>
             </div>
         
             
@@ -154,7 +154,18 @@
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -203,6 +214,9 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-yes">47x</span>
@@ -217,6 +231,14 @@
 <span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">45x</span>
 <span class="cline-any cline-yes">45x</span>
 <span class="cline-any cline-yes">47x</span>
@@ -267,6 +289,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major' );
 var arraylike2object = require( '@stdlib/array/base/arraylike2object' );
 var abs = require( '@stdlib/math/base/special/abs' );
 var accessors = require( './accessors.js' );
@@ -297,6 +320,8 @@ var accessors = require( './accessors.js' );
 function gfiedler( N, x, strideX, offsetX, out, strideOut1, strideOut2, offsetOut ) { // eslint-disable-line max-len
 	var ix0;
 	var ix1;
+	var so1;
+	var so2;
 	var ox;
 	var oo;
 	var io;
@@ -308,10 +333,18 @@ function gfiedler( N, x, strideX, offsetX, out, strideOut1, strideOut2, offsetOu
 	if ( N &lt;= 0 ) {
 		return out;
 	}
+	// As a Fiedler matrix is symmetric, generating the transposed matrix yields the same matrix, and, thus, when the output matrix is stored in column-major order, we can swap the strides so that the innermost loop always moves over contiguous memory, thus ensuring cache optimal traversal...
+	if ( isRowMajor( [ strideOut1, strideOut2 ] ) ) {
+		so1 = strideOut1;
+		so2 = strideOut2;
+	} else { // column-major
+		so1 = strideOut2;
+		so2 = strideOut1;
+	}
 	ox = arraylike2object( x );
 	oo = arraylike2object( out );
 	if ( ox.accessorProtocol || oo.accessorProtocol ) {
-		accessors( N, ox, strideX, offsetX, oo, strideOut1, strideOut2, offsetOut ); // eslint-disable-line max-len
+		accessors( N, ox, strideX, offsetX, oo, so1, so2, offsetOut );
 		return out;
 	}
 	// Fill the matrix with the pairwise absolute differences between the coefficients...
@@ -324,10 +357,10 @@ function gfiedler( N, x, strideX, offsetX, out, strideOut1, strideOut2, offsetOu
 		for ( j = 0; j &lt; N; j++ ) {
 			out[ ij ] = abs( v - x[ ix1 ] );
 			ix1 += strideX;
-			ij += strideOut2;
+			ij += so2;
 		}
 		ix0 += strideX;
-		io += strideOut1;
+		io += so1;
 	}
 	return out;
 }
@@ -343,7 +376,7 @@ module.exports = gfiedler;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-18T11:49:24.400Z
+                at 2026-10-18T12:02:40.403Z
             </div>
         <script src="prettify.js"></script>
         <script>
