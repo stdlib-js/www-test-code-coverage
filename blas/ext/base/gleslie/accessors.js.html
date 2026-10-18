@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>100/100</span>
+                <span class='fraction'>117/117</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>100/100</span>
+                <span class='fraction'>117/117</span>
             </div>
         
             
@@ -163,7 +163,29 @@
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
 <a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -234,26 +256,38 @@
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">270x</span>
+<span class="cline-any cline-yes">270x</span>
+<span class="cline-any cline-yes">270x</span>
+<span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">90x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">30x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">90x</span>
-<span class="cline-any cline-yes">90x</span>
-<span class="cline-any cline-yes">90x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">30x</span>
@@ -284,6 +318,11 @@
 /* eslint-disable max-params */
 &nbsp;
 'use strict';
+&nbsp;
+// MODULES //
+&nbsp;
+var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major' );
+&nbsp;
 &nbsp;
 // MAIN //
 &nbsp;
@@ -322,6 +361,9 @@ function gleslie( N, f, strideF, offsetF, s, strideS, offsetS, out, strideOut1, 
 	var getF;
 	var getS;
 	var oset;
+	var sa1;
+	var sa2;
+	var sd;
 	var io;
 	var ij;
 	var i;
@@ -334,27 +376,36 @@ function gleslie( N, f, strideF, offsetF, s, strideS, offsetS, out, strideOut1, 
 	getS = s.accessors[ 0 ];
 	oset = out.accessors[ 1 ];
 &nbsp;
+	// Resolve the strides for the "fast" and "slow" dimensions so that the inner loop always walks contiguously in memory:
+	if ( isColumnMajor( [ strideOut1, strideOut2 ] ) ) {
+		sa1 = strideOut2;
+		sa2 = strideOut1;
+	} else {
+		sa1 = strideOut1;
+		sa2 = strideOut2;
+	}
+	// Zero-fill the output matrix by traversing in cache-optimal order:
+	io = offsetOut;
+	for ( i = 0; i &lt; N; i++ ) {
+		ij = io;
+		for ( j = 0; j &lt; N; j++ ) {
+			oset( obuf, ij, 0.0 );
+			ij += sa2;
+		}
+		io += sa1;
+	}
 	// Set the first row to the fecundity coefficients:
 	ij = offsetOut;
 	for ( j = 0; j &lt; N; j++ ) {
 		oset( obuf, ij, getF( fbuf, offsetF + ( j * strideF ) ) );
 		ij += strideOut2;
 	}
-	// Set the sub-diagonal to the survival coefficients and fill remaining elements with zeros:
-	io = offsetOut + strideOut1;
-	for ( i = 1; i &lt; N; i++ ) {
-		ij = io;
-		for ( j = 0; j &lt; i - 1; j++ ) {
-			oset( obuf, ij, 0.0 );
-			ij += strideOut2;
-		}
-		oset( obuf, ij, getS( sbuf, offsetS + ( ( i - 1 ) * strideS ) ) );
-		ij += strideOut2;
-		for ( j = i; j &lt; N; j++ ) {
-			oset( obuf, ij, 0.0 );
-			ij += strideOut2;
-		}
-		io += strideOut1;
+	// Set the sub-diagonal to the survival coefficients:
+	sd = strideOut1 + strideOut2;
+	ij = offsetOut + strideOut1;
+	for ( i = 0; i &lt; N - 1; i++ ) {
+		oset( obuf, ij, getS( sbuf, offsetS + ( i * strideS ) ) );
+		ij += sd;
 	}
 	return out;
 }
@@ -370,7 +421,7 @@ module.exports = gleslie;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-16T17:03:48.320Z
+                at 2026-10-18T14:05:40.293Z
             </div>
         <script src="prettify.js"></script>
         <script>
