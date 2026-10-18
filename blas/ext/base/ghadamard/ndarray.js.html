@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>96/96</span>
+                <span class='fraction'>109/109</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>96/96</span>
+                <span class='fraction'>109/109</span>
             </div>
         
             
@@ -159,7 +159,20 @@
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -206,6 +219,10 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">37x</span>
@@ -225,6 +242,14 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
@@ -233,6 +258,7 @@
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">26x</span>
@@ -277,6 +303,7 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var isRowMajor = require( '@stdlib/ndarray/base/assert/is-row-major' );
 var arraylike2object = require( '@stdlib/array/base/arraylike2object' );
 var isPow2 = require( '@stdlib/math/base/assert/uint32-is-pow2' );
 var format = require( '@stdlib/string/format' );
@@ -303,11 +330,14 @@ var accessors = require( './accessors.js' );
 * // out =&gt; [ 1.0, 1.0, 1.0, -1.0 ]
 */
 function ghadamard( N, out, strideOut1, strideOut2, offsetOut ) {
+	var so1;
+	var so2;
 	var oo;
 	var io;
 	var ij;
 	var d1;
 	var d2;
+	var d3;
 	var v;
 	var n;
 	var i;
@@ -319,9 +349,17 @@ function ghadamard( N, out, strideOut1, strideOut2, offsetOut ) {
 	if ( !isPow2( N ) ) {
 		throw new RangeError( format( 'invalid argument. First argument must be a power of two. Value: `%d`.', N ) );
 	}
+	// A Hadamard matrix is symmetric, so we can choose a loop order which iterates over the dimension having the smallest stride in the inner loop, thus ensuring cache optimal traversal...
+	if ( isRowMajor( [ strideOut1, strideOut2 ] ) ) {
+		so1 = strideOut1;
+		so2 = strideOut2;
+	} else {
+		so1 = strideOut2;
+		so2 = strideOut1;
+	}
 	oo = arraylike2object( out );
 	if ( oo.accessorProtocol ) {
-		accessors( N, oo, strideOut1, strideOut2, offsetOut );
+		accessors( N, oo, so1, so2, offsetOut );
 		return out;
 	}
 	// Seed the top-left quadrant with the 1x1 Hadamard matrix:
@@ -329,8 +367,9 @@ function ghadamard( N, out, strideOut1, strideOut2, offsetOut ) {
 &nbsp;
 	// Perform iterative doubling, copying the current n-by-n leading submatrix to the three remaining quadrants of the 2n-by-2n leading submatrix, with the bottom-right quadrant having flipped signs...
 	for ( n = 1; n &lt; N; n *= 2 ) {
-		d1 = n * strideOut1;
-		d2 = n * strideOut2;
+		d1 = n * so1;
+		d2 = n * so2;
+		d3 = d1 + d2;
 		io = offsetOut;
 		for ( i = 0; i &lt; n; i++ ) {
 			ij = io;
@@ -338,10 +377,10 @@ function ghadamard( N, out, strideOut1, strideOut2, offsetOut ) {
 				v = out[ ij ];
 				out[ ij+d2 ] = v;
 				out[ ij+d1 ] = v;
-				out[ ij+d1+d2 ] = -v;
-				ij += strideOut2;
+				out[ ij+d3 ] = -v;
+				ij += so2;
 			}
-			io += strideOut1;
+			io += so1;
 		}
 	}
 	return out;
@@ -358,7 +397,7 @@ module.exports = ghadamard;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-17T07:46:04.729Z
+                at 2026-10-18T13:29:55.184Z
             </div>
         <script src="prettify.js"></script>
         <script>
