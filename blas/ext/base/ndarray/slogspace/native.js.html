@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>84/84</span>
+                <span class='fraction'>79/83</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>84/84</span>
+                <span class='fraction'>79/83</span>
             </div>
         
             
@@ -146,8 +146,7 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -210,22 +209,21 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -253,12 +251,12 @@
 &nbsp;
 // MODULES //
 &nbsp;
+var reinterpret = require( '@stdlib/strided/base/reinterpret-boolean' );
 var serialize = require( '@stdlib/ndarray/base/serialize-meta-data' );
 var ndarraylike2scalar = require( '@stdlib/ndarray/base/ndarraylike2scalar' );
 var scalar2ndarray = require( '@stdlib/ndarray/from-scalar' );
 var getDType = require( '@stdlib/ndarray/dtype' );
 var getData = require( '@stdlib/ndarray/base/data-buffer' );
-var Uint8Array = require( '@stdlib/array/uint8' );
 var addon = require( './../src/addon.node' );
 &nbsp;
 &nbsp;
@@ -298,16 +296,15 @@ function slogspace( arrays ) {
 	var endpoint = arrays[ 4 ];
 	var base = arrays[ 1 ];
 	var strt = arrays[ 2 ];
-	var buf = getData( endpoint );
 	var stp = arrays[ 3 ];
 	var x = arrays[ 0 ];
 &nbsp;
-	if ( getDType( base ) !== 'float32' ) {
-		base = scalar2ndarray( ndarraylike2scalar( base ), {
-			'dtype': 'float32'
-		});
-	}
-	addon( getData( x ), serialize( x ), getData( base ), serialize( base ), getData( strt ), serialize( strt ), getData( stp ), serialize( stp ), new Uint8Array( buf.buffer, buf.byteOffset, buf.length ), serialize( endpoint ) ); // eslint-disable-line max-len
+	if ( getDType( base ) !== 'float32' ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		base = scalar2ndarray( ndarraylike2scalar( base ), {</span>
+<span class="cstat-no" title="statement not covered" >			'dtype': 'float32'</span>
+<span class="cstat-no" title="statement not covered" >		});</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+	addon( getData( x ), serialize( x ), getData( base ), serialize( base ), getData( strt ), serialize( strt ), getData( stp ), serialize( stp ), reinterpret( getData( endpoint ), 0 ), serialize( endpoint ) ); // eslint-disable-line max-len
 	return x;
 }
 &nbsp;
@@ -322,7 +319,7 @@ module.exports = slogspace;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-18T06:43:04.278Z
+                at 2026-10-19T05:32:02.167Z
             </div>
         <script src="prettify.js"></script>
         <script>
