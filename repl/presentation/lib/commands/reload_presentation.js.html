@@ -302,41 +302,41 @@ var debug = logger( 'repl:presentation:command:reload_presentation' );
 <span class="cstat-no" title="statement not covered" >	*/</span>
 <span class="cstat-no" title="statement not covered" >	function onCommand() {</span>
 <span class="cstat-no" title="statement not covered" >		pres._repl.once( 'drain', onDrain );</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		/**</span>
-<span class="cstat-no" title="statement not covered" >		* Callback invoked upon a `drain` event.</span>
-<span class="cstat-no" title="statement not covered" >		*</span>
-<span class="cstat-no" title="statement not covered" >		* @private</span>
-<span class="cstat-no" title="statement not covered" >		*/</span>
-<span class="cstat-no" title="statement not covered" >		function onDrain() {</span>
-<span class="cstat-no" title="statement not covered" >			var pos;</span>
-<span class="cstat-no" title="statement not covered" >			try {</span>
-<span class="cstat-no" title="statement not covered" >				pres.reload().show();</span>
-<span class="cstat-no" title="statement not covered" >			} catch ( error ) {</span>
-<span class="cstat-no" title="statement not covered" >				debug( 'Error: %s', error.message );</span>
+<span class="cstat-no" title="statement not covered" >	/**</span>
+<span class="cstat-no" title="statement not covered" >	* Callback invoked upon a `drain` event.</span>
+<span class="cstat-no" title="statement not covered" >	*</span>
+<span class="cstat-no" title="statement not covered" >	* @private</span>
+<span class="cstat-no" title="statement not covered" >	*/</span>
+<span class="cstat-no" title="statement not covered" >	function onDrain() {</span>
+<span class="cstat-no" title="statement not covered" >		var pos;</span>
+<span class="cstat-no" title="statement not covered" >		try {</span>
+<span class="cstat-no" title="statement not covered" >			pres.reload().show();</span>
+<span class="cstat-no" title="statement not covered" >		} catch ( error ) {</span>
+<span class="cstat-no" title="statement not covered" >			debug( 'Error: %s', error.message );</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				// Infer the current cursor column position based on the length of the command prompt string:</span>
-<span class="cstat-no" title="statement not covered" >				pos = pres._repl._prompt().length; // FIXME: how to address multi-column characters?</span>
+<span class="cstat-no" title="statement not covered" >			// Infer the current cursor column position based on the length of the command prompt string:</span>
+<span class="cstat-no" title="statement not covered" >			pos = pres._repl._prompt().length; // FIXME: how to address multi-column characters?</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				// FIXME: handle non-TTY output streams!</span>
+<span class="cstat-no" title="statement not covered" >			// FIXME: handle non-TTY output streams!</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				/*</span>
-<span class="cstat-no" title="statement not covered" >				* Print the error message on the previous line and generate the expected display prompt and cursor position.</span>
-<span class="cstat-no" title="statement not covered" >				*</span>
-<span class="cstat-no" title="statement not covered" >				* [ANSI escape sequences][1]:</span>
-<span class="cstat-no" title="statement not covered" >				*</span>
-<span class="cstat-no" title="statement not covered" >				* -   `\u001b`: ESC, the escape character</span>
-<span class="cstat-no" title="statement not covered" >				* -   `[1A`: move cursor up one line</span>
-<span class="cstat-no" title="statement not covered" >				* -   `[nD`: move cursor back (to the left) `n` columns (cells)</span>
-<span class="cstat-no" title="statement not covered" >				* -   `[0J`: clear the screen beginning from the current cursor position to the end of the screen</span>
-<span class="cstat-no" title="statement not covered" >				*</span>
-<span class="cstat-no" title="statement not covered" >				* [1]: https://en.wikipedia.org/wiki/ANSI_escape_code</span>
-<span class="cstat-no" title="statement not covered" >				*/</span>
-<span class="cstat-no" title="statement not covered" >				pres._repl._ostream.write( '\u001b[1A\u001b['+pos+'DError: '+error.message+'\u001b[0J\n' );</span>
+<span class="cstat-no" title="statement not covered" >			/*</span>
+<span class="cstat-no" title="statement not covered" >			* Print the error message on the previous line and generate the expected display prompt and cursor position.</span>
+<span class="cstat-no" title="statement not covered" >			*</span>
+<span class="cstat-no" title="statement not covered" >			* [ANSI escape sequences][1]:</span>
+<span class="cstat-no" title="statement not covered" >			*</span>
+<span class="cstat-no" title="statement not covered" >			* -   `\u001b`: ESC, the escape character</span>
+<span class="cstat-no" title="statement not covered" >			* -   `[1A`: move cursor up one line</span>
+<span class="cstat-no" title="statement not covered" >			* -   `[nD`: move cursor back (to the left) `n` columns (cells)</span>
+<span class="cstat-no" title="statement not covered" >			* -   `[0J`: clear the screen beginning from the current cursor position to the end of the screen</span>
+<span class="cstat-no" title="statement not covered" >			*</span>
+<span class="cstat-no" title="statement not covered" >			* [1]: https://en.wikipedia.org/wiki/ANSI_escape_code</span>
+<span class="cstat-no" title="statement not covered" >			*/</span>
+<span class="cstat-no" title="statement not covered" >			pres._repl._ostream.write( '\u001b[1A\u001b['+pos+'DError: '+error.message+'\u001b[0J\n' );</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >				// Show a new display prompt:</span>
-<span class="cstat-no" title="statement not covered" >				pres._repl._displayPrompt();</span>
-<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >			// Show a new display prompt:</span>
+<span class="cstat-no" title="statement not covered" >			pres._repl._displayPrompt();</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
@@ -352,7 +352,7 @@ module.exports = command;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-09-01T11:04:22.932Z
+                at 2026-10-27T01:11:03.237Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
