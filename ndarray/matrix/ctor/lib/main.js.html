@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ctor/lib/main.js</title>
+    <title>Code coverage report for matrix/ctor/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">ctor/lib</a> main.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">matrix/ctor/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -1329,9 +1329,9 @@ var numel = require( '@stdlib/ndarray/base/numel' );
 var ndarray = require( '@stdlib/ndarray/ctor' );
 var defaults = require( '@stdlib/ndarray/defaults' );
 var array2buffer = require( '@stdlib/buffer/from-array' );
+var arraybuffer2ndarray = require( '@stdlib/ndarray/from-arraybuffer' );
 var ITERATOR_SYMBOL = require( '@stdlib/symbol/iterator' );
 var format = require( '@stdlib/string/format' );
-var arraybuffer2matrix = require( './from_arraybuffer.js' );
 &nbsp;
 &nbsp;
 // VARIABLES //
@@ -1481,7 +1481,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >	if ( isArrayBuffer( arg ) ) {</span>
 <span class="cstat-no" title="statement not covered" >		sh = [ 1, arg.byteLength/bytesPerElement( dtype ) ];</span>
 <span class="cstat-no" title="statement not covered" >		ord = resolveOrder( opts );</span>
-<span class="cstat-no" title="statement not covered" >		return arraybuffer2matrix( dtype, arg, sh, shape2strides( sh, ord ), 0, ord, opts );</span>
+<span class="cstat-no" title="statement not covered" >		return arraybuffer2ndarray( dtype, arg, sh, shape2strides( sh, ord ), 0, ord, opts );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	// Case: matrix( Iterable )</span>
 <span class="cstat-no" title="statement not covered" >	if ( isIterableLike( arg ) ) {</span>
@@ -1698,7 +1698,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. First argument must be an ArrayBuffer. Value: `%s`.', arg0 ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			sh = [ 1, (arg0.byteLength-arg1)/bytesPerElement( DEFAULT_DTYPE ) ];</span>
-<span class="cstat-no" title="statement not covered" >			return arraybuffer2matrix( DEFAULT_DTYPE, arg0, sh, shape2strides( sh, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
+<span class="cstat-no" title="statement not covered" >			return arraybuffer2ndarray( DEFAULT_DTYPE, arg0, sh, shape2strides( sh, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Case: matrix( arg0, options )</span>
 <span class="cstat-no" title="statement not covered" >		if ( arg1 === null ) {</span>
@@ -1750,11 +1750,11 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >		// Case: matrix( ArrayBuffer, byteOffset, dtype )</span>
 <span class="cstat-no" title="statement not covered" >		if ( isDataType( arg2 ) ) {</span>
 <span class="cstat-no" title="statement not covered" >			sh = [ 1, (arg0.byteLength-arg1)/bytesPerElement( arg2 ) ];</span>
-<span class="cstat-no" title="statement not covered" >			return arraybuffer2matrix( arg2, arg0, sh, shape2strides( sh, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
+<span class="cstat-no" title="statement not covered" >			return arraybuffer2ndarray( arg2, arg0, sh, shape2strides( sh, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Case: matrix( ArrayBuffer, byteOffset, shape )</span>
 <span class="cstat-no" title="statement not covered" >		if ( isNonNegativeIntegerArray( arg2 ) &amp;&amp; arg2.length === 2 ) {</span>
-<span class="cstat-no" title="statement not covered" >			return arraybuffer2matrix( DEFAULT_DTYPE, arg0, arg2, shape2strides( arg2, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
+<span class="cstat-no" title="statement not covered" >			return arraybuffer2ndarray( DEFAULT_DTYPE, arg0, arg2, shape2strides( arg2, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Case: matrix( ArrayBuffer, byteOffset, options )</span>
 <span class="cstat-no" title="statement not covered" >		if ( arg2 === null ) {</span>
@@ -1762,7 +1762,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		sh = [ 1, (arg0.byteLength-arg1)/bytesPerElement( DEFAULT_DTYPE ) ];</span>
 <span class="cstat-no" title="statement not covered" >		ord = resolveOrder( arg2 );</span>
-<span class="cstat-no" title="statement not covered" >		return arraybuffer2matrix( DEFAULT_DTYPE, arg0, sh, shape2strides( sh, ord ), arg1, ord, arg2 );</span>
+<span class="cstat-no" title="statement not covered" >		return arraybuffer2ndarray( DEFAULT_DTYPE, arg0, sh, shape2strides( sh, ord ), arg1, ord, arg2 );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	arg3 = arguments[ 3 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -1794,19 +1794,19 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Fourth argument must be a nonnegative integer. Value: `%s`.', arg3 ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			sh = [ arg2, arg3 ];</span>
-<span class="cstat-no" title="statement not covered" >			return arraybuffer2matrix( DEFAULT_DTYPE, arg0, sh, shape2strides( sh, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
+<span class="cstat-no" title="statement not covered" >			return arraybuffer2ndarray( DEFAULT_DTYPE, arg0, sh, shape2strides( sh, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Case: matrix( ArrayBuffer, byteOffset, shape, dtype )</span>
 <span class="cstat-no" title="statement not covered" >		if ( isNonNegativeIntegerArray( arg2 ) &amp;&amp; arg2.length === 2 ) {</span>
 <span class="cstat-no" title="statement not covered" >			if ( isDataType( arg3 ) ) {</span>
-<span class="cstat-no" title="statement not covered" >				return arraybuffer2matrix( arg3, arg0, arg2, shape2strides( arg2, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
+<span class="cstat-no" title="statement not covered" >				return arraybuffer2ndarray( arg3, arg0, arg2, shape2strides( arg2, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			// Case: matrix( ArrayBuffer, byteOffset, shape, options )</span>
 <span class="cstat-no" title="statement not covered" >			if ( !isPlainObject( arg3 ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', arg3 ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			ord = resolveOrder( arg3 );</span>
-<span class="cstat-no" title="statement not covered" >			return arraybuffer2matrix( DEFAULT_DTYPE, arg0, arg2, shape2strides( arg2, ord ), arg1, ord, arg3 );</span>
+<span class="cstat-no" title="statement not covered" >			return arraybuffer2ndarray( DEFAULT_DTYPE, arg0, arg2, shape2strides( arg2, ord ), arg1, ord, arg3 );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Case: matrix( ArrayBuffer, byteOffset, dtype, options )</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isDataType( arg2 ) ) {</span>
@@ -1817,7 +1817,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		sh = [ 1, (arg0.byteLength-arg1)/bytesPerElement( arg2 ) ];</span>
 <span class="cstat-no" title="statement not covered" >		ord = resolveOrder( arg3 );</span>
-<span class="cstat-no" title="statement not covered" >		return arraybuffer2matrix( arg2, arg0, sh, shape2strides( sh, ord ), arg1, ord, arg3 );</span>
+<span class="cstat-no" title="statement not covered" >		return arraybuffer2ndarray( arg2, arg0, sh, shape2strides( sh, ord ), arg1, ord, arg3 );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	arg4 = arguments[ 4 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -1838,14 +1838,14 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >			// Case: matrix( ArrayBuffer, byteOffset, M, N, dtype )</span>
 <span class="cstat-no" title="statement not covered" >			if ( isDataType( arg4 ) ) {</span>
-<span class="cstat-no" title="statement not covered" >				return arraybuffer2matrix( arg4, arg0, sh, shape2strides( sh, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
+<span class="cstat-no" title="statement not covered" >				return arraybuffer2ndarray( arg4, arg0, sh, shape2strides( sh, DEFAULT_ORDER ), arg1, DEFAULT_ORDER );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			// Case: matrix( ArrayBuffer, byteOffset, M, N, options )</span>
 <span class="cstat-no" title="statement not covered" >			if ( !isPlainObject( arg4 ) ) {</span>
 <span class="cstat-no" title="statement not covered" >				throw new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', arg4 ) );</span>
 <span class="cstat-no" title="statement not covered" >			}</span>
 <span class="cstat-no" title="statement not covered" >			ord = resolveOrder( arg4 );</span>
-<span class="cstat-no" title="statement not covered" >			return arraybuffer2matrix( DEFAULT_DTYPE, arg0, sh, shape2strides( sh, ord ), arg1, ord, arg4 );</span>
+<span class="cstat-no" title="statement not covered" >			return arraybuffer2ndarray( DEFAULT_DTYPE, arg0, sh, shape2strides( sh, ord ), arg1, ord, arg4 );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		// Case: matrix( ArrayBuffer, byteOffset, shape, dtype, options )</span>
 <span class="cstat-no" title="statement not covered" >		if ( !isNonNegativeIntegerArray( arg2 ) || arg2.length !== 2 ) {</span>
@@ -1858,7 +1858,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >			throw new TypeError( format( 'invalid argument. Options argument must be an object. Value: `%s`.', arg4 ) );</span>
 <span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >		ord = resolveOrder( arg4 );</span>
-<span class="cstat-no" title="statement not covered" >		return arraybuffer2matrix( arg3, arg0, arg2, shape2strides( arg2, ord ), arg1, ord, arg4 );</span>
+<span class="cstat-no" title="statement not covered" >		return arraybuffer2ndarray( arg3, arg0, arg2, shape2strides( arg2, ord ), arg1, ord, arg4 );</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	arg5 = arguments[ 5 ];</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -1883,7 +1883,7 @@ var DEFAULT_ORDER = defaults.get( 'order' );
 <span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >	sh = [ arg2, arg3 ];</span>
 <span class="cstat-no" title="statement not covered" >	ord = resolveOrder( arg5 );</span>
-<span class="cstat-no" title="statement not covered" >	return arraybuffer2matrix( arg4, arg0, sh, shape2strides( sh, ord ), arg1, ord, arg5 );</span>
+<span class="cstat-no" title="statement not covered" >	return arraybuffer2ndarray( arg4, arg0, sh, shape2strides( sh, ord ), arg1, ord, arg5 );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -1897,16 +1897,16 @@ module.exports = matrix;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-31T10:14:16.120Z
+                at 2026-10-31T20:49:09.769Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     
