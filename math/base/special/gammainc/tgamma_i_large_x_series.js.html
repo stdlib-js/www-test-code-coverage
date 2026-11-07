@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.05% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>49/68</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.05% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>49/68</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -175,25 +175,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">570x</span>
+<span class="cline-any cline-yes">570x</span>
+<span class="cline-any cline-yes">570x</span>
+<span class="cline-any cline-yes">570x</span>
+<span class="cline-any cline-yes">570x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -243,25 +243,25 @@
 * @param {number} x1 - function parameter
 * @returns {Function} series function
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function tgammaILargeXSeries( a1, x1 ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var result = 1.0;</span>
-<span class="cstat-no" title="statement not covered" >	var a = a1;</span>
-<span class="cstat-no" title="statement not covered" >	var x = x1;</span>
-<span class="cstat-no" title="statement not covered" >	return next;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	/**</span>
-<span class="cstat-no" title="statement not covered" >	* Calculate the next term of the series.</span>
-<span class="cstat-no" title="statement not covered" >	*</span>
-<span class="cstat-no" title="statement not covered" >	* @private</span>
-<span class="cstat-no" title="statement not covered" >	* @returns {number} series expansion term</span>
-<span class="cstat-no" title="statement not covered" >	*/</span>
-<span class="cstat-no" title="statement not covered" >	function next() {</span>
-<span class="cstat-no" title="statement not covered" >		var r = result;</span>
-<span class="cstat-no" title="statement not covered" >		result *= a / x;</span>
-<span class="cstat-no" title="statement not covered" >		a -= 1.0;</span>
-<span class="cstat-no" title="statement not covered" >		return r;</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+function tgammaILargeXSeries( a1, x1 ) {
+	var result = 1.0;
+	var a = a1 - 1.0;
+	var x = x1;
+	return next;
+&nbsp;
+	/**
+	* Calculate the next term of the series.
+	*
+	* @private
+	* @returns {number} series expansion term
+	*/
+	function next() {
+		var r = result;
+		result *= a / x;
+		a -= 1.0;
+		return r;
+	}
+}
 &nbsp;
 &nbsp;
 // EXPORTS //
@@ -274,7 +274,7 @@ module.exports = tgammaILargeXSeries;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-12T17:59:02.458Z
+                at 2026-11-07T15:14:25.352Z
             </div>
         <script src="prettify.js"></script>
         <script>
