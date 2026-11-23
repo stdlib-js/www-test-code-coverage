@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>208/208</span>
+                <span class='fraction'>206/206</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>208/208</span>
+                <span class='fraction'>206/206</span>
             </div>
         
             
@@ -269,9 +269,7 @@
 <a name='L204'></a><a href='#L204'>204</a>
 <a name='L205'></a><a href='#L205'>205</a>
 <a name='L206'></a><a href='#L206'>206</a>
-<a name='L207'></a><a href='#L207'>207</a>
-<a name='L208'></a><a href='#L208'>208</a>
-<a name='L209'></a><a href='#L209'>209</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L207'></a><a href='#L207'>207</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -328,9 +326,12 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">102x</span>
-<span class="cline-any cline-yes">102x</span>
-<span class="cline-any cline-yes">102x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">102x</span>
 <span class="cline-any cline-yes">102x</span>
 <span class="cline-any cline-yes">102x</span>
@@ -406,14 +407,11 @@
 <span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">33x</span>
-<span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-yes">33x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">50x</span>
-<span class="cline-any cline-yes">37x</span>
-<span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">37x</span>
 <span class="cline-any cline-yes">37x</span>
@@ -423,8 +421,6 @@
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">63x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-yes">43x</span>
 <span class="cline-any cline-yes">43x</span>
 <span class="cline-any cline-yes">43x</span>
 <span class="cline-any cline-yes">63x</span>
@@ -512,6 +508,12 @@ var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string
 var dlassq = require( '@stdlib/lapack/base/dlassq' ).ndarray;
 &nbsp;
 &nbsp;
+// VARIABLES //
+&nbsp;
+var scale = new Float64Array( 1 );
+var sumsq = new Float64Array( 1 );
+&nbsp;
+&nbsp;
 // MAIN //
 &nbsp;
 /**
@@ -538,13 +540,10 @@ var dlassq = require( '@stdlib/lapack/base/dlassq' ).ndarray;
 */
 function dlansp( order, norm, uplo, N, AP, strideAP, offsetAP ) {
 	var anorm;
-	var scale;
-	var sumsq;
 	var ratio;
 	var absa;
 	var work;
 	var temp;
-	var out;
 	var sum;
 	var P;
 	var i;
@@ -610,9 +609,8 @@ function dlansp( order, norm, uplo, N, AP, strideAP, offsetAP ) {
 		}
 	} else if ( norm === 'F' || norm === 'f' || norm === 'E' || norm === 'e' ) {
 		// Find normF(A) = Frobenius norm
-		out = new Float64Array( 2 );
-		scale = 0.0;
-		sumsq = 1.0;
+		scale[ 0 ] = 0.0;
+		sumsq[ 0 ] = 1.0;
 		if (
 			( isColumnMajor( order ) &amp;&amp; uplo === 'upper' ) ||
 			( isRowMajor( order ) &amp;&amp; uplo === 'lower' )
@@ -620,9 +618,7 @@ function dlansp( order, norm, uplo, N, AP, strideAP, offsetAP ) {
 			k = 0;
 			for ( j = 0; j &lt; N; j++ ) {
 				if ( j &gt; 0 ) {
-					dlassq( j, AP, strideAP, offsetAP + ( k * strideAP ), scale, sumsq, out, 1, 0 );
-					scale = out[ 0 ];
-					sumsq = out[ 1 ];
+					dlassq( j, AP, strideAP, offsetAP + ( k * strideAP ), scale, 0, sumsq, 0 );
 					k += j;
 				}
 				k += 1;
@@ -631,15 +627,13 @@ function dlansp( order, norm, uplo, N, AP, strideAP, offsetAP ) {
 			k = 0;
 			for ( j = 0; j &lt; N; j++ ) {
 				if ( j &lt; N - 1 ) {
-					dlassq( N - j - 1, AP, strideAP, offsetAP + ( ( k + 1 ) * strideAP ), scale, sumsq, out, 1, 0 );
-					scale = out[ 0 ];
-					sumsq = out[ 1 ];
+					dlassq( N - j - 1, AP, strideAP, offsetAP + ( ( k + 1 ) * strideAP ), scale, 0, sumsq, 0 );
 				}
 				k += N - j;
 			}
 		}
 &nbsp;
-		sumsq *= 2.0;
+		sumsq[ 0 ] *= 2.0;
 &nbsp;
 		// Add diagonal elements
 		if (
@@ -650,13 +644,13 @@ function dlansp( order, norm, uplo, N, AP, strideAP, offsetAP ) {
 			for ( i = 0; i &lt; N; i++ ) {
 				absa = abs( AP[ offsetAP + ( k * strideAP ) ] );
 				if ( absa !== 0.0 ) {
-					if ( scale &lt; absa ) {
-						ratio = scale / absa;
-						sumsq = 1.0 + ( sumsq * ( ratio * ratio ) );
-						scale = absa;
+					if ( scale[ 0 ] &lt; absa ) {
+						ratio = scale[ 0 ] / absa;
+						sumsq[ 0 ] = 1.0 + ( sumsq[ 0 ] * ( ratio * ratio ) );
+						scale[ 0 ] = absa;
 					} else {
-						ratio = absa / scale;
-						sumsq += ratio * ratio;
+						ratio = absa / scale[ 0 ];
+						sumsq[ 0 ] += ratio * ratio;
 					}
 				}
 				k += i + 2;
@@ -666,19 +660,19 @@ function dlansp( order, norm, uplo, N, AP, strideAP, offsetAP ) {
 			for ( i = 0; i &lt; N; i++ ) {
 				absa = abs( AP[ offsetAP + ( k * strideAP ) ] );
 				if ( absa !== 0.0 ) {
-					if ( scale &lt; absa ) {
-						ratio = scale / absa;
-						sumsq = 1.0 + ( sumsq * ( ratio * ratio ) );
-						scale = absa;
+					if ( scale[ 0 ] &lt; absa ) {
+						ratio = scale[ 0 ] / absa;
+						sumsq[ 0 ] = 1.0 + ( sumsq[ 0 ] * ( ratio * ratio ) );
+						scale[ 0 ] = absa;
 					} else {
-						ratio = absa / scale;
-						sumsq += ratio * ratio;
+						ratio = absa / scale[ 0 ];
+						sumsq[ 0 ] += ratio * ratio;
 					}
 				}
 				k += N - i;
 			}
 		}
-		anorm = scale * sqrt( sumsq );
+		anorm = scale[ 0 ] * sqrt( sumsq[ 0 ] );
 	}
 	return anorm;
 }
@@ -694,7 +688,7 @@ module.exports = dlansp;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-06T11:07:57.877Z
+                at 2026-11-23T09:28:34.107Z
             </div>
         <script src="prettify.js"></script>
         <script>
