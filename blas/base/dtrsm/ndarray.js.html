@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>101/101</span>
+                <span class='fraction'>110/110</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>101/101</span>
+                <span class='fraction'>110/110</span>
             </div>
         
             
@@ -164,7 +164,16 @@
 <a name='L99'></a><a href='#L99'>99</a>
 <a name='L100'></a><a href='#L100'>100</a>
 <a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -235,14 +244,23 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">106x</span>
 <span class="cline-any cline-yes">106x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">106x</span>
+<span class="cline-any cline-yes">106x</span>
+<span class="cline-any cline-yes">106x</span>
+<span class="cline-any cline-yes">106x</span>
+<span class="cline-any cline-yes">106x</span>
 <span class="cline-any cline-yes">106x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">102x</span>
 <span class="cline-any cline-yes">106x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">98x</span>
+<span class="cline-any cline-yes">106x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">94x</span>
 <span class="cline-any cline-yes">106x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -287,10 +305,10 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
-var isOperationSide = require( '@stdlib/blas/base/assert/is-operation-side' );
-var isTransposeOperation = require( '@stdlib/blas/base/assert/is-transpose-operation' );
-var isDiagonalType = require( '@stdlib/blas/base/assert/is-diagonal-type' );
+var resolveSide = require( '@stdlib/blas/base/operation-side-resolve-str' );
+var resolveTriangle = require( '@stdlib/blas/base/matrix-triangle-resolve-str' );
+var resolveTranspose = require( '@stdlib/blas/base/transpose-operation-resolve-str' );
+var resolveDiagonal = require( '@stdlib/blas/base/diagonal-type-resolve-str' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
 &nbsp;
@@ -300,10 +318,10 @@ var base = require( './base.js' );
 /**
 * Solve matrix equation `op(A) * X = α * B` or `X * op(A) = α * B` where `α` is a scalar, `X` and `B` are `M` by `N` matrices, `A` is a unit, or non-unit, upper or lower triangular matrix and `op(A)` is one of `op(A) = A` or `op(A) = A^T`. The matrix `X` is overwritten on `B`.
 *
-* @param {string} side - specifies whether `op( A )` appears on the left or right of `X`
-* @param {string} uplo - specifies whether the upper or lower triangular part of the matrix `A` is supplied
-* @param {string} transa - specifies whether `op( A )` should be transposed, conjugate-transposed, or not transposed
-* @param {string} diag - specifies whether or not `A` is unit triangular
+* @param {(integer|string)} side - specifies whether `op( A )` appears on the left or right of `X`
+* @param {(integer|string)} uplo - specifies whether the upper or lower triangular part of the matrix `A` is supplied
+* @param {(integer|string)} transa - specifies whether `op( A )` should be transposed, conjugate-transposed, or not transposed
+* @param {(integer|string)} diag - specifies whether or not `A` is unit triangular
 * @param {NonNegativeInteger} M - number of rows in `B`
 * @param {NonNegativeInteger} N - number of columns in `B`
 * @param {number} alpha - scalar constant
@@ -316,9 +334,9 @@ var base = require( './base.js' );
 * @param {integer} strideB2 - stride of the second dimension of `B`
 * @param {NonNegativeInteger} offsetB - starting index for `B`
 * @throws {TypeError} first argument must be a valid side
-* @throws {TypeError} second argument must specify whether the lower or upper triangular matrix is supplied.
-* @throws {TypeError} third argument must specify correct transpose operation
-* @throws {TypeError} fourth argument must specify whether the matrix is unit triangular or not
+* @throws {TypeError} second argument must specify whether the lower or upper triangular matrix is supplied
+* @throws {TypeError} third argument must be a valid transpose operation
+* @throws {TypeError} fourth argument must be a valid diagonal type
 * @throws {RangeError} fifth argument must be a nonnegative integer
 * @throws {RangeError} sixth argument must be a nonnegative integer
 * @throws {RangeError} thirteenth argument must be non-zero
@@ -335,17 +353,26 @@ var base = require( './base.js' );
 * // B =&gt; &lt;Float64Array&gt;[ 1.0, 2.0, 3.0, 2.0, 1.0, 0.0, -7.0, -5.0, -3.0 ]
 */
 function dtrsm( side, uplo, transa, diag, M, N, alpha, A, strideA1, strideA2, offsetA, B, strideB1, strideB2, offsetB ) { // eslint-disable-line max-len, max-params
-	if ( !isOperationSide( side ) ) {
+	var s;
+	var u;
+	var t;
+	var d;
+&nbsp;
+	s = resolveSide( side );
+	if ( s === null ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid side. Value: `%s`.', side ) );
 	}
-	if ( !isMatrixTriangle( uplo ) ) {
+	u = resolveTriangle( uplo );
+	if ( u === null ) {
 		throw new TypeError( format( 'invalid argument. Second argument must specify whether the lower or upper triangular matrix is supplied. Value: `%s`.', uplo ) );
 	}
-	if ( !isTransposeOperation( transa ) ) {
-		throw new TypeError( format( 'invalid argument. Third argument must specify correct transpose operation. Value: `%s`.', transa ) );
+	t = resolveTranspose( transa );
+	if ( t === null ) {
+		throw new TypeError( format( 'invalid argument. Third argument must be a valid transpose operation. Value: `%s`.', transa ) );
 	}
-	if ( !isDiagonalType( diag ) ) {
-		throw new TypeError( format( 'invalid argument. Fourth argument must specify whether the matrix is unit triangular or not. Value: `%s`.', diag ) );
+	d = resolveDiagonal( diag );
+	if ( d === null ) {
+		throw new TypeError( format( 'invalid argument. Fourth argument must be a valid diagonal type. Value: `%s`.', diag ) );
 	}
 	if ( M &lt; 0 ) {
 		throw new RangeError( format( 'invalid argument. Fifth argument must be a nonnegative integer. Value: `%d`.', M ) );
@@ -359,7 +386,7 @@ function dtrsm( side, uplo, transa, diag, M, N, alpha, A, strideA1, strideA2, of
 	if ( strideB2 === 0 ) {
 		throw new RangeError( format( 'invalid argument. Fourteenth argument must be non-zero. Value: `%d`.', strideB2 ) );
 	}
-	return base( side, uplo, transa, diag, M, N, alpha, A, strideA1, strideA2, offsetA, B, strideB1, strideB2, offsetB ); // eslint-disable-line max-len
+	return base( s, u, t, d, M, N, alpha, A, strideA1, strideA2, offsetA, B, strideB1, strideB2, offsetB ); // eslint-disable-line max-len
 }
 &nbsp;
 &nbsp;
@@ -373,7 +400,7 @@ module.exports = dtrsm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-27T09:16:17.162Z
+                at 2026-11-27T09:46:58.462Z
             </div>
         <script src="prettify.js"></script>
         <script>

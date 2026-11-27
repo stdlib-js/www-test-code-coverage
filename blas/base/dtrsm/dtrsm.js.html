@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>129/129</span>
+                <span class='fraction'>146/146</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>25/25</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>129/129</span>
+                <span class='fraction'>146/146</span>
             </div>
         
             
@@ -192,7 +192,24 @@
 <a name='L127'></a><a href='#L127'>127</a>
 <a name='L128'></a><a href='#L128'>128</a>
 <a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -263,6 +280,14 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">76x</span>
@@ -273,15 +298,19 @@
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -299,10 +328,15 @@
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-yes">20x</span>
@@ -345,11 +379,11 @@
 // MODULES //
 &nbsp;
 var max = require( '@stdlib/math/base/special/fast/max' );
-var isLayout = require( '@stdlib/blas/base/assert/is-layout' );
-var isMatrixTriangle = require( '@stdlib/blas/base/assert/is-matrix-triangle' );
-var isOperationSide = require( '@stdlib/blas/base/assert/is-operation-side' );
-var isTransposeOperation = require( '@stdlib/blas/base/assert/is-transpose-operation' );
-var isDiagonalType = require( '@stdlib/blas/base/assert/is-diagonal-type' );
+var resolveLayout = require( '@stdlib/blas/base/layout-resolve-str' );
+var resolveSide = require( '@stdlib/blas/base/operation-side-resolve-str' );
+var resolveTriangle = require( '@stdlib/blas/base/matrix-triangle-resolve-str' );
+var resolveTranspose = require( '@stdlib/blas/base/transpose-operation-resolve-str' );
+var resolveDiagonal = require( '@stdlib/blas/base/diagonal-type-resolve-str' );
 var isColumnMajor = require( '@stdlib/ndarray/base/assert/is-column-major-string' );
 var format = require( '@stdlib/string/format' );
 var base = require( './base.js' );
@@ -360,11 +394,11 @@ var base = require( './base.js' );
 /**
 * Solves matrix equation `op(A) * X = α * B` or `X * op(A) = α * B` where `α` is a scalar, `X` and `B` are `M` by `N` matrices, `A` is a unit, or non-unit, upper or lower triangular matrix and `op(A)` is one of `op(A) = A` or `op(A) = A^T`. The matrix `X` is overwritten on `B`.
 *
-* @param {string} order - storage layout of `A` and `B`
-* @param {string} side - specifies whether `op( A )` appears on the left or right of `X`
-* @param {string} uplo - specifies whether the upper or lower triangular part of the matrix `A` is supplied
-* @param {string} transa - specifies whether `op( A )` should be transposed, conjugate-transposed, or not transposed
-* @param {string} diag - specifies whether or not `A` is unit triangular
+* @param {(integer|string)} order - storage layout of `A` and `B`
+* @param {(integer|string)} side - specifies whether `op( A )` appears on the left or right of `X`
+* @param {(integer|string)} uplo - specifies whether the upper or lower triangular part of the matrix `A` is supplied
+* @param {(integer|string)} transa - specifies whether `op( A )` should be transposed, conjugate-transposed, or not transposed
+* @param {(integer|string)} diag - specifies whether or not `A` is unit triangular
 * @param {NonNegativeInteger} M - number of rows in `B`
 * @param {NonNegativeInteger} N - number of columns in `B`
 * @param {number} alpha - scalar constant
@@ -375,12 +409,12 @@ var base = require( './base.js' );
 * @throws {TypeError} first argument must be a valid order
 * @throws {TypeError} second argument must be a valid side
 * @throws {TypeError} third argument must specify whether the lower or upper triangular matrix is supplied
-* @throws {TypeError} fourth argument must specify correct transpose operation
-* @throws {TypeError} fifth argument must specify whether the matrix is unit triangular or not
+* @throws {TypeError} fourth argument must be a valid transpose operation
+* @throws {TypeError} fifth argument must be a valid diagonal type
 * @throws {RangeError} sixth argument must be a nonnegative integer
 * @throws {RangeError} seventh argument must be a nonnegative integer
 * @throws {RangeError} tenth argument must be greater than or equal to max(1,M) when `A` is on left side and max(1,N) otherwise
-* @throws {RangeError} twelfth argument must be greater than or equal to max(1,M)
+* @throws {RangeError} twelfth argument must be greater than or equal to max(1,M) when the storage layout is column-major and max(1,N) otherwise
 * @returns {Float64Array} `B`
 *
 * @example
@@ -394,25 +428,37 @@ var base = require( './base.js' );
 */
 function dtrsm( order, side, uplo, transa, diag, M, N, alpha, A, LDA, B, LDB ) { // eslint-disable-line max-params
 	var nrowsa;
+	var nrowsb;
 	var iscm;
 	var sa1;
 	var sa2;
 	var sb1;
 	var sb2;
-	if ( !isLayout( order ) ) {
+	var l;
+	var s;
+	var u;
+	var t;
+	var d;
+&nbsp;
+	l = resolveLayout( order );
+	if ( l === null ) {
 		throw new TypeError( format( 'invalid argument. First argument must be a valid order. Value: `%s`.', order ) );
 	}
-	if ( !isOperationSide( side ) ) {
+	s = resolveSide( side );
+	if ( s === null ) {
 		throw new TypeError( format( 'invalid argument. Second argument must be a valid side. Value: `%s`.', side ) );
 	}
-	if ( !isMatrixTriangle( uplo ) ) {
+	u = resolveTriangle( uplo );
+	if ( u === null ) {
 		throw new TypeError( format( 'invalid argument. Third argument must specify whether the lower or upper triangular matrix is supplied. Value: `%s`.', uplo ) );
 	}
-	if ( !isTransposeOperation( transa ) ) {
-		throw new TypeError( format( 'invalid argument. Fourth argument must specify correct transpose operation. Value: `%s`.', transa ) );
+	t = resolveTranspose( transa );
+	if ( t === null ) {
+		throw new TypeError( format( 'invalid argument. Fourth argument must be a valid transpose operation. Value: `%s`.', transa ) );
 	}
-	if ( !isDiagonalType( diag ) ) {
-		throw new TypeError( format( 'invalid argument. Fifth argument must specify whether the matrix is unit triangular or not. Value: `%s`.', diag ) );
+	d = resolveDiagonal( diag );
+	if ( d === null ) {
+		throw new TypeError( format( 'invalid argument. Fifth argument must be a valid diagonal type. Value: `%s`.', diag ) );
 	}
 	if ( M &lt; 0 ) {
 		throw new RangeError( format( 'invalid argument. Sixth argument must be a nonnegative integer. Value: `%d`.', M ) );
@@ -420,7 +466,7 @@ function dtrsm( order, side, uplo, transa, diag, M, N, alpha, A, LDA, B, LDB ) {
 	if ( N &lt; 0 ) {
 		throw new RangeError( format( 'invalid argument. Seventh argument must be a nonnegative integer. Value: `%d`.', N ) );
 	}
-	if ( side === 'left' ) {
+	if ( s === 'left' ) {
 		nrowsa = M;
 	} else {
 		nrowsa = N;
@@ -428,10 +474,15 @@ function dtrsm( order, side, uplo, transa, diag, M, N, alpha, A, LDA, B, LDB ) {
 	if ( LDA &lt; max( 1, nrowsa ) ) {
 		throw new RangeError( format( 'invalid argument. Tenth argument must be greater than or equal to max(1,%d). Value: `%d`.', nrowsa, LDA ) );
 	}
-	if ( LDB &lt; max( 1, M ) ) {
-		throw new RangeError( format( 'invalid argument. Twelfth argument must be greater than or equal to max(1,%d). Value: `%d`.', M, LDB ) );
+	iscm = isColumnMajor( l );
+	if ( iscm ) {
+		nrowsb = M;
+	} else {
+		nrowsb = N;
 	}
-	iscm = isColumnMajor( order );
+	if ( LDB &lt; max( 1, nrowsb ) ) {
+		throw new RangeError( format( 'invalid argument. Twelfth argument must be greater than or equal to max(1,%d). Value: `%d`.', nrowsb, LDB ) );
+	}
 	if ( iscm ) {
 		sa1 = 1;
 		sa2 = LDA;
@@ -443,7 +494,7 @@ function dtrsm( order, side, uplo, transa, diag, M, N, alpha, A, LDA, B, LDB ) {
 		sb1 = LDB;
 		sb2 = 1;
 	}
-	return base( side, uplo, transa, diag, M, N, alpha, A, sa1, sa2, 0, B, sb1, sb2, 0 ); // eslint-disable-line max-len
+	return base( s, u, t, d, M, N, alpha, A, sa1, sa2, 0, B, sb1, sb2, 0 );
 }
 &nbsp;
 &nbsp;
@@ -457,7 +508,7 @@ module.exports = dtrsm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-27T09:16:17.162Z
+                at 2026-11-27T09:46:58.462Z
             </div>
         <script src="prettify.js"></script>
         <script>
