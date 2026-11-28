@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for base/srotg/lib/main.js</title>
+    <title>Code coverage report for srotg/lib/main.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">base/srotg/lib</a> main.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">srotg/lib</a> main.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">94.82% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>44/48</span>
+                <span class='fraction'>55/58</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">94.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>44/48</span>
+                <span class='fraction'>55/58</span>
             </div>
         
             
@@ -111,7 +111,17 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -150,7 +160,17 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -181,7 +201,6 @@
 &nbsp;
 // MODULES //
 &nbsp;
-var Float32Array = require( '@stdlib/array/float32' );
 var fcn = require( './assign.js' );
 &nbsp;
 &nbsp;
@@ -190,17 +209,28 @@ var fcn = require( './assign.js' );
 /**
 * Constructs a Givens plane rotation.
 *
-* @param {number} a - rotational elimination parameter
-* @param {number} b - rotational elimination parameter
-* @returns {Float32Array} output array
+* @param {Float32Array} A - array containing a single element which specifies the first rotational elimination parameter and is overwritten by `r`
+* @param {Float32Array} B - array containing a single element which specifies the second rotational elimination parameter and is overwritten by `z`
+* @param {Float32Array} C - array containing a single element which is overwritten by the cosine of the rotation
+* @param {Float32Array} S - array containing a single element which is overwritten by the sine of the rotation
+* @returns {void}
 *
 * @example
-* var out = srotg( 0.0, 2.0 );
-* // returns &lt;Float32Array&gt;[ 2.0, 1.0, 0.0, 1.0 ]
+* var Float32Array = require( '@stdlib/array/float32' );
+*
+* var A = new Float32Array( [ 0.0 ] );
+* var B = new Float32Array( [ 2.0 ] );
+* var C = new Float32Array( 1 );
+* var S = new Float32Array( 1 );
+*
+* srotg( A, B, C, S );
+* // A =&gt; &lt;Float32Array&gt;[ 2.0 ]
+* // B =&gt; &lt;Float32Array&gt;[ 1.0 ]
+* // C =&gt; &lt;Float32Array&gt;[ 0.0 ]
+* // S =&gt; &lt;Float32Array&gt;[ 1.0 ]
 */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function srotg( a, b ) {</span></span>
-<span class="cstat-no" title="statement not covered" >	var out = new Float32Array( 4 );</span>
-<span class="cstat-no" title="statement not covered" >	return fcn( a, b, out, 1, 0 );</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function srotg( A, B, C, S ) {</span></span>
+<span class="cstat-no" title="statement not covered" >	return fcn( A, 0, B, 0, C, 0, S, 0 );</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 &nbsp;
@@ -214,16 +244,16 @@ module.exports = srotg;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-07-21T04:16:07.610Z
+                at 2026-11-28T17:00:17.082Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
